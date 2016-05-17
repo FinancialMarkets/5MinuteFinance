@@ -1,0 +1,117 @@
+---
+title: "Monetary Policy Independence"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "08/1/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+logo: misq.png
+css: 5min.css
+---
+
+## Executive Summary <!---What are the Three Things You Need to Know-->
+
+Legislation proposed recently in the US Congress would have the effect of reducing the independence of the Federal Reserve (hereafter 'the Fed')---the US Monetary Policy authority.
+
+-  This presentation will highlight the importance of Fed independence.  
+
+-  For a more in-depth treatment, see section 3 on Central Bank Independence in Alan Blinder's [Central Banking in Theory and Practice](https://mitpress.mit.edu/books/central-banking-theory-and-practice).
+
+## Recent Legislation
+
+[Insert brief summary and links to Bloomberg articles]
+
+## Fed Independence
+
+Independence means:
+
+1.  ability to choose the means used to achieve its goals.
+2.  decisions are hard for other branches of government to reverse.
+
+Note in 1. the leglislators (Congress) choose the goals, and the Fed only free to choose the instruments they use to achieve the goal.
+
+## Fed Goals
+
+The two goals of the Fed are
+
+1.  Maximum Employment
+2.  Price Stability
+
+The more vague the goal, the more power is implicitly granted to the Fed.
+
+## Table
+
+|  | Legislators                      | Central Bank     | Markets                  |
+|----------+----------------------------------+------------------+--------------------------|
+| Controls | Fiscal Policy (Taxes and Budget) | Money Supply     | Price Setting            |
+| MP       | Determins Goals                  | Implements Goals | Reacts to Implementation |
+|          |                                  |                  |                          |
+
+
+## On Fed Independence from Fiscal Policymakers
+
+Fed independence is most often focused on separating monetary from fiscal policy (which is controlled by Congress).
+
+-  If fiscal policymakers controlled the money supply, they would be too tempted to create and spend money.
+
+-  Successful monetary policy also requires a long time horizon.  The Fed may have to implement disinflationary policies, which are good in the long-term but unpopular initially.
+
+-  The above points are particularly true given fiscal policymakers must run for reelection every few years.
+
+## On Fed Independence from the Markets
+
+The Fed must also be careful to not allow financial markets to have undue influence on monetary policy. 
+
+## Empirical Evidence
+
+ Supports the conclusion that greater independence leads to lower inflation (controlling for the rate of economic growth).
+
+
+## App
+<!--- can we get data to put into chart? -->
+
+```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+#{{{
+
+## library(quantmod)
+## library(dygraphs)
+## renderDygraph({
+##   mbs <- getSymbols("MBST", src = "FRED", auto.assign = F)
+##   ToneFive <- getSymbols("TREAS1T5", src = "FRED", auto.assign = F)
+##   TtenPlus <- getSymbols("TREAS10Y", src = "FRED", auto.assign = F)
+##   TfiveTen <- getSymbols("TREAS5T10", src = "FRED", auto.assign = F)
+##   T91to1 <- getSymbols("TREAS911Y", src = "FRED", auto.assign = F)
+##   holdings <- merge.xts(mbs, T91to1, ToneFive, TfiveTen, TtenPlus, join = "outer")
+
+##   names(holdings) <- c("MBS", "91 days to 1 year", "1 to 5 years", "5 to 10 years", "10+ years")
+
+##   dygraph(holdings) %>%
+##     dyLegend(show = "onmouseover") %>%
+##     dyRangeSelector() %>%
+##     dyShading(from = "2008-11-1", to = "2009-3-1", color = "#CCEBD6") %>%
+##     dyEvent(date = "2008-11-1", label = "Start QE1") %>%
+##     dyEvent(date = "2009-3-1", label = "End QE1") %>%
+##     dyShading(from = "2010-11-1", to = "2011-6-1", color = "#CCEBD6") %>%
+##     dyEvent(date = "2010-11-1", label = "Start QE2") %>%
+##     dyEvent(date = "2011-6-1", label = "End QE2") %>%
+##     dyShading(from = "2012-09-1", to = "2014-11-1", color = "#CCEBD6") %>%
+##     dyEvent(date = "2012-09-1", label = "Start QE3") %>%
+##     dyEvent(date = "2014-11-1", label = "End QE3") 
+## })
+
+#}}}
+```
+
+
+## What's Next
+
+<!--- state timing of legislation -->
+
+## Related Topics
+
+Presentations related to Monetary Policy and the Federal Reserve are:
+
+-  Quantitative Easing
+-  Global Quantitative Easing
+-  <!--- list others -->

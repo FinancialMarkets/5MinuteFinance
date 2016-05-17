@@ -1,0 +1,34 @@
+---
+title: "The Relative Performance of Asset Classes"
+author: "Matt Brigida: Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "06/02/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+## Introduction
+
+In this interactive presentation we'll get an idea of how different asset classes perform.  The various classes we'll look at are:
+
+1.  Short-term US government debt
+2.  Long-term US government debt
+3.  Short-term risky debt
+4.  Long-term risky debt
+5.  Equity
+
+[graphic: runners at the starting block]
+
+## Background
+
+<!---The main holders of each asset class
+as well as the size of each market -->
+
+## App
+
+<!---plot each asset class over any time interval
+pull data from FRED -->
+
+
+

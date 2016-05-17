@@ -1,0 +1,54 @@
+---
+title: "Quantitative Easing (QE) Around the World"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "08/1/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+## Executive Summary <!---What are the Three Things You Need to Know-->
+
+QE is an unconventional monetary policy where the Monetary Policy authority (Central Bank) buys long-term financial assets in order to increase the money supply and lower long-term interest rates.   It is usually undertaken after exhausting the usual methods of stimulating economic growth, namely lowering short-term interest rates through purchases of short-term government securities.
+
+-  This presentation will cover instances of QE around the world, and their effect on US markets.
+
+## Why is this Important?/In What Situation Would This Be Used
+
+Because of the free movement of capital across borders, QE in a particular region will affect other economies. For example, if the ECB conducts a substantial QE, this can effectively ease monetary conditions in the US.
+
+## Past QE
+
+QE has been conducted in the past, most notably in response to the US Great Depression in the 1930s.
+
+## Modern QE
+
+Japan kicked off modern quantitative easing in 2001 with 
+
+## Background/History/Example/In The News 
+
+Instances of Quantitative Easing Around the World:
+
+-  BOE:
+-  ECB:
+-  BOJ:
+
+
+## QE Spillovers Across Borders
+
+
+
+## What's Next
+
+## Regulations
+
+## Key Facts
+
+## Definitions/Acronyms
+
+## Related Topics
+
+QE in the United States (link to presentation).
+
+## Other Sources

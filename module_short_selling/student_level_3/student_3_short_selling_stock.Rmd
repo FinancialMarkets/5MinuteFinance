@@ -1,0 +1,60 @@
+---
+title: "Advanced Topics in Short Selling Stock"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "06/02/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+## Why Short Stock?
+
+In this presentation we'll discuss advanced uses of stock short sales, such as to:
+
+-  hedge derivative positions.
+
+-  price derivatives.
+
+-  facilitate market making.
+
+
+## Derivative Hedging
+
+Say your bank sold a put option on Twitter stock (TWTR) to a client.  Your bank is now short TWTR (you will profit when TWTR declines, and lose when it increases).
+
+-  To hedge the put sold, your bank may sell short -1\*Delta shares of stock for every put option sold.  This is known as *Delta hedging*.  See the presentation on the Greeks for a background on an option's Delta.  
+
+-  By doing so, your bank can provide put options to clients while not exposing itself to risk from changes in TWTR's price.  Conversely, without the ability to short, your bank would be less likely to provide put options to clients.
+
+## Derivative Valuation
+
+This Delta hedging method is the basis of option pricing in complete markets (such as the Black-Scholes world).
+
+-  A put option price is equivalent to employing a Delta hedging strategy in continuous time.  That is, a portfolio comprised of selling a put and Delta hedging, is risk-free and therefore earns the risk free rate.
+
+-  See the presentation on Binomial Option pricing, or the advnaced treatment of the Black-Scholes model, for more background.
+
+## Market Making
+
+At all times market makers post prices at which they are willing to buy (bid) and sell (ask or offer) stock.
+
+-  In making a market, the market maker is often short the stock.
+
+-  In fact, if there is sudden and significant demand for the stock, the market maker may sell shares short without arranging to borrow the shares.  
+
+-  This is a case where naked short selling (shorting without borrowing the shares) may increase market liquidity. 
+
+
+## App
+
+[insert app]
+
+
+## Summary
+
+The ability to short stock is important for derivative hedging and pricing, and in making markets.  Without the ability to short:
+
+-   there would be a smaller volume of trading in derivative markets, because of both an inability to hedge and price derivative positions.  This would leave market participants more exposed to equity risk.
+
+-  there would be less liquidity in equity markets, which hinders price discovery and ultimately corporation financing.

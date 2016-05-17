@@ -1,0 +1,108 @@
+---
+title: "Policies Around Short Selling Stock"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "08/12/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+## Summary
+
+Short selling a stock is a method of profiting from a decline in the stock price.
+
+-  It is legal, subject to a set of restrictions and constraints.
+
+-  These restrictions are often the subject of current legislation.
+
+[graphic: something indicating a timely topic -- maybe someone reading a newspaper]
+
+## Why is Short Selling Important?
+
+-  Short selling affords market participants a means to hedge against market downturns.  
+
+-  The ability to short sell motivates market participants to scrutinize companies, thereby making markets more efficient.
+
+-  Short selling is integral in enabling a derivatives market -- particularly put options on stock.
+
+-  Short sales are also used by market makers to provide liquidity.
+
+## Recent Policy Topics
+
+-  The Uptick Rule
+
+-  Naked Shorting
+
+[graphic: policymaker graphic -- something about legislation]
+
+## The Uptick Rule
+
+This rule required that a short sale could only be initiated at a price above the last trade price.  The purpose was to limit the amount of concentrated short selling, which might excessively lower a stock's price.   
+
+-  The uptick rule existed from 1938 until its removal in 2007.  The removal was prompted by analyses which showed the rule slightly reduced liquidity, while also not being necessary to lessen price manipulation.
+
+-  In 2010 the SEC enacted an alternative rule where an short selling must be on an uptick when the stock has fallen by 10\% from the previous day's close (effective to the present day's close).  
+
+## Naked Shorting
+
+When shorting stock, your broker [borrows the stock for you to then sell](http://127.0.0.1/link_to_other_presentation).  Shorting stock, while neglecting to borrow it, is known as *naked shorting*.
+
+-  Often when shorting a stock, the shares are borrowed in a 3 day settlement period after the shares are sold short.  If the shares are not borrowed in this period, it is referred to as a "failure to deliver (FTD)" resulting in a naked short position.
+
+-  There are many legitimate reasons for an FTD resulting in a naked short, so naked short positions are not necessarily illegal.
+
+-  Persistent FTDs were addressed in the [SEC's Reg SHO](http://www.sec.gov/investor/pubs/regsho.htm).
+
+
+## Short Sale Volume
+
+The following app will pull data on total, and short sale, volume for the 6700+ stocks traded on the NYSE Arca exchange. It also shows the percent of total volume attributable to short sales.
+
+-  To find a particular stock, enter its ticker in the search bar on the upper right.
+
+-  You can also sort the data by column using the arrows to the right of the column name.  
+
+-  The data in the following app are made [freely available by NYSE Arca](http://www.nyxdata.com/page/875).
+
+## NYSE Arca Short Sale Volume
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+#{{{
+inputPanel(
+    dateInput("date", "Input a Trading Day", format = "yyyy-mm-dd", startview = "month", weekstart = 0, language = "en", value = "2015-08-07")
+    )
+DT::renderDataTable({
+
+    ## pull report from NYSE
+    data <- read.table(file = paste("ftp://ftp.nyxdata.com/publicdata/ARCAshvol/ARCAshvol", format(input$date, "%Y"), "/ARCAshvol", format(input$date, "%Y"), format(input$date, "%m"), "/ARCAshvol", format(input$date, "%Y"), format(input$date, "%m"), format(input$date, "%d"), ".txt", sep = ""), header = TRUE, sep = "|", stringsAsFactors = FALSE)
+
+    data <- data[, 1:4]
+    percent <- round(100 * (data[,3] / data[,4]), 2)
+    data <- cbind(data, percent)
+    names(data)[5] <- "%\ Short\ Volume"
+
+    
+    ## render report as a datatable 
+    DT::datatable(data, options = list(pageLength = 5), rownames = FALSE)
+    })
+
+#}}}
+```
+
+
+## Key Facts
+
+-  There are hedge funds that specialize in shorting stock.  One such fund is Jim Chanos's Kynikos fund, which was one of the first market participants to identify problems at Enron.
+
+-  *Short Interest* is the total number of shares in a stock sold short divided by the average daily share volume.  It may be interpreted as the number of days for all short sellers to buy back their shares.
+
+-  A *Short Squeeze* is when a stock increase causes investors with short positions to cover their losses.  To exit their short position, they have to buy stock, further increasing the price and causing more shorts to exit their positions.
+
+## Related Topics
+
+-  Hedging
+
+-  Derivatives
+
+[end of presentation graphic]

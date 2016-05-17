@@ -1,0 +1,355 @@
+---
+title: "Crude Oil"
+author: "Matt Brigida"
+date: "05/12/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+<!---
+<style>
+.wraptocenter {
+  display:inline-block;
+  text-align: center;
+  vertical-align: middle;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  background-color: #999;
+}
+.wraptocenter * {
+  display:inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+<style/>
+-->
+## Crude Oil: A Brief History 
+
+The first modern well was spud in 1859 near Titusville in western Pennsylvania.
+
+- Around the same time oil was being produced (first by digging then by drilling) in Ontario, Canada.
+
+- Much of this oil was refined into kerosene.
+
+
+## Lucas Gusher at Spindletop
+
+The Texas oil boom was kicked off in 1901, when oil was found in the Spindletop field in Beaumont, Texas.
+
+<!---
+<div class="wraptocenter">
+  <img src="Lucas_gusher.jpg">
+</div>
+-->
+
+
+<!---
+ ![alt text](Lucas_gusher.jpg) 
+-->
+
+<img src="Lucas_gusher.jpg" alt="Drawing" style="width: 300px;" text-align="center" />
+
+
+## Prices Through 1973
+
+Crude oil prices didn't fluctuate much prior to 1973.
+
+- A set of US oil companies (*Seven Sisters*) held the price stable with production controls.
+
+- After the Yom Kippur war in 1973, control of crude oil prices transferred to OPEC.  Prices then became more volatile. 
+
+## Crude Oil Price Benchmarks
+
+Three types of oil serve as global benchmarks for other oil prices.  They are:
+
+1.  West Texas Intermediate (WTI):  US price benchmark.
+
+2.  Brent North Sea:  European price benchmark.
+
+3.  Dubai: Asian price benchmark. 
+
+## Crude Oil Grades
+
+Crude oil is graded by density (light/heavy) and sulphur (sweet/sour) content.  
+
+- Low density (light) and low sulphur (sweet) is cheaper to refine than more heavy and sour crude oil.
+
+-  For example, both WTI and Brent are light sweet crudes (but WTI is lighter and sweeter), whereas Dubai is medium sour.
+
+- For this reason, historically (prior to 2010) WTI has traded at a premium to Brent.  Since 2010 the difference in grade has been more than offset by the supply of crude from North Dakota and the western Canadian provinces. 
+
+## Crude Oil Prices
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache = FALSE}
+#{{{
+library(EIAdata)
+library(quantmod)
+library(dygraphs)
+
+
+renderDygraph({
+  key <- source("./key")$value  
+
+  wti <- getEIA("PET.RWTC.M", key = key)
+  brent <- getEIA("PET.RBRTE.M", key = key)
+
+  data <- merge.xts(wti, brent, join = "inner")
+  names(data) <- c("WTI", "Brent")
+  dygraph(data, main = "", ylab = "$") %>%
+  dyRangeSelector()
+})
+#}}}
+```
+
+## US Crude Oil Production
+
+The US produces about 8 million barrels of crude per day.  
+
+-  US production has increased since the introduction of technology to extract tight oil (oil from shale formations such as the Bakken formation in western North Dakota).
+
+[graphic: picture of fracking -- fracturing rock deep below a well]
+
+
+## US Crude Oil Production
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache = FALSE}
+#{{{
+library(EIAdata)
+library(quantmod)
+library(dygraphs)
+
+
+renderDygraph({
+    key <- source("./key")$value  
+
+    USprod <- getEIA("PET.MCRFPUS1.A", key = key) / 1000
+    USres <- getEIA("PET.RCRR01NUS_1.A", key = key) 
+
+    data <- merge.xts(USprod, USres, join = "inner")
+    names(data) <- c("Production", "Proved Reserves")
+    dygraph(data, main = "") %>%
+        dyAxis("y", label = "Production:  in million barrels") %>%
+            dyAxis("y2", label = "Proved Reserves:  in million barrels", independentTicks = TRUE) %>%
+                dySeries("Proved\ Reserves", axis = 'y2') %>%
+                    dyRangeSelector()
+})
+#}}}
+```
+
+## US Crude Oil Consumption
+
+The US consumes about 18 million barrels of crude oil per day.  
+
+- Crude oil is primarily refined into gasoline, diesel fuel, and heating oil.  
+
+[graphic:  crude oil going into 3 categories]
+
+## US Crude Export Restrictions
+
+Crude oil exports are restricted by the 'Energy Policy and Conservation Act' of 1975, which directs the President “to promulgate a rule prohibiting the export of crude oil” produced in the US.  This act was passed after the OPEC embargo.
+
+- Given the recent production increase in the US, there is pressure for the President to allow increased exports. 
+
+[graphic: America with a wall around it and overflowing wells]
+
+<!---  crude oil derived from fields under the State waters of Alaska's Cook Inlet; (2) Alaskan North Slope crude oil; (3) certain domestically produced crude oil destined for Canada; (4) shipments to U.S. territories; and (5) California crude oil to Pacific Rim countries. -->
+
+## Crude Oil and the Macroeconomy
+
+The International Monetary Fund (IMF (2000)) estimated a \$5 increase in crude oil prices reduces global economic growth by 0.3\% in the following year. 
+
+Also since crude oil is used in the transport and production of many goods, it is a prominent driver of inflation.
+
+-  Accordingly it is closely watched by the Federal Reserve when setting monetary policy.  
+
+
+## Crude Oil and the Stock Market
+
+Sharp increases in oil prices tend to lower stock prices. 
+
+- Research (Jones and Kaul (1996)) has shown that market participants accurately estimate the effect of higher oil prices on firm cash flows, and lower stock prices accordingly.  
+
+- Additional research shows oil may even be able to predict *future* stock market returns (Driesprong, Jacobsen, Maat (2008)).  
+
+[graphic: oil up and stock down]
+
+
+
+
+## References
+
+- Driesprong, G. B. Jacobsen, and B. Maat (2008) "Striking oil: Another puzzle?" Journal of Financial Economics 89, 307--327.
+
+-  [International Monetary Fund (2000). "The impact of higher oil prices on the global economy." Research department.](www.imf.org/external/pubs/ft/oil/2000/oilrep/pdf)
+
+- Jones, C. M., and G. Kaul (1996). "Oil and the Stock Markets" Journal of Finance 51, 463--491.
+
+<!---
+
+## Basis Risk: Prices by Futures Maturity
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache = FALSE}
+#{{{
+# library(EIAdata)
+# library(quantmod)
+# 
+# inputPanel(    
+#       selectInput("symb1", label = "Commodity", 
+#                  choices = list("NYMEX Crude Oil" = 1 ,
+#                                        "Natural Gas" = 2,
+#                                        "Heating Oil (No. 2)" = 3,
+#                                        "RBOB Gasoline" = 4),
+# "Propane (Tx)" = 5),
+#                 selected = 1),  
+#     
+#       dateRangeInput("dates", 
+#         "Date range",
+#         start = "2014-01-01", 
+#         end = as.character(Sys.Date()))
+# )
+# 
+# renderPlot({
+#   key <- source("./key/key")$value  
+# 
+#     ticker1 <- switch(input$symb1,
+#                 "1" = c("PET.RCLC1.W","PET.RCLC2.W","PET.RCLC3.W","PET.RCLC4.W"),
+#                       "2" = c("NG.RNGC1.W","NG.RNGC2.W","NG.RNGC3.W","NG.RNGC4.W"),
+#                       "3" = c("PET.EER_EPD2F_PE1_Y35NY_DPG.W", "PET.EER_EPD2F_PE2_Y35NY_DPG.W","PET.EER_EPD2F_PE3_Y35NY_DPG.W","PET.EER_EPD2F_PE4_Y35NY_DPG.W"),
+#                       "4" = c("PET.EER_EPMRR_PE1_Y35NY_DPG.W",
+# "PET.EER_EPMRR_PE2_Y35NY_DPG.W","PET.EER_EPMRR_PE3_Y35NY_DPG.W","PET.EER_EPMRR_PE4_Y35NY_DPG.W")#, 
+# "5" = c("PET.EER_EPLLPA_PE1_Y44MB_DPG.W","PET.EER_EPLLPA_PE2_Y44MB_DPG.W","PET.EER_EPLLPA_PE3_Y44MB_DPG.W","PET.EER_EPLLPA_PE4_Y44MB_DPG.W")
+# )
+# 
+#     fut1 <- getEIA(ticker1[1], key = key)
+#     fut2 <- getEIA(ticker1[2], key = key)
+#     fut3 <- getEIA(ticker1[3], key = key)
+#     fut4 <- getEIA(ticker1[4], key = key)
+#     fut1 <- fut1[paste(input$dates[1], "/", input$dates[2], sep = "")]
+#     fut2 <- fut2[paste(input$dates[1], "/", input$dates[2], sep = "")]
+#     fut3 <- fut3[paste(input$dates[1], "/", input$dates[2], sep = "")]
+#     fut4 <- fut4[paste(input$dates[1], "/", input$dates[2], sep = "")]
+#   plot(fut1, main = "Futures Prices", ylab = "$")
+#   lines(fut2, col=2)
+#   lines(fut3, col=3)
+#   lines(fut4, col=4)
+# legend('topright', c("Front month", "2 months", "3 months", "4 months"), lty = c(1,1,1,1), col=c(1,2,3,4))
+# })
+#}}}
+```
+
+
+## Optimal Hedge Ratios
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache = FALSE}
+#{{{
+# library(EIAdata)
+# library(quantmod)
+# 
+# inputPanel(
+# 
+#     dateRangeInput("dates1", 
+#                        "Date range",
+#                        start = "2014-01-01", 
+#                        end = Sys.Date())
+#     )
+# 
+# renderDataTable({
+#     
+#     key <- source("./key/key")$value  
+# 
+#     oil <- c("PET.RCLC1.W","PET.RCLC2.W","PET.RCLC3.W","PET.RCLC4.W")
+# "2" = c("NG.RNGC1.W","NG.RNGC2.W","NG.RNGC3.W","NG.RNGC4.W"),
+#     ho <- c("PET.EER_EPD2F_PE1_Y35NY_DPG.W", "PET.EER_EPD2F_PE2_Y35NY_DPG.W","PET.EER_EPD2F_PE3_Y35NY_DPG.W","PET.EER_EPD2F_PE4_Y35NY_DPG.W")
+#     rb <- c("PET.EER_EPMRR_PE1_Y35NY_DPG.W", "PET.EER_EPMRR_PE2_Y35NY_DPG.W","PET.EER_EPMRR_PE3_Y35NY_DPG.W","PET.EER_EPMRR_PE4_Y35NY_DPG.W") 
+#     pro <- c("PET.EER_EPLLPA_PE1_Y44MB_DPG.W","PET.EER_EPLLPA_PE2_Y44MB_DPG.W","PET.EER_EPLLPA_PE3_Y44MB_DPG.W","PET.EER_EPLLPA_PE4_Y44MB_DPG.W")
+# 
+# get futures
+#     oil1 <- getEIA(oil[1], key = key)
+#     ho1 <- getEIA(ho[1], key = key)
+#     rb1 <- getEIA(rb[1], key = key)
+#     
+# get spot kerosene 
+#     ker <- getEIA("PET.EER_EPJK_PF4_RGC_DPG.W", key = key)
+# 
+#     oil1 <- oil1[paste(input$dates1[1], "/", input$dates1[2], sep = "")]
+#     ho1  <- ho1[paste(input$dates1[1], "/", input$dates1[2], sep = "")]
+#     rb1  <- rb1[paste(input$dates1[1], "/", input$dates1[2], sep = "")]
+#     ker <- ker[paste(input$dates1[1], "/", input$dates1[2], sep = "")]
+# 
+# convert to price changes ----
+# 
+#     oil1 <- diff(oil1)[-1]
+#     ho1  <- diff(ho1)[-1]
+#     rb1  <- diff(rb1)[-1]
+#     ker  <- diff(ker)[-1]
+# 
+# calculation of parameters and optimal hedge ratio ----
+# 
+#     oilSD <- sd(oil1)[1]
+#     hoSD <- sd(ho1)[1]
+#     rbSD <- sd(rb1)[1]
+#     kerSD <- sd(ker)[1]
+# 
+#     SD <- cbind(oilSD, hoSD, rbSD)
+#     SD <- as.vector(SD)
+#     SD <- round(SD, digits = 2)
+# 
+#     corOK <- cor(oil1, ker)[1]
+#     corHK <- cor(ho1, ker)[1]
+#     corRK <- cor(rb1, ker)[1]
+# 
+#     correl <- c(corOK, corHK, corRK)
+#     correl <- round(correl, digits = 2)
+#     
+#     hedOK <- (corOK * kerSD) / oilSD
+#     hedHK <- (corHK * kerSD) / hoSD
+#     hedRK <- (corRK * kerSD) / rbSD
+# 
+#     hed <- c(hedOK, hedHK, hedRK)
+#     hed <- round(hed, digits = 2)
+# 
+# construct data frame ----
+# 
+#     rows <- c("CL", "HO", "RB")
+# 
+#     df <- data.frame(cbind(rows, SD, correl, hed), stringsAsFactors = F)
+#     names(df) <- c("Commodity", "St. Dev.", "Correlation", "Optimal Hedge Ratio")
+#     
+#     df
+
+#}}}
+# })
+```
+
+
+
+## Optimal Hedge Ratio Calculator
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+	      sidebarPanel(
+
+	   sliderInput("spotSD", "Standard Deviation of Spot Changes", min = .01, max = 1, value = 0.1, step = .05),
+	   sliderInput("futSD", "Standard Deviation of Futures Changes", min = .01, max = 1, value = 0.1, step = .05),
+	   sliderInput("correl", "Correlation Coefficient", min = -1, max = 1, value = 0.7, step = .01)
+
+ 
+	   ),
+	      mainPanel(
+
+renderPlot({
+  ohr <- (input$correl * input$spotSD) / input$futSD
+
+  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+  text(x = 0.5, y = 0.5, labels = paste(round(ohr, 2)), cex = 5)
+
+
+})
+)
+	      )
+#}}}
+```
+
+-->

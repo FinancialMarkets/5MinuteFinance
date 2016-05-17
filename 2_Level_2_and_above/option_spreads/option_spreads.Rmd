@@ -1,0 +1,364 @@
+---
+title: "An Introduction to Option and Stock Strategies"
+author: "Matt Brigida"
+affiliation: "Milken Institute, Center for Financial Markets"
+date: "03/12/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+## Uses of Options
+
+Options can be used to decrease or increase risk.  
+
+- A call option is a leveraged position in stock---so it can be used to take on a riskier position than simply buying the underlying stock.  
+
+-  However, options are also used in many cases to decrease risk.  
+
+- In this interactive presentation, we'll focus on using options and stock together in ways which reduce or limit risk.  
+
+## Option and Stock Strategies
+
+We'll cover the following very common strategies:
+
+-  Covered Call
+-  Protective Put
+-  Collar
+
+## Covered Call
+
+The covered call strategy consists of buying a share of stock, and selling a call option on that share.  Generally the call's strike price is above the present price of the stock.  
+
+- For example: Buy 100 shares of TWTR for \$40/share and sell a call option contract with a \$45 strike price.  Say we received a price of \$1.50 per option.  
+
+- The effect of the sale of the call option is to effectively lower the purchase price of the stock by \$1.50 per share.  Nothing is free however.  In exchange we have given up any gain from the stock increasing over \$45 per share.
+
+-  The covered call is similar to buying a stock and setting a limit sell order.  
+
+## Covered Call 
+
+For our example we can calculate the max gain, loss, and the stock price at which we break-even.  
+
+- Max gain at option expiration: If the stock increases to \$45, then we earn \$5 on the stock, and we pay \$0 on the option (keeping the entire \$1.50 premium).  So our max gain is: \$5 + \$1.50 = \$6.50 per share, or \$650 for the entire contract.  
+
+Max loss:  This is easy---if the stock falls to \$0 we will lose \$40 - \$1.50 = \$38.50 per share. We of course kept the option premium.
+
+- Break-even:  If the stock falls to \$38.50 then we will lose \$1.50 on the stock and gain \$1.50 on the option to break even.  
+
+- Note the above ignores the time-value-of-money.  
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(grid)
+library(htmltools)
+library(htmlwidgets)
+library(RColorBrewer)
+library(metricsgraphics)
+sidebarLayout(
+    sidebarPanel(
+        sliderInput("strike", label = "Call Strike Price", max = 100, min = 0, value = 55, step = 1),
+        sliderInput("premium", label = "Call Option Premium", max = 100, min = 0, value = 3, step = 1),
+        sliderInput("stock", label = "Stock Purchase Price", max = 100, min = 0, value = 50, step = 1),
+        radioButtons("show", label = "Show Stock Profit and Option Intrinsic", choices = c("Yes" = "1", "No" = "2"), selected = "No")
+        ),
+    mainPanel(
+        ## renderMetricsgraphics({
+        renderPlot({
+            ## calculate intrinsic value
+            intrinsic <- 1:100 - input$strike
+            intrinsic[intrinsic < 0] <- 0
+
+            ## Calculate P&L on stock
+            PnL <- 1:100 - input$stock
+
+            ## Spread Payoff
+            payoff <- PnL - intrinsic
+            
+            profit <- payoff + input$premium
+
+
+### Added 7/23
+    ##         dataGraphics <- data.frame(cbind(1:100, -intrinsic, PnL, payoff, profit))
+    ##         names(dataGraphics) <- c("Stock", "Short Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit")
+    ##         dataGraphics <- dataGraphics[(dataGraphics$Stock < input$strike + 20) & (dataGraphics$Stock > input$strike - 20), ]
+
+    ##         dataGraphics %>%
+    ##             mjs_plot(x = Stock, y = 'Short Option Intrinsic') %>%
+    ##                 mjs_line() %>%
+    ##                     mjs_add_line('Stock P/L') %>%
+    ##                     mjs_add_line('Spread Payoff') %>%
+    ##                         mjs_add_line('Spread Profit') %>%
+    ##                             mjs_axis_x(xax_format="plain") %>%
+    ##                             mjs_add_legend(legend = c("Short Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit"))
+    ##     })
+    ##     )
+    ## )
+            
+            ## calculate time value by Black-Scholes for all integer stock prices from 1 to 100 ----
+            ## d1 <- (log(1:100/input$strike) + (input$riskFree + (input$volatility^2)/2) * input$maturity) / (input$volatility * sqrt(input$maturity))
+            ## d2 <- d1 - input$volatility * sqrt(input$maturity)
+            ## optionValue <- 1:100 * pnorm(d1) - input$strike * exp(-input$riskFree * input$maturity) * pnorm(d2)
+            ## timeValue <- optionValue - intrinsic
+
+            if (input$show == 1){
+
+                plot(payoff, main = "Covered Call", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "khaki1", sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock - input$premium, 2), " | Breakeven:", round(input$stock - input$premium, 2)), ylim = range(PnL))
+                ## lines(payoff, lwd = 4, col = "khaki1", lty = 1)
+                lines(profit, lwd = 4, col = "darkseagreen1", lty = 1)
+                lines(intrinsic, lwd = 1, lty = 2, col = 1)
+                lines(PnL, lwd = 1, lty = 3, col = 1)
+                legend('topleft', c("Profit on Stock", "Option Intrinsic Value", "Payoff: Covered Call", "Profit: Covered Call"), col=c(1, 1,"khaki1","darkseagreen1"), lty = c(2,3,1,1), lwd = c(1,1,4,4))
+
+            } else {
+                plot(profit, main = "Covered Call", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "darkseagreen1", ylim = c(-80, 80), sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock - input$premium, 2), " | Breakeven:", round(input$stock - input$premium, 2)))
+                lines(payoff, lwd = 4, lty = 1, col = "khaki1")
+                ## abline(h = 0)
+                legend('topleft', c("Payoff: Covered Call", "Profit: Covered Call"), col=c("darkseagreen1","khaki1"), lty = c(1,1), lwd = c(4,4))
+            }
+            })
+        )
+    )
+    
+                ##                grid.text("What do we want?  Text in the corner!\nWhere do we want it?
+                ## Here!",
+                ##                          x=unit(2, "mm"), y=unit(1, "npc") - unit(2, "mm"),
+                ##                          just=c("left", "top"))
+                ## text(y = (max(profit) + 20), x = 80, paste("Breakeven:", 5, "\nMax Gain:", 
+                ##                                            4, "\nMax Loss:", 4), pos = 4)
+                
+               
+
+
+            #}
+
+
+            ## attempting to shade region between the two lines [not working] ----
+            ## polygon(c(1:100, rev(1:100)), c(intrinsic, rev(optionValue)), col = "orange", border = NA)
+
+        ## })#,
+                                        #{{{
+			#         tabPanel(title = "Time",
+			#                  renderPlot({
+			#             intrinsic <- 1:100 - input$strike
+			#             intrinsic[intrinsic < 0] <- 0
+			# 
+			#                          calculate time value by Black-Scholes for all integer stock prices from 1 to 100 ----
+			#             d1 <- (log(1:100/input$strike) + (input$riskFree + (input$volatility^2)/2) * input$maturity) / (input$volatility * sqrt(input$maturity))
+			#             d2 <- d1 - input$volatility * sqrt(input$maturity)
+			#             optionValue <- 1:100 * pnorm(d1) - input$strike * exp(-input$riskFree * input$maturity) * pnorm(d2)
+			#             timeValue <- optionValue - intrinsic 
+			# 
+			#             plot(timeValue, main = "Call Option Price and Intrinsic Value", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4)
+			#                  })
+                                        #         )
+                  #}}}
+    ##     )
+    ## )
+                                        #                 )
+                                        #)
+                                        #}}}
+```
+
+## Protective Put
+
+A second common strategy is the protective put.  Here we buy a stock and limit our downside by also buying a put (generally with a strike below the present stock price).
+
+-  If we buy a put with a \$45 strike price, this means we are guaranteed to be able to sell the stock for \$45 anytime before the expiration of the option.
+
+-  In a protective put, we own the stock and also have a guaranteed price at which we can sell that stock.  So it is similar to buying the stock and setting a stop loss order. 
+
+## Protective Put
+
+For example, say we bought 100 shares of AAPL for \$100 per share, and simultaneously bought 1 put option contract with a \$90 strike price for a \$2 premium.
+
+-  Our maximum loss is \$12 per share, which is a \$10 loss on the stock plus the \$2 put option premium.
+
+-  We break even when AAPL trades at \$102.  This is a \$2 gain on AAPL, and a \$2 loss on the option.
+
+-  Our maximum gain is unbounded.  
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(grid)
+library(htmltools)
+library(htmlwidgets)
+library(RColorBrewer)
+library(metricsgraphics)
+ui = shinyUI(fluidPage(
+		       pageWithSidebar(
+				       headerPanel("Protective Put"),
+				       sidebarPanel(
+						    # titlePanel("Protective Put"),
+
+fluidRow(
+    column(3, sliderInput("strike1", label = "Put Strike Price", max = 100, min = 0, value = 45, step = 1)),
+    column(3, sliderInput("premium1", label = "Put Option Premium", max = 100, min = 0, value = 4, step = 1)),
+    column(3, sliderInput("stock1", label = "Stock Purchase Price", max = 100, min = 0, value = 50, step = 1))
+    ),
+fluidRow(
+    column(12,
+	   mainPanel( ##tabsetPanel(## can I make this a fluidrow so can print $ arb below? 
+	   #            metricsgraphicsOutput('diagram', width = "100%")
+           plotOutput('diagram', width = "100%")
+           )
+    )
+    )
+             )
+)))
+server = function(input, output){
+
+  #     output$diagram <- renderMetricsgraphics({
+    output$diagram <- renderPlot({
+
+
+## sidebarLayout(
+##     sidebarPanel(
+        ## sliderInput("strike1", label = "Put Strike Price", max = 100, min = 0, value = 50, step = 1),
+        ## sliderInput("premium1", label = "Put Option Premium", max = 100, min = 0, value = 5, step = 1),
+        ## sliderInput("stock1", label = "Stock Purchase Price", max = 100, min = 0, value = 50, step = 1),
+        ## radioButtons("show1", label = "Show Stock Profit and Option Intrinsic", choices = c("Yes" = "1", "No" = "2"), selected = "No")
+    ##     ),
+    ## mainPanel(
+    ##     renderMetricsgraphics({
+            ## calculate intrinsic value
+            intrinsic <- input$strike1 - 1:100
+            intrinsic[intrinsic < 0] <- 0
+            
+            ## Calculate P&L on stock
+            PnL <- 1:100 - input$stock1
+
+            ## Spread Payoff
+            payoff <- PnL + intrinsic
+            
+            profit <- payoff - input$premium1
+
+
+### Added 7/23
+	    #             dataGraphics <- data.frame(cbind(1:100, intrinsic, PnL, payoff, profit))
+	    #             names(dataGraphics) <- c("Stock", "Short Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit")
+	    #             dataGraphics <- dataGraphics[(dataGraphics$Stock < input$strike1 + 20) & (dataGraphics$Stock > input$strike1 - 20), ]
+	    # 
+	    #             dataGraphics %>%
+	    #                 mjs_plot(x = Stock, y = 'Short Option Intrinsic', show_rollover_text = TRUE) %>%
+	    #                     mjs_line() %>%
+	    #                         mjs_add_line('Stock P/L') %>%
+	    #                         mjs_add_line('Spread Payoff') %>%
+	    #                             mjs_add_line('Spread Profit') %>%
+	    #                                 mjs_axis_x(xax_format="plain") %>%
+	    #                                 mjs_add_legend(legend = c("Short Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit"))
+
+	    ## traditional plot ----
+	    #             if (input$show == 1){
+
+                plot(payoff, main = "Protective Put", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "khaki1", sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock1 - input$strike1 + input$premium1, 2), " | Breakeven:", round(input$stock1 - input$premium1, 2)), ylim = range(PnL))
+                ## lines(payoff, lwd = 4, col = "khaki1", lty = 1)
+                lines(profit, lwd = 4, col = "darkseagreen1", lty = 1)
+                lines(intrinsic, lwd = 1, lty = 2, col = 1)
+                lines(PnL, lwd = 1, lty = 3, col = 1)
+                legend('topleft', c("Profit on Stock", "Option Intrinsic Value", "Payoff: Covered Call", "Profit: Covered Call"), col=c(1, 1,"khaki1","darkseagreen1"), lty = c(2,3,1,1), lwd = c(1,1,4,4))
+
+		#             } else {
+                plot(profit, main = "Covered Call", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "darkseagreen1", ylim = c(-80, 80), sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock - input$premium, 2), " | Breakeven:", round(input$stock - input$premium, 2)))
+                lines(payoff, lwd = 4, lty = 1, col = "khaki1")
+                ## abline(h = 0)
+                legend('topleft', c("Payoff: Covered Call", "Profit: Covered Call"), col=c("darkseagreen1","khaki1"), lty = c(1,1), lwd = c(4,4))
+		#             }
+        })
+}
+
+
+shinyApp(ui = ui, server = server)
+#}}}
+```
+
+## Collar
+
+In a collar you buy a share of stock, sell a call with a higher strike, and buy a put with a lower strike.  
+
+-  In essence a collar is a protective put, where the cost of the put is partially financed through the sale of a call.
+
+## Collar Example
+
+Say you bought 100 shares of CSCO stock for $30, sold a \$35 call for \$1, and bought a \$25 put for \$2.
+
+-  The most you can lose is \$6 (lose \$5 on the stock and \$2 on the put, and gain \$1 on the call).
+
+-  The most you can gain is \$4 (gain \$5 on the stock plus \$1 on the call, and lose \$2 on the put).
+
+-  You break even when the CSCO trades for \$29.
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(grid)
+library(htmltools)
+library(htmlwidgets)
+library(RColorBrewer)
+library(metricsgraphics)
+sidebarLayout(
+    sidebarPanel(
+        sliderInput("callStrike", label = "Call Strike Price", max = 100, min = 0, value = 60, step = 1),
+        sliderInput("callPremium", label = "Call Option Premium", max = 100, min = 0, value = 1, step = 1),
+        sliderInput("putStrike", label = "Put Strike Price", max = 100, min = 0, value = 40, step = 1),
+        sliderInput("putPremium", label = "Put Option Premium", max = 100, min = 0, value = 2, step = 1),
+        sliderInput("stock2", label = "Stock Purchase Price", max = 100, min = 0, value = 50, step = 1)
+        ),
+    mainPanel(
+        renderMetricsgraphics({
+            
+            ## calculate call intrinsic value
+            callIntrinsic <- 1:100 - input$callStrike
+            callIntrinsic[callIntrinsic < 0] <- 0
+            callIntrinsic <- -callIntrinsic #because Short
+            
+            ## calculate put intrinsic value
+            putIntrinsic <- input$putStrike - 1:100
+            putIntrinsic[putIntrinsic < 0] <- 0
+
+            ## Calculate P&L on stock
+            PnL <- 1:100 - input$stock2
+
+            ## Spread Payoff
+            payoff <- PnL + callIntrinsic + putIntrinsic
+            
+            profit <- payoff + input$callPremium - input$putPremium
+
+
+### Added 7/23
+            dataGraphics <- data.frame(cbind(1:100, callIntrinsic, putIntrinsic, PnL, payoff, profit))
+            names(dataGraphics) <- c("Stock", "Short Call Option Intrinsic", "Long Put Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit")
+            dataGraphics <- dataGraphics[(dataGraphics$Stock < input$stock2 + 20) & (dataGraphics$Stock > input$stock2 - 20), ]
+
+            dataGraphics %>%
+                mjs_plot(x = 'Stock', y = 'Short Call Option Intrinsic') %>%
+                    mjs_line() %>%
+                        mjs_add_line('Long Put Option Intrinsic') %>%
+                            mjs_add_line('Stock P/L') %>%
+                                mjs_add_line('Spread Payoff') %>%
+                                    mjs_add_line('Spread Profit') %>%
+                                        mjs_axis_x(xax_format="plain") %>%
+                                            mjs_add_legend(legend = c("Short Call Option Intrinsic", "Long Put Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit"))
+        })
+        )
+    )
+#}}}
+```
+
+
+
+## An Important Consideration
+
+These strategies only work only until the option expires.  If you want to continue the option strategy, you have to enter into new option trades.
+
+-  Each time you enter into new trades you incur transaction costs, which must be considered when evaluating the effectiveness of the strategy.
+
+##
+
+[end of presentation graphic]

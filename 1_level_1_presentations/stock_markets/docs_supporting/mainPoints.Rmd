@@ -1,0 +1,19 @@
+---
+title: "Stock Markets: Main Points"
+author: "Matt Brigida"
+date: "July 11, 2015"
+output: html_document
+---
+
+- A well-functioning stock market ensures companies are able to raise as much cash as possible to invest in company operations.  
+
+- From a physical location, the stock market has evolved into a purely electronic interconnection of market makers spread out among 18 exchanges across the US.  
+
+- Each individual exchange is a system of computer servers which run an order matching engine.  An order matching engine received orders and then handles them according to a series of rules. 
+
+- In 2005 the SEC released Regulation National Market System which tries to ensure that investors receive the best bid and ask price available across the many markets. 
+
+- Stock markets incorporate the flow of information into prices.  Present stock markets react very quickly to information.
+
+- Recently stock trading venues which limit the amount of information shared with public stock exchanges have been created.  They are known as 'dark pools'. Dark pools exist so you can trade large blocks of stock without signaling your intentions to other market participants.  
+

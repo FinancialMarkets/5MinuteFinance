@@ -1,0 +1,126 @@
+---
+title: "The CBOE Volatility Index (VIX)"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "09/01/2015"
+output: ioslides_presentation
+logo: misq.png
+css: 5min.css
+runtime: shiny
+smaller: true
+---
+
+## The VIX
+
+The VIX is based on option prices on the S\&P 500 stock index.
+
+-  It attempts to quantify investors' expectation of stock market (S\&P 500) volatility over the next 30 days.  It is then quoted as an annualized standard deviation.
+
+-  The VIX is commonly referred to as the market's "fear gauge".
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+
+## Interpreting the VIX
+
+Say the VIX is presently 10. This means there is about a 68\% chance (one standard deviation) that the absolute value of the market's return will be less than $\frac{10%}{\sqrt{12}} = 2.89%$
+
+-  We divide by $\sqrt{12}$ to convert from the annualized volatility (in which VIX is quoted) into the monthly volatility. 
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+
+## The VIX and the Stock Market
+
+The VIX and the stock market tend to move in opposite directions.
+
+-  In finance, this is known as the *leverage effect*.
+
+[graphic: lines moving in opposite directions]
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div>
+
+## The VIX and the Stock Market
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(quantmod)
+
+renderDygraph({
+    sp <- getSymbols('^gspc', auto.assign = FALSE, from = "2000-01-01")
+    vix <- getSymbols('^vix', auto.assign = FALSE, from = "2000-01-01")
+
+    data <- merge.xts(Ad(sp), Ad(vix), join = 'inner')
+    names(data) <- c("S&P 500", "VIX")
+
+    dygraph(data, main = "S&P 500 vs. VIX") %>%
+        dySeries("VIX", axis = 'y2') %>%
+            dyRangeSelector() %>%
+                dyAxis('y', label = "S&P 500") %>%
+                    dyAxis('y2', label = "VIX") 
+                        
+    })
+
+
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+
+## The VIX is Forward Looking
+
+Implied volatility, and thus the VIX, reflect market expectations of *future* volatility.
+
+-  Using a measure like the standard deviation on historical data, only looks at what has already happened.
+
+This distinction is very important if, say, there is a Federal Reserve announcement over the next month.
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+
+##  VIX, Market Return, and Volume
+
+The following app shows how expected market volatility (VIX) is related to market returns and volume.
+
+-  You can see large positive market returns coincides with large negative changes in the VIX and heavy volume.  Similarly, large negative market returns coincides with large increases in the VIX and also heavy volume.
+
+-  Volume is generally lover for middling returns and changes in the VIX.  
+
+-  Points of similar color denote similar points in time (though the red is recycled somewhat).  This allows you to see the effect of volume and volatility *clustering*.  This is the observation that if the market is volatile with heavy volume today, it will tend to be volatile with heavy volume tomorrow, and similarly for non-volatile and low-volume periods.  
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(threejs)
+library(quantmod)
+
+renderScatterplotThree({
+    sp1 <- getSymbols('^gspc', auto.assign = FALSE, from = "2000-01-01")
+    vix1 <- getSymbols('^vix', auto.assign = FALSE, from = "2000-01-01")
+
+    spm <- to.monthly(sp1)
+    vixm <- to.monthly(vix1)
+
+    spmr <- Delt(Ad(spm))
+    vixmd <- diff(Ad(vixm))
+    spmv <- Vo(spm)[-1]
+    
+    data1 <- merge.xts(spmr, vixmd, spmv, join = 'inner')
+    names(data1) <- c("S&P 500 Return", "Change in VIX", "S&P 500 Volume")
+
+    scatterplot3js(data1, color = rainbow(length(data1$"S&P 500 Volume")), labels = paste("Month: ", as.Date(index(data1)), sep = ""))
+                        
+    })
+
+
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+
+##
+
+[end of presentation graphic]
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 

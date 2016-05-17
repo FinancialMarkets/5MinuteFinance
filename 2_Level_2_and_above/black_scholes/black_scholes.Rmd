@@ -1,0 +1,345 @@
+---
+title: "Black-Scholes Option Valuation"
+author: "Matt Brigida: Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "08/1/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+## The Black-Scholes World
+
+If we assume that stock options exist in world where:
+
+-  the market is complete, meaning given a stock and a bond we can replicate call and put options.
+-  the risk-free interest rate and stock price volatility are both constant.
+-  stock prices follow a lognormal distribution.  
+
+Then we can value options using the Black-Scholes formula.
+
+##
+
+The Black-Scholes Formula for a European Call Option on a Non-Dividend Paying Stock is:
+
+$C_0 = S_0N(d_1) - Xe^{-rT}N(d_2)$
+
+where
+
+$d_1 = \frac{ln(\frac{S_0}{X}) + (r+\frac{\sigma^2}{2})T}{\sigma\sqrt(T)}$
+
+$d_2 = d_1 - \sigma\sqrt(T)$
+
+and
+
+-  $C_0$ is the value of the call option at time 0.
+
+##
+
+- $S_0$:  the value of the call option at time 0.
+
+- $N()$:  the cumulative standard normal density function (NORMSDIST() in Excel)
+
+- $X$:  the exercise or strike price.
+
+- $r$: the risk-free interest rate (annualized).
+
+-  $T$: the time until option expiration in years.
+
+- $\sigma$: the annualized standard deviations of log returns.
+
+-  $e$ and $ln$ are the exponential and natural log functions respectively (EXP() and LN() in Excel).
+
+## Where is the Expected Return?
+
+The groundbreaking feature of the Black-Scholes model, as opposed to earlier attempts at option valuation, is that it does not require the  stock's expected return as an input.
+
+-  This is important, because we don't know the stock's expected return.
+
+-  The idea is that we don't need the expected return, because we are going to hedge out risk from the stocks returns (whatever they are).
+
+-  You can also view the expected return as being already in the stock's price, which is determined by the stock's level of risk and return.
+
+## Intuitive Grasp of the Formula
+
+You can look at the $N(d)$ terms as the likelihood that the option will be exercised at expiration (that $S_T > X$).
+
+-  If both $N(d)$ are close to 1, then the option's value is about $S_0 - Xe^{-rT}$ or the present stock price minus the present value of the strike price. This makes sense given that at expiration (if $S_0 > X$) the option pays $S_T - X$.
+
+- If the option has little chance of being exercised (both $N(d)$s are near 0) then the option will have a near \$0 value.
+
+- For other values in the 0 to 1 range, the call value can be viewed as the payoff $S_0 - Xe{-rT}$ weighted by the probability that the call is exercised.
+
+
+##
+
+The following app will calculate the Black-Scholes European call option price for a set of given inputs.
+
+-  If the stock pays a dividend, then input the stock's annualized expected dividend yield.
+
+-  The calculator will adjust for the dividend by lowering the stock price by the present value of the expected dividend.  In other words the stock price used in the formula will be: $S_0e^{-\delta T}$ where $\delta$ is the expected annualized dividend yield.  This assumes dividends are paid *continuously* throughout the year.  We'll discuss dividend adjustments later in the presentation. 
+
+- You can use the app to check your own calculations.  To help, you can also choose to see $d1$ and $d2$ to also check those values.
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+
+        numericInput("Stock", "Present Stock Price", min = .01, max = 2000, value = 50, step = .05),
+        numericInput("Vol", "Annualized Volatility", min = .01, max = 20, value = 0.20, step = .01),
+        numericInput("Strike", "Strike Price", min = .01, max = 1, value = 52, step = .05),
+        numericInput("Rf", "Risk Free Rate", min = 0.001, max = 0.5, value = 0.01, step = .001),
+        numericInput("Time", "Years to Expiration", min = 0.01, max = 50, value = 1, step = .01),
+        numericInput("Div", "Dividend Yield", min = 0, max = 1, value = 0, step = .01),
+        radioButtons("out", "Value to See", choices = list("Call Price" = 1, "d1" = 2, "d2" = 3), selected = 1) 
+                  ),
+    mainPanel(
+
+        renderPlot({
+            stock <- input$Stock
+            vol <- input$Vol
+            strike <- input$Strike
+            rf <- input$Rf
+            time <- input$Time
+            div <- input$Div
+            ## adjustment for dividends
+            stock <- stock * exp(-div * time)
+
+
+            d1 <- (log(stock/strike) + (rf + (vol * vol) / 2) * time) / (vol * sqrt(time))
+            d2 <- d1 - vol * sqrt(time)
+            C <- stock * pnorm(d1) - strike * exp(-rf * time) * pnorm(d2)
+
+            if (input$out == 1){
+                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
+                text(x = 0.5, y = 0.5, labels = paste(round(C, 2)), cex = 5)
+                text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
+            } else {
+                if (input$out == 2){
+                    plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
+                text(x = 0.5, y = 0.5, labels = paste(round(d1, 5)), cex = 5)
+                text(x = 0.03, y = 0.95, labels = "d1", cex = 2)
+            } else {
+                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
+                text(x = 0.5, y = 0.5, labels = paste(round(d2, 5)), cex = 5)
+                text(x = 0.03, y = 0.95, labels = "d2", cex = 2)
+            }
+            }
+            
+        })
+)
+	      )
+#}}}
+```
+
+## How Do We Calculate the Input Parameters
+
+The present stock price is easily observable, and the exercise price and time to maturity are aspect of the option contract. The parameters which are less easily observed are:
+
+-  risk-free rate
+-  dividend yield
+-  volatility
+
+## The Risk Free Rate
+
+The risk free rate should be the annualized continuously compounded rate on a default free security *with the same maturity* as the expiration data of the option.
+
+-  For example, if the option expired in 3 months, you can use the continuously compounded annual rate for a 3 month Treasury Bill.
+
+## Dividends and Stock and Option Prices
+
+Remember that a stock price is adjusted downward by the dividend amount when the dividend is paid.  For example, say before a \$1 dividend is paid the stock is \$50.  Immediately after the dividend is paid the stock's price will be \$49 (otherwise there would be an arbitrage).
+
+-  However, stock option contract terms (such as the strike price) are not adjusted for cash dividends, or stock dividends under 10\%.
+
+-  So paying dividend reduces the value of a call option and increases the value of a put.
+
+-  Note, because firms often increase or decrease their dividend payments, we can only estimate an *expected* dividend yield or payment.  
+
+## Dividend Adjustments
+
+In the Black-Scholes world (where the option is European) we can reduce the stock price by the present value of all the dividends *during the life of the option*.
+
+-  The discounting is done from the ex-dividend date to the present.
+
+-  We can use the risk free rate, though this assumes we are certain about the amount of the dividend payment.
+
+-  Note, we only include dividend to be paid during the life of the option.  So if the option expires in a month, and the next dividend paid by the stock is in two months, we do *not* include a dividend adjustment. 
+
+## Volatility
+
+Volatility (the standard deviation of log-returns) is not directly observable, and is the toughest input to determine.  Two common ways to estimate volatility:
+
+-  Use historical data
+-  Extracting volatility from other options
+
+*Important Note:* Volatility is assumed to be constant in the Black-Scholes model.  This is widely known to be an poor assumption, which has a material impact on the option value.  
+
+## Historical Data
+
+We can use historical stock price data to calculate continuously compounded returns (log-returns).  We can then take the standard deviation of these returns (using STDEV() in Excel ofr example), and annualize the standard deviation, affording an estimate of annual volatility.
+
+-  To do so, we must choose our sampling frequency (daily, weekly, or monthly prices), and the amount of history to use.
+
+-  Commonly used are daily prices over the last 100 days.
+
+## Annualizing the Standard Deviation
+
+Once we have the standard deviation of log returns, we must annualize it.  To do so we use, where $\sigma_a$ and $sigma_p$ are the annual and sample period standard deviations:
+
+$\sigma_a = \sigma_p \sqrt{\#\ periods\ in\ a\ year}$
+
+-  For example, if we are using 100 days of daily price data, and the standard deviation over those days is 0.05\%, then:  $\sigma_a = 0.05\% (252) = 12.6\%$
+
+-  Above we assume 252 trading days in a year.
+
+## Interactive App
+
+-  The following app will calculate annualized historical volatility for any stock and choice of sampling frequency and length of history.
+
+-  Change the date range and see if the historical volatility changes -- remember Black-Scholes assumes constant volatility. 
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+## library(dygraphs)
+library(quantmod)
+inputPanel(
+    textInput(inputId = "ticker2", label = "Stock Ticker", value = "XOM"),
+    dateRangeInput("range", "Date Range", start = "2015-01-01", end = Sys.Date())
+    )
+renderPlot({
+    validate(
+        need(input$ticker2 != "", "Input a valid US stock ticker.")
+        )
+    stock2 <- getSymbols(input$ticker2, from = "1900-01-01", auto.assign = FALSE)
+    stock2 <- stock2[paste(input$range[1], "/", input$range[2], sep = "")]
+    returns <- Delt(Ad(stock2), type = 'log')[-1]
+    annSD <- sd(returns) * sqrt(252) * 100
+                                     
+    plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Annualized Historical Volatility")
+    text(x = 0.5, y = 0.5, labels = paste(round(annSD, 2), "%", sep = ""), cex = 5)
+    ## dygraph(Ad(stock2), main = "") %>%
+    ##     dyRangeSelector()
+})
+#}}}
+```
+
+<!---
+Maybe have this app calculate and plot volatility over rolling windows to show stochastic vol
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(quantmod)
+inputPanel(
+    textInput(inputId = "ticker2", label = "Stock Ticker", value = "XOM")
+    )
+renderDygraph({
+    validate(
+        need(input$ticker2 != "", "Input a valid US stock ticker.")
+        )
+    stock2 <- getSymbols(input$ticker2, from = "1900-01-01", auto.assign = FALSE)
+    dygraph(Ad(stock2), main = "") %>%
+        dyRangeSelector()
+})
+#}}}
+```
+-->
+
+
+
+<!--- app -->
+
+## Extracting Volatility from Other Options
+
+We can also extract volatility from similar options, and use that as the volatility for our options.  This is often referred to as 'calibrating to the market'.
+
+-  This has the benefit of being a forward looking measure, which will take into account market expectations of the volatility from future events.  Historical volatility only looks backwards.
+
+## Implied vs Historical Volatility
+
+This distinction is particularly important if there is an event which will take place during the life of the option, which hasn't happened historically.
+
+-  For example, say you own options expiring in 3 months on Chevron (CVX), and in one month Congress will vote on legislation to allow unfettered exports of crude oil from the US (exports are now substantially limited).
+
+## Implied Volatility
+
+We can extract a volatility estimate from traded options by plugging the option price into the Black-Scholes formula, and solving for volatility. This volatility estimate is call the options 'Implied Volatility'.
+
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+
+        numericInput("Stock1", "Present Stock Price", min = .01, max = 2000, value = 50, step = .05),
+        numericInput("Option1", "Call Option Premium (Price)", min = .01, max = 20, value = 2, step = .01),
+        numericInput("Strike1", "Strike Price", min = .01, max = 1, value = 52, step = .05),
+        numericInput("Rf1", "Risk Free Rate", min = 0.001, max = 0.5, value = 0.01, step = .001),
+        numericInput("Time1", "Years to Expiration", min = 0.01, max = 50, value = 1, step = .01),
+        numericInput("Div1", "Dividend Yield", min = 0, max = 1, value = 0, step = .01)
+                  ),
+    mainPanel(
+
+        renderPlot({
+            
+            stock1 <- input$Stock1
+            option1 <- input$Option1
+            strike1 <- input$Strike1
+            rf1 <- input$Rf1
+            time1 <- input$Time1
+            div1 <- input$Div1
+            ## adjustment for dividends
+            stock1 <- stock1 * exp(-1 * div1 * time1)
+
+            call.func <- function(vol){ (stock1 * pnorm((log(stock1/strike1) + (rf1 + (vol * vol) / 2) * time1) / (vol * sqrt(time1))) - strike1 * exp(-rf1 * time1) * pnorm((log(stock1/strike1) + (rf1 + (vol * vol) / 2) * time1) / (vol * sqrt(time1)) - vol * sqrt(time1)) - option1)^2 }
+
+            ## L-BFGS-B seems to work.  Brent did not.  
+            result <- optim(par = 0.1, fn = call.func, method = "L-BFGS-B", lower = 0, upper = 1000)
+
+            ## already annual 
+            vol.solution <- result$par * 100
+            
+                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Annualized Implied Volatility")
+                text(x = 0.5, y = 0.5, labels = paste(round(vol.solution, 2), "%", sep = ""), cex = 5)
+            
+        })
+)
+	      )
+#}}}
+```
+
+## But what About Put Options?
+
+So far we have only looked at call options, but can Black-Scholes also value put options?
+
+-  Yes, we can write an explicit formula for the Black-Scholes value of a European put option.
+
+- However is is much more convenient to simply use [put-call parity](http://127.0.0.1), which we cover in the linked presentation.
+
+
+##
+
+[end of presentation graphic]
+
+
+<!--- two apps: 1. calculating historical vol & 2. implied vol -->
+
+
+
+
+
+<!---
+separate greeks presentation
+-->

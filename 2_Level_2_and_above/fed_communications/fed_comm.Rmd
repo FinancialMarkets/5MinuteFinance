@@ -1,0 +1,278 @@
+---
+title: "FOMC Communications"
+author: "Milken Institute: Center for Financial Markets"
+affiliation: Milken Institute CFM
+date: "03/30/2016"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
+runtime: shiny
+smaller: true
+---
+
+<style>
+.shiny-flow-layout>div {
+width: 100%;
+}
+</style> 
+
+
+## The FOMC
+
+The FOMC is the committee within the Fed which controls monetary policy.
+
+- Monetary policy is the control of the money supply (often through targeting an interest rate). 
+- The stated goal of our monetary policy is 'maximum employment and price stability'. 
+- The FOMC is also concerned with other real economic variables (GDP, production, etc). 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## FOMC Members
+
+The FOMC is comprised of the 7 members of the Board of Governors, the President of the New York Fed, and the Presidents of 4 Fed District Banks.  The Fed District Bank members rotate.
+
+- The Chairperson of the Board of Governors serves and the Chairperson of the FOMC.
+
+[graphic: roundtable with seven members]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Why is the FOMC Important 
+
+All asset values in the economy are simply the present value of the expected cash flows (where the discount rate reflects the risk in the cash flows).  
+
+- When the FOMC raises interest rates, it pushes up the discount rate on all assets, thereby lowering asset values.  
+
+- Conversely, a lower interest rate lowers the discount rate on all assets and raises asset values.
+
+Thus in FOMC communications, the market listens closely for any hints of future interest rate changes as an indicator of future asset values.
+
+[graphic: a see-saw]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## FOMC Meetings
+
+The FOMC holds 8 meeting per year.  
+
+- About 2 weeks prior to each meeting the FOMC members receive the *Beige Book* for each of the Fed's 12 districts.  The Beige Book contains a report on regional economic conditions.
+
+- Each FOMC meeting starts with staff member presentations on current economic conditions.  
+
+- Then each FOMC member has the opportunity to provide a recommendation to the committee regarding changes to the Federal Funds rate.  The chairperson also offers a recommendation.
+
+- The members then vote.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## FOMC Statement
+
+The committee then issues a statement summarizing its outlook and decision. 
+
+- Since 2007 the committee also votes on the statement.
+
+- Prior to 2007, the FOMC's language was often vague and difficult for the layperson to interpret.  Since, the FOMC has tried to make its language more clear. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Implementation
+
+The FOMC then sends its monetary policy decision to the trading desk at the FRB New York in the form of a statement called the *policy directive*. 
+
+- This directive contains the target Federal Funds rate.
+
+- The trading desk then buys or sells Treasury securities (open market operations) to target the rate. The desk has also traded other securities (such as mortgage-backed securities) in support of Quantitative Easing.
+
+- Open market operations continue through the year, and it is just the targets which change with each policy directive.
+
+- The FOMC can issue policy directives between FOMC scheduled meetings if necessary.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Word Cloud App
+
+The following app will allow you to choose any FOMC statement and see its word cloud.
+
+- Note the consistent use of the term 'inflation'.
+
+- Take a look at the change in terms around the 2008 financial crisis.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## FOMC Meeting Statements
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(xtable) 
+library(tm)
+library(wordcloud)
+library(memoise)
+
+sidebarLayout(
+	      sidebarPanel( 
+			   # inputPanel(
+			   selectizeInput("selection", "Choose an FOMC Meeting Date:", 
+                                          choices = list(
+                                          "July 2015" = "minutes_july_2015",
+                                          "June 2015" = "minutes_june_2015",
+                                          "April 2015" = "minutes_april_2015",
+                                          "March 2015" = "minutes_march_2015",
+                                          "January 2015" = "minutes_january_2015",
+                                          "December 2014" = "minutes_december_2014",
+                                          "October 2014" = "minutes_october_2014",
+                                          "September 2014" = "minutes_september_2014",
+                                          "July 2014" = "minutes_july_2014",
+                                          "June 2014" = "minutes_june_2014",
+                                          "April 2014" =  "minutes_april_2014",
+                                          "March 2014" =  "minutes_march_2014",
+                                          "December 2013" = "minutes_december_2013",
+                                          "October 2013" = "minutes_october_2013",
+                                          "September 2013" = "minutes_september_2013",
+                                          "July 2013" = "minutes_july_2013",
+                                          "June 2013" = "minutes_june_2013",
+                                          "April 2013" = "minutes_april_2013",
+                                          "March 2013" = "minutes_march_2013",
+                                          "January 2013" = "minutes_january_2013",
+                                          "January 2008" = "minutes_january_2008",
+                                          "August 2007" = "minutes_august_2007",
+                                          "September 2007" = "minutes_september_2007",
+                                          "August 2007" = "minutes_august_2007")),
+
+			   # books),
+			   #                            actionButton("update", "Change"),
+			   sliderInput("freq", 
+				       "Minimum Frequency:", 
+				       min = 1,  max = 10, value = 5),
+			   sliderInput("max", 
+				       "Maximum Number of Words:", 
+				       min = 1,  max = 30,  value = 25)
+			   ),
+
+	      mainPanel(
+
+
+			# Make the wordcloud drawing predictable during a session
+
+			renderPlot({
+			  #{{{ 
+			  #                         books <- list(	"April 2015" = "minutes_april_2015",
+			  #                                         "March 2015" = "minutes_march_2015",
+			  #                                         "January 2015" = "minutes_january_2015",
+			  #                                         "December 2014" = "minutes_december_2014",
+			  #                                         "October 2014" = "minutes_october_2014",
+			  #                                         "September 2014" = "minutes_september_2014",
+			  #                                         "July 2014" = "minutes_july_2014",
+			  #                                         "June 2014" = "minutes_june_2014",
+			  #                                         "April 2014" =  "minutes_april_2014",
+			  #                                         "March 2014" =  "minutes_march_2014",
+			  #                                         "January 2008" = "minutes_january_2008",
+			  #                                         "August 2007" = "minutes_august_2007",
+			  #                                         "September 2007" = "minutes_september_2007",
+			  #                                         "August 2007" = "minutes_august_2007")
+			  #}}}
+			  book <- input$selection
+
+			  # Using "memoise" to automatically cache the results
+
+			  #                           getTermMatrix <- memoise(function(book) {
+
+			  # Careful not to let just any name slip in here; a
+			  # malicious user could manipulate this value.
+			  #                                                      if (!(book %in% books))
+			  #                                                        stop("Unknown book")
+
+			  text <- readLines(sprintf("./%s.txt.gz", book),
+					    encoding="UTF-8")
+
+			  myCorpus = Corpus(VectorSource(text))
+			  myCorpus = tm_map(myCorpus, content_transformer(tolower))
+			  myCorpus = tm_map(myCorpus, removePunctuation)
+			  myCorpus = tm_map(myCorpus, removeNumbers)
+			  myCorpus = tm_map(myCorpus, removeWords,
+					    c(stopwords("SMART"), "Committee", "committee", "committee\'s", "the", "and", "but"))
+
+			  myDTM = TermDocumentMatrix(myCorpus,
+						     control = list(minWordLength = 1))
+
+			  m = as.matrix(myDTM)
+
+			  m2 = sort(rowSums(m), decreasing = TRUE)
+
+			  #                                         })
+
+			  #                           terms <- reactive({
+			  #               Change when the "update" button is pressed...
+			  #                             input$update
+			  #               ...but not for anything else
+			  #                             isolate({
+			  #                               withProgress(session, {
+			  #                                              setProgress(message = "Processing statement ...")
+			  #                                              getTermMatrix(input$selection)
+			  # })
+			  #                             })
+			  #                           })
+
+			  wordcloud_rep <- repeatable(wordcloud)
+			  #                           v <- terms()
+			  wordcloud_rep(names(m2), m2,# names(v), v, 
+					scale=c(4,0.5),
+					min.freq = input$freq, 
+					max.words = input$max,
+					colors=brewer.pal(8, "Dark2"))
+			  plotOutput("plot")
+			})
+			)
+	      )
+
+
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Understanding FOMC Phrases
+
+Historically the FOMC language was intentionally vague. They have recently tried to make it more clear and meaningful.  
+
+-  The following app allows you to choose some common FOMC phrases and see its translation in everyday terms.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## FOMC Translator
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+#{{{
+
+ inputPanel(
+	    # attempt to widen input box ----
+	    #{{{ 
+	    #      tags$head(
+	    #         tags$style(type="text/css", "label.radio { display: inline-block; }", ".radio input[type=\"radio\"] { float: none; }"),
+	    #         tags$style(type="text/css", "select { max-width: 1000px; }"),
+	    #         tags$style(type="text/css", "textarea { max-width: 1000px; }"),
+	    #         tags$style(type="text/css", ".jslider { max-width: 1000px; }"),
+	    #         tags$style(type='text/css', ".well { max-width: 1000px; }"),
+	    #         tags$style(type='text/css', ".span4 { max-width: 1000px; }")
+	    #       ),
+	    #}}}
+	    selectizeInput("phrase", "FOMC Message",
+                 choices = list(
+                 "Risk premia have become compressed." = "Stock prices are too high.",
+                 "Accommodative monetary policy." = "Higher money supply and lower interest rates.",
+		 "Quantitative Easing" = "Fed buying long-term Treasury and other securities.",
+                 "Dual mandate" = "Maximum employment and price stability."    )
+                 , width = '2000px')
+     )
+renderPlot({
+plot(c(0,0), type = 'n', ylab = "", xlab = "", xaxt = "n", yaxt = "n")
+text(1.5, 0, input$phrase, cex = 2)
+text(1.05, 0.8, "Meaning:", cex = 1.75)
+
+})
+
+
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

@@ -1,0 +1,34 @@
+---
+title: "An Introduction Linear Regression"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "06/02/2015"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
+runtime: shiny
+smaller: true
+---
+
+## What is Linear Regression?
+
+A tool to 
+
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+
+
+
+##
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(
+    ## for now just use one given dataset
+  ## selectizeInput("dataset", "Choose a dataset", choices = print(data()))
+	   )
+renderPlot({
+})
+#}}}
+```
+
+<!---end-->

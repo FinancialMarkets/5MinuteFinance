@@ -1,0 +1,28 @@
+---
+title: "Stock Markets: The Only Game in Town"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "07/10/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+## The Only Game in Town
+
+This presentation introduces stock markets from the perspective of the famous paper *The Only Game in Town* by Walter Bagehot[footnote: this is a pseudonym.  the real Walter Bagehot wrote 'On Lombard Street: The History of the Money Markets [check exact title]'.
+
+-  This paper is credited as being a seminal paper in Market Microstructure.
+
+
+##  Market Participants
+
+There are 3 types of market participants.
+
+-  The Market Maker
+
+-  Informed Traders
+
+-  Noise Traders
+
+##

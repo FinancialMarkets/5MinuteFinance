@@ -1,0 +1,156 @@
+---
+title: "Exchange Traded Funds (ETFs)"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "03/30/2016"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+logo: misq.png
+css: 5min_mod.css
+---
+
+## Exchange Traded Funds (ETFs)
+
+ETFs are typically portfolios of stock which track an index and trade throughout the day.
+
+-  They are like open-ended mutual funds, which have replaced active management with a strategy of passively matching an index's returns.
+
+-  For example, the ticker SPY is for an ETF which matches the return (prior to fees) on the S&P 500 index. Because the find is passively managed, fees are usually very low at around 0.10% of assets per year.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## ETF Popularity and Growth
+
+ETFs have become very popular in the last decade.  Among their advantages over traditional mutual funds are:
+
+-  ETFs can be traded throughout the day, and may be shorted and bought on margin.  The cost of buying an ETF is the same as stock.
+-  Selling an ETF doesn't cause fund redemptions -- which can have adverse tax consequences.
+-  ETFs have low fees -- many prominent ETFs have annual fees that are less than 0.15% of assets.
+-  Actively managed mutual funds have generally been unable to beat stock index returns.   
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+<!---There are many proposed reasons for this, however most agree it is due to low ETF fees, coupled with an inability of active mutual funds to beat index returns. -->
+
+<!---
+<script type="text/javascript" src="//www.google.com/trends/embed.js?hl=en-US&q=ETF,+Mutual+Fund&cmpt=q&tz=Etc/GMT%2B4&tz=Etc/GMT%2B4&content=1&cid=TIMESERIES_GRAPH_0&export=5&w=300&h=130">
+</script>
+-->
+
+##
+Unscientific evidence of the increasing popularity of ETFs relative to mutual funds:  The number of Google searches for each term.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(xts)
+renderDygraph({
+    data <- read.csv("time_series.csv", header = TRUE)
+    data <- as.xts(data[,2:3], order.by = as.Date(data[,1]))
+    dygraph(data, main = "Google Trends: \"ETF\" vs \"Mutual Fund\"") %>%
+        dyRangeSelector()
+    })
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## New ETFs
+
+While the first ETFs were mainly for broad stock indexes (the NASDAQ 100, S&P 500, and the Dow Jones Industrial Average for example), their rising popularity of has spurred the creation of ETFs for a variety of underlying assets, such as:
+
+-  Stock sectors: Financials, Energy, etc. 
+-  Commodities: Crude Oil, Gold, Natural Gas, among others.
+-  Non-Stock Indexes: the VIX volatility index.
+-  'Actively managed' ETFs
+-  Leveraged ETFs.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## ETF Brands
+
+There are a few major sponsors of ETFs.  Among them are:
+
+-  [iShares: managed by Blackrock](www.ishares.com/)
+-  [Standard & Poor's Depository Receipts: managed by State Street Global Advisors](https://www.spdrs.com/)
+-  [PowerShares: managed by Invesco](http://www.invescopowershares.com/)
+-  [Market Vectors: managed by Van Eck Global](www.vaneck.com/market-vectors/equity-etfs/)
+-  [X-trackers: managed by Deutsche Asset & Wealth Management](www.etf.deutscheawm.com/)
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##  How Well Do ETFs Track Their Underlying Index?
+
+The next slide will show you the cumulative returns for the ETF and index you choose.
+
+-  Generally, for the established stock index ETFs, the ETF tracks the index very closely.
+
+-  However, because there are many new and often exotic ETFs introduced each year, one can't make a blanket statement across all ETFs.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(quantmod)
+inputPanel(
+    selectInput(inputId = "index", label = "Index", choices = list("S&P 500" = 1,
+                                                    ## "Russell 2000" = 2,
+                                                   "Russell 1000" = 2,
+                                                    "NASDAQ 100" = 3,
+                                                    "DJIA" = 4),
+                                                    ## "Barclay 7-10 yr. Treas." = 6),
+                                                    selected = "S&P 500"),
+    dateRangeInput("date", label = "Date Range", start = "2005-01-01", end = Sys.Date())
+    )
+
+renderDygraph({
+
+    etfs2 <- switch(input$index,
+                   "1" = c("SPY", "^GSPC"),
+                   ## "2" = c("IWM", "^RUT"),
+                   "2" = c("IWB", "^RUI"),
+                   "3" = c("QQQ", "^NDX"),
+                   "4" = c("DIA", "^DJI"))
+                   ## "6" = c("IEF", "UST"))
+
+    bothETFs <- getSymbols(etfs2, from = input$date, auto.assign = TRUE)
+    bothETFs <- merge.xts(Cl(get(bothETFs[[1]])), Ad(get(bothETFs[[2]])), join = "inner")
+    bothETFs2 <- apply(apply(bothETFs, 2, Delt)[-1,], 2, cumsum)
+    bothETFs2 <- as.xts(bothETFs2, order.by = index(bothETFs)[-1])
+    names(bothETFs2)[1] <- etfs2[1]
+    names(bothETFs2)[2] <- "Index"
+    dygraph(bothETFs2, main = "Cumulative Returns: ETF and Underlying Index") %>%
+        dyRangeSelector()
+})
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## ETF Performance
+
+As you can see in the previous app, the difference in cumulative returns, between the ETF and the actual stock index, over 10 years is generally less than a percent.
+
+-  So these ETFs do a good job of matching index performance.
+
+[graphic: a student getting an 'A+']
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## ETFs versus ETNs
+
+-  Exchange Traded Notes (ETNs) are unsecured debt obligations of financial institutions.
+-  ETNs are also traded on securities exchanges and can be bought or sold on the exchanges.
+-  ETNs unlike ETFs do not own a portfolio of underlying assets. ETNs calculate the value using a described formula, rather than using net asset value.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+[end of presentation graphic]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

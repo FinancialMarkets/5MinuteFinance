@@ -1,0 +1,281 @@
+---
+title: "Financial Ratios"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "03/02/2016"
+output: ioslides_presentation
+runtime: shiny
+logo: misq.png
+css: 5min_mod.css
+smaller: true
+---
+
+## Motivation
+
+Modern financial statements provide a great deal of data on companies.
+
+[graphic: someone overwhelmed by data]
+
+Financial ratios turn that data into bits of useful information.
+
+-  They often do this, by scaling a data point relative to another aspect of the company.
+
+Financial ratios are generally used to:
+
+1.  compare a single company's performance over time.
+2.  compare across companies.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## A Couple of Pointers
+
+Financial ratios are most informative when used to compare companies in the *same* industry.
+
+- You should never compare a bank's ratios with that of a biotech.  
+
+- Know the good and bad values for a ratio.
+
+- Use the right ratio to answer your question.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Categories
+
+We can classify financial ratios into 5 categories:
+
+- Leverage (or Long-Term Solvency)
+- Liquidity (or Short-Term Solvency)
+- Asset Use Efficiency
+- Profitability
+- Market Value Measures
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Leverage Ratios
+
+These ratios measure the firm's long-term ability to meet its debt obligations.
+
+- These are measures of overall assets relative to obligations.  It includes assets which are hard to sell.
+
+[graphic: a person in a bank vault with money]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Example: The Debt-to-Equity Ratio
+
+The debt-to-equity ratio is a firm's total debt divided by its total equity.
+
+-  If our firm has current assets of \$10 million, and current liabilities of \$8 million, the its current ratio is 1.25 times.
+-  The value that this ratio takes is very industry specific.  Young firms tend to have little to no debt, and so low Debt-to-Equity ratios. More established firms may have higher ratios.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Liquidity Ratios
+
+These ratios measure the firm's ability to meet its debt obligations over the short-term (over the next year).
+
+- As an analogy, you can think of these as measuring how much money you have in your wallet.  You can't sell your house to pay your water bill this week.
+
+[graphic:  a person looking in their wallet]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Example:  The Current Ratio
+
+The current ratio is defined as the firm's current assets dividend by current liabilities.
+
+-  If our firm has current assets of \$10 million, and current liabilities of \$8 million, the its current ratio is 1.25 times.
+-  We don't want the current ratio to be too high (say above 2) or too low (say below 1). 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Asset Use Efficiency Ratios
+
+These measure how efficiently a firms uses its assets.  For example, how much in sales does a firm generate from \$1.00 in assets.
+
+[graphic: person doing some craft work -- maybe a blacksmith]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Example: Total Asset Turnover
+
+Total asset turnover is equal to sales divided by assets.
+
+- Say a firm has \$500 million in sales, and its assets total \$2 billion.  Then it has a total asset turnover of 0.25 times.  We interpret is as, 'for every dollar in assets, the firm generates \$0.25 in sales'.  
+
+- Of course, you would want to generate these sales with as few assets as possible.  So we would prefer our total asset turnover to be as high as possible. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Profitability Ratios
+
+These measures focus on how well a firm translates a dollar in sales into income. 
+
+[graphic:  accountant]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Example: Profit Margin
+
+Say a firm has \$100 million in net income.  Alone this data point is not too useful.  However what if we also say this income was generated on \$500 million in sales?
+
+- Then we can say for every \$1 in sales, the company generates \$0.20 in income.
+
+- Put another way, the company has a $\frac{\$100M}{\$500M} = 20\%$ profit margin. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Market Value Ratios
+
+These measure capture what value the market assigns to each dollar of a firm's earnings, sales, or book value.  
+
+
+[graphic: traders in a pit]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Example: P/E Ratio
+
+A firm's P/E ratio is its stock price (per share) divided by its earnings per share (EPS).  If EPS is negative the ratio is undefined.
+
+- Say a firm's P/E ratio is 15, then we can interpret this is, 'for every \$1 in earnings, the market is willing to pay \$15'.
+
+- If a firm has negative EPS, then the ratio is undefined.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## When to Use a Ratio
+
+If you are considering buying GE's stock.  Do you care about GE's current ratio.
+
+>- Not really.  The current ratio only considers short term accounts, and as an equity holder you care about the firm's long-term prospects.  
+
+>- You would certainly be interested in the Return on Equity, Debt-to-Equity ratio, and Total Asset Turnover among other measures of long-term performance. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Interactive App
+
+In the next slide you can choose two stocks, and one of four financial ratios, and see their performance over time.  
+
+-  Remember, the comparison makes the most sense if you choose two stocks in the same industry.
+
+
+
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+## library(metricsgraphics)                                        
+sidebarLayout(
+    sidebarPanel(    
+        textInput("ticker1", label = "Stock Ticker", value = "XOM"),
+        textInput("ticker2", label = "Stock Ticker", value = "COP"),
+        radioButtons("ratio", label = "Choose a Ratio", choices = list("Debt-to-Equity Ratio" = 1, "Current Ratio" = 2, "Total Asset Turnover" = 3, "Profit Margin" = 4), selected = 1)
+        ),
+
+    mainPanel(
+        renderPlot({
+            library(quantmod)
+            library(tseries)
+            ## valdate tickers ----
+            validate(
+                need(input$ticker1 != "", "Input a valid US stock ticker.")
+                )
+            validate(
+                need(input$ticker2 != "", "Input a valid US stock ticker.")
+                )
+
+            ## get income statement and balance sheet for stock 1
+            f1 <- getFinancials(input$ticker1, src = "google", auto.assign = FALSE)
+            ## IS
+            is1 <- viewFin(f1, type = "IS")
+            ## BS
+            bs1 <- viewFin(f1, type = "BS")
+
+            ## get income statement and balance sheet for stock 2
+            f2 <- getFinancials(input$ticker2, src = "google", auto.assign = FALSE)
+            ## IS
+            is2 <- viewFin(f2, type = "IS")
+            ## BS
+            bs2 <- viewFin(f2, type = "BS")
+
+### Ratios, stock 1
+            
+            ## profit margin stock 1
+            pm1 <- is1[rownames(is1) == "Net Income"] / is1[rownames(is1) == "Revenue"]
+
+            ## total asset turnover stock 1
+            sales1 <- is1[rownames(is1) == "Revenue"]
+            assets1 <- bs1[rownames(bs1) == "Total Assets"]
+            tat1 <- sales1 / assets1
+
+            ## D/E ratio
+
+            debt1 <- bs1[rownames(bs1) == "Total Debt"]
+            equity1 <- bs1[rownames(bs1) == "Total Equity"]
+            de.ratio1 <- debt1 / equity1
+
+
+            ## Current Ratio
+
+            ca1 <- bs1[rownames(bs1) == "Total Current Assets"]
+            cr1 <- ca1 / assets1
+
+            
+### Ratios, stock 2
+
+            ## profit margin stock 2
+            pm2 <- is2[rownames(is2) == "Net Income"] / is2[rownames(is2) == "Revenue"]
+
+            ## total asset turnover stock 2
+            sales2 <- is1[rownames(is2) == "Revenue"]
+            assets2 <- bs2[rownames(bs2) == "Total Assets"]
+            tat2 <- sales2 / assets2
+
+            ## D/E ratio
+
+            debt2 <- bs2[rownames(bs2) == "Total Debt"]
+            equity2 <- bs2[rownames(bs2) == "Total Equity"]
+            de.ratio2 <- debt2 / equity2
+
+            ## Current Ratio
+
+            ca2 <- bs2[rownames(bs2) == "Total Current Assets"]
+            cr2 <- ca2 / assets2
+
+
+### Plot:
+### use if/else or switch statement? If/else will be messy.
+
+            ratio.to.plot <- switch(input$ratio,
+                                    "1" = list(de.ratio1, de.ratio2),
+                                    "2" = list(cr1, cr2),
+                                    "3" = list(tat1, tat2),
+                                    "4" = list(pm1, pm2)
+                                    )
+            
+            plot.min <- min(min(ratio.to.plot[[1]]), min(ratio.to.plot[[2]]))
+            plot.max <- max(max(ratio.to.plot[[1]]), max(ratio.to.plot[[2]]))
+            
+
+            plot(ratio.to.plot[[1]], main = "Profit Margin by Year", type = "l", lty = 1, 
+                 col = "green", lwd = 3, ylab = "Profit Margin", xlab = "Year", ylim = c(plot.min, plot.max), xaxt = "n")
+            axis(1, at = c(1,2,3,4), labels = c("2011", "2012", "2013", "2014"))
+
+            lines(ratio.to.plot[[2]], lty = 1, col = "blue", lwd = 4)
+
+            legend("bottomright", c(paste(input$ticker1, "Profit Margin"), paste(input$ticker2, "Profit Margin")), col = c("green" , "blue"), lty = c(1, 1), lwd = c(4, 4))
+        })
+        )
+    )
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Another interactive app?
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

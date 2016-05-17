@@ -1,0 +1,186 @@
+---
+title: "US Monetary Policy"
+author: "Matt Brigida"
+affiliation: Milken Institute CFM
+date: "05/12/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+## US Monetary Policy
+
+US Monetary policy is controlled by the Federal Reserve System.
+
+The two main controls of monetary policy are:
+
+1.  Open market operations
+
+2.  The reserve requirement ratio
+
+
+## app 1
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(xtable) 
+library(tm)
+library(wordcloud)
+library(memoise)
+
+sidebarLayout(
+	      sidebarPanel( 
+			   # inputPanel(
+			   selectizeInput("selection", "Choose an FOMC Meeting Date:", 
+				       choices = list(	
+						      "April 2015" = "minutes_april_2015",
+						      "March 2015" = "minutes_march_2015",
+						      "January 2015" = "minutes_january_2015",
+						      "December 2014" = "minutes_december_2014",
+						      "October 2014" = "minutes_october_2014",
+						      "September 2014" = "minutes_september_2014",
+						      "July 2014" = "minutes_july_2014",
+						      "June 2014" = "minutes_june_2014",
+						      "April 2014" =  "minutes_april_2014",
+						      "March 2014" =  "minutes_march_2014",
+						      "December 2013" = "minutes_december_2013",
+						      "October 2013" = "minutes_october_2013",
+						      "September 2013" = "minutes_september_2013",
+						      "July 2013" = "minutes_july_2013",
+						      "June 2013" = "minutes_june_2013",
+						      "April 2013" = "minutes_april_2013",
+						      "March 2013" = "minutes_march_2013",
+						      "January 2013" = "minutes_january_2013",
+						      "January 2008" = "minutes_january_2008",
+						      "August 2007" = "minutes_august_2007",
+						      "September 2007" = "minutes_september_2007",
+						      "August 2007" = "minutes_august_2007")),
+
+			   # books),
+			   #                            actionButton("update", "Change"),
+			   sliderInput("freq", 
+				       "Minimum Frequency:", 
+				       min = 1,  max = 10, value = 5),
+			   sliderInput("max", 
+				       "Maximum Number of Words:", 
+				       min = 1,  max = 30,  value = 25)
+			   ),
+
+	      mainPanel(
+
+
+			# Make the wordcloud drawing predictable during a session
+
+			renderPlot({
+			  #{{{ 
+			  #                         books <- list(	"April 2015" = "minutes_april_2015",
+			  #                                         "March 2015" = "minutes_march_2015",
+			  #                                         "January 2015" = "minutes_january_2015",
+			  #                                         "December 2014" = "minutes_december_2014",
+			  #                                         "October 2014" = "minutes_october_2014",
+			  #                                         "September 2014" = "minutes_september_2014",
+			  #                                         "July 2014" = "minutes_july_2014",
+			  #                                         "June 2014" = "minutes_june_2014",
+			  #                                         "April 2014" =  "minutes_april_2014",
+			  #                                         "March 2014" =  "minutes_march_2014",
+			  #                                         "January 2008" = "minutes_january_2008",
+			  #                                         "August 2007" = "minutes_august_2007",
+			  #                                         "September 2007" = "minutes_september_2007",
+			  #                                         "August 2007" = "minutes_august_2007")
+			  #}}}
+			  book <- input$selection
+
+			  # Using "memoise" to automatically cache the results
+
+			  #                           getTermMatrix <- memoise(function(book) {
+
+			  # Careful not to let just any name slip in here; a
+			  # malicious user could manipulate this value.
+			  #                                                      if (!(book %in% books))
+			  #                                                        stop("Unknown book")
+
+			  text <- readLines(sprintf("./%s.txt.gz", book),
+					    encoding="UTF-8")
+
+			  myCorpus = Corpus(VectorSource(text))
+			  myCorpus = tm_map(myCorpus, content_transformer(tolower))
+			  myCorpus = tm_map(myCorpus, removePunctuation)
+			  myCorpus = tm_map(myCorpus, removeNumbers)
+			  myCorpus = tm_map(myCorpus, removeWords,
+					    c(stopwords("SMART"), "Committee", "committee", "committee\'s", "the", "and", "but"))
+
+			  myDTM = TermDocumentMatrix(myCorpus,
+						     control = list(minWordLength = 1))
+
+			  m = as.matrix(myDTM)
+
+			  m2 = sort(rowSums(m), decreasing = TRUE)
+
+			  #                                         })
+
+			  #                           terms <- reactive({
+			  #               Change when the "update" button is pressed...
+			  #                             input$update
+			  #               ...but not for anything else
+			  #                             isolate({
+			  #                               withProgress(session, {
+			  #                                              setProgress(message = "Processing statement ...")
+			  #                                              getTermMatrix(input$selection)
+			  # })
+			  #                             })
+			  #                           })
+
+			  wordcloud_rep <- repeatable(wordcloud)
+			  #                           v <- terms()
+			  wordcloud_rep(names(m2), m2,# names(v), v, 
+					scale=c(4,0.5),
+					min.freq = input$freq, 
+					max.words = input$max,
+					colors=brewer.pal(8, "Dark2"))
+			  plotOutput("plot")
+			})
+			)
+	      )
+
+
+#}}}
+```
+
+## app 2
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+#{{{
+
+ inputPanel(
+	    # attempt to widen input box ----
+	    #{{{ 
+	    #      tags$head(
+	    #         tags$style(type="text/css", "label.radio { display: inline-block; }", ".radio input[type=\"radio\"] { float: none; }"),
+	    #         tags$style(type="text/css", "select { max-width: 1000px; }"),
+	    #         tags$style(type="text/css", "textarea { max-width: 1000px; }"),
+	    #         tags$style(type="text/css", ".jslider { max-width: 1000px; }"),
+	    #         tags$style(type='text/css', ".well { max-width: 1000px; }"),
+	    #         tags$style(type='text/css', ".span4 { max-width: 1000px; }")
+	    #       ),
+	    #}}}
+	    selectizeInput("phrase", "FOMC Message",
+                 choices = list(
+                 "Risk premia have become compressed." = "Stock prices are too high.",
+                 "Accommodative monetary policy." = "Higher money supply and lower interest rates.",
+		 "Quantitative Easing" = "Fed buying long-term Treasury and other securities.",
+                 "Dual mandate" = "Maximum employment and price stability."    )
+                 , width = '1000px')
+     )
+renderPlot({
+plot(c(0,0), type = 'n', ylab = "", xlab = "", xaxt = "n", yaxt = "n")
+text(1.5, 0, input$phrase, cex = 2)
+text(1.05, 0.8, "Meaning:", cex = 1.75)
+
+})
+
+
+#}}}
+```
+

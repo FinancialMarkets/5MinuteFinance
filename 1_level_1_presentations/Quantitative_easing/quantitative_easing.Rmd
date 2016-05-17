@@ -1,0 +1,137 @@
+---
+title: "Quantitative Easing in the United States"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "08/1/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+logo: misq.png
+css: 5min.css
+---
+
+## Executive Summary <!---What are the Three Things You Need to Know-->
+
+QE is an unconventional monetary policy where the Federal Reserve buys long-term financial assets (mainly Treasury and mortgage-backed securities) in order to increase the money supply and lower long-term interest rates. 
+
+-  The Fed resorted to this measure after having exhausted its usual methods of stimulating economic growth, namely lowering short-term interest rates through purchases of short-term Treasury securities.
+
+## Why is this Important?
+
+QE raises the prices of financial assets (stock, bonds, mortgage backed securities).  This is equivalent to lowering interest rates consumers pay.  So the effect's of QE are felt by all those in the economy.
+
+- QE also affecs the value of the US dollar.  If the dollars created through QE are invested abroad, this will put downward pressure on the US dollar.
+
+- 
+
+
+<!--- QE has been the largest monetary policy intervention in modern times.
+
+- Over $X trillon has been created by the Fed. -->
+
+## Mechanics
+
+When the Fed buy securities, it creates US dollars.
+
+## The Money Supply
+
+
+```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+#{{{
+
+library(quantmod)
+library(dygraphs)
+renderDygraph({
+    monetary.base <- getSymbols("BOGMBASE", src = "FRED", auto.assign = F)
+    ## m1 <- getSymbols("M1NS", src = "FRED", auto.assign = F)
+    ## m2 <- getSymbols("M2NS", src = "FRED", auto.assign = F)
+    ## m3 <- getSymbols("M3NS", src = "FRED", auto.assign = F)
+    ## mzm <- getSymbols("MZMNS", src = "FRED", auto.assign = F)
+
+    ## money <- merge.xts(monetary.base, m1, m2, m3, mzm)
+    ## names(money) <- c("Monetary Base", "M1 Money Stock", "M2 Money Stock", "M3 Money Stock", "MZM Money Stock")
+    money <- monetary.base / 1000  ## convert from millions to billions
+    names(money) <- "Monetary Base"
+
+    dygraph(money) %>%
+        ## dySeries("Monetary Base", axis = 'y2') %>%
+        dyLegend(show = "onmouseover") %>%
+        dyRangeSelector() %>%
+        dyAxis("y", label = "$ Billions") %>%
+        dyShading(from = "2008-11-1", to = "2009-3-1", color = "#CCEBD6") %>%
+    dyEvent(date = "2008-11-1", label = "Start QE1") %>%
+        dyEvent(date = "2009-3-1", label = "End QE1") %>%
+        dyShading(from = "2010-11-1", to = "2011-6-1", color = "#CCEBD6") %>%
+    dyEvent(date = "2010-11-1", label = "Start QE2") %>%
+        dyEvent(date = "2011-6-1", label = "End QE2") %>%
+        dyShading(from = "2012-09-1", to = "2014-11-1", color = "#CCEBD6") %>%
+    dyEvent(date = "2012-09-1", label = "Start QE3") %>%
+        dyEvent(date = "2014-11-1", label = "End QE3") 
+})
+#}}}
+```
+  
+
+
+
+
+## Background/History/Example/In The News 
+
+QE 1: From November 2008 to March 2009, the Fed bought \$1.15 trillion in
+
+QE 2: The Fed bought an additional \$600 billion of Treasury securities from November 2010 to June 2011.
+
+QE 3: 
+
+
+## Fed Securities Holdings by Type
+
+<!--- idea: chart the amount the fed holds (over time) of MBS, treas, etc. -->
+
+```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+#{{{
+
+library(quantmod)
+library(dygraphs)
+renderDygraph({
+  mbs <- getSymbols("MBST", src = "FRED", auto.assign = F)
+  ToneFive <- getSymbols("TREAS1T5", src = "FRED", auto.assign = F)
+  TtenPlus <- getSymbols("TREAS10Y", src = "FRED", auto.assign = F)
+  TfiveTen <- getSymbols("TREAS5T10", src = "FRED", auto.assign = F)
+  T91to1 <- getSymbols("TREAS911Y", src = "FRED", auto.assign = F)
+  holdings <- merge.xts(mbs, T91to1, ToneFive, TfiveTen, TtenPlus, join = "outer")
+
+  names(holdings) <- c("MBS", "91 days to 1 year", "1 to 5 years", "5 to 10 years", "10+ years")
+
+  dygraph(holdings) %>%
+    dyLegend(show = "onmouseover") %>%
+    dyRangeSelector() %>%
+    dyShading(from = "2008-11-1", to = "2009-3-1", color = "#CCEBD6") %>%
+    dyEvent(date = "2008-11-1", label = "Start QE1") %>%
+    dyEvent(date = "2009-3-1", label = "End QE1") %>%
+    dyShading(from = "2010-11-1", to = "2011-6-1", color = "#CCEBD6") %>%
+    dyEvent(date = "2010-11-1", label = "Start QE2") %>%
+    dyEvent(date = "2011-6-1", label = "End QE2") %>%
+    dyShading(from = "2012-09-1", to = "2014-11-1", color = "#CCEBD6") %>%
+    dyEvent(date = "2012-09-1", label = "Start QE3") %>%
+    dyEvent(date = "2014-11-1", label = "End QE3") 
+})
+
+#}}}
+```
+
+
+
+## What's Next
+
+## Regulations
+
+## Key Facts
+
+## Definitions/Acronyms
+
+## Related Topics
+
+Quantitative Easing around the world. 
+
+## Other Sources

@@ -1,0 +1,237 @@
+---
+title: "An Introduction to Stock Options and their Values"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute, Center for Financial Markets"
+date: "03/12/2015"
+output: ioslides_presentation
+runtime: shiny
+logo: misq.png
+css: 5min_mod.css
+smaller: true
+---
+
+## Stock Options Defined
+
+Call Option:
+
+- A call option grants the owner the right to buy a share of the underlying stock for the strike price anytime before expiration.
+
+- A call option seller (also known as writer) has the obligation to sell a share of the underlying stock for the strike price if the buyer exercises the option.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Stock Options Defined
+
+Put Option:
+
+- A put option grants the owner the right to sell a share of the underlying stock for the strike price anytime before expiration.  
+
+- A put option seller (also known as writer) has the obligation to buy a share of the underlying stock for the strike price if the buyer exercises the option.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## American vs European
+
+The previous definitions were for American options.  These are the type of options traded on most exchanges in the US.
+
+The only difference in a European option, is that you can only exercise the option at expiration.
+
+The distinction between the two types is often insignificant, and so we'll use the generic term 'option' going forward.  In later presentations we'll cover the cases where it is important to make the distinction. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Intrinsic Value
+
+The *intrinsic value* is what the option would be worth if you had to exercise it immediately. If exercising the option would result in a negative amount, intrinsic is set to \$0.  Denoting $I$ for intrinsic value, and $S$ and $X$ for the stock and strike price respectively, we can write:
+
+- Call option:  $I=max(S-X, 0)$
+- Put option:  $I=max(X-S, 0)$
+
+For example, if $S=\$53$, $X=\$50$, the intrinsic value of a call is $\$3$, and the intrinsic value of a put is $\$0$.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Some Terms
+
+- For both calls and puts, if $I > 0$ then we say the option is 'in-the-money'.
+- If $I < 0$ the option is 'out-of-the-money'.
+- The options with a strike nearest to the present stock price is termed the 'at-the-money'.
+
+These terms are useful because in/at/out-of-the-money options have similarities regardless of whether they are calls or puts. For example, out-of-the-money option premiums are not sensitive to changes in the underlying stock price.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Practical Notes
+
+- Option contracts listed on US exchanges (such as the Chicago Board Options Exchange (CBOE)) are for 100 options.
+- Option contracts traded on US exchanges are cleared, which means you don't have to worry about counterparty risk.  This also means you'll put up margin for each option trade.
+- Option strike prices are adjusted for stock splits, and for stock dividends of more than 10\%.
+- Option contracts are *not* adjusted for cash dividends.  This means call/put options prices are higher/lower for high dividend paying stocks.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## What Can We Say So Far?
+
+An American option's value can never be less than the option's intrinsic.  Why not?
+
+>+ Arbitrage: If the intrinsic were \$5, and the options price was \$3, you could buy the call option and immediately exercise it earning \$2 share.  
+
+>+ This is true for both call and put options. However, a European put's premium could be less than the intrinsic.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Option Intrinsic and Time Values
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        sliderInput("strike", label = "Strike Price", max = 100, min = 0, value = 50, step = 1),
+        sliderInput("volatility", label = "Return Volatility", max = .5, min = 0.01, value = .20, step = .01),
+        sliderInput("maturity", label = "Years to Maturity", max = 2, min = .1, value = .5, step = .1),
+        sliderInput("riskFree", label = "Risk Free Rate", max = .2, min = .01, value = .02, step = .01),
+        radioButtons("type", label = "Option Type", choices = c("Call" = "1", "Put" = "2"), selected = "Call")
+        ),
+                                        #     tabsetPanel(
+                                        #                 tabPanel(title = "Option",
+    mainPanel(
+        renderPlot({
+            ## calculate intrinsic value
+            intrinsic <- 1:100 - input$strike
+            intrinsic[intrinsic < 0] <- 0
+
+            ## calculate time value by Black-Scholes for all integer stock prices from 1 to 100 ----
+            d1 <- (log(1:100/input$strike) + (input$riskFree + (input$volatility^2)/2) * input$maturity) / (input$volatility * sqrt(input$maturity))
+            d2 <- d1 - input$volatility * sqrt(input$maturity)
+            optionValue <- 1:100 * pnorm(d1) - input$strike * exp(-input$riskFree * input$maturity) * pnorm(d2)
+            timeValue <- optionValue - intrinsic
+
+            ## calculate put value by put-call parity
+            putValue <- optionValue + input$strike * exp(-input$riskFree * input$maturity) - 1:100
+
+            ## calculate put intrinsic value ----
+            intrinsicPut <- input$strike - 1:100
+            intrinsicPut[intrinsicPut < 0] <- 0
+
+            
+            ## plot ----
+            if(input$type == "1") {
+                
+                plot(intrinsic, main = "Call Option Premium and Intrinsic Value", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, sub = "Black-Scholes value for a European call on a non-dividend paying stock")
+                                        #             axis(1, at = 1:20, labels = yAxis)
+                lines(optionValue, lwd = 4, col = 3)
+                                        #           lines(1:20, durLine, lwd = 5, col = 3)
+                legend('topleft', c("Intrinsic Value", "Option Value", "Time Value"), lty = c(1,1,1), col=c(1,3, "palegreen"), lwd = c(4,4, 15))
+                ##  shade region  ----
+                polygon(c(1:100, rev(1:100)), c(intrinsic, rev(optionValue)), col = "palegreen", border = NA)
+
+            } else {
+                plot(intrinsicPut, main = "Put Option Premium and Intrinsic Value", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, sub = "Black-Sholes value for a European put on a non-dividend paying stock")
+                                        #             axis(1, at = 1:20, labels = yAxis)
+                lines(putValue, lwd = 4, col = 3)
+                                        #           lines(1:20, durLine, lwd = 5, col = 3)
+                legend('topright', c("Intrinsic Value", "Option Value", "Time Value"), lty = c(1,1,1), col=c(1,3, "palegreen"), lwd = c(4,4, 15))
+                ##  shade region  ----
+                polygon(c(1:100, rev(1:100)), c(intrinsicPut, rev(putValue)), col = "palegreen", border = NA)
+                }
+                
+            })#,
+                                        #         tabPanel(title = "Time",
+                                        #                  renderPlot({
+                                        #             intrinsic <- 1:100 - input$strike
+                                        #             intrinsic[intrinsic < 0] <- 0
+                                        # 
+                                        #                          calculate time value by Black-Scholes for all integer stock prices from 1 to 100 ----
+                                        #             d1 <- (log(1:100/input$strike) + (input$riskFree + (input$volatility^2)/2) * input$maturity) / (input$volatility * sqrt(input$maturity))
+                                        #             d2 <- d1 - input$volatility * sqrt(input$maturity)
+                                        #             optionValue <- 1:100 * pnorm(d1) - input$strike * exp(-input$riskFree * input$maturity) * pnorm(d2)
+                                        #             timeValue <- optionValue - intrinsic 
+                                        # 
+                                        #             plot(timeValue, main = "Call Option Price and Intrinsic Value", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4)
+                                        #                  })
+                                        #         )
+        )
+    )
+                                        #                 )
+                                        #)
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Time Value
+
+In the previous chart you can see the time value is greatest for at-the-money options.  Can you guess why?
+
+>+ Very in or out of the money options are not really options.  You are almost certain to not exercise, or exercise, respectively.
+
+>+ An at-the-money option roughly has a 50\% chance of being exercised, and a 50\% chance of not being exercised.  In short, it is where there is the most option in the option. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## European Put Values
+
+We mentioned earlier that put option premiums on European options could be less than the option's intrinsic value.  You can use the previous app to see this.  Can you guess why this is so?  As a hint, set both the time to maturity and risk free rates very low.  Then set them very high and note the difference.
+
+Answer:
+
+>+ Imagine the stock price has fallen to \$0, then of course you would want to immediately exercise it.  The option can never be worth more, and you would rather have your money now than later.  But because it is European, you have to wait until expiration.  By the simple time value of money, the value of the option is the present value of the intrinsic.  As time and the risk free rate increases, the option premium decreases.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+<!---
+## Black-Scholes Value
+-->
+##
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        sliderInput("stock1", label = "Stock Price", max = 100, min = 0, value = 50, step = 1),
+        sliderInput("strike1", label = "Strike Price", max = 100, min = 0, value = 50, step = 1),
+        sliderInput("volatility1", label = "Return Volatility", max = .5, min = 0.01, value = .20, step = .01),
+        sliderInput("maturity1", label = "Years to Maturity", max = 2, min = .1, value = .5, step = .1),
+        sliderInput("riskFree1", label = "Risk Free Rate", max = .2, min = .01, value = .02, step = .01),
+        radioButtons("type1", label = "Option Type", choices = c("Call" = "3", "Put" = "4"), selected = "3")
+        ),
+
+    mainPanel(
+        renderPlot({
+            ## calculate intrinsic value ----
+            intrinsic1 <- input$stock1 - input$strike1
+            intrinsic1[intrinsic1 < 0] <- 0
+
+            ## calculate time value by Black-Scholes for all integer stock1 prices from 1 to 100 ----
+            d11 <- (log(input$stock1/input$strike1) + (input$riskFree1 + (input$volatility1^2)/2) * input$maturity1) / (input$volatility1 * sqrt(input$maturity1))
+            d21 <- d11 - input$volatility1 * sqrt(input$maturity1)
+            optionValue1 <- input$stock1 * pnorm(d11) - input$strike1 * exp(-input$riskFree1 * input$maturity1) * pnorm(d21)
+            putValue <- optionValue1 + input$strike1 * exp(-input$riskFree1 * input$maturity1) - input$stock1
+            timeValue1 <- optionValue1 - intrinsic1 
+
+            if (input$type1 == "3") {
+                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Value of a European Call", sub = "Non-dividend paying stock")
+                text(x = 0.5, y = 0.5, labels = paste("$", round(optionValue1, 2)), cex = 5)
+            } else {
+                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Value of a European Put", sub = "Non-dividend paying stock")
+                text(x = 0.5, y = 0.5, labels = paste("$", round(putValue, 2)), cex = 5)
+            }
+
+        })
+        )
+    )
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Continuing From Here
+
+In the following presentations we'll cover:
+
+- Option spreads, and using options in combination with stock positions.
+- Option Valuation.
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+

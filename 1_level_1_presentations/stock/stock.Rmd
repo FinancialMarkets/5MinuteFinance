@@ -1,0 +1,213 @@
+---
+title: "An Introduction to Stock Investments"
+author: "Matt Brigida: Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "06/02/2015"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
+runtime: shiny
+smaller: true
+---
+
+## Introduction
+
+When you own a company's stock, you have a residual claim on the company's income.
+
+- This means you get whatever is left over after all others are paid. This could be \$0, or a fortune. 
+
+- This is unlike bondholders, who are promised a set payment. 
+
+- Stock also represents ownership, which affords the holder rights such as electing board members, and voting on corporate actions.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Limited Liability
+
+As a stock holder you are not liable for the company's debts.
+
+-  This means if the company goes bankrupt, the unpaid bondholders or other claimants cannot try to get the money from you.
+
+-  Because of limited liability, stock prices cannot fall below \$0.
+
+[graphic:  someone collecting money from the corporation, with a wall between the stock investor and the corporation]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Gains from Ownership
+
+Stockholders may gain from owning stock by receiving dividends, and through price appreciation.
+
+-  Dividends are payments the corporation makes to stockholders using *after-tax* income.  Companies are not obligated to pay dividends.
+
+-  Price appreciation (capital gains) refers to selling stock for a price higher than you bought the stock.  
+
+[graphic: money falling from the sky on stockholder]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Trading Stock
+
+Stock is traded on many exchanges across the US.
+
+-  There are [18 national securities exchanges](http://www.sec.gov/divisions/marketreg/mrexchanges.shtml) registered with the US Securities and Exchange Commission.
+
+- Many of these exchanges are Electronic Communication Networks (ECNs), which are located in a computer server. 
+
+- The best quotes across all exchanges are reported in the "Consolidated Tape", which ensures investors receive the best price across all exchanges when they buy or sell stock.
+
+[graphic:  a bunch of little exchanges feeding data into one main ticker tape]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Stock Quotes
+
+We get stock quotes, like those below, from the consolidated tape.
+
+-  The last trade could have taken place on any exchange. 
+
+-  Input a ticker and get the most recent quote.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(quantmod)
+## library(DT)
+inputPanel(
+    textInput(inputId = "ticker3", label = "Stock Ticker", value = "AAPL")
+    )
+div(renderDataTable({
+    validate(
+        need(input$ticker3 != "", "Input a valid US stock ticker.")
+        )
+
+    getQuote(input$ticker3)
+}), style = "font-size:60%")
+#}}}
+```
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Stock Analysis
+
+Methods to predict future stock performance generally fall into two categories, fundamental and technical analysis.
+
+- Fundamental analysis uses financial statement data to identify companies which are undervalued or are likely to grow.
+
+- Technical analysis uses past prices to predict future prices.
+
+- An interactive chart with some common technical analysis indicators is on the next slide.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+  comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+  comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+  names(comp) <- c("symbol", "name")
+inputPanel(
+    # textInput("ticker1", label = "Stock Ticker", value = "XOM"),
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name),
+    dateInput(inputId = "startDate", label = "Start Date", value = "2014-06-01", min = "2008-01-01"),
+    selectizeInput(inputId = "study", label = "Technical Indicator", choices = list("Bollinger Bands" = 1,
+                                                                  "Moving Average" = 2,
+                                                                  "Directional Movement Index" = 3,
+                                                                  "Relative Strength Index" = 4,
+                                                                  "MACD" = 5), selected = 1)        
+                                        #         ),
+    )
+                                        #               mainPanel(
+renderPlot({
+    library(quantmod)
+    ## valdate tickers ----
+    # validate(
+    #     need(input$ticker1 != "", "Input a valid US stock ticker.")
+    #     )
+    validate(
+        need(input$name != "", "Choose a stock.")
+        )
+  ticker1 <- comp$symbol[comp$name == input$name]
+
+    # stock <- getSymbols(input$ticker1, src = "google", auto.assign = FALSE)
+    stock <- getSymbols(ticker1, src = "google", auto.assign = FALSE)
+    stock <- stock[paste(input$startDate, "/", sep = "")]
+
+    if(input$study == 1){
+        chartSeries(stock, theme = "white", name = ""); addBBands()
+    } else {
+        if(input$study == 2) {
+            chartSeries(stock, theme = "white", name = ""); addSMA()
+        } else {
+            if(input$study == 3) {
+                chartSeries(stock, theme = "white", name = ""); addADX()
+            } else {
+                if(input$study == 4) {
+                    chartSeries(stock, theme = "white", name = ""); addRSI()
+                } else {
+                    chartSeries(stock, theme = "white", name = ""); addMACD()
+                }
+            }
+        }
+    }
+
+})
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Historical Stock Performance
+
+Stock has historically been one of the best performing asset classes [link to relative performance of asset classes presentation].
+
+-  While stock returns have been quite high, stock returns are also volatile.
+
+[graphic: stock plot with high and lows and people wealthy and poor respectively]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## 
+
+In the following interactive app, you can chart stock going as far back as 1950.
+
+- Moving the mouse over the chart at any date will tell you the stock price on that date.
+
+- You can also change the date window using the selector at the bottom.
+
+- You can plot the S&P 500 index by using <code>^GSPC</code> as the ticker.
+
+[graphic: pulling data from the internet]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(quantmod)
+inputPanel(
+    textInput(inputId = "ticker2", label = "Stock Ticker", value = "XOM")
+    )
+renderDygraph({
+    validate(
+        need(input$ticker2 != "", "Input a valid US stock ticker.")
+        )
+    stock2 <- getSymbols(input$ticker2, from = "1900-01-01", auto.assign = FALSE)
+    dygraph(Ad(stock2), main = "") %>%
+        dyRangeSelector()
+})
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## From Here
+
+To learn more about stock investments see the following presentations:
+
+- links
+- to other
+- presentations
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

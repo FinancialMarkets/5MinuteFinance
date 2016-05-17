@@ -1,0 +1,162 @@
+---
+title: "The Function of Stock Markets"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "07/10/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+<!---
+<style>
+.shiny-flow-layout>div {
+width: 100%;
+height: 100%;
+}
+</style>
+-->
+
+## Stock Markets
+
+The goal of stock markets is to facilitate the exchange of ownership of corporations (common stock).  There are *primary* and *secondary* markets.
+
+-  Primary: an exchange of stock in which the company is a buyer or seller.
+-  Secondary:  an exchange of stock in which the company is not involved.
+
+[graphic: people exchanging stock certificates]
+
+##  Secondary Market
+
+This is the market you see every day in the news, and the one we'll cover in this presentation.
+
+-  We care how well the secondary market functions (because we are participants), but do companies care?
+
+>-  Yes! A well-functioning secondary market will mean the company gets higher prices for the stock it sells in the primary market.
+
+## Secondary Markets and Economic Growth
+
+-  The more money a company can raise in the primary market, the more the company can invest in real assets, research and development, and other uses.
+
+-  So well-functioning secondary stock markets lead to higher levels of investment and employment, and faster economic growth.  
+
+
+## Are You Getting the Best Price?
+
+With the same stock trading on many exchanges across the country, how do you ensure you are getting the best price? The SEC gave this a great deal of thought.
+
+[graphic: person in suit thinking] 
+
+## Regulation National Market System (Reg NMS)
+
+Starting in 1975, the SEC began to work on a national market system.   In 2005 much of this work was consolidated into [Reg NMS](https://www.sec.gov/rules/final/34-51808.pdf), which among other things sought to:
+
+-   ensure investors were getting the best price across all exchanges for their purchase or sale of stock (known as the "Order Protection Rule").
+-  provide all investors fair access to price quotations, and to also set a limit on access fees ("Access Rule").
+-  restrict sub-penny quotations.  
+
+<!---
+## Regulation NMS: Criticisms
+
+Reg NMS likely created unintended consequences which 
+-->
+
+
+
+## Information Flow
+
+Because it takes time for information to travel from one exchange to another, orders at one exchange are not instantaneously reflected at another exchange.  
+
+- Exchanges which are closer to each other will tend to have more similar quotes (at the millisecond and microsecond level).
+
+-  This means we can see exchanges as a set of linked groups, where each group has a similar information content. 
+
+
+## Exchange Network
+
+- In the next app, you can see the exchanges grouped by how similar their quotes will be to other exchanges (based on distance to the other exchange).  
+  
+- The two exchange groups are light blue for the New Jersey area, and dark blue for the CME (where S&P 500 futures are traded) and Chicago Stock Exchange.
+
+-  The lines linking the exchanges represent paths of information flow. The longer the line between two exchanges, the longer it takes for information to be exchanged.
+
+-  Each exchange is identified by its [Market Identifier Code](https://en.wikipedia.org/wiki/Market_Identifier_Code).  The listing of codes and exchanges is on slides 25 and 26.
+
+## Information Generation
+  
+- The orange nodes represent where a great deal of information, which affects stock prices, is generated.  These are Manhattan (NYC) and Washington D.C. (where the Federal Open Market Committee (FOMC) releases its statements on monetary policy).
+
+-  The closer an exchange is to where the information is generated, the faster it will incorporate that information into prices.
+
+-  Feel free to move the nodes around to get a better look.
+
+-  Placing the cursor over a node will show its name. 
+
+## Grouped by Information Similarity
+<!--- should we add freely floating nodes for dark pools -->
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(networkD3)
+
+renderForceNetwork({
+
+    name <- c("XCME", "XCHI", "BATS", "BATY", "XNYS", "ARCX", "XASE", "XNMS","XPHL", "XBOS", "EDGA", "EDGX", "XISE", "GMNI", "XMIO", "Washington DC (FOMC)", "Manhattan, NYC")
+    group <- c(rep(1, 2), rep(2, 13), 3, 3)
+    size <- c(50, rep(5, 14), 50, 50)
+    MisNodes <- data.frame(cbind(name, group, size), stringsAsFactors = F)
+    names(MisNodes) <- c("name", "group", "size")
+
+    source <- c(0, 0,  0, 15, sample(2:14), sample(2:14), sample(2:14), sample(2:14), 16)
+    target <- c(1, 5, 15,  4, sample(2:14), sample(2:14), sample(2:14), sample(2:14), 2)
+    value <- 3 * c(.1, 3,  4,  2, rep(0.1, 14), rep(0.1, 14), rep(0.1, 14), rep(0.1, 14), 0.1)
+    MisLinks <- data.frame(cbind(source, target, value), stringsAsFactors = F)
+    names(MisLinks) <- c("source", "target", "value")
+
+### works with data set provided 
+    ## data(MisLinks)
+    ## data(MisNodes)
+
+### original links
+    ## source <- c("CME", "CME", "BATS", "CME", "BATS", "NYSE")
+    ## target <- c("BATS", "CSX", "NYSE", "NYSE","NASDAQ", "NASDAQ")
+
+    forceNetwork(Links = MisLinks, Nodes = MisNodes,
+                 Source = "source", Target = "target",
+                 Value = "value", NodeID = "name",
+                 Group = "group", Nodesize = "size", opacity = 0.8,
+                 linkDistance = JS("function(d){return d.value * 80}"),
+                 width = '800px', height = '600px'
+                 ## linkDistance = c(5, 1, 5, 1, 1, 1)
+                 )
+})
+#}}}
+```
+
+
+## MIC Code: Exchange Name
+
+-  BATY: BATS BYX Exchange
+-  BATS: BATS BZX Exchange
+-  XCME: Chicago Mercantile Exchange
+-  XCHI: Chicago Stock Exchange
+-  EDGA: EDGA Exchange
+-  EDGX: EDGX Exchange
+-  XNYS: New York Stock Exchange
+-  ARCX: NYSE Arca
+-  XASE: NYSE MKT
+-  XNMS: NASDAQ
+
+##
+
+-  XPHL: NASDAQ OMX PHLX
+-  XBOS: NASDAQ OMX BX
+-  XISX: ISE
+-  GMNI: ISE Gemini
+-  XMIO: Miami SE
+
+##
+
+[end of presentation graphic]
+
+

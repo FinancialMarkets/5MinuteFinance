@@ -1,0 +1,35 @@
+* Notes from Blinder book: for Fed Independence Presentation
+
+** Central bank independence means:
+1. "freedom to decide how to pursue its goals"
+2. its decicions are hard for another brank of the goverment to reverse
+
+*** 1 means **instrument** independence and not **goal** independence. Legislators decide the goal(s).  
+
+** Fed goals
+1.  maximum employment
+2.  stable prices
+Note these are somewhat vague, which in effect grants more power to the Fed. 
+
+** Irreversibility 
+FOMC decisions are immune from reversal (they could only be reversed if Congress passes a law which the President signs).
+
+| Category | Legislators                      | Central Bank     | Markets                  |
+|----------+----------------------------------+------------------+--------------------------|
+| Controls | Fiscal Policy (Taxes and Budget) | Money Supply     | Price Setting            |
+| MP       | Determins Goals                  | Implements Goals | Reacts to Implementation |
+|          |                                  |                  |                          |
+
+
+** Why must the Fed be independent??
+
+MP requires long time horizons. Disinflationary policy (or keeping inflation low) incurs an up-front cost and pays back later.  
+Politicians (and the media and public) are not patient. 
+*** of course fiscal policy also requires a long time horizon -- and this is controlled by congress.
+
+** Empirical Evidence
+
+Shows support for the conclusion that greater independence leads to lower inflation (controlling for the rate of economic growth).
+
+** Independence from Markets
+

@@ -1,0 +1,340 @@
+---
+title: "Intro to Bond Valuation [very preliminary]"
+author: "Matt Brigida: Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "03/25/2016"
+output: ioslides_presentation
+runtime: shiny
+logo: misq.png
+css: 5min_mod.css
+smaller: true
+---
+
+## Bonds
+
+The value of a bond is the present value of the discounted expected cash flows.  So to value the bond we'll need information on the cash flows and discount rate.  This information is summarized in the:
+
+- Coupon rate
+- Par (or face) value
+- Years to maturity
+- Payment period (usually semiannual)
+- Yield-to-Maturity ($YTM$)
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Cash Flow Structure
+
+Given the previous information we know the cash flow structure and the rate at which to discount the cash flows.  For example, say a bond has a 5% coupon rate, a \$1000 par value, has 10 years to maturity, payments are annual, and lastly has a 8% $YTM$.
+
+- Then the bond will pay $0.05(\$1000) = \$50$ every year for 10 years, with an additional \$1000 in year 10.  In other words the cash flows are \$50 in years 1 through 9, and \$1050 in year 10.
+
+- The present value of these cash flows at the $YTM$ (the value of the bond $B_0$) is:
+$B_0 = \sum_{i=1}^10\frac{50}{1.08^i} + \frac{1000}{1.08^{10}} = \$798.69$
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Example Continued
+
+- This is often calculated using the present value of an ordinary annuity formula: $B_0 = \$50\left(\frac{1-\frac{1}{1.08^{10}}}{.08}\right) + \frac{\$1000}{1.08^{10}} = \$798.69$
+
+- The two calculations are equivalent.  The former is more popular if used in a spreadsheet.  The latter was mainly taught because people were doing these calculations by calculator.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Semiannual Interest
+
+Most coupon bonds pay semiannual interest.  Rates are always quoted annually however.  So what this means is that the period of the bond is 6 months, and the coupon rate per period is $\frac{5\%}{2} = 2.5\%$ and the $YTM$ is $\frac{8\%}{2} = 4\%$.
+
+- The value of the bond is then: $B_0 = \sum_{i=1}^{20}\frac{\$25}{1.04^i} + \frac{\$1000}{1.04^{20}} = \$796.14$
+
+- It is important to discount the \$1000 at 4\% over 20 periods, and not at 8\% over 10 periods.  This is because the effective rate is 4\% semiannually, which is not equal to 8\% annually (see the time-value-of-money presentation).
+
+- Food for thought: The bond value in the semiannual case was lower than in the annual.  Is this always the case? See the last slide for the answer.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Bond Valuation Interactive App
+
+The next slide contains an app which will allow you to value different coupon bonds.  Try to value them in a spreadsheet (or whatever software you choose) and check your answer with the app.
+
+- You can also use the app to see how the bond's value is affected by changes in its inputs.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Bond Valuation Interactive App
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        sliderInput("ytm", label = "Yield to Maturity", max = .2, min = 0.01, value = .05, step = .01),
+        sliderInput("coupon", label = "Coupon Rate", max = .2, min = 0, value = .05, step = .01),
+        sliderInput("maturity", label = "Years to Maturity", max = 50, min = 1, value = 10),
+        radioButtons("period", "Payment Period", choices = c("Annual" = "1", "Semiannual" = "2"), selected = "1")
+        ),
+
+    mainPanel(
+
+        renderPlot({
+
+            bondValue <- 0
+            ytmAxis <- seq(0.01, .2, by = .01)
+
+
+            ## cash_flows <- 0
+            ## for (i in 1:input$maturity){
+            ##     cash_flows[i] <- 
+            ##         (input$coupon * 1000) }
+
+            ## cash_flows[length(cash_flows)] <- cash_flows[length(cash_flows)] + 1000 
+            ## pvCashFlows <- cash_flows / (1 + input$ytm)^(1:input$maturity)
+
+### Bond Calculation: includes semiannual case which is not used ----   
+            if (input$period == 1) {
+                ## for (i in seq_along(ytmAxis)){
+                    bondValue <- (input$coupon * 1000) * ((1 - 1 / (1 + input$ytm)^(input$maturity)) / input$ytm) + 1000 / (1 + input$ytm)^(input$maturity) #}
+            }    else {
+                ## for (i in seq_along(input$ytm)){
+                    bondValue <- (input$coupon * (1000 / 2)) * ((1 - 1 / (1 + (input$ytm / 2))^(input$maturity * 2)) / (input$ytm / 2)) + 1000 / (1 + (input$ytm / 2))^(input$maturity * 2)
+                ## }
+            }
+
+            plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+            text(x = 0.5, y = 0.5, labels = paste("$", round(bondValue, 2)), cex = 5)
+
+        })
+        )
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## ### find on x-axis where ytm equals the input ytm -----
+##             index <- seq_along(seq(0.01, .2, by = .01))[round(input$ytm,2) == round(ytmAxis, 2)]
+
+## ### Calculate Duration and Modified Duration ----
+##             Duration <- 1:input$maturity %*% (pvCashFlows / bondValue[index])
+##             modDur <- -1 * Duration / (1 + input$ytm)
+
+##             durLine <- bondValue[index] * (1 + (modDur * (ytmAxis - input$ytm)))
+
+##             yAxis <- c("0.01", "", "", "", "0.05", "", "", "", "", "0.10", "", "", "", "", "0.15", "", "", "", "", "0.20")
+
+##             plot(1:20, bondValue, xaxt = "n", main = "Bond Price versus Yield to Maturity", ylab = "Bond Price ($)", xlab = "Yield to Maturity", type = "n", lwd = 4)
+##             axis(1, at = 1:20, labels = yAxis)
+##             lines(1:20, bondValue, lwd = 4)
+##             lines(1:20, durLine, lwd = 5, col = 3)
+##             legend('topright', c("Bond Price", "Duration Approximation of the Bond Price ", "Duration Error Region (Convexity)"), lty = c(1,1,1,1), col=c(1,3, "grey80"), lwd = c(5,5, 15))
+## ### attempting to shade region between the two lines [not working] ----
+##             polygon(c(1:20, rev(1:20)), c(bondValue, rev(durLine)), col = "grey80", border = NA)
+            
+##         })
+##         )
+##     )
+
+
+
+
+
+
+
+### ols stock app ----
+## sidebarLayout(
+##     sidebarPanel(    
+##         ## inputPanel(
+##         selectInput("type", label = "Select Dividend Growth Type", choices = c("No Growth" = "no",
+##                                                                    "Constant Growth" = "c",
+##                                                                    "Irregular Growth" = "ig")),
+##         conditionalPanel(
+##             condition = "input.type == 'no'",
+##             numericInput("dr1", "Discount Rate", value = 0.05, step = .01),
+##             numericInput("div1", "Next Year's Dividend", value = 3)
+##             ),
+##         conditionalPanel(
+##             condition = "input.type == 'c'",
+##             numericInput("dr2", "Discount Rate", value = 0.05, step = .01),
+##             numericInput("g2", "Dividend Growth Rate", value = 0.03, step = .01),
+##             numericInput("div2", "Next Year's Dividend", value = 3)
+##             ),
+##         conditionalPanel(
+##             condition = "input.type == 'ig'",
+##             numericInput("year3", "Number of Years of No Dividend (N)", value = 10, min = 0),
+##             numericInput("dr3", "Discount Rate", value = 0.05, step = .01),
+##             numericInput("g3", "Dividend Growth Rate", value = 0.03, step = .01),
+##             numericInput("div3", "Dividend in Year (N + 1)", value = 3)
+##             )
+##         ),
+##     mainPanel(
+##         renderPlot({
+##             if(input$type == "no"){
+##                 V <- input$div1/input$dr1
+##                 if (input$div1 < 0 | input$dr1 <= 0) {
+##                     plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+##                     text(x = 0.5, y = 0.5, labels = paste("Undefined"), cex = 5)
+##                 } else {
+##                     plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+##                     text(x = 0.5, y = 0.5, labels = paste("$", round(V, 2)), cex = 5)
+##                 }
+##             } else {
+##                 if(input$type == "c"){
+##                     if (input$div2 < 0 | input$dr2 <= 0 | input$g2 < 0) {
+##                         plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+##                         text(x = 0.5, y = 0.5, labels = paste("Undefined"), cex = 5)
+##                     } else {
+##                         if (input$g2 >= input$dr2){
+##                             plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+##                             text(x = 0.5, y = 0.5, labels = paste("Undefined"), cex = 5)
+##                         } else {
+
+##                             V <- input$div2 / (input$dr2 - input$g2)
+##                             plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+##                             text(x = 0.5, y = 0.5, labels = paste("$", round(V, 2)), cex = 5)
+##                         }
+##                     }
+##                 } else {
+##                     if (input$g3 >= input$dr3){
+##                         plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+##                         text(x = 0.5, y = 0.5, labels = paste("Undefined"), cex = 5)
+##                     } else {
+##                         if (input$div3 < 0 | input$dr3 <= 0 | input$g3 < 0 | input$year3 < 0) {
+##                             plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+##                             text(x = 0.5, y = 0.5, labels = paste("Undefined"), cex = 5)
+##                         } else {
+##                             V <- input$div3 / (input$dr3 - input$g3)
+##                             V <- V / (1 + input$dr3)^input$year3
+##                             plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+##                             text(x = 0.5, y = 0.5, labels = paste("$", round(V, 2)), cex = 5)
+##                         }
+##                     }
+##                 }
+##             }
+##         })
+##         )
+##     )
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The $YTM$
+
+The $YTM$ is the single discount rate for which the present value of all the bond's future cash flows equals the bond's market price.
+
+- Equivalently, we can define the $YTM$ as the internal rate of return on the bond ($IRR$).
+
+-  This means you can find the $YTM$ using a spreadsheet by setting the bond price as a cash outflow, and the bond's cash flows as inflows, and then use the $=IRR()$ function.
+
+The $YTM$ is an annual quoted rate, which means it is the rate per period multiplied by the number of periods in a year.  So if you calculate the $IRR$ of a bond with semiannual payments, you must multiply it by $2$ to get the $YTM$.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## $YTM$ Interactive App
+
+You can practice calculating the $YTM$, and check your answers with the app on the following slide.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Calculating the $YTM$
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        sliderInput("bondPrice", label = "The Bond's Price", max = 2000, min = 1, value = 1000, step = 10),
+        sliderInput("coupon1", label = "Coupon Rate", max = .2, min = 0, value = .05, step = .01),
+        sliderInput("maturity1", label = "Years to Maturity", max = 50, min = 1, value = 10),
+        radioButtons("period1", "Payment Period", choices = c("Annual" = "1", "Semiannual" = "2"), selected = "1")
+        ),
+
+    mainPanel(
+
+        renderPlot({
+
+            bondValue <- 0
+            ytmAxis <- seq(0.01, .2, by = .01)
+            CFs <- 0
+
+            if (input$period1 == 1) {
+                CFs <- input$coupon1 * 1000 * rep(1, input$maturity1)
+                CFs[length(CFs)] <- CFs[length(CFs)] + 1000
+            } else {
+                CFs <- (input$coupon1 * 1000 * rep(1, (2 * input$maturity1))) / 2
+                CFs[length(CFs)] <- CFs[length(CFs)] + 1000
+            }
+
+            ytmRoot <- function(ytmR){
+                aa <- input$bondPrice
+                bb <- CFs
+                min <- abs(sum(bb / (1+ytmR)^{1:length(CFs)}) - aa)
+                return(min)
+                }
+
+            ytmResult <- optim(.05, ytmRoot, method = "Brent", lower = -1, upper = 2)$par
+
+            if (input$period1 == 1) {
+                ytmResult <- ytmResult
+            } else {
+                ytmResult <- ytmResult * 2
+            }
+            
+            plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+            text(x = 0.5, y = 0.5, labels = paste((100 * round(ytmResult, 4)), "%"), cex = 5)
+
+        })
+        )
+    )
+
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Do We Always Earn the $YTM$?
+
+One misconception about bonds is that if you buy a bond with a 9\% $YTM$, and hold the bond to maturity, that so long as the bond doesn't default you will earn 9\% per year.
+
+- This is *only* true for zero coupon bonds.
+
+- For coupon bonds, in the $YTM$ calculation it is assumed you can *reinvest* coupon payments at the $YTM$.  In reality, you will reinvest at whatever the rate is when you receive the coupon payment. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## A Note on $YTM$ [remove?]
+
+To get the value of a bond we discount each cash flow at the $YTM$.  However to get the $YTM$ we set the discounted cash flows equal to the market price, and solve for the discount rate ($YTM$).  This, of course, is circular.
+
+- The $YTM$ is really a way to quote the bond's return, so you can compare it with others.  This is done because the bond's price is not that informative.
+
+- Two ten year US Treasury notes will have the same $YTM$, but can have vastly different prices. A 10 year note issued yesterday will trade near \$1000 because its $YTM$ is very close to its coupon.  A 30-year Treasury bond issued 20 years ago (at a say 18\% coupon) is now a 10 year Treasury note with a price based on its $YTM$ and coupon rate differential. The bond's will have different prices, but the same $YTM$.      
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Semiannual vs Annual Values
+
+-  If the bond is trading at a discount ($YTM$ above the coupon rate), then switching from annual to semiannual wil lower the value of the bond.
+
+-  However, if the bond is trading at a premium ($YTM$ below the coupon rate), then switching from annual to semiannual will raise the value of the bond.
+
+The reason is due to compounding.  When we switch from annual to semiannual we are now compounding the rate---and compounding has a larger effect on higher rates.  So it has a larger effect on the $YTM$ or coupon, depending on which is higher.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+

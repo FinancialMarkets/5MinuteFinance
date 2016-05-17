@@ -1,0 +1,32 @@
+---
+title: "What is an Option?"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute, Center for Financial Markets"
+date: "03/12/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+## What is an Option
+
+
+
+## Example of an Option
+
+
+
+## Buying and Selling
+
+ 
+
+## Value of Options 
+
+
+
+## App
+
+
+##
+
+[end of presentation graphic]

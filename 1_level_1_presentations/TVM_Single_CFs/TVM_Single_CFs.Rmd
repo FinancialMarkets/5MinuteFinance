@@ -1,0 +1,192 @@
+---
+title: "The Time Value of Money: Single Cash Flows"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "06/02/2015"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
+runtime: shiny
+smaller: true
+---
+
+## The Time Value of Money
+
+A dollar today is worth more than a dollar you'll receive in a year. This is because of inflation, and the uncertainty regarding actually receiving the promised dollar.  
+
+[graphic: person looking with uncertainty at a dollar a year away on a timeline]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Mechanics
+
+In this interactive presentation, we'll cover the mechanics of moving a single cash flow anywhere in time.
+
+[graphic: person with magic wand moving a set of dollars]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## A General Approach
+
+Say we have \$1 today, and we can invest this dollar *every year* at 7\% per year.  
+
+- Then at the end of 1 year we'll have $\$1(1 + 0.07) = \$1.07$
+- At the end of two years we'll have $\$1.07(1 + 0.07) = \$1(1.07)(1.07) = \$1(1.07^2) = \$1.1449$
+- At the end of 3 years we'll have $\$1.1449(1.07) = \$1(1.07^3) = \$1.2250$
+- ...
+- At the end of *n* years ...
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The General Formula 
+
+Proceeding this way for *n* periods (here a period is a year) we can see the future value (*FV*) of some amount of money today (denote this as *PV*) at time *n* is:
+
+-  $FV = PV(1 + r)^n$
+
+-  Where we assume we can reinvest our money ever year at *r*.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Interactive App
+
+The following app will calculate the future value of \$1 for every year up to the maximum year you select.  You can also select the interest rate per year.  
+
+[graphic: someone using an interactive app]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Future Value
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(
+	   sliderInput("rate", label = "Annual Interest Rate", min = -.05, max =0.5, step = .01, value = .05),
+	   sliderInput("years", label = "Number of Years", min = 1, max =50, step = 1, value = 10)
+	   #            sliderInput("pv", label = "Present Value", min = 1, max =50, step = 1, value = 10),
+	   )
+
+renderPlot({
+  fv <- (1 + input$rate)^{1:input$years}
+  fv <- c(1, fv)
+  plot(fv, type = 'l', lwd = 3, col = 3, ylab = "$", xlab = "Years")
+  legend("topleft", "Future Value of $1", col = 3, lwd = 3, lty = 1)
+})
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+<!-- ## The Effect of Compounding 
+add an app which shows the future value broken into simple and compound interest? 
+
+
+-->
+
+
+## Rearranging the Formula
+
+So now that we have the general formula which describes how a single cash flow moves through time:
+
+- $FV = PV(1 + r)^n$
+ 
+We can now use this to solve for the *PV*, *r*, and *n*.
+
+[graphic: a bunch of equations on a chalkboard with a crazy haired mathematician.]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Present Value
+
+We can solve the formula to find the present value: 
+
+- $PV = \frac{FV}{(1+r)^n}$
+
+- This shows that the present value decreases if the interest rate increases.  This relationship is very important in asset pricing.
+
+[graphic: a timeline with dividends every year, and lines with "Present Value" on them back to time 0.  At time 0 is a stock certificate.]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Present Value
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(
+	   sliderInput("rate1", label = "Annual Interest Rate", min = -.05, max =0.5, step = .01, value = .05),
+	   sliderInput("years1", label = "Number of Years to Discount", min = 1, max =50, step = 1, value = 10)
+	   )
+
+renderPlot({
+  pv <- 1 / ((1 + input$rate1)^{1:input$years1})
+  pv <- c(1, pv)
+  plot(pv, type = 'l', lwd = 3, col = 3, ylab = "$", xlab = "# Years Discounted")
+  legend("bottomleft", "Present Value of $1", col = 3, lwd = 3, lty = 1)
+})
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Interest Rate
+
+Solving our equation for the interest rate we have: 
+
+- $r = \sqrt[n]{\frac{FV}{PV}} - 1$
+
+- Note, if you increase the future value, holding *PV* and *n* constant, then the interest rate must rise.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Number of Periods
+
+Lastly, solving for the number of periods yields: 
+
+- $n = \frac{ln\left(\frac{FV}{PV}\right)}{ln\left(1+r\right)}$
+
+- Notice, as the interest rate increases, the number of periods it takes for some *PV* to equal some *FV* decreases.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Interactive App
+
+[Should we put a calculator which will return *FV*, *PV*, *r*, and *n* given the other inputs?]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+<!---
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+# inputPanel(
+#            sliderInput("corr", label = "Stock Correlation", min = -1, max =1, step = 1, value = 1)
+#            )
+# 
+# renderPlot({
+#   par(mfrow = c(2,1), mai = c(.1,.8,.3,.1))
+#   x <- seq(0, 2 * pi, by = .01)
+#   plot(0.25 * sin(x), type = 'l', lwd = 2, col = 3, ylab = "Asset Return", ylim = c(-.3, .3), xlab = "", xaxt = 'n')
+# legend("topright", c("Stock 1", "Stock 2"), col = c(3, 4), lwd = c(2,2), lty = c(1,2))
+# 
+#   y <- 0
+#   if (input$corr == -1){
+#     lines(-0.25 * sin(x), type = 'l', lwd = 2, col = 4, lty = 2)
+#   } else {
+#     if (input$corr == 0){
+#       lines(0.25 * cos(x), type = 'l', lwd = 2, col = 4, lty = 2)
+#     } else {
+#       lines(0.25 * sin(x), type = 'l', lwd = 2, col = 4, lty = 2)
+#     }
+#   }
+# 
+#   if (input$corr == -1){
+#     plot(0 * sin(x), ylim = c(-.3, .3), ylab = "Port. Return", type  = 'l', lwd = 2, xaxt = 'n', xlab = "Time")
+#   } else {
+#     if (input$corr == 0){
+#       plot(0.5 * 0.25 * sin(x), ylim = c(-.3, .3), ylab = "Port. Return", type  = 'l', lwd = 2, xaxt = 'n', xlab = "Time")
+#     } else {
+#       plot(0.25 * sin(x), ylim = c(-.3, .3), ylab = "Port. Return", type  = 'l', lwd = 2, xaxt = 'n', xlab = "Time")
+#     }
+#   } 
+#   })
+#}}}
+```
+-->

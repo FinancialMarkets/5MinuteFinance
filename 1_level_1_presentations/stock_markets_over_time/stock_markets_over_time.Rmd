@@ -1,0 +1,304 @@
+---
+title: "Stock Markets: Past and Present"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "07/10/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+<!---
+<style>
+.shiny-flow-layout>div {
+width: 100%;
+height: 100%;
+}
+</style>
+-->
+
+## Stock Markets
+
+The goal of stock markets is to facilitate the exchange of ownership of corporations (common stock).  There are *primary* and *secondary* markets.
+
+-  Primary: an exchange of stock in which the company is a buyer or seller.
+-  Secondary:  an exchange of stock in which the company is not involved.
+
+[graphic: people exchanging stock certificates]
+
+##  Secondary Market
+
+This is the market you see every day in the news, and the one we'll cover in this presentation.
+
+-  We care how well the secondary market functions (because we are participants), but do companies care?
+
+>-  Yes! A well-functioning secondary market will mean the company gets higher prices for the stock it sells in the primary market.
+
+## Secondary Markets and Economic Growth
+
+-  The more money a company can raise in the primary market, the more the company can invest in real assets, research and development, and other uses.
+
+-  So well-functioning secondary stock markets lead to higher levels of investment and employment, and faster economic growth.  
+
+## The Market Participants
+
+The market is comprised of the market makers, and those wishing to exchange stock.
+
+-  A market maker, at all times, posts prices at which they are willing to buy (the bid) or sell (the offer or ask).
+
+-  Those wishing to trade stock could be trading for themselves, or on behalf of another (in which case they are acting as a broker).
+
+-  The U.S. Securities and Exchange Commission regulates stock markets.  
+
+## A Physical Location
+
+Until recently, the market was a physical place.  It was the place that the market maker stood.  
+
+-  Brokers and traders who wanted to trade, say GE, would congregate around GE's market maker.
+
+-  The New York Stock Exchange famously started under a buttonwood tree outside 68 Wall Street.  
+
+[graphic:  traders congregating around a central market maker -- under a tree] 
+
+## Where were the Markets?
+
+A stock often traded on many exchanges around the US.
+
+-  For example, historically IBM traded on the NYSE, and also on minor regional exchanges.
+-  Central reporting of quotes and trades on each exchange was done through the [consolidated tape system](http://www.sec.gov/answers/consolt.htm) implemented in 1976.
+
+[graphic: traders holding order tickets in different parts of the country]
+
+
+
+## What is an Exchange Today?
+
+An exchange is a data center which houses computer servers which runs an order matching engine. A good description of an order matching system is provided by the [Chicago Stock Exchange](http://www.chx.com/trading-information/matching-system/).
+
+- The order matching engine is an algorithm which handles orders according to a set of rules.  Some rules are exchange specific, and some rules are the same across all exchanges. 
+
+- In essence the matching engine receives orders, maintains a ranking of orders according to a set of rules, and looks at whether it can fill the order within the NBBO.  If it cannot it doesn't execute the order.
+
+## Present Exchange Participants
+
+There are still market makers, brokers, and investors in today's markets.
+
+-  What has changed is where they communicate, and many of the rules by which they trade (such as order type and who gets to trade first).
+
+-  Moving to purely electronic communication has also greatly increased the speed with which market participants can trade.
+
+[graphic: order book with incoming order, 1s and 0s in background]
+
+## Where are the Markets Today
+
+There are presently [18 national securities exchanges](http://www.sec.gov/divisions/marketreg/mrexchanges.shtml) registered with the SEC.
+
+-  They are primarily located in New Jersey and Chicago.
+
+-  In the past there were main and regional markets.  However the 18 present exchanges are much more equal when it comes to trading volume.
+
+## Market Location Interactive Map
+
+-  The following map shows locations of the exchanges -- note this is the location of the servers, and not the corporate headquarters.   
+
+-  You can zoom in to see more detail. 
+  
+## Exchanges
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(leaflet)
+library(maps)
+
+renderLeaflet({
+    mapStates = map("state", fill = TRUE, plot = FALSE)
+
+    content1 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nasdaq.com'>NASDAQ</a></b>",
+                      "Stock",
+                      "Carteret, NJ")
+    content2 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.batstrading.com'>BATS</a></b>",
+                      "Stock",
+                      "Weehawken, NJ")
+    content3 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.cme.com'>CME</a></b>",
+                      "Stock Index and Other Derivatives",
+                      "Aurora, IL")
+    content4 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.cme.com'>Chicago Stock Exch.</a></b>",
+                      "Stock",
+                      "Chicago, IL")
+    content5 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>NYSE MKT LLC</a></b>",
+                      "Stock",
+                      "Mahwah, NJ")
+    content6 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>NYSE LLC</a></b>",
+                      "Stock",
+                      "Mahwah, NJ")
+    content7 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>NYSE Arca Inc.</a></b>",
+                      "Stock",
+                      "Mahwah, NJ")
+    content8 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>EDGA Exch. Inc.</a></b>",
+                      "Stock",
+                      "Seacaucas, NJ")
+    content9 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>EDGX Exch. Inc.</a></b>",
+                      "Stock",
+                      "Seacaucas, NJ")
+    content10 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>Box Options Exch. LLC</a></b>",
+                      "Stock",
+                      "Seacaucas, NJ")
+    content11 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>ISE LLC</a></b>",
+                      "Stock",
+                      "Seacaucas, NJ")
+    content12 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>ISE Gemini LLC</a></b>",
+                      "Stock",
+                      "Seacaucas, NJ")
+    content13 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>Miami Intl. Securities Exch.</a></b>",
+                      "Stock",
+                      "Princeton, NJ")
+    content14 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nasdaq.com'>NASDAQ OMX BX</a></b>",
+                      "Stock",
+                      "Carteret, NJ")
+    content15 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nasdaq.com'>NASDAQ OMX PHLX</a></b>",
+                      "Stock",
+                      "Carteret, NJ")
+
+
+
+    leaflet(data = mapStates) %>% addTiles() %>%
+        addPolygons(fillColor = topo.colors(10, alpha = NULL), stroke = FALSE) %>%
+            addPopups(-74.2233075, 40.5917557, content1,
+                      options = popupOptions(closeButton = FALSE)) %>%
+                addPopups(-74.0208313, 40.7680423, content2,
+                          options = popupOptions(closeButton = FALSE)) %>%
+                    addPopups(-88.3067189, 41.7509724, content3,
+                              options = popupOptions(closeButton = FALSE)) %>%
+                        addPopups(-87.7321554, 41.8337329, content4,
+                                  options = popupOptions(closeButton = FALSE)) %>%
+                            addPopups(-74.176363, 41.0780147, content5,
+                                      options = popupOptions(closeButton = FALSE)) %>%
+                                addPopups(-74.171400, 41.0786200, content6,
+                                          options = popupOptions(closeButton = FALSE)) %>%
+                                    addPopups(-74.179363, 41.0790147, content7,
+                                              options = popupOptions(closeButton = FALSE)) %>%
+                                        addPopups(-74.0635047,40.7815342 , content8,
+                                                  options = popupOptions(closeButton = FALSE)) %>%
+                                            addPopups(-74.0639047,40.7812342, content9,
+                                                      options = popupOptions(closeButton = FALSE)) %>%
+                                                ## addPopups(-74.0630047,40.7839342, content10,
+                                                ##           options = popupOptions(closeButton = FALSE)) %>%
+                                                    addPopups(-74.0640047,40.7845342, content11,
+                                                              options = popupOptions(closeButton = FALSE)) %>%
+                                                        addPopups(-74.0645047,40.7849342, content12,
+                                                                  options = popupOptions(closeButton = FALSE)) %>%
+                                                            addPopups(-74.638525, 40.3606794, content13,
+                                                                      options = popupOptions(closeButton = FALSE)) %>%
+                                                                addPopups(-74.2239075, 40.5927557, content14,
+                                                                          options = popupOptions(closeButton = FALSE)) %>%
+                                                                    addPopups(-74.2231075, 40.5937557, content15,
+                                                                              options = popupOptions(closeButton = FALSE))
+
+
+})
+#}}}
+```
+
+
+## Exchange Network
+
+- In the next app, you can see the exchanges grouped by how similar their quotes will be to other exchanges (based on distance to the other exchange).  
+  
+- The two exchange groups are light blue for the New Jersey area, and dark blue for the CME (where S&P 500 futures are traded) and Chicago Stock Exchange.
+
+-  The lines linking the exchanges represent paths of information flow. The longer the line between two exchanges, the longer it takes for information to be exchanged.
+
+-  Each exchange is identified by its [Market Identifier Code](https://en.wikipedia.org/wiki/Market_Identifier_Code).  The listing of codes and exchanges is on slides 25 and 26.
+
+## Information Generation
+  
+- The orange nodes represent where a great deal of information, which affects stock prices, is generated.  These are Manhattan (NYC) and Washington D.C. (where the Federal Open Market Committee (FOMC) releases its statements on monetary policy).
+
+-  The closer an exchange is to where the information is generated, the faster it will incorporate that information into prices.
+
+-  Feel free to move the nodes around to get a better look.
+
+-  Placing the cursor over a node will show its name. 
+
+## Grouped by Information Similarity
+<!--- should we add freely floating nodes for dark pools -->
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(networkD3)
+
+renderForceNetwork({
+
+    name <- c("XCME", "XCHI", "BATS", "BATY", "XNYS", "ARCX", "XASE", "XNMS","XPHL", "XBOS", "EDGA", "EDGX", "XISE", "GMNI", "XMIO", "Washington DC (FOMC)", "Manhattan, NYC")
+    group <- c(rep(1, 2), rep(2, 13), 3, 3)
+    size <- c(50, rep(5, 14), 50, 50)
+    MisNodes <- data.frame(cbind(name, group, size), stringsAsFactors = F)
+    names(MisNodes) <- c("name", "group", "size")
+
+    source <- c(0, 0,  0, 15, sample(2:14), sample(2:14), sample(2:14), sample(2:14), 16)
+    target <- c(1, 5, 15,  4, sample(2:14), sample(2:14), sample(2:14), sample(2:14), 2)
+    value <- 3 * c(.1, 3,  4,  2, rep(0.1, 14), rep(0.1, 14), rep(0.1, 14), rep(0.1, 14), 0.1)
+    MisLinks <- data.frame(cbind(source, target, value), stringsAsFactors = F)
+    names(MisLinks) <- c("source", "target", "value")
+
+### works with data set provided 
+    ## data(MisLinks)
+    ## data(MisNodes)
+
+### original links
+    ## source <- c("CME", "CME", "BATS", "CME", "BATS", "NYSE")
+    ## target <- c("BATS", "CSX", "NYSE", "NYSE","NASDAQ", "NASDAQ")
+
+    forceNetwork(Links = MisLinks, Nodes = MisNodes,
+                 Source = "source", Target = "target",
+                 Value = "value", NodeID = "name",
+                 Group = "group", Nodesize = "size", opacity = 0.8,
+                 linkDistance = JS("function(d){return d.value * 80}"),
+                 width = '800px', height = '600px'
+                 ## linkDistance = c(5, 1, 5, 1, 1, 1)
+                 )
+})
+#}}}
+```
+
+## MIC Code: Exchange Name
+
+-  BATY: BATS BYX Exchange
+-  BATS: BATS BZX Exchange
+-  XCME: Chicago Mercantile Exchange
+-  XCHI: Chicago Stock Exchange
+-  EDGA: EDGA Exchange
+-  EDGX: EDGX Exchange
+-  XNYS: New York Stock Exchange
+-  ARCX: NYSE Arca
+-  XASE: NYSE MKT
+-  XNMS: NASDAQ
+
+##
+
+-  XPHL: NASDAQ OMX PHLX
+-  XBOS: NASDAQ OMX BX
+-  XISX: ISE
+-  GMNI: ISE Gemini
+-  XMIO: Miami SE
+
+##
+
+[end of presentation graphic]
+
+

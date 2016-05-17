@@ -1,0 +1,77 @@
+---
+title: "The Time Value of Money: Multiple Cash Flows"
+author: "Matt Brigida: Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "06/02/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+## Introduction
+
+In this interactive presentation we'll cover the most widely used investment decision rules: Net Present Value (NPV) and Internal Rate of Return (IRR).
+
+- These rules are used to decide whether to invest in a project or asset.
+
+
+
+
+## Future Value
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(
+	   sliderInput("rate", label = "Annual Interest Rate", min = -.05, max =0.5, step = .01, value = .05),
+	   sliderInput("years", label = "Number of Years", min = 1, max =50, step = 1, value = 10)
+	   #            sliderInput("pv", label = "Present Value", min = 1, max =50, step = 1, value = 10),
+	   )
+
+renderPlot({
+  fv <- (1 + input$rate)^{1:input$years}
+  fv <- c(1, fv)
+  plot(fv, type = 'l', lwd = 3, col = 3, ylab = "$", xlab = "Years")
+  legend("topleft", "Future Value of $1", col = 3, lwd = 3, lty = 1)
+})
+#}}}
+```
+
+
+[Should we put a calculator which will return *FV*, *PV*, *r*, and *n* given the other inputs?]
+
+<!---
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+# inputPanel(
+#            sliderInput("corr", label = "Stock Correlation", min = -1, max =1, step = 1, value = 1)
+#            )
+# 
+# renderPlot({
+#   par(mfrow = c(2,1), mai = c(.1,.8,.3,.1))
+#   x <- seq(0, 2 * pi, by = .01)
+#   plot(0.25 * sin(x), type = 'l', lwd = 2, col = 3, ylab = "Asset Return", ylim = c(-.3, .3), xlab = "", xaxt = 'n')
+# legend("topright", c("Stock 1", "Stock 2"), col = c(3, 4), lwd = c(2,2), lty = c(1,2))
+# 
+#   y <- 0
+#   if (input$corr == -1){
+#     lines(-0.25 * sin(x), type = 'l', lwd = 2, col = 4, lty = 2)
+#   } else {
+#     if (input$corr == 0){
+#       lines(0.25 * cos(x), type = 'l', lwd = 2, col = 4, lty = 2)
+#     } else {
+#       lines(0.25 * sin(x), type = 'l', lwd = 2, col = 4, lty = 2)
+#     }
+#   }
+# 
+#   if (input$corr == -1){
+#     plot(0 * sin(x), ylim = c(-.3, .3), ylab = "Port. Return", type  = 'l', lwd = 2, xaxt = 'n', xlab = "Time")
+#   } else {
+#     if (input$corr == 0){
+#       plot(0.5 * 0.25 * sin(x), ylim = c(-.3, .3), ylab = "Port. Return", type  = 'l', lwd = 2, xaxt = 'n', xlab = "Time")
+#     } else {
+#       plot(0.25 * sin(x), ylim = c(-.3, .3), ylab = "Port. Return", type  = 'l', lwd = 2, xaxt = 'n', xlab = "Time")
+#     }
+#   } 
+#   })
+#}}}
+```
+-->

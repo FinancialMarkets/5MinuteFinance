@@ -1,0 +1,120 @@
+---
+title: "Machine Learning with Applications to Finance"
+author: "Milken Institute, CFM"
+date: "October 31, 2015"
+output: ioslides_presentation
+logo: misq.png
+css: 5min.css
+runtime: shiny
+smaller: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Why is Machine Learning Popular Now?
+
+These methods often require large amounts of data, and significant computing resources, to use.
+
+We now have sufficient data and computing power to make use of these methods.
+
+## Given Sufficient Data, Use Machine Learning if
+
+-  No analytical solution is available.
+
+-  Available analytical solutions make strong assumptions.
+
+
+## The Pros and Cons
+
+<!--- insert table of the pros and cons of machine learning -->
+
+Modeling (Analytical Solution) | Machine Learning |
+-------------|--------|
+Exact solution given assumptions | Estimate of relationship; Few assumptions |
+Inflexible, limited by math | Flexible |
+Provides intuition and understanding | Provides no insight into underlying causes |
+Long development period | Rapid solutions |
+Done by specialists in the field | Done by anyone understanding machine learning |
+
+
+
+
+## The World when Black-Scholes was Created
+
+
+## So Does Machine Learning Render Black-Scholes Irrelevant?
+
+## 
+
+```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+#{{{
+## Load libraries -----
+library(nnet)
+library(RSNNS)
+library(caret)
+
+inputPanel(
+    sliderInput("percent", "Percent of Sample Used for Training", min = .02, max = .2, value = .05, step = .001),
+    ## radioButtons("nnMethod", "Neural Net Method:", choices = c("NNet" = "nnnet",
+    ##                                                            "RNSNNS" = "rnsees"),
+    ##              width = "800px") #correct these
+    sliderInput("hidden", "Number of Nodes in Hidden Layer", min = 1, max = 10, value = 5, step = 1)
+)
+
+mainPanel(plotOutput("thePlot", width = "100%"))
+seed.val <- 1234
+
+output$thePlot <- renderPlot({
+
+## Load and format data -----
+
+MLdata <- read.csv(file = "MLdata_with_BS.csv", header = TRUE)
+MLdata <- MLdata[-c(1:3),]
+
+inputFull <- MLdata[-c(1:3),4:8]
+respFull <- MLdata[-c(1:3),3]
+dataFull <- data.frame(respFull, inputFull)
+
+
+## separate into training and evaluation sets ----
+numTrainObs <- floor(input$percent * dim(dataFull)[1])
+## training set 
+datTrain <- dataFull[1:numTrainObs, ]
+inputTrain <- datTrain[, 2:6]
+respTrain <- datTrain[, 1]
+dataTrain <- data.frame(respTrain, inputTrain)
+## eval set
+datEval <- dataFull[(numTrainObs + 1):dim(dataFull)[1], ]
+inputEval <- datEval[, 2:6]
+
+## Actual option, and Black-Scholes, values to compare to evaluation predictions ----
+respEval <- datEval[, 1]
+BS <- MLdata$Black.Scholes[(numTrainObs + 1):dim(dataFull)[1]]
+
+## 
+                                        # nnet function from nnet package
+set.seed(seed.val)
+mod1 <- nnet(inputTrain, respTrain, size=input$hidden, linout=T) #data=datTrain, initial size = 10
+
+## predict based on mod1
+
+predictions <- predict(mod1, inputEval) 
+
+predError <- abs(predictions - respEval)
+BSError <- abs(BS - respEval)
+
+## plot
+plot(BSError, type = 'p', col = 'blue', main = "nnet Neural Net Model vs Black-Scholes: Out of Sample Test", ylab = "Valuation Error")
+lines(predError, type = 'p', col = "green")
+    legend('topright', legend = c(paste("Black-Scholes Error (Avg. $", round(mean(BSError), 2), ")", sep = ""), paste("ANN Error (Avg. $", round(mean(predError), 2), ")", sep = "")), col = c("blue", "green"), pch = c(1,1))
+    abline(h = mean(BSError), col = 'blue')
+    abline(h = mean(predError), col = 'green')
+    
+    ## result looks good
+}, height = 450, width = 700)
+#}}}
+```
+
+## More Slides

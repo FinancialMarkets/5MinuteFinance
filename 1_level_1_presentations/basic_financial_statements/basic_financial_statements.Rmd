@@ -1,0 +1,128 @@
+---
+title: "An Intro to Financial Statements"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "06/02/2015"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
+runtime: shiny
+smaller: true
+---
+
+## Financial Statements
+
+Financial statements are the main way in which a company communicates its performance to the market.
+
+-  Audited statements are often required by bond and stock investors.
+
+-  Financial statements are a major source of information for financial decisions.  
+
+[graphic: information transmitted to an investor]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Statements
+
+The most important financial statements are:
+
+1.  The Balance Sheet
+
+2.  The Income Statement
+
+3. The Cash Flow Statement  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Balance Sheet
+
+The balance sheet is a snapshot of the assets a firm owns, and how they are financed.
+
+- Since every asset must be claimed by either stock or bond holders, we have $Assets = Liabilities + Stockholders'\ Equity$. 
+
+[graphic:  a scale with "A" on one side and "L+SE" on the other. The scale should be balanced.]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Income Statement
+
+The income statement measures a firm's performance over some period of time.
+
+-  If the balance sheet is a snapshot (picture) then the income statement is like a video recording.
+
+-  Roughly, the income statement looks like: $Revenue - Expenses = Income$.  
+
+[graphic: person taking a video]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Cash Flow Statement 
+
+The cash flow statement is a combination of balance sheet and income statement.
+
+-  The statement captures how the changes in both balance sheet and income affects cash and cash equivalents.
+
+-  There are three portions to the cash flow statement: Operating, Investing, and Financing activities.  
+
+[graphic: money falling from the sky]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Interactive App
+
+In the following interactive app you can query the balance sheet and income statement for any stock trading on US exchanges.
+
+-  You can then search for any item using the search box.  As you type it will return all items which match your input.
+-  You can also page through the statement in order with the page number on the bottom right.
+
+[graphic: someone at a desk with a computer pulling data from the internet]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Interactive App
+
+For example, search for Tesla's (TSLA) financial statements.  
+
+- Place the cursor in the 'Stock's Name' box and hit backspace.  Type 'tesl' and you should see Tesla's common stock.  Hit 'Enter'.  
+
+- On the income statement search for Operating Income and Net Income --- you only have to type "oper" and "net" and you should be able to see each.  Note both are negative.
+
+- Then on the balance sheet search for Long-term Debt. You only have to type "long" and you should see it.  Note TSLA borrowed about \$1.3 billion in 2014.  
+
+- Usually firms with positive Operating Income borrow heavily --- so they can reduce taxes through the interest tax shield.  TSLA, however, is choosing to finance its expansion with debt rather than equity.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(DT)
+library(quantmod)
+  comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+  comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+  names(comp) <- c("symbol", "name")
+inputPanel(
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name),
+    selectizeInput("statement", label = "Financial Statement", choices = list("Balance Sheet" = 1, "Income Statement" = 2), selected = 2, width = '800px')
+    )
+DT::renderDataTable({
+    ## valdate name ----
+    validate(
+        need(input$name != "", "Select a US stock name.")
+        )
+ticker <- comp$symbol[comp$name == input$name]
+                    
+    f1 <- getFinancials(ticker, src = "google", auto.assign = FALSE)
+    is1 <- viewFin(f1, type = "IS")
+    bs1 <- viewFin(f1, type = "BS")
+    if(input$statement == 1){
+        DT::datatable(bs1, options = list(pageLength = 5))
+    } else {
+        DT::datatable(is1, options = list(pageLength = 5))
+        }
+})
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

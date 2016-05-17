@@ -1,0 +1,274 @@
+---
+title: "Risk in Treasury Debt"
+author: "Milken Institute, CFM"
+date: "October 31, 2015"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
+runtime: shiny
+smaller: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Goal of the Presentation
+
+To understand the amount of risk in the US's outstanding Treasury debt, particularly relative to historical levels.
+
+- The result is useful in understanding the risk in the US banking system.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Major Holders of US Treasury Debt
+
+```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+#{{{
+### chart yield data from FRED ----
+library(quantmod)
+library(dygraphs)
+library(shiny)
+tabsetPanel(
+    tabPanel("Percent of Total", dygraphOutput("percentPlot")),
+    tabPanel("In US Dollars", dygraphOutput("dollarsPlot"))
+, type = "tabs", position = "above")                     
+# inputPanel(
+# 	   textInput("ticker", label = "Stock Ticker", value = "COP"),
+# 	   dateRangeInput("dateRange", label = "Start Date", start = "2015-01-01", end = Sys.Date())
+## radioButtons("statement", label = "Financial Statement", choices = list("Balance Sheet" = 1, "Income Statement" = 2), selected = 2)
+# )
+options(download.file.method = "curl")
+output$percentPlot <- renderDygraph({
+    total <- getSymbols("GFDEBTN", src = "FRED", auto.assign = F) / 1000
+    fed <- getSymbols("FDHBFRBN", src = "FRED", auto.assign = F)
+    foreign <- getSymbols("FDHBFIN", src = "FRED", auto.assign = F)
+    agencies <- getSymbols("FDHBATN", src = "FRED", auto.assign = F) / 1000
+    
+  
+    allSeries <- merge.xts(total, fed, foreign, agencies, join = "inner")
+    names(allSeries) <- c("Total", "Fed", "Foreign", "Agencies")
+    other <- allSeries$Total - allSeries$Fed - allSeries$Foreign - allSeries$Agencies
+    allSeries <- merge.xts(allSeries, other, join = "inner")
+    names(allSeries)[5] <- "Other"
+    ## convert to percents ----
+    percentSeries <- apply(allSeries, 2, function(x){x / as.vector(allSeries[,1])})
+    ## remove total
+    percentSeries <- percentSeries[,-1]
+
+    dygraph(percentSeries) %>%
+        dyOptions(stackedGraph = TRUE) %>%
+        dyRangeSelector()
+
+})
+
+output$dollarsPlot <- renderDygraph({
+    total <- getSymbols("GFDEBTN", src = "FRED", auto.assign = F) / 1000
+    fed <- getSymbols("FDHBFRBN", src = "FRED", auto.assign = F)
+    foreign <- getSymbols("FDHBFIN", src = "FRED", auto.assign = F)
+    agencies <- getSymbols("FDHBATN", src = "FRED", auto.assign = F) / 1000
+    
+  
+    allSeries <- merge.xts(total, fed, foreign, agencies, join = "inner")
+    names(allSeries) <- c("Total", "Fed", "Foreign", "Agencies")
+    other <- allSeries$Total - allSeries$Fed - allSeries$Foreign - allSeries$Agencies
+    allSeries <- merge.xts(allSeries, other, join = "inner")
+    names(allSeries)[5] <- "Other"
+    ## remove total
+    allSeries <- allSeries[,-1] / 1000
+
+    dygraph(allSeries, ylab = "$ Trillions") %>%
+        dyOptions(stackedGraph = TRUE) %>%
+        dyRangeSelector()
+
+})
+#}}}
+```
+
+<!--- maybe get good data here from Bloomberg
+data from FRED
+foreign holders: FDHBFIN
+-->
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Determinants of Bond Risk
+
+A Bond is generally more risky the:
+
+1. lower the bond's yield.
+2. lower the bond's coupon rate.
+3. longer the bond's time to maturity.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Treasury Yields have Declined 
+
+```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+#{{{
+### chart yield data from FRED ----
+library(quantmod)
+library(dygraphs)
+# inputPanel(
+# 	   textInput("ticker", label = "Stock Ticker", value = "COP"),
+# 	   dateRangeInput("dateRange", label = "Start Date", start = "2015-01-01", end = Sys.Date())
+## radioButtons("statement", label = "Financial Statement", choices = list("Balance Sheet" = 1, "Income Statement" = 2), selected = 2)
+# )
+renderDygraph({
+  oneMonth <- getSymbols("GS1M", src = "FRED", auto.assign = F)
+  threeMonth <- getSymbols("GS3M", src = "FRED", auto.assign = F)
+  sixMonth <- getSymbols("GS6M", src = "FRED", auto.assign = F)
+  oneYear <- getSymbols("GS1", src = "FRED", auto.assign = F)
+  twoYear <- getSymbols("GS2", src = "FRED", auto.assign = F)
+  threeYear <- getSymbols("GS3", src = "FRED", auto.assign = F)
+  fiveYear <- getSymbols("GS5", src = "FRED", auto.assign = F)
+  sevenYear <- getSymbols("GS7", src = "FRED", auto.assign = F)
+  tenYear <- getSymbols("GS10", src = "FRED", auto.assign = F)
+  twentyYear <- getSymbols("GS20", src = "FRED", auto.assign = F)
+  thirtyYear <- getSymbols("GS30", src = "FRED", auto.assign = F)
+
+yields <- merge.xts(oneMonth, threeMonth, sixMonth, oneYear, twoYear, threeYear, fiveYear, sevenYear, tenYear, twentyYear, thirtyYear, join = "outer")
+
+names(yields) <- c("1-Month", "3-Month", "6-Month", "1-Year", "2-Year", "3-Year", "5-Year", "7-Year", "10-Year", "20-Year", "30-Year")
+
+dygraph(yields) %>%
+  dyRangeSelector()
+
+})
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Coupons on Outstanding Treasuries have Declined over Time
+
+New Treasury bonds are issued at a rate reflecting present market yields.
+
+-  So, as yields have delined, so have coupon rates on newly issued Treasuries.
+
+<!--- get data from Bloomberg? -->
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Length of Time to Maturity on Outstanding Debt is Unchanged since 2000
+
+```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+library(dygraphs)
+library(reshape)
+library(xts)
+renderDygraph({
+    realAvgMaturity <- read.csv(file = "therealAverageMaturity.csv", header = TRUE, stringsAsFactors = FALSE )
+    melted <- melt(realAvgMaturity, id.vars = "year")
+    dates <- paste(as.character(melted[,2]), "01", melted[,1], sep = " ")
+    dates <- strptime(dates, format = "%b %d %Y")
+    realAvgMat <- as.xts(melted[,3], order.by = dates)
+    names(realAvgMat) <- "Average Maturity of Outstanding Marketable Treasury Securities (in Months)"
+    dygraph(realAvgMat)
+
+})
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Outstanding Debt by Time to Maturity
+
+```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+#{{{
+library(dplyr)
+library(dygraphs)
+library(quantmod)
+renderDygraph({
+    ## this is misnamed: it is amount (%) with specified maturities.
+avgMat <- read.csv("average_maturity2.csv", header = TRUE, stringsAsFactors = FALSE)
+time <- strptime(paste(avgMat$year, avgMat$month, 1, sep = " "), format = "%Y %B %d")
+avgMat <- avgMat[,-c(1,2)]
+avgMat <- cbind(time, avgMat)
+avgMat <- as.xts(avgMat[,-1], order.by = avgMat$time)
+avgMatPer <- avgMat[, c(3,5,7,9,11)]
+dygraph(avgMatPer) %>%
+dyOptions(stacked = TRUE)
+})
+#}}}
+```
+<!--- get data from Bloomberg -->
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Treasury Bonds Today
+
+[Here are historical average rates back to 2001 from the US Treasury](https://www.treasurydirect.gov/govt/rates/pd/avg/avg.htm)
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Risk in 2015 is Higher than in 198X
+
+<!--- given data above, calculate the effect of a 1\% increase (parallel shift) in yields).
+maybe have an app that lets you choose the year and estimates the losses generated by a 1\% increase in yields
+-->
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Treasury and Agency Debt held by Commercial Banks as a Proportion of GDP
+
+```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+#{{{
+### chart yield data from FRED ----
+library(quantmod)
+library(dygraphs)
+
+renderDygraph({
+  treasuryAgencyAtCommBanks <- getSymbols("USGSEC", src = "FRED", auto.assign = F)
+  quarterlyAACB <- Cl(to.quarterly(treasuryAgencyAtCommBanks))
+  gdp <- getSymbols("GDP", src = "FRED", auto.assign = F)
+  quarterlyGDP <- Cl(to.quarterly(gdp))
+
+appData <- merge.xts(quarterlyAACB, quarterlyGDP, join = "inner")
+
+debtOverGDP <- appData[,1] / appData[,2]
+names(debtOverGDP) <- "Debt Over GDP"
+
+dygraph(debtOverGDP) %>%
+  dyRangeSelector()
+
+})
+#}}}
+```
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<!---But are commercial banks holding less than before: what does (debt held by banks / total debt) look like? -->
+
+<!---
+Total Debt, quarterly: GFDEBTN
+Other stuff here:  https://research.stlouisfed.org/fred2/search?st=Treasury+Debt
+
+-->
+
+## What Does this Mean?  
+
+Note risk is assuming a parallel shift along the curve.
+
+Rates won't rise at all points of the yield curve, so this will lessen the impact of a FOMC increase.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<!--- maybe dont include below 
+## Risk Increases in Lower Yields 
+
+Consider a 10 year treasury note with a 5\% coupon.
+
+-  If the bond's yield is 8\% and it increases to 8.25\%, then the bond's price will decline by 1.83\%. 
+
+-  If the bond's yield is 1\% and it increases to 1.25\%, then the bond's price will decline by 2.05\%. 
+
+If the differential seems small, keep in mind it is \$2.2 billion difference on \$1 trillion in debt. 
+
+## Risk Increases in Lower Coupons
+
+Consider a 10 year treasury note with an increase in yield from 2\% to 3\%.
+
+-  If the bond's coupon is 10\%, then the bond's price will decline by \%. 
+
+-  If the bond's coupon is 1\%, then the bond's price will decline by \%. 
+
+-->

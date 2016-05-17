@@ -1,0 +1,354 @@
+---
+title: "The Basis and Cross Hedging in Energy Futures Markets"
+author: "Matt Brigida"
+date: "05/12/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+## Futures and Forwards
+
+Futures and forwards both allow for purchase or sale of a commodity at a set price at a set time.  
+
+Forwards: 
+
+- May be customized in terms of size, delivery date, and delivery location.
+
+- Counterparty risk, no margin required.
+
+Futures:
+
+- Standardized forwards.
+
+- Cleared on exchange, requires margin.
+
+Standardization leads to greater volume of trading. 
+
+## Hedging with Futures
+
+Say we will produce a barrel of oil in 1 month. The price of oil today is \$70/bbl at our delivery location.
+
+- Our risk is that the price of oil will fall over the month (we are naturally long crude oil).
+
+- So we sell barrel of oil one month forward (take a short position in a futures contract).  
+
+- This guarantees *today* the price we will receive for our oil in one month.
+
+## The Basis
+
+The hedge is never perfect, however. Consider that in our crude oil example we may not be able to enter into a contract for the same:  
+
+- delivery point. 
+
+- delivery date. 
+
+This creates a difference between the price of oil in the forward contract we are using to hedge, and the spot price of a barrel of oil we are hedging.  
+
+- This difference is called 'the basis'.  
+
+- The risk that the prices diverge is called 'basis risk'. 
+
+
+## Basis Risk: Prices by Futures Maturity
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache = FALSE}
+#{{{
+library(EIAdata)
+library(quantmod)
+library(dygraphs)
+## library(metricsgraphics)
+
+inputPanel(    
+      selectInput("symb1", label = "Commodity", 
+		 choices = list("NYMEX Crude Oil" = 1 ,
+			       	"Natural Gas" = 2,
+			       	"Heating Oil (No. 2)" = 3,
+			       	"RBOB Gasoline" = 4),
+# 			       	"Propane (Tx)" = 5),
+		selected = 1)#,  
+    
+      ## dateRangeInput("dates", 
+      ##   "Date range",
+      ##   start = "2014-01-01", 
+      ##   end = as.character(Sys.Date()))
+)
+
+renderDygraph({
+## renderMetricsgraphics({
+    key <- source("./key/key")$value  
+
+    ticker1 <- switch(input$symb1,
+                      "1" = c("PET.RCLC1.W","PET.RCLC2.W","PET.RCLC3.W","PET.RCLC4.W"),
+		      "2" = c("NG.RNGC1.W","NG.RNGC2.W","NG.RNGC3.W","NG.RNGC4.W"),
+		      "3" = c("PET.EER_EPD2F_PE1_Y35NY_DPG.W", "PET.EER_EPD2F_PE2_Y35NY_DPG.W","PET.EER_EPD2F_PE3_Y35NY_DPG.W","PET.EER_EPD2F_PE4_Y35NY_DPG.W"),
+		      "4" = c("PET.EER_EPMRR_PE1_Y35NY_DPG.W",
+                      "PET.EER_EPMRR_PE2_Y35NY_DPG.W","PET.EER_EPMRR_PE3_Y35NY_DPG.W","PET.EER_EPMRR_PE4_Y35NY_DPG.W")#, 
+                                        #           "5" = c("PET.EER_EPLLPA_PE1_Y44MB_DPG.W","PET.EER_EPLLPA_PE2_Y44MB_DPG.W","PET.EER_EPLLPA_PE3_Y44MB_DPG.W","PET.EER_EPLLPA_PE4_Y44MB_DPG.W")
+                      )
+
+    fut1 <- getEIA(ticker1[1], key = key)
+    fut2 <- getEIA(ticker1[2], key = key)
+    fut3 <- getEIA(ticker1[3], key = key)
+    fut4 <- getEIA(ticker1[4], key = key)
+
+    ## commented because no longer working, error cannot open the connection ----
+    ## fut1 <- fut1[paste(input$dates[1], "/", input$dates[2], sep = "")]
+    ## fut2 <- fut2[paste(input$dates[1], "/", input$dates[2], sep = "")]
+    ## fut3 <- fut3[paste(input$dates[1], "/", input$dates[2], sep = "")]
+    ## fut4 <- fut4[paste(input$dates[1], "/", input$dates[2], sep = "")]
+
+    ## futurezz <- data.frame(cbind(index(fut1), fut1, fut2, fut3, fut4))
+    ## names(futurezz) <- c("date", "X", "Y", "Z", "W")
+    ## time = index(fut1),
+    ## X = fut1,
+    ## Y = fut2,
+    ## Z = fut3,
+    ## W = fut4)
+
+    ## futurezz %>%
+    ##     mjs_plot(x=futurezz[,1], y=futurezz[,2]) %>%
+    ##         mjs_line() %>%
+    ##             mjs_add_line(Y) %>%
+    ##                 mjs_add_line(Z) %>%
+    ##                     mjs_add_line(W) %>%
+    ##                         mjs_axis_x(xax_format="date") %>%
+    ##                             mjs_add_legend(legend=c("X", "Y", "Z", "W"))
+    futs <- merge.xts(fut1, fut2, fut3, fut4, join = 'inner')
+    names(futs) <- c("1-Month", "2-Month", "3-Month", "4-Month")
+    dygraph(futs) %>%
+        dyRangeSelector() %>%
+            dyHighlight(highlightCircleSize = 5, 
+              highlightSeriesBackgroundAlpha = 0.2,
+              hideOnMouseOut = FALSE)
+    ##   plot(fut1, main = "Futures Prices", ylab = "$")
+    ##   lines(fut2, col=2)
+    ##   lines(fut3, col=3)
+    ##   lines(fut4, col=4)
+    ## legend('topright', c("Front month", "2 months", "3 months", "4 months"), lty = c(1,1,1,1), col=c(1,2,3,4))
+})
+#}}}
+```
+
+## Closing Out the Hedge
+
+If we won't deliver the crude to fulfill the contract, due to differing delivery points and dates, then we must:
+
+- Buy the forward contract back prior to expiration.
+
+- Deliver on the spot market.  
+
+## The Basis: Example 1
+
+So the spot price today ($S_0$) is \$68.  Say the price today of a barrel of oil one month forward ($F_{0,1}$) is \$70.  Then we define the basis as:
+
+$basis\ =\ spot\ price\ of\ asset\ -\ futures\ price\ of\ asset$
+       $= -\$2$  
+
+Say when we close out the contract in one month, by buying the contract back, the forward price ($F_1$) is \$65 and the spot price ($S_1$) is \$50 (a basis of -\$15). 
+
+- Our effective selling price is: $S_1 - \Delta F = \$50 + \$5 = \$55$
+
+
+## The Basis: More Examples
+
+Say, $S_0 = \$70$, $F_{0,1} = \$68$, $S_1 = \$65$, and $F_1 = \$63$.  
+
+- Our effective selling price is: $S_1 - \Delta F = \$65 + \$3 = \$68$
+
+- Our basis went from \$2 to \$2.  
+
+
+Say, $S_0 = \$70$, $F_{0,1} = \$68$, $S_1 = \$68$, and $F_1 = \$60$.  
+
+- Our effective selling price is: $S_1 - \Delta F = \$68 + \$8 = \$76$
+
+- Our basis went from \$2 to \$8.  
+
+
+## Basis Risk
+
+From the above we see our basis risk is caused by the spot price decreasing by more than the forward price.
+
+- If we are purchasing futures at time 0 as a hedge, then our risk is the inverse. 
+
+## Cross Hedging
+
+Now, say we will deliver 1000 gallons of kerosene to a delivery point in Oregon.   
+
+- Given a lack of liquidity in kerosene futures and forward contract, you may be forced to hedge kerosene with another more liquid futures contract.  
+
+-  Likely candidates with heavily traded futures are: RBOB Gasoline (ticker: RB), Heating Oil (HO), Crude Oil (CL). 
+
+Hedging an asset with a similar (through not the same) asset is referred to as cross hedging.    
+
+## Basis Risk in Cross Hedging
+
+Now our basis risk is driven by different:
+
+- Commodity types (hedging kerosene with RBOB)
+- Delivery points (Gulf coast vs Oregon)
+- Delivery dates
+
+## Choosing Amounts to Hedge
+
+If we are to hedge 1000 gallons of kerosene with, say, gasoline, then should we sell 1000 gallons of gasoline?
+
+- What if gasoline price changes are twice as volatile as kerosene price changes?  Then with a correlation of 1, every time kerosene increases by \$1 then gasoline will increase by \$2.  
+
+- In this case it would make sense to sell 500 gallons of gasoline to hedge 1000 gallons of kerosene. 
+
+- What if the correlation is only 0.5?  Then we should hedge with even less gasoline because it is not as good of a hedge.  
+
+So we need a way to find the hedge ratio ($h$) which is the ratio of the futures position size to the size of the commodity we want to hedge.  In our case the size of the gasoline futures position divided by the size of our kerosene exposure.  
+
+## Optimal Hedge Ratio
+
+A common way to choose the optimal hedge ratio ($h$) is to find the $h$ which minimizes the risk in the hedged position. Risk is measured as the variance.   
+
+- In our case where we are naturally long the commodity and are short futures, the change in the value of out hedged position is $\Delta S - h \Delta F$ where $h$ is the hedge ratio.  
+
+- To minimize this we can use unconstrained optimization from basic calculus.
+
+## Derivation
+
+$Var(\Delta S - h \Delta F) = \sigma_S^2 - 2h\rho \sigma_S \sigma_F + h^2\sigma_F^2$
+
+$\frac{dVar(\Delta S - h \Delta F)}{dh} = 2h\sigma_F^2 - 2\rho \sigma_S \sigma_F$
+
+Setting this equal to zero and solving for $h$ we have:
+
+$h = \rho \frac{\sigma_S}{\sigma_F}$
+
+## Interpretation
+
+An optimal hedge ratio of 0.8 means we sell 8 gallons of gasoline futures for every 10 gallons of kerosene we wish to hedge.  
+
+In the next slide try and interpret the optimal hedge ratios.  Be careful of the units of each contract (for example CL is in \$/bbl).
+
+## Optimal Hedge Ratios
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache = FALSE}
+#{{{
+library(EIAdata)
+library(quantmod)
+
+## inputPanel(
+
+    ## dateRangeInput("dates1", 
+    ##                    "Date range",
+    ##                    start = "2014-01-01", 
+    ##                    end = Sys.Date())
+    ## )
+
+renderDataTable({
+    
+    key <- source("./key/key")$value  
+
+    oil <- c("PET.RCLC1.W","PET.RCLC2.W","PET.RCLC3.W","PET.RCLC4.W")
+    ## "2" = c("NG.RNGC1.W","NG.RNGC2.W","NG.RNGC3.W","NG.RNGC4.W"),
+    ho <- c("PET.EER_EPD2F_PE1_Y35NY_DPG.W", "PET.EER_EPD2F_PE2_Y35NY_DPG.W","PET.EER_EPD2F_PE3_Y35NY_DPG.W","PET.EER_EPD2F_PE4_Y35NY_DPG.W")
+    rb <- c("PET.EER_EPMRR_PE1_Y35NY_DPG.W", "PET.EER_EPMRR_PE2_Y35NY_DPG.W","PET.EER_EPMRR_PE3_Y35NY_DPG.W","PET.EER_EPMRR_PE4_Y35NY_DPG.W") 
+    pro <- c("PET.EER_EPLLPA_PE1_Y44MB_DPG.W","PET.EER_EPLLPA_PE2_Y44MB_DPG.W","PET.EER_EPLLPA_PE3_Y44MB_DPG.W","PET.EER_EPLLPA_PE4_Y44MB_DPG.W")
+
+    ## get futures
+    oil1 <- getEIA(oil[1], key = key)
+    ho1 <- getEIA(ho[1], key = key)
+    rb1 <- getEIA(rb[1], key = key)
+    
+    ## get spot kerosene 
+    ker <- getEIA("PET.EER_EPJK_PF4_RGC_DPG.W", key = key)
+
+    ## commented because no longer working -- error cannot open the connection
+    
+    ## oil1 <- oil1[paste(input$dates1[1], "/", input$dates1[2], sep = "")]
+    ## ho1  <- ho1[paste(input$dates1[1], "/", input$dates1[2], sep = "")]
+    ## rb1  <- rb1[paste(input$dates1[1], "/", input$dates1[2], sep = "")]
+    ## ker <- ker[paste(input$dates1[1], "/", input$dates1[2], sep = "")]
+
+    oil1 <- oil1[paste("2010-01-01/", Sys.Date(), sep = "")]
+    ho1  <- ho1[paste("2010-01-01/", Sys.Date(), sep = "")]
+    rb1  <- rb1[paste("2010-01-01/", Sys.Date(), sep = "")]
+    ker <- ker[paste("2010-01-01/", Sys.Date(), sep = "")]
+    
+    ## convert to price changes ----
+
+    oil1 <- diff(oil1)[-1]
+    ho1  <- diff(ho1)[-1]
+    rb1  <- diff(rb1)[-1]
+    ker  <- diff(ker)[-1]
+
+    ## calculation of parameters and optimal hedge ratio ----
+
+    oilSD <- sd(oil1)[1]
+    hoSD <- sd(ho1)[1]
+    rbSD <- sd(rb1)[1]
+    kerSD <- sd(ker)[1]
+
+    SD <- cbind(oilSD, hoSD, rbSD)
+    SD <- as.vector(SD)
+    SD <- round(SD, digits = 2)
+
+    corOK <- cor(oil1, ker)[1]
+    corHK <- cor(ho1, ker)[1]
+    corRK <- cor(rb1, ker)[1]
+
+    correl <- c(corOK, corHK, corRK)
+    correl <- round(correl, digits = 2)
+    
+    hedOK <- (corOK * kerSD) / oilSD
+    hedHK <- (corHK * kerSD) / hoSD
+    hedRK <- (corRK * kerSD) / rbSD
+
+    hed <- c(hedOK, hedHK, hedRK)
+    hed <- round(hed, digits = 2)
+
+    ## construct data frame ----
+
+    rows <- c("CL", "HO", "RB")
+
+    df <- data.frame(cbind(rows, SD, correl, hed), stringsAsFactors = F)
+    names(df) <- c("Commodity", "St. Dev.", "Correlation", "Optimal Hedge Ratio")
+    
+    df
+
+
+})
+#}}}
+```
+
+## Intuition
+
+The next slide will calculate the optimal hedge ratio given the standard deviation of spot and futures price changes, and the correlation coefficient.  Try and predict what effect a given change in the input will have on the optimal hedge ratio, and then make the change.  For example:
+
+- If you increase the standard deviation of the futures price changes, what will happen to the optimal hedge ratio?  
+- If you decrease the correlation coefficient, what will happen to the optimal hedge ratio?  
+
+
+## Optimal Hedge Ratio Calculator
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+	      sidebarPanel(
+
+	   sliderInput("spotSD", "Standard Deviation of Spot Changes", min = .01, max = 1, value = 0.1, step = .05),
+	   sliderInput("futSD", "Standard Deviation of Futures Changes", min = .01, max = 1, value = 0.1, step = .05),
+	   sliderInput("correl", "Correlation Coefficient", min = -1, max = 1, value = 0.7, step = .01)
+
+ 
+	   ),
+	      mainPanel(
+
+renderPlot({
+  ohr <- (input$correl * input$spotSD) / input$futSD
+
+  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+  text(x = 0.5, y = 0.5, labels = paste(round(ohr, 2)), cex = 5)
+
+
+})
+)
+	      )
+#}}}
+```

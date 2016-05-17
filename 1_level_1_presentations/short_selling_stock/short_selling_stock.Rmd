@@ -1,0 +1,215 @@
+---
+title: "Short Selling Stock"
+author: "Matt Brigida: Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "06/02/2015"
+output: ioslides_presentation
+runtime: shiny
+logo: misq.png
+css: 5min_mod.css
+smaller: true
+---
+
+## Why Short Stock?
+
+By shorting stock we profit when the stock price declines.
+
+[graphic: stock chart tanking and a person holding money and happy]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Other Reasons
+
+Shorting stock is also used by banks to hedge put options they have sold, and other derivative positions.
+
+[graphic: not sure]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## So How Does It Work?
+
+To short a share of stock, you borrow the stock from someone (say Bob) and sell it to someone else (say Sandra).  Say you sold it to Sandra for \$100.  The cash balance in your account will increase by \$100, and you will hold a -1 position in the stock.  
+
+-  Eventually, you'll have to return the stock to Bob to close our your short position.
+
+-  To return the stock to Bob, you'll go to the market and buy a share.  You can buy it from anyone, not just Sandra.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Example Profit/Loss
+
+Say the stock is trading in the market for \$80 when you decide to close the position.
+
+-  To close the postion, you buy the stock for \$80 and return it to Bob.
+
+-  After the transaction you are left with a profit of \$100 - \$80 = \$20.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Example Profit/Loss
+
+Alternatievly, say the stock is trading in the market for \$110 when you decide to close the position.
+
+-  To close the postion, you buy the stock for \$110 and return it to Bob.
+
+-  So you sold the stock for \$100, and bought it for \$110, for a loss of \$10.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##  Interactive App
+
+On the next slide you can input the amount of shares you want to short, and the prices at which you open and close the short position.
+
+-  The app shows each transaction made in the course of the short sale, and also your ultimate profit.
+
+-  A negative profit is a loss.
+
+-  Complete lines open the short position, and dotted lines close the short.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+#{{{
+library(shiny)
+library(devtools)
+devtools::install_github('rich-iannone/DiagrammeR')
+library(DiagrammeR)
+
+ui = shinyUI(fluidPage(
+## pageWithSidebar(
+## headerPanel("Triangular Arbitrage"),
+## sidebarPanel(
+titlePanel("Short Sale Sequence Diagram"),
+
+fluidRow(
+    column(3, numericInput("numShorted", "# Shares Shorted", value = 100)),
+    column(3, numericInput("priceShorted", "Price Shorted", value = 80)),
+    column(3, numericInput("priceClosed", "Price Closed", value = 70))
+        ),
+
+##     numericInput("numShorted", "# Shares Shorted", value = 100),
+##     numericInput("priceShorted", "Price Shorted", value = 80),
+##     numericInput("priceClosed", "Price Closed", value = 70)
+## ),
+
+             
+fluidRow(
+    column(12,
+           ## mainPanel( ##tabsetPanel(## can I make this a fluidrow so can print $ arb below? 
+           DiagrammeROutput('diagram', width = "100%")
+           )
+##     ),
+## fluidRow(
+##     ## column(3, plotOutput("test5")),
+##     column(12,
+##            plotOutput("PL", width = "100%")
+##            )
+    )
+    )
+             )
+
+server = function(input, output){
+
+    output$diagram <- renderDiagrammeR({
+
+            mermaid(paste("
+sequenceDiagram
+  Bob->>You: ", input$numShorted, " shares borrowed
+  You->>Sandra: ", input$numShorted, " shares sold
+  Sandra->>You: $", round(input$numShorted * input$priceShorted, 2), "
+  You-->>Other Person: $", round(input$numShorted * input$priceClosed, 2), "
+  Other Person-->>You:", input$numShorted, " shares bought
+  You-->>Bob:", input$numShorted, " shares returned
+  You-->>You: Profit: ", round(input$numShorted * (input$priceShorted - input$priceClosed), 2), "
+"
+, sep = ""), width = "200px")
+    })
+    }
+
+shinyApp(ui = ui, server = server)
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## How Do You Borrow Shares?
+
+This is handled by your broker -- you don't have to worry about the mechanics behind the scenes.
+
+-  Essentially what happens is you broker will borrow the shares from a large investor or mutual fund.
+
+-  Sometimes your broker doesn't think it will be able to borrow shares, and will indicate the stock is not available for shorting.
+
+-  Note, you don't have any sort of right to short, so during times of market turbulence, you may not be able to short many stocks.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Naked Shorting
+
+Your broker has some leeway in terms of how soon they have to borrow shares however -- generally they have a few days.
+
+-  In the past however, some brokers never bothered to borrow the shares.
+
+-  The term for shorting while failing to borrow the stock is 'Naked Shorting' and it has been banned by the U.S. Securities and Exchange Commission.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##  Alternatives to Shorting: Inverse ETFs
+
+If you don't want to short (or your brokerage account doesn't allow it), you can simply buy an inverse [Exchange Traded Fund (ETF)](link_to_ETF_presentation).
+
+-  Buying an inverse ETF on a portfolio will afford a return very similar to shorting the portfolio.
+
+-  Inverse ETFs are not available for individual stocks.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Inverse ETF Performance
+
+The next slide shows the performance of an ETF on the S&P 500 (SPY), and an inverse ETF on the S&P 500 (SH).
+
+-  To zoom in or focus on a subinterval, use the range selector at the bottom of the chart.
+
+-  You can see the inverse (short) ETF is a mirror image of the performance of the S&P 500.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## S&P 500 (SPY) and Short S&P 500 (SH)
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(quantmod)
+renderDygraph({
+    stock1 <- getSymbols("SPY", from = "1900-01-01", auto.assign = FALSE)
+    stock2 <- getSymbols("SH", from = "1900-01-01", auto.assign = FALSE)
+    stocks <- merge.xts(Ad(stock1), Ad(stock2), join = "inner")
+    dygraph(Ad(stocks), main = "") %>%
+        dyRangeSelector()
+})
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+[end of presentation graphic]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+<!---
+## Does Shorting Create Shares?
+
+Short answer: No.
+
+In our example, Bob ownes a share, we *owe* one share, and Sandra ownes a share.  The number of shares outstanding are 1 - 1 + 1 = 1.
+
+-  So as long as the shares are actually borrowed (it is not a naked short), shorting has no effect on the float.
+-->
+
+
+

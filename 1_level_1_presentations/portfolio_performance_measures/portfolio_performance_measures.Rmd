@@ -1,0 +1,276 @@
+---
+title: "An Introduction to Portfolio Performance Measures"
+author: "Matt Brigida: Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "06/02/2015"
+output: ioslides_presentation
+runtime: shiny
+logo: misq.png
+css: 5min_mod.css
+smaller: true
+---
+
+## How Do We Evaluate Portfolio Performance?
+
+At the core of performance evaluation is the idea that investors prefer high returns but low risk.  
+
+- We therefore need measures which simultaneously reward for higher returns, but penalize for higher risk.
+
+[graphic: scales with risk on one side and return on the other]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Easier Said Then Done
+
+Measuring a portfolios return is easy.  However, how do we measure a portfolio's risk?
+
+- Measuring risk is a little trickier, and will lead to multiple performance measures.
+
+[graphic: four judges with clipboards]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Classic Measures
+
+In this presentation we'll cover some classic, and widely used measures.  They are:
+
+- Sharpe Ratio
+- Treynor Ratio
+- Jensen's Alpha
+- Information Ratio
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Sharpe Ratio (after William Sharpe)
+
+This is probably the most famous performance measure.  When evaluating past performance, it is defined as:
+
+$SR = \frac{\bar{r_p} - r_f}{\sigma_p}$  where $r_p$, $\sigma_p$, and $r_f$  are the portfolio's return and standard deviation, and the risk free return over the sample period.
+
+- Usually the Sharpe Ratio is stated in annual terms (to do so multiply it by the square root of the number of periods in a year).
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Notes on Using the Sharpe Ratio
+
+- A higher Sharpe Ratio is better.
+
+- Since the measure of risk is the standard deviation, the Sharpe Ratio should be used with portfolios of many, and not few, securities.
+
+-  Unfortunately, the Sharpe Ratio does not adjust for the use of leverage.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Sharpe Ratio App
+
+The following interactive app will calculate the Sharpe Ratio for each select sector SPDR ETF over any year you choose, and create a scatter plot of the ETF's return, standard deviation, and Sharpe Ratio.  The last slide provides the sector description for each ticker.
+
+-  The axes are the return and standard deviation
+
+-  Higher Sharpe Ratios have larger, and brighter green, dots.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+
+library(ggplot2)
+library(quantmod)
+inputPanel(
+    sliderInput("year", "Year", min = 1999, max = 2015, step = 1, value = 1999)
+    ## selectInput("measure", "Performance Measure", choices = list("Sharpe Ratio" = "1", "Treynor Ratio" = "2", "Information Ratio" = "3", "Jensen's Aplha" = "4"), selected = 1)
+    )
+
+renderPlot({
+    load("data.RData")
+    rets <- data[paste(input$year)]
+    ## if(input$measure == 1){
+    avg <- apply(rets, 2, mean)
+    stdev <- apply(rets, 2, sd)
+    a.s <- rbind(avg, stdev)
+    sharpe <- (a.s[1,] - a.s[1,dim(a.s)[2]]) / a.s[2,]
+
+    avg <- data.frame(t(avg))
+    avg <- avg[,2:10]
+    stdev <- data.frame(t(stdev))
+    stdev <- stdev[,2:10]
+    sharpe <- data.frame(t(sharpe))
+    sharpe <- sharpe[,2:10]
+
+
+    stuff <- data.frame(rbind(avg, stdev, sharpe), row.names = c("average", "stdev", "Sharpe_Ratio"))
+    stuff <- data.frame(t(stuff))
+    stuff <- cbind(row.names(stuff), stuff)
+    names(stuff) <- c("tickers", "average", "stdev", "Sharpe_Ratio")
+    
+
+    ## plot with ggplot2 ----
+    p <- ggplot(stuff, aes(stdev, average))
+    p + geom_point(aes(size = Sharpe_Ratio, colour = Sharpe_Ratio)) +
+        scale_size(range = c(5, 10)) + 
+        ## scale_size_continuous(range=c(1, 25)) +
+            scale_colour_gradient(high = "green") +
+                labs(title = "Sharpe Ratio") +
+                    ylab("Portfolio Mean Return") +
+                        xlab("Portfolio Standard Deviation") +
+                            geom_text(aes(label=tickers, size=.05, hjust=0, vjust=0))
+
+    ## } else {
+    ##     cat("test")
+    ## }
+
+})
+
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Treynor Ratio
+
+For individual assets, the asset's beta coefficient ([see the CAPM presentation](link)) is a better measure of risk than the asset's standard deviation.  This leads to the Treynor Ratio for historical data:
+
+$TR = \frac{\bar{r_p} - r_f}{\beta_p}$  where $\beta_p$ is the portfolio's beta coefficient, and the other terms are as defined earlier.
+
+- A higher Treynor Ratio is better.
+
+- The Treynor Ratio does take into account leverage.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Jensen's Alpha
+
+Jensen's Alpha is the expected return on the portfolio adjusted for the return earned for taking market risk.  In other words, it is the return on a portfolio is excess of what the CAPM expects it to be:
+
+$\alpha = \bar{r_p} - \beta_p(r_m - r_f)$  where $\alpha$ is the Greek letter alpha, and $r_m$ is the return on the market portfolio.
+
+-  The larger the alpha the better.
+
+-  The CAPM predicts a zero alpha.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Information Ratio
+
+A problem with Jensen's Alpha is that a portfolio manager must depart from the market portfolio to generate alpha, and this introduces non-market, or residual risk, into the portfolio. The information ratio ($IR$) scales $\alpha$ by this residual risk:
+
+$IR = \frac{\alpha_p}{\sigma(\epsilon_p)}$  where $\sigma(\epsilon_p)$ is the standard deviation of the error term in a CAPM style regression equation.
+
+-  The larger the $IR$ the better.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Which Measure Should I Use?
+
+For well-diversified portfolios (with no firm-specific risk) the Sharpe Ratio is the preferred measure.  If the portfolio contains leverage, or firm-specific risks that can be diversified away, then the Treynor Ratio, Jensen's Alpha, and the Information Ratio become preferable.
+
+-  For this reason alpha-based measures are popular measures of hedge fund performance.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##  Agreement Among Measures
+
+How might the rankings by each performance measure differ for a given set of portfolios?
+
+-  The following app will allow you to rank or select sector SPDR ETFs by each measure, over any year you choose.
+
+-  As you'll see, there is a fair amount of agreement.
+
+This means portfolio performance rankings are not too sensitive to the particular measure used.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(DT)
+library(quantmod)
+inputPanel(
+    sliderInput("year1", "Year", min = 1999, max = 2015, step = 1, value = 1999)
+    ## selectInput("measure", "Performance Measure", choices = list("Sharpe Ratio" = "1", "Treynor Ratio" = "2", "Information Ratio" = "3", "Jensen's Aplha" = "4"), selected = 1)
+    )
+
+DT::renderDataTable({
+    load("data.RData")
+    rets <- data[paste(input$year1)]
+    avg <- apply(rets, 2, mean)
+    stdev <- apply(rets, 2, sd)
+    a.s <- rbind(avg, stdev)
+
+    ## Sharpe ratio ----
+    sharpe <- (a.s[1,] - a.s[1,dim(a.s)[2]]) / a.s[2,]
+    avg <- data.frame(t(avg))
+    r.f <- avg[length(avg)]
+    avg <- avg[,2:10]
+    stdev <- data.frame(t(stdev))
+    stdev <- stdev[,2:10]
+    sharpe <- data.frame(t(sharpe))
+    sharpe <- sharpe[,2:10]
+    stuff <- data.frame(rbind(avg, stdev, sharpe), row.names = c("average", "stdev", "Sharpe_Ratio"))
+    stuff <- data.frame(t(stuff))
+    stuff <- cbind(row.names(stuff), stuff)
+    names(stuff) <- c("tickers", "average", "stdev", "Sharpe_Ratio")
+
+    ## run regressions ----
+    alphas <- apply( as.data.frame( rets[ , 2:10 ] ) , 2 , FUN = function(x){ lm( x ~ rets[,1])$coef[1] } )
+    betas <- apply( as.data.frame( rets[ , 2:10 ] ) , 2 , FUN = function(x){ lm( x ~ rets[,1])$coef[2] } )
+    resid.sd <- apply( as.data.frame( rets[ , 2:10 ] ) , 2 , FUN = function(x){ summary(lm( x ~ rets[,1]))[6]$sigma } )
+
+    ## Treynor ratio ----
+    TR <- (avg - as.numeric(r.f)) / betas
+
+    ## Jensen's Alpha -----
+    JA <- alphas
+
+    ## Information Ratio ----
+    IR <- alphas / resid.sd
+
+    SR <- sharpe
+
+    orderSR <- names(sort(SR, decreasing = T))
+    orderTR <- names(sort(TR, decreasing = T))
+    orderJA <- names(sort(JA, decreasing = T))
+    orderIR <- names(sort(IR, decreasing = T))
+    
+    result <- data.frame(cbind(1:9, orderSR, orderTR, orderJA, orderIR), stringsAsFactors = F)
+    names(result) <- c("Rank", "SR", "TR", "JA", "IR")
+    datatable(result, options = list(pageLength = 6), rownames = F)
+})
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Other Measures
+
+There are other performance measures based on downside risk, and which take into account higher moments of the return distribution.  Downside risk focuses on the probability that your returns will be *below* some threshold, and 'higher moments' refers to skewness and kurtosis (and above).  Among such measures are the:
+
+- Sortino Ratio
+- Omega Ratio
+
+[graphic: person with a bunch of formulas around their head]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Future Presentations
+
+We hope to cover some of these alternative measures in future presentations.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+- XLE:  Energy
+- XLV:  Insurance
+- XLU:  Utilities
+- XLK:  Technology
+- XLY:  Consumer Discretionary
+- XLB:  Materials
+- XLI:  Industrials
+- XLF:  Financials
+- XLP:  Consumer Staples
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

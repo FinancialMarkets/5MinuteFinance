@@ -1,0 +1,124 @@
+---
+title: "VVIX"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "09/01/2015"
+output: ioslides_presentation
+logo: misq.png
+css: 5min.css
+runtime: shiny
+smaller: true
+---
+
+<!---
+CBOE whitepaper on VVIX: https://www.cboe.com/micro/vvix/vvixwhitepaper.aspx
+Very Useful Bloomberg article: http://www.bloomberg.com/news/articles/2015-09-08/market-volatility-has-changed-immensely
+-->
+
+## The VVIX
+
+The VVIX is often referred to as `the VIX on the VIX' or 'the vol of vol'.  
+
+-  Before going on, be sure you are familiar with the VIX [link to MI presentation on VIX].
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+
+## Interpreting the VVIX
+
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+
+## The VVIX, VIX, and the Stock Market
+
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div>
+
+## The VVIX, VIX, and the Stock Market
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(quantmod)
+
+## VVIX data are from here: https://www.cboe.com/publish/vvixtimeseries/vixvixtermstructure.xls
+## may want to just have it read from internet in the future. 
+
+renderDygraph({
+    sp <- getSymbols('^gspc', auto.assign = FALSE, from = "2000-01-01")
+    vix <- getSymbols('^vix', auto.assign = FALSE, from = "2000-01-01")
+    
+    vvix <- read.csv('vixvixtermstructure.csv', header= TRUE, stringsAsFactors = FALSE, colClasses = c("character", "character", "character"))
+    vvix <- vvix[vvix$"VVIX" != ".", ]
+    vvix <- as.xts(as.numeric(vvix$"VVIX"), order.by = as.Date(strptime(vvix$Date, format = "%d-%b-%y")))
+    names(vvix) <- "VVIX"
+    
+    data <- merge.xts(Ad(sp)/10, Ad(vix), vvix, join = 'inner')
+    names(data) <- c("S&P 500", "VIX", "VVIX")
+
+    dygraph(data, main = "VVIX, VIX, and S&P 500") %>%
+        dySeries("VIX", axis = 'y2') %>%
+            dyRangeSelector() %>%
+                dyAxis('y', label = "(S&P 500)/10 and VVIX") %>%
+                    dyAxis('y2', label = "VIX") 
+                        
+    })
+
+
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+
+## The VIX is Forward Looking
+
+
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+
+##  VIX, Market Return, and Volume
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(threejs)
+library(quantmod)
+
+renderScatterplotThree({
+    sp1 <- getSymbols('^gspc', auto.assign = FALSE, from = "2000-01-01")
+    vix1 <- getSymbols('^vix', auto.assign = FALSE, from = "2000-01-01")
+
+    vvix1 <- read.csv('vixvixtermstructure.csv', header= TRUE, stringsAsFactors = FALSE, colClasses = c("character", "character", "character"))
+    vvix1 <- vvix1[vvix1$"VVIX" != ".", ]
+    vvix1 <- as.xts(as.numeric(vvix1$"VVIX"), order.by = as.Date(strptime(vvix1$Date, format = "%d-%b-%y")))
+    names(vvix1) <- "VVIX"
+    
+    spm <- to.monthly(sp1)
+    vixm <- to.monthly(vix1)
+    vvixm <- to.monthly(vvix1)
+
+    spmr <- Delt(Ad(spm), type = "log")
+    vixmr <- Delt(Ad(vixm), type = "log")
+    vvixmr <- Delt(Cl(vvixm), type = "log") [-1]
+    
+    abs.data1 <- merge.xts(abs(spmr), abs(vixmr), abs(vvixmr), join = 'inner')
+    data1 <- merge.xts(spmr, vixmr, vvixmr, join = 'inner')
+    names(data1) <- c("S&P 500 % Change", "VIX % Change", "VVIX % Change")
+
+    scatterplot3js(data1, color = rainbow(length(data1$"S&P 500 % Change")), labels = paste("Month: ", as.Date(index(data1)), sep = ""))
+                        
+    })
+
+
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+
+##
+
+[end of presentation graphic]
+
+<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 

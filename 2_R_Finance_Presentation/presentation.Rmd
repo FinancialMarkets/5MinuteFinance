@@ -1,0 +1,77 @@
+---
+title: "Financial Education with Shiny"
+author: "Matt Brigida, Milken Institute Center for Financial Markets and the University of Nebraska at Kearney"
+date: "R/Finance: May 20, 2016"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R/Shiny for Finance Education
+
+R/Shiny allows finance educators to:
+
+-  bring standard text graphs off the page and make them interactive.
+
+-  incorporate massive amount of financial data generated each day.
+
+-  leverage javascript libraries for innovative visualizations.
+
+-  deliver content widely at inexpensive rates.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<!-- example apps -->
+
+##
+<!-- duration or convexity -->
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+<!-- 3D option smirk -->
+
+<!-- dont have file on this computer!!!! -->
+
+```{r echo=FALSE, message=FALSE}
+## library(threejs)
+## options("scipen" = 100, "digits" = 6)
+## inputPanel({
+##   sliderInput("theTime", "Day/Second", value = c(0000000, 310000000), min = 0000000, max = 3100000, animate = animationOptions(interval = 300), sep = "", step = 60)
+## })
+## renderScatterplotThree({
+##  ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1]
+##  ez1509es1509$Date <- ez1509es1509$Date - 2015080000000
+## tmp <- subset(ez1509es1509, Date > input$theTime[1])
+## tmp <- subset(tmp, Date < input$theTime[2])
+## ## maybe sort to reverse moneyness -- so switches view
+## tmp <- tmp[ order(tmp[,2]),]
+## tmp[,2] <- -tmp[,2]
+##     scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time", "-Moneyness", "Implied Volatility"))
+## })
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+##
+
+<!-- downloading and sorting data -->
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## GitHub for Community Effort
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Milken Institute CFM
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

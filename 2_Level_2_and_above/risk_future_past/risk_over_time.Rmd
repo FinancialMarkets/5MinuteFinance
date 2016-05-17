@@ -1,0 +1,307 @@
+---
+title: "Risk Over Time"
+author: "Matt Brigida: Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "03/12/2015"
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+## Measuring Risk
+
+The main problem with risk calculations is that it requires us to predict the future.  
+
+- During stable periods, the past may be a good predictor of the future, so we can use historical data.
+
+- In periods of crisis, however, the future may behave differently from the past rendering historical data irrelevant.
+
+- It is precisely in the latter type of period that we need good measures of risk. In other words, *risk measures tend to work well until you need them.*
+
+## Review of Return Description
+
+To implement any measure of risk we must have a description of how the asset's returns behave.  
+
+- This is described by a probability density function (PDF).  
+
+- For all intervals, the PDF assigns a likelihood that a return will be within each interval in a given period.
+
+  
+## Let's Take a Look
+
+In the following app you can how stock returns behaved over different time periods. 
+
+
+
+
+
+
+
+<!---
+## Risk
+
+Risk is a statement about the likelihood of adverse events.  There are differing ways to classify 'adverse event' which leads to differing measures and ways of stating risk, such as:
+
+- The average return deviation from the mean (standard deviation)
+
+- The expected loss if the return over a period is less than 10\%.
+
+- The probability you lose over $\$X$ in a given month.
+
+To find these values, we'll need some description of how our security (or portfolio) behaves.  
+
+## Security Behavior
+
+The behavior is described through a [probability density function (PDF)](http://en.wikipedia.org/wiki/Probability_density_function) which gives the likelihood that returns will be in a given interval.
+
+We'll either have to:
+
+1.  Assume a particular PDF and estimate the parameters which describe the PDF.
+
+2.  Use an empirical PDFa PDF that fits what has happened over some past period.
+
+Either way we must use historical data, or our judgment, to describe future event probabilities.
+
+## The Normal Distribution
+
+The most often assumed PDF is the normal distribution.
+
+- This is partly for mathematical ease: the sum of normals is normal.
+
+The normal distribution is completely determined by its mean and variance (or standard deviation).
+
+- So once we determine these values, we can state the probability of a return being less than any value.
+
+- Note, the normal distribution is symmetric about its mean value.
+
+## Standard Deviation and Symmetry
+
+The standard deviation is the average *squared* deviation from the mean. 
+
+-   Squaring means the standard deviation treats positive and negative deviations from the mean equally: $(-7\%)^2 = 7\%^2$. 
+
+- But we only care about the negative returns when calculating risk.
+
+- Since for a symmetric distribution, the probability of a 5\% or more deviation is equivalent to the probability of -5\% or less deviation, it is fine to square the deviation.
+
+
+
+## Allowing Asymmetry
+
+What if return distributions are not symmetric?  Say the distribution is left-skewed.
+
+- Then the average negative return is greater than the average positive return.
+
+- In this case using a measure like standard deviation would understate risk.
+
+For non-symmetric distributions, the act of squaring loses important information about risk.
+
+- Specifically, it loses the scale of the average negative return with respect to the average positive return. 
+
+## What about Fat Tails?
+
+Fat tails (excess kurtosis) is also a salient feature of asset returns.
+
+- A normal distribution has a kurtosis of 3.  A distribution has fat tails if the kurtosis is greater than 3.
+
+- If the tails are fatter than the normal distribution, then there will be more large positive and negative returns (tail events) than you may expect.  
+
+
+##  Historical vs (Symmetric) Normal Distribution
+
+In the following app we'll calculate and plot the empirical PDF of the stock's returns.  We'll then use the stock's historical mean return and standard deviation to overlay a normal distribution.
+
+- If the empirical distribution seems to lean (is skewed) relative to the normal, then standard deviation is a poor measure of risk.
+
+- Similarly, pay attention to the difference between the two distributions near the tails.
+
+-->
+
+<!---
+On the second tab the results of hypothesis tests for skewness ad kurtosis are returned.
+-->
+
+<!---
+## Empirical vs Normal Distribution
+
+- Take a look at Twitter (TWTR) over 2014.  The stock's returns exhibit both negative skewness and kurtosis.  This means the standard deviation would have understated risk. 
+
+- Looking at Apple (AAPL) from 1/2015 through 4/2015 shows a symmetric, fairly normal, distribution  the standard deviation would have been a good measure of risk.
+
+- GE from 1/2015 to 4/2015 shows positive skewness.  The standard deviation would have overstated risk.
+-->
+
+## Empirical vs Normal Distribution
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+	      sidebarPanel(    
+			   # inputPanel(
+			   textInput("ticker", label = "Stock Ticker", value = "XOM"),
+			   dateRangeInput("dates", label = "Date Range", start = "2015-01-01", end = Sys.Date())
+			   ),
+
+	      mainPanel(
+			#                         tabsetPanel(
+			#                                     tabPanel("Plot", 
+			renderPlot({
+			  library(fBasics)
+			  library(tseries)
+			  validate(
+				   need(input$ticker != "", "Input a valid US stock ticker.")
+				   )
+			  x <- get.hist.quote(input$ticker, start = input$dates[1], end = input$dates[2], quote = "Close")
+			  x <- ts(x)
+			  r <- log(x[2:(length(x))]/x[1:(length(x) - 1)])
+
+			  plot(density(r), main = paste(input$ticker, "Stock Returns vs the Normal Distribution"), lty = 1, 
+			       col = 1, lwd = 2, xlab = "Log-Returns in %/100")
+
+			  lines(density(rnorm(5e+05, mean = mean(r), sd = sd(r))), lty = 4, col = 2, 
+				lwd = 2)
+
+			  legend("topright", c("Stock Return Density", "Normal Density"), col = c(1, 2), 
+				 lty = c(1, 4), lwd = c(2, 2))
+			})
+			### old tabset panel stuff ----
+			#{{{
+			#                                              ),
+
+			#                                     tabPanel("Statistics", renderPrint({ 
+			#                                       validate(
+			#                                                need(input$ticker != "", "Input a valid US stock ticker.")
+			#                                                )
+			#                                       x <- get.hist.quote(input$ticker, start = input$dates[1], end = input$dates[2], quote = "Close", quiet = T)
+			#                                       x <- ts(x)
+			#                                       r <- log(x[2:(length(x))]/x[1:(length(x) - 1)])
+			#                                       p1 <- 2 * (1 - pt(abs(skewness(r)/(sqrt(6/length(r)))), length(r) - 1))
+			#                                       p2 <- 2 * (1 - pt(abs(kurtosis(r)/(sqrt(24/length(r)))), length(r) - 1))
+			#                                              row.names <- c("Sample Skewness", "t-statistic (skewness)", "p-value (skewness)", "Outcome (skewness)", "", "Sample Kurtosis", "t-statistic (kurtosis)", "p-value (kurtosis)", "Outcome (kurtosis)")
+			#                                              df <- data.frame(as.character(c(round(skewness(r), 2),round(skewness(r)/(sqrt(6/length(r))), 2), round(p1, 2), ifelse(p1 < 0.05, "Reject the null. The distribution is skewed.", "Do not reject. Not skewed"), "", round(kurtosis(r)[1], 2), round(kurtosis(r)/(sqrt(24/length(r))), 2), round(p2), ifelse(p2 < 0.05, "Reject the null. Has fat tails.", 
+			#                                                                                                                                                                                                                                                                                                                                                         "Do not reject. No fat tails.")  )) , row.names = row.names)
+			#                                       cat("Sample skewness:", round(skewness(r), 2), "\n")
+			#                                       cat("For a t-statistic of", round(skewness(r)/(sqrt(6/length(r))), 2), "\n")
+			#                                       cat("And a p-value of", round(p1, 2), "\n")
+			#                                       cat("So we", ifelse(p1 < 0.05, "reject the null.\nThe distribution is skewed.", 
+			#                                                           "do not reject the null.\nThe distribution is symmetric."), "\n")
+			#                                       cat("\n")
+			# 
+			#                                       cat("The sample excess kurtosis is", round(kurtosis(r)[1], 2), "\n")
+			#                                       cat("For a t-statistic of", round(kurtosis(r)/(sqrt(24/length(r))), 2), "\n")
+			#                                       cat("And a p-value of", round(p2,2), "\n")
+			#                                       cat("So we", ifelse(p2 < 0.05, "reject the null.\nThe distribution has fat tails.", 
+			#                                                           "do not reject the null.\nThe distribution does not have fat tails."), 
+			#                                           "\n")
+			#                                     })
+			#                                     )
+			# 
+			#                           , position = "right")
+			#}}}
+			)
+	      )
+#}}}
+```
+
+<!---
+## Value at Risk (VaR)
+
+VaR is a very common way of stating the amount of risk. 
+
+- 5\% VaR is the return for which, in any given period, there is a 5\% chance of experiencing a worse return.  So say the 5\% VaR is -8\%. Then there is a 5\% chance of experiencing a return less than -8\% over the next period.    
+
+- VaR solely focuses on the left tail of the return distribution. 
+
+## VaR Implementation
+
+VaR is widely used and is written into banking regulations.  
+
+VaR still requires an assumption concerning the returns' PDF.
+
+- We can again assume a normal, empirical, or other distribution. 
+
+- If we assume a normal, then VaR is simply a function of the mean and standard deviation.  
+
+## VaR App
+
+The following app will calculate the \% VaR for any stock over any tome interval you choose.  
+
+- Click the "Normal" and "Empirical" tabs to see the VaR assuming a normal PDF (using the historical mean and standard deviation), and a PDF fit to historical data. 
+
+- Can you find stocks for which the normal and empirical VaR are different?  Is the difference in VaR greater if you use 1\% VaR versus 5\% VaR?
+-->
+
+## Value at Risk (VaR)
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+
+sidebarLayout(
+	      sidebarPanel(
+
+			   textInput("ticker1", label = "Stock Ticker", value = "XOM"),
+			   dateRangeInput("dates1", label = "Date Range", start = "2015-01-01", end = Sys.Date()),
+			   sliderInput("loss", label = "% VaR", max = .2, min = 0.01, value = .05, step = .01)
+
+			   ),
+	      mainPanel(
+tabsetPanel(
+	tabPanel(title = "Empirical",
+ 		 renderPlot({
+			  library(fBasics)
+			  library(tseries)
+			  validate(
+				   need(input$ticker1 != "", "Input a valid US stock ticker.")
+				   )
+			  x1 <- get.hist.quote(input$ticker1, start = input$dates1[1], end = input$dates1[2], quote = "Close")
+			  x1 <- ts(x1)
+			  r1 <- log(x1[2:(length(x1))]/x1[1:(length(x1) - 1)])
+			  dens <- density(r1)
+
+			  VaR <- quantile(r1, input$loss)
+			  ret <- max(which(dens$x < VaR))
+			  qn <- min(which(dens$x >= -1))
+			  plot(dens, main = paste(input$ticker1, "VaR and Empirical Density"), lty = 1, col = 1, lwd = 2, ylab = "", xlab = paste("The ", 100*input$loss,"% ", "VaR is"," ", round(100*VaR, 2), "%", sep = ""), cex.lab = 2)
+
+			  legend("topright", c("Stock Return Density"), col = c(1), lty = c(1), lwd = c(2))
+
+			  with(dens, polygon(x=c(x[c(qn,qn:ret,ret)]), y= c(0, y[qn:ret], 0), col="red"))
+
+			})
+	),
+	    tabPanel(title = "Normal",
+		     renderPlot({
+			  library(fBasics)
+			  library(tseries)
+			  validate(
+				   need(input$ticker1 != "", "Input a valid US stock ticker.")
+				   )
+			  x2 <- get.hist.quote(input$ticker1, start = input$dates1[1], end = input$dates1[2], quote = "Close")
+			  x2 <- ts(x2)
+			  r2 <- log(x2[2:(length(x2))]/x2[1:(length(x2) - 1)])
+			  aver.var <- mean(r2)
+			  sd.var <- sd(r2)
+			  r2 <- rnorm(mean = aver.var, sd = sd.var, n = 2000000)
+			  dens2 <- density(r2)
+
+			  VaR2 <- quantile(r2, input$loss)
+			  ret2 <- max(which(dens2$x < VaR2))
+			  qn2 <- min(which(dens2$x >= -1))
+			  plot(dens2, main = paste(input$ticker1, "VaR and Normal Density"), lty = 1, col = 1, lwd = 2, ylab = "", xlab = paste("The ", 100*input$loss,"% ", "VaR is"," ", round(100*VaR2, 2), "%", sep = ""), cex.lab = 2)
+
+			  legend("topright", c("Stock Return Density"), col = c(1), lty = c(1), lwd = c(2))
+
+			  with(dens2, polygon(x=c(x[c(qn2,qn2:ret2,ret2)]), y= c(0, y[qn2:ret2], 0), col="red"))
+		     })
+		     )
+	    )
+			)
+	      )
+
+#}}}
+```
+
+## Continuing from Here
+
+In the following presentations on risk we'll cover topics such as:
+
+- Measures specifically designed for asymmetric distributions, such as *Lower Partial Standard Deviation*.
