@@ -1,6 +1,6 @@
 # Interactive Presentations
 
-This is a project to create freely available financial education materials. The materials are (now) interactive presentations written in [RMarkdown](http://rmarkdown.rstudio.com/) and use [Shiny](http://shiny.rstudio.com/) for interactive the content.  The presentations are hosted on shinyapps.io, and can be viewed by following the links below.
+This is a project to create freely available financial education materials. The materials are (now) interactive presentations written in [RMarkdown](http://rmarkdown.rstudio.com/) and use [Shiny](http://shiny.rstudio.com/) for interactive the content.  The presentations are hosted on shinyapps.io, and can be viewed by following the links below.  
 
 # Contributions are Welcome!
 
@@ -16,3 +16,12 @@ If you are familiar with Git/R/Shiny then feel free to add text and code!
 
 # Links to Presentations
 
+### Corporate Finance
+
+[Intro to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements)
+[Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios)
+
+
+### Options
+
+[Greeks](https://micfm.shinyapps.io/greeks)
