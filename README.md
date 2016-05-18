@@ -19,6 +19,7 @@ If you are familiar with Git/R/Shiny then feel free to add text and code!
 ### Corporate Finance
 
 [Intro to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements)
+
 [Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios)
 
 

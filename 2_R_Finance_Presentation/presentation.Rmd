@@ -1,5 +1,5 @@
 ---
-title: "Financial Education with Shiny"
+title: "5MinuteFinance: Financial Education with Shiny"
 author: "Matt Brigida, Milken Institute Center for Financial Markets and the University of Nebraska at Kearney"
 date: "R/Finance: May 20, 2016"
 output: ioslides_presentation
@@ -11,6 +11,16 @@ runtime: shiny
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+
+## 5MinuteFinance
+
+Milken Institute Center for Financial Markets initiative to create short, informative, educational materials on financial topics.
+
+-  All materials and source code are released under open-source (GPL) and creative commons licenses.
+-  A part of a broader open-course initiative at MI: https://github.com/FinancialMarkets
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## R/Shiny for Finance Education
 
@@ -525,11 +535,18 @@ renderPlot({
 
 ## GitHub for Community Effort
 
+-  Very easy to contribute with GitHub's in-browser edit feature.
 
+-  Git/GitHub makes author attribution easy and share-able.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Milken Institute CFM
+
+The Center for Financial Markets promotes financial market understanding and works to expand access to capital, strengthen—and deepen—financial markets, and develop innovative financial solutions to the most pressing global challenges.
+
+- Website: http://www.milkeninstitute.org/centers/markets
+- Twitter: @MI_CFM
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
