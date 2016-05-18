@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Milken Institute Center for Financial Markets (MICFM) initiative to create short, informative, educational materials on financial topics.  The project welcomes contributions from the wider finance community.  
 
--  All materials and source code are released under open-source (GPL) and creative commons licenses.
+-  All materials and source code are released under open-source and creative commons licenses.
 -  A part of a broader open-source initiative at MI: https://github.com/FinancialMarkets
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -561,11 +561,13 @@ renderPlot({
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 
-## GitHub for Community Effort
+## Collaboration using GitHub
 
 -  Very easy to contribute with GitHub's in-browser edit feature.
 
--  Git/GitHub makes author attribution easy and share-able.  
+-  Git/GitHub makes author attribution easy and share-able.  Presentation author linked to GitHub contributors.
+
+-  We hope material users will contribute back to the code. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
