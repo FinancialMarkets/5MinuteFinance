@@ -1,6 +1,6 @@
 ---
-title: "5MinuteFinance: Financial Education with Shiny"
-author: "Matt Brigida, Milken Institute Center for Financial Markets and the University of Nebraska at Kearney"
+title: "Financial Education with R/Shiny"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 date: "R/Finance: May 20, 2016"
 output: ioslides_presentation
 logo: misq.png
@@ -12,8 +12,9 @@ runtime: shiny
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+<!-- author: "Matt Brigida, Milken Institute Center for Financial Markets and the University of Nebraska at Kearney" -->
 
-## 5MinuteFinance
+## 5minutefinance
 
 Milken Institute Center for Financial Markets initiative to create short, informative, educational materials on financial topics.
 
