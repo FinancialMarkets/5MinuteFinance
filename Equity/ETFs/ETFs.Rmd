@@ -40,6 +40,7 @@ ETFs have become very popular in the last decade.  Among their advantages over t
 
 ##
 Unscientific evidence of the increasing popularity of ETFs relative to mutual funds:  The number of Google searches for each term.
+Click and drag on graph to zoom into selected time period
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
