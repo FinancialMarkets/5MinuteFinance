@@ -12,15 +12,14 @@ runtime: shiny
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-<!-- author: "Matt Brigida, Milken Institute Center for Financial Markets and the University of Nebraska at Kearney" -->
+<!-- SECTION: INTRO -->
 
+## 5MinuteFinance
 
-## 5minutefinance
-
-Milken Institute Center for Financial Markets initiative to create short, informative, educational materials on financial topics.  The project welcomes contributions from the wider finance community.  
+Milken Institute Center for Financial Markets (MICFM) initiative to create short, informative, educational materials on financial topics.  The project welcomes contributions from the wider finance community.  
 
 -  All materials and source code are released under open-source (GPL) and creative commons licenses.
--  A part of a broader open-sourse initiative at MI: https://github.com/FinancialMarkets
+-  A part of a broader open-source initiative at MI: https://github.com/FinancialMarkets
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -28,16 +27,17 @@ Milken Institute Center for Financial Markets initiative to create short, inform
 
 R/Shiny allows finance educators to:
 
--  bring standard text graphs off the page and make them interactive.
+-  Bring standard text graphs off the page and make them interactive.
 
--  incorporate massive amount of financial data generated each day.
+-  Incorporate the massive amount of financial data generated each day.
 
--  leverage javascript libraries for innovative visualizations.
+-  Leverage javascript libraries (htmlwidgets) for innovative visualizations.
 
--  deliver content widely at inexpensive rates.
+-  Deliver content widely at low cost.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-<!-- example apps -->
+
+<!-- SECTION: EXAMPLE APPS -->
 
 ##
 <!-- duration or convexity -->
@@ -576,5 +576,12 @@ The Center for Financial Markets promotes financial market understanding and wor
 - Website: http://www.milkeninstitute.org/centers/markets
 - Twitter: @MI_CFM
 
+## Matt Brigida
+
+Assistant Professor of Finance, University of Nebraska--Kearney
+
+[github.com/Matt-Brigida](https://github.com/Matt-Brigida)
+
+email: matt@complete-markets.com
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
