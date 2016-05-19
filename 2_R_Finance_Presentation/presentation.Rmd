@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## 5MinuteFinance
 
-Milken Institute Center for Financial Markets (MICFM) initiative to create short, informative, educational materials on financial topics.  The project welcomes contributions from the wider finance community.  
+Milken Institute Center for Financial Markets (MICFM) initiative to create short, informative, educational materials on financial topics.  The project welcomes contributions from the wider finance community.  The code is hosted here: [github.com/FinancialMarkets/5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance)
 
 -  All materials and source code are released under open-source and creative commons licenses.
 -  A part of a broader open-source initiative at MI: https://github.com/FinancialMarkets
