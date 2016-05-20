@@ -14,9 +14,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <!-- SECTION: INTRO -->
 
-## 5MinuteFinance
+## 5Minute[Finance]
 
-Milken Institute Center for Financial Markets (MICFM) initiative to create short, informative, educational materials on financial topics.  The project welcomes contributions from the wider finance community.  The code is hosted here: [github.com/FinancialMarkets/5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance)
+Milken Institute Center for Financial Markets (MICFM) initiative to create short, interactive, educational materials on financial topics.  The project welcomes contributions from the wider finance community.  The code is hosted here: [github.com/FinancialMarkets/5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance)
 
 -  All materials and source code are released under open-source and creative commons licenses.
 -  A part of a broader open-source initiative at MI: https://github.com/FinancialMarkets
@@ -33,7 +33,7 @@ R/Shiny allows finance educators to:
 
 -  Leverage javascript libraries (htmlwidgets) for innovative visualizations.
 
--  Deliver content widely at low cost.
+-  Deliver content widely (in the web browser) at low cost.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -567,7 +567,7 @@ renderPlot({
 
 -  Git/GitHub makes author attribution easy and share-able.  Presentation author linked to GitHub contributors.
 
--  We hope material users will contribute back to the code. 
+-  We hope material users will contribute back to the code.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
