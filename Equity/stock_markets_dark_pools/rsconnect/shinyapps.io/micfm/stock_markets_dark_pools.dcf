@@ -1,0 +1,7 @@
+name: stock_markets_dark_pools
+account: micfm
+server: shinyapps.io
+appId: 102862
+bundleId: 455701
+url: https://micfm.shinyapps.io/stock_markets_dark_pools/
+when: 1463590858.60579

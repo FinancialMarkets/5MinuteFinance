@@ -1,0 +1,7 @@
+name: stock_markets_over_time
+account: micfm
+server: shinyapps.io
+appId: 102870
+bundleId: 455753
+url: https://micfm.shinyapps.io/stock_markets_over_time/
+when: 1463593519.64071

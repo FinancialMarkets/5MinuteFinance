@@ -1,0 +1,7 @@
+name: crude_oil_markets
+account: micfm
+server: shinyapps.io
+appId: 49621
+bundleId: 455791
+url: https://micfm.shinyapps.io/crude_oil_markets/
+when: 1463595445.77776
