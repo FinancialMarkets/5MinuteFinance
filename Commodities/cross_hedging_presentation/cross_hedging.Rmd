@@ -76,7 +76,7 @@ inputPanel(
 
 renderDygraph({
 ## renderMetricsgraphics({
-    key <- source("./key/key")$value  
+    key <- source("./key")$value  
 
     ticker1 <- switch(input$symb1,
                       "1" = c("PET.RCLC1.W","PET.RCLC2.W","PET.RCLC3.W","PET.RCLC4.W"),
@@ -242,8 +242,8 @@ library(quantmod)
     ## )
 
 renderDataTable({
-    
-    key <- source("./key/key")$value  
+
+    key <- source("./key")$value  
 
     oil <- c("PET.RCLC1.W","PET.RCLC2.W","PET.RCLC3.W","PET.RCLC4.W")
     ## "2" = c("NG.RNGC1.W","NG.RNGC2.W","NG.RNGC3.W","NG.RNGC4.W"),

@@ -1,6 +1,6 @@
 ---
-title: "5MinuteFinance: Financial Education with Shiny"
-author: "Matt Brigida, Milken Institute Center for Financial Markets and the University of Nebraska at Kearney"
+title: "Financial Education with R/Shiny"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 date: "R/Finance: May 20, 2016"
 output: ioslides_presentation
 logo: misq.png
@@ -12,13 +12,14 @@ runtime: shiny
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+<!-- SECTION: INTRO -->
 
 ## 5MinuteFinance
 
-Milken Institute Center for Financial Markets initiative to create short, informative, educational materials on financial topics.
+Milken Institute Center for Financial Markets (MICFM) initiative to create short, informative, educational materials on financial topics.  The project welcomes contributions from the wider finance community.  The code is hosted here: [github.com/FinancialMarkets/5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance)
 
--  All materials and source code are released under open-source (GPL) and creative commons licenses.
--  A part of a broader open-course initiative at MI: https://github.com/FinancialMarkets
+-  All materials and source code are released under open-source and creative commons licenses.
+-  A part of a broader open-source initiative at MI: https://github.com/FinancialMarkets
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -26,16 +27,17 @@ Milken Institute Center for Financial Markets initiative to create short, inform
 
 R/Shiny allows finance educators to:
 
--  bring standard text graphs off the page and make them interactive.
+-  Bring standard text graphs off the page and make them interactive.
 
--  incorporate massive amount of financial data generated each day.
+-  Incorporate the massive amount of financial data generated each day.
 
--  leverage javascript libraries for innovative visualizations.
+-  Leverage javascript libraries (htmlwidgets) for innovative visualizations.
 
--  deliver content widely at inexpensive rates.
+-  Deliver content widely at low cost.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-<!-- example apps -->
+
+<!-- SECTION: EXAMPLE APPS -->
 
 ##
 <!-- duration or convexity -->
@@ -95,32 +97,58 @@ polygon(c(1:20, rev(1:20)), c(bondValue, rev(durLine)), col = "grey80", border =
 #}}}
 ```
 
-
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
-<!-- 3D option smirk -->
-
-<!-- dont have file on this computer!!!! -->
 
 ```{r echo=FALSE, message=FALSE}
-## library(threejs)
-## options("scipen" = 100, "digits" = 6)
-## inputPanel({
-##   sliderInput("theTime", "Day/Second", value = c(0000000, 310000000), min = 0000000, max = 3100000, animate = animationOptions(interval = 300), sep = "", step = 60)
-## })
-## renderScatterplotThree({
-##  ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1]
-##  ez1509es1509$Date <- ez1509es1509$Date - 2015080000000
-## tmp <- subset(ez1509es1509, Date > input$theTime[1])
-## tmp <- subset(tmp, Date < input$theTime[2])
-## ## maybe sort to reverse moneyness -- so switches view
-## tmp <- tmp[ order(tmp[,2]),]
-## tmp[,2] <- -tmp[,2]
-##     scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time", "-Moneyness", "Implied Volatility"))
-## })
+library(threejs)
+                                        #library(sigma)
+inputPanel(    
+    sliderInput("maxYtm", label = "Maximum Yield to Maturity", max = .5, min = 0.01, value = .20, step = .01),
+    sliderInput("coupon", label = "Coupon Rate", max = .2, min = 0.01, value = .05, step = .01),
+    sliderInput("maxMaturity", label = "Maximum Years to Maturity", max = 50, min = 1, value = 30)
+    )
+
+renderScatterplotThree({
+    ## need duration as a function of ytm, maturity (coupon is also an input but not of the function to be fed into outer ----
+    ## shoot: yy and mm should be vectors for outer ----
+    ## This calculates duration, however yo use outer function would have to be vectorizable ----
+    ## so just use this in nested for loops :) ----
+    ## if we could get this to work though, we could feed it directly into scatterplot3js
+    ff <- function(yy, mm){
+        ## calculate cash flows
+        cc <- rep(input$coupon * 1000, mm)
+        cc[length(cc)] <- cc[length(cc)] + 1000
+
+        ## bond value
+        bb <- (rep(1, mm)) %*% (cc / (1 + yy)^(1:mm))
+
+        ## duration
+        dd <- (1:mm) %*% ((cc / (1 + yy)^(1:mm)) / bb)
+
+        ## modified duration
+        md <- dd / (1 + yy)
+        return(md)
+    }
+
+
+    ## redo to input into 3js
+    ff.res <- 0
+    test <- 0
+    prod <- length(seq(.01, input$maxYtm, by = .01)) * length(1:input$maxMaturity)
+    test <- expand.grid(seq(.01, input$maxYtm, by = .01), 1:input$maxMaturity)
+    for (i in 1:prod){
+        ff.res[i] <- ff(test[i,1], test[i,2])
+    }
+
+    surf <- cbind(test, ff.res)
+    names(surf) <- c("YTM", "Maturity", "Duration")
+
+    ## x is a 3 column matrix where the columns refer to the (x,y,z) coordinate.  
+    scatterplot3js(as.matrix(surf), bg = "white", color = rainbow(dim(test)[1] * dim(test)[2]))
+})
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
@@ -533,11 +561,13 @@ renderPlot({
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 
-## GitHub for Community Effort
+## Collaboration using GitHub
 
 -  Very easy to contribute with GitHub's in-browser edit feature.
 
--  Git/GitHub makes author attribution easy and share-able.  
+-  Git/GitHub makes author attribution easy and share-able.  Presentation author linked to GitHub contributors.
+
+-  We hope material users will contribute back to the code. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -548,5 +578,12 @@ The Center for Financial Markets promotes financial market understanding and wor
 - Website: http://www.milkeninstitute.org/centers/markets
 - Twitter: @MI_CFM
 
+## Matt Brigida
+
+Assistant Professor of Finance, University of Nebraska--Kearney
+
+[github.com/Matt-Brigida](https://github.com/Matt-Brigida)
+
+email: matt@complete-markets.com
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

@@ -1,0 +1,17 @@
+---
+title: "The Limit Order Book"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+date: "May 20, 2016"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## The Limit Order Book
+
+<!-- make use of the awesome 'orderbook' R package -->

@@ -18,6 +18,8 @@ If you are familiar with Git/R/Shiny then feel free to add text and code!
 
 ### Corporate Finance
 
+Many of the presentations below are works-in-progress.  Feel free to contribute fixes and new content. 
+
 [Intro to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements)
 
 [Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios)
@@ -25,4 +27,27 @@ If you are familiar with Git/R/Shiny then feel free to add text and code!
 
 ### Options
 
+[The VIX](https://micfm.shinyapps.io/The_VIX/)
+
 [Greeks](https://micfm.shinyapps.io/greeks)
+
+### Debt and Fixed Income
+
+[Duration](https://micfm.shinyapps.io/intro_duration/)
+
+[Convexity](https://micfm.shinyapps.io/convexity/)
+
+### Foreign Exchange
+
+[Arbitrage](https://micfm.shinyapps.io/fx_arbitrage/)
+
+
+### Equity Markets
+
+[Short Selling Stock](https://micfm.shinyapps.io/short_selling_stock/)
+
+
+### Monetary Policy
+
+[FOMC Communications](https://micfm.shinyapps.io/fed_communications/)  Need to add more FOMC statements to word cloud.
+

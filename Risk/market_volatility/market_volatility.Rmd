@@ -1,0 +1,69 @@
+---
+title: "Market Volatility"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+date: "R/Finance: May 20, 2016"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+devtools::install_github("ramnathv/rChartsCalmap")
+library(htmlwidgets)
+
+## add company input and feed into getSymbols below
+
+library(quantmod)
+comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+names(comp) <- c("symbol", "name")
+
+inputPanel(
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name),
+    dateRangeInput("date", "Date Range", start = "2015-01-01", end = Sys.Date())
+    ## add date range input 
+)
+
+## code modified from here:  https://github.com/ramnathv/rChartsCalmap
+rChartsCalmap::renderCalheatmap({
+    
+    ## valdate name ----
+    validate(
+        need(input$name != "", "Select a US stock name.")
+    )
+
+    ticker <- comp$symbol[comp$name == input$name]
+
+    library(quantmod)
+    stock <- getSymbols(ticker, auto.assign = FALSE,from = input$date[1], to = input$date[2])
+    xts_to_df <- function(xt){
+        data.frame(
+            date = format(as.Date(index(xt)), '%Y-%m-%d'),
+            coredata(xt)
+        )
+    }
+
+    dat0 <- 100 * abs(Delt(Ad(stock)[-1]))
+    names(dat0) <- "vol"
+    dat = xts_to_df(dat0)
+
+    rChartsCalmap::calheatmap('date', 'vol', 
+                              data = dat, 
+                              domain = 'month',
+                              legend = seq(0, 5, .5),
+                              start = input$date[1],
+                              itemName = '%'
+                              )
+
+})
+
+```
+
+##
