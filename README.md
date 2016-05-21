@@ -1,10 +1,10 @@
 # Interactive Presentations
 
-This is a project to create freely available financial education materials. The materials are (now) interactive presentations written in [RMarkdown](http://rmarkdown.rstudio.com/) and use [Shiny](http://shiny.rstudio.com/) for interactive the content.  The presentations are hosted on shinyapps.io, and can be viewed by following the links below (all links have not yet been added).
+This is a project to create freely available financial education materials. The materials are interactive presentations written in [RMarkdown](http://rmarkdown.rstudio.com/) and use [Shiny](http://shiny.rstudio.com/) for interactive the content.  The presentations are hosted on shinyapps.io, and can be viewed by following the links below (all links have not yet been added).
 
 # Contributions are Welcome!
 
-This initiative will be increasingly successful as more people from the finance community contribute.  Presently, financial education materials are duplicated through separate efforts by individuals and organizations. This is particularly true for materials targeting the undergraduate level.
+*This initiative will be increasingly successful as more people from the finance community contribute.*  Presently, financial education materials are duplicated through separate efforts by individuals and organizations. This is particularly true for materials targeting the undergraduate level.
 
 We hope to foster a community effort to create a set of finance education and course materials. Collaboration and attribution are managed through GitHub.  In this way we can have tens and hundreds of people collaborating (each getting credit for their work), and thereby create unparalleled educational materials on many topics.
 

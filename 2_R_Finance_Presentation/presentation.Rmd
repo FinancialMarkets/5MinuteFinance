@@ -279,10 +279,10 @@ sidebarLayout(
 
         conditionalPanel(
             condition = "input.xaxis1 == '5'",
+            sliderInput("stock9", "Stock Price", min=1, max=100, value=50, step = 1),
             sliderInput("strike9", "Strike Price", min=1, max=100, value=50, step = 1),
             sliderInput("vol9", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf9", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("stock9", "Stock Price", min=1, max=100, value=50, step = 1)
+            sliderInput("rf9", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01)
             )
         ),
     
@@ -290,6 +290,8 @@ sidebarLayout(
 
         renderMetricsgraphics({
 
+            type1 <- '1'
+            
             d1 <- function(){(log(stock/strike) + (rf + (vol * vol) / 2) * time) / (vol * sqrt(time))}
             d2 <- function(){d1() - vol * sqrt(time)}
 
@@ -311,7 +313,7 @@ sidebarLayout(
             rho.c <- function(){strike * time * exp(-rf * time) * pnorm(d2())}
             rho.p <- function(){-strike * time * exp(-rf * time) * pnorm(-d2())}
 
-            if(input$xaxis1 == '1' & input$type1 == '1'){
+            if(input$xaxis1 == '1' & type1 == '1'){
                 stock <- 1:100
                 strike <- input$strike5
                 vol <- input$vol5
@@ -327,7 +329,7 @@ sidebarLayout(
                                 mjs_add_legend(legend = c("Gamma"))
                 
             } else {
-                if(input$xaxis1 == '1' & input$type1 == '2'){
+                if(input$xaxis1 == '1' & type1 == '2'){
                     stock <- 1:100
                     strike <- input$strike5
                     vol <- input$vol5
@@ -343,7 +345,7 @@ sidebarLayout(
                                     mjs_add_legend(legend = c("Gamma"))
                     
                 } else {
-                    if(input$xaxis1 == '2' & input$type1 == '1'){
+                    if(input$xaxis1 == '2' & type1 == '1'){
                         stock <- input$stock6
                         strike <- 1:100
                         vol <- input$vol6
@@ -357,7 +359,7 @@ sidebarLayout(
                                     mjs_labs(x="STRIKE PRICE", y="CALL GAMMA")
                         
                     } else {
-                        if(input$xaxis1 == '2' & input$type1 == '2'){
+                        if(input$xaxis1 == '2' & type1 == '2'){
                             stock <- input$stock6
                             strike <- 1:100
                             vol <- input$vol6
@@ -373,7 +375,7 @@ sidebarLayout(
 
                             
                         } else {
-                            if(input$xaxis1 == '3' & input$type1 == '1'){
+                            if(input$xaxis1 == '3' & type1 == '1'){
                                 stock <- input$stock7
                                 strike <- input$strike7
                                 vol <- seq(0.01, 0.5, by = 0.01)
@@ -389,7 +391,7 @@ sidebarLayout(
 
                                 
                             } else {
-                                if(input$xaxis1 == '3' & input$type1 == '2'){
+                                if(input$xaxis1 == '3' & type1 == '2'){
                                     stock <- input$stock7
                                     strike <- input$strike7
                                     vol <- seq(0.01, 0.5, by = 0.01)
@@ -405,7 +407,7 @@ sidebarLayout(
 
                                     
                                 } else {
-                                    if(input$xaxis1 == '4' & input$type1 == '1'){
+                                    if(input$xaxis1 == '4' & type1 == '1'){
                                         stock <- input$stock8
                                         strike <- input$strike8
                                         vol <- input$vol8
@@ -421,7 +423,7 @@ sidebarLayout(
 
                                         
                                     } else {
-                                        if(input$xaxis1 == '4' & input$type1 == '2'){
+                                        if(input$xaxis1 == '4' & type1 == '2'){
                                             stock <- input$stock8
                                             strike <- input$strike8
                                             vol <- input$vol8
@@ -437,7 +439,7 @@ sidebarLayout(
 
                                             
                                         } else {
-                                            if(input$xaxis1 == '5' & input$type1 == '1'){
+                                            if(input$xaxis1 == '5' & type1 == '1'){
                                                 stock <- input$stock9
                                                 strike <- input$strike9
                                                 vol <- input$vol9
@@ -453,7 +455,7 @@ sidebarLayout(
 
                                                 
                                             } else {
-                                                if(input$xaxis1 == '5' & input$type1 == '2'){
+                                                if(input$xaxis1 == '5' & type1 == '2'){
                                                     stock <- input$stock9
                                                     strike <- input$strike9
                                                     vol <- input$vol9
