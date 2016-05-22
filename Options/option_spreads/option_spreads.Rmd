@@ -189,42 +189,42 @@ library(htmltools)
 library(htmlwidgets)
 library(RColorBrewer)
 library(metricsgraphics)
-ui = shinyUI(fluidPage(
-		       pageWithSidebar(
-				       headerPanel("Protective Put"),
-				       sidebarPanel(
-						    # titlePanel("Protective Put"),
+## ui = shinyUI(fluidPage(
+## 		       pageWithSidebar(
+## 				       headerPanel("Protective Put"),
+## 				       sidebarPanel(
+## 						    # titlePanel("Protective Put"),
 
-fluidRow(
-    column(3, sliderInput("strike1", label = "Put Strike Price", max = 100, min = 0, value = 45, step = 1)),
-    column(3, sliderInput("premium1", label = "Put Option Premium", max = 100, min = 0, value = 4, step = 1)),
-    column(3, sliderInput("stock1", label = "Stock Purchase Price", max = 100, min = 0, value = 50, step = 1))
-    ),
-fluidRow(
-    column(12,
-	   mainPanel( ##tabsetPanel(## can I make this a fluidrow so can print $ arb below? 
-	   #            metricsgraphicsOutput('diagram', width = "100%")
-           plotOutput('diagram', width = "100%")
-           )
-    )
-    )
-             )
-)))
-server = function(input, output){
+## fluidRow(
+##     column(3, sliderInput("strike1", label = "Put Strike Price", max = 100, min = 0, value = 45, step = 1)),
+##     column(3, sliderInput("premium1", label = "Put Option Premium", max = 100, min = 0, value = 4, step = 1)),
+##     column(3, sliderInput("stock1", label = "Stock Purchase Price", max = 100, min = 0, value = 50, step = 1))
+##     ),
+## fluidRow(
+##     column(12,
+## 	   mainPanel( ##tabsetPanel(## can I make this a fluidrow so can print $ arb below? 
+## 	   #            metricsgraphicsOutput('diagram', width = "100%")
+##            plotOutput('diagram', width = "100%")
+##            )
+##     )
+##     )
+##              )
+## )))
+## server = function(input, output){
 
-  #     output$diagram <- renderMetricsgraphics({
-    output$diagram <- renderPlot({
+##   #     output$diagram <- renderMetricsgraphics({
+##     output$diagram <- renderPlot({
 
 
-## sidebarLayout(
-##     sidebarPanel(
-        ## sliderInput("strike1", label = "Put Strike Price", max = 100, min = 0, value = 50, step = 1),
-        ## sliderInput("premium1", label = "Put Option Premium", max = 100, min = 0, value = 5, step = 1),
-        ## sliderInput("stock1", label = "Stock Purchase Price", max = 100, min = 0, value = 50, step = 1),
-        ## radioButtons("show1", label = "Show Stock Profit and Option Intrinsic", choices = c("Yes" = "1", "No" = "2"), selected = "No")
-    ##     ),
-    ## mainPanel(
-    ##     renderMetricsgraphics({
+sidebarLayout(
+    sidebarPanel(
+        sliderInput("strike1", label = "Put Strike Price", max = 100, min = 0, value = 50, step = 1),
+        sliderInput("premium1", label = "Put Option Premium", max = 100, min = 0, value = 5, step = 1),
+        sliderInput("stock1", label = "Stock Purchase Price", max = 100, min = 0, value = 50, step = 1),
+        radioButtons("show1", label = "Show Stock Profit and Option Intrinsic", choices = c("Yes" = "1", "No" = "2"), selected = "No")
+        ),
+    mainPanel(
+        renderMetricsgraphics({
             ## calculate intrinsic value
             intrinsic <- input$strike1 - 1:100
             intrinsic[intrinsic < 0] <- 0
@@ -239,40 +239,41 @@ server = function(input, output){
 
 
 ### Added 7/23
-	    #             dataGraphics <- data.frame(cbind(1:100, intrinsic, PnL, payoff, profit))
-	    #             names(dataGraphics) <- c("Stock", "Short Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit")
-	    #             dataGraphics <- dataGraphics[(dataGraphics$Stock < input$strike1 + 20) & (dataGraphics$Stock > input$strike1 - 20), ]
-	    # 
-	    #             dataGraphics %>%
-	    #                 mjs_plot(x = Stock, y = 'Short Option Intrinsic', show_rollover_text = TRUE) %>%
-	    #                     mjs_line() %>%
-	    #                         mjs_add_line('Stock P/L') %>%
-	    #                         mjs_add_line('Spread Payoff') %>%
-	    #                             mjs_add_line('Spread Profit') %>%
-	    #                                 mjs_axis_x(xax_format="plain") %>%
-	    #                                 mjs_add_legend(legend = c("Short Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit"))
+	                dataGraphics <- data.frame(cbind(1:100, intrinsic, PnL, payoff, profit))
+	                names(dataGraphics) <- c("Stock", "Short Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit")
+	                dataGraphics <- dataGraphics[(dataGraphics$Stock < input$strike1 + 20) & (dataGraphics$Stock > input$strike1 - 20), ]
+	    
+	                dataGraphics %>%
+	                    mjs_plot(x = Stock, y = 'Short Option Intrinsic', show_rollover_text = TRUE) %>%
+	                        mjs_line() %>%
+	                            mjs_add_line('Stock P/L') %>%
+	                            mjs_add_line('Spread Payoff') %>%
+	                                mjs_add_line('Spread Profit') %>%
+	                                    mjs_axis_x(xax_format="plain") %>%
+	                                    mjs_add_legend(legend = c("Short Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit"))
 
 	    ## traditional plot ----
 	    #             if (input$show == 1){
 
-                plot(payoff, main = "Protective Put", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "khaki1", sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock1 - input$strike1 + input$premium1, 2), " | Breakeven:", round(input$stock1 - input$premium1, 2)), ylim = range(PnL))
-                ## lines(payoff, lwd = 4, col = "khaki1", lty = 1)
-                lines(profit, lwd = 4, col = "darkseagreen1", lty = 1)
-                lines(intrinsic, lwd = 1, lty = 2, col = 1)
-                lines(PnL, lwd = 1, lty = 3, col = 1)
-                legend('topleft', c("Profit on Stock", "Option Intrinsic Value", "Payoff: Covered Call", "Profit: Covered Call"), col=c(1, 1,"khaki1","darkseagreen1"), lty = c(2,3,1,1), lwd = c(1,1,4,4))
+                ## plot(payoff, main = "Protective Put", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "khaki1", sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock1 - input$strike1 + input$premium1, 2), " | Breakeven:", round(input$stock1 - input$premium1, 2)), ylim = range(PnL))
+                ## ## lines(payoff, lwd = 4, col = "khaki1", lty = 1)
+                ## lines(profit, lwd = 4, col = "darkseagreen1", lty = 1)
+                ## lines(intrinsic, lwd = 1, lty = 2, col = 1)
+                ## lines(PnL, lwd = 1, lty = 3, col = 1)
+                ## legend('topleft', c("Profit on Stock", "Option Intrinsic Value", "Payoff: Covered Call", "Profit: Covered Call"), col=c(1, 1,"khaki1","darkseagreen1"), lty = c(2,3,1,1), lwd = c(1,1,4,4))
 
-		#             } else {
-                plot(profit, main = "Covered Call", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "darkseagreen1", ylim = c(-80, 80), sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock - input$premium, 2), " | Breakeven:", round(input$stock - input$premium, 2)))
-                lines(payoff, lwd = 4, lty = 1, col = "khaki1")
-                ## abline(h = 0)
-                legend('topleft', c("Payoff: Covered Call", "Profit: Covered Call"), col=c("darkseagreen1","khaki1"), lty = c(1,1), lwd = c(4,4))
-		#             }
+		## #             } else {
+                ## plot(profit, main = "Covered Call", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "darkseagreen1", ylim = c(-80, 80), sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock - input$premium, 2), " | Breakeven:", round(input$stock - input$premium, 2)))
+                ## lines(payoff, lwd = 4, lty = 1, col = "khaki1")
+                ## ## abline(h = 0)
+                ## legend('topleft', c("Payoff: Covered Call", "Profit: Covered Call"), col=c("darkseagreen1","khaki1"), lty = c(1,1), lwd = c(4,4))
+            ## }
         })
-}
+    )
+## }
+)
 
-
-shinyApp(ui = ui, server = server)
+## shinyApp(ui = ui, server = server)
 #}}}
 ```
 
