@@ -62,7 +62,7 @@ In the app on the following slide, change the 'Correlation' slider to generate r
 
 -  Changing the 'Multiple' slider will multiply the 'z' variable by that number.  You'll see it doesn't change the correlation coefficient -- only the scale of the 'z' axis.  Linear transformations do not affect correlation.
 
--  Then choose the radio butting to square z.  You'll see this transformation will change the correlation.  Nonlinear transformations so affect correlation. 
+-  Then choose the radio button to square z.  You'll see this transformation will change the correlation.  Nonlinear transformations do affect correlation. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
