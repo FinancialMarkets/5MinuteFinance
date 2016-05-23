@@ -21,17 +21,17 @@ The VVIX is often referred to as `the VIX on the VIX' or 'the vol of vol'.
 
 -  Before going on, be sure you are familiar with the VIX [link to MI presentation on VIX].
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Interpreting the VVIX
 
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## The VVIX, VIX, and the Stock Market
 
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div>
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## The VVIX, VIX, and the Stock Market
 
@@ -67,17 +67,17 @@ renderDygraph({
 #}}}
 ```
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## The VIX is Forward Looking
 
 
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##  VIX, Market Return, and Volume
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
@@ -115,10 +115,10 @@ renderScatterplotThree({
 #}}}
 ```
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
 [end of presentation graphic]
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
