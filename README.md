@@ -18,6 +18,12 @@ If you are already familiar with Git/R/Shiny then feel free to jump in and add t
 
 # Links to Presentations
 
+### Commodities
+
+[Cross Hedging](https://micfm.shinyapps.io/cross_hedging_presentation)
+
+[Crude Oil Markets](https://micfm.shinyapps.io/crude_oil_markets)
+
 ### Corporate Finance
 
 Many of the presentations below are works-in-progress.  Feel free to contribute fixes and new content. 
@@ -26,6 +32,21 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios)
 
+[Intro to Stock Investments](https://micfm.shinyapps.io/basic_stock)
+
+[Intro to Bond Valuation](https://micfm.shinyapps.io/intro_bond_valuation)
+
+[The CAPM](https://micfm.shinyapps.io/The_CAPM)
+
+[OCFs](https://micfm.shinyapps.io/OCFs)
+
+[TVM Single CFs](https://micfm.shinyapps.io/TVM_Single_CFs)
+
+[Operating Cash Flow](https://micfm.shinyapps.io/operating_cash_flow)
+
+### Econometrics
+
+[Intro to Correlation Coefficient](https://micfm.shinyapps.io/what_is_correlation)
 
 ### Options
 
@@ -33,23 +54,62 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Greeks](https://micfm.shinyapps.io/greeks)
 
-### Debt and Fixed Income
+[Options Intro](https://micfm.shinyapps.io/option_intro)
+
+[Option Spreads](https://micfm.shinyapps.io/option_spreads)
+
+[Black Scholes](https://micfm.shinyapps.io/black_scholes)
+
+[Stochastic Vol](https://micfm.shinyapps.io/stochastic_vol)
+
+[VVIX](https://micfm.shinyapps.io/The_VVIX)
+
+### Fixed Income and Debt
 
 [Duration](https://micfm.shinyapps.io/intro_duration/)
 
 [Convexity](https://micfm.shinyapps.io/convexity/)
 
+[Treasury Debt Risk](https://micfm.shinyapps.io/treasury_debt_risk/)
+
+[ETNs](https://micfm.shinyapps.io/ETNs/)
+
 ### Foreign Exchange
 
 [Arbitrage](https://micfm.shinyapps.io/fx_arbitrage/)
 
+[FX Markets](https://micfm.shinyapps.io/fx_market)
 
 ### Equity Markets
 
 [Short Selling Stock](https://micfm.shinyapps.io/short_selling_stock/)
 
+[Intro Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/)
+
+[Leveraged ETFs](https://micfm.shinyapps.io/leveragedETFs/)
+
+[Intro Stock Markets](https://micfm.shinyapps.io/stock_markets/)
+
+[Intro Stock Options](https://micfm.shinyapps.io/stock_option_intro/)
+
+[ETFs](https://micfm.shinyapps.io/ETFs/)
+
+[Stock Markets Dark Pools](https://micfm.shinyapps.io/stock_markets_dark_pools/)
+
+[Stock Markets Function](https://micfm.shinyapps.io/stock_markets_function/)
+
+[Stock Markets Over Time](https://micfm.shinyapps.io/stock_markets_over_time/)
 
 ### Monetary Policy
 
 [FOMC Communications](https://micfm.shinyapps.io/fed_communications/)  Need to add more FOMC statements to word cloud.
 
+[US Monetary Policy](https://micfm.shinyapps.io/us_monetary_policy/)
+
+### Risk
+
+[What is Risk](https://micfm.shinyapps.io/what_is_risk/)
+
+[Risk Future Past](https://micfm.shinyapps.io/risk_future_past/)
+
+[Intro Portfolio Performance Measures](https://micfm.shinyapps.io/portfolio_performance_measures/)
