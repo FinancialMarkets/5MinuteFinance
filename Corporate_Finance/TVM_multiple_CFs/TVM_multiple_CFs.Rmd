@@ -1,16 +1,30 @@
 ---
 title: "The Time Value of Money: Multiple Cash Flows"
-author: "Matt Brigida: Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
 date: "06/02/2015"
 output: ioslides_presentation
 runtime: shiny
 smaller: true
 ---
 
+<!-- author: "Matt Brigida: Milken Institute, Center for Financial Markets" -->
+<!-- affiliation: "Milken Institute Center for Financial Markets" -->
+
+
+
 ## Introduction
 
 In this presentation we'll cover some common methods of dealing with contracts that are comprised of multiple cash flows.
+
+
+## Annuities
+
+An **annuity** is a contract which pays a fixed amount at the end of each period for a fixed number of periods.  Many common financial contract are annuities, such as fixed rate mortgage and auto loans.  If the payments are in the beginning of a period (such as renting an apartment) the contract is known as an *annuity due*.
+
+There are 
+- $r$ the rate per period
+- $n$ the number of periods
+- $C$ the cash flow per period
+
 
 
 ## Future Value
