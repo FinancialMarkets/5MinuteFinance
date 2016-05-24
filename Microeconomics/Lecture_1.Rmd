@@ -1,5 +1,5 @@
 ---
-title: "Lecture 1"
+title: "Decomposing Price Effects"
 author: "Amar Hamoudi"
 output: ioslides_presentation
 date: "5/20/2016"
@@ -9,27 +9,55 @@ date: "5/20/2016"
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## R Markdown
+## Two Things Happen When A Price Changes
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+1. Consumers' effective purchasing power changes
+   + Can't buy as much $A$ if $p_A \uparrow$
+   + Can buy more of $A$ if $p_A \downarrow$
+2. The _opportunity cost_ of that good changes
+   + If $p_A \uparrow$ and $p_B$ doesn't change, then buying 1 $A$ requires giving up more $B$
+   + If $p_A \downarrow$ and $p_B$ doesn't change, then buying 1 $A$ requires giving up fewer $B$
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+These are **two** **different** things.
 
-## Slide with Bullets
+## Income and Substitution Effects
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+Each of these **two** **different** consequences of a price change has its **own** **effect** on consumer behavior.
 
-## Slide with R Output
+1. Change in purchasing power $\Rightarrow$ _income effect_
+2. Change in opportunity cost $\Rightarrow$ _substitution effect_
 
-```{r cars, echo = TRUE}
-summary(cars)
-```
+The **substitution effect** is conceptually challenging. We will demonstrate and explore it on the next slide
 
-## Slide with Plot
+## Interactive Slide
 
-```{r pressure}
-plot(pressure)
-```
+I am picturing this: commodity $A$ on the horizontal axis, and $B$ on the vertical axis. A budget line with
+slope -1, and an indifference curve kissing that budget line at the optimal choice X, which is marked on the
+graph. A note in the top right corner "When buying 1 more $A$ requires giving up 1 $B$, a consumer with these
+preferences would choose option X."
+
+Then a slider, labeled "opportunity cost of $A$" (initially resting at 1). As it slides, the budget line
+pivots around choice X, and the new optimal choice is shown. Below the original note is another that reads,
+"If the opportunity cost of $A$ changes to [value on slider], a consumer with these preferences would no
+longer choose X _even if she could afford it._"
+
+## Compensated Demand
+
+In order to **isolate** the _substitution effect_ from the _income effect_, imagine a **hypothetical thought
+experiment.**
+
+1. Before the price change, a consumer is enjoying option X
+2. Right when the price of one of the goods in option X changes, the consumer is **compensated** with $c$
+dollars. That amount represents _exactly_ enough purchasing power to be able to afford the cheapest option
+which is _just as good to her_ as X. That's option Y. The difference between option X and option Y represents 
+the _substitution effect_
+3. Now, the $c$ dollars is taken away and she buys the best option she can afford. That's option Z. The difference
+between option Y and option Z represents the _income effect_
+
+On the next slide, we will demonstrate and explore this thought experiment.
+
+## Interactive Slide
+
+Let's plan this animation when we get here.
+
 
