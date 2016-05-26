@@ -6,8 +6,12 @@ output: ioslides_presentation
 runtime: shiny
 ---
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
 
 shinyUI(fluidPage(
   titlePanel("Consumer Optimization"),
