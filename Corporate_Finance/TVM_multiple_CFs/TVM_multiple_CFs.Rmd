@@ -2,6 +2,8 @@
 title: "The Time Value of Money: Multiple Cash Flows"
 date: "06/02/2015"
 output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
 runtime: shiny
 smaller: true
 ---
@@ -15,6 +17,7 @@ smaller: true
 
 In this presentation we'll cover some common methods of dealing with contracts that are comprised of multiple cash flows.
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Annuities
 
@@ -28,6 +31,8 @@ The annuity is defined by its:
 
 It is important that each quantity you use is over the same period, i.e. don't use a yearly rate with monthly payments.
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## The Present Value of an Annuity
 
 To calculate the present value of an annuity we can simply discount each payment individually, to the same period, and sum them.  In other words we can:
@@ -37,6 +42,8 @@ $PV_0 = \frac{C}{(1+r)^1} + \frac{C}{(1+r)^2} + ... + \frac{C}{(1+r)^n}$
 Note the PV is at time 0 (one period before the first payment in time 1).  This calculation is very easy to do in a spreadsheet.  However annuities are old, so historically we have used a simplified version of the above equation.  Specifically the above is equal to:  
 
 $PV_0 = C(\frac{1 - \frac{1}{(1+r)^n}}{r})$
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## PV of an Annuity Calculator
 
@@ -54,11 +61,13 @@ pv <- sum( cashFlows / ((1 + input$rate) ^ {1:input$periods}) )
   text(x = 0.5, y = 0.5, labels = paste(round(pv, 2)), cex = 5)
 })
 ```
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 ## The Future Value (FV) of an Annuity
 
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Future Value
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -81,3 +90,4 @@ renderPlot({
 
 [Should we put a calculator which will return *FV*, *PV*, *r*, and *n* given the other inputs?]
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
