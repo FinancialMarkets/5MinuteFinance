@@ -15,7 +15,12 @@ smaller: true
 
 ## Introduction
 
-In this presentation we'll cover the valuation of contracts that are comprised of multiple cash flows.
+In this presentation we'll cover the valuation of contracts that are comprised of multiple cash flows.  These contracts will cover:
+
+- Annuities
+- Perpetuities
+- Growing Annuities and Perpetuities 
+- Irregular Cash Flows
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
