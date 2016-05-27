@@ -14,9 +14,11 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <!-- SECTION: INTRO -->
 
+<!-- first part of idea: how interactive shiny presentations are useful -->  
+
 ## 5Minute[Finance]
 
-Milken Institute Center for Financial Markets (MICFM) initiative to create short, interactive, educational materials on financial topics.  The project welcomes contributions from the wider finance community.  The code is hosted here: [github.com/FinancialMarkets/5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance)
+Milken Institute Center for Financial Markets (MICFM) initiative to create short, interactive, educational materials on financial topics written in R/Shiny.  The project welcomes contributions from the wider finance community.  The code is hosted here: [github.com/FinancialMarkets/5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance)
 
 -  All materials and source code are released under open-source and creative commons licenses.
 -  A part of a broader open-source initiative at MI: https://github.com/FinancialMarkets
@@ -33,7 +35,7 @@ R/Shiny allows finance educators to:
 
 -  Leverage javascript libraries (htmlwidgets) for innovative visualizations.
 
--  Deliver content widely (in the web browser) at low cost.
+-  Deliver content widely (in the web browser) at low cost.  Mobile is increasingly good.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -153,6 +155,32 @@ renderScatterplotThree({
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
+## 
+
+```{r, echo = FALSE}
+
+library(threejs)
+options("scipen" = 100, "digits" = 6)
+inputPanel({
+  sliderInput("theTime", "Day/Second", value = c(0000000, 310000000), min = 0000000, max = 3100000, animate = animationOptions(interval = 300), sep = "", step = 60)
+})
+renderScatterplotThree({
+ ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1]
+ ez1509es1509$Date <- ez1509es1509$Date - 2015080000000
+tmp <- subset(ez1509es1509, Date > input$theTime[1])
+tmp <- subset(tmp, Date < input$theTime[2])
+## maybe sort to reverse moneyness -- so switches view
+tmp <- tmp[ order(tmp[,2]),]
+tmp[,2] <- -tmp[,2]
+    scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time", "-Moneyness", "Implied Volatility"))
+})
+```
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+
 ##
 
 <!-- downloading and sorting data -->
@@ -192,6 +220,7 @@ ticker <- comp$symbol[comp$name == input$name]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
+
 ##
 
 <!-- option gamma calculator -->
@@ -202,6 +231,7 @@ library(metricsgraphics)
 library(htmltools)
 library(htmlwidgets)
 library(RColorBrewer)
+## div(style = "margin-top: -20px;",
 sidebarLayout(
     sidebarPanel(
         selectizeInput("xaxis1", "X-Axis", choices = list("Stock Price" = 1,
@@ -210,7 +240,7 @@ sidebarLayout(
                                           "Risk Free" = 4,
                                           "Time" = 5), selected = 1),
 
-        selectizeInput('type1', "Type", choices = list("Call" = 1, "Put" = 2), selected = '1'),
+        ## selectizeInput('type1', "Type", choices = list("Call" = 1, "Put" = 2), selected = '1'),
 
         ## have conditional input -- whatever is chosen above is not included below
         ## note, we want to reproduce the charts like in page 313 of Hull
@@ -249,16 +279,19 @@ sidebarLayout(
 
         conditionalPanel(
             condition = "input.xaxis1 == '5'",
+            sliderInput("stock9", "Stock Price", min=1, max=100, value=50, step = 1),
             sliderInput("strike9", "Strike Price", min=1, max=100, value=50, step = 1),
             sliderInput("vol9", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf9", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("stock9", "Stock Price", min=1, max=100, value=50, step = 1)
+            sliderInput("rf9", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01)
             )
         ),
     
     mainPanel(
 
         renderMetricsgraphics({
+
+            type1 <- '1'
+            
             d1 <- function(){(log(stock/strike) + (rf + (vol * vol) / 2) * time) / (vol * sqrt(time))}
             d2 <- function(){d1() - vol * sqrt(time)}
 
@@ -280,7 +313,7 @@ sidebarLayout(
             rho.c <- function(){strike * time * exp(-rf * time) * pnorm(d2())}
             rho.p <- function(){-strike * time * exp(-rf * time) * pnorm(-d2())}
 
-            if(input$xaxis1 == '1' & input$type1 == '1'){
+            if(input$xaxis1 == '1' & type1 == '1'){
                 stock <- 1:100
                 strike <- input$strike5
                 vol <- input$vol5
@@ -296,7 +329,7 @@ sidebarLayout(
                                 mjs_add_legend(legend = c("Gamma"))
                 
             } else {
-                if(input$xaxis1 == '1' & input$type1 == '2'){
+                if(input$xaxis1 == '1' & type1 == '2'){
                     stock <- 1:100
                     strike <- input$strike5
                     vol <- input$vol5
@@ -312,7 +345,7 @@ sidebarLayout(
                                     mjs_add_legend(legend = c("Gamma"))
                     
                 } else {
-                    if(input$xaxis1 == '2' & input$type1 == '1'){
+                    if(input$xaxis1 == '2' & type1 == '1'){
                         stock <- input$stock6
                         strike <- 1:100
                         vol <- input$vol6
@@ -326,7 +359,7 @@ sidebarLayout(
                                     mjs_labs(x="STRIKE PRICE", y="CALL GAMMA")
                         
                     } else {
-                        if(input$xaxis1 == '2' & input$type1 == '2'){
+                        if(input$xaxis1 == '2' & type1 == '2'){
                             stock <- input$stock6
                             strike <- 1:100
                             vol <- input$vol6
@@ -342,7 +375,7 @@ sidebarLayout(
 
                             
                         } else {
-                            if(input$xaxis1 == '3' & input$type1 == '1'){
+                            if(input$xaxis1 == '3' & type1 == '1'){
                                 stock <- input$stock7
                                 strike <- input$strike7
                                 vol <- seq(0.01, 0.5, by = 0.01)
@@ -358,7 +391,7 @@ sidebarLayout(
 
                                 
                             } else {
-                                if(input$xaxis1 == '3' & input$type1 == '2'){
+                                if(input$xaxis1 == '3' & type1 == '2'){
                                     stock <- input$stock7
                                     strike <- input$strike7
                                     vol <- seq(0.01, 0.5, by = 0.01)
@@ -374,7 +407,7 @@ sidebarLayout(
 
                                     
                                 } else {
-                                    if(input$xaxis1 == '4' & input$type1 == '1'){
+                                    if(input$xaxis1 == '4' & type1 == '1'){
                                         stock <- input$stock8
                                         strike <- input$strike8
                                         vol <- input$vol8
@@ -390,7 +423,7 @@ sidebarLayout(
 
                                         
                                     } else {
-                                        if(input$xaxis1 == '4' & input$type1 == '2'){
+                                        if(input$xaxis1 == '4' & type1 == '2'){
                                             stock <- input$stock8
                                             strike <- input$strike8
                                             vol <- input$vol8
@@ -406,7 +439,7 @@ sidebarLayout(
 
                                             
                                         } else {
-                                            if(input$xaxis1 == '5' & input$type1 == '1'){
+                                            if(input$xaxis1 == '5' & type1 == '1'){
                                                 stock <- input$stock9
                                                 strike <- input$strike9
                                                 vol <- input$vol9
@@ -422,7 +455,7 @@ sidebarLayout(
 
                                                 
                                             } else {
-                                                if(input$xaxis1 == '5' & input$type1 == '2'){
+                                                if(input$xaxis1 == '5' & type1 == '2'){
                                                     stock <- input$stock9
                                                     strike <- input$strike9
                                                     vol <- input$vol9
@@ -448,7 +481,7 @@ sidebarLayout(
             
         })
         )
-    )
+)
 #}}}
 ```
 
@@ -560,8 +593,13 @@ renderPlot({
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
+<!-- second part of idea: collaboration enabled by github -->
 
 ## Collaboration using GitHub
+
+Presently, financial education materials are duplicated through separate efforts by individuals and organizations. This is particularly true for materials targeting the undergraduate level.
+
+We hope to foster a community effort to create a set of finance education and course materials. Collaboration and attribution are managed through GitHub.
 
 -  Very easy to contribute with GitHub's in-browser edit feature.
 
