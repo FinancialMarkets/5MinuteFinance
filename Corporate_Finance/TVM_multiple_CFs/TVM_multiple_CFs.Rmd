@@ -96,3 +96,13 @@ renderPlot({
 [Should we put a calculator which will return *FV*, *PV*, *r*, and *n* given the other inputs?]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## A Growing Annuity
+
+## Perpetuity
+
+A **perpetuity** is a contract which pays a fixed amount at the end of each period for an infinite number of periods. 
+
+## A Growing Perpetuity
+
+## Irregular Cash Flows
