@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = FALSE)
 Milken Institute Center for Financial Markets (MICFM) initiative to create short, interactive, educational materials on financial topics written in R/Shiny.  The project welcomes contributions from the wider finance community.  The code is hosted here: [github.com/FinancialMarkets/5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance)
 
 -  All materials and source code are released under open-source and creative commons licenses.
--  A part of a broader open-source initiative at MI: https://github.com/FinancialMarkets
+-  A part of a broader open-source initiative at MI: https://github.com/FinancialMarkets  This initiative is just getting started -- more will be added soon.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -158,7 +158,6 @@ renderScatterplotThree({
 ## 
 
 ```{r, echo = FALSE}
-
 library(threejs)
 options("scipen" = 100, "digits" = 6)
 inputPanel({
@@ -169,10 +168,11 @@ renderScatterplotThree({
  ez1509es1509$Date <- ez1509es1509$Date - 2015080000000
 tmp <- subset(ez1509es1509, Date > input$theTime[1])
 tmp <- subset(tmp, Date < input$theTime[2])
-## maybe sort to reverse moneyness -- so switches view
+ ## maybe sort to reverse moneyness -- so switches view
+  names(tmp) <- c("Seconds.Aug.2015", "-Moneyness", "ES.Put.Implied.Vol")
 tmp <- tmp[ order(tmp[,2]),]
 tmp[,2] <- -tmp[,2]
-    scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time", "-Moneyness", "Implied Volatility"))
+    scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time (Seconds over August 2015)", "-Moneyness", "ES Put Implied Volatility"))
 })
 ```
 
