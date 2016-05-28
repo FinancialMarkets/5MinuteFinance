@@ -105,4 +105,10 @@ A **perpetuity** is a contract which pays a fixed amount at the end of each peri
 
 ## A Growing Perpetuity
 
+A **growing perpetuity** is a contract which pays an increasing amount at the end of each period for an infinite number of periods.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
 ## Irregular Cash Flows
+
+**Irregular cash flows** are payments which do not occur at regular intervals over a time period.
