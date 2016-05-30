@@ -99,16 +99,31 @@ renderPlot({
 
 ## A Growing Annuity
 
+A **growing annuity** is a contract which pays a constantly increasing amount at the end of each period for a set number of periods.
+
+-  For example, the following is a growing annuity:  a contract which pays $\$100$ in the next period, and $\$100(1 + r)^n$ in period $n$, where $n$ ranges from 1 to some final period $N$, and $r$ is the growth rate per period.  The value of a growing annuity at time $0$ is:
+
+
 ## Perpetuity
 
 A **perpetuity** is a contract which pays a fixed amount at the end of each period for an infinite number of periods. 
 
 ## A Growing Perpetuity
 
-A **growing perpetuity** is a contract which pays an increasing amount at the end of each period for an infinite number of periods.
+A **growing perpetuity** is a contract which pays a constantly increasing amount at the end of each period for an infinite number of periods.
+
+-  For example, the following is a growing perpetuity:  a contract which pays $\$100$ in the next period, and $\$100(1 + r)^n$ in period $n$, where $n$ ranges from 1 to infinity, and $r$ is the growth rate per period.  The value of a growing perpetuity (assuming the discount rate is greater than the cash flow growth rate)  at time $0$ is:
+
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## Irregular Cash Flows
 
-**Irregular cash flows** are payments which do not occur at regular intervals over a time period.
+A contract with **Irregular cash flows** is any contract that has a cash flow structure other than those listed above.
+
+-  As mentioned earlier, annuity formulas allowed computationally easy valuation, and therefore use, of the above contracts.  However present computing power makes valuation of any stream of cash flows very easy.  
+
+-  So the valuation of irregular cash flows can simply be done by applying the formulas for single cash flows to each individual cash flow in the contract.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>

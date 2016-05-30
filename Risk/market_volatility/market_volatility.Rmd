@@ -57,7 +57,7 @@ rChartsCalmap::renderCalheatmap({
     rChartsCalmap::calheatmap('date', 'vol', 
                               data = dat, 
                               domain = 'month',
-                              legend = seq(0, 5, .5),
+                              legend = seq(0, 2, .5),
                               start = input$date[1],
                               itemName = '%'
                               )
