@@ -14,7 +14,13 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ##
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
+
+## Can't use this yet -- there are two bugs in the rChartsCalmap package -----
+## 1.  the shiny app appends the new calendar instead of overwriting if a change is made:  https://github.com/ramnathv/rChartsCalmap/issues/1
+## 2.  the higher values are not colored -- just left blank.
+
+
 devtools::install_github("ramnathv/rChartsCalmap")
 library(htmlwidgets)
 
@@ -66,4 +72,42 @@ rChartsCalmap::renderCalheatmap({
 
 ```
 
+## Volatility Clustering
+
+
 ##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+library(quantmod)
+library(dygraphs)
+
+comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+names(comp) <- c("symbol", "name")
+
+inputPanel(
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name),
+    dateRangeInput("date", "Date Range", start = "2010-01-01", end = Sys.Date())
+    ## add date range input 
+)
+
+dygraphs::renderDygraph({
+    
+    ## valdate name ----
+    validate(
+        need(input$name != "", "Select a US stock name.")
+    )
+
+    ticker <- comp$symbol[comp$name == input$name]
+
+    library(quantmod)
+    stock <- getSymbols(ticker, auto.assign = FALSE,from = input$date[1], to = input$date[2])
+
+    vol <- abs(Delt(Ad(stock))[-1]) * 100
+    names(vol) <- "Realized Volatility (%)"
+
+    dygraph(vol)
+
+})
+```
