@@ -12,6 +12,7 @@ runtime: shiny
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+
 ##
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
@@ -19,7 +20,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Can't use this yet -- there are two bugs in the rChartsCalmap package -----
 ## 1.  the shiny app appends the new calendar instead of overwriting if a change is made:  https://github.com/ramnathv/rChartsCalmap/issues/1
 ## 2.  the higher values are not colored -- just left blank.
-
+#{{{
 
 devtools::install_github("ramnathv/rChartsCalmap")
 library(htmlwidgets)
@@ -69,11 +70,24 @@ rChartsCalmap::renderCalheatmap({
                               )
 
 })
-
+#}}}
 ```
 
 ## Volatility Clustering
 
+An observable feature of financial markets is that volatility tends to follow volatility. Conversely, a period of low volatility will tend to follow low volatility.  
+
+-  By volatility we mean the size of the asset's return, regardless of the sign (positive/negative) of the return.  
+
+-  This feature of financial markets prompted the creation of the famous ARCH/GARCH class of volatility models.  These models allow volatility this period to be conditional on volatility in the previous (and earlier) periods.   
+
+## So Can We Predict Prices or Returns?  
+
+-  Volatility clustering is consistent with an asset's return at time $t$ is usually being not correlated with its time $t-1$ return.  So we are not claiming prices or returns are predictable.  
+
+-  However, what we are saying above is that the square (or absolute value) of the return at time $t$ is positively correlated with the square of the return at time $t-1$.  That is, the size of the return is informative with respect to the size of future returns.  
+
+-  The following app will plot the absolute value of the return (Realized Volatility) for any stock and date range you choose.  Can you see volatility cluster -- try long time periods.  
 
 ##
 
