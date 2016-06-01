@@ -96,7 +96,7 @@ renderPlot({
     ##   }
     }
   ## }
-  plot(x ~ z)
+  plot(x ~ z, xlim = c(-10, 12))
   legend("topleft", paste("Correlation Coefficient: ", round(cor(x, z, method = "pearson"), 2), sep = ""))
 })
 #}}}
