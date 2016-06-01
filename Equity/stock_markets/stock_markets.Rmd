@@ -19,14 +19,12 @@ height: 100%;
 </style>
 -->
 
-## Stock Markets
+## Introduction to Stock Markets
 
 The goal of stock markets is to facilitate the exchange of ownership of corporations (common stock).  There are *primary* and *secondary* markets.
 
 -  Primary: an exchange of stock in which the company is a buyer or seller.
 -  Secondary:  an exchange of stock in which the company is not involved.
-
-[graphic: people exchanging stock certificates]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
