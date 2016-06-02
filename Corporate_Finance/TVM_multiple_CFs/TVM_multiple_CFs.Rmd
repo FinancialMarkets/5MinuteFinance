@@ -56,11 +56,12 @@ $PV_0 = C(\frac{1 - \frac{1}{(1+r)^n}}{r})$
 inputPanel(
 	   sliderInput("rate", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
 	   sliderInput("periods", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
-	   sliderInput("cash", label = "Cash Flow per Period", min = 0, max = 100000, step = 10, value = 100)
+	   sliderInput("cash", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100)
 	   )
 
 renderPlot({
 cashFlows <- rep(input$cash, input$periods)
+## note I am not using the annuity formula below -- no need -- R is vectorized ---
 pv <- sum( cashFlows / ((1 + input$rate) ^ {1:input$periods}) )
   plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
   text(x = 0.5, y = 0.5, labels = paste(round(pv, 2)), cex = 5)
@@ -78,16 +79,17 @@ pv <- sum( cashFlows / ((1 + input$rate) ^ {1:input$periods}) )
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
 inputPanel(
-	   sliderInput("rate", label = "Annual Interest Rate", min = -.05, max = 0.5, step = .01, value = .05),
-	   sliderInput("years", label = "Number of Years", min = 1, max = 50, step = 1, value = 10)
-	   #            sliderInput("pv", label = "Present Value", min = 1, max =50, step = 1, value = 10),
+	   sliderInput("rate.fva", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
+	   sliderInput("periods.fva", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
+	   sliderInput("cash.fva", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100)
 	   )
 
 renderPlot({
-  fv <- (1 + input$rate)^{1:input$years}
-  fv <- c(1, fv)
-  plot(fv, type = 'l', lwd = 3, col = 3, ylab = "$", xlab = "Years")
-  legend("topleft", "Future Value of $1", col = 3, lwd = 3, lty = 1)
+cashFlows <- rep(input$cash.fva, input$periods.fva)
+## again, not using the FV of an annuity formula ----
+fv <- sum( cashFlows * ((1 + input$rate.fva) ^ {1:input$periods.fva}) )
+  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+  text(x = 0.5, y = 0.5, labels = paste(round(fv, 2)), cex = 5)
 })
 #}}}
 ```
@@ -103,10 +105,87 @@ A **growing annuity** is a contract which pays a constantly increasing amount at
 
 -  For example, the following is a growing annuity:  a contract which pays $\$100$ in the next period, and $\$100(1 + r)^n$ in period $n$, where $n$ ranges from 1 to some final period $N$, and $r$ is the growth rate per period.  The value of a growing annuity at time $0$ is:
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(
+	   sliderInput("rate.fvga", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
+	   sliderInput("periods.fvga", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
+	   sliderInput("cash.fvga", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100),
+	   sliderInput("cash.gr.fvga", label = "Cash Flow Growth Rate per Period", min = 0, max = .2, step = .01, value = .02)
+	   )
+
+renderPlot({
+    cashFlows <- rep(input$cash.fvga, input$periods.fvga) * (1 + input$cash.gr.fvga)^{1:input$periods.fvga}
+## again, not using the FV of an annuity formula ----
+fvga <- sum( cashFlows * ((1 + input$rate.fvga) ^ {1:input$periods.fvga}) )
+  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+  text(x = 0.5, y = 0.5, labels = paste(round(fvga, 2)), cex = 5)
+})
+#}}}
+```
+
+
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(
+	   sliderInput("rate.fvga", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
+	   sliderInput("periods.fvga", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
+	   sliderInput("cash.fvga", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100),
+	   sliderInput("cash.gr.fvga", label = "Cash Flow Growth Rate per Period", min = 0, max = .2, step = .01, value = .02)
+	   )
+
+renderPlot({
+    cashFlows <- rep(input$cash.fvga, input$periods.fvga) * (1 + input$cash.gr.fvga)^{1:input$periods.fvga}
+## again, not using the FV of an annuity formula ----
+fvga <- sum( cashFlows * ((1 + input$rate.fvga) ^ {1:input$periods.fvga}) )
+  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+  text(x = 0.5, y = 0.5, labels = paste(round(fvga, 2)), cex = 5)
+})
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## Perpetuity
 
 A **perpetuity** is a contract which pays a fixed amount at the end of each period for an infinite number of periods. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+
+##
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(
+	   sliderInput("rate.fva", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
+	   sliderInput("periods.fva", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
+	   sliderInput("cash.fva", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100)
+	   )
+
+renderPlot({
+cashFlows <- rep(input$cash.fva, input$periods.fva)
+## again, not using the FV of an annuity formula ----
+fv <- sum( cashFlows * ((1 + input$rate.fva) ^ {1:input$periods.fva}) )
+  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+  text(x = 0.5, y = 0.5, labels = paste(round(fv, 2)), cex = 5)
+})
+#}}}
+```
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+
 
 ## A Growing Perpetuity
 
@@ -117,6 +196,30 @@ A **growing perpetuity** is a contract which pays a constantly increasing amount
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(
+	   sliderInput("rate.fva", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
+	   sliderInput("periods.fva", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
+	   sliderInput("cash.fva", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100)
+	   )
+
+renderPlot({
+cashFlows <- rep(input$cash.fva, input$periods.fva)
+## again, not using the FV of an annuity formula ----
+fv <- sum( cashFlows * ((1 + input$rate.fva) ^ {1:input$periods.fva}) )
+  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+  text(x = 0.5, y = 0.5, labels = paste(round(fv, 2)), cex = 5)
+})
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
 
 ## Irregular Cash Flows
 

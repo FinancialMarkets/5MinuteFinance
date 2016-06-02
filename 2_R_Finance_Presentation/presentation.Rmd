@@ -618,7 +618,7 @@ The Center for Financial Markets promotes financial market understanding and wor
 
 ## Matt Brigida
 
-Assistant Professor of Finance, University of Nebraska--Kearney
+<!--- Assistant Professor of Finance, University of Nebraska--Kearney -->
 
 [github.com/Matt-Brigida](https://github.com/Matt-Brigida)
 
