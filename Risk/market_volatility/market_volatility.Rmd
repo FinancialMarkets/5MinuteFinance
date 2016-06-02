@@ -72,6 +72,7 @@ rChartsCalmap::renderCalheatmap({
 })
 #}}}
 ```
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Volatility Clustering
 
@@ -81,13 +82,17 @@ An observable feature of financial markets is that volatility tends to follow vo
 
 -  This feature of financial markets prompted the creation of the famous ARCH/GARCH class of volatility models.  These models allow volatility this period to be conditional on volatility in the previous (and earlier) periods.   
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## So Can We Predict Prices or Returns?  
 
 -  Volatility clustering is consistent with an asset's return at time $t$ is usually being not correlated with its time $t-1$ return.  So we are not claiming prices or returns are predictable.  
 
 -  However, what we are saying above is that the square (or absolute value) of the return at time $t$ is positively correlated with the square of the return at time $t-1$.  That is, the size of the return is informative with respect to the size of future returns.  
 
--  The following app will plot the absolute value of the return (Realized Volatility) for any stock and date range you choose.  Can you see volatility cluster -- try long time periods.  
+-  The following app will plot the absolute value of the returns for any stock and date range you choose.  Can you see volatility cluster -- try long time periods.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
@@ -119,9 +124,11 @@ dygraphs::renderDygraph({
     stock <- getSymbols(ticker, auto.assign = FALSE,from = input$date[1], to = input$date[2])
 
     vol <- abs(Delt(Ad(stock))[-1]) * 100
-    names(vol) <- "Realized Volatility (%)"
+    names(vol) <- "Absolute Value of Returns (%)"
 
     dygraph(vol)
 
 })
 ```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
