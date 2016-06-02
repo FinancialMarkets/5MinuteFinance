@@ -82,7 +82,7 @@ inputPanel(
   y <- rnorm(8000, mean = 1)
 renderPlot({
   z <- input$cor * x + sqrt(1 - input$cor^2) * y
-  z <- (input$factor * z)
+  z <- (2/input$factor * z)
   if(input$trans == 1){
     z <- z
   } else {
@@ -96,7 +96,7 @@ renderPlot({
     ##   }
     }
   ## }
-  plot(x ~ z, xlim = c(-10, 12))
+  plot(x ~ z, xlim = c(-5, 10))
   legend("topleft", paste("Correlation Coefficient: ", round(cor(x, z, method = "pearson"), 2), sep = ""))
 })
 #}}}
