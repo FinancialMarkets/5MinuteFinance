@@ -60,7 +60,7 @@ This also helps explain the optimal hedge ratio (see the Cross Hedging and Basis
 
 In the app on the following slide, change the 'Correlation' slider to generate random numbers with a particular correlation. ^[It may be a bit off because it is a random sample taken from a distribution with that correlation coefficient.]
 
--  Changing the 'Multiple' slider will multiply the 'x' variable by that number.  You'll see it doesn't change the correlation coefficient -- only the slope of the graph.
+-  Changing the 'Multiple' slider will multiply the 'x' variable by that number.  You'll see it doesn't change the correlation coefficient -- only the slope of the graph. Linear transformations do not affect correlation.
 
 -  Then choose the radio button to square z.  You'll see this transformation will change the correlation.  Nonlinear transformations do affect correlation. 
 
