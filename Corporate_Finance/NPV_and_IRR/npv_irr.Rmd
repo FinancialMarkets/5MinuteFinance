@@ -75,3 +75,23 @@ renderPlot({
 #}}}
 ```
 -->
+
+
+## Net Present Value (NPV)
+
+*Net Present Value* is the summation of cash inflows and outflows discounted back to their present value. If the Net Present Value meets or exceeds a predetermined threshold, the project is accepted. Below the threshold, the project is rejected. 
+
+The Net Present Value is defined by its: 
+
+- $r$ the discount rate
+- $n$ the number of periods
+- $C$ the cash flow per period
+- $-Co$ the initial investment
+
+$NPV = -C0 + \frac{C1}{(1+r)^1} + \frac{C2}{(1+r)^2} + ... + \frac{Cn}{(1+r)^n}$ (I do not know how to make sub-numbers here)
+
+## Internal Rate of Return (IRR)
+
+*Internal Rate of Return* is the discount rate that makes the Net Present Value equal zero. It is normally used to compare projects. Projects with a higher IRR are accepted.
+
+$IRR = -C0 + \frac{C1}{(1+r)^1} + \frac{C2}{(1+r)^2} + ... + \frac{Cn}{(1+r)^n} = 0$ (I do not know how to make sub-numbers here)
