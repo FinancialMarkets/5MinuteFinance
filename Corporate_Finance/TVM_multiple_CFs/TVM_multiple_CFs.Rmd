@@ -11,6 +11,22 @@ smaller: true
 <!-- author: "Matt Brigida: Milken Institute, Center for Financial Markets" -->
 <!-- affiliation: "Milken Institute Center for Financial Markets" -->
 
+<!--- below from here (http://stackoverflow.com/questions/28207912/change-font-sizes-with-style-sheets-for-rstudio-presentation) but doesn't seem to work.
+<style>
+/* slide titles */
+.reveal h3 { 
+  font-size: 10px;
+  color: blue;
+}
+/* heading for slides with two hashes ## */
+.reveal .slides section .slideContent h2 {
+   font-size: 40px;
+   font-weight: bold;
+   color: green;
+}
+</style>
+-->
+
 
 
 ## Introduction
@@ -53,6 +69,7 @@ $PV_0 = C(\frac{1 - \frac{1}{(1+r)^n}}{r})$
 ## PV of an Annuity Calculator
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
 inputPanel(
 	   sliderInput("rate", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
 	   sliderInput("periods", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
@@ -66,6 +83,7 @@ pv <- sum( cashFlows / ((1 + input$rate) ^ {1:input$periods}) )
   plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
   text(x = 0.5, y = 0.5, labels = paste(round(pv, 2)), cex = 5)
 })
+#}}}
 ```
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -107,24 +125,31 @@ A **growing annuity** is a contract which pays a constantly increasing amount at
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
-##
+## 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
+### PV of a Growing Annuity ----
 #{{{
-inputPanel(
-	   sliderInput("rate.fvga", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
-	   sliderInput("periods.fvga", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
-	   sliderInput("cash.fvga", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100),
-	   sliderInput("cash.gr.fvga", label = "Cash Flow Growth Rate per Period", min = 0, max = .2, step = .01, value = .02)
-	   )
+sidebarLayout(
+	      sidebarPanel(
+			   inputPanel(
+				      sliderInput("rate.pvga", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
+				      sliderInput("periods.pvga", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
+				      sliderInput("cash.pvga", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100),
+				      sliderInput("cash.gr.pvga", label = "Cash Flow Growth Rate per Period", min = 0, max = .2, step = .01, value = .02)
+				      )
+			   ),
 
-renderPlot({
-    cashFlows <- rep(input$cash.fvga, input$periods.fvga) * (1 + input$cash.gr.fvga)^{1:input$periods.fvga}
-## again, not using the FV of an annuity formula ----
-fvga <- sum( cashFlows * ((1 + input$rate.fvga) ^ {1:input$periods.fvga}) )
-  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
-  text(x = 0.5, y = 0.5, labels = paste(round(fvga, 2)), cex = 5)
-})
+	      mainPanel(
+			renderPlot({
+			  cashFlows <- rep(input$cash.pvga, input$periods.pvga) * (1 + input$cash.gr.pvga)^{1:input$periods.pvga}
+			  ## again, not using the PV of an annuity formula ----
+			  pvga <- sum( cashFlows / ((1 + input$rate.pvga) ^ {1:input$periods.pvga}) )
+			  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+			  text(x = 0.5, y = 0.5, labels = paste(round(pvga, 2)), cex = 5)
+			})
+			)
+	      )
 #}}}
 ```
 
@@ -134,23 +159,36 @@ fvga <- sum( cashFlows * ((1 + input$rate.fvga) ^ {1:input$periods.fvga}) )
 ##
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
+### FV of a Growing Annuity ----
 #{{{
+sidebarLayout(
+	      sidebarPanel(
 inputPanel(
 	   sliderInput("rate.fvga", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
 	   sliderInput("periods.fvga", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
 	   sliderInput("cash.fvga", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100),
 	   sliderInput("cash.gr.fvga", label = "Cash Flow Growth Rate per Period", min = 0, max = .2, step = .01, value = .02)
 	   )
+),
 
+			   mainPanel(
 renderPlot({
     cashFlows <- rep(input$cash.fvga, input$periods.fvga) * (1 + input$cash.gr.fvga)^{1:input$periods.fvga}
 ## again, not using the FV of an annuity formula ----
-fvga <- sum( cashFlows * ((1 + input$rate.fvga) ^ {1:input$periods.fvga}) )
-  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
-  text(x = 0.5, y = 0.5, labels = paste(round(fvga, 2)), cex = 5)
+    fvga <- sum( cashFlows * ((1 + input$rate.fvga) ^ {1:input$periods.fvga}) )
+    plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+    text(x = 0.5, y = 0.5, labels = paste(round(fvga, 2)), cex = 5)
 })
+)
+			   )
 #}}}
 ```
+
+
+
+
+##
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
@@ -165,19 +203,17 @@ A **perpetuity** is a contract which pays a fixed amount at the end of each peri
 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
+### PV of a Perpetuity ----
 #{{{
 inputPanel(
-	   sliderInput("rate.fva", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
-	   sliderInput("periods.fva", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
-	   sliderInput("cash.fva", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100)
+	   sliderInput("rate.pvp", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
+	   sliderInput("cash.pvp", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100)
 	   )
 
 renderPlot({
-cashFlows <- rep(input$cash.fva, input$periods.fva)
-## again, not using the FV of an annuity formula ----
-fv <- sum( cashFlows * ((1 + input$rate.fva) ^ {1:input$periods.fva}) )
+  pvp <- input$cash.pvp / input$rate.pvp
   plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
-  text(x = 0.5, y = 0.5, labels = paste(round(fv, 2)), cex = 5)
+  text(x = 0.5, y = 0.5, labels = paste(round(pvp, 2)), cex = 5)
 })
 #}}}
 ```
@@ -201,22 +237,27 @@ A **growing perpetuity** is a contract which pays a constantly increasing amount
 ##
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
+### PV of a Growing Perpetuity ----
 #{{{
 inputPanel(
-	   sliderInput("rate.fva", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
-	   sliderInput("periods.fva", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
-	   sliderInput("cash.fva", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100)
+	   sliderInput("rate.pvgp", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
+	   sliderInput("growth.rate.pvgp", label = "CF Growth Rate per Period", min = 0, max = 0.5, step = .01, value = .02),
+	   sliderInput("cash.pvgp", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100)
 	   )
 
 renderPlot({
-cashFlows <- rep(input$cash.fva, input$periods.fva)
-## again, not using the FV of an annuity formula ----
-fv <- sum( cashFlows * ((1 + input$rate.fva) ^ {1:input$periods.fva}) )
+  pvgp <- input$cash.pvgp / (input$rate.pvgp - input$growth.rate.pvgp)
   plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
-  text(x = 0.5, y = 0.5, labels = paste(round(fv, 2)), cex = 5)
+  if (input$rate.pvgp <= input$growth.rate.pvgp) {
+    text(x = 0.5, y = 0.5, labels = paste("Growth Rate must be less than Discount Rate"), cex = 2)
+  } else {
+    text(x = 0.5, y = 0.5, labels = paste("$", round(pvgp, 2)), cex = 5)
+  }
+
 })
 #}}}
 ```
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
