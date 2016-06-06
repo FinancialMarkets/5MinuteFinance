@@ -13,6 +13,8 @@
 
 **Fork**: A fork is a personal copy of another user’s repository that exists on your GitHub account. You can freely make changes to a forked repository without affecting the original. Forks remain tied to the original, so by sending a pull request, you can ask the original user to update the repository with your changes.
 
+**Git**: Git is an open source program that tracks changes made to files. It is the core technology that GitHub is built on top of.
+
 **Pull Request**: A pull request is a proposed change to a repository submitted by a user that is accepted or rejected by the repository’s owners. Like commits, pull requests are typically titled and contain a brief descriptive message.
 
 **Repository**: A repository (repo) can be easily understood as a project’s folder. A repo contains all of the project’s files and tracks each file’s commit history. Repositories can have multiple owners, or collaborators, and can be either public or private. 
