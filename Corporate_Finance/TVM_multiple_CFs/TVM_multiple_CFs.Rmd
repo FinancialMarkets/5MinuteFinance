@@ -113,7 +113,6 @@ This is equivalent to:
 $FV_n = \frac{C(1 + r)^n - 1}{r}$
 
 
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Applications of the FV of an Annuity
@@ -158,6 +157,26 @@ A **growing annuity** is a contract which pays a constantly increasing amount at
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
+##  PV of a Growing Annuity
+
+The PV of a growing annuity is:
+
+$PV_0 = \frac{C}{(1+r)} + \frac{C(1+g)}{(1+r)^2} + ... + \frac{C(1+g)^{n-1}}{(1+r)^n} = C(\frac{1-(\frac{1+g}{1+r})^n}{r - g})$
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+##  FV of a Growing Annuity
+
+The FV of a growing annuity (in the last period $n$) is:
+
+$FV_n = C(1 + r)^{n-1} + C(1+g)(1+r)^{n-2} + ... + C(1+g)^{n-1} = C(\frac{(1+r)^n - (1+g)^n}{r - g})$
+
+where $r \neq g$.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
 ## 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -180,6 +199,7 @@ sidebarLayout(
 			  pvga <- sum( cashFlows / ((1 + input$rate.pvga) ^ {1:input$periods.pvga}) )
 			  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
 			  text(x = 0.5, y = 0.5, labels = paste(round(pvga, 2)), cex = 5)
+      text(x = 0.5, y = 0.95, labels = paste("PV of a Growing Annuity"), cex = 2)
 			})
 			)
 	      )
@@ -211,6 +231,7 @@ renderPlot({
     fvga <- sum( cashFlows * ((1 + input$rate.fvga) ^ {1:input$periods.fvga}) )
     plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
     text(x = 0.5, y = 0.5, labels = paste(round(fvga, 2)), cex = 5)
+    text(x = 0.5, y = 0.95, labels = paste("FV of a Growing Annuity"), cex = 2)
 })
 )
 			   )

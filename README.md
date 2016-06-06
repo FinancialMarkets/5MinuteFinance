@@ -8,11 +8,11 @@ This is a project to create freely available financial education materials. The 
 
 We hope to foster a community effort to create a set of finance education and course materials. Collaboration and attribution are managed through GitHub.  In this way we can have tens and hundreds of people collaborating (each getting credit for their work), and thereby create unparalleled educational materials on many topics.
 
-## Ways to contribute.
+## How to contribute.
 
-You can contribute with very little knowledge of Git/GitHub, and no knowledge of R/Shiny.  All you need is a GitHub account.  The easiest way to start contributing is to use the edit-in-browser feature in each file. To use this click the the little pencil in the upper right of a file.
+You can contribute with very little knowledge of Git/GitHub, and no knowledge of R/Shiny.  All you need is a GitHub account.  The easiest way to start contributing is to use the edit-in-browser feature in each file. [We posted a short video tutorial on how to do this here.](https://www.youtube.com/watch?v=iVC9UKkaiko)  
 
-We are in the process of creating basic tutorials on contributing. We'll post them here, but you can also get started with GitHub's excellent list of documentation: https://help.github.com/articles/good-resources-for-learning-git-and-github/
+We'll continue to add tutorials here to help make contributing easy.  You can also get started with [GitHub's excellent list of documentation](https://help.github.com/articles/good-resources-for-learning-git-and-github).
 
 If you are already familiar with Git/R/Shiny then feel free to jump in and add text and code!  
 
