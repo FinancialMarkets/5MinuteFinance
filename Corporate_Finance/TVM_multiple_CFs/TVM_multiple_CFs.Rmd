@@ -66,6 +66,18 @@ $PV_0 = C(\frac{1 - \frac{1}{(1+r)^n}}{r})$
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Applications of the PV of an Annuity
+
+You can use the above formula to find your monthly mortgage payment.  Say you are going to borrow \$150,000 to buy a house, and your 30-year mortgage rate is 5\%.  We can plug these values into the formula:
+
+$\$150,000 = C(\frac{1 - \frac{1}{(1 + \frac{5\%}{12})^{12(30)}}}{\frac{5\%}{12}})$ 
+
+rearranging for $C$ (the monthly payment) gives:
+
+$C = \$805.23$ 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## PV of an Annuity Calculator
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -90,10 +102,31 @@ pv <- sum( cashFlows / ((1 + input$rate) ^ {1:input$periods}) )
 
 ## The Future Value (FV) of an Annuity
 
+We can instead push each cash flow into the last period, and find the total value of the payments then.  This is the FV of the annuity.
+
+The FV at the last period of the annuity (time $n$) is simply:
+
+$FV_n = C(1+r)^{n-1} + C(1+r)^{n-2} + ... + C$
+
+This is equivalent to:
+
+$FV_n = \frac{C(1 + r)^n - 1}{r}$
+
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Future Value
+## Applications of the FV of an Annuity
+
+Calculating the FV of an annuity is most often used in retirement calculations.  For example, if you put \$300 per month into an account earning 4% annual interest, how much money would you have in the account in 30 years?  
+
+You will have $\frac{\$300(1 + \frac{4\%}{12})^{30(12)}}{\frac{4\%}{12}} = \$298,214.80$
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Future Value of an Annuity Calculator
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
 inputPanel(
