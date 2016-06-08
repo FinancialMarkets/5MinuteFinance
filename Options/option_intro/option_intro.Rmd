@@ -80,7 +80,7 @@ An American option's value can never be less than the option's intrinsic.  Why n
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Option Intrinsic and Time Values
+## <!--- Option Intrinsic and Time Values -->
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
