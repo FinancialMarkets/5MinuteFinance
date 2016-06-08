@@ -1,5 +1,5 @@
 ---
-title: "The Time Value of Money: Multiple Cash Flows"
+title: "Valuing Contracts with Multiple Cash Flows"
 date: "06/02/2015"
 output: ioslides_presentation
 logo: misq.png
@@ -42,13 +42,13 @@ In this presentation we'll cover the valuation of contracts that are comprised o
 
 ## Annuities
 
-An **annuity** is a contract which pays a fixed amount at the end of each period for a fixed number of periods.  Many common financial contract are annuities, such as fixed rate mortgage and auto loans.  If the payments are in the beginning of a period (such as renting an apartment) the contract is known as an *annuity due*.
+An **annuity** is a contract which pays a fixed amount at the end of each period for a fixed number of periods.  Many common financial contract are annuities, such as fixed rate mortgages and auto loans.  If the payments are in the beginning of a period (such as renting an apartment) the contract is known as an *annuity due*.
 
 The annuity is defined by its: 
 
-- $r$ the rate per period
-- $n$ the number of periods
-- $C$ the cash flow per period
+- $r$ rate per period
+- $n$ number of periods
+- $C$ cash flow per period
 
 It is important that each quantity you use is over the same period, i.e. don't use a yearly rate with monthly payments.
 
@@ -94,6 +94,7 @@ cashFlows <- rep(input$cash, input$periods)
 pv <- sum( cashFlows / ((1 + input$rate) ^ {1:input$periods}) )
   plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
   text(x = 0.5, y = 0.5, labels = paste(round(pv, 2)), cex = 5)
+      text(x = 0.5, y = 0.95, labels = paste("PV of an Annuity"), cex = 2)
 })
 #}}}
 ```
@@ -140,6 +141,7 @@ cashFlows <- rep(input$cash.fva, input$periods.fva)
 fv <- sum( cashFlows * ((1 + input$rate.fva) ^ {1:input$periods.fva}) )
   plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
   text(x = 0.5, y = 0.5, labels = paste(round(fv, 2)), cex = 5)
+      text(x = 0.5, y = 0.95, labels = paste("FV of an Annuity"), cex = 2)
 })
 #}}}
 ```
@@ -153,7 +155,7 @@ fv <- sum( cashFlows * ((1 + input$rate.fva) ^ {1:input$periods.fva}) )
 
 A **growing annuity** is a contract which pays a constantly increasing amount at the end of each period for a set number of periods.
 
--  For example, the following is a growing annuity:  a contract which pays $\$100$ in the next period, and $\$100(1 + r)^n$ in period $n$, where $n$ ranges from 1 to some final period $N$, and $r$ is the growth rate per period.  The value of a growing annuity at time $0$ is:
+-  For example, the following is a growing annuity:  a contract which pays $\$100$ in the next period, and $\$100(1 + r)^i$ in period $i$, where $i$ ranges from 1 to the final period $n$, and $r$ is the growth rate per period.  The value of a growing annuity at time $0$ is:
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
@@ -161,19 +163,13 @@ A **growing annuity** is a contract which pays a constantly increasing amount at
 
 The PV of a growing annuity is:
 
-$PV_0 = \frac{C}{(1+r)} + \frac{C(1+g)}{(1+r)^2} + ... + \frac{C(1+g)^{n-1}}{(1+r)^n} = C(\frac{1-(\frac{1+g}{1+r})^n}{r - g})$
+$PV_0 = \frac{C}{(1+r)} + \frac{C(1+g)}{(1+r)^2} + ... + \frac{C(1+g)^{n-1}}{(1+r)^n}$
 
+which can simplified to:
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+$PV = C(\frac{1-(\frac{1+g}{1+r})^n}{r - g})$
 
-##  FV of a Growing Annuity
-
-The FV of a growing annuity (in the last period $n$) is:
-
-$FV_n = C(1 + r)^{n-1} + C(1+g)(1+r)^{n-2} + ... + C(1+g)^{n-1} = C(\frac{(1+r)^n - (1+g)^n}{r - g})$
-
-where $r \neq g$.
-
+Feel free to try the calculation, and check your answer on the calculator on the next slide.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
@@ -205,6 +201,22 @@ sidebarLayout(
 	      )
 #}}}
 ```
+
+##  FV of a Growing Annuity
+
+The FV of a growing annuity (in the last period $n$) is:
+
+$FV_n = C(1 + r)^{n-1} + C(1+g)(1+r)^{n-2} + ... + C(1+g)^{n-1}$
+
+which can be simplified to:
+
+$FV_n = C(\frac{(1+r)^n - (1+g)^n}{r - g})$
+
+where $r \neq g$.
+
+Again, you can try the calculation, and check your answer on the calculator on the next slide.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 
 
@@ -239,19 +251,27 @@ renderPlot({
 ```
 
 
-
-
-##
-
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## Perpetuity
 
-A **perpetuity** is a contract which pays a fixed amount at the end of each period for an infinite number of periods. 
+A **perpetuity** is a contract which pays a fixed amount at the end of each period for an infinite number of periods. Despite having an infinite number of payments, the PV is a finite amount (assuming a positive interest rate).  This is because [later payments become negligible](https://en.wikipedia.org/wiki/Series_(mathematics)#Convergent_series). 
+
+The present value of a perpetuity is:
+
+$PV = \frac{C}{1+r} + \frac{C}{(1+r)^2} + \frac{C}{(1+r)^3} + \ldots =\frac{C}{r}$
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
+## Applications of the Perpetuity
+
+Likely the best known perpetuity is [preferred stock](https://en.wikipedia.org/wiki/Preferred_stock).  Preferred stock pays a fixed dividend, unlike common stock whose dividend changes over time.  
+
+Say ABC company's preferred stock pays a fixed dividend of \$7 per year every year.  The discount rate is 10%.  Then the preferred stock is worth:
+
+$PV = \frac{\$7}{0.10} = \$70$
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ##
 
@@ -268,6 +288,7 @@ renderPlot({
   pvp <- input$cash.pvp / input$rate.pvp
   plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
   text(x = 0.5, y = 0.5, labels = paste(round(pvp, 2)), cex = 5)
+      text(x = 0.5, y = 0.95, labels = paste("PV of a Perpetuity"), cex = 2)
 })
 #}}}
 ```
@@ -279,11 +300,23 @@ renderPlot({
 
 ## A Growing Perpetuity
 
-A **growing perpetuity** is a contract which pays a constantly increasing amount at the end of each period for an infinite number of periods.
+A **growing perpetuity** is a contract which pays a constantly increasing amount at the end of each period for an infinite number of periods.  That is, if the first payment is $\$C$, then the following payments are $\$C(1+g)$, $\$C(1+g)^2$, ... off to infinity.
 
--  For example, the following is a growing perpetuity:  a contract which pays $\$100$ in the next period, and $\$100(1 + r)^n$ in period $n$, where $n$ ranges from 1 to infinity, and $r$ is the growth rate per period.  The value of a growing perpetuity (assuming the discount rate is greater than the cash flow growth rate)  at time $0$ is:
+Assuming $g < r$ the PV of the growing perpetuity is:
 
+$PV = \frac{C}{1+r} + \frac{C(1+g)}{(1+r)^2} + \frac{C(1+g)^2}{(1+r)^3} + ... = \frac{C}{r-g}
 
+If $g \geq r$ then then the value is infinite.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+## Applications of the Growing Perpetuity
+
+Perhaps the most famous application is the [Gordon Growth Model of stock valuation](https://en.wikipedia.org/wiki/Dividend_discount_model).  The model assumes a stock's dividends grow at a constant rate. Since stock is infinitely lived, we can find the PV of the dividends (the stock's value), as the PV of a growing perpetuity.
+
+-  Say XYZ Corp pays yearly dividends, and next year's dividend will be \$5.  XYZ's dividends are expected to grow at 3% in perpetuity, and its discount rate is 7%.  The value of XYZ's stock is:
+
+$PV = \frac{\$5}{7% - 3%} = \$125$
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
@@ -306,6 +339,7 @@ renderPlot({
     text(x = 0.5, y = 0.5, labels = paste("Growth Rate must be less than Discount Rate"), cex = 2)
   } else {
     text(x = 0.5, y = 0.5, labels = paste("$", round(pvgp, 2)), cex = 5)
+      text(x = 0.5, y = 0.95, labels = paste("PV of a Growing Perpetuity"), cex = 2)
   }
 
 })
