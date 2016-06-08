@@ -2,7 +2,7 @@
 
 # Interactive Presentations
 
-This is a project to create freely available financial education materials. The materials are interactive presentations written in [RMarkdown](http://rmarkdown.rstudio.com/) and use [Shiny](http://shiny.rstudio.com/) for interactive the content.  The presentations are hosted on shinyapps.io, and can be viewed by following the links below (all links have not yet been added).
+This is a [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) project to create freely available financial education materials. The materials are interactive presentations written in [RMarkdown](http://rmarkdown.rstudio.com/) and use [Shiny](http://shiny.rstudio.com/) for interactive the content.  The presentations are hosted on shinyapps.io, and can be viewed by following the links below (all links have not yet been added).
 
 # Contributions are Welcome!
 
