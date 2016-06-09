@@ -1,5 +1,5 @@
 ---
-title: "For What is the YTM Used?"
+title: "For What is the Yield to Maturity (YTM) Used?"
 author: "Matt Brigida"
 date: "June 8, 2016"
 logo: misq.png
@@ -13,38 +13,58 @@ smaller: true
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## 
+## YTM Gives Us the Bond's Price
+
+Given the YTM, and the bond's cash flows, we can calculate the bond's price.  Say a 10 year bond pays an annual \$50 coupon, and has a 3\% YTM.  Then the bond's value is (using the present value of an annuity formula):
+
+$V_0 = \$50(\frac{1 - \frac{1}{1.03^{10}}}{0.03}) + \frac{\$1000}{1.03^{10}} = \$1170.60$
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Interactive Plot
+## How to We Get the YTM?
 
-```{r eruptions}
-inputPanel(
-  selectInput("n_breaks", label = "Number of bins:",
-              choices = c(10, 20, 35, 50), selected = 20),
-  
-  sliderInput("bw_adjust", label = "Bandwidth adjustment:",
-              min = 0.2, max = 2, value = 1, step = 0.2)
-)
+To get the YTM, we solve for the rate which makes the present value of the bond's payments equal to the bond's price. So say a bond's price is \$900 and it pays an \$80 annual coupon for the next 5 years.  Then the YTM is:
 
-renderPlot({
-  hist(faithful$eruptions, probability = TRUE, breaks = as.numeric(input$n_breaks),
-       xlab = "Duration (minutes)", main = "Geyser eruption duration")
-  
-  dens <- density(faithful$eruptions, adjust = input$bw_adjust)
-  lines(dens, col = "blue")
-})
-```
+$\$900 = \$80(\frac{1 - \frac{1}{(1 + YTM)^{5}}}{YTM}) + \frac{\$1000}{(1+YTM)^{5}}$
+
+We can solve this equation for $YTM$ using methods such as [Newton-Raphson](https://en.wikipedia.org/wiki/Newton%27s_method).  In this case the $YTM = 10.68\%$.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## 
+## Circular?
+
+So we get the bond's price be using the YTM, but we get the YTM by observing the bond's price.  Isn't this circular?  
+
+Seemingly yes.  What the YTM actually does is quote the bond's return to you.  We quote a bond's return, instead of its price, because it is much more informative.  
+
+-  We do not use the YTM to determine how much to pay for a bond (as in bond valuation).  We can only use it to know what the present price is.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## 
+## Why Quote a Bond's Return?
 
+Different 5-year US Treasury Notes (for example) may each have different prices.  But all will have the same YTM.  
+
+For example, say we have the following three 5-year notes:
+
+- Note A: 30-year bond issued 25 years ago with a 15\% coupon rate.
+- Note B: 10-year bond issued 5 years ago with a 9% coupon rate.
+- Note C: 5-year bond issued today with a 1\% coupon rate.
+
+By arbitrage, each bond with have the same 1\% YTM.  So this means the bond prices are:
+
+- Note A: \$1679.48
+- Note B: \$1388.27
+- Note C: \$1000.00
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## So How do You Value a Bond?
+
+There are a couple of approaches to determine how much we would pay for a bond.  
+
+-  For a default risk free coupon bond, we can discount each cash flow by the market determined zero coupon rate.  If the bond is not default free, we can adjust the rate for risk.
+
+-  Often to value a corporate bond, you can use the YTM of a bond with similar risk.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
