@@ -15,6 +15,37 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <!-- Much of the text and code in this presentation is from here: https://mattbrigida.shinyapps.io/chapter7_pairs_trade/pairs_trade.Rmd  -->
 
+## Market Neutral/Stat Arb
+
+The pairs trade is a market neutral/statistical arbitrage quantitative trading strategy.
+
+- Market Neutral: Market risk is removed in the trading strategy.  Returns on your pais trade should be uncorrelated with market returns.
+- Stat Arb: We find a statistical relationship between two assets, and wait for the relatinship to behave differently.  We then trade to profit when the realtionship begins to hold again.  This is a loose use of the term 'arbitrage', and is not an arbitrage in the strict sense.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## A Motivating Note
+
+The pairs trade is an idea, but its implementation can be quite different across traders. Different implementatios are active areas of research, and you can come up with your own method.
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Timeline
+
+The pairs trade has the following general structure:
+
+#.  Choose universe of pairs.
+#.  Statistically determine the normal relationship between each pair (estimation period).
+#.  Over a later (separate) trading period, watch the pairs to see if any deviate from thier estimation period behavior.  If any do, trade the pair.  Close pairs trades for any open pair that returns to normal (or close pairs due to stop losses).
+#.  Evaluate strategy performance, and alter the methods in the previous steps.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Your Own Method
+
+
 
 ##
 
