@@ -1,0 +1,103 @@
+---
+title: "The Pairs Trade"
+author: "Matt Brigida"
+date: "June 8, 2016"
+logo: misq.png
+css: 5min_mod.css
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+<!-- Much of the text and code in this presentation is from here: https://mattbrigida.shinyapps.io/chapter7_pairs_trade/pairs_trade.Rmd  -->
+
+
+##
+
+<!-- Estimation Period -->
+
+
+```{r, messsage=FALSE, warning=FALSE, echo = FALSE}
+#{{{
+## in the process of translating this code into a Shiny app
+## just run for each pair?
+
+inputPanel(
+  dateRangeInput("estim_period", "Estimation Period", start = "2015-09-01", end = "2015-12-31"),
+  ## selectizeInput(tickers, "Enter Tickers", )
+  textInput("ticker1", "First Stock Ticker", value = "JPM"),
+  textInput("ticker2", "Second Stock Ticker", value = "GS")
+)
+
+renderPrint({
+    
+library(quantmod)
+## Estimation period
+from <- input$estim_period[1]
+to <- input$estim_period[2]
+
+## The code below to calculate an xts object of returns is from an SO or Quant.SE post.  I need to find it and cite.
+env <- new.env()
+Symbols <- c(input$ticker1, input$ticker2)
+getSymbols(Symbols = Symbols, env = env, from = from, to = to)
+args <- eapply(env = env, FUN = function(x){ClCl(x)})[Symbols]
+returns <- na.omit(do.call(what = merge, args = args))
+colnames(returns) <- Symbols
+## convert reutrns to  normalized prices
+norm.prices <<- cumsum(returns)
+
+norm.prices.df <- as.data.frame(norm.prices)
+## function to find the average squared deviation of the normalized prices for two stocks
+  
+    ## Calculate the emtimation period parameters (the average squared deviation and the standard deviation of the squared deviations):
+    asd.e <<- mean(( norm.prices.df[,1] - norm.prices.df[,2])^2 )
+    ssd.e <<- sd(( norm.prices.df[,1] - norm.prices.df[,2])^2 )
+    cat("The average squared deviation is", asd.e ,"\n")
+    cat("The standard deviation of the squared deviations is:", ssd.e ,"\n")
+## }
+
+## run this function by typing g() into the interpreter and it will create
+## a .csv file in your working directory with all the pairs and their
+## avg squared dev and stdev of squared deviation sorted from lowest
+#  avg sq dev to highest
+
+## g <- function(){
+## list <- matrix(0,nrow=dim(norm.prices.df)[2], ncol=dim(norm.prices.df)[2])
+## asds <- matrix(0,nrow=dim(norm.prices.df)[2], ncol=dim(norm.prices.df)[2])
+## asstdevs <- matrix(0,nrow=dim(norm.prices.df)[2], ncol=dim(norm.prices.df)[2])
+## for(i in 1:dim(norm.prices.df)[2]){
+##     for(j in 1:dim(norm.prices.df)[2]){
+##         list[i,j] <- as.character(paste(names(norm.prices.df)[i],names(norm.prices.df)[j]),sep="")
+##         asds[i,j] <- mean((norm.prices.df[,i]-norm.prices.df[,j])^2)
+##         asstdevs[i,j] <- sd((norm.prices.df[,i]-norm.prices.df[,j])^2)
+##           }
+##     }
+
+})
+#}}}
+```
+
+
+
+
+
+##
+
+<!-- Chart normalized prices -->
+
+
+```{r echo=FALSE}
+#{{{
+library(dygraphs)
+renderDygraph({
+    update1 <- input$ticker1
+    update2 <- input$ticker2
+    update.e1 <- input$estim_period
+ dygraph(norm.prices) 
+#}}} 
+})
+```
