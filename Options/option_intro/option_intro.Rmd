@@ -149,74 +149,45 @@ Answer:
 #{{{
 sidebarLayout(
     sidebarPanel(
-        sliderInput("strike.p", label = "Strike Price", max = 100, min = 0, value = 50, step = 1),
-        sliderInput("volatility.p", label = "Return Volatility", max = .5, min = 0.01, value = .20, step = .01),
-        sliderInput("maturity.p", label = "Years to Maturity", max = 2, min = .1, value = .5, step = .1),
-        sliderInput("riskFree.p", label = "Risk Free Rate", max = .2, min = .01, value = .02, step = .01)
-        # radioButtons("type", label = "Option Type", choices = c("Call" = "1", "Put" = "2"), selected = "Call")
+        div(style="height: 75px;", sliderInput("strike.p", label = "Strike Price", max = 100, min = 0, value = 50, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("volatility.p", label = "Return Volatility", max = .5, min = 0.01, value = .20, step = .01, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("maturity.p", label = "Years to Maturity", max = 2, min = .1, value = .5, step = .1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("riskFree.p", label = "Risk Free Rate", max = .2, min = .01, value = .02, step = .01, ticks = FALSE)),
+	div(style="height: 75px;", sliderInput("divYield.p", label = "Dividend Yield", max = .2, min = 0, value = 0, step = .01, ticks = FALSE))
         ),
-                                        #     tabsetPanel(
-                                        #                 tabPanel(title = "Option",
     mainPanel(
         renderPlot({
             ## calculate intrinsic value
-            intrinsic <- 1:100 - input$strike.p
-            intrinsic[intrinsic < 0] <- 0
+	  stock.price.p <- 1:100
+	  div.adj.stock.price.p <- stock.price.p * exp(-input$divYield.p * input$maturity.p)
+	  intrinsic.p <- stock.price.p - input$strike.p
+	  intrinsic.p[intrinsic.p < 0] <- 0
 
             ## calculate time value by Black-Scholes for all integer stock prices from 1 to 100 ----
-            d1 <- (log(1:100/input$strike.p) + (input$riskFree.p + (input$volatility.p^2)/2) * input$maturity.p) / (input$volatility.p * sqrt(input$maturity.p))
-            d2 <- d1 - input$volatility.p * sqrt(input$maturity.p)
-            optionValue <- 1:100 * pnorm(d1) - input$strike.p * exp(-input$riskFree.p * input$maturity.p) * pnorm(d2)
-            timeValue <- optionValue - intrinsic
+            d1.p <- (log(div.adj.stock.price.p/input$strike.p) + (input$riskFree.p + (input$volatility.p^2)/2) * input$maturity.p) / (input$volatility.p * sqrt(input$maturity.p))
+            d2.p <- d1.p - input$volatility.p * sqrt(input$maturity.p)
+            optionValue.p <- div.adj.stock.price.p * pnorm(d1.p) - input$strike.p * exp(-input$riskFree.p * input$maturity.p) * pnorm(d2.p)
+            timeValue.p <- optionValue.p - intrinsic.p
 
             ## calculate put value by put-call parity
-            putValue <- optionValue + input$strike.p * exp(-input$riskFree.p * input$maturity.p) - 1:100
+            putValue.p <- optionValue.p + input$strike.p * exp(-input$riskFree.p * input$maturity.p) - div.adj.stock.price.p
 
             ## calculate put intrinsic value ----
-            intrinsicPut <- input$strike.p - 1:100
-            intrinsicPut[intrinsicPut < 0] <- 0
+            intrinsicPut.p <- input$strike.p - 1:100
+            intrinsicPut.p[intrinsicPut.p < 0] <- 0
 
             
-            ## plot ----
-            # if(input$type == "1") {
-                
-            #     plot(intrinsic, main = "Call Option Premium and Intrinsic Value", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, sub = "Black-Scholes value for a European call on a non-dividend paying stock")
-            #                             #             axis(1, at = 1:20, labels = yAxis)
-            #     lines(optionValue, lwd = 4, col = 3)
-            #                             #           lines(1:20, durLine, lwd = 5, col = 3)
-            #     legend('topleft', c("Intrinsic Value", "Option Value", "Time Value"), lty = c(1,1,1), col=c(1,3, "palegreen"), lwd = c(4,4, 15))
-            #     ##  shade region  ----
-            #     polygon(c(1:100, rev(1:100)), c(intrinsic, rev(optionValue)), col = "palegreen", border = NA)
-            # 
-            # } else {
-                plot(intrinsicPut, main = "Put Option Premium and Intrinsic Value", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, sub = "Black-Sholes value for a European put on a non-dividend paying stock")
+                plot(intrinsicPut.p, main = "Put Option Premium and Intrinsic Value", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, sub = "Black-Sholes value for a European put on a non-dividend paying stock")
                                         #             axis(1, at = 1:20, labels = yAxis)
-                lines(putValue, lwd = 4, col = 3)
+                lines(putValue.p, lwd = 4, col = "dodgerblue4")
                                         #           lines(1:20, durLine, lwd = 5, col = 3)
-                legend('topright', c("Intrinsic Value", "Option Value", "Time Value"), lty = c(1,1,1), col=c(1,3, "palegreen"), lwd = c(4,4, 15))
+                legend('topright', c("Intrinsic Value", "Option Value", "Time Value"), lty = c(1,1,1), col=c(1,"dodgerblue4", "lightblue"), lwd = c(4,4, 15))
                 ##  shade region  ----
-                polygon(c(1:100, rev(1:100)), c(intrinsicPut, rev(putValue)), col = "palegreen", border = NA)
-                # }
+                polygon(c(1:100, rev(1:100)), c(intrinsicPut.p, rev(putValue.p)), col = "lightblue", border = NA)
                 
-            })#,
-                                        #         tabPanel(title = "Time",
-                                        #                  renderPlot({
-                                        #             intrinsic <- 1:100 - input$strike
-                                        #             intrinsic[intrinsic < 0] <- 0
-                                        # 
-                                        #                          calculate time value by Black-Scholes for all integer stock prices from 1 to 100 ----
-                                        #             d1 <- (log(1:100/input$strike) + (input$riskFree + (input$volatility^2)/2) * input$maturity) / (input$volatility * sqrt(input$maturity))
-                                        #             d2 <- d1 - input$volatility * sqrt(input$maturity)
-                                        #             optionValue <- 1:100 * pnorm(d1) - input$strike * exp(-input$riskFree * input$maturity) * pnorm(d2)
-                                        #             timeValue <- optionValue - intrinsic 
-                                        # 
-                                        #             plot(timeValue, main = "Call Option Price and Intrinsic Value", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4)
-                                        #                  })
-                                        #         )
+            })
         )
     )
-                                        #                 )
-                                        #)
 #}}}
 ```
 
@@ -229,12 +200,12 @@ sidebarLayout(
 #{{{
 sidebarLayout(
     sidebarPanel(
-        sliderInput("stock1", label = "Stock Price", max = 100, min = 0, value = 50, step = 1),
-        sliderInput("strike1", label = "Strike Price", max = 100, min = 0, value = 50, step = 1),
-        sliderInput("volatility1", label = "Return Volatility", max = .5, min = 0.01, value = .20, step = .01),
-        sliderInput("maturity1", label = "Years to Maturity", max = 2, min = .1, value = .5, step = .1),
-        sliderInput("riskFree1", label = "Risk Free Rate", max = .2, min = .01, value = .02, step = .01),
-        radioButtons("type1", label = "Option Type", choices = c("Call" = "3", "Put" = "4"), selected = "3")
+        div(style="height: 75px;", sliderInput("stock1", label = "Stock Price", max = 100, min = 0, value = 50, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("strike1", label = "Strike Price", max = 100, min = 0, value = 50, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("volatility1", label = "Return Volatility", max = .5, min = 0.01, value = .20, step = .01, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("maturity1", label = "Years to Maturity", max = 2, min = .1, value = .5, step = .1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("riskFree1", label = "Risk Free Rate", max = .2, min = .01, value = .02, step = .01, ticks = FALSE)),
+        div(style="height: 75px;", radioButtons("type1", label = "Option Type", choices = c("Call" = "3", "Put" = "4"), selected = "3"))
         ),
 
     mainPanel(
