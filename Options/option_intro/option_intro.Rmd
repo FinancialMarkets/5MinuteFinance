@@ -1,8 +1,9 @@
 ---
-title: "An Introduction to Stock Options and their Values"
-author: "Milken Institute, Center for Financial Markets"
+title: "An Introduction to Stock Options"
+# author: "Milken Institute, Center for Financial Markets"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 affiliation: "Milken Institute, Center for Financial Markets"
-date: "03/12/2015"
+# date: "03/12/2015"
 output: ioslides_presentation
 runtime: shiny
 logo: misq.png
@@ -32,11 +33,9 @@ Put Option:
 
 ## American vs European
 
-The previous definitions were for American options.  These are the type of options traded on most exchanges in the US.
+The previous definitions were for American options.  These are the type of stock options traded on most exchanges in the US.
 
-The only difference in a European option, is that you can only exercise the option at expiration.
-
-The distinction between the two types is often insignificant, and so we'll use the generic term 'option' going forward.  In later presentations we'll cover the cases where it is important to make the distinction. 
+- In a European option, you can only exercise the option at expiration.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -63,10 +62,10 @@ These terms are useful because in/at/out-of-the-money options have similarities 
 
 ## Practical Notes
 
-- Option contracts listed on US exchanges (such as the Chicago Board Options Exchange (CBOE)) are for 100 options.
+- Option **contracts** listed on US exchanges (such as the Chicago Board Options Exchange (CBOE)) are for 100 options.
 - Option contracts traded on US exchanges are cleared, which means you don't have to worry about counterparty risk.  This also means you'll put up margin for each option trade.
 - Option strike prices are adjusted for stock splits, and for stock dividends of more than 10\%.
-- Option contracts are *not* adjusted for cash dividends.  This means call/put options prices are higher/lower for high dividend paying stocks.
+- Option contracts are **not** adjusted for cash dividends.  This means call/put options premiums are lower/higher for high dividend paying stocks. Remember, if a stock pays a \$1 dividend, its stock price is lowered by \$1.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -74,11 +73,11 @@ These terms are useful because in/at/out-of-the-money options have similarities 
 
 An American option's value (both call and put) can never be less than the option's intrinsic.  Why not?
 
->+ Arbitrage: If the intrinsic were \$5, and the options price was \$3, you could buy the call option and immediately exercise it earning \$2 share.  
+>+ Arbitrage: If the intrinsic were \$5, and the options price was \$3, you could buy the call option and immediately exercise it earning a riskless \$2/share.  
 
 >+ However, a *European* put's premium could be less than the intrinsic.  Also a *European* call option on a *dividend* paying stock can have a premium less than its intrinsic.
 
->+ In the next slide you can graph a European Call option's (on a non-dividend paying stock) intrinsic, premium, and time value for any set of inputs. 
+>+ In the next slide you can graph a European Call option's intrinsic, premium, and time value for any set of inputs. Note as you increase the stock's dividend yield, the option premium drops below the intrinsic.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -128,7 +127,7 @@ In the previous chart you can see the time value is greatest for at-the-money op
 
 >+ Very in or out of the money options are not really options.  You are almost certain to not exercise, or exercise, respectively.
 
->+ An at-the-money option roughly has a 50\% chance of being exercised, and a 50\% chance of not being exercised.  In short, it is where there is the most option in the option. 
+>+ An at-the-money option roughly has a 50\% chance of being exercised, and a 50\% chance of not being exercised.  In short, it is where there is the most *option* in the option. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -192,9 +191,21 @@ sidebarLayout(
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Option Premium App
+
+The following slide will allow you to calculate both call and put option premiums for your given set of inputs (via the Black-Scholes equation).  
+
+-  Use the app to see how the underlying variables affect the option price.  For example, how does an increase in interest rates effect call and put values?  How about an increase in volatility?
+
+- Don't worry yet about how to derive the option pricing equation -- we'll cover that in later presentations.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 <!---
 ## Black-Scholes Value
 -->
+ 
 ##
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
@@ -243,8 +254,6 @@ In the following presentations we'll cover:
 
 - Option spreads, and using options in combination with stock positions.
 - Option Valuation.
-
-
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
