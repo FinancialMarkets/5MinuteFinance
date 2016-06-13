@@ -19,31 +19,46 @@ knitr::opts_chunk$set(echo = FALSE)
 
 The pairs trade is a market neutral/statistical arbitrage quantitative trading strategy.
 
-- Market Neutral: Market risk is removed in the trading strategy.  Returns on your pais trade should be uncorrelated with market returns.
-- Stat Arb: We find a statistical relationship between two assets, and wait for the relatinship to behave differently.  We then trade to profit when the realtionship begins to hold again.  This is a loose use of the term 'arbitrage', and is not an arbitrage in the strict sense.
+- Market Neutral: Market risk is removed in the trading strategy.  Returns on your pairs trade should be uncorrelated with market returns.
+- Stat Arb: We find a statistical relationship between two assets, and wait for the relationship to behave differently.  We then trade to profit when the relationship begins to hold again.  This is a loose use of the term 'arbitrage', and is not an arbitrage in the strict sense.
+
+This strategy can be thought of as the opposite of Markowitz mean/variance optimization, which reduces firm specific risk but leaves market risk in our portfolio. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## A Motivating Note
+## Law of One Price
 
-The pairs trade is an idea, but its implementation can be quite different across traders. Different implementatios are active areas of research, and you can come up with your own method.
+The Stat Arb aspect of the pairs trade employs the **law of one price**.  This law says that if two securities have the same payoff in all states of the world, then the two securities must have the same price. 
 
-
+-  This is enforced by arbitrage. Say the price of security *A* is greater than *B*, and they have the same payoff. Then you could sell *A* and buy *B*, earning \$*A−B*, and the payoffs (being the same) will net to \$0.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Timeline
+## No One Way
 
-The pairs trade has the following general structure:
+There is no single way to implement the pairs trade. This is an active area of research, and provides you with a venue to create your own strategy.  Following are the general steps of the pairs trade, and your method is any step can be different from methods employed by others.
 
 #.  Choose universe of pairs.
 #.  Statistically determine the normal relationship between each pair (estimation period).
-#.  Over a later (separate) trading period, watch the pairs to see if any deviate from thier estimation period behavior.  If any do, trade the pair.  Close pairs trades for any open pair that returns to normal (or close pairs due to stop losses).
+#.  Over a later (separate) trading period, watch the pairs to see if any deviate from their estimation period behavior.  If any do, trade the pair.  Close pairs trades for any open pair that returns to normal (or close pairs due to stop losses).
 #.  Evaluate strategy performance, and alter the methods in the previous steps.
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Your Own Method
+
+The key to the pairs trade is how you implement the above structure.  Some questions are:
+
+-  What metric makes a pair acceptable (same industry, same country, etc)?  How similar do the asset beta coefficient need to be?
+-  How will you define the 'normal' statistical relationship?
+-  How far does the pair have to deviate firm its normal behavior before you enter the trade?  When do you exit the trade (either take profits or cut losses)?
+
+We'll implement a version of the pairs trade in the following slides, and I'll highlight these decisions.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## [Gatev et al (2008)](http://www-stat.wharton.upenn.edu/~steele/Courses/434/434Context/PairsTrading/PairsTradingGGR.pdf)
 
 
 
@@ -89,25 +104,6 @@ norm.prices.df <- as.data.frame(norm.prices)
     ssd.e <<- sd(( norm.prices.df[,1] - norm.prices.df[,2])^2 )
     cat("The average squared deviation is", asd.e ,"\n")
     cat("The standard deviation of the squared deviations is:", ssd.e ,"\n")
-## }
-
-## run this function by typing g() into the interpreter and it will create
-## a .csv file in your working directory with all the pairs and their
-## avg squared dev and stdev of squared deviation sorted from lowest
-#  avg sq dev to highest
-
-## g <- function(){
-## list <- matrix(0,nrow=dim(norm.prices.df)[2], ncol=dim(norm.prices.df)[2])
-## asds <- matrix(0,nrow=dim(norm.prices.df)[2], ncol=dim(norm.prices.df)[2])
-## asstdevs <- matrix(0,nrow=dim(norm.prices.df)[2], ncol=dim(norm.prices.df)[2])
-## for(i in 1:dim(norm.prices.df)[2]){
-##     for(j in 1:dim(norm.prices.df)[2]){
-##         list[i,j] <- as.character(paste(names(norm.prices.df)[i],names(norm.prices.df)[j]),sep="")
-##         asds[i,j] <- mean((norm.prices.df[,i]-norm.prices.df[,j])^2)
-##         asstdevs[i,j] <- sd((norm.prices.df[,i]-norm.prices.df[,j])^2)
-##           }
-##     }
-
 })
 #}}}
 ```
