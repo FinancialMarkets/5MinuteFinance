@@ -60,6 +60,29 @@ We'll implement a version of the pairs trade in the following slides, and I'll h
 
 ## [Gatev et al (2008)](http://www-stat.wharton.upenn.edu/~steele/Courses/434/434Context/PairsTrading/PairsTradingGGR.pdf)
 
+This is a fairly simple application of the pairs trade.  You can see an implementation in R in [the code for this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/pairs_trade/pairs_trade.Rmd).
+
+*Estimation Period* 
+
+- We first calculate normalized prices (cumulative returns) over some past period, so each stock price is on the same scale.
+
+- We then calculate the average squared difference between the prices, and the standard deviation of the squared difference in the prices.  These two statistics (mean and standard deviation) allow us to categorize normal, and abnormal, behavior for a pair.  
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## [Gatev et al (2008)](http://www-stat.wharton.upenn.edu/~steele/Courses/434/434Context/PairsTrading/PairsTradingGGR.pdf)
+
+*Trading Period*
+
+- Over a separate (later) period, we recalculate normalized prices and monitor the squared deviation.
+
+-  If the squared deviation exceeds two standard from its average, we open a pairs trade.  To do so we buy the underperforming stock, and short the better performing stock.
+
+- When the spread goes to zero (the normalized prices cross) we close the pairs trade--exit our trades in the individual stocks.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 ##
