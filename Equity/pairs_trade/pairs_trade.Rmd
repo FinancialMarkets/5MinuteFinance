@@ -94,60 +94,81 @@ This is a fairly simple application of the pairs trade.  You can see an implemen
 #{{{
 ## in the process of translating this code into a Shiny app
 ## just run for each pair?
+library(dygraphs)
+shinyUI(fluidPage(
+    ## titlePanel("submitButton example"),
+    fluidRow(
+        column(3, wellPanel(
+                      ## inputPanel( 
+                      ## dateRangeInput("estim_period", "Estimation Period", start = "2015-09-01", end = "2015-12-31"),
+                      dateInput("estim_period_start", "Estimation Period Start", value = "2015-09-01"), 
+                      dateInput("estim_period_end", "End", value = "2015-12-31"), 
+                      ## selectizeInput(tickers, "Enter Tickers", )
+                      textInput("ticker1", "First Stock Ticker", value = "JPM"),
+                      textInput("ticker2", "Second Stock Ticker", value = "GS")
+                  )),
+        column(9,
+               renderDygraph({
+               library(quantmod)
+               ## Estimation period
+               ## from <- input$estim_period[1]
+               ## to <- input$estim_period[2]
 
-inputPanel(
-  dateRangeInput("estim_period", "Estimation Period", start = "2015-09-01", end = "2015-12-31"),
-  ## selectizeInput(tickers, "Enter Tickers", )
-  textInput("ticker1", "First Stock Ticker", value = "JPM"),
-  textInput("ticker2", "Second Stock Ticker", value = "GS")
+               from <- input$estim_period_start
+               to <- input$estim_period_end
+
+               ## The code below to calculate an xts object of returns is from an SO or Quant.SE post.  I need to find it and cite.
+               env <- new.env()
+               Symbols <- c(input$ticker1, input$ticker2)
+               getSymbols(Symbols = Symbols, env = env, from = from, to = to)
+               args <- eapply(env = env, FUN = function(x){ClCl(x)})[Symbols]
+               returns <- na.omit(do.call(what = merge, args = args))
+               colnames(returns) <- Symbols
+               ## convert reutrns to  normalized prices
+               norm.prices <<- cumsum(returns)
+
+               norm.prices.df <<- as.data.frame(norm.prices)
+
+
+
+                   update1 <- input$ticker1
+                   update2 <- input$ticker2
+                   update.e1 <- input$estim_period_start
+                   update.e2 <- input$estim_period_end                   
+                   dygraph(norm.prices) 
+                                        #}}} 
+               }),
+
+
+               renderPrint({    
+                   ## function to find the average squared deviation of the normalized prices for two stocks
+                   update3 <- input$ticker1
+                   update4 <- input$ticker2
+                   update.e3 <- input$estim_period_start
+                   update.e4 <- input$estim_period_end                   
+                   
+                   ## Calculate the estimation period parameters (the average squared deviation and the standard deviation of the squared deviations):
+                   asd.e <<- mean(( norm.prices.df[,1] - norm.prices.df[,2])^2 )
+                   ssd.e <<- sd(( norm.prices.df[,1] - norm.prices.df[,2])^2 )
+                   cat("The average squared deviation is", asd.e ,"\n")
+                   cat("The standard deviation of the squared deviations is:", ssd.e ,"\n")
+                   ## paste("The average squared deviation is", asd.e ,"\n")
+                   ## paste("The standard deviation of the squared deviations is:", ssd.e ,"\n")
+
+               })
+               )
+    )
 )
-
-renderPrint({
-    
-library(quantmod)
-## Estimation period
-from <- input$estim_period[1]
-to <- input$estim_period[2]
-
-## The code below to calculate an xts object of returns is from an SO or Quant.SE post.  I need to find it and cite.
-env <- new.env()
-Symbols <- c(input$ticker1, input$ticker2)
-getSymbols(Symbols = Symbols, env = env, from = from, to = to)
-args <- eapply(env = env, FUN = function(x){ClCl(x)})[Symbols]
-returns <- na.omit(do.call(what = merge, args = args))
-colnames(returns) <- Symbols
-## convert reutrns to  normalized prices
-norm.prices <<- cumsum(returns)
-
-norm.prices.df <- as.data.frame(norm.prices)
-## function to find the average squared deviation of the normalized prices for two stocks
-  
-    ## Calculate the emtimation period parameters (the average squared deviation and the standard deviation of the squared deviations):
-    asd.e <<- mean(( norm.prices.df[,1] - norm.prices.df[,2])^2 )
-    ssd.e <<- sd(( norm.prices.df[,1] - norm.prices.df[,2])^2 )
-    cat("The average squared deviation is", asd.e ,"\n")
-    cat("The standard deviation of the squared deviations is:", ssd.e ,"\n")
-})
+)
 #}}}
 ```
 
 
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 ##
 
-<!-- Chart normalized prices -->
 
-
-```{r echo=FALSE}
-#{{{
-library(dygraphs)
-renderDygraph({
-    update1 <- input$ticker1
-    update2 <- input$ticker2
-    update.e1 <- input$estim_period
- dygraph(norm.prices) 
-#}}} 
-})
-```
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
