@@ -28,7 +28,7 @@ This strategy can be thought of as the opposite of Markowitz mean/variance optim
 
 ## Law of One Price
 
-The Stat Arb aspect of the pairs trade employs the **law of one price**.  This law says that if two securities have the same payoff in all states of the world, then the two securities must have the same price. 
+The Stat Arb aspect of the pairs trade employs the **law of one price** (**LOP**).  This law says that if two securities have the same payoff in all states of the world, then the two securities must have the same price. 
 
 -  This is enforced by arbitrage. Say the price of security *A* is greater than *B*, and they have the same payoff. Then you could sell *A* and buy *B*, earning \$*A−B*, and the payoffs (being the same) will net to \$0.
 
@@ -64,7 +64,7 @@ This is a fairly simple application of the pairs trade.  You can see an implemen
 
 *Estimation Period* 
 
-- We first calculate normalized prices (cumulative returns) over some past period, so each stock price is on the same scale.
+- Given a stock pair, we first calculate normalized prices (cumulative returns) over some past period, so both stock prices are on the same scale.
 
 - We then calculate the average squared difference between the prices, and the standard deviation of the squared difference in the prices.  These two statistics (mean and standard deviation) allow us to categorize normal, and abnormal, behavior for a pair.  
 
@@ -84,6 +84,25 @@ This is a fairly simple application of the pairs trade.  You can see an implemen
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Estimation Period Application
+
+The app on the slide 10 allows you to chart normalized prices for any pair and estimation period you choose.  In fact, later in the presentation, trading period profits will be calculated based on the pair and estimation period in the slide 10.
+
+*Good Pair: XOM and CVX* 
+
+-  You want pairs with normalized prices which stay close to each other -- separating and crossing again.  A good example is the default pair, XOM and CVX.  
+
+-  These pairs will have low average squared deviations and standard deviations.  
+
+## Estimation Period Application
+
+*Bad Pair: XOM and PFE*
+
+-  Replace CVX with PFE and you'll see what a bad pair looks like.  The normalized prices move independently, and our pair statistics are high.
+
+-  Note, by the **LOP**, XOM and CVX make a good pair (both integrated oil and gas firms).  However PFE (Pfizer) is a Pharmaceutical company, which has very different assets than an oil and gas firm.  Thus, in addition to our statistics, it helps to ask if the pair makes economic (LOP) sense.  
+
+
 
 ##
 
@@ -101,11 +120,11 @@ shinyUI(fluidPage(
         column(3, wellPanel(
                       ## inputPanel( 
                       ## dateRangeInput("estim_period", "Estimation Period", start = "2015-09-01", end = "2015-12-31"),
-                      dateInput("estim_period_start", "Estimation Period Start", value = "2015-09-01"), 
-                      dateInput("estim_period_end", "End", value = "2015-12-31"), 
+                      dateInput("estim_period_start", "Estimation Period Start", value = "2015-08-01"), 
+                      dateInput("estim_period_end", "End", value = "2016-01-01"), 
                       ## selectizeInput(tickers, "Enter Tickers", )
-                      textInput("ticker1", "First Stock Ticker", value = "JPM"),
-                      textInput("ticker2", "Second Stock Ticker", value = "GS")
+                      textInput("ticker1", "First Stock Ticker", value = "XOM"),
+                      textInput("ticker2", "Second Stock Ticker", value = "CVX")
                   )),
         column(9,
                renderDygraph({
@@ -168,7 +187,187 @@ shinyUI(fluidPage(
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
+## Trading Period
+
+We monitor how many standard deviations the squared deviation is from its average squared deviation. 
+
+-  When the squared deviation deviated from its average by a threshold number of standard deviations, we'll initiate a pairs trade. 
+
+-  We close the pairs trade when the squared deviation drops below another threshold number of standard deviations.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Thresholds
+
+Implementation of the trade requires thresholds at which you open and close your pairs trade. Gatev et al (2008) enter the trade at 2 standard deviations wide, and close the trade when the prices cross.  
+
+-  You can observe what others have done, however there is no theoretical reason why the threshold should be 2 instead of 1.9 or 2.1. You can, of course, run different thresholds over historical data and see what was optimal. 
+
+-  The app below allows you to try different thresholds and see the profit.
+
+-  Whatever thresholds were optimal may not be optimal over later trading periods.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Adjusting for Market Risk
+
+
+If the two stocks are really good substitutes for one another, they likely have similar levels of market risk (measured by beta coefficients). You can therefore buy and short equal dollar amounts. 
+
+- However if they have substantially different beta coefficients (first reconsider if it is a good pair), then you may want to weight your investment in each so that the beta of the position is close to zero.
+
+- For example, say stock A has a beta of 0.8, and stock B has a beta of 1.2. Then you want to invest $\frac{1.2}{0.8} = 1.5$ times as much in stock A as B. So, say you invest \$10,000 in stock A, then you want to invest \$15,000 in stock B.
+
+Gatev et al (2008) do not make a market risk adjustment, and so neither will the results below.  
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+
 ##
 
+```{r, messsage=FALSE, warning=FALSE, echo = FALSE}
+#{{{
+inputPanel(
+
+    sliderInput("buy", "Enter Trade at Threshold:", min = .5, max = 4, value = 2, step = .1, animate = FALSE),
+
+    sliderInput("sell", "Close Trade at Threshold", min = 0, max = 1.5, value = 0.5, step = .1, animate = FALSE)
+)
+
+renderDygraph({
+from.t <- input$estim_period_end + 1
+to.t <- Sys.Date()
+
+## The code below to calculate an xts object of returns is from an SO or Quant.SE post.  I need to find it and cite.
+env.t <- new.env()
+Symbols <- c(input$ticker1, input$ticker2)
+getSymbols(Symbols = Symbols, env = env.t, from = from.t, to = to.t)
+args <- eapply(env = env.t, FUN = function(x){ClCl(x)})[Symbols]
+returns.t <- na.omit(do.call(what = merge, args = args))
+colnames(returns.t) <- Symbols
+## convert reutrns to  normalized prices
+norm.prices.t <<- cumsum(returns.t)## ll <- dim(norm.prices.df)[2]
+
+numSD <- ( (norm.prices.t[,1] - norm.prices.t[,2])^2 - asd.e ) / ssd.e
+
+## nope
+## signal <- numSD
+## signal[signal < 0] <- 1
+## signal[signal > 0 & signal < 2] <- 0
+## signal[signal > 2] <- 2
+trade <- rep(0, length(seq_along(numSD)))
+position <- rep(0, length(seq_along(numSD)))
+
+for (i in 2:length(seq_along(numSD))) {
+    if (numSD[i] > input$buy && numSD[i-1] < input$buy && position[i-1] < 1) {
+        trade[i] <- 1
+    } else {
+        if (numSD[i] < input$sell && numSD[i-1] > input$sell && position[i-1] == 1) {
+            trade[i] <- -1
+        } else {
+            trade[i] <- 0
+        }
+    }
+    position[i] <- trade[i] + position[i-1]
+}
+
+### Now add profit calculation here ----
+## First calculate how many standard deviations we made -----
+stdev.when.trade <- trade * numSD
+profitSD <- sum(stdev.when.trade)
+
+if(position[length(position)] == 1) {
+    profitSD = profitSD - numSD[length(numSD)]
+} else {
+    profitSD = profitSD
+    }
+
+## Now calculate the percent profit per standard deviation ----
+### square root of the standard dev (now in units of deviations instead of sq devs) of squared devs times the number of standard devs
+#### Don't know if this is the correct calculation -- probably not.
+## amt.devs.percent <- 100 * sqrt(ssd.e) * profitSD
+
+## This % profit calculation looks correct ----
+## instead, just look at spread on that day in norm.prices.t
+spread.when.trade <- trade * abs(norm.prices.t[,1] - norm.prices.t[,2])
+profit.percent <- sum(spread.when.trade)
+
+
+if(position[length(position)] == 1) {
+    profit.percent = profit.percent - abs(norm.prices.t[dim(norm.prices.t)[1], 1] - norm.prices.t[dim(norm.prices.t)[1], 2])
+} else {
+    profit.percent = profit.percent
+    }
+
+profit.percent <- profit.percent * 100
+
+data.dygraph <- cbind(numSD, as.xts(position, order.by = index(numSD)))
+names(data.dygraph) <- c("# of Standard Deviations", "Position: 0 = no trade, 1 = trade on")
+
+dygraph( data.dygraph  , main = paste0(colnames(returns.t)[1], " & ", colnames(returns.t)[2], ":  Profit in Standard Deviations: ", round(profitSD, 2) , ", Percent Profit ", round(profit.percent, 2), "%"), ylab = "# Standard Deviations") %>%
+dyOptions(colors = RColorBrewer::brewer.pal(2, "Set1"))
+#}}}    
+
+})
+```
+
+##  Opening/Closing a Trade
+
+In slide [INSERT], using the default pair, dates, and thresholds, you can see we open a pairs trade in the beginning of February (and close it in March).  How do we know which stock to buy and which to sell? 
+
+-  In the next slide the normalized prices are charted over the trading period.  You can see when we open the trade, CVX's normalized price is below XOM's.  Therefore to open the trade we buy CVX and short an equal dollar amount of XOM.  
+
+-  To close the pairs trade in March we sell all of our CVX and buy back all of our XOM.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r, messsage=FALSE, warning=FALSE, echo = FALSE}
+#{{{
+library(dygraphs)
+renderDygraph({
+    update3 <- input$ticker1
+    update4 <- input$ticker2
+    update.e2 <- input$estim_period
+    dygraph(norm.prices.t, main = "Normalized Prices Over the Trading Period") 
+#}}}    
+})
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Effect of Time Intervals 
+
+If we are using closing trade prices, as we do with daily data, we get our signal at time $t$ closing prices, and trade at time $t+1$ opening prices. Therefore we are never sure of the number of standard deviation at which we'll open the trade. 
+
+-  If we were basing our signal on intraday bid/ask prices, then we would open and close our trades much closer to our thresholds.
+
+-  The difference between our signal and trade prices is known as [slippage](https://en.wikipedia.org/wiki/Slippage_(finance)).
+
+-  The estimated profits in this presentation correctly trade at later prices, and so account for slippage.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Large Trading Period Standard Deviations 
+
+For some pairs we'll see a the average squared deviation during the trading periods is more than 30 standard deviations from the average during the estimation period. This seems very unlikely given Chebyshev's inequality, $P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2}$ where $X$ is a random variable with finite mean $\mu$ and standard deviation $\sigma$, and $k$ is a real number.
+
+-  Plugging in 30 for $k$, the probability that a random variable deviates from its mean by 30 standard deviations is less than 0.11%. So why can we get such large deviations from the mean?
+
+-  See the next slide for the answer.
+
+## 
+
+The answer is fundamental to understanding the risks in the pairs trade, and prediction in general. Applying Chebyshev's inequality as we did above implies that the mean and standard deviation of our squared deviation did not change over time (from our estimation to trading period). However, they will change, and often substantially.
+
+-  For instance, say you estimate the parameters for your XOM and CVX pair, and then during your trading period the BP Gulf oil spill occurs. Obviously, your parameters are no longer relevant, and the spread would increase well over 30 standard deviations.
+
+-  This highlights an important point in pairs trading; you should ensure that there is no fundamental reason for the spread divergence prior to entering the trade -- such as a merger or acquisition.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
