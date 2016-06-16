@@ -53,7 +53,7 @@ The key to the pairs trade is how you implement the above structure.  Some quest
 
 -  What metric makes a pair acceptable (same industry, same country, etc)?  How similar do the asset beta coefficient need to be?
 -  How will you define the 'normal' statistical relationship?
--  How far does the pair have to deviate firm its normal behavior before you enter the trade?  When do you exit the trade (either take profits or cut losses)?
+-  How far does the pair have to deviate from its normal behavior before you enter the trade?  When do you exit the trade (either take profits or cut losses)?
 
 We'll implement a version of the pairs trade in the following slides, which will give one approach to these questions.  
 
@@ -67,7 +67,7 @@ This is a fairly simple application of the pairs trade.  You can see an implemen
 
 - Given a stock pair, we first calculate normalized prices (cumulative returns) over some past period, so both stock prices are on the same scale.
 
-- We then calculate the average squared difference between the prices, and the standard deviation of the squared difference in the prices.  These two statistics (mean and standard deviation) allow us to categorize normal, and abnormal, behavior for a pair.  
+- We then calculate the average squared difference between the prices, known as the average squared deviation, and the standard deviation of the squared deviations.  These two statistics (mean and standard deviation) allow us to categorize normal, and abnormal, behavior for a pair.  
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -219,7 +219,7 @@ If the two stocks are really good substitutes for one another, they likely have 
 
 - However if they have substantially different beta coefficients (first reconsider if it is a good pair), then you may want to weight your investment in each so that the beta of the position is close to zero.
 
-- For example, say stock A has a beta of 0.8, and stock B has a beta of 1.2. Then you want to invest $\frac{1.2}{0.8} = 1.5$ times as much in stock A as B. So, say you invest \$10,000 in stock A, then you want to invest \$15,000 in stock B.
+- For example, say stock A has a beta of 0.8, and stock B has a beta of 1.2. Then you want to invest $\frac{1.2}{0.8} = 1.5$ times as much in stock A as B. So, say you invest \$10,000 in stock B, then you want to invest \$15,000 in stock A.
 
 Gatev et al (2008) do not make a market risk adjustment, and so neither will the results below.  
 
