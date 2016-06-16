@@ -1,7 +1,8 @@
 ---
 title: "The Pairs Trade"
-author: "Matt Brigida"
-date: "June 8, 2016"
+## author: "Matt Brigida" 
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+## date: "June 8, 2016"
 logo: misq.png
 css: 5min_mod.css
 output: ioslides_presentation
@@ -54,7 +55,7 @@ The key to the pairs trade is how you implement the above structure.  Some quest
 -  How will you define the 'normal' statistical relationship?
 -  How far does the pair have to deviate firm its normal behavior before you enter the trade?  When do you exit the trade (either take profits or cut losses)?
 
-We'll implement a version of the pairs trade in the following slides, and I'll highlight these decisions.
+We'll implement a version of the pairs trade in the following slides, which will give one approach to these questions.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -191,7 +192,7 @@ shinyUI(fluidPage(
 
 We monitor how many standard deviations the squared deviation is from its average squared deviation. 
 
--  When the squared deviation deviated from its average by a threshold number of standard deviations, we'll initiate a pairs trade. 
+-  When the squared deviation differs from its average by a threshold number of standard deviations, we'll initiate a pairs trade. 
 
 -  We close the pairs trade when the squared deviation drops below another threshold number of standard deviations.
 
