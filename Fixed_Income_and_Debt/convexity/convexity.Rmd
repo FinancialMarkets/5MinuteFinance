@@ -202,3 +202,12 @@ sidebarLayout(
 [end of presentation graphic]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Credits and Collaboration
+
+If you have additions or corrections for this presentation, feel free to contribute them [to this GitHub repo](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/convexity/convexity.Rmd).  You will automatically show up as a presentation author.  
+
+- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for its financial support of both the presentation's development and hosting on shinyapps.io.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
