@@ -15,3 +15,45 @@ knitr::opts_chunk$set(echo = FALSE)
 ## The Limit Order Book
 
 <!-- make use of the awesome 'orderbook' R package -->
+
+
+```{r, messsage=FALSE, warning=FALSE, echo = FALSE}
+#{{{
+## in the process of translating this code into a Shiny app
+## just run for each pair?
+library(orderbook)
+shinyUI(fluidPage(
+    ## titlePanel("submitButton example"),
+    fluidRow(
+        column(3, wellPanel(
+                 
+                  )),
+        column(9,
+               renderPrint({
+
+                   
+                   cat("The average squared deviation is", asd.e ,"\n")
+                   cat("The standard deviation of the squared deviations is:", ssd.e ,"\n")
+               })
+               )
+    )
+)
+)
+#}}}
+```
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+
+## Credits and Collaboration
+
+If you have additions or corrections for this presentation, feel free to contribute them [to this GitHub repo](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/pairs_trade/pairs_trade.Rmd).  You will automatically show up as a presentation author.  
+
+- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for its financial support of both the presentation's development and hosting on shinyapps.io.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
