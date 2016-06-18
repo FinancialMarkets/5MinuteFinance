@@ -74,6 +74,60 @@ rChartsCalmap::renderCalheatmap({
 ```
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+
+## 
+```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
+
+## Try with rbokeh
+## maybe use the rbokeh hexbin to plot the abs value of returns for two stocks over the same set of dates.
+#{{{
+
+library(rbokeh)
+
+## add company input and feed into getSymbols below
+
+library(quantmod)
+comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+names(comp) <- c("symbol", "name")
+
+inputPanel(
+    selectizeInput("name1", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name),
+    dateRangeInput("date1", "Date Range", start = "2015-01-01", end = Sys.Date())
+    ## add date range input 
+)
+
+## code modified from here:  https://github.com/ramnathv/rChartsCalmap
+    rbokeh::renderRbokeh({
+    ## valdate name ----
+    # validate(
+    #     need(input$name1 != "", "Select a US stock name.")
+    # )
+    # 
+    # ticker <- comp$symbol[comp$name == input$name1]
+    # 
+    # stock <- getSymbols(ticker, auto.assign = FALSE,from = input$date1[1], to = input$date1[2])
+    # xts_to_df <- function(xt){
+    #     data.frame(
+    #         date = format(as.Date(index(xt)), '%Y-%m-%d'),
+    #         coredata(xt)
+    #     )
+    # }
+    # 
+    # dat0 <- 100 * abs(Delt(Ad(stock)[-1]))
+    # names(dat0) <- "vol"
+    # dat = xts_to_df(dat0)
+
+
+    figure() %>% ly_hexbin(rnorm(10000), rnorm(10000))
+})
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+
 ## Volatility Clustering
 
 An observable feature of financial markets is that volatility tends to follow volatility. Conversely, a period of low volatility will tend to follow low volatility.  
@@ -132,3 +186,18 @@ dygraphs::renderDygraph({
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
+
+inputPanel(
+    
+)
+renderRbokeh({
+  
+library(rbokeh)
+      figure() %>% ly_hexbin(rnorm(10000), rnorm(10000))
+})
+
+```
