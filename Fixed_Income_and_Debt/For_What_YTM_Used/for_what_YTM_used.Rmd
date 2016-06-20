@@ -68,3 +68,14 @@ There are a couple of approaches to determine how much we would pay for a bond.
 -  Often to value a corporate bond, you can use the YTM of a bond with similar risk.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Credits and Collaboration
+
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/For_What_YTM_Used/for_what_YTM_used.Rmd) to see the code and collaborators for this presentation
+
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+
+- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

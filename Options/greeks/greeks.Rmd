@@ -1516,3 +1516,14 @@ Firstly, the Black-Scholes model relies on an replication argument.  We replicat
 <!--- app: calculate all greeks -->
 
 <!--- app: 3D graphic of call price where you can change the variable on the two axes. -->
+
+## Credits and Collaboration
+
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/greeks/greeks.Rmd) to see the code and collaborators for this presentation
+
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+
+- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

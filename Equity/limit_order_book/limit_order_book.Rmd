@@ -50,10 +50,11 @@ shinyUI(fluidPage(
 
 ## Credits and Collaboration
 
-If you have additions or corrections for this presentation, feel free to contribute them [to this GitHub repo](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/pairs_trade/pairs_trade.Rmd).  You will automatically show up as a presentation author.  
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/limit_order_book/limit_order_book.Rmd) to see the code and collaborators for this presentation
 
-- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for its financial support of both the presentation's development and hosting on shinyapps.io.
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+
+- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-

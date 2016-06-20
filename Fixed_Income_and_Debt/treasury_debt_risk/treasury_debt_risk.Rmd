@@ -272,3 +272,14 @@ Consider a 10 year treasury note with an increase in yield from 2\% to 3\%.
 -  If the bond's coupon is 1\%, then the bond's price will decline by \%. 
 
 -->
+
+## Credits and Collaboration
+
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/treasury_debt_risk/treasury_debt_risk.Rmd) to see the code and collaborators for this presentation
+
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+
+- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
