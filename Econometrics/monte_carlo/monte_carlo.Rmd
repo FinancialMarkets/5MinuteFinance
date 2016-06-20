@@ -1,11 +1,24 @@
+---
+title: "An Introduction to the Correlation Coefficient"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "03/10/2016"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
+runtime: shiny
+smaller: true
+---
 
-
+##
 
 ```{r echo = FALSE}
 inputPanel(
-    sliderInput(inputId = "reps", label = "Number of Monte Carlo Runs", min = 50, max = 500, step = 1, value = 1),
+    sliderInput(inputId = "reps", label = "Number of Monte Carlo Runs", min = 50, max = 500, step = 1, value = 1)
     ## add radioButton input for antithetic sampling?
 )
+
+## want the app to print a histogram of all the monte carlo estimates at the end of each run.  See the code here to implement: https://gist.github.com/trestletech/8608815
 
 renderPlot({ 
         S <- 50
@@ -23,6 +36,8 @@ renderPlot({
     })
 
 ```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
