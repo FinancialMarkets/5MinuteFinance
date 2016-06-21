@@ -1,8 +1,6 @@
 ---
-title: "An Introduction to the Correlation Coefficient"
-author: "Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "03/10/2016"
+title: "An Introduction to Monte Carlo Methods in Finance"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod.css
@@ -13,28 +11,29 @@ smaller: true
 ##
 
 ```{r echo = FALSE}
+    max.rands <- 100000
 inputPanel(
-    sliderInput(inputId = "reps", label = "Number of Monte Carlo Runs", min = 50, max = 500, step = 1, value = 1)
-    ## add radioButton input for antithetic sampling?
-)
+	   sliderInput(inputId = "rands", label = "Number of Random Numbers in Monte Carlo", min = 50, max = max.rands, step = 1000, value = 50)
+	   ## add radioButton input for antithetic sampling?
+	   )
 
 ## want the app to print a histogram of all the monte carlo estimates at the end of each run.  See the code here to implement: https://gist.github.com/trestletech/8608815
 
+  S <- 50
+  K <- 45
+  r <- 0.01
+  vol <- 0.2
+  T <- 0.5
+  call <- 0
+  for (i in 1:max.rands) {
+    z <- rnorm(1)
+    call[i] <- exp(-r*T)*mean(ifelse(S*exp((r - .5*vol * vol)*T + vol*sqrt(T)*z) > K, S*exp((r - .5*vol * vol)*T + vol*sqrt(T)*z) - K, 0))
+  }
+    
 renderPlot({ 
-        S <- 50
-        K <- 45
-        r <- 0.01
-        vol <- 0.2
-        T <- 0.5
-        call <- 0
-        for (i in 1:input$reps){
-            z <- rnorm(1000000)
-            call[i] <- exp(-r*T)*mean(ifelse(S*exp((r-.5*vol^2)*T+vol*sqrt(T)*z)>K, S*exp((r-.5*vol^2)*T+vol*sqrt(T)*z)-K, 0))
-        }
-### possibly change output from a density -- something which also shows the variability of the estimate.
-        plot(density(call), main = "Monte Carlo Value of a European Call", sub = "Call Option Value")
-    })
-
+  ### possibly change output from a density -- something which also shows the variability of the estimate.
+  hist(call[1:input$rands], main = paste0("Call Premium $", round(mean(call[1:input$rands]), 2)), xlab = "Call Option Value", breaks = 100)
+})
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
