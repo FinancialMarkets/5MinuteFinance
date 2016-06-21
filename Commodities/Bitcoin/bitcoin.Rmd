@@ -1,0 +1,18 @@
+---
+title: "Introduction to Bitcoin"
+## author: Jackson Dragon
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+## date: "June 21, 2016"
+logo: misq.png
+css: 5min_mod.css
+output: ioslides_presentation
+runtime: shiny
+smaller: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Bitcoin
+
