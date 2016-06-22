@@ -16,6 +16,7 @@ smaller: true
 ##
 
 ```{r echo = FALSE}
+#{{{
 max.rands <- 1000000
 inputPanel(
   sliderInput(inputId = "rands", label = "Number of Random Numbers in Monte Carlo", min = 50, max = max.rands, step = 10000, value = 50, animate = TRUE)
@@ -42,7 +43,6 @@ z <- rnorm(max.rands)
 stock <- S*exp((r - .5 * vol * vol)*T + vol*sqrt(T)*z)
 calls <- stock - K
 calls[calls < 0] <- 0
-call <- exp(-r*T)*mean(calls)
 
 ## Black-Scholes Premium: 
 d1 <- (1 / (vol * sqrt(T))) * (log(S / K) + (r + vol * vol / 2) * T)
@@ -51,11 +51,12 @@ call.bs <- pnorm(d1) * S - pnorm(d2) * K * exp(-r * T)
 
 
 renderPlot({ 
-subset.calls <- calls[1:input$rands]
+subset.calls <- exp(-r*T)*calls[1:input$rands]
   ### possibly change output from a density -- something which also shows the variability of the estimate.
   hist(subset.calls, main = paste0("Call Premium $", round(mean(subset.calls), 2)), xlab = "Call Option Value", breaks = 100, freq = FALSE)
   legend('topright', c(paste0("Black-Scholes Value $", round(call.bs, 2)), paste0("Difference $", round(abs(call.bs - mean(subset.calls)), 2))))
 })
+#}}}
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
