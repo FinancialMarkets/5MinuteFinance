@@ -16,9 +16,9 @@ smaller: true
 ##
 
 ```{r echo = FALSE}
-max.rands <- 100000
+max.rands <- 1000000
 inputPanel(
-  sliderInput(inputId = "rands", label = "Number of Random Numbers in Monte Carlo", min = 50, max = max.rands, step = 1000, value = 50, animate = TRUE)
+  sliderInput(inputId = "rands", label = "Number of Random Numbers in Monte Carlo", min = 50, max = max.rands, step = 10000, value = 50, animate = TRUE)
   # numericInput(inputId = "seed", label = "Set Seed (to make reproducible)", value = 1, min = 1, max = 99999999)
   ## add radioButton input for antithetic sampling?
 )
@@ -28,24 +28,33 @@ K <- 45
 r <- 0.01
 vol <- 0.2
 T <- 0.5
-call <- 0
 
 ## Monte Carlo estimate of premium:
 ## this can likely be sped up substantially by refactoring.  Can use C++/Rcpp also.
-for (i in 1:max.rands) {
-  z <- rnorm(1)
-  call[i] <- exp(-r*T)*ifelse(S*exp((r - .5 * vol * vol)*T + vol*sqrt(T)*z) > K, S*exp((r - .5*vol * vol)*T + vol*sqrt(T)*z) - K, 0)
-}
+## old really slow way (find out why so slow)
+# for (i in 1:max.rands) {
+#   z <- rnorm(1)
+#   call[i] <- exp(-r*T)*ifelse(S*exp((r - .5 * vol * vol)*T + vol*sqrt(T)*z) > K, S*exp((r - .5*vol * vol)*T + vol*sqrt(T)*z) - K, 0)
+# }
+
+## New (much faster)
+z <- rnorm(max.rands)
+stock <- S*exp((r - .5 * vol * vol)*T + vol*sqrt(T)*z)
+calls <- stock - K
+calls[calls < 0] <- 0
+call <- exp(-r*T)*mean(calls)
 
 ## Black-Scholes Premium: 
 d1 <- (1 / (vol * sqrt(T))) * (log(S / K) + (r + vol * vol / 2) * T)
 d2 <- d1 - vol * sqrt(T)
 call.bs <- pnorm(d1) * S - pnorm(d2) * K * exp(-r * T)
 
+
 renderPlot({ 
+subset.calls <- calls[1:input$rands]
   ### possibly change output from a density -- something which also shows the variability of the estimate.
-  hist(call[1:input$rands], main = paste0("Call Premium $", round(mean(call[1:input$rands]), 2)), xlab = "Call Option Value", breaks = 100, freq = FALSE)
-  legend('topright', c(paste0("Black-Scholes Value $", round(call.bs, 2)), paste0("Difference $", round(abs(call.bs - mean(call[1:input$rands])), 2))))
+  hist(subset.calls, main = paste0("Call Premium $", round(mean(subset.calls), 2)), xlab = "Call Option Value", breaks = 100, freq = FALSE)
+  legend('topright', c(paste0("Black-Scholes Value $", round(call.bs, 2)), paste0("Difference $", round(abs(call.bs - mean(subset.calls)), 2))))
 })
 ```
 
