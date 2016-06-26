@@ -10,7 +10,15 @@ smaller: true
 
 ## Monte Carlo and Analytic Solutions
 
+When an analytic solution is available use it.  
 
+-  Monte Carlo is useful when an analytic solution is unavailable or difficult to obtain.
+
+-  If you make the same underlying assumptions, the analytic solution will be the same as the Monte Carlo.
+
+## Example: Option Pricing
+
+The Black-Scholes 
 
 
 ##
