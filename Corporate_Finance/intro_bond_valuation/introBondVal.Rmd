@@ -1,8 +1,9 @@
 ---
-title: "Intro to Bond Valuation [very preliminary]"
-author: "Matt Brigida: Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "03/25/2016"
+title: "Intro to Bond Valuation"
+# author: "Matt Brigida: Milken Institute, Center for Financial Markets" -->
+# affiliation: "Milken Institute Center for Financial Markets" -->
+# date: "03/25/2016" -->
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 runtime: shiny
 logo: misq.png
@@ -318,7 +319,7 @@ One misconception about bonds is that if you buy a bond with a 9\% $YTM$, and ho
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## A Note on $YTM$ [remove?]
+## A Note on $YTM$
 
 To get the value of a bond we discount each cash flow at the $YTM$.  However to get the $YTM$ we set the discounted cash flows equal to the market price, and solve for the discount rate ($YTM$).  This, of course, is circular.
 
