@@ -1,9 +1,11 @@
 ---
 title: "An Introduction to Option and Stock Strategies"
-author: "Matt Brigida"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 affiliation: "Milken Institute, Center for Financial Markets"
-date: "03/12/2015"
+# date: "03/12/2015"
 output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
 runtime: shiny
 smaller: true
 ---
@@ -17,6 +19,8 @@ Options can be used to decrease or increase risk.
 -  However, options are also used in many cases to decrease risk.  
 
 - In this interactive presentation, we'll focus on using options and stock together in ways which reduce or limit risk.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Option and Stock Strategies
 
@@ -261,13 +265,13 @@ sidebarLayout(
                 lines(profit, lwd = 4, col = "darkseagreen1", lty = 1)
                 lines(intrinsic, lwd = 1, lty = 2, col = 1)
                 lines(PnL, lwd = 1, lty = 3, col = 1)
-                legend('topleft', c("Profit on Stock", "Option Intrinsic Value", "Payoff: Covered Call", "Profit: Covered Call"), col=c(1, 1,"khaki1","darkseagreen1"), lty = c(2,3,1,1), lwd = c(1,1,4,4))
+                legend('topleft', c("Profit on Stock", "Option Intrinsic Value", "Payoff: Protective Put", "Profit: Protective Put"), col=c(1, 1,"khaki1","darkseagreen1"), lty = c(2,3,1,1), lwd = c(1,1,4,4))
 
 		            } else {
                 plot(profit, main = "Protective Put", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "darkseagreen1", ylim = c(-80, 80), sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock - input$premium, 2), " | Breakeven:", round(input$stock - input$premium, 2)))
                 lines(payoff, lwd = 4, lty = 1, col = "khaki1")
                 ## abline(h = 0)
-                legend('topleft', c("Payoff: Covered Call", "Profit: Covered Call"), col=c("darkseagreen1","khaki1"), lty = c(1,1), lwd = c(4,4))
+                legend('topleft', c("Payoff: Protective Put", "Profit: Protective Put"), col=c("darkseagreen1","khaki1"), lty = c(1,1), lwd = c(4,4))
             }
         })
     )
@@ -306,12 +310,12 @@ library(RColorBrewer)
 library(metricsgraphics)
 sidebarLayout(
     sidebarPanel(
-        sliderInput("callStrike", label = "Call Strike Price", max = 100, min = 0, value = 60, step = 1),
-        sliderInput("callPremium", label = "Call Option Premium", max = 100, min = 0, value = 1, step = 1),
-        sliderInput("putStrike", label = "Put Strike Price", max = 100, min = 0, value = 40, step = 1),
-        sliderInput("putPremium", label = "Put Option Premium", max = 100, min = 0, value = 2, step = 1),
-        sliderInput("stock2", label = "Stock Purchase Price", max = 100, min = 0, value = 50, step = 1),
-        radioButtons("show2", label = "Show Stock Profit and Option Intrinsic", choices = c("Yes" = "1", "No" = "2"), selected = "No")
+        div(style="height: 75px;", sliderInput("callStrike", label = "Call Strike Price", max = 100, min = 0, value = 60, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("callPremium", label = "Call Option Premium", max = 100, min = 0, value = 1, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("putStrike", label = "Put Strike Price", max = 100, min = 0, value = 40, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("putPremium", label = "Put Option Premium", max = 100, min = 0, value = 2, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("stock2", label = "Stock Purchase Price", max = 100, min = 0, value = 50, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", radioButtons("show2", label = "Show Stock Profit and Option Intrinsic", choices = c("Yes" = "1", "No" = "2"), selected = "No"))
         ),
     mainPanel(
         ## renderMetricsgraphics({
@@ -352,19 +356,19 @@ sidebarLayout(
 
             if (input$show2 == '1'){
 
-                plot(payoff, main = "Protective Put", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "khaki1", sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock1 - input$strike1 + input$premium1, 2), " | Breakeven:", round(input$stock1 - input$premium1, 2)), ylim = range(PnL))
+                plot(payoff, main = "Collar", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "khaki1", sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock1 - input$strike1 + input$premium1, 2), " | Breakeven:", round(input$stock1 - input$premium1, 2)), ylim = range(PnL))
                 ## lines(payoff, lwd = 4, col = "khaki1", lty = 1)
                 lines(profit, lwd = 4, col = "darkseagreen1", lty = 1)
                 lines(putIntrinsic, lwd = 1, lty = 2, col = 1)
                 lines(callIntrinsic, lwd = 1, lty = 2, col = 1)
                 lines(PnL, lwd = 1, lty = 3, col = 1)
-                legend('topleft', c("Profit on Stock", "Option Intrinsic Value", "Payoff: Covered Call", "Profit: Covered Call"), col=c(1, 1,"khaki1","darkseagreen1"), lty = c(2,3,1,1), lwd = c(1,1,4,4))
+                legend('topleft', c("Profit on Stock", "Option Intrinsic Value", "Payoff: Collar", "Profit: Collar"), col=c(1, 1,"khaki1","darkseagreen1"), lty = c(2,3,1,1), lwd = c(1,1,4,4))
 
 		            } else {
-                plot(profit, main = "Protective Put", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "darkseagreen1", ylim = c(-80, 80), sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock - input$premium, 2), " | Breakeven:", round(input$stock - input$premium, 2)))
+                plot(profit, main = "Collar", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "darkseagreen1", ylim = c(-80, 80), sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock - input$premium, 2), " | Breakeven:", round(input$stock - input$premium, 2)))
                 lines(payoff, lwd = 4, lty = 1, col = "khaki1")
                 ## abline(h = 0)
-                legend('topleft', c("Payoff: Covered Call", "Profit: Covered Call"), col=c("darkseagreen1","khaki1"), lty = c(1,1), lwd = c(4,4))
+                legend('topleft', c("Payoff: Collar", "Profit: Collar"), col=c("darkseagreen1","khaki1"), lty = c(1,1), lwd = c(4,4))
                             }
         })
         )
