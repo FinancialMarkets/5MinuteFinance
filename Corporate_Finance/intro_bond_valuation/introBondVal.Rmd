@@ -240,7 +240,7 @@ sidebarLayout(
 
 The $YTM$ is the single discount rate for which the present value of all the bond's future cash flows equals the bond's market price.
 
-- Equivalently, we can define the $YTM$ as the internal rate of return on the bond ($IRR$).
+- Equivalently, we can define the $YTM$ as the internal rate of return on the bond  ($IRR$).
 
 -  This means you can find the $YTM$ using a spreadsheet by setting the bond price as a cash outflow, and the bond's cash flows as inflows, and then use the $=IRR()$ function.
 
@@ -331,7 +331,7 @@ To get the value of a bond we discount each cash flow at the $YTM$.  However to 
 
 ## Semiannual vs Annual Values
 
--  If the bond is trading at a discount ($YTM$ above the coupon rate), then switching from annual to semiannual wil lower the value of the bond.
+-  If the bond is trading at a discount ($YTM$ above the coupon rate), then switching from annual to semiannual will lower the value of the bond.
 
 -  However, if the bond is trading at a premium ($YTM$ below the coupon rate), then switching from annual to semiannual will raise the value of the bond.
 
