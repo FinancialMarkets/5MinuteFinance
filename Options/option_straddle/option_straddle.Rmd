@@ -88,7 +88,11 @@ ui = shinyUI(fluidPage(
   hr(),
   
   fluidRow(
+<<<<<<< HEAD
     column(3, offset = 1,
+=======
+    column(2, offset = 2,
+>>>>>>> 833674b3f1e2c01744e80d5d9acf8c778ba54e4c
            radioButtons("strat", "Option Bundle", c("Call Option", "Put Option", "Long Straddle"), selected = "Long Straddle")
            ),
     column(4,
