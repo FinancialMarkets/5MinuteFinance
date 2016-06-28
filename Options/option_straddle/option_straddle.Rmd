@@ -76,7 +76,7 @@ ui = shinyUI(fluidPage(
   
   fluidRow(
     column(2, offset = 2,
-           radioButtons("strat", "Option Bundle", c("Call Option", "Put Option", "Long Straddle"), selected = "Option Straddle")
+           radioButtons("strat", "Option Bundle", c("Call Option", "Put Option", "Long Straddle"), selected = "Long Straddle")
            ),
     column(3,
            sliderInput("strike", "Put/Call Option Strike Price", min = 1, max = 100, value = 60)
