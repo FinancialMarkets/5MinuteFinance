@@ -22,8 +22,8 @@ Financial ratios turn that data into bits of useful information.
 
 Financial ratios are generally used to:
 
-1.  compare a single company's performance over time.
-2.  compare across companies.
+1.  Compare a single company's performance over time.
+2.  Compare across companies.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -55,7 +55,7 @@ We can classify financial ratios into 5 categories:
 
 These ratios measure the firm's long-term ability to meet its debt obligations.
 
-- These are measures of overall assets relative to obligations.  It includes assets which are hard to sell.
+- These are measures of overall assets relative to obligations.  They include assets which are hard to sell.
 
 [graphic: a person in a bank vault with money]
 
@@ -65,7 +65,7 @@ These ratios measure the firm's long-term ability to meet its debt obligations.
 
 The debt-to-equity ratio is a firm's total debt divided by its total equity.
 
--  If our firm has current assets of \$10 million, and current liabilities of \$8 million, the its current ratio is 1.25 times.
+-  If a firm has current assets of \$10 million, and current liabilities of \$8 million, then its current ratio is 1.25 times.
 -  The value that this ratio takes is very industry specific.  Young firms tend to have little to no debt, and so low Debt-to-Equity ratios. More established firms may have higher ratios.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -84,7 +84,7 @@ These ratios measure the firm's ability to meet its debt obligations over the sh
 
 The current ratio is defined as the firm's current assets dividend by current liabilities.
 
--  If our firm has current assets of \$10 million, and current liabilities of \$8 million, the its current ratio is 1.25 times.
+-  If a firm has current assets of \$10 million, and current liabilities of \$8 million, then its current ratio is 1.25 times.
 -  We don't want the current ratio to be too high (say above 2) or too low (say below 1). 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -109,7 +109,7 @@ Total asset turnover is equal to sales divided by assets.
 
 ## Profitability Ratios
 
-These measures focus on how well a firm translates a dollar in sales into income. 
+These measures focus on how well a firm translates a dollar of sales into income. 
 
 [graphic:  accountant]
 
@@ -117,7 +117,7 @@ These measures focus on how well a firm translates a dollar in sales into income
 
 ## Example: Profit Margin
 
-Say a firm has \$100 million in net income.  Alone this data point is not too useful.  However what if we also say this income was generated on \$500 million in sales?
+Say a firm has \$100 million in net income.  Alone this data point is not too useful.  However, what if we also say this income was generated on \$500 million in sales?
 
 - Then we can say for every \$1 in sales, the company generates \$0.20 in income.
 
@@ -127,7 +127,7 @@ Say a firm has \$100 million in net income.  Alone this data point is not too us
 
 ## Market Value Ratios
 
-These measure capture what value the market assigns to each dollar of a firm's earnings, sales, or book value.  
+These measures capture what value the market assigns to each dollar of a firm's earnings, sales, or book value.  
 
 
 [graphic: traders in a pit]
@@ -138,7 +138,7 @@ These measure capture what value the market assigns to each dollar of a firm's e
 
 A firm's P/E ratio is its stock price (per share) divided by its earnings per share (EPS).  If EPS is negative the ratio is undefined.
 
-- Say a firm's P/E ratio is 15, then we can interpret this is, 'for every \$1 in earnings, the market is willing to pay \$15'.
+- Say a firm's P/E ratio is 15, then we can interpret this as, 'for every \$1 in earnings, the market is willing to pay \$15'.
 
 - If a firm has negative EPS, then the ratio is undefined.  
 
@@ -146,7 +146,7 @@ A firm's P/E ratio is its stock price (per share) divided by its earnings per sh
 
 ## When to Use a Ratio
 
-If you are considering buying GE's stock.  Do you care about GE's current ratio.
+If you are considering buying GE's stock.  Do you care about GE's current ratio?
 
 >- Not really.  The current ratio only considers short term accounts, and as an equity holder you care about the firm's long-term prospects.  
 
