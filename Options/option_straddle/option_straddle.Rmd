@@ -1,5 +1,5 @@
 ---
-title: "Option Straddle (Long Straddle)"
+title: "Long Straddle"
 ## author: Nikhil Perincherry
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 date: "June 28, 2016"
@@ -37,25 +37,25 @@ Take the recent Brexit vote, for example. Before the vote, one could have reason
 
 ## What is the Long Straddle?
 
-The long straddle, or option straddle, is the strategy of purchasing both call and put options at the exact same strike price and expiration date.
+The long straddle, is the strategy of purchasing both call and put options at the exact same strike price and expiration date.
 
 Going back to the Brexit example, a call option would've turned a profit if the UK voted Stay and the market went up. Conversely, if the UK voted Leave and the market went down (as it did), a put option would've turned a profit.
 
-- Since there was no way of knowing which way the vote would go beforehand, the option straddle would've been a good strategy to take advantage of a big market shift in either direction
+- Since there was no way of knowing which way the vote would go beforehand, the long straddle would've been a good strategy to take advantage of a big market shift in either direction
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Interactive Slide
 
-In the next slide, you'll be able to select a strike price and option premium then view the corresponding payoff diagrams for the option straddle.
+In the next slide, you'll be able to select a strike price and option premium then view the corresponding payoff diagrams for the long straddle.
 
-Note that the breakeven points in the option straddle occur when the underlying stock price 1) falls below strike price - total price of premiums and 2) rises above strike price + total price of preiums
+Note that the breakeven points in the straddle occur when the underlying stock price 1) falls below strike price - total price of premiums and 2) rises above strike price + total price of preiums
 
-- The shaded regions represent the areas in which the option straddle is profitable
+- The shaded regions represent the areas in which the long straddle is profitable
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## <!--- Option Straddle Payoff Diagrams -->
+## <!--- Payoff Diagrams -->
 
 ```{r, echo=FALSE}
 ##ui.R
@@ -76,7 +76,7 @@ ui = shinyUI(fluidPage(
   
   fluidRow(
     column(2, offset = 2,
-           radioButtons("strat", "Option Bundle", c("Call Option", "Put Option", "Option Straddle"), selected = "Option Straddle")
+           radioButtons("strat", "Option Bundle", c("Call Option", "Put Option", "Long Straddle"), selected = "Option Straddle")
            ),
     column(3,
            sliderInput("strike", "Put/Call Option Strike Price", min = 1, max = 100, value = 60)
@@ -106,7 +106,7 @@ server = shinyServer(function(input, output) {
         putPayoff[i+1] <- 0
     }
     ##Graph put (orange)/call (blue) option payoffs, dashed line when 0, solid line otherwise
-    if (input$strat == "Option Straddle"){
+    if (input$strat == "Long Straddle"){
       plot(x, callPayoff, type = "n", col = "dodgerblue", xlab = "Underlying Stock Price", ylab = "Value", xlim = c(0,120))
       segments(0,0,input$strike, 0, lty = "dashed", col = "dodgerblue")
       segments(input$strike, 0, 120, 120 - input$strike, col = "dodgerblue", lwd = 2)
@@ -132,7 +132,7 @@ server = shinyServer(function(input, output) {
     callshade.x <- c(input$strike + 2*input$premium, 120, 120)
     callshade.y <- c(0,0, 120 - input$strike - 2*input$premium)
     
-    if (input$strat == "Option Straddle"){
+    if (input$strat == "Long Straddle"){
       plot(x, x, type = "n", xlab = "Underlying Stock Price", ylab = "Profit/Loss", xlim = c(0,120), ylim = c(-40, 50))
       segments(0, input$strike - 2*input$premium, input$strike, -2*input$premium, col = "darkorange", lwd = 2)
       segments(input$strike, -2*input$premium, 120, 120 - input$strike - 2*input$premium, col = "dodgerblue", lwd = 2)
@@ -174,11 +174,23 @@ server = shinyServer(function(input, output) {
 In the payoff diagrams you can see that while loss potential is limited, the profit potential is unlimited.
 
 - Loss can never exceed the total price of premiums paid
+  + Note that the maximum loss occurs when Price of Underlying Stock = Strike Price
 - Unlimited upside profit potential
 - Limited, but substantial downside profit potential
 
 What effect do you think stock volatility has on the long straddle?
 
-- Since the straddle benefits from large price fluctuations, it makes sense that the option straddle is better for more volatile stocks
+- Since the long straddle benefits from large price fluctuations, it makes sense that it is better for more volatile stocks
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+## Credits and Collaboration
+
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/option_straddle/option_straddle.Rmd) to see the code and collaborators for this presentation
+
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+
+- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
