@@ -1,8 +1,8 @@
 ---
 title: "Common Stock Valuation by Discounted Dividends"
-author: "Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "03/12/2016"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+# affiliation: "Milken Institute Center for Financial Markets"
+# date: "03/12/2016"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod.css

@@ -1,8 +1,9 @@
 ---
 title: "Financial Ratios"
-author: "Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "03/02/2016"
+# author: "Milken Institute, Center for Financial Markets"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+# affiliation: "Milken Institute Center for Financial Markets"
+# date: "03/02/2016"
 output: ioslides_presentation
 runtime: shiny
 logo: misq.png
@@ -257,17 +258,31 @@ sidebarLayout(
                                     "4" = list(pm1, pm2)
                                     )
             
+            plot.main <-  switch(input$ratio,
+                                    "1" = "Debt-to-Equity Ratio by Year",
+                                    "2" = "Current Ratio by Year",
+                                    "3" = "Total Asset Turnover by Year",
+                                    "4" = "Profit Margin by Year"
+                                    )
+            
+            legend.ratio <-  switch(input$ratio,
+                                    "1" = "Debt-to-Equity Ratio",
+                                    "2" = "Current Ratio",
+                                    "3" = "Total Asset Turnover",
+                                    "4" = "Profit Margin"
+                                    )
+            
             plot.min <- min(min(ratio.to.plot[[1]]), min(ratio.to.plot[[2]]))
             plot.max <- max(max(ratio.to.plot[[1]]), max(ratio.to.plot[[2]]))
             
 
-            plot(ratio.to.plot[[1]], main = "Profit Margin by Year", type = "l", lty = 1, 
+            plot(ratio.to.plot[[1]], main = plot.main, type = "l", lty = 1, 
                  col = "green", lwd = 3, ylab = "Profit Margin", xlab = "Year", ylim = c(plot.min, plot.max), xaxt = "n")
             axis(1, at = c(1,2,3,4), labels = c("2011", "2012", "2013", "2014"))
 
             lines(ratio.to.plot[[2]], lty = 1, col = "blue", lwd = 4)
 
-            legend("bottomright", c(paste(input$ticker1, "Profit Margin"), paste(input$ticker2, "Profit Margin")), col = c("green" , "blue"), lty = c(1, 1), lwd = c(4, 4))
+            legend("bottomright", c(paste(input$ticker1, legend.ratio), paste(input$ticker2, legend.ratio)), col = c("green" , "blue"), lty = c(1, 1), lwd = c(4, 4))
         })
         )
     )
