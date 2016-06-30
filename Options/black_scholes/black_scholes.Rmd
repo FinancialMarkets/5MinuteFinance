@@ -101,13 +101,13 @@ The following app will calculate the Black-Scholes European call option price fo
 sidebarLayout(
     sidebarPanel(
 
-        numericInput("Stock", "Present Stock Price", min = .01, max = 2000, value = 50, step = .05),
-        numericInput("Vol", "Annualized Volatility", min = .01, max = 20, value = 0.20, step = .01),
-        numericInput("Strike", "Strike Price", min = .01, max = 1, value = 52, step = .05),
-        numericInput("Rf", "Risk Free Rate", min = 0.001, max = 0.5, value = 0.01, step = .001),
-        numericInput("Time", "Years to Expiration", min = 0.01, max = 50, value = 1, step = .01),
-        numericInput("Div", "Dividend Yield", min = 0, max = 1, value = 0, step = .01),
-        radioButtons("out", "Value to See", choices = list("Call Price" = 1, "d1" = 2, "d2" = 3), selected = 1) 
+        div(style="height: 75px;", numericInput("Stock", "Present Stock Price", min = .01, max = 2000, value = 50, step = .05)),
+        div(style="height: 75px;", numericInput("Vol", "Annualized Volatility", min = .01, max = 20, value = 0.20, step = .01)),
+        div(style="height: 75px;", numericInput("Strike", "Strike Price", min = .01, max = 1, value = 52, step = .05)),
+        div(style="height: 75px;", numericInput("Rf", "Risk Free Rate", min = 0.001, max = 0.5, value = 0.01, step = .001)),
+        div(style="height: 75px;", numericInput("Time", "Years to Expiration", min = 0.01, max = 50, value = 1, step = .01)),
+        div(style="height: 75px;", numericInput("Div", "Dividend Yield", min = 0, max = 1, value = 0, step = .01))#,
+        ## div(style="height: 75px;", radioButtons("out", "Value to See", choices = list("Call Price" = 1, "d1" = 2, "d2" = 3), selected = 1)) 
                   ),
     mainPanel(
 
@@ -128,8 +128,10 @@ sidebarLayout(
 
             if (input$out == 1){
                 plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
-                text(x = 0.5, y = 0.5, labels = paste(round(C, 2)), cex = 5)
-                text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
+                text(x = 0.5, y = 0.5, labels = paste0("Call Premium = $", round(C, 2)), cex = 3)
+                ## text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
+                text(x = 0.5, y = 0.3, labels = paste("d1 = ", round(d1, 5)))
+                text(x = 0.5, y = 0.2, labels = paste("d2 = ", round(d2, 5)))
             } else {
                 if (input$out == 2){
                     plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
@@ -324,12 +326,12 @@ We can extract a volatility estimate from traded options by plugging the option 
 sidebarLayout(
     sidebarPanel(
 
-        numericInput("Stock1", "Present Stock Price", min = .01, max = 2000, value = 50, step = .05),
-        numericInput("Option1", "Call Option Premium (Price)", min = .01, max = 20, value = 2, step = .01),
-        numericInput("Strike1", "Strike Price", min = .01, max = 1, value = 52, step = .05),
-        numericInput("Rf1", "Risk Free Rate", min = 0.001, max = 0.5, value = 0.01, step = .001),
-        numericInput("Time1", "Years to Expiration", min = 0.01, max = 50, value = 1, step = .01),
-        numericInput("Div1", "Dividend Yield", min = 0, max = 1, value = 0, step = .01)
+        div(style="height: 75px;", numericInput("Stock1", "Present Stock Price", min = .01, max = 2000, value = 50, step = .05)),
+        div(style="height: 75px;", numericInput("Option1", "Call Option Premium", min = .01, max = 20, value = 2, step = .01)),
+        div(style="height: 75px;", numericInput("Strike1", "Strike Price", min = .01, max = 1, value = 52, step = .05)),
+        div(style="height: 75px;", numericInput("Rf1", "Risk Free Rate", min = 0.001, max = 0.5, value = 0.01, step = .001)),
+        div(style="height: 75px;", numericInput("Time1", "Years to Expiration", min = 0.01, max = 50, value = 1, step = .01)),
+        div(style="height: 75px;", numericInput("Div1", "Dividend Yield", min = 0, max = 1, value = 0, step = .01))
                   ),
     mainPanel(
 

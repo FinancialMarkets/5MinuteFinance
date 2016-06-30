@@ -2,6 +2,6 @@ name: black_scholes
 account: micfm
 server: shinyapps.io
 appId: 53047
-bundleId: 455779
+bundleId: 493775
 url: https://micfm.shinyapps.io/black_scholes/
-when: 1463594665.02339
+when: 1467318557.40451
