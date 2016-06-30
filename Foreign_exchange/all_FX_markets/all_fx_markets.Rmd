@@ -1,0 +1,50 @@
+---
+title: "Foreign Exchange Market"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+header-includes:
+   - \usepackage{eurosym}
+   - \usepackage{textcomp}
+date: "March 10, 2016"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
+runtime: shiny
+---
+
+## Foreign Exchange (FX) Markets
+
+This presentation will cover FX spot and derivative markets, and particularly the relationship between these markets.  Questions we'll answer are:
+
+- How closely are movements in derivative markets (options/futures/forwards) tied to movements in spot markets?
+
+- What are the effects of movements in interest rate markets?
+
+- What is the information content generated in each market?
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Currency Acronyms
+
+Again, we'll use the following currency acronyms common on sites such as [Bloomberg](http://www.bloomberg.com/markets/currencies). 
+
+- EUR: Euros
+- GBP: U.K. Pounds
+- USD: U.S. Dollar
+- CHF: Swiss Franc
+- CAD: Canadian Dollar
+- JPY: Japanese Yen
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Credits and Collaboration
+
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Foreign_exchange/fx_market/fx_market.Rmd) to see the code and collaborators for this presentation
+
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+
+- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
