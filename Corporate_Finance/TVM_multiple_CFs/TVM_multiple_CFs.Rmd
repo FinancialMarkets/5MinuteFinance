@@ -1,6 +1,6 @@
 ---
 title: "Valuing Contracts with Multiple Cash Flows"
-date: "06/02/2015"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod.css
