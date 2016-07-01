@@ -1,8 +1,7 @@
 ---
 title: "The Time Value of Money: Single Cash Flows"
-author: "Milken Institute, Center for Financial Markets"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 affiliation: "Milken Institute Center for Financial Markets"
-date: "06/02/2015"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod.css
@@ -14,15 +13,9 @@ smaller: true
 
 A dollar today is worth more than a dollar you'll receive in a year. This is because of inflation, and the uncertainty regarding actually receiving the promised dollar.  
 
-[graphic: person looking with uncertainty at a dollar a year away on a timeline]
+In this presentation we'll cover the mechanics of moving money from one point in time to another.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Mechanics
-
-In this interactive presentation, we'll cover the mechanics of moving a single cash flow anywhere in time.
-
-[graphic: person with magic wand moving a set of dollars]
+-  Only once cash flows have all been moved to the same time period, they can be added or subtracted.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -52,7 +45,7 @@ Proceeding this way for *n* periods (here a period is a year) we can see the fut
 
 The following app will calculate the future value of \$1 for every year up to the maximum year you select.  You can also select the interest rate per year.  
 
-[graphic: someone using an interactive app]
+-  Note the marked exponential increase as you increase the interest rate and number of years.  This shows the exponential effect of compounding.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -113,7 +106,7 @@ We can solve the formula to find the present value:
 #{{{
 inputPanel(
 	   sliderInput("rate1", label = "Annual Interest Rate", min = -.05, max =0.5, step = .01, value = .05),
-	   sliderInput("years1", label = "Number of Years to Discount", min = 1, max =50, step = 1, value = 10)
+	   sliderInput("years1", label = "Years Discounted", min = 1, max =50, step = 1, value = 10)
 	   )
 
 renderPlot({
@@ -131,9 +124,9 @@ renderPlot({
 
 Solving our equation for the interest rate we have: 
 
-- $r = \sqrt[n]{\frac{FV}{PV}} - 1$
+ $r = \sqrt[n]{\frac{FV}{PV}} - 1$
 
-- Note, if you increase the future value, holding *PV* and *n* constant, then the interest rate must rise.  
+- Holding other variables constant, the rate per period $r$ is increasing in $FV$, and decreasing in $PV$ and $r$.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -141,55 +134,94 @@ Solving our equation for the interest rate we have:
 
 Lastly, solving for the number of periods yields: 
 
-- $n = \frac{ln\left(\frac{FV}{PV}\right)}{ln\left(1+r\right)}$
+$n = \frac{ln\left(\frac{FV}{PV}\right)}{ln\left(1+r\right)}$
 
-- Notice, as the interest rate increases, the number of periods it takes for some *PV* to equal some *FV* decreases.
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Interactive App
-
-[Should we put a calculator which will return *FV*, *PV*, *r*, and *n* given the other inputs?]
+- Holding other variables constant, the number of periods $n$ is also increasing in $FV$, and decreasing in $PV$ and $r$.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-<!---
+## 
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
-# inputPanel(
-#            sliderInput("corr", label = "Stock Correlation", min = -1, max =1, step = 1, value = 1)
-#            )
-# 
-# renderPlot({
-#   par(mfrow = c(2,1), mai = c(.1,.8,.3,.1))
-#   x <- seq(0, 2 * pi, by = .01)
-#   plot(0.25 * sin(x), type = 'l', lwd = 2, col = 3, ylab = "Asset Return", ylim = c(-.3, .3), xlab = "", xaxt = 'n')
-# legend("topright", c("Stock 1", "Stock 2"), col = c(3, 4), lwd = c(2,2), lty = c(1,2))
-# 
-#   y <- 0
-#   if (input$corr == -1){
-#     lines(-0.25 * sin(x), type = 'l', lwd = 2, col = 4, lty = 2)
-#   } else {
-#     if (input$corr == 0){
-#       lines(0.25 * cos(x), type = 'l', lwd = 2, col = 4, lty = 2)
-#     } else {
-#       lines(0.25 * sin(x), type = 'l', lwd = 2, col = 4, lty = 2)
-#     }
-#   }
-# 
-#   if (input$corr == -1){
-#     plot(0 * sin(x), ylim = c(-.3, .3), ylab = "Port. Return", type  = 'l', lwd = 2, xaxt = 'n', xlab = "Time")
-#   } else {
-#     if (input$corr == 0){
-#       plot(0.5 * 0.25 * sin(x), ylim = c(-.3, .3), ylab = "Port. Return", type  = 'l', lwd = 2, xaxt = 'n', xlab = "Time")
-#     } else {
-#       plot(0.25 * sin(x), ylim = c(-.3, .3), ylab = "Port. Return", type  = 'l', lwd = 2, xaxt = 'n', xlab = "Time")
-#     }
-#   } 
-#   })
+sidebarLayout(
+    sidebarPanel(
+        selectInput("type", label = "Solve For:", choices = c("Future Value" = "fv",
+                                                              "Present Value" = "pv",
+                                                              "Rate Per Period" = "r",
+                                                              "Number of Periods" = "n")),
+        conditionalPanel(
+            condition = "input.type == 'fv'",
+            numericInput("pv", "Present Value", value = 100, step = .01),
+            numericInput("r", "Rate Per Period", value = 0.05),
+            numericInput("n", "Number of Periods", value = 10)
+        ),
+        conditionalPanel(
+            condition = "input.type == 'pv'",
+            numericInput("fv2", "Future Value", value = 100, step = .01),
+            numericInput("r2", "Rate Per Period", value = 0.05),
+            numericInput("n2", "Number of Periods", value = 10)
+        ),
+        conditionalPanel(
+            condition = "input.type == 'r'",
+            numericInput("pv3", "Present Value", value = 100, step = .01),
+            numericInput("fv3", "Future Value", value = 150),
+            numericInput("n3", "Number of Periods", value = 10)
+        ),
+        conditionalPanel(
+            condition = "input.type == 'n'",
+            numericInput("pv4", "Present Value", value = 100, step = .01),
+            numericInput("fv4", "Future Value", value = 150),
+            numericInput("r4", "Rate Per Periods", value = 0.05)
+        )
+
+
+        ## div(style="height: 75px;", numericInput("Stock", "Present Stock Price", min = .01, max = 2000, value = 50, step = .05)),
+        ## div(style="height: 75px;", numericInput("Vol", "Annualized Volatility", min = .01, max = 20, value = 0.20, step = .01)),
+        ## div(style="height: 75px;", numericInput("Strike", "Strike Price", min = .01, max = 1, value = 52, step = .05)),
+        ## div(style="height: 75px;", numericInput("Rf", "Risk Free Rate", min = 0.001, max = 0.5, value = 0.01, step = .001)),
+        ## div(style="height: 75px;", numericInput("Time", "Years to Expiration", min = 0.01, max = 50, value = 1, step = .01)),
+        ## div(style="height: 75px;", numericInput("Div", "Dividend Yield", min = 0, max = 1, value = 0, step = .01))#,
+        ## ## div(style="height: 75px;", radioButtons("out", "Value to See", choices = list("Call Price" = 1, "d1" = 2, "d2" = 3), selected = 1)) 
+    ),
+    mainPanel(
+
+        renderPlot({
+            if (input$type == 'fv'){
+                fv = input$pv * (1 + input$r)^{input$n}
+                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "TVM: Single CFs")
+                text(x = 0.5, y = 0.5, labels = paste0("FV = $", round(fv, 2)), cex = 3)
+                ## text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
+            } else {
+                if (input$type == 'pv'){
+                    pv2 = input$fv2 / (1 + input$r2)^{input$n2}
+                    plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "TVM: Single CFs")
+                    text(x = 0.5, y = 0.5, labels = paste0("PV = $", round(pv2, 2)), cex = 3)
+                    ## text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
+                } else {
+                    if (input$type == 'r'){
+                        r3 = ( input$fv3 / input$pv3 )^{(1 / input$n3 )} - 1 
+                        plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "TVM: Single CFs")
+                        text(x = 0.5, y = 0.5, labels = paste0("Rate = ", 100 * round(r3, 4), "%"), cex = 3)
+                        ## text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
+                    } else {
+                        n4 = log(input$fv4 / input$pv4 ) / log( 1 + input$r4 )
+                        plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "TVM: Single CFs")
+                        text(x = 0.5, y = 0.5, labels = paste0("Periods = ", round(n4, 2)), cex = 3)
+                        ## text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
+                    }
+                }
+            }
+            
+            
+        })
+    )
+)
 #}}}
 ```
--->
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Credits and Collaboration
 
 Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/TVM_Single_CFs/TVM_Single_CFs.Rmd) to see the code and collaborators for this presentation
