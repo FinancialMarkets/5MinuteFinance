@@ -1,8 +1,6 @@
 ---
 title: "Net Present Value and Internal Rate of Return"
-# author: "Matt Brigida: Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "06/02/2015"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod.css
@@ -16,9 +14,7 @@ In this interactive presentation we'll cover the most widely used investment dec
 
 - These rules are used to decide whether to invest in a project or asset.
 
--  It is important to note that, while NPV and IRR calculations give a number as an output, they are fed into a decision rule which is binary.  The final output from NPV and IRR is either reject, or accept, the investment.
-
-
+-  It is important to note that, while NPV and IRR calculations give a number as an output, they are fed into a decision rule which is binary.  The final output from NPV and IRR is either *reject*, or *accept*, the investment.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -36,24 +32,35 @@ The Net Present Value is defined by its:
 
 $NPV = -C_0 + \frac{C_1}{(1+r)^1} + \frac{C_2}{(1+r)^2} + ... + \frac{C_n}{(1+r)^n}$ 
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+## NPV: Interpretation
+
+NPV can be interpreted as the amount the market value of the firm will increase/decrease if the project is accepted.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-# inputPanel(
-# 	   sliderInput("rate", label = "Annual Interest Rate", min = -.05, max =0.5, step = .01, value = .05),
-# 	   sliderInput("years", label = "Number of Years", min = 1, max =50, step = 1, value = 10)
-# 	   #            sliderInput("pv", label = "Present Value", min = 1, max =50, step = 1, value = 10),
-# 	   )
-# 
-# renderPlot({
-#   fv <- (1 + input$rate)^{1:input$years}
-#   fv <- c(1, fv)
-#   plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
-#   text(x = 0.5, y = 0.5, labels = paste(round(fv, 2)), cex = 5)
-# })
+sidebarLayout(
+    sidebarPanel(
+        inputPanel(
+            sliderInput("cf.npv", label = "Cash Flow Per Period", min = 1, max = 500, step = 10, value = 50),
+            sliderInput("periods.npv", label = "Number of Periods", min = 1, max = 50, step = 1, value = 20),
+            sliderInput("initial.inv.npv", label = "Time 0 Investment", min = 1, max = 500, step = 1, value = 300),
+            sliderInput("rate", label = "Discount Rate per Period", min = 0, max = .3, step = .01, value = .05)
+        )
+    ),
+    mainPanel(
+        renderPlot({
+            cfs.npv <- c(-1 * (input$initial.inv.npv), rep(input$cf.npv, input$periods.npv))
+            npv.sol <- sum(cfs.npv / (1 + input$rate)^{1:length(cfs.npv)})
+            plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+            text(x = 0.5, y = 0.5, labels = paste0("NPV = $", round(npv.sol * 100, 2)), cex = 4)
+        })
+    )
+)
 ```
 
 
@@ -73,21 +80,34 @@ $-C_0 + \frac{C_1}{(1+r_{IRR})^1} + \frac{C_2}{(1+r_{IRR})^2} + ... + \frac{C_n}
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
 inputPanel(
-	   sliderInput("cf.irr", label = "Cash Flow Per Period", min = 1, max = 500, step = 10, value = 50),
-	   sliderInput("periods.irr", label = "Number of Periods", min = 1, max = 50, step = 1, value = 20),
-	   sliderInput("initial.inv.irr", label = "Time 0 Investment", min = 1, max = 500, step = 1, value = 300)
-	   #            sliderInput("pv", label = "Present Value", min = 1, max =50, step = 1, value = 10),
-	   )
+    sliderInput("cf.irr", label = "Cash Flow Per Period", min = 1, max = 500, step = 10, value = 50),
+    sliderInput("periods.irr", label = "Number of Periods", min = 1, max = 50, step = 1, value = 20),
+    sliderInput("initial.inv.irr", label = "Time 0 Investment", min = 1, max = 500, step = 1, value = 300)
+)
 
 renderPlot({
-  source(file = 'https://raw.githubusercontent.com/FinancialMarkets/corpfin/master/irr.R')
-  cfs <- c(-1 * (input$initial.inv.irr), rep(input$cf.irr, input$periods.irr))
-  irr.sol <- irr(cfs)$IRR
-  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
-  text(x = 0.5, y = 0.5, labels = paste("IRR = ", round(irr.sol * 100, 2), "%"), cex = 5)
+    source(file = 'https://raw.githubusercontent.com/FinancialMarkets/corpfin/master/irr.R')
+    cfs <- c(-1 * (input$initial.inv.irr), rep(input$cf.irr, input$periods.irr))
+    irr.sol <- irr(cfs)$IRR
+    plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+    text(x = 0.5, y = 0.5, labels = paste("IRR = ", round(irr.sol * 100, 2), "%"), cex = 5)
 })
 #}}}
 ```
+
+
+<!-- use code from here to make a version of app which will read data from file:  http://stackoverflow.com/questions/29253481/data-specific-selectinput-choices-in-rmd-shiny/29255723#29255723 -->
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Mutually Exclusive \& Conventional CFs 
+
+When the accept/reject decision on one project does not affect another (projects are *mutually exclusive*), and  the project has negative cash flows followed by all positive cash flows (*conventional CFs*), then NPV and IRR will lead to the same accept/reject decision, i.e. $NPV \iff IRR$
+
+-  If you must rank projects (projects are *not* mutually exclusive) or cash flows are unconventional, then use *NPV*.  *NPV* will generate the correct decision, though *IRR* may not.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ## Credits and Collaboration
 
