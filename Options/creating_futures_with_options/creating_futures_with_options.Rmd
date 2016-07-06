@@ -1,0 +1,166 @@
+---
+title: "Creating Futures With Options"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+date: "June 28, 2016"
+logo: misq.png
+css: 5min_mod.css
+output: ioslides_presentation
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## <!--- Payoff Diagrams -->
+
+```{r echo=FALSE}
+
+shinyApp(
+
+ui = shinyUI(fluidPage(
+  
+  fluidRow(
+    column(6, 
+           plotOutput("optplot")
+           ),
+    column(6, 
+           plotOutput("futplot")
+           )
+  ),
+  
+  hr(),
+  
+  fluidRow(
+    column(4, offset = 1,
+           selectInput("port", "Option Portfolio", c("Long Call", "Short Call", "Long Put", "Short Put", "Long Call + Short Put", "Long Put + Short Call"), selected = "Long Put + Short Call"),
+           sliderInput("strike", "Strike Price", min = 0, max = 100, value = 55),
+           sliderInput("bid", "Bid", min = 0, max = 10, step = 1, value = 3),
+           sliderInput("ask", "Ask", min = 0, max = 10, step = 1, value = 8)
+           ),
+    column(4, offset = 2,
+           radioButtons("future", "Type of Futures", c("Long", "Short"), selected = "Short"),
+           sliderInput("price", "Price", min = 0, max = 100, value = 50)
+           )
+  )
+)),
+
+server = shinyServer(function(input, output) {
+  
+  ## Option Payoffs on Left Graph 
+  output$optplot <- renderPlot({
+    
+    x <- 0:150
+    shortPut <- vector(mode = "integer", length = length(x))
+    longPut <- vector(mode = "integer", length = length(x))
+    shortCall <- vector(mode = "integer", length = length(x))
+    longCall <- vector(mode = "integer", length = length(x))
+    
+    ## Long Call
+    if (input$port == "Long Call"){
+      
+      for (i in x){
+        if (i < input$strike){
+          longCall[i + 1] <- -input$ask
+        } else if (i >= input$strike){
+          longCall[i + 1] <- i - input$strike - input$ask
+        }
+      }
+      plot(x, longCall, main = "Options Payoffs", type = "l", col = "dodgerblue", lwd = 2, xlab = "Underlying Stock Price", ylab = "Profit/Loss", xlim = c(0,100), ylim = c(-input$price, input$price))
+      segments(0,0,150,0)
+      ## Short Call
+    } else if (input$port == "Short Call"){
+      
+      for (i in x){
+        if (i < input$strike){
+          shortCall[i + 1] <- input$bid
+        } else if (i >= input$strike){
+          shortCall[i + 1] <- input$strike + input$bid - i
+        }
+      }
+      plot(x, shortCall, main = "Options Payoffs", type = "l", col = "dodgerblue", lwd = 2, xlab = "Underlying Stock Price", ylab = "Profit/Loss", xlim = c(0,100), ylim = c(-input$price, input$price))
+      segments(0,0,150,0)
+      ## Long Put
+    } else if (input$port == "Long Put"){
+  
+      for (i in x){
+        if (i < input$strike){
+          longPut[i + 1] <- input$strike - input$ask - i
+        } else if (i >= input$strike){
+          longPut[i + 1] <- -input$ask
+        }
+      }
+      plot(x, longPut, main = "Options Payoffs", type = "l", col = "darkorange", lwd = 2, xlab = "Underlying Stock Price", ylab = "Profit/Loss", xlim = c(0,100), ylim = c(-input$price, input$price))
+      segments(0,0,150,0)
+      ## Short Put
+    } else if (input$port == "Short Put"){
+      
+      for (i in x){
+        if (i < input$strike){
+          shortPut[i + 1] <- i - input$strike + input$bid
+        } else if (i >= input$strike){
+          shortPut[i + 1] <- input$bid
+        }
+      }
+      plot(x,shortPut, main = "Options Payoffs", type = "l", col = "darkorange", lwd = 2, xlab = "Underlying Stock Price", ylab = "Profit/Loss", xlim = c(0,100), ylim = c(-input$price, input$price))
+      segments(0,0,150,0)
+    } else if (input$port == "Long Call + Short Put"){
+      syntheticLongForward <- vector(mode = "integer", length = length(x))
+      for (i in x){
+        if (i < input$strike){
+          longCall[i + 1] <- -input$ask
+        } else if (i >= input$strike){
+          longCall[i + 1] <- i - input$strike - input$ask
+        }
+        if (i < input$strike){
+          shortPut[i + 1] <- i - input$strike + input$bid
+        } else if (i >= input$strike){
+          shortPut[i + 1] <- input$bid
+        }
+      }
+      syntheticLongForward <- longCall + shortPut
+      plot(x, syntheticLongForward, main = "Options Payoffs", type = "l", lwd = 2, xlab = "Underlying Stock Price", ylab = "Profit/Loss", xlim = c(0,100), ylim = c(-input$price, input$price))
+      lines(x, longCall, lty = 2, col = "dodgerblue")
+      lines(x, shortPut, lty = 2, col = "darkorange")
+      segments(0,0,150,0)
+      legend("topleft", border = "grey", c("Synthetic Long Forward", "Long Call", "Short Put"), lty = c("solid", "dashed", "dashed"), col = c(1, "dodgerblue", "darkorange"), lwd = c(2,1,1))
+      
+    } else if (input$port == "Long Put + Short Call"){
+      syntheticShortForward <- vector(mode = "integer", length = length(x))
+      for (i in x){
+        if (i < input$strike){
+          longPut[i + 1] <- input$strike - input$ask - i
+        } else if (i >= input$strike){
+          longPut[i + 1] <- -input$ask
+        }
+        if (i < input$strike){
+          shortCall[i + 1] <- input$bid
+        } else if (i >= input$strike){
+          shortCall[i + 1] <- input$strike + input$bid - i
+        }
+      }
+      syntheticShortForward <- longPut + shortCall
+      plot(x, syntheticShortForward, main = "Options Payoffs", type = "l", lwd = 2, xlab = "Underlying Stock Price", ylab = "Profit/Loss", xlim = c(0,100), ylim = c(-input$price, input$price))
+      lines(x, longPut, lty = 2, col = "darkorange")
+      lines(x, shortCall, lty = 2, col = "dodgerblue")
+      segments(0,0,150,0)
+      legend("topright", border = "grey", c("Synthetic Short Forward", "Long Put", "Short Call"), lty = c("solid", "dashed", "dashed"), col = c(1, "darkorange", "dodgerblue"), lwd = c(2,1,1))
+    }
+  })
+  
+  output$futplot <- renderPlot({
+    x <- 0:150
+    futurePayoff <- vector(mode = "integer", length = length(x))
+    for (i in x){
+      if (input$future == "Long"){
+        futurePayoff[i + 1] <- i - input$price
+      } else if (input$future == "Short"){
+        futurePayoff[i + 1] <- input$price - i
+      }
+    }
+    plot(x, futurePayoff, main = "Futures Payoffs", type = "l", lwd = 2, xlab = "Underlying Stock Price", ylab = "Profit/Loss", xlim = c(0,100), ylim = c(-input$price, input$price))
+    segments(0,0,150,0)
+  })
+  
+})
+)
