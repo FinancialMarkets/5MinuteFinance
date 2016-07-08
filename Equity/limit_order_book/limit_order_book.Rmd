@@ -13,48 +13,26 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## The Limit Order Book
 
-The *limit order book* 
+The *limit order book* is the 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Orderbook R Package
+
+The interactive content in this presentation will make use of the [orderbook R package]().
 
 
-## Example
-
-<!-- make use of the awesome 'orderbook' R package -->
-
-```{r messsage=FALSE, warning=FALSE, echo = FALSE}
-#{{{
-library(orderbook)
-library(shiny)
-renderPrint({
-    filename <- system.file("extdata",
-                            "sample.txt",
-                            package = "orderbook")
-    ob <- orderbook(file = filename)
-    ob <- read.orders(ob, 10000)
-    display(ob)
-})
-#}}}
-```
-
-
-
-
-
-
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
-
 
 ```{r messsage=FALSE, warning=FALSE, echo = FALSE}
 #{{{
 library(orderbook)
 library(shiny)
 shinyUI(fluidPage(
-    ## titlePanel("submitButton example"),
     fluidRow(
-        column(3, wellPanel(
-
-                  )),
-        column(9,
+        column(6, 
                renderPrint({
                    filename <- system.file("extdata",
                                            "sample.txt",
@@ -62,7 +40,12 @@ shinyUI(fluidPage(
                    ob <- orderbook(file = filename)
                    ob <- read.orders(ob, 10000)
                    display(ob)
-                   
+               })
+
+               ),
+        column(6,
+               renderPlot({
+                   plot(ob)
                })
                )
     )
@@ -75,7 +58,147 @@ shinyUI(fluidPage(
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+<!---
+Commenting because added app with both buy and sell below.
+## Market Buy
 
+```{r messsage=FALSE, warning=FALSE, echo = FALSE}
+#{{{
+library(orderbook)
+library(shiny)
+inputPanel(
+    numericInput("amount", "Number of Shares to Buy", value = 100)
+    )
+shinyUI(fluidPage(
+    fluidRow(
+        column(6, 
+               renderPrint({
+                   filename <- system.file("extdata",
+                                           "sample.txt",
+                                           package = "orderbook")
+                   ob <- orderbook(file = filename)
+                   ob <- read.orders(ob, 10000)
+                   display(ob)
+               })
+               ),
+        column(6,
+               renderPrint({
+                   if (input$amount <= 0) {
+                       cat("Enter number of shares")
+                       } else {
+                       ob <- market.order(ob, input$amount, "BUY")
+    display(ob)
+                       }
+               })
+               )
+    )
+)
+)
+#}}}
+```
+-->
+
+## Market Order
+
+```{r messsage=FALSE, warning=FALSE, echo = FALSE}
+#{{{
+library(orderbook)
+library(shiny)
+inputPanel(
+    numericInput("amount2", "Number of Shares to Buy", value = 100),
+    radioButtons("typeBS2", "Buy or Sell", choices = c("Buy" = 1,
+                                                      "Sell" = 2), selected = 1) 
+    )
+shinyUI(fluidPage(
+    fluidRow(
+        column(6, 
+               renderPrint({
+                   filename <- system.file("extdata",
+                                           "sample.txt",
+                                           package = "orderbook")
+                   ob <- orderbook(file = filename)
+                   ob <- read.orders(ob, 10000)
+                   display(ob)
+               })
+               ),
+        column(6,
+               renderPrint({
+                   if (input$amount2 <= 0) {
+                       cat("Enter number of shares")
+                   } else {
+                     orderType <- switch(input$typeBS2, 
+                                         "1" = "BUY",
+                                         "2" = "SELL")
+                     filename <- system.file("extdata",
+                                             "sample.txt",
+                                             package = "orderbook")
+                     ob <- orderbook(file = filename)
+                     ob <- read.orders(ob, 10000)
+                     ob <- market.order(ob, input$amount2, orderType)
+                     display(ob)
+                   }
+               })
+               )
+    )
+)
+)
+#}}}
+```
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Limit Order
+
+```{r messsage=FALSE, warning=FALSE, echo = FALSE}
+#{{{
+library(orderbook)
+library(shiny)
+inputPanel(
+    numericInput("amount3", "Number of Shares to Buy", value = 100),
+    numericInput("limit3", "Limit Price", value = 11.37),
+    radioButtons("typeBS3", "Buy or Sell", choices = c("Buy" = 1,
+                                                      "Sell" = 2), selected = 1) 
+    )
+shinyUI(fluidPage(
+    fluidRow(
+        column(6, 
+               renderPrint({
+                   filename <- system.file("extdata",
+                                           "sample.txt",
+                                           package = "orderbook")
+                   ob <- orderbook(file = filename)
+                   ob <- read.orders(ob, 10000)
+                   display(ob)
+               })
+               ),
+        column(6,
+               renderPrint({
+                   if (input$amount2 <= 0) {
+                       cat("Enter number of shares")
+                   } else {
+                     orderType3 <- switch(input$typeBS3, 
+                                         "1" = "BID",
+                                         "2" = "ASK")
+                     filename <- system.file("extdata",
+                                             "sample.txt",
+                                             package = "orderbook")
+                     ob <- orderbook(file = filename)
+                     ob <- read.orders(ob, 10000)
+                     ob <- add.order(ob, price = input$limit3, size = input$amount3, type = orderType3)
+                     display(ob)
+                   }
+               })
+               )
+    )
+)
+)
+#}}}
+```
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
