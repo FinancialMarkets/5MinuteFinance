@@ -13,16 +13,14 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## The Limit Order Book
 
-The *limit order book* is the 
+The *limit order book* is the list of orders (prices at which you can transact) for a given security.
+
+-  Depending on the security, these orders may be on one exchange, or aggregated across many exchanges.
+
+-  In the next slide is two visualizations of a stock's orderbook.  We'll use these to describe how an order book works.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Orderbook R Package
-
-The interactive content in this presentation will make use of the [orderbook R package]().
-
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
@@ -40,6 +38,7 @@ shinyUI(fluidPage(
                    ob <- orderbook(file = filename)
                    ob <- read.orders(ob, 10000)
                    display(ob)
+                   ob <<- ob
                })
 
                ),
@@ -54,9 +53,10 @@ shinyUI(fluidPage(
 #}}}
 ```
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
+## 
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 <!---
 Commenting because added app with both buy and sell below.
@@ -199,6 +199,16 @@ shinyUI(fluidPage(
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Orderbook R Package
+
+The interactive content in this presentation has used the [orderbook R package](https://cran.r-project.org/web/packages/orderbook/index.html).
+
+-  A big thanks to the package authors for this great tool.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ## Credits and Collaboration
 
