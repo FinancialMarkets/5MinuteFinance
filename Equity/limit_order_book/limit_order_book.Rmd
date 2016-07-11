@@ -8,7 +8,7 @@ runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, messsage = FALSE, warning = FALSE)
 ```
 
 ## The Limit Order Book
@@ -17,10 +17,23 @@ The *limit order book* is the list of orders (prices at which you can transact) 
 
 -  Depending on the security, these orders may be on one exchange, or aggregated across many exchanges.
 
--  In the next slide is two visualizations of a stock's orderbook.  We'll use these to describe how an order book works.
+-  This presentation will give a basic description of the orderbook, and how your transactions will be handled by (and effect) the book. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Order Book Description
+
+The plot on the right in the next slide shows the full orderbook -- sell orders from \$11.38 to about \$12.50, and buy orders from \$11.36 down to about \$10.20.
+
+-  We generally only show the book 5 or 10 levels deep, as in the graphic on the left which shows the book 5 levels deep.
+
+Example: reading the first 2 levels of the book:
+
+-  There are 400 shares being offered for sale at 11.38, and 1600 shares offered at 11.39.  This means, if we wish, we can buy shares at these prices.  
+
+-  Similarly there are 2700 shares being being bid for at 11.36, and 1100 shares being bid for at 11.35.  This means, if we wish, we can sell shares at these prices.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
@@ -37,7 +50,7 @@ shinyUI(fluidPage(
                                            package = "orderbook")
                    ob <- orderbook(file = filename)
                    ob <- read.orders(ob, 10000)
-                   display(ob)
+		   display(ob)
                    ob <<- ob
                })
 
@@ -55,48 +68,36 @@ shinyUI(fluidPage(
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
-## 
+## Inside Quotes
+
+The *inside quotes*, which are also known as the *Best Bid and Offer* or *BBO*, are the highest bid, and lowest ask, in the orderbook.  
+
+- They are the prices at which the next market buy (with the best offer) or market sell (with the best bid) will transact.
+
+- In the above book the *inside quotes* are 11.36/11.38.  
+
+In this case the bid/ask spread is \$11.36 - \$11.38 = \$0.02, or $\frac{\$0.02}{\$11.38} = 0.1757\%$.
+
+-  The bid/ask percentage spread measures the cost to transact in that security---the larger the spread the larger the transaction costs.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Orderbook and Liquidity
+
+The smaller the bid/ask spread, and the more limit orders in the book, the greater the security's *liquidity*.  
+
+-  *Liquidity* is a measure of your ability to cheaply transact (buy or sell) a security without moving the inside quotes by much.  
+
+-  Sufficient liquidity is an integral component of a well-functioning market.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The [Market Maker](https://www.sec.gov/answers/mktmaker.htm)
+
+A *Market Maker* job is to maintain, at all times, bids and offers in the orderbook.  
 
 
-<!---
-Commenting because added app with both buy and sell below.
-## Market Buy
-
-```{r messsage=FALSE, warning=FALSE, echo = FALSE}
-#{{{
-library(orderbook)
-library(shiny)
-inputPanel(
-    numericInput("amount", "Number of Shares to Buy", value = 100)
-    )
-shinyUI(fluidPage(
-    fluidRow(
-        column(6, 
-               renderPrint({
-                   filename <- system.file("extdata",
-                                           "sample.txt",
-                                           package = "orderbook")
-                   ob <- orderbook(file = filename)
-                   ob <- read.orders(ob, 10000)
-                   display(ob)
-               })
-               ),
-        column(6,
-               renderPrint({
-                   if (input$amount <= 0) {
-                       cat("Enter number of shares")
-                       } else {
-                       ob <- market.order(ob, input$amount, "BUY")
-    display(ob)
-                       }
-               })
-               )
-    )
-)
-)
-#}}}
-```
--->
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## Market Order
 
@@ -105,7 +106,7 @@ shinyUI(fluidPage(
 library(orderbook)
 library(shiny)
 inputPanel(
-    numericInput("amount2", "Number of Shares to Buy", value = 100),
+    numericInput("amount2", "Number of Shares", value = 100),
     radioButtons("typeBS2", "Buy or Sell", choices = c("Buy" = 1,
                                                       "Sell" = 2), selected = 1) 
     )
@@ -155,7 +156,7 @@ shinyUI(fluidPage(
 library(orderbook)
 library(shiny)
 inputPanel(
-    numericInput("amount3", "Number of Shares to Buy", value = 100),
+    numericInput("amount3", "Number of Shares", value = 100),
     numericInput("limit3", "Limit Price", value = 11.37),
     radioButtons("typeBS3", "Buy or Sell", choices = c("Buy" = 1,
                                                       "Sell" = 2), selected = 1) 
@@ -200,6 +201,10 @@ shinyUI(fluidPage(
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Limit Orders as Options
+
+Limit buy/sell orders in the book can also be thought of as providing the *option* to sell/buy the security at the limit price.  
+
 ## Orderbook R Package
 
 The interactive content in this presentation has used the [orderbook R package](https://cran.r-project.org/web/packages/orderbook/index.html).
@@ -220,3 +225,44 @@ If you would like to make any additions or corrections to this presentation, vis
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+<!---
+Old Market Buy app:  Commenting because added app with both buy and sell.
+## Market Order
+
+```{r messsage=FALSE, warning=FALSE, echo = FALSE}
+#{{{
+library(orderbook)
+library(shiny)
+inputPanel(
+    numericInput("amount", "Number of Shares to Buy", value = 100)
+    )
+shinyUI(fluidPage(
+    fluidRow(
+        column(6, 
+               renderPrint({
+                   filename <- system.file("extdata",
+                                           "sample.txt",
+                                           package = "orderbook")
+                   ob <- orderbook(file = filename)
+                   ob <- read.orders(ob, 10000)
+                   display(ob)
+               })
+               ),
+        column(6,
+               renderPrint({
+                   if (input$amount <= 0) {
+                       cat("Enter number of shares")
+                       } else {
+                       ob <- market.order(ob, input$amount, "BUY")
+    display(ob)
+                       }
+               })
+               )
+    )
+)
+)
+#}}}
+```
+-->
