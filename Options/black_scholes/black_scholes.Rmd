@@ -156,7 +156,7 @@ sidebarLayout(
 
 ## How Do We Calculate the Input Parameters
 
-The present stock price is easily observable, and the exercise price and time to maturity are aspect of the option contract. The parameters which are less easily observed are:
+The present stock price is easily observable, and the exercise price and time to maturity are aspects of the option contract. The parameters which are less easily observed are:
 
 -  risk-free rate
 -  dividend yield
@@ -316,7 +316,7 @@ This distinction is particularly important if there is an event which will take 
 
 ## Implied Volatility
 
-We can extract a volatility estimate from traded options by plugging the option price into the Black-Scholes formula, and solving for volatility. This volatility estimate is call the options 'Implied Volatility'.
+We can extract a volatility estimate from traded options by plugging the option price into the Black-Scholes formula, and solving for volatility. This volatility estimate is called the option's 'Implied Volatility'.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -373,7 +373,7 @@ So far we have only looked at call options, but can Black-Scholes also value put
 
 -  Yes, we can write an explicit formula for the Black-Scholes value of a European put option.
 
-- However is is much more convenient to simply use [put-call parity](http://127.0.0.1), which we cover in the linked presentation.
+- However it is much more convenient to simply use [put-call parity](http://127.0.0.1), which we cover in the linked presentation.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
