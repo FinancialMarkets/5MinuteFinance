@@ -72,7 +72,9 @@ The groundbreaking feature of the Black-Scholes model, as opposed to earlier att
 
 ## Intuitive Grasp of the Formula
 
-You can look at the $N(d)$ terms as the likelihood that the option will be exercised at expiration (that $S_T > X$).
+Looking at the option value formula: $C_0 = S_0N(d_1) - Xe^{-rT}N(d_2)$
+
+You can view the $N(d)$ terms as the likelihood that the option will be exercised at expiration (that $S_T > X$).
 
 -  If both $N(d)$ are close to 1, then the option's value is about $S_0 - Xe^{-rT}$ or the present stock price minus the present value of the strike price. This makes sense given that at expiration (if $S_0 > X$) the option pays $S_T - X$.
 
@@ -126,23 +128,23 @@ sidebarLayout(
             d2 <- d1 - vol * sqrt(time)
             C <- stock * pnorm(d1) - strike * exp(-rf * time) * pnorm(d2)
 
-            if (input$out == 1){
+	    #             if (input$out == 1){
                 plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
                 text(x = 0.5, y = 0.5, labels = paste0("Call Premium = $", round(C, 2)), cex = 3)
                 ## text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
                 text(x = 0.5, y = 0.3, labels = paste("d1 = ", round(d1, 5)))
                 text(x = 0.5, y = 0.2, labels = paste("d2 = ", round(d2, 5)))
-            } else {
-                if (input$out == 2){
-                    plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
-                text(x = 0.5, y = 0.5, labels = paste(round(d1, 5)), cex = 5)
-                text(x = 0.03, y = 0.95, labels = "d1", cex = 2)
-            } else {
-                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
-                text(x = 0.5, y = 0.5, labels = paste(round(d2, 5)), cex = 5)
-                text(x = 0.03, y = 0.95, labels = "d2", cex = 2)
-            }
-            }
+		#             } else {
+		#                 if (input$out == 2){
+		#                     plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
+		#                 text(x = 0.5, y = 0.5, labels = paste(round(d1, 5)), cex = 5)
+		#                 text(x = 0.03, y = 0.95, labels = "d1", cex = 2)
+		#             } else {
+		#                 plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
+		#                 text(x = 0.5, y = 0.5, labels = paste(round(d2, 5)), cex = 5)
+		#                 text(x = 0.03, y = 0.95, labels = "d2", cex = 2)
+		#             }
+		#             }
             
         })
 )
@@ -154,7 +156,7 @@ sidebarLayout(
 
 ## How Do We Calculate the Input Parameters
 
-The present stock price is easily observable, and the exercise price and time to maturity are aspect of the option contract. The parameters which are less easily observed are:
+The present stock price is easily observable, and the exercise price and time to maturity are aspects of the option contract. The parameters which are less easily observed are:
 
 -  risk-free rate
 -  dividend yield
@@ -314,7 +316,7 @@ This distinction is particularly important if there is an event which will take 
 
 ## Implied Volatility
 
-We can extract a volatility estimate from traded options by plugging the option price into the Black-Scholes formula, and solving for volatility. This volatility estimate is call the options 'Implied Volatility'.
+We can extract a volatility estimate from traded options by plugging the option price into the Black-Scholes formula, and solving for volatility. This volatility estimate is called the option's 'Implied Volatility'.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -371,7 +373,7 @@ So far we have only looked at call options, but can Black-Scholes also value put
 
 -  Yes, we can write an explicit formula for the Black-Scholes value of a European put option.
 
-- However is is much more convenient to simply use [put-call parity](http://127.0.0.1), which we cover in the linked presentation.
+- However it is much more convenient to simply use [put-call parity](http://127.0.0.1), which we cover in the linked presentation.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
