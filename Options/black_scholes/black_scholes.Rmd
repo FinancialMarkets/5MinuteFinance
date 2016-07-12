@@ -72,7 +72,9 @@ The groundbreaking feature of the Black-Scholes model, as opposed to earlier att
 
 ## Intuitive Grasp of the Formula
 
-You can look at the $N(d)$ terms as the likelihood that the option will be exercised at expiration (that $S_T > X$).
+Looking at the option value formula: $C_0 = S_0N(d_1) - Xe^{-rT}N(d_2)$
+
+You can view the $N(d)$ terms as the likelihood that the option will be exercised at expiration (that $S_T > X$).
 
 -  If both $N(d)$ are close to 1, then the option's value is about $S_0 - Xe^{-rT}$ or the present stock price minus the present value of the strike price. This makes sense given that at expiration (if $S_0 > X$) the option pays $S_T - X$.
 
@@ -126,23 +128,23 @@ sidebarLayout(
             d2 <- d1 - vol * sqrt(time)
             C <- stock * pnorm(d1) - strike * exp(-rf * time) * pnorm(d2)
 
-            if (input$out == 1){
+	    #             if (input$out == 1){
                 plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
                 text(x = 0.5, y = 0.5, labels = paste0("Call Premium = $", round(C, 2)), cex = 3)
                 ## text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
                 text(x = 0.5, y = 0.3, labels = paste("d1 = ", round(d1, 5)))
                 text(x = 0.5, y = 0.2, labels = paste("d2 = ", round(d2, 5)))
-            } else {
-                if (input$out == 2){
-                    plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
-                text(x = 0.5, y = 0.5, labels = paste(round(d1, 5)), cex = 5)
-                text(x = 0.03, y = 0.95, labels = "d1", cex = 2)
-            } else {
-                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
-                text(x = 0.5, y = 0.5, labels = paste(round(d2, 5)), cex = 5)
-                text(x = 0.03, y = 0.95, labels = "d2", cex = 2)
-            }
-            }
+		#             } else {
+		#                 if (input$out == 2){
+		#                     plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
+		#                 text(x = 0.5, y = 0.5, labels = paste(round(d1, 5)), cex = 5)
+		#                 text(x = 0.03, y = 0.95, labels = "d1", cex = 2)
+		#             } else {
+		#                 plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
+		#                 text(x = 0.5, y = 0.5, labels = paste(round(d2, 5)), cex = 5)
+		#                 text(x = 0.03, y = 0.95, labels = "d2", cex = 2)
+		#             }
+		#             }
             
         })
 )
