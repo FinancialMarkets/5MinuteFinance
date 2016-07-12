@@ -94,7 +94,15 @@ The smaller the bid/ask spread, and the more limit orders in the book, the great
 
 ## The [Market Maker](https://www.sec.gov/answers/mktmaker.htm)
 
-A *Market Maker* job is to maintain, at all times, bids and offers in the orderbook.  
+A *Market Maker* job is to maintain, at all times, bids and offers in the orderbook.  This provides liquidity to the market.  
+
+-  The market maker attempts to earn the bid/ask spread -- repeatedly buying at the bid and selling at the ask.
+
+-  The orderbook is comprised of limit orders from the market maker, as well as other investors and traders.  However, the market maker **must** maintain orders in the book, and other market participants do not.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+## Entering a Market Order
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
@@ -145,9 +153,12 @@ shinyUI(fluidPage(
 )
 #}}}
 ```
-
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Entering a Market Order
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## Limit Order
 
