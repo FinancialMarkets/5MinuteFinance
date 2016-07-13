@@ -13,11 +13,7 @@ smaller: true
 
 ## Motivation
 
-Modern financial statements provide a great deal of data on companies.
-
-[graphic: someone overwhelmed by data]
-
-Financial ratios turn that data into bits of useful information.
+Modern financial statements provide a great deal of data on companies.  Financial ratios turn that data into bits of useful information.
 
 -  They often do this, by scaling a data point relative to another aspect of the company.
 
@@ -58,8 +54,6 @@ These ratios measure the firm's long-term ability to meet its debt obligations.
 
 - These are measures of overall assets relative to obligations.  They include assets which are hard to sell.
 
-[graphic: a person in a bank vault with money]
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Example: The Debt-to-Equity and Equity Multiplier Ratios
@@ -70,11 +64,12 @@ The debt-to-equity ratio is a firm's total debt divided by its total equity.
 -  The value that this ratio takes is very industry specific.  Young firms tend to have little to no debt, and so low Debt-to-Equity ratios. More established firms may have higher ratios.  
 
 The equity multiplier is a firm's assets divided by it equity.
+
 - The balance sheet is a statement of a firm's assets, liabilities (debts), and equity. If we know two of the three we can infer the third, remember Assets - Equity = Liabilities
 
 -  Equity Multiplier - 1 = Debt-to-Equity Ratio
 -  $\frac{Assets}{Equity} - \frac{Equity}{Equity} = \frac{Debt}{Equity}$
--  
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Liquidity Ratios
@@ -82,8 +77,6 @@ The equity multiplier is a firm's assets divided by it equity.
 These ratios measure the firm's ability to meet its debt obligations over the short-term (over the next year).
 
 - As an analogy, you can think of these as measuring how much money you have in your wallet.  You can't sell your house to pay your water bill this week.
-
-[graphic:  a person looking in their wallet]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -99,8 +92,6 @@ The current ratio is defined as the firm's current assets dividend by current li
 ## Asset Use Efficiency Ratios
 
 These measure how efficiently a firms uses its assets.  For example, how much in sales does a firm generate from \$1.00 in assets.
-
-[graphic: person doing some craft work -- maybe a blacksmith]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -118,7 +109,6 @@ Total asset turnover is equal to sales divided by assets.
 
 These measures focus on how well a firm translates a dollar of sales into income. 
 
-[graphic:  accountant]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -136,8 +126,6 @@ Say a firm has \$100 million in net income.  Alone this data point is not too us
 
 These measures capture what value the market assigns to each dollar of a firm's earnings, sales, or book value.  
 
-
-[graphic: traders in a pit]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -164,8 +152,8 @@ If you are considering buying GE's stock.  Do you care about GE's current ratio?
 
 The Dupont Analysis uses ratios to show how firm efficiency and leverage can influence shareholder returns (ROE)
 
--  Where $Return on Equity = Profit Margin\: x\: Total-asset-turnover\: x\: Equity Multiplier $ 
--  $\frac{Earnings}{Equity} =  \frac{Earnings}{Sales}\: x\: \frac{Sales}{Assets}\: x\: \frac{Assets}{Equity} $
+-  Where $ROE = Profit\ Margin\: x\: Total\ Asset\ Turnover\: x\: Equity\ Multiplier$ 
+-  $\frac{Earnings}{Equity} =  \frac{Earnings}{Sales}\: x\: \frac{Sales}{Assets}\: x\: \frac{Assets}{Equity}$
 
 - Profit margin measures a firm's ability to control expenses (operational efficiency)
 - Total asset turnover shows how many dollars of sales are provided by a dollar of asset (asset efficiency)
@@ -176,11 +164,7 @@ The Dupont Analysis uses ratios to show how firm efficiency and leverage can inf
 ## Interactive App
 
 In the next slide you can choose two stocks, and one of four financial ratios, and see their performance over time.  
-
 -  Remember, the comparison makes the most sense if you choose two stocks in the same industry.
-
-
-
 
 ## 
 
