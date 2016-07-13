@@ -62,13 +62,19 @@ These ratios measure the firm's long-term ability to meet its debt obligations.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Example: The Debt-to-Equity Ratio
+## Example: The Debt-to-Equity and Equity Multiplier Ratios
 
 The debt-to-equity ratio is a firm's total debt divided by its total equity.
 
 -  If a firm has current assets of \$10 million, and current liabilities of \$8 million, then its current ratio is 1.25 times.
 -  The value that this ratio takes is very industry specific.  Young firms tend to have little to no debt, and so low Debt-to-Equity ratios. More established firms may have higher ratios.  
 
+The equity multiplier is a firm's assets divided by it equity.
+- The balance sheet is a statement of a firm's assets, liabilities (debts), and equity. If we know two of the three we can infer the third, remember Assets - Equity = Liabilities
+
+-  Equity Multiplier - 1 = Debt-to-Equity Ratio
+-  $\frac{Assets}{Equity} - \frac{Equity}{Equity} = \frac{Debt}{Equity}$
+-  
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Liquidity Ratios
@@ -148,13 +154,24 @@ A firm's P/E ratio is its stock price (per share) divided by its earnings per sh
 ## When to Use a Ratio
 
 If you are considering buying GE's stock.  Do you care about GE's current ratio?
-
 >- Not really.  The current ratio only considers short term accounts, and as an equity holder you care about the firm's long-term prospects.  
 
 >- You would certainly be interested in the Return on Equity, Debt-to-Equity ratio, and Total Asset Turnover among other measures of long-term performance. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Using Ratios for DuPont Analysis
+
+The Dupont Analysis uses ratios to show how firm efficiency and leverage can influence shareholder returns (ROE)
+
+-  Where $Return on Equity = Profit Margin\: x\: Total-asset-turnover\: x\: Equity Multiplier $ 
+-  $\frac{Earnings}{Equity} =  \frac{Earnings}{Sales}\: x\: \frac{Sales}{Assets}\: x\: \frac{Assets}{Equity} $
+
+- Profit margin measures a firm's ability to control expenses (operational efficiency)
+- Total asset turnover shows how many dollars of sales are provided by a dollar of asset (asset efficiency)
+- Equity multiplier is a measure of firm leverage
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Interactive App
 
