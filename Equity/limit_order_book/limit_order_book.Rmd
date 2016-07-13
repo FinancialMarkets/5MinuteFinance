@@ -7,9 +7,11 @@ css: 5min_mod.css
 runtime: shiny
 ---
 
+<!---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, messsage = FALSE, warning = FALSE)
 ```
+-->
 
 ## The Limit Order Book
 
@@ -104,6 +106,13 @@ A *Market Maker* job is to maintain, at all times, bids and offers in the orderb
 
 ## Entering a Market Order
 
+If you want to buy or sell a stock, one type of order you can enter is a *market order*.  This will buy or sell the stock at the best available price in the market at the time the order arrives.  With a market order, you are guaranteed that you will buy or sell, however you are not sure of the price at which you will trade.
+
+-  A market buy will buy at the best ask price.  If it buys all available shares at the best ask, the next ask above will become the new best ask, and that is where additional shares will be bought.
+
+-  A market sell will sell at the best bid price.  Similarly, if it sells all available shares at the best bid, the next bid below will become the new best bid, and that is where additional shares will be sold.
+
+Use the app in the next slide to enter market orders and see the effect on the limit order book.  On the left is the original book, and the right shows the book after the order is executed. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
@@ -155,7 +164,15 @@ shinyUI(fluidPage(
 ```
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Entering a Market Order
+## Entering a Limit Order
+
+You can also buy or sell stock with a *limit order*.  In this type of order, you specify the highest/lowest price at which you will buy/sell.  With a limit order, you are guaranteed the price at which you will buy or sell (if the trade is executed), however you are not guaranteed that you will actually trade.
+
+-  Say you enter a limit order to buy shares at \$50.03. Your order will sit in the limit order book until a sell order executes against your trade at \$50.03.  
+
+- Similarly, a limit sell will sit in the book until a buy order executes against your sell.   
+
+What if I enter a limit order to buy at \$50.03 and the present ask is \$50.01?  Your broker will likely warn you, however if you enter the order it will immediately trigger, turn into a market order, and execute at \$50.01. A limit buy simply specifies the highest price at which you will trade---you will always get the best available price when transacting.
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
@@ -208,23 +225,15 @@ shinyUI(fluidPage(
 #}}}
 ```
 
-
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+<! --- maybe include later here or in higher level presentation
 ## Limit Orders as Options
 
 Limit buy/sell orders in the book can also be thought of as providing the *option* to sell/buy the security at the limit price.  
 
-## Orderbook R Package
-
-The interactive content in this presentation has used the [orderbook R package](https://cran.r-project.org/web/packages/orderbook/index.html).
-
--  A big thanks to the package authors for this great tool.
-
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
+-->
 
 ## Credits and Collaboration
 
@@ -234,6 +243,7 @@ If you would like to make any additions or corrections to this presentation, vis
 
 - And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
 
+- The interactive content in this presentation has used the [orderbook R package](https://cran.r-project.org/web/packages/orderbook/index.html).  Thanks to the package authors for this great tool.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
