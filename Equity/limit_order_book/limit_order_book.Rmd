@@ -19,13 +19,15 @@ The *limit order book* is the list of orders (prices at which you can transact) 
 
 -  Depending on the security, these orders may be on one exchange, or aggregated across many exchanges.
 
--  This presentation will give a basic description of the orderbook, and how your transactions will be handled by (and effect) the book. 
+-  This presentation will give a basic description of the orderbook, and how your transactions will be handled by (and effect) the book.
+
+-  You will transact in an orderbook if you trade stock, futures, options, and other securities.  However, in this presentation we'll use stock examples.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Order Book Description
 
-The plot on the right in the next slide shows the full orderbook -- sell orders from \$11.38 to about \$12.50, and buy orders from \$11.36 down to about \$10.20.
+In the next slide, the plot on the right shows the full orderbook -- sell orders from \$11.38 to about \$12.50, and buy orders from \$11.36 down to about \$10.20.
 
 -  We generally only show the book 5 or 10 levels deep, as in the graphic on the left which shows the book 5 levels deep.
 
@@ -41,12 +43,13 @@ Example: reading the first 2 levels of the book:
 
 ```{r messsage=FALSE, warning=FALSE, echo = FALSE}
 #{{{
-library(orderbook)
-library(shiny)
 shinyUI(fluidPage(
     fluidRow(
         column(6, 
                renderPrint({
+                   library(orderbook)
+                   library(shiny)
+
                    filename <- system.file("extdata",
                                            "sample.txt",
                                            package = "orderbook")
@@ -96,7 +99,7 @@ The smaller the bid/ask spread, and the more limit orders in the book, the great
 
 ## The [Market Maker](https://www.sec.gov/answers/mktmaker.htm)
 
-A *Market Maker* job is to maintain, at all times, bids and offers in the orderbook.  This provides liquidity to the market.  
+A *Market Maker's* job is to maintain, at all times, bids and offers in the orderbook.  This provides liquidity to the market.  
 
 -  The market maker attempts to earn the bid/ask spread -- repeatedly buying at the bid and selling at the ask.
 
@@ -120,8 +123,6 @@ Use the app in the next slide to enter market orders and see the effect on the l
 
 ```{r messsage=FALSE, warning=FALSE, echo = FALSE}
 #{{{
-library(orderbook)
-library(shiny)
 inputPanel(
     numericInput("amount2", "Number of Shares", value = 100),
     radioButtons("typeBS2", "Buy or Sell", choices = c("Buy" = 1,
@@ -181,8 +182,6 @@ What if I enter a limit order to buy at \$50.03 and the present ask is \$50.01? 
 
 ```{r messsage=FALSE, warning=FALSE, echo = FALSE}
 #{{{
-library(orderbook)
-library(shiny)
 inputPanel(
     numericInput("amount3", "Number of Shares", value = 100),
     numericInput("limit3", "Limit Price", value = 11.37),
@@ -226,14 +225,6 @@ shinyUI(fluidPage(
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-<! --- maybe include later here or in higher level presentation
-## Limit Orders as Options
-
-Limit buy/sell orders in the book can also be thought of as providing the *option* to sell/buy the security at the limit price.  
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
--->
 
 ## Credits and Collaboration
 
@@ -287,3 +278,12 @@ shinyUI(fluidPage(
 #}}}
 ```
 -->
+
+
+<!-- maybe include later here or in higher level presentation -->
+<!-- ## Limit Orders as Options -->
+
+<!-- Limit buy/sell orders in the book can also be thought of as providing the *option* to sell/buy the security at the limit price.   -->
+
+<!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
+

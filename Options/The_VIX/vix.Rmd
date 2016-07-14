@@ -1,13 +1,14 @@
 ---
 title: "The CBOE Volatility Index (VIX)"
-author: "Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "09/01/2015"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+# author: "Milken Institute, Center for Financial Markets"
+# affiliation: "Milken Institute Center for Financial Markets"
+# date: "09/01/2015"
 output: ioslides_presentation
 logo: misq.png
-css: 5min.css
+css: 5min_mod.css
 runtime: shiny
-smaller: true
+# smaller: true
 ---
 
 ## The VIX
@@ -18,15 +19,15 @@ The VIX is based on option prices on the S\&P 500 stock index.
 
 -  The VIX is commonly referred to as the market's "fear gauge".
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Interpreting the VIX
 
-Say the VIX is presently 10. This means there is about a 68\% chance (one standard deviation) that the absolute value of the market's return will be less than $\frac{10%}{\sqrt{12}} = 2.89%$
+Say the VIX is presently 10. This means there is about a 68\% chance (one standard deviation) that the absolute value of the market's return will be less than $\frac{10%}{\sqrt{12}} = 2.89%$ over the next 30 days (one month).  
 
 -  We divide by $\sqrt{12}$ to convert from the annualized volatility (in which VIX is quoted) into the monthly volatility. 
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## The VIX and the Stock Market
 
@@ -34,9 +35,13 @@ The VIX and the stock market tend to move in opposite directions.
 
 -  In finance, this is known as the *leverage effect*.
 
-[graphic: lines moving in opposite directions]
+You can see this effect in the following slide, which plots the S&P 500 index and the VIX.
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div>
+-  The VIX is highest when the market (S&P 500) experiences large losses.
+
+-  You can select subintervals by clicking and dragging on the chart. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## The VIX and the Stock Market
 
@@ -64,7 +69,7 @@ renderDygraph({
 #}}}
 ```
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## The VIX is Forward Looking
 
@@ -72,21 +77,23 @@ Implied volatility, and thus the VIX, reflect market expectations of *future* vo
 
 -  Using a measure like the standard deviation on historical data, only looks at what has already happened.
 
-This distinction is very important if, say, there is a Federal Reserve announcement over the next month.
+This distinction is very important if, say, there is a Federal Reserve announcement over the next month.  Fed anouncements can cause substantial volatility, and so this expected volatility will be priced into the VIX (the VIX will be high).
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+-  However if there are no important announcements over the next month, the VIX will be relatively lower.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##  VIX, Market Return, and Volume
 
-The following app shows how expected market volatility (VIX) is related to market returns and volume.
+The following app shows how expected market volatility (VIX) is related to market returns and volume.  Volume is in billions of US dollars.
 
 -  You can see large positive market returns coincides with large negative changes in the VIX and heavy volume.  Similarly, large negative market returns coincides with large increases in the VIX and also heavy volume.
 
--  Volume is generally lover for middling returns and changes in the VIX.  
+-  Volume is generally lower for middling returns and changes in the VIX.  
 
 -  Points of similar color denote similar points in time (though the red is recycled somewhat).  This allows you to see the effect of volume and volatility *clustering*.  This is the observation that if the market is volatile with heavy volume today, it will tend to be volatile with heavy volume tomorrow, and similarly for non-volatile and low-volume periods.  
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
@@ -104,7 +111,7 @@ renderScatterplotThree({
 
     spmr <- Delt(Ad(spm))
     vixmd <- diff(Ad(vixm))
-    spmv <- Vo(spm)[-1]
+    spmv <- Vo(spm)[-1] / 1000000000 
     
     data1 <- merge.xts(spmr, vixmd, spmv, join = 'inner')
     names(data1) <- c("S&P 500 Return", "Change in VIX", "S&P 500 Volume")
@@ -117,13 +124,7 @@ renderScatterplotThree({
 #}}}
 ```
 
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
-
-##
-
-[end of presentation graphic]
-
-<div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
