@@ -96,7 +96,7 @@ The smaller the bid/ask spread, and the more limit orders in the book, the great
 
 ## The [Market Maker](https://www.sec.gov/answers/mktmaker.htm)
 
-A *Market Maker* job is to maintain, at all times, bids and offers in the orderbook.  This provides liquidity to the market.  
+A *Market Maker's* job is to maintain, at all times, bids and offers in the orderbook.  This provides liquidity to the market.  
 
 -  The market maker attempts to earn the bid/ask spread -- repeatedly buying at the bid and selling at the ask.
 
@@ -116,20 +116,24 @@ Use the app in the next slide to enter market orders and see the effect on the l
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
-## Market Order
+***
 
 ```{r messsage=FALSE, warning=FALSE, echo = FALSE}
 #{{{
 library(orderbook)
 library(shiny)
-inputPanel(
-    numericInput("amount2", "Number of Shares", value = 100),
-    radioButtons("typeBS2", "Buy or Sell", choices = c("Buy" = 1,
-                                                      "Sell" = 2), selected = 1) 
-    )
+
 shinyUI(fluidPage(
+    
     fluidRow(
-        column(6, 
+        column(6, numericInput("amount2", "Number of Shares", value = 100)),
+        column(6, radioButtons("typeBS2", "Buy or Sell", choices = c("Buy" = 1,
+                                                      "Sell" = 2), selected = 1))
+    ),
+    
+     
+    fluidRow(
+        column(5, offset = 1,
                renderPrint({
                    filename <- system.file("extdata",
                                            "sample.txt",
@@ -139,7 +143,7 @@ shinyUI(fluidPage(
                    display(ob)
                })
                ),
-        column(6,
+        column(5, offset = 1,
                renderPrint({
                    if (input$amount2 <= 0) {
                        cat("Enter number of shares")
@@ -156,10 +160,9 @@ shinyUI(fluidPage(
                      display(ob)
                    }
                })
-               )
+               ))
+      )
     )
-)
-)
 #}}}
 ```
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -177,21 +180,23 @@ What if I enter a limit order to buy at \$50.03 and the present ask is \$50.01? 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
-## Limit Order
+***
 
 ```{r messsage=FALSE, warning=FALSE, echo = FALSE}
 #{{{
 library(orderbook)
 library(shiny)
-inputPanel(
-    numericInput("amount3", "Number of Shares", value = 100),
-    numericInput("limit3", "Limit Price", value = 11.37),
-    radioButtons("typeBS3", "Buy or Sell", choices = c("Buy" = 1,
-                                                      "Sell" = 2), selected = 1) 
-    )
+
 shinyUI(fluidPage(
-    fluidRow(
-        column(6, 
+    
+  fluidRow(
+    column(4, numericInput("amount3", "Number of Shares", value = 100)),
+    column(4, numericInput("limit3", "Limit Price", value = 11.37)),
+    column(4, radioButtons("typeBS3", "Buy or Sell", choices = c("Buy" = 1,
+                                                      "Sell" = 2), selected = 1))),
+  
+  fluidRow(
+        column(5, offset = 1,
                renderPrint({
                    filename <- system.file("extdata",
                                            "sample.txt",
@@ -201,7 +206,7 @@ shinyUI(fluidPage(
                    display(ob)
                })
                ),
-        column(6,
+        column(5, offset = 1,
                renderPrint({
                    if (input$amount2 <= 0) {
                        cat("Enter number of shares")
@@ -227,7 +232,7 @@ shinyUI(fluidPage(
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-<! --- maybe include later here or in higher level presentation
+<!-- maybe include later here or in higher level presentation
 ## Limit Orders as Options
 
 Limit buy/sell orders in the book can also be thought of as providing the *option* to sell/buy the security at the limit price.  
