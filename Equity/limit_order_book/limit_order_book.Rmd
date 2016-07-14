@@ -103,7 +103,7 @@ A *Market Maker's* job is to maintain, at all times, bids and offers in the orde
 
 -  The market maker attempts to earn the bid/ask spread -- repeatedly buying at the bid and selling at the ask.
 
--  The orderbook is comprised of limit orders from the market maker, as well as other investors and traders.  However, the market maker **must** maintain orders in the book, and other market participants do not.
+-  The orderbook is comprised of the market maker's limit orders, as well as limit orders entered by other investors and traders.  However, the market maker **must** maintain orders in the book, and other market participants do not have this requirement.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
