@@ -57,7 +57,7 @@ renderDygraph({
     data <- merge.xts(Ad(sp), Ad(vix), join = 'inner')
     names(data) <- c("S&P 500", "VIX")
 
-    dygraph(data, main = "S&P 500 vs. VIX") %>%
+    dygraph(data, main = "S&P 500 vs. VIX", width = "100%") %>%
         dySeries("VIX", axis = 'y2') %>%
             dyRangeSelector() %>%
                 dyAxis('y', label = "S&P 500") %>%

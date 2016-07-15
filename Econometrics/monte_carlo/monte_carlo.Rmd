@@ -16,9 +16,15 @@ When an analytic solution is available use it.
 
 -  If you make the same underlying assumptions, the analytic solution will be the same as the Monte Carlo.
 
-## Example: Option Pricing
+## Example: European Option Pricing
 
-The Black-Scholes 
+Assuming stock follows a geometric Brownian Motion, then at time $T$ in the future we have: 
+
+$S_T = S_0 e^{(\mu - \frac{1}{2}\sigma^2)T + \sigma B_T}$
+
+where $S_0$ is the stock price today, $\mu$ and $\sigma$ are the stock's drift and volatility respectively, and $B_T$ is the value of a Brownian Motion at time $T$.
+
+-  Since $B_T \sim N(0, T)$, we can  
 
 
 ##
@@ -61,7 +67,7 @@ call.bs <- pnorm(d1) * S - pnorm(d2) * K * exp(-r * T)
 renderPlot({ 
 subset.calls <- exp(-r*T)*calls[1:input$rands]
   ### possibly change output from a density -- something which also shows the variability of the estimate.
-  hist(subset.calls, main = paste0("Call Premium $", round(mean(subset.calls), 2)), xlab = "Call Option Value", breaks = 100, freq = FALSE)
+  hist(subset.calls, main = paste0("Call Premium $", round(mean(subset.calls), 2)), xlab = "Call Option Value", breaks = 100, freq = FALSE, width = "100%")
   legend('topright', c(paste0("Black-Scholes Value $", round(call.bs, 2)), paste0("Difference $", round(abs(call.bs - mean(subset.calls)), 2))))
 })
 #}}}
