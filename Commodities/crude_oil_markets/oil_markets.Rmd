@@ -1,8 +1,9 @@
 ---
 title: "Crude Oil"
-author: "Matt Brigida"
-date: "05/12/2015"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
 runtime: shiny
 smaller: true
 ---
@@ -32,6 +33,8 @@ The first modern well was spud in 1859 near Titusville in western Pennsylvania.
 
 - Much of this oil was refined into kerosene.
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ## Lucas Gusher at Spindletop
 
@@ -50,6 +53,7 @@ The Texas oil boom was kicked off in 1901, when oil was found in the Spindletop 
 
 <img src="Lucas_gusher.jpg" alt="Drawing" style="width: 300px;" text-align="center" />
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Prices Through 1973
 
@@ -58,6 +62,8 @@ Crude oil prices didn't fluctuate much prior to 1973.
 - A set of US oil companies (*Seven Sisters*) held the price stable with production controls.
 
 - After the Yom Kippur war in 1973, control of crude oil prices transferred to OPEC.  Prices then became more volatile. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Crude Oil Price Benchmarks
 
@@ -69,6 +75,8 @@ Three types of oil serve as global benchmarks for other oil prices.  They are:
 
 3.  Dubai: Asian price benchmark. 
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Crude Oil Grades
 
 Crude oil is graded by density (light/heavy) and sulphur (sweet/sour) content.  
@@ -78,6 +86,8 @@ Crude oil is graded by density (light/heavy) and sulphur (sweet/sour) content.
 -  For example, both WTI and Brent are light sweet crudes (but WTI is lighter and sweeter), whereas Dubai is medium sour.
 
 - For this reason, historically (prior to 2010) WTI has traded at a premium to Brent.  Since 2010 the difference in grade has been more than offset by the supply of crude from North Dakota and the western Canadian provinces. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Crude Oil Prices
 
@@ -102,6 +112,8 @@ renderDygraph({
 #}}}
 ```
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## US Crude Oil Production
 
 The US produces about 8 million barrels of crude per day.  
@@ -110,6 +122,7 @@ The US produces about 8 million barrels of crude per day.
 
 [graphic: picture of fracking -- fracturing rock deep below a well]
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## US Crude Oil Production
 
@@ -137,6 +150,8 @@ renderDygraph({
 #}}}
 ```
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## US Crude Oil Consumption
 
 The US consumes about 18 million barrels of crude oil per day.  
@@ -144,6 +159,8 @@ The US consumes about 18 million barrels of crude oil per day.
 - Crude oil is primarily refined into gasoline, diesel fuel, and heating oil.  
 
 [graphic:  crude oil going into 3 categories]
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## US Crude Export Restrictions
 
@@ -155,6 +172,8 @@ Crude oil exports are restricted by the 'Energy Policy and Conservation Act' of 
 
 <!---  crude oil derived from fields under the State waters of Alaska's Cook Inlet; (2) Alaskan North Slope crude oil; (3) certain domestically produced crude oil destined for Canada; (4) shipments to U.S. territories; and (5) California crude oil to Pacific Rim countries. -->
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Crude Oil and the Macroeconomy
 
 The International Monetary Fund (IMF (2000)) estimated a \$5 increase in crude oil prices reduces global economic growth by 0.3\% in the following year. 
@@ -163,6 +182,7 @@ Also since crude oil is used in the transport and production of many goods, it i
 
 -  Accordingly it is closely watched by the Federal Reserve when setting monetary policy.  
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Crude Oil and the Stock Market
 
@@ -174,6 +194,7 @@ Sharp increases in oil prices tend to lower stock prices.
 
 [graphic: oil up and stock down]
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 

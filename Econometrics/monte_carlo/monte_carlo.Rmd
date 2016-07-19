@@ -112,12 +112,25 @@ As mentioned, Monte Carlo makes sense when an analytic solution is unavailable o
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Lookback Put Option
+## Lookback Option
+
+Say an option gives you the right to sell one unit of the underlying at the maximum price from today (time $0$) until expiration (time $T$).  This is a lookback put option.  
+
+-  If we assume the underlying follows geometric Brownian motion, then this option value [has an analytic solution](https://scholar.google.com/scholar?hl=en&q=goldman+sosin+gatto+1979).
+
+-  However what if your boss wants you to value a lookback option on an underlying which is described by the following process?
+
+$dS_t = \kappa(\mu_S - lnS_t)dt + \sigma S_t dB_t$
+
+-  There is no analytic solution, so this is where it makes sense to turn to Monte Carlo.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Monte Carlo Setup
 
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
 
 ## Credits and Collaboration
 
