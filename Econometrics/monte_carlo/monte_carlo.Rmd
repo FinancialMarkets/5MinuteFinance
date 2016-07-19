@@ -3,7 +3,7 @@ title: "An Introduction to Monte Carlo Methods in Finance"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
-css: 5min_mod.css
+css: 5min_mobile.css
 runtime: shiny
 smaller: true
 ---
@@ -16,6 +16,8 @@ When an analytic solution is available use it.
 
 -  If you make the same underlying assumptions, the analytic solution will be the same as the Monte Carlo.
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Example: European Option Pricing
 
 Assuming stock follows a geometric Brownian Motion, then at time $T$ in the future we have: 
@@ -24,8 +26,29 @@ $S_T = S_0 e^{(\mu - \frac{1}{2}\sigma^2)T + \sigma B_T}$
 
 where $S_0$ is the stock price today, $\mu$ and $\sigma$ are the stock's drift and volatility respectively, and $B_T$ is the value of a Brownian Motion at time $T$.
 
--  Since $B_T \sim N(0, T)$, we can  
+-  Since $B_T \sim N(0, T)$, we can create random draws from $B_T$ by drawing from $N(0, 1)$ and multiplying by $T$. 
 
+-  For each draw of $B_T$ we get a new value of $S_T$.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Drift and Volatility
+
+We estimate volatility $\sigma$ using historical or forward looking measures (depending on our assumptions [link to presentation]).  However, in a Black-Scholes world the market is complete, and so we can set the drift $\mu$ equal to the risk free rate $r_f$.  
+
+-  Therefore each simulated stock price at time $T$ is:
+
+$S_T = S_0 e^{(r_f - \frac{1}{2}\hat{\sigma}^2)T + \hat{\sigma} N(0, 1)T}$  
+
+where $N(0, 1)$ is a random draw from a standard Normal distribution.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Interactive App
+
+On the next slide 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
@@ -33,9 +56,9 @@ where $S_0$ is the stock price today, $\mu$ and $\sigma$ are the stock's drift a
 #{{{
 max.rands <- 1000000
 inputPanel(
-  sliderInput(inputId = "rands", label = "Number of Random Numbers in Monte Carlo", min = 50, max = max.rands, step = 10000, value = 50, animate = TRUE)
-  # numericInput(inputId = "seed", label = "Set Seed (to make reproducible)", value = 1, min = 1, max = 99999999)
-  ## add radioButton input for antithetic sampling?
+    sliderInput(inputId = "rands", label = "Number of Random Numbers in Monte Carlo", min = 50, max = max.rands, step = 10000, value = 50, animate = TRUE)
+    ## numericInput(inputId = "seed", label = "Set Seed (to make reproducible)", value = 1, min = 1, max = 99999999)
+    ## add radioButton input for antithetic sampling?
 )
 
 S <- 50
@@ -47,12 +70,13 @@ T <- 0.5
 ## Monte Carlo estimate of premium:
 ## this can likely be sped up substantially by refactoring.  Can use C++/Rcpp also.
 ## old really slow way (find out why so slow)
-# for (i in 1:max.rands) {
-#   z <- rnorm(1)
-#   call[i] <- exp(-r*T)*ifelse(S*exp((r - .5 * vol * vol)*T + vol*sqrt(T)*z) > K, S*exp((r - .5*vol * vol)*T + vol*sqrt(T)*z) - K, 0)
-# }
+                                        # for (i in 1:max.rands) {
+                                        #   z <- rnorm(1)
+                                        #   call[i] <- exp(-r*T)*ifelse(S*exp((r - .5 * vol * vol)*T + vol*sqrt(T)*z) > K, S*exp((r - .5*vol * vol)*T + vol*sqrt(T)*z) - K, 0)
+                                        # }
 
 ## New (much faster)
+set.seed(seed = 1)
 z <- rnorm(max.rands)
 stock <- S*exp((r - .5 * vol * vol)*T + vol*sqrt(T)*z)
 calls <- stock - K
@@ -65,15 +89,35 @@ call.bs <- pnorm(d1) * S - pnorm(d2) * K * exp(-r * T)
 
 
 renderPlot({ 
-subset.calls <- exp(-r*T)*calls[1:input$rands]
-  ### possibly change output from a density -- something which also shows the variability of the estimate.
-  hist(subset.calls, main = paste0("Call Premium $", round(mean(subset.calls), 2)), xlab = "Call Option Value", breaks = 100, freq = FALSE, width = "100%")
-  legend('topright', c(paste0("Black-Scholes Value $", round(call.bs, 2)), paste0("Difference $", round(abs(call.bs - mean(subset.calls)), 2))))
+    subset.calls <- exp(-r*T)*calls[1:input$rands]
+### possibly change output from a density -- something which also shows the variability of the estimate.
+    hist(subset.calls, main = paste0("Call Premium $", round(mean(subset.calls), 2)), xlab = "Call Option Value", breaks = 100, freq = FALSE, width = "100%")
+    legend('topright', c(paste0("Black-Scholes Value $", round(call.bs, 2)), paste0("Difference $", round(abs(call.bs - mean(subset.calls)), 2))))
 })
 #}}}
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Pricing Path-Dependent Options
+
+As mentioned, Monte Carlo makes sense when an analytic solution is unavailable or its solution is intractable.  This is often the case for *path-dependent* options, where payoffs are a function of the stock prices over some interval---the path the stock took to get to its present price.  Examples of such options are:
+
+- American Options: can be exercised prior to expiration.
+
+- Lookback Options: payoff is a function of the maximum (or minimum) stock price over the interval.
+
+- Asian Options: payoff is a function of the average stock price over the interval.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Lookback Put Option
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ## Credits and Collaboration
 
