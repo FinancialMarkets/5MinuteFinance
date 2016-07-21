@@ -84,6 +84,10 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Equity Markets
 
+[The Pairs Trade](https://micfm.shinyapps.io/pairs_trade/)
+
+[The Limit Order Book](https://micfm.shinyapps.io/limit_order_book/)
+
 [Short Selling Stock](https://micfm.shinyapps.io/short_selling_stock/)
 
 [Intro Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/)
