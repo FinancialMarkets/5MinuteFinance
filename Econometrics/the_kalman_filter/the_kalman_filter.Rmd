@@ -1,5 +1,5 @@
 ---
-title: "The Kalman Filter"
+title: "The Kalman Filter: An Applied Introduction"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
@@ -8,8 +8,66 @@ runtime: shiny
 smaller: true
 ---
 
-## The Kalman Filter 
+## Is a Company's Market Risk Constant?
 
+Every undergraduate Finance student learns the CAPM, and at some point ([similar to this presentation](https://micfm.shinyapps.io/The_CAPM/)) estimates a firm's market risk ($\beta$) with the following regression:
+
+$R_{s,t} = \alpha + \beta R_{m,t} + e_t$
+
+where $R_{s,t}$, and $R_{m,t}$, are the return on some stock, and the return on the market, at time $t$
+
+Often the interested student will ask if market risk is really constant as the above equation assumes.  We could investigate this by breaking up a long time period into smaller subintervals, and estimating the above equation for each subinterval.  
+
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## 
+
+<!-- insert app from portfolio theory course -->
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(tseries)
+
+inputPanel(
+	   textInput("ticker", label = "Stock Ticker", value = "COP"),
+	   )
+renderPlot({
+
+    ## fix code below: very old
+    ## use quantmod, and join inner to bring in as much data as possible -- will aviod cases where there is not enough data
+
+
+    days <- 5040
+
+    st <- get.hist.quote(stock, start = (Sys.Date() - days), quote = "Close")
+    sp <- get.hist.quote("^gspc", start = (Sys.Date() - days), quote = "Close")
+    r <- diff(st)/st[1:(length(st) - 1)]
+    m <- diff(sp)/sp[1:(length(sp) - 1)]
+
+    if (length(r) != length(m)) 
+        cat("Not enough data for this stock!!! Pick a different one.\n") else {
+
+        n <- floor(length(r)/30)
+        a <- rep(0, n)
+        b <- rep(0, n)
+        for (i in 1:n) {
+            g <- 30 * (i - 1)
+            h <- 30 * i
+            a[i] <- lm(r[g:h] ~ m[g:h])$coef[1]
+            b[i] <- lm(r[g:h] ~ m[g:h])$coef[2]
+        }
+                                                                             }
+                                                                             })
+		```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+##
+
+<!-- app showing time varying beta from the K filter -->
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -23,3 +81,6 @@ If you would like to make any additions or corrections to this presentation, vis
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+<!-- next presentation:  show the time series of the distribution of beta calculated from the K filter -- see the density.txt file -->
