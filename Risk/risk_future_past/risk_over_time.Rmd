@@ -33,7 +33,7 @@ In the following app you can how stock returns behaved over different time perio
 
 
 
-
+<!-- use 3D density plot here! -->
 
 
 

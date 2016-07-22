@@ -6,6 +6,9 @@ logo: misq.png
 css: 5min_mod.css
 runtime: shiny
 smaller: true
+width: auto
+autosize: true
+height: auto
 ---
 
 ## Is a Company's Market Risk Constant?
@@ -18,49 +21,74 @@ where $R_{s,t}$, and $R_{m,t}$, are the return on some stock, and the return on 
 
 Often the interested student will ask if market risk is really constant as the above equation assumes.  We could investigate this by breaking up a long time period into smaller subintervals, and estimating the above equation for each subinterval.  
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+##  Interactive App
 
+Input a ticker in the app on the following slide, and it will break the last 5 years into 30 day periods, estimate $\beta$ over each period, and plot the time series of $\beta$s.
+
+-  The default shows Citigroup's (ticker 'C') $\beta$ coefficient over time.  It starts at about 1 in 2010, and increases to about 4 by 2011.  From 2012 onward it ranges from 1 to 2.5.  Clearly there is significant variation in Citigroup's market risk over time.  
+
+-  For a formal test of instability in estimated coefficients see [the code for](https://github.com/Matt-Brigida/BDE_75/blob/master/BDE_75_test.R) the [Brown, Durbin, and Evans (1975)](https://scholar.google.com/scholar?hl=en&q=brown+durbin+evans+1975) test.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## 
 
-<!-- insert app from portfolio theory course -->
-
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
-library(tseries)
+library(quantmod)
+library(dygraphs)
 
 inputPanel(
-	   textInput("ticker", label = "Stock Ticker", value = "COP"),
-	   )
-renderPlot({
+    textInput("ticker", label = "Stock Ticker", value = "C")
+    )
 
-    ## fix code below: very old
-    ## use quantmod, and join inner to bring in as much data as possible -- will aviod cases where there is not enough data
+renderDygraph({
+    ## valdate ticker ----
+    validate(
+        need(input$ticker != "", "Input a valid US stock ticker.")
+    )
+    market <- getSymbols("^GSPC", src = "yahoo", auto.assign = F)
+    adjMarket <- Ad(market)
+    marketRet <- Delt(adjMarket)[-1]
 
+    stock <- getSymbols(input$ticker, src = "yahoo", auto.assign = F)
+    adjStock <- Ad(stock)
+    stockRet <- Delt(adjStock)[-1]
 
-    days <- 5040
+    data <- merge.xts(stockRet, marketRet, join = "inner")
+    names(data) <- c("stock", "market")
+    data.mat <- matrix(data, ncol = 2)
 
-    st <- get.hist.quote(stock, start = (Sys.Date() - days), quote = "Close")
-    sp <- get.hist.quote("^gspc", start = (Sys.Date() - days), quote = "Close")
-    r <- diff(st)/st[1:(length(st) - 1)]
-    m <- diff(sp)/sp[1:(length(sp) - 1)]
+    n <- floor(dim(data.mat)[1]/30)
+    a <- rep(0, n)
+    b <- rep(0, n)
+    for (i in 1:n) {
+        g <- 30 * (i - 1)
+        h <- 30 * i
+        reg <- lm(data.mat[g:h, 1] ~ data.mat[g:h, 2])
+        a[i] <- reg$coef[1]
+        b[i] <- reg$coef[2]
+    }
 
-    if (length(r) != length(m)) 
-        cat("Not enough data for this stock!!! Pick a different one.\n") else {
+    id <- index(to.monthly(data))
+    a.xts <- as.xts(a, order.by = id[(length(id) - length(a) + 1):length(id)])
+    b.xts <- as.xts(b, order.by = id[(length(id) - length(a) + 1):length(id)])
+    names(b.xts) <- "Beta"
+    dygraph(b.xts)
 
-        n <- floor(length(r)/30)
-        a <- rep(0, n)
-        b <- rep(0, n)
-        for (i in 1:n) {
-            g <- 30 * (i - 1)
-            h <- 30 * i
-            a[i] <- lm(r[g:h] ~ m[g:h])$coef[1]
-            b[i] <- lm(r[g:h] ~ m[g:h])$coef[2]
-        }
-                                                                             }
-                                                                             })
+})
 		```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## A More Formal Approach
+
+
+
+
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
