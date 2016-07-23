@@ -35,6 +35,70 @@ In the following app you can how stock returns behaved over different time perio
 
 <!-- use 3D density plot here! -->
 
+## 
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(quantmod)
+library(plotly)
+
+inputPanel(
+    textInput("ticker", label = "Stock Ticker", value = "C")
+    )
+
+renderDygraph({
+    ## valdate ticker ----
+    validate(
+        need(input$ticker != "", "Input a valid US stock ticker.")
+    )
+    ## market <- getSymbols("^GSPC", src = "yahoo", auto.assign = F)
+    ## adjMarket <- Ad(market)
+    ## marketRet <- Delt(adjMarket)[-1]
+
+    stock <- getSymbols(input$ticker, src = "yahoo", auto.assign = F)
+    adjStock <- Ad(stock)
+    stockRet <- Delt(adjStock)[-1]
+    stock.mat <- matrix(stockRet)
+
+    ## data <- merge.xts(stockRet, marketRet, join = "inner")
+    ## names(data) <- c("stock", "market")
+    ## data.mat <- matrix(data, ncol = 2)
+
+
+
+    n <- floor(dim(stock.mat)[1]/30)
+
+    densx <- matrix(0, nrow = n, ncol = 512)
+    densy <- matrix(0, nrow = n, ncol = 512)
+    count <- matrix(0, nrow = n, ncol = 512)
+    
+    a <- rep(0, n)
+    b <- rep(0, n)
+    for (i in 1:n) {
+        g <- 30 * (i - 1)
+        h <- 30 * i
+        densx[i, ] <- density(stock.mat[g:h, 1])$x
+        densy[i, ] <- density(stock.mat[g:h, 1])$y
+        count[i, ] <- rep(i, 512)
+        ## reg <- lm(data.mat[g:h, 1] ~ data.mat[g:h, 2])
+        ## a[i] <- reg$coef[1]
+        ## b[i] <- reg$coef[2]
+    }
+
+    dat <- cbind(t(count), t(densx), t(densy))
+
+    dat.df <- as.data.frame(dat)
+
+
+    
+    ## id <- index(to.monthly(data))
+    ## a.xts <- as.xts(a, order.by = id[(length(id) - length(a) + 1):length(id)])
+    ## b.xts <- as.xts(b, order.by = id[(length(id) - length(a) + 1):length(id)])
+    ## names(b.xts) <- "Beta"
+    ## dygraph(b.xts)
+
+})
+		```
+
 
 
 <!---
