@@ -1,12 +1,16 @@
 ---
-title: "Risk Over Time"
-author: "Matt Brigida: Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "03/12/2015"
+title: "Time Varying Risk"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
 runtime: shiny
 smaller: true
+width: auto
+autosize: true
+height: auto
 ---
+
 
 ## Measuring Risk
 
@@ -18,6 +22,9 @@ The main problem with risk calculations is that it requires us to predict the fu
 
 - It is precisely in the latter type of period that we need good measures of risk. In other words, *risk measures tend to work well until you need them.*
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
 ## Review of Return Description
 
 To implement any measure of risk we must have a description of how the asset's returns behave.  
@@ -26,14 +33,16 @@ To implement any measure of risk we must have a description of how the asset's r
 
 - For all intervals, the PDF assigns a likelihood that a return will be within each interval in a given period.
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
   
 ## Let's Take a Look
 
 In the following app you can how stock returns behaved over different time periods. 
 
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-<!-- use 3D density plot here! -->
 
 ## 
 
@@ -105,6 +114,8 @@ renderPlotly({
 
 })
 		```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 
@@ -371,11 +382,17 @@ tabsetPanel(
 #}}}
 ```
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
 ## Continuing from Here
 
 In the following presentations on risk we'll cover topics such as:
 
 - Measures specifically designed for asymmetric distributions, such as *Lower Partial Standard Deviation*.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ## Credits and Collaboration
 
