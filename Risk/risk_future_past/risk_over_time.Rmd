@@ -45,7 +45,7 @@ inputPanel(
     textInput("ticker", label = "Stock Ticker", value = "C")
     )
 
-renderDygraph({
+renderPlotly({
     ## valdate ticker ----
     validate(
         need(input$ticker != "", "Input a valid US stock ticker.")
@@ -84,11 +84,18 @@ renderDygraph({
         ## b[i] <- reg$coef[2]
     }
 
-    dat <- cbind(t(count), t(densx), t(densy))
 
-    dat.df <- as.data.frame(dat)
+    tcount <- t(count)
+    tcount.stacked <- stack(data.frame(tcount))[, -2]
+    tdensx <- t(densx)
+    tdensx.stacked <- stack(data.frame(tdensx))[, -2]
+    tdensy <- t(densy)
+    tdensy.stacked <- stack(data.frame(tdensy))[, -2]
 
+    dat.df <- data.frame(cbind(tcount.stacked, tdensx.stacked, tdensy.stacked))
+    names(dat.df) <- c("month", "return", "density")
 
+    plot_ly(dat.df, x = return, y = month, z = density, group = month, type = "scatter3d", mode = "lines") 
     
     ## id <- index(to.monthly(data))
     ## a.xts <- as.xts(a, order.by = id[(length(id) - length(a) + 1):length(id)])
