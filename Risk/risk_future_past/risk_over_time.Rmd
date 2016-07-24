@@ -31,7 +31,7 @@ To implement any measure of risk we must have a description of how the asset's r
 
 - This is described by a probability density function (PDF).  
 
-- For all intervals, the PDF assigns a likelihood that a return will be within each interval in a given period.
+- For all intervals, the PDF assigns a probability that an asset's return will be within each interval in a given period. For example, the PDF may say there is a 7\% probability the asset's return will be between 1\% and 2\% over the next day.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -52,27 +52,18 @@ library(plotly)
 
 inputPanel(
     textInput("ticker", label = "Stock Ticker", value = "C")
-    )
+)
 
 renderPlotly({
     ## valdate ticker ----
     validate(
         need(input$ticker != "", "Input a valid US stock ticker.")
     )
-    ## market <- getSymbols("^GSPC", src = "yahoo", auto.assign = F)
-    ## adjMarket <- Ad(market)
-    ## marketRet <- Delt(adjMarket)[-1]
 
     stock <- getSymbols(input$ticker, src = "yahoo", auto.assign = F)
     adjStock <- Ad(stock)
     stockRet <- Delt(adjStock)[-1]
     stock.mat <- matrix(stockRet)
-
-    ## data <- merge.xts(stockRet, marketRet, join = "inner")
-    ## names(data) <- c("stock", "market")
-    ## data.mat <- matrix(data, ncol = 2)
-
-
 
     n <- floor(dim(stock.mat)[1]/30)
 
@@ -88,9 +79,6 @@ renderPlotly({
         densx[i, ] <- density(stock.mat[g:h, 1])$x
         densy[i, ] <- density(stock.mat[g:h, 1])$y
         count[i, ] <- rep(i, 512)
-        ## reg <- lm(data.mat[g:h, 1] ~ data.mat[g:h, 2])
-        ## a[i] <- reg$coef[1]
-        ## b[i] <- reg$coef[2]
     }
 
 
@@ -104,16 +92,11 @@ renderPlotly({
     dat.df <- data.frame(cbind(tcount.stacked, tdensx.stacked, tdensy.stacked))
     names(dat.df) <- c("month", "return", "density")
 
-    plot_ly(dat.df, x = return, y = month, z = density, group = month, type = "scatter3d", mode = "lines") 
+    ## Based off of example here: http://rpubs.com/julyanarbel/192923
     
-    ## id <- index(to.monthly(data))
-    ## a.xts <- as.xts(a, order.by = id[(length(id) - length(a) + 1):length(id)])
-    ## b.xts <- as.xts(b, order.by = id[(length(id) - length(a) + 1):length(id)])
-    ## names(b.xts) <- "Beta"
-    ## dygraph(b.xts)
-
+    plot_ly(dat.df, x = return, y = month, z = density, group = month, type = "scatter3d", mode = "lines") 
 })
-		```
+```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
