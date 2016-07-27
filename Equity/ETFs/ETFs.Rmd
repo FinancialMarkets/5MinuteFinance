@@ -24,8 +24,9 @@ ETFs are typically portfolios of stock which track an index and trade throughout
 
 ETFs have become very popular in the last decade.  Among their advantages over traditional mutual funds are:
 
--  ETFs can be traded throughout the day, and may be shorted and bought on margin.  The cost of buying an ETF is the same as stock.
+-  ETFs can be traded throughout the day, and may be [shorted](https://micfm.shinyapps.io/short_selling_stock/) and bought on margin.  The cost of buying an ETF is the same as stock.
 -  Selling an ETF doesn't cause fund redemptions -- which can have adverse tax consequences.
+  + Fund redemption fees are charges made typically by mutual fund companies to discourage investors from making short term trades
 -  ETFs have low fees -- many prominent ETFs have annual fees that are less than 0.15% of assets.
 -  Actively managed mutual funds have generally been unable to beat stock index returns.   
 
@@ -67,7 +68,7 @@ While the first ETFs were mainly for broad stock indexes (the NASDAQ 100, S&P 50
 -  Commodities: Crude Oil, Gold, Natural Gas, among others.
 -  Non-Stock Indexes: the VIX volatility index.
 -  'Actively managed' ETFs
--  Leveraged ETFs.
+-  [Leveraged ETFs](https://micfm.shinyapps.io/leveragedETFs/)
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
