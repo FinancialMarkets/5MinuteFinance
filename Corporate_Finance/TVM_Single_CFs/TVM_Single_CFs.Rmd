@@ -47,7 +47,7 @@ The following app will calculate the future value of \$1 for every year up to th
 
 -  Note the marked exponential increase as you increase the interest rate and number of years.  This shows the exponential effect of compounding.
 
--  You can also use the app to see the effect of small differences in interest rates on the future value over many years.  For example, the future value of a dollar is worth 33\% more of invested for 30 years at 5\% instead of 4\%.
+-  You can also use the app to see the effect of small differences in interest rates on the future value over many years.  For example, the future value of a dollar is worth 33\% more if invested for 30 years at 5\% instead of 4\%.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

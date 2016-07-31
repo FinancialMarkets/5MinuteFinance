@@ -50,42 +50,47 @@ We can classify financial ratios into 5 categories:
 
 ## Leverage Ratios
 
-These ratios measure the firm's long-term ability to meet its debt obligations.
+These ratios measure the firm's long-term ability to meet its debt obligations.  These are measures of overall assets relative to obligations.  They include assets which are hard to sell.  Examples of leverage ratios are:
 
-- These are measures of overall assets relative to obligations.  They include assets which are hard to sell.
+- Total Debt Ratio: total debt divided by total assets
+- Times Interest Earned Ratio: earnings before interest and taxes (EBIT) divided by the interest payment
+- Cash Coverage Ratio: the sum of EBIT and depreciation and amortization, divided by the interest payment
+- Debt-to-Equity Ratio: total debt divided by total equity.
+- Equity Multiplier: assets divided by equity, or equivalently 1 plus the debt-to-equity ratio.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Example: The Debt-to-Equity and Equity Multiplier Ratios
+## Debt-to-Equity and Equity Multiplier Ratios
 
-The debt-to-equity ratio is a firm's total debt divided by its total equity.
+Two widely used *leverage ratios* are the debt-to-equity ratio, and the equity multiplier.  
 
--  If a firm has current assets of \$10 million, and current liabilities of \$8 million, then its current ratio is 1.25 times.
--  The value that this ratio takes is very industry specific.  Young firms tend to have little to no debt, and so low Debt-to-Equity ratios. More established firms may have higher ratios.  
+-  Say a firm has total assets of \$150 million, total liabilities of \$100 million, and total equity of \$50 million. Then its debt-to-equity ratio is \$100/\$150 = 66.67\% and the equity multiplier is 1.6667.
+-  The value that these ratio take is industry and company specific.  Young firms tend to have little to no debt, and so low debt-to-equity ratios. More established firms may have higher ratios.  
 
-The equity multiplier is a firm's assets divided by it equity.
+To see the relationship between these two ratios, remember $Assets \equiv Liabilities + Equity$:
 
-- The balance sheet is a statement of a firm's assets, liabilities (debts), and equity. If we know two of the three we can infer the third, remember Assets - Equity = Liabilities
+-  Equity Multiplier = $\frac{Assets}{Equity}$ = $\frac{Debt}{Equity} + \frac{Equity}{Equity}$ = Debt-to-Equity Ratio + 1
 
--  Equity Multiplier - 1 = Debt-to-Equity Ratio
--  $\frac{Assets}{Equity} - \frac{Equity}{Equity} = \frac{Debt}{Equity}$
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Liquidity Ratios
 
-These ratios measure the firm's ability to meet its debt obligations over the short-term (over the next year).
+These ratios measure the firm's ability to meet its debt obligations over the short-term (over the next year).  As an analogy, you can think of these as measuring how much money you have in your wallet.  You can't sell your house to pay your water bill this week.  Examples of Liquidity Ratios are:
 
-- As an analogy, you can think of these as measuring how much money you have in your wallet.  You can't sell your house to pay your water bill this week.
+- Cash Ratio: cash divided by current liabilities.
+- Current Ratio: current assets divided by current liabilities.
+- Quick Ratio: current assets less inventory divided by current liabilities.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Example:  The Current Ratio
+## The Current Ratio
 
-The current ratio is defined as the firm's current assets dividend by current liabilities.
+The current ratio is widely cited.  Say a firm has current assets of \$10 million, and current liabilities of \$8 million, then its current ratio is 1.25 times.  We don't want the current ratio to be too high (say above 2) or too low (say below 1). 
 
--  If a firm has current assets of \$10 million, and current liabilities of \$8 million, then its current ratio is 1.25 times.
--  We don't want the current ratio to be too high (say above 2) or too low (say below 1). 
+- If the current ratio is too high, this is evidence that the firm has too much cash, and may not be reinvesting the cash because of new avenues for growth.  Remember cash (liquid assets) earn low returns.  
+
+-  If the current ratio is too low, then the firm may not have enough money to pay its bills over the short term---this can occur even if the firm is profitable, so it is not sufficient to look at net income.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

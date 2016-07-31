@@ -20,6 +20,8 @@ If you are already familiar with Git/R/Shiny then feel free to jump in and add t
 
 # Links to Presentations
 
+Many of the presentations below are works-in-progress.  Feel free to contribute fixes and new content. 
+
 ### Commodities
 
 [Cross Hedging](https://micfm.shinyapps.io/cross_hedging_presentation)
@@ -27,8 +29,6 @@ If you are already familiar with Git/R/Shiny then feel free to jump in and add t
 [Crude Oil Markets](https://micfm.shinyapps.io/crude_oil_markets)
 
 ### Corporate Finance
-
-Many of the presentations below are works-in-progress.  Feel free to contribute fixes and new content. 
 
 [Intro to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements)
 
@@ -42,9 +42,13 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [OCFs](https://micfm.shinyapps.io/OCFs)
 
-[TVM Single CFs](https://micfm.shinyapps.io/TVM_Single_CFs)
+[Time Value of Money: Single CFs](https://micfm.shinyapps.io/TVM_Single_CFs)
+
+[Time Value of Money: Multiple CFs](https://micfm.shinyapps.io/TVM_Multiple_CFs/)
 
 [Operating Cash Flow](https://micfm.shinyapps.io/operating_cash_flow)
+
+[Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/)
 
 ### Econometrics
 
@@ -75,6 +79,8 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 [Treasury Debt Risk](https://micfm.shinyapps.io/treasury_debt_risk/)
 
 [ETNs](https://micfm.shinyapps.io/ETNs/)
+
+[For What is the Yield-to-Maturity Used?](https://micfm.shinyapps.io/For_What_YTM_Used/)
 
 ### Foreign Exchange
 
@@ -108,7 +114,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Monetary Policy
 
-[FOMC Communications](https://micfm.shinyapps.io/fed_communications/)  Need to add more FOMC statements to word cloud.
+[FOMC Communications](https://micfm.shinyapps.io/fed_communications/)
 
 [US Monetary Policy](https://micfm.shinyapps.io/us_monetary_policy/)
 
