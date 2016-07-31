@@ -47,9 +47,11 @@ The following app will calculate the future value of \$1 for every year up to th
 
 -  Note the marked exponential increase as you increase the interest rate and number of years.  This shows the exponential effect of compounding.
 
+-  You can also use the app to see the effect of small differences in interest rates on the future value over many years.  For example, the future value of a dollar is worth 33\% more of invested for 30 years at 5\% instead of 4\%.
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Future Value
+## 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
 inputPanel(
@@ -62,7 +64,7 @@ renderPlot({
   fv <- (1 + input$rate)^{1:input$years}
   fv <- c(1, fv)
   plot(fv, type = 'l', lwd = 3, col = 3, ylab = "$", xlab = "Years")
-  legend("topleft", "Future Value of $1", col = 3, lwd = 3, lty = 1)
+  legend("topleft", "Future Value of $1", col = 3, lwd = 3, lty = 1, cex = 1.5)
 })
 #}}}
 ```
@@ -83,25 +85,16 @@ So now that we have the general formula which describes how a single cash flow m
 
 - $FV = PV(1 + r)^n$
  
-We can now use this to solve for the *PV*, *r*, and *n*.
-
-[graphic: a bunch of equations on a chalkboard with a crazy haired mathematician.]
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Present Value
-
-We can solve the formula to find the present value: 
+We can now use this to solve for the *PV*, *r*, and *n*.  Rearranging for the present value gives: 
 
 - $PV = \frac{FV}{(1+r)^n}$
 
 - This shows that the present value decreases if the interest rate increases.  This relationship is very important in asset pricing.
 
-[graphic: a timeline with dividends every year, and lines with "Present Value" on them back to time 0.  At time 0 is a stock certificate.]
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Present Value
+## 
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
 inputPanel(
@@ -113,7 +106,7 @@ renderPlot({
   pv <- 1 / ((1 + input$rate1)^{1:input$years1})
   pv <- c(1, pv)
   plot(pv, type = 'l', lwd = 3, col = 3, ylab = "$", xlab = "# Years Discounted")
-  legend("bottomleft", "Present Value of $1", col = 3, lwd = 3, lty = 1)
+  legend("bottomleft", "Present Value of $1", col = 3, lwd = 3, lty = 1, cex = 1.5)
 })
 #}}}
 ```
