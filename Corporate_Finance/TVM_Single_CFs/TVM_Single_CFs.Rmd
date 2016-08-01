@@ -54,17 +54,22 @@ The following app will calculate the future value of \$1 for every year up to th
 ## 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
+devtools::install_github("hrbrmstr/metricsgraphics")
+library(metricsgraphics)
 inputPanel(
 	   sliderInput("rate", label = "Annual Interest Rate", min = -.05, max =0.5, step = .01, value = .05),
 	   sliderInput("years", label = "Number of Years", min = 1, max =50, step = 1, value = 10)
 	   #            sliderInput("pv", label = "Present Value", min = 1, max =50, step = 1, value = 10),
 	   )
 
-renderPlot({
+renderMetricsgraphics({
   fv <- (1 + input$rate)^{1:input$years}
   fv <- c(1, fv)
-  plot(fv, type = 'l', lwd = 3, col = 3, ylab = "$", xlab = "Years")
-  legend("topleft", "Future Value of $1", col = 3, lwd = 3, lty = 1, cex = 1.5)
+  fv <- as.data.frame(cbind(seq(0, input$years, by = 1), fv))
+  names(fv) <- c("year", "Future_Value")
+  fv %>%
+      mjs_plot(x=year, y=Future_Value) %>%
+      mjs_line() 
 })
 #}}}
 ```
@@ -102,13 +107,16 @@ inputPanel(
 	   sliderInput("years1", label = "Years Discounted", min = 1, max =50, step = 1, value = 10)
 	   )
 
-renderPlot({
-  pv <- 1 / ((1 + input$rate1)^{1:input$years1})
-  pv <- c(1, pv)
-  plot(pv, type = 'l', lwd = 3, col = 3, ylab = "$", xlab = "# Years Discounted")
-  legend("bottomleft", "Present Value of $1", col = 3, lwd = 3, lty = 1, cex = 1.5)
+renderMetricsgraphics({
+    pv <- 1 / ((1 + input$rate1)^{1:input$years1})
+    pv <- c(1, pv)
+    pv <- as.data.frame(cbind(seq(0, input$years1, by = 1), pv))
+    names(pv) <- c("year", "Present_Value")
+    pv %>%
+        mjs_plot(x=year, y=Present_Value) %>%
+        mjs_line() 
 })
-#}}}
+                                        #}}}
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
