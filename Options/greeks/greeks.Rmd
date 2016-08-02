@@ -1,8 +1,6 @@
 ---
 title: "The Greeks"
-author: "Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "03/30/2016"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod.css
@@ -21,7 +19,9 @@ Broadly, the Greeks measure the sensitivity of an option's premium to changes in
 
 -  This means the underlying variables are the: stock price; volatility; risk-free rate; time.
 
--  Note, each Greek (being a partial derivative) assumes all other variables remain constant.   
+-  Note, each Greek (being a partial derivative of the Black-Scholes equation) assumes all other variables remain constant.
+
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

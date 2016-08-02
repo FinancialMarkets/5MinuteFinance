@@ -1,8 +1,6 @@
 ---
-title: "An Introduction to Portfolio Performance Measures"
-author: "Matt Brigida: Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "06/02/2015"
+title: "Portfolio Performance Measures"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 runtime: shiny
 logo: misq.png
@@ -250,14 +248,7 @@ There are other performance measures based on downside risk, and which take into
 
 - Sortino Ratio
 - Omega Ratio
-
-[graphic: person with a bunch of formulas around their head]
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Future Presentations
-
-We hope to cover some of these alternative measures in future presentations.
+- V2 Ratio
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

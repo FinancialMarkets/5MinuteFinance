@@ -96,15 +96,18 @@ The current ratio is widely cited.  Say a firm has current assets of \$10 millio
 
 ## Asset Use Efficiency Ratios
 
-These measure how efficiently a firms uses its assets.  For example, how much in sales does a firm generate from \$1.00 in assets.
+These measure how efficiently a firms uses its assets.  For example, how much in sales does a firm generate from \$1.00 in assets.  Examples of *asset use efficiency ratios* are:
+
+- Inventory Turnover: cost of goods sold (COGS) divided by inventory.
+- Days' Sales in Inventory: 365 days divided by inventory turnover.
+- Receivables Turnover: sales divided by accounts receivable.
+- Total Asset Turnover: sales divided by total assets.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Example: Total Asset Turnover
+## Total Asset Turnover
 
-Total asset turnover is equal to sales divided by assets.
-
-- Say a firm has \$500 million in sales, and its assets total \$2 billion.  Then it has a total asset turnover of 0.25 times.  We interpret is as, 'for every dollar in assets, the firm generates \$0.25 in sales'.  
+Say a firm has \$500 million in sales, and its assets total \$2 billion.  Then it has a total asset turnover of 0.25 times.  We interpret is as, 'for every dollar in assets, the firm generates \$0.25 in sales'.  
 
 - Of course, you would want to generate these sales with as few assets as possible.  So we would prefer our total asset turnover to be as high as possible. 
 
@@ -112,12 +115,15 @@ Total asset turnover is equal to sales divided by assets.
 
 ## Profitability Ratios
 
-These measures focus on how well a firm translates a dollar of sales into income. 
+These measures focus on how well a firm translates a dollar of sales into income. Examples of *profitability ratios* are:
 
+- Return on Assets: net income divided by total assets.
+- Profit Margin: net income divided by sales.
+- EBITDA Margin: earnings before interest depreciation and amortization (EBITDA) divided by sales.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Example: Profit Margin
+## Profit Margin
 
 Say a firm has \$100 million in net income.  Alone this data point is not too useful.  However, what if we also say this income was generated on \$500 million in sales?
 
@@ -129,18 +135,21 @@ Say a firm has \$100 million in net income.  Alone this data point is not too us
 
 ## Market Value Ratios
 
-These measures capture what value the market assigns to each dollar of a firm's earnings, sales, or book value.  
+These measures capture what value the market assigns to each dollar of a firm's earnings, sales, or book value.  Examples of *market value ratios* are:
 
+- Earnings Per Share: net income divided by shares outstanding.
+- Market-to-Book Ratio: market value per share divided by book value per share.
+- Price Earnings Ratio: price per share divided by earnings per share (EPS). 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Example: P/E Ratio
 
-A firm's P/E ratio is its stock price (per share) divided by its earnings per share (EPS).  If EPS is negative the ratio is undefined.
+A firm's P/E ratio is its stock price (per share) divided by its earnings per share (EPS).  However, if EPS is negative the ratio is undefined.
 
-- Say a firm's P/E ratio is 15, then we can interpret this as, 'for every \$1 in earnings, the market is willing to pay \$15'.
-
-- If a firm has negative EPS, then the ratio is undefined.  
+- Say a firm has a stock price of \$30 per share, and EPS of \$2, then the firm's P/E ratio is 15.
+- We can interpret this as, 'for every \$1 in earnings, the market is willing to pay \$15'.
+- The faster a firm is growing, the higher its P/E ratio tends to be.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -169,6 +178,7 @@ The Dupont Analysis uses ratios to show how firm efficiency and leverage can inf
 ## Interactive App
 
 In the next slide you can choose two stocks, and one of four financial ratios, and see their performance over time.  
+
 -  Remember, the comparison makes the most sense if you choose two stocks in the same industry.
 
 ## 
@@ -180,7 +190,7 @@ sidebarLayout(
     sidebarPanel(    
         textInput("ticker1", label = "Stock Ticker", value = "XOM"),
         textInput("ticker2", label = "Stock Ticker", value = "COP"),
-        radioButtons("ratio", label = "Choose a Ratio", choices = list("Debt-to-Equity Ratio" = 1, "Current Ratio" = 2, "Total Asset Turnover" = 3, "Profit Margin" = 4), selected = 1)
+        selectizeInput("ratio", label = "Choose a Ratio", choices = list("Debt-to-Equity Ratio" = 1, "Current Ratio" = 2, "Total Asset Turnover" = 3, "Profit Margin" = 4), selected = 1)
         ),
 
     mainPanel(
@@ -297,9 +307,6 @@ sidebarLayout(
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Another interactive app?
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 

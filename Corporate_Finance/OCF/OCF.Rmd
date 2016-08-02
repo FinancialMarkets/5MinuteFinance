@@ -1,13 +1,10 @@
 ---
 title: "Operating Cash Flow"
-author: "Matt Brigida: Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "06/02/2015"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod.css
 runtime: shiny
-smaller: true
 ---
 
 ## Introduction

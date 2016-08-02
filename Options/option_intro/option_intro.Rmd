@@ -58,6 +58,10 @@ For example, if $S=\$53$, $X=\$50$, the intrinsic value of a call is $\$3$, and 
 
 These terms are useful because in/at/out-of-the-money options have similarities regardless of whether they are calls or puts. For example, out-of-the-money option premiums are not sensitive to changes in the underlying stock price.  
 
+- The market price of an option is termed the *option's premium*.  
+- An option's *time value* is the option's premium less its intrinsic value.
+
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Practical Notes
@@ -79,7 +83,6 @@ An American option's premium (both call and put) can never be less than the opti
 
 >+ In the next slide you can graph a European Call option's intrinsic, premium, and time value for any set of inputs. Note as you increase the stock's dividend yield, the option premium drops below the intrinsic.
     + The risk-free rate is the rate on a zero coupon Treasury security of the same maturity as the option
-    + As you'll see on the next slide, time value = option premium - intrinsic value
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -112,7 +115,7 @@ sidebarLayout(
       
       plot(intrinsic, main = "Call Option Premium and Intrinsic Value", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 5, sub = "Black-Scholes Premium for a European Call")
       lines(optionValue, lwd = 5, col = "dodgerblue4")
-      legend('topleft', c("Intrinsic Value", "Option Value", "Time Value"), lty = c(1,1,1), col=c(1,"dodgerblue4", "lightblue"), lwd = c(5,5, 15))
+      legend('topleft', c("Intrinsic Value", "Option Premium", "Time Value"), lty = c(1,1,1), col=c(1,"dodgerblue4", "lightblue"), lwd = c(5,5, 15))
       ##  shade region  ----
       polygon(c(stock.price, rev(stock.price)), c(intrinsic, rev(optionValue)), col = "lightblue", border = NA)
     })
@@ -182,7 +185,7 @@ sidebarLayout(
                                         #             axis(1, at = 1:20, labels = yAxis)
                 lines(putValue.p, lwd = 4, col = "dodgerblue4")
                                         #           lines(1:20, durLine, lwd = 5, col = 3)
-                legend('topright', c("Intrinsic Value", "Option Value", "Time Value"), lty = c(1,1,1), col=c(1,"dodgerblue4", "lightblue"), lwd = c(4,4, 15))
+                legend('topright', c("Intrinsic Value", "Option Premium", "Time Value"), lty = c(1,1,1), col=c(1,"dodgerblue4", "lightblue"), lwd = c(4,4, 15))
                 ##  shade region  ----
                 polygon(c(1:100, rev(1:100)), c(intrinsicPut.p, rev(putValue.p)), col = "lightblue", border = NA)
                 
@@ -198,7 +201,7 @@ sidebarLayout(
 
 The following slide will allow you to calculate both call and put option premiums for your given set of inputs (via the Black-Scholes equation).  
 
--  Use the app to see how the underlying variables affect the option price.  For example, how does an increase in interest rates effect call and put values?  How about an increase in volatility?
+-  Use the app to see how the underlying variables affect the option premium.  For example, how does an increase in interest rates effect call and put values?  How about an increase in volatility?
 
 - Don't worry yet about how to derive the option pricing equation -- we'll cover that in later presentations.  
 
