@@ -8,8 +8,6 @@ runtime: shiny
 smaller: true
 ---
 
-<!-- author: "Matt Brigida: Milken Institute, Center for Financial Markets" -->
-<!-- affiliation: "Milken Institute Center for Financial Markets" -->
 
 <!--- below from here (http://stackoverflow.com/questions/28207912/change-font-sizes-with-style-sheets-for-rstudio-presentation) but doesn't seem to work.
 <style>
@@ -42,7 +40,7 @@ In this presentation we'll cover the valuation of contracts that are comprised o
 
 ## Annuities
 
-An **annuity** is a contract which pays a fixed amount at the end of each period for a fixed number of periods.  Many common financial contract are annuities, such as fixed rate mortgages and auto loans.  If the payments are in the beginning of a period (such as renting an apartment) the contract is known as an *annuity due*.
+An **annuity** is a contract which pays a fixed amount at the end of each period for a fixed number of periods.  Many common financial contracts are annuities, such as fixed rate mortgages and auto loans.  If the payments are in the beginning of a period (such as renting an apartment) the contract is known as an *annuity due*.
 
 The annuity is defined by its: 
 

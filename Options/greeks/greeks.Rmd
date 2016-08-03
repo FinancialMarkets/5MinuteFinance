@@ -1518,15 +1518,6 @@ sidebarLayout(
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-##
-
-[end of presentation graphic]
-
-[possibly links to related presentations]
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-
 <!---
 ## Why are the Greeks Important?
 

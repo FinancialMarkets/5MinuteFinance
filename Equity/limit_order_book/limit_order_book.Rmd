@@ -111,9 +111,9 @@ A *Market Maker's* job is to maintain, at all times, bids and offers in the orde
 
 If you want to buy or sell a stock, one type of order you can enter is a *market order*.  This will buy or sell the stock at the best available price in the market at the time the order arrives.  With a market order, you are guaranteed that you will buy or sell, however you are not sure of the price at which you will trade.
 
--  A market buy will buy at the best ask price.  If it buys all available shares at the best ask, the next ask above will become the new best ask, and that is where additional shares will be bought.
+-  A market buy will buy at the lowest ask price.  If it buys all available shares at the lowest ask, the next ask above will become the new lowest ask, and that is where additional shares will be bought.
 
--  A market sell will sell at the best bid price.  Similarly, if it sells all available shares at the best bid, the next bid below will become the new best bid, and that is where additional shares will be sold.
+-  A market sell will sell at the highest bid price.  Similarly, if it sells all available shares at the highest bid, the next bid below will become the new highest bid, and that is where additional shares will be sold.
 
 Use the app in the next slide to enter market orders and see the effect on the limit order book.  On the left is the original book, and the right shows the book after the order is executed. 
 
