@@ -19,26 +19,59 @@ Broadly, the Greeks measure the sensitivity of an option's premium to changes in
 
 -  This means the underlying variables are the: stock price; volatility; risk-free rate; time.
 
--  Note, each Greek (being a partial derivative of the Black-Scholes equation) assumes all other variables remain constant.
+-  Note, each Greek (being a partial derivative of the Black-Scholes equation) assumes all other variables remain constant.  The Black-Scholes equation for the premium of a European call option is shown on the next slide.
 
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Black-Scholes Formula: 
 
-##  Greek: Underlying Variable
+- $Call_0 = S_0N(d_1) - Xe^{-rT}N(d_2)$
+- $Put_0 = N(-d_2)K\exp{-r(T-t)} - N(-d_1)S_0$
 
-Delta ($\Delta$):  Stock price.
+<div class ="columns-2">
 
-Gamma ($\Gamma$):  Stock price.
+*where*
 
-Theta ($\Theta$):  Time
+$d_1 = \frac{ln(\frac{S_0}{X}) + (r+\frac{\sigma^2}{2})T}{\sigma\sqrt(T)}$
 
-Rho ($\rho$): Risk-free rate
+$d_2 = d_1 - \sigma\sqrt(T)$
 
-Vega ($v$) (Not Greek): Volatility
+- $S_0$:  the value of the call option at time 0.
+
+- $N()$:  the cumulative standard normal density function (NORMSDIST() in Excel)
+
+- $X$:  the exercise or strike price.
+
+- $r$: the risk-free interest rate (annualized).
+
+-  $T$: the time until option expiration in years.
+
+- $\sigma$: the annualized standard deviations of log returns.
+
+-  $e$ and $ln$ are the exponential and natural log functions respectively (EXP() and LN() in Excel).
+</div>
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+##  Greeks
+
+Let $P$ refer to the equation for either a call or put option premium.  Then the *greeks* are defined as:
+
+Delta ($\Delta = \frac{\partial P}{\partial S}$):  Where $S$ is the stock price.
+
+Gamma ($\Gamma = \frac{\partial^2 P}{\partial S^2}$): Where $S$ is the stock price.
+
+Theta ($\Theta = \frac{\partial P}{\partial t}$):  Where $t$ is time.
+
+Rho ($\rho = \frac{\partial P}{\partial r_f}$): Where $r_f$ is the risk-free rate.
+
+Vega ($v = \frac{\partial P}{\partial \sigma}$) (Not Greek): Where $\sigma$ is volatility.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 
 ## Delta:\ \ \    $\frac{\partial P}{\partial S}$
@@ -100,42 +133,42 @@ sidebarLayout(
 
         conditionalPanel(
             condition = "input.xaxis == '1'",
-            sliderInput("strike", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time", "Time", min=0.01, max=2, value=0.5, step = 0.1)
-            ),
+            div(style="height: 75px;", sliderInput("strike", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
+        ),
 
         conditionalPanel(
             condition = "input.xaxis == '2'",
-            sliderInput("stock1", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol1", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf1", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time1", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock1", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol1", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf1", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time1", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis == '3'",
-            sliderInput("stock2", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("strike2", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("rf2", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time2", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock2", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("strike2", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf2", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time2", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis == '4'",
-            sliderInput("stock3", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("strike3", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol3", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("time3", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock3", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("strike3", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol3", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time3", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis == '5'",
-            sliderInput("strike4", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol4", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf4", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("stock4", "Stock Price", min=1, max=100, value=50, step = 1)
+            div(style="height: 75px;", sliderInput("strike4", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol4", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf4", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("stock4", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE))
             )
         ),
     
@@ -347,11 +380,6 @@ $\Gamma = \frac{N'(D_1)}{S_0 \sigma \sqrt(T)}$
 
 - The higher the Gamma (in absolute value) the more often you'll need to rebalance a delta-neutral portfolio.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-
-##
-
 Suppose the Gamma of a call option on a stock is 0.03.
 
 -  This means that a \$1 increase in the stock's price will increase the Delta of the option by 0.03.
@@ -384,42 +412,42 @@ sidebarLayout(
 
         conditionalPanel(
             condition = "input.xaxis1 == '1'",
-            sliderInput("strike5", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol5", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf5", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time5", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("strike5", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol5", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf5", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time5", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis1 == '2'",
-            sliderInput("stock6", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol6", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf6", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time6", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock6", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol6", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf6", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time6", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis1 == '3'",
-            sliderInput("stock7", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("strike7", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("rf7", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time7", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock7", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("strike7", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf7", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time7", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis1 == '4'",
-            sliderInput("stock8", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("strike8", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol8", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("time8", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock8", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("strike8", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol8", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time8", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis1 == '5'",
-            sliderInput("strike9", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol9", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf9", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("stock9", "Stock Price", min=1, max=100, value=50, step = 1)
+            div(style="height: 75px;", sliderInput("strike9", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol9", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf9", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("stock9", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE))
             )
         ),
     
@@ -644,7 +672,7 @@ Theta is usually negative, which means as time passes the option's premium decli
 
 -  Theta is often quoted as this time decay per day (-0.9921 above).
 
--  Use the following app to find the situation for which theta is positive?
+-  Use the following app to find the situation for which theta is positive?  Hint: when does an option's value decline with increased time to expiration?
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -671,42 +699,42 @@ sidebarLayout(
 
         conditionalPanel(
             condition = "input.xaxis2 == '1'",
-            sliderInput("strike10", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol10", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf10", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time10", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("strike10", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol10", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf10", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time10", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis2 == '2'",
-            sliderInput("stock11", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol11", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf11", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time11", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock11", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol11", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf11", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time11", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis2 == '3'",
-            sliderInput("stock12", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("strike12", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("rf12", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time12", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock12", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("strike12", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf12", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time12", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis2 == '4'",
-            sliderInput("stock13", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("strike13", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol13", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("time13", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock13", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("strike13", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol13", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time13", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis2 == '5'",
-            sliderInput("strike14", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol14", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf14", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("stock14", "Stock Price", min=1, max=100, value=50, step = 1)
+            div(style="height: 75px;", sliderInput("strike14", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol14", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf14", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("stock14", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE))
             )
         ),
     
@@ -959,42 +987,42 @@ sidebarLayout(
 
         conditionalPanel(
             condition = "input.xaxis3 == '1'",
-            sliderInput("strike15", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol15", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf15", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time15", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("strike15", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol15", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf15", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time15", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis3 == '2'",
-            sliderInput("stock16", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol16", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf16", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time16", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock16", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol16", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf16", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time16", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis3 == '3'",
-            sliderInput("stock17", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("strike17", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("rf17", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time17", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock17", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("strike17", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf17", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time17", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis3 == '4'",
-            sliderInput("stock18", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("strike18", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol18", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("time18", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock18", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("strike18", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol18", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time18", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis3 == '5'",
-            sliderInput("strike19", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol19", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf19", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("stock19", "Stock Price", min=1, max=100, value=50, step = 1)
+            div(style="height: 75px;", sliderInput("strike19", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol19", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf19", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("stock19", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE))
             )
         ),
     
@@ -1251,42 +1279,42 @@ sidebarLayout(
 
         conditionalPanel(
             condition = "input.xaxis4 == '1'",
-            sliderInput("strike20", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol20", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf20", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time20", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("strike20", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol20", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf20", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time20", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis4 == '2'",
-            sliderInput("stock21", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol21", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf21", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time21", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock21", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol21", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf21", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time21", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis4 == '3'",
-            sliderInput("stock22", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("strike22", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("rf22", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("time22", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock22", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("strike22", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf22", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time22", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis4 == '4'",
-            sliderInput("stock23", "Stock Price", min=1, max=100, value=50, step = 1),
-            sliderInput("strike23", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol23", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("time23", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            div(style="height: 75px;", sliderInput("stock23", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("strike23", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol23", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time23", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
             ),
 
         conditionalPanel(
             condition = "input.xaxis4 == '5'",
-            sliderInput("strike24", "Strike Price", min=1, max=100, value=50, step = 1),
-            sliderInput("vol24", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
-            sliderInput("rf24", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
-            sliderInput("stock24", "Stock Price", min=1, max=100, value=50, step = 1)
+            div(style="height: 75px;", sliderInput("strike24", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol24", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf24", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("stock24", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE))
             )
         ),
     
