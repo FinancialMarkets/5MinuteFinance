@@ -138,8 +138,6 @@ As you can see in the previous app, the difference in cumulative returns, betwee
 
 -  So these ETFs do a good job of matching index performance.
 
-[graphic: a student getting an 'A+']
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## ETFs versus ETNs
@@ -147,12 +145,6 @@ As you can see in the previous app, the difference in cumulative returns, betwee
 -  Exchange Traded Notes (ETNs) are unsecured debt obligations of financial institutions.
 -  ETNs are also traded on securities exchanges and can be bought or sold on the exchanges.
 -  ETNs unlike ETFs do not own a portfolio of underlying assets. ETNs calculate the value using a described formula, rather than using net asset value.
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-##
-
-[end of presentation graphic]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
