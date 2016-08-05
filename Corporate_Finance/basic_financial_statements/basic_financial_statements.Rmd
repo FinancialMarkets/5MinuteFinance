@@ -59,7 +59,9 @@ $1$.  Market Value versus Accounting (Book) Value:
 
 $2$.  Leverage:
 
--  
+-  *Leverage* is the proportion of debt relative to equity financing of a firm's assets.  More debt relative to equity means higher leverage.  This term reflects that more debt relative to equity magnifies equity returns---which is analogous to how a lever affords [greater output force than input force through a mechanical advantage](https://en.wikipedia.org/wiki/Lever).
+
+-  The balance sheet is used to monitor firm leverage, given it shows how assets are financed between debt and equity ($Assets \equiv Debt + Equity$).  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -67,7 +69,11 @@ $2$.  Leverage:
 
 $3$.  Liquidity:
 
--  
+- *Liquidity* is the ease with which you can turn an asset into cash without dropping its value.  Assets are listed on the balance sheet in order of liquidity (from most liquid down to least).  
+
+-  First assets on the balance sheet are divided into *Current* (assets that will be turn into cash within a year) and *Fixed* assets.  Assets are ordered by liquidity within both categories also.
+
+- A firm wants to maintain an appropriate level of liquidity---to much liquidity and the firm earns a return that is low (near cash). Conversely, having too little liquidity the firm risks not being able to pay its expenses (or having to sell fixed assets for low prices to meet expenses).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -79,6 +85,16 @@ The income statement measures a firm's performance over some period of time.
 
 -  Roughly, the income statement looks like: $Revenue - Expenses \equiv Income$.  
 
+-  Accounting standards ([GAAP](https://en.wikipedia.org/wiki/Generally_accepted_accounting_principles)) require matching revenues with expenses.  This means when you earn income may not be when you receive cash---a sale on credit will be income even though you may not receive the cash for some time.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Income Statement 
+
+- Noncash Items: To match revenues with expenses noncash items are added to the income statement.  For example, the purchase of a truck will be *depreciated* which means the expense of a truck on the income statement isn't incurred when you pay for the truck, but rather the expense is realized over the truck's life (while the truck is earning revenue).
+
+-  Variable vs Fixed Costs:  no distinction is made on the income statement between *variable* and *fixed* costs.  
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## The Cash Flow Statement 
@@ -87,7 +103,9 @@ The cash flow statement is a combination of balance sheet and income statement.
 
 -  The statement captures how the changes in both balance sheet and income affects cash and cash equivalents.
 
--  There are three portions to the cash flow statement: Operating, Investing, and Financing activities.  
+-  There are three portions to the cash flow statement: Operating, Investing, and Financing activities. 
+
+-  Cash flow on the accounting statement is not equivalent with financial cash flow.  Among the causes of the disparity is the treatment of interest expense, which the accounting treats as an operating expense.  For the financial analyst, interest is purely a financing (and not operating) activity.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -97,8 +115,6 @@ In the following interactive app you can query the balance sheet and income stat
 
 -  You can then search for any item using the search box.  As you type it will return all items which match your input.
 -  You can also page through the statement in order with the page number on the bottom right.
-
-[graphic: someone at a desk with a computer pulling data from the internet]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -139,7 +155,7 @@ ticker <- comp$symbol[comp$name == input$name]
     f1 <- getFinancials(ticker, src = "google", auto.assign = FALSE)
     is1 <- viewFin(f1, type = "IS")
     bs1 <- viewFin(f1, type = "BS")
-    if(input$statement == 1){
+    if( input$statement == 1 ){
         DT::datatable(bs1, options = list(pageLength = 5))
     } else {
         DT::datatable(is1, options = list(pageLength = 5))
@@ -147,16 +163,6 @@ ticker <- comp$symbol[comp$name == input$name]
 })
 #}}}
 ```
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-
-## Credits and Collaboration
-
-If you have additions or corrections for this presentation, feel free to contribute them [to this GitHub repo](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/basic_financial_statements/basic_financial_statements.Rmd).  You will automatically show up as a presentation author.  
-
-- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for its financial support of both the presentation's development and hosting on shinyapps.io.
-
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

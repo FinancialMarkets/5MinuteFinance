@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ##
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
 
 ## Can't use this yet -- there are two bugs in the rChartsCalmap package -----
 ## 1.  the shiny app appends the new calendar instead of overwriting if a change is made:  https://github.com/ramnathv/rChartsCalmap/issues/1
