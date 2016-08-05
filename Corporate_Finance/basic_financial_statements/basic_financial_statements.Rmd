@@ -1,8 +1,6 @@
 ---
 title: "An Intro to Financial Statements"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "06/02/2015"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod.css
@@ -18,9 +16,8 @@ Financial statements are the main way in which a company communicates its perfor
 
 -  Audited statements are often required by bond and stock investors.
 
--  Financial statements are a major source of information for financial decisions.  
+-  Financial statements are a major source of information with which to make financial decisions.  
 
-[graphic: information transmitted to an investor]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -38,11 +35,39 @@ The most important financial statements are:
 
 ## The Balance Sheet
 
-The balance sheet is a snapshot of the assets a firm owns, and how they are financed.
+The balance sheet is a snapshot of the assets a firm owns, and how they are financed (i.e. its [capital structure](https://en.wikipedia.org/wiki/Capital_structure)).  Since every asset must be claimed by either stock or bond holders, we have the identity $Assets \equiv Liabilities + Stockholders'\ Equity$. 
 
-- Since every asset must be claimed by either stock or bond holders, we have $Assets = Liabilities + Stockholders'\ Equity$. 
+- Note the use of $\equiv$ meaning 'is defined as' and not $=$ which means 'is equal to'.  An equation such as $x^2 - 2 = 0$ will only hold for some ([famous in the case of this equation](https://en.wikipedia.org/wiki/Square_root_of_2)) values of $x$.  However, the balance sheet identity will always hold.
 
-[graphic:  a scale with "A" on one side and "L+SE" on the other. The scale should be balanced.]
+- This is because of the definition of equity, which is whatever is left over after a company pays its debts.  So the value of equity is defined as $Assets - Liabilities$ and the balance sheet identity always holds. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Balance Sheet Concepts
+
+Following are three things to keep in mind while analyzing a balance sheet.
+
+$1$.  Market Value versus Accounting (Book) Value:
+
+-  Asset values are the price paid for the asset (assets are 'carried at cost').  This may differ markedly from the market value of an asset---the price at which you could sell the asset.
+
+-  Some vital firm assets aren't listed on the balance sheet---employee knowledge and skills; proper managerial oversight; etc.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Balance Sheet Concepts
+
+$2$.  Leverage:
+
+-  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Balance Sheet Concepts
+
+$3$.  Liquidity:
+
+-  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -52,9 +77,7 @@ The income statement measures a firm's performance over some period of time.
 
 -  If the balance sheet is a snapshot (picture) then the income statement is like a video recording.
 
--  Roughly, the income statement looks like: $Revenue - Expenses = Income$.  
-
-[graphic: person taking a video]
+-  Roughly, the income statement looks like: $Revenue - Expenses \equiv Income$.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -65,8 +88,6 @@ The cash flow statement is a combination of balance sheet and income statement.
 -  The statement captures how the changes in both balance sheet and income affects cash and cash equivalents.
 
 -  There are three portions to the cash flow statement: Operating, Investing, and Financing activities.  
-
-[graphic: money falling from the sky]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
