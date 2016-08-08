@@ -59,6 +59,130 @@ By arbitrage, each bond with have the same 1\% YTM.  So this means the bond pric
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+<!--- add arbitrage to prove they must all have 1% YTM? -->
+
+## 
+
+<!-- app bleow is not telling the story -->
+<!-- replace with app which shows all prices which have the same YTM -->
+<!-- user change YTM and it plots in coupon price space? -->
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+sidebarLayout(
+    sidebarPanel(
+        sliderInput("coupon2", label = "Coupon Rate", max = .2, min = 0, value = .05, step = .01),
+        sliderInput("maturity2", label = "Years to Maturity", max = 50, min = 1, value = 10)
+    ),
+mainPanel(
+    renderMetricsgraphics({
+
+
+
+        })
+```
+
+
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        selectInput("yyy", "Value or YTM",
+            choices = list("YTM" = 1,
+              "Value" = 2), selected = 1),
+        
+        conditionalPanel(
+            condition = "input.yyy == '2'",
+            ## to get bond price ----
+            sliderInput("ytm", label = "Yield to Maturity", max = .2, min = 0.01, value = .05, step = .01),
+            sliderInput("coupon", label = "Coupon Rate", max = .2, min = 0, value = .05, step = .01),
+            sliderInput("maturity", label = "Years to Maturity", max = 50, min = 1, value = 10),
+            radioButtons("period", "Payment Period", choices = c("Annual" = "1", "Semiannual" = "2"), selected = "1")
+        ),
+        conditionalPanel(
+            condition = "input.yyy == '1'",
+            ## to get YTM ----
+            sliderInput("bondPrice", label = "The Bond's Price", max = 2000, min = 1, value = 1000, step = 10),
+            sliderInput("coupon1", label = "Coupon Rate", max = .2, min = 0, value = .05, step = .01),
+            sliderInput("maturity1", label = "Years to Maturity", max = 50, min = 1, value = 10),
+            radioButtons("period1", "Payment Period", choices = c("Annual" = "1", "Semiannual" = "2"), selected = "1")
+        )
+    ),
+
+    mainPanel(
+
+        renderPlot({
+
+            if(input$yyy == '1') {
+
+            ## YTM calculation from app ----
+            bondValue <- 0
+            ytmAxis <- seq(0.01, .2, by = .01)
+            CFs <- 0
+
+            if (input$period1 == 1) {
+                CFs <- input$coupon1 * 1000 * rep(1, input$maturity1)
+                CFs[length(CFs)] <- CFs[length(CFs)] + 1000
+            } else {
+                CFs <- (input$coupon1 * 1000 * rep(1, (2 * input$maturity1))) / 2
+                CFs[length(CFs)] <- CFs[length(CFs)] + 1000
+            }
+
+            ytmRoot <- function(ytmR){
+                aa <- input$bondPrice
+                bb <- CFs
+                min <- abs(sum(bb / (1+ytmR)^{1:length(CFs)}) - aa)
+                return(min)
+            }
+
+            ytmResult <- optim(.05, ytmRoot, method = "Brent", lower = -1, upper = 2)$par
+
+            if (input$period1 == 1) {
+                ytmResult <- ytmResult
+            } else {
+                ytmResult <- ytmResult * 2
+            }
+            
+            plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+            text(x = 0.5, y = 0.5, labels = paste((100 * round(ytmResult, 4)), "%"), cex = 5)
+
+	    ## bond value calculation from app ----
+            bondValue <- 0
+            ytmAxis <- seq(0.01, .2, by = .01)
+
+
+            ## cash_flows <- 0
+            ## for (i in 1:input$maturity){
+            ##     cash_flows[i] <- 
+            ##         (input$coupon * 1000) }
+
+            ## cash_flows[length(cash_flows)] <- cash_flows[length(cash_flows)] + 1000 
+            ## pvCashFlows <- cash_flows / (1 + input$ytm)^(1:input$maturity)
+            } else {
+### Bond Calculation: includes semiannual case which is not used ----   
+            if (input$period == 1) {
+                ## for (i in seq_along(ytmAxis)){
+                bondValue <- (input$coupon * 1000) * ((1 - 1 / (1 + input$ytm)^(input$maturity)) / input$ytm) + 1000 / (1 + input$ytm)^(input$maturity) #}
+            }    else {
+                ## for (i in seq_along(input$ytm)){
+                bondValue <- (input$coupon * (1000 / 2)) * ((1 - 1 / (1 + (input$ytm / 2))^(input$maturity * 2)) / (input$ytm / 2)) + 1000 / (1 + (input$ytm / 2))^(input$maturity * 2)
+                ## }
+            }
+
+            plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+            text(x = 0.5, y = 0.5, labels = paste("$", round(bondValue, 2)), cex = 5)
+}
+        })
+    )
+)
+
+#}}}
+```
+
+
+
 ## So How do You Value a Bond?
 
 There are a couple of approaches to determine how much we would pay for a bond.  
