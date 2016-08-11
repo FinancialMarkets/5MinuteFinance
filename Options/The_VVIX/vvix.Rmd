@@ -1,8 +1,6 @@
 ---
 title: "VVIX"
-author: "Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "09/01/2015"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
 css: 5min.css
@@ -17,19 +15,43 @@ Very Useful Bloomberg article: http://www.bloomberg.com/news/articles/2015-09-08
 
 ## The VVIX
 
-The VVIX is often referred to as `the VIX on the VIX' or 'the vol of vol'.  
+The [VVIX](http://www.cboe.com/micro/vvix/vvixwhitepaper.aspx) is often referred to as `the [VIX](https://micfm.shinyapps.io/The_VIX/) on the VIX' or 'the vol of vol'.  
 
--  Before going on, be sure you are familiar with the VIX [link to MI presentation on VIX].
+-  The VIX is a measure of the expected volatility in S&P 500 index options.  It trades as a futures contract, and there are also options traded on this futures contract.  
+
+-  The VVIX is the expected volatility of the VIX futures contract.  
+
+-  Similar to how the VIX is calculated, the VVIX calculation uses the implied volatilty from VIX futures options contracts. 
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Interpreting the VVIX
+## Why Trade the VVIX
+
+Returns on the VVIX are determined by the difference between expected and realized (actual) volatility, and the [volatility risk premium](http://www.bis.org/publ/qtrpdf/r_qt1409v.htm).   So the VVIX allows construction of portfolios which:
+
+-  
+-  may earn or pay the volatility risk premium.
+
+
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Characteristics of the VVIX
+
+The VVIX is strongly mean reverting.  
+
+
 
 ## The VVIX, VIX, and the Stock Market
 
+Both the VVIX and the VIX tend to be inversely correlated with the stock market.  When the market declines [volatility tends to increase](http://quant.stackexchange.com/questions/4954/what-is-the-leverage-effect-for-stocks) which increased the VIX.  The increase in the VIX then causes and increase in the volatility of the VIX (VVIX). 
+
+-  So we generally see the VIX and VVIX peak at similar times. For example, in the interactive graphic in the next slide we see the VIX and the VVIX both reaching high values during the 2008 financial crisis and 2010 flash crash.   
+
+-  However, the VVIX tends to increase a great deal for both large and modest increases in the VIX. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
@@ -69,13 +91,12 @@ renderDygraph({
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## The VIX is Forward Looking
+
+##  VVIX, VIX, and Market Returns 
 
 
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-##  VIX, Market Return, and Volume
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -85,7 +106,7 @@ renderDygraph({
 #{{{
 library(threejs)
 library(quantmod)
-
+ 
 renderScatterplotThree({
     sp1 <- getSymbols('^gspc', auto.assign = FALSE, from = "2000-01-01")
     vix1 <- getSymbols('^vix', auto.assign = FALSE, from = "2000-01-01")
@@ -110,16 +131,8 @@ renderScatterplotThree({
     scatterplot3js(data1, color = rainbow(length(data1$"S&P 500 % Change")), labels = paste("Month: ", as.Date(index(data1)), sep = ""))
                         
     })
-
-
 #}}}
 ```
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-##
-
-[end of presentation graphic]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
