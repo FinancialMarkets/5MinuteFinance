@@ -11,11 +11,6 @@ autosize: true
 height: auto
 ---
 
-## Prior Knowledge
-
-Note, you may want to see [A First Look at Risk](https://micfm.shinyapps.io/what_is_risk) before this presentation.
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 ## Measuring Risk
@@ -39,6 +34,8 @@ To implement any measure of risk we must have a description of how the asset's r
 
 - For all intervals, the PDF assigns a probability that an asset's return will be within each interval in a given period. For example, the PDF may say there is a 7\% probability the asset's return will be between 1\% and 2\% over the next day.  
 
+-  For an introduction to risk in financial markets see [A First Look at Risk](https://micfm.shinyapps.io/what_is_risk).
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
   
@@ -52,6 +49,7 @@ In the following app you can see how stock returns distributions behaved over di
 
 - Try and compare small stocks with the distributions on portfolios of large numbers of stocks.  For example, take a look at EGAS and then SPY.  EGAS is a small Natural Gas distributor and SPY is an ETF which tracks the S&P 500.  Are there differences between how risk varies between the two?
 
+-  The app may take 5 seconds or so to load.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
