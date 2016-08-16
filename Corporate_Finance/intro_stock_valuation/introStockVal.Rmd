@@ -14,7 +14,7 @@ smaller: true
 
 The value of any asset is simply the present value of the future cash flows you expect to receive from the asset.
 
-- In the case of stock, this mean the present value of expected future dividends.
+- In the case of stock, this means the present value of expected future dividends.
 
 But what if the stock doesn't pay dividends?
 
