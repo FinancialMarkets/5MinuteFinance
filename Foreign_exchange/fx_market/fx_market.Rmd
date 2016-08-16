@@ -1,10 +1,9 @@
 ---
 title: "Foreign Exchange Market"
-author: "Milken Institute, Center for Financial Markets"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 header-includes:
    - \usepackage{eurosym}
    - \usepackage{textcomp}
-date: "March 10, 2016"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod.css
@@ -18,8 +17,6 @@ The FX market allows you to exchange one currency for another.
 -  For example, you can exchange US dollars for euros.  
 
 The *exchange rate* will determine how many euros you receive for a US dollar.  
-
-[graphic: two people exchanging currency]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -90,7 +87,7 @@ renderDygraph({
 
     ## to fix the https issue downloading from FRED, added method = "curl" to getSymbols function call -- 
     
-    direct1 <- getSymbols(currSym, from = "1900-01-01", auto.assign = FALSE, src = "FRED", method = "curl")
+    direct1 <- getSymbols(currSym, from = "1900-01-01", auto.assign = FALSE, src = "FRED")
     indirect1 <- 1/direct1
 
     ## stocks <- data.frame(
@@ -337,11 +334,6 @@ The percentage bid/ask spread is used to compare transaction costs across curren
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-##
-
-[end of presentation graphic]
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 

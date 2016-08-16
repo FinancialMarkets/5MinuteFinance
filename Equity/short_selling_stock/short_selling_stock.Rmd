@@ -1,8 +1,6 @@
 ---
 title: "Short Selling Stock"
-author: "Matt Brigida: Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "06/02/2015"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 runtime: shiny
 logo: misq.png
@@ -12,17 +10,11 @@ smaller: true
 
 ## Why Short Stock?
 
-By shorting stock we profit when the stock price declines.
+By shorting stock we profit when the stock price declines.  So you can use short sales to speculate.
 
-[graphic: stock chart tanking and a person holding money and happy]
+However, shorting stock is also used by banks to hedge put options they have sold, and other derivative positions.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Other Reasons
-
-Shorting stock is also used by banks to hedge put options they have sold, and other derivative positions.
-
-[graphic: not sure]
+-  That is, shorting stock is used to lessen the risk taken by bank and other financial intermediaries.  In fact, without the ability to short, put options and other derivatives may not exist. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -73,8 +65,6 @@ On the next slide you can input the amount of shares you want to short, and the 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
 #{{{
 library(shiny)
-library(devtools)
-devtools::install_github('rich-iannone/DiagrammeR')
 library(DiagrammeR)
 
 ui = shinyUI(fluidPage(
@@ -191,12 +181,6 @@ renderDygraph({
 })
 #}}}
 ```
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-##
-
-[end of presentation graphic]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

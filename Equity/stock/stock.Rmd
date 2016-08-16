@@ -29,8 +29,6 @@ As a stock holder you are not liable for the company's debts.
 
 -  Because of limited liability, stock prices cannot fall below \$0.
 
-[graphic:  someone collecting money from the corporation, with a wall between the stock investor and the corporation]
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Gains from Ownership
@@ -40,8 +38,6 @@ Stockholders may gain from owning stock by receiving dividends, and through pric
 -  Dividends are payments the corporation makes to stockholders using *after-tax* income.  Companies are not obligated to pay dividends.
 
 -  Price appreciation (capital gains) refers to selling stock for a price higher than you bought the stock.  
-
-[graphic: money falling from the sky on stockholder]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -55,31 +51,38 @@ Stock is traded on many exchanges across the US.
 
 - The best quotes across all exchanges are reported in the "Consolidated Tape", which ensures investors receive the best price across all exchanges when they buy or sell stock.
 
-[graphic:  a bunch of little exchanges feeding data into one main ticker tape]
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Stock Quotes
 
-We get stock quotes, like those below, from the consolidated tape.
+We get stock quotes, like those on the next slide, from the consolidated tape.
 
 -  The last trade could have taken place on any exchange. 
 
 -  Input a ticker and get the most recent quote.
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
 library(quantmod)
-## library(DT)
+library(DT)
 inputPanel(
-    textInput(inputId = "ticker3", label = "Stock Ticker", value = "AAPL")
+    textInput(inputId = "ticker3", label = "Stock Ticker", value = "AAPL"),
+    textInput(inputId = "ticker4", label = "Stock Ticker", value = "XOM"),
+    textInput(inputId = "ticker5", label = "Stock Ticker", value = "GS")
     )
 div(renderDataTable({
     validate(
-        need(input$ticker3 != "", "Input a valid US stock ticker.")
+        need(input$ticker3 != "", "Input a valid US stock ticker."),
+        need(input$ticker4 != "", "Input a valid US stock ticker."),
+        need(input$ticker5 != "", "Input a valid US stock ticker.")
+    )
+    datatable(
+        getQuote(c(input$ticker3, input$ticker4, input$ticker5)), options = list(processing = FALSE)
         )
-
-    getQuote(input$ticker3)
 }), style = "font-size:60%")
 #}}}
 ```

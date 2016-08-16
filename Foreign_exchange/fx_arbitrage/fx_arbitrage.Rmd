@@ -1,7 +1,6 @@
 ---
 title: "Foreign Exchange Arbitrage"
-author: "Milken Institute, Center for Financial Markets"
-date: "July 4, 2015"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod.css
@@ -190,8 +189,6 @@ Let's check.  The cross-rate implied by the USD/EUR and USD/GBP quotes is EUR 1.
 -  Starting in USD, we first have to decide if we buy EUR or GBP.  The key is to note that at EUR 1.3/GBP we are given too many EUR for 1 GBP.  So we want to sell GBP for EUR here.
 
 -  This tells us we want to go from USD to GBP, then from GBP to EUR, and finally back to USD. The arbitrage gets its name from the triangular route which we are taking through currencies.
-
-[graphic:  triangle with USD, GBP, and CHF]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -480,11 +477,6 @@ Yes, large banks earn these arbitrages every day.  The process is completely aut
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-##
-
-[end of presentation graphic]
- 
-
 <!---
 ##  Old Stuff
 
@@ -494,15 +486,15 @@ Yes, large banks earn these arbitrages every day.  The process is completely aut
 library(shiny)
 
 ui = shinyUI(pageWithSidebar(
-headerPanel("Triangular Arbitrage"),
-sidebarPanel(
-    selectInput("test", "Test", choices = c("Choice 1" = "1", "Choice 2" = "2"), selected = "1")
+    headerPanel("Triangular Arbitrage"),
+    sidebarPanel(
+        selectInput("test", "Test", choices = c("Choice 1" = "1", "Choice 2" = "2"), selected = "1")
     ),
-mainPanel(
-    grVizOutput('diagram' )
+    mainPanel(
+        grVizOutput('diagram' )
     )
-    )
-             )
+)
+)
 
 server = function(input, output){
     output$diagram <- renderGrViz({

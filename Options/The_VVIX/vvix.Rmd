@@ -41,8 +41,13 @@ Returns on the VVIX are determined by the difference between expected and realiz
 
 ## Characteristics of the VVIX
 
-The VVIX is strongly mean reverting.  
+-  The VVIX is strongly mean reverting.  Note since each VVIX contract expires at a set point, you can't easily earn profits by simply betting on mean reversion.  It must revert prior to your contract expiring.  
 
+-  Term structure refers to the relationship between price and contract maturity.  The VVIX term structure is generally downward sloping, which means the VVIX price tends to decrease with increasing contract maturity.  This reflects that short term predictions tend to be more volatile than long term predictions.  
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 ## The VVIX, VIX, and the Stock Market
@@ -95,7 +100,15 @@ renderDygraph({
 ##  VVIX, VIX, and Market Returns 
 
 
+There is not a significant correlation between the VVIX returns, and the VIX and S&P 500 returns.  
 
+-  While it is true the VVIX and VIX tend to be high at the same time, the VVIX can also be high when the VIX only rises by a modest amount as mentioned.  Also, over the long periods of time without market declines, the VVIX and VIX movements tend to be independent.
+
+- You can see this in the interactive graphic on the next slide.  Move the graphic to see the VVIX and VIX percent change axes.  You see the data points are generally horizontal, which means the VVIX percent change is not greatly affected the the VIX percent change. 
+
+-  Similarly, if you look at the VVIX percent return and market percent return axes, you can see the VVIX is generally unaffected by the percent return in the market.
+
+-  However, looking at the graph from above (the VIX and market percent change axes) you see they are strongly negatively correlated.  
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -115,10 +128,11 @@ renderScatterplotThree({
     vvix1 <- vvix1[vvix1$"VVIX" != ".", ]
     vvix1 <- as.xts(as.numeric(vvix1$"VVIX"), order.by = as.Date(strptime(vvix1$Date, format = "%d-%b-%y")))
     names(vvix1) <- "VVIX"
-    
-    spm <- to.monthly(sp1)
-    vixm <- to.monthly(vix1)
-    vvixm <- to.monthly(vvix1)
+
+    ## chart is not compelling -- probably because VVIX is strongly mean reverting.  Maybe change to weekly or daily.  
+    spm <- to.daily(sp1)
+    vixm <- to.daily(vix1)
+    vvixm <- to.daily(vvix1)
 
     spmr <- Delt(Ad(spm), type = "log")
     vixmr <- Delt(Ad(vixm), type = "log")

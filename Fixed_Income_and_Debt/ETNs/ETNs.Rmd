@@ -1,8 +1,6 @@
 ---
 title: "Exchange Traded Notes (ETNs)"
-author: "Matt Brigida: Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "08/1/2015"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 runtime: shiny
 smaller: true
@@ -21,38 +19,32 @@ ETNs are like ETFs in that they track an financial (stock, bond, commodity, fore
 
 -  Like ETFs, ETNs typically passively match an index's returns.
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## ETN Examples
 
+ 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 ## ETN Popularity and Growth
 
-ETFs have become very popular in the last decade.  Among their advantages over traditional mutual funds are:
 
--  ETFs can be traded throughout the day, and may be shorted and bought on margin.  The cost of buying an ETF is the same as stock.
--  Selling an ETF doesn't cause fund redemptions -- which can have adverse tax consequences.
--  ETFs have low fees -- many prominent ETFs have annual fees that are less than 0.15% of assets.
--  Actively managed mutual funds have generally been unable to beat stock index returns.   
-
-
-<!---There are many proposed reasons for this, however most agree it is due to low ETF fees, coupled with an inability of active mutual funds to beat index returns. -->
-
-<!-- <script type="text/javascript" src="//www.google.com/trends/embed.js?hl=en-US&q=ETF,+Mutual+Fund&cmpt=q&tz=Etc/GMT%2B4&tz=Etc/GMT%2B4&content=1&cid=TIMESERIES_GRAPH_0&export=5&w=300&h=130"> -->
-<!-- </script> -->
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
-Unscientific evidence of the increasing popularity of ETFs relative to mutual funds:  The number of Google searches for each term.
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
-## library(dygraphs)
-## library(xts)
-## renderDygraph({
-##     data <- read.csv("time_series.csv", header = TRUE)
-##     data <- as.xts(data[,2:3], order.by = as.Date(data[,1]))
-##     dygraph(data, main = "Google Trends: \"ETF\" vs \"Mutual Fund\"") %>%
-##         dyRangeSelector()
-##     })
+library(dygraphs)
+library(xts)
+renderDygraph({
+  data <- read.csv("multiTimeline.csv", header = TRUE)
+  data <- as.xts(data[,2:3], order.by = as.Date(data[,1]))
+  dygraph(data, main = "Google Trends: \"Exchange Traded Fund\" vs \"Exchange Traded Note\"") %>%
+  dyRangeSelector()
+})
 #}}}
 ```
 
@@ -132,24 +124,12 @@ renderDygraph({
 #}}}
 ```
 
-## ETF Performance
-
-As you can see in the previous app, the difference in cumulative returns, between the ETF and the actual stock index, over 10 years is generally less than a percent.
-
--  So these ETFs do a good job of matching index performance.
-
-[graphic: a student getting an 'A+']
-
 
 ## ETFs versus ETNs
 
 -  Exchange Traded Notes (ETNs) are unsecured debt obligations of financial institutions.
 -  ETNs are also traded on securities exchanges and can be bought or sold on the exchanges.
 -  ETNs unlike ETFs do not own a portfolio of underlying assets. ETNs calculate the value using a described formula, rather than using net asset value.
-
-##
-
-[end of presentation graphic]
 
 ## Credits and Collaboration
 

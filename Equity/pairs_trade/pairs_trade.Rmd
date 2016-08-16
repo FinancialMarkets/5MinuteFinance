@@ -37,7 +37,7 @@ The Stat Arb aspect of the pairs trade employs the **law of one price** (**LOP**
 
 ## No One Way
 
-There is no single way to implement the pairs trade. This is an active area of research, and provides you with a venue to create your own strategy.  Following are the general steps of the pairs trade, and your method is any step can be different from methods employed by others.
+There is no single way to implement the pairs trade. This is an active area of research, and provides you with a venue to create your own strategy.  Following are the general steps of the pairs trade, and your method in any step can be different from methods employed by others.
 
 #.  Choose universe of pairs.
 #.  Statistically determine the normal relationship between each pair (estimation period).
