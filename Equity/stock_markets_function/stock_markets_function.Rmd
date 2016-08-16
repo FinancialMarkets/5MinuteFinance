@@ -1,9 +1,9 @@
 ---
 title: "The Function of Stock Markets"
-author: "Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "07/10/2015"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
 runtime: shiny
 smaller: true
 ---
@@ -24,7 +24,7 @@ The goal of stock markets is to facilitate the exchange of ownership of corporat
 -  Primary: an exchange of stock in which the company is a buyer or seller.
 -  Secondary:  an exchange of stock in which the company is not involved.
 
-[graphic: people exchanging stock certificates]
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##  Secondary Market
 
@@ -34,18 +34,21 @@ This is the market you see every day in the news, and the one we'll cover in thi
 
 >-  Yes! A well-functioning secondary market will mean the company gets higher prices for the stock it sells in the primary market.
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Secondary Markets and Economic Growth
 
 -  The more money a company can raise in the primary market, the more the company can invest in real assets, research and development, and other uses.
 
 -  So well-functioning secondary stock markets lead to higher levels of investment and employment, and faster economic growth.  
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Are You Getting the Best Price?
 
 With the same stock trading on many exchanges across the country, how do you ensure you are getting the best price? The SEC gave this a great deal of thought.
 
-[graphic: person in suit thinking] 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Regulation National Market System (Reg NMS)
 
@@ -54,6 +57,8 @@ Starting in 1975, the SEC began to work on a national market system.   In 2005 m
 -   ensure investors were getting the best price across all exchanges for their purchase or sale of stock (known as the "Order Protection Rule").
 -  provide all investors fair access to price quotations, and to also set a limit on access fees ("Access Rule").
 -  restrict sub-penny quotations.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 <!---
 ## Regulation NMS: Criticisms
@@ -71,6 +76,7 @@ Because it takes time for information to travel from one exchange to another, or
 
 -  This means we can see exchanges as a set of linked groups, where each group has a similar information content. 
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Exchange Network
 
@@ -82,6 +88,8 @@ Because it takes time for information to travel from one exchange to another, or
 
 -  Each exchange is identified by its [Market Identifier Code](https://en.wikipedia.org/wiki/Market_Identifier_Code).  The listing of codes and exchanges is on slides 25 and 26.
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Information Generation
   
 - The orange nodes represent where a great deal of information, which affects stock prices, is generated.  These are Manhattan (NYC) and Washington D.C. (where the Federal Open Market Committee (FOMC) releases its statements on monetary policy).
@@ -91,6 +99,8 @@ Because it takes time for information to travel from one exchange to another, or
 -  Feel free to move the nodes around to get a better look.
 
 -  Placing the cursor over a node will show its name. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Grouped by Information Similarity
 <!--- should we add freely floating nodes for dark pools -->
@@ -132,6 +142,7 @@ renderForceNetwork({
 })
 #}}}
 ```
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 ## MIC Code: Exchange Name
@@ -147,6 +158,8 @@ renderForceNetwork({
 -  XASE: NYSE MKT
 -  XNMS: NASDAQ
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ##
 
 -  XPHL: NASDAQ OMX PHLX
@@ -155,9 +168,7 @@ renderForceNetwork({
 -  GMNI: ISE Gemini
 -  XMIO: Miami SE
 
-##
-
-[end of presentation graphic]
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
@@ -166,7 +177,6 @@ Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equi
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
 
 - And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
-
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

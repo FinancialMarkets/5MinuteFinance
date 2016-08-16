@@ -96,7 +96,7 @@ Methods to predict future stock performance generally fall into two categories, 
 
 - Technical analysis uses past prices to predict future prices.
 
-- An interactive chart with some common technical analysis indicators is on the next slide.
+- An interactive chart with stock price, volume, and a choice of some common technical analysis indicators is on the next slide.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -164,8 +164,6 @@ Stock has historically been one of the best performing asset classes [link to re
 
 -  While stock returns have been quite high, stock returns are also volatile.
 
-[graphic: stock plot with high and lows and people wealthy and poor respectively]
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## 
@@ -177,8 +175,6 @@ In the following interactive app, you can chart stock going as far back as 1950.
 - You can also change the date window using the selector at the bottom.
 
 - You can plot the S&P 500 index by using <code>^GSPC</code> as the ticker.
-
-[graphic: pulling data from the internet]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -201,16 +197,6 @@ renderDygraph({
 })
 #}}}
 ```
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## From Here
-
-To learn more about stock investments see the following presentations:
-
-- links
-- to other
-- presentations
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
