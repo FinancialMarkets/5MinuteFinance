@@ -120,7 +120,7 @@ The US produces about 8 million barrels of crude per day.
 
 -  US production has increased since the introduction of technology to extract tight oil (oil from shale formations such as the Bakken formation in western North Dakota).
 
-[graphic: picture of fracking -- fracturing rock deep below a well]
+<img src="fracking.jpg" alt="Drawing" style="width: 300px;" text-align="center" />
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
