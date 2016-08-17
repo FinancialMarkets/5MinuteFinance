@@ -34,7 +34,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios)
 
-[Intro to Stock Investments](https://micfm.shinyapps.io/basic_stock)
+[Intro Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/)
 
 [Intro to Bond Valuation](https://micfm.shinyapps.io/intro_bond_valuation)
 
@@ -91,8 +91,6 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 ### Equity Markets
 
 [An Introduction to Stock Investments](https://micfm.shinyapps.io/stock/)
-
-[Intro Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/)
 
 [The Pairs Trade](https://micfm.shinyapps.io/pairs_trade/)
 
