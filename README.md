@@ -104,15 +104,15 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [ETFs](https://micfm.shinyapps.io/ETFs/)
 
-#### Need to consolidate the stock market presentations below. 
+<!-- #### Need to consolidate the stock market presentations below.  -->
 
 [Intro Stock Markets](https://micfm.shinyapps.io/stock_markets/)
 
-[Stock Markets Dark Pools](https://micfm.shinyapps.io/stock_markets_dark_pools/)
+<!-- [Stock Markets Dark Pools](https://micfm.shinyapps.io/stock_markets_dark_pools/) -->
 
-[Stock Markets Function](https://micfm.shinyapps.io/stock_markets_function/)
+<!-- [Stock Markets Function](https://micfm.shinyapps.io/stock_markets_function/) -->
 
-[Stock Markets Over Time](https://micfm.shinyapps.io/stock_markets_over_time/)
+<!-- [Stock Markets Over Time](https://micfm.shinyapps.io/stock_markets_over_time/) -->
 
 ### Monetary Policy
 
