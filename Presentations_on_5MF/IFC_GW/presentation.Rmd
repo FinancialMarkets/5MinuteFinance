@@ -22,6 +22,16 @@ Milken Institute Center for Financial Markets (MICFM) initiative to create short
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+
+## R/Shiny for Finance Education
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+
+
 ## R/Shiny for Finance Education
 
 R/Shiny allows finance educators to:

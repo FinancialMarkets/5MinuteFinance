@@ -55,11 +55,15 @@ Stock is traded on many exchanges across the US.
 
 ## Stock Quotes
 
-We get stock quotes, like those on the next slide, from the consolidated tape.
+Stocks are often identified by a specific ticker symbol, such as <code>CL</code> for the Colgate-Palmolive Company.  This ticker is unique to Colgate-Palmolive across all US stock exchanges.
 
--  The last trade could have taken place on any exchange. 
+-  However <code>CL</code> means the light sweet crude oil contract on the New York Mercantile Exchange.  So <code>CL</code> can have different meanings on other types of exchanges.
 
--  Input a ticker and get the most recent quote.
+When you see a stock ticker with something like: <code>CL 67.04 +0.04</code> it means Colgate-Palmolive last traded for \$67.04 per share, which is 4 cents higher than the last trade in Colgate-Palmolive yesterday.  The last trade in Colgate-Palmolive yesterday is known as yesterday's *closing price*.  The last trade could have taken place on any exchange. 
+
+- We get stock quotes, like those on the next slide, from the consolidated tape.
+
+- Input tickers and get the most recent quotes.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
