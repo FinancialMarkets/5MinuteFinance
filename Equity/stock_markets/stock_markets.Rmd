@@ -1,8 +1,6 @@
 ---
 title: "Stock Markets"
-author: "Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "03/30/2016"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod.css
@@ -21,28 +19,22 @@ height: 100%;
 
 ## Stock Markets
 
-The goal of stock markets is to facilitate the exchange of ownership of corporations (common stock).  There are *primary* and *secondary* markets.
+The goal of stock markets is to facilitate the exchange of ownership of corporations (common stock).  There are *primary* and *secondary* stock markets.
 
--  Primary: an exchange of stock in which the company is a buyer or seller.
+-  Primary: an exchange of stock in which the company is a buyer or seller.  This is the market for Initial Public Offerings and Seasoned Equity Offerings.
 -  Secondary:  an exchange of stock in which the company is not involved.
 
-[graphic: people exchanging stock certificates]
+The secondary market is the one you see every day in the news, and the one we'll cover in this presentation.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-##  Secondary Market
+## Secondary Markets 
 
-This is the market you see every day in the news, and the one we'll cover in this presentation.
+We care how well the secondary market functions because it affects our investments and retirement. 
 
--  We care how well the secondary market functions (because we are participants), but do companies care?
+Companies want a well-functioning secondary market because it means they get higher prices for the stock they sell in the primary market (in seasoned equity offerings).  
 
->-  Yes! A well-functioning secondary market will mean the company gets higher prices for the stock it sells in the primary market.
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Secondary Markets and Economic Growth
-
--  The more money a company can raise in the primary market, the more the company can invest in real assets, research and development, and other uses.
+The more money a company can raise in the primary market, the more the company can invest in real assets, research and development, and other uses.
 
 -  So well-functioning secondary stock markets lead to higher levels of investment and employment, and faster economic growth.  
 
@@ -60,7 +52,7 @@ The market is comprised of the market makers, and those wishing to exchange stoc
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## A Physical Location
+## Where Are the Markets? 
 
 Until recently, the market was a physical place.  It was the place that the market maker stood.  
 
@@ -68,26 +60,9 @@ Until recently, the market was a physical place.  It was the place that the mark
 
 -  The New York Stock Exchange famously started under a buttonwood tree outside 68 Wall Street.  
 
-[graphic:  traders congregating around a central market maker -- under a tree] 
+Now stocks are traded in many exchanges throughout the U.S., which means we need mechanisms to ensure investors trade at the best price across exchanges.  
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Where were the Markets?
-
-A stock often traded on many exchanges around the US.
-
--  For example, historically IBM traded on the NYSE, and also on minor regional exchanges.
--  Central reporting of quotes and trades on each exchange was done through the [consolidated tape system](http://www.sec.gov/answers/consolt.htm) implemented in 1976.
-
-[graphic: traders holding order tickets in different parts of the country]
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Are You Getting the Best Price?
-
-With the same stock trading on many exchanges across the country, how do you ensure you are getting the best price? The SEC gave this a great deal of thought.
-
-[graphic: person in suit thinking] 
+-  Facilitating this is the central reporting of trades and quotes through the [consolidated tape system](http://www.sec.gov/answers/consolt.htm) implemented in 1976.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -124,8 +99,6 @@ There are still market makers, brokers, and investors in today's markets.
 -  What has changed is where they communicate, and many of the rules by which they trade (such as order type and who gets to trade first).
 
 -  Moving to purely electronic communication has also greatly increased the speed with which market participants can trade.
-
-[graphic: order book with incoming order, 1s and 0s in background]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -345,7 +318,9 @@ In addition to national and regional stock exchanges, some organizations have se
 
 -  In a dark pool you can send an indication of interest to buy or sell a stock, and this indication is only available to those with access to the dark pool. Also trades in the dark pool are not quickly made known to public exchanges.
 
-[graphic: dark water] 
+Dark pools are run by (1) independent organizations, (2) broker-dealers such as JP Morgan, Credit Suisse, and Fidelity, and (3) public exchanges.  
+
+-  There are about 40 dark pools today.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -361,16 +336,6 @@ Despite trading in a dark pool, you should still receive no worse than the best 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Who Operates Dark Pools?
-
-Dark pools are run by (1) independent organizations, (2) broker-dealers such as JP Morgan, Credit Suisse, and Fidelity, and (3) public exchanges.  
-
--  There are about 40 dark pools today.  
-
-[graphic: lots of little dark pools]
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
 ## Information Transfer with Public Exchanges 
 
 Dark pools might show up in our network as independent nodes. 
@@ -379,7 +344,7 @@ Dark pools might show up in our network as independent nodes.
 
 -  Dark pools show up in light orange in the following network graphic.
 
-[graphic: a dark pool with a wall around it such that information transmission is slow]
+-  Hovering the mouse over the node will show the Dark Pools' name.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -427,13 +392,11 @@ renderForceNetwork({
 
 ## Stock Quotes
 
-Stocks are often identified by a specific ticker symbol, such as 'CL' for the Colgate-Palmolive Company.  This ticker is unique to Colgate-Palmolive across all US stock exchanges.
+Stocks are often identified by a specific ticker symbol, such as <code>CL</code> for the Colgate-Palmolive Company.  This ticker is unique to Colgate-Palmolive across all US stock exchanges.
 
--  However 'CL' means the light sweet crude oil contract on the New York Mercantile Exchange.  So 'CL' can have different meanings on other types of exchanges.
+-  However <code>CL</code> means the light sweet crude oil contract on the New York Mercantile Exchange.  So <code>CL</code> can have different meanings on other types of exchanges.
 
-When you see a stock ticker with something like: 'CL 67.04 +0.04' it means Colgate-Palmolive last traded for \$67.04 per share, which is 4 cents higher than the last trade in Colgate-Palmolive yesterday.  The last trade in Colgate-Palmolive yesterday is known as yesterday's 'closing price'.  
-
-[graphic: stock ticker graphic]
+When you see a stock ticker with something like: <code>CL 67.04 +0.04</code> it means Colgate-Palmolive last traded for \$67.04 per share, which is 4 cents higher than the last trade in Colgate-Palmolive yesterday.  The last trade in Colgate-Palmolive yesterday is known as yesterday's *closing price*.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -459,13 +422,6 @@ When you see a stock ticker with something like: 'CL 67.04 +0.04' it means Colga
 -  XISX: ISE
 -  GMNI: ISE Gemini
 -  XMIO: Miami SE
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-##
-
-[end of presentation graphic]
-
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

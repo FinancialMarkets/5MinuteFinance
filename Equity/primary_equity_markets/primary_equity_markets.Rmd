@@ -1,0 +1,34 @@
+---
+title: "Primary Equity Markets"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
+runtime: shiny
+smaller: true
+---
+
+<!---
+<style>
+.shiny-flow-layout>div {
+width: 100%;
+height: 100%;
+}
+</style>
+-->
+
+##
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Credits and Collaboration
+
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/stock_markets/stock_markets.Rmd) to see the code and collaborators for this presentation
+
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+
+- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
