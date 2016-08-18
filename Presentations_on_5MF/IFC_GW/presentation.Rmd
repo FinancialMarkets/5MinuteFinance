@@ -1,0 +1,640 @@
+---
+title: "Financial Education with R/Shiny"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+date: "August 22, 2016"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod.css
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## 5Minute[Finance]
+
+Milken Institute Center for Financial Markets (MICFM) initiative to create short, interactive, educational materials on financial topics written in R/Shiny.  The project welcomes contributions from the wider finance community.  The code is hosted here: [github.com/FinancialMarkets/5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance)
+
+-  All materials and source code are released under open-source and creative commons licenses.
+-  A part of a broader open-source initiative at MI: https://github.com/FinancialMarkets  This initiative is just getting started -- more will be added soon.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## R/Shiny for Finance Education
+
+R/Shiny allows finance educators to:
+
+-  Bring standard text graphs off the page and make them interactive.
+
+-  Incorporate the massive amount of financial data generated each day.
+
+-  Leverage javascript libraries (htmlwidgets) for innovative visualizations.
+
+-  Deliver content widely (in the web browser) at low cost.  Mobile is increasingly good.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+<!-- SECTION: EXAMPLE APPS -->
+
+<!-- risk over time app -->
+
+
+##
+
+
+
+
+
+
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+##
+<!-- duration or convexity -->
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(    
+       sliderInput("ytm", label = "Yield to Maturity", max = .2, min = 0.01, value = .05, step = .01),
+       sliderInput("coupon", label = "Coupon Rate", max = .2, min = 0.01, value = .05, step = .01),
+       sliderInput("maturity", label = "Years to Maturity", max = 50, min = 1, value = 10)
+)
+
+renderPlot({
+
+bondValue <- 0
+ytmAxis <- seq(0.01, .2, by = .01)
+period <- 1
+
+cash_flows <- 0
+    for (i in 1:input$maturity){
+        cash_flows[i] <- 
+            (input$coupon * 1000) }
+
+    cash_flows[length(cash_flows)] <- cash_flows[length(cash_flows)] + 1000 
+    pvCashFlows <- cash_flows / (1 + input$ytm)^(1:input$maturity)
+
+### Bond Calculation: includes semiannual case which is not used ----   
+     if (period == 1) {
+         for (i in seq_along(ytmAxis)){
+          bondValue[i] <- (input$coupon * 1000) * ((1 - 1 / (1 + ytmAxis[i])^(input$maturity)) / ytmAxis[i]) + 1000 / (1 + ytmAxis[i])^(input$maturity) }
+ }    else {
+         for (i in seq_along(ytmAxis)){
+          bondValue[i] <- (input$coupon * (1000 / 2)) * ((1 - 1 / (1 + (ytmAxis[i] / 2))^(input$maturity * 2)) / (ytmAxis[i] / 2)) + 1000 / (1 + (ytmAxis[i] / 2))^(input$maturity * 2)
+              }
+          }
+
+### find on x-axis where ytm equals the input ytm -----
+   index <- seq_along(seq(0.01, .2, by = .01))[round(input$ytm,2) == round(ytmAxis, 2)]
+
+### Calculate Duration and Modified Duration ----
+    Duration <- 1:input$maturity %*% (pvCashFlows / bondValue[index])
+    modDur <- -1 * Duration / (1 + input$ytm)
+
+    durLine <- bondValue[index] * (1 + (modDur * (ytmAxis - input$ytm)))
+
+yAxis <- c("0.01", "", "", "", "0.05", "", "", "", "", "0.10", "", "", "", "", "0.15", "", "", "", "", "0.20")
+
+plot(1:20, bondValue, xaxt = "n", main = "Bond Price versus Yield to Maturity", ylab = "Bond Price ($)", xlab = "Yield to Maturity", type = "n", lwd = 4)
+axis(1, at = 1:20, labels = yAxis)
+lines(1:20, bondValue, lwd = 4)
+lines(1:20, durLine, lwd = 5, col = 4)
+legend('topright', c("Bond Price", "Duration Approximation of the Bond Price ", "Duration Error Region (Convexity)"), lty = c(1,1,1,1), col=c(1,4, "grey80"), lwd = c(5,5, 15))
+### attempting to shade region between the two lines [not working] ----
+polygon(c(1:20, rev(1:20)), c(bondValue, rev(durLine)), col = "grey80", border = NA)
+         
+   })
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+
+```{r echo=FALSE, message=FALSE}
+library(threejs)
+                                        #library(sigma)
+inputPanel(    
+    sliderInput("maxYtm", label = "Maximum Yield to Maturity", max = .5, min = 0.01, value = .20, step = .01),
+    sliderInput("coupon", label = "Coupon Rate", max = .2, min = 0.01, value = .05, step = .01),
+    sliderInput("maxMaturity", label = "Maximum Years to Maturity", max = 50, min = 1, value = 30)
+    )
+
+renderScatterplotThree({
+    ## need duration as a function of ytm, maturity (coupon is also an input but not of the function to be fed into outer ----
+    ## shoot: yy and mm should be vectors for outer ----
+    ## This calculates duration, however yo use outer function would have to be vectorizable ----
+    ## so just use this in nested for loops :) ----
+    ## if we could get this to work though, we could feed it directly into scatterplot3js
+    ff <- function(yy, mm){
+        ## calculate cash flows
+        cc <- rep(input$coupon * 1000, mm)
+        cc[length(cc)] <- cc[length(cc)] + 1000
+
+        ## bond value
+        bb <- (rep(1, mm)) %*% (cc / (1 + yy)^(1:mm))
+
+        ## duration
+        dd <- (1:mm) %*% ((cc / (1 + yy)^(1:mm)) / bb)
+
+        ## modified duration
+        md <- dd / (1 + yy)
+        return(md)
+    }
+
+
+    ## redo to input into 3js
+    ff.res <- 0
+    test <- 0
+    prod <- length(seq(.01, input$maxYtm, by = .01)) * length(1:input$maxMaturity)
+    test <- expand.grid(seq(.01, input$maxYtm, by = .01), 1:input$maxMaturity)
+    for (i in 1:prod){
+        ff.res[i] <- ff(test[i,1], test[i,2])
+    }
+
+    surf <- cbind(test, ff.res)
+    names(surf) <- c("YTM", "Maturity", "Duration")
+
+    ## x is a 3 column matrix where the columns refer to the (x,y,z) coordinate.  
+    scatterplot3js(as.matrix(surf), bg = "white", color = rainbow(dim(test)[1] * dim(test)[2]))
+})
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+## 
+
+```{r, echo = FALSE}
+library(threejs)
+options("scipen" = 100, "digits" = 6)
+inputPanel({
+  sliderInput("theTime", "Day/Second", value = c(0000000, 310000000), min = 0000000, max = 3100000, animate = animationOptions(interval = 300), sep = "", step = 60)
+})
+renderScatterplotThree({
+ ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1]
+ ez1509es1509$Date <- ez1509es1509$Date - 2015080000000
+tmp <- subset(ez1509es1509, Date > input$theTime[1])
+tmp <- subset(tmp, Date < input$theTime[2])
+ ## maybe sort to reverse moneyness -- so switches view
+  names(tmp) <- c("Seconds.Aug.2015", "-Moneyness", "ES.Put.Implied.Vol")
+tmp <- tmp[ order(tmp[,2]),]
+tmp[,2] <- -tmp[,2]
+    scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time (Seconds over August 2015)", "-Moneyness", "ES Put Implied Volatility"))
+})
+```
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+
+##
+
+<!-- downloading and sorting data -->
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(DT)
+library(quantmod)
+  comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+  comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+  names(comp) <- c("symbol", "name")
+inputPanel(
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name),
+    selectizeInput("statement", label = "Financial Statement", choices = list("Balance Sheet" = 1, "Income Statement" = 2), selected = 2, width = '800px')
+    )
+DT::renderDataTable({
+    ## valdate name ----
+    validate(
+        need(input$name != "", "Select a US stock name.")
+        )
+ticker <- comp$symbol[comp$name == input$name]
+                    
+    f1 <- getFinancials(ticker, src = "google", auto.assign = FALSE)
+    is1 <- viewFin(f1, type = "IS")
+    bs1 <- viewFin(f1, type = "BS")
+    if(input$statement == 1){
+        DT::datatable(bs1, options = list(pageLength = 5))
+    } else {
+        DT::datatable(is1, options = list(pageLength = 5))
+        }
+})
+#}}}
+```
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+
+##
+
+<!-- option gamma calculator -->
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(metricsgraphics)
+library(htmltools)
+library(htmlwidgets)
+library(RColorBrewer)
+## div(style = "margin-top: -20px;",
+sidebarLayout(
+    sidebarPanel(
+        selectizeInput("xaxis1", "X-Axis", choices = list("Stock Price" = 1,
+                                          "Strike Price" = 2,
+                                          "Volatility" = 3,
+                                          "Risk Free" = 4,
+                                          "Time" = 5), selected = 1),
+
+        ## selectizeInput('type1', "Type", choices = list("Call" = 1, "Put" = 2), selected = '1'),
+
+        ## have conditional input -- whatever is chosen above is not included below
+        ## note, we want to reproduce the charts like in page 313 of Hull
+
+        conditionalPanel(
+            condition = "input.xaxis1 == '1'",
+            sliderInput("strike5", "Strike Price", min=1, max=100, value=50, step = 1),
+            sliderInput("vol5", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
+            sliderInput("rf5", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
+            sliderInput("time5", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            ),
+
+        conditionalPanel(
+            condition = "input.xaxis1 == '2'",
+            sliderInput("stock6", "Stock Price", min=1, max=100, value=50, step = 1),
+            sliderInput("vol6", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
+            sliderInput("rf6", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
+            sliderInput("time6", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            ),
+
+        conditionalPanel(
+            condition = "input.xaxis1 == '3'",
+            sliderInput("stock7", "Stock Price", min=1, max=100, value=50, step = 1),
+            sliderInput("strike7", "Strike Price", min=1, max=100, value=50, step = 1),
+            sliderInput("rf7", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01),
+            sliderInput("time7", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            ),
+
+        conditionalPanel(
+            condition = "input.xaxis1 == '4'",
+            sliderInput("stock8", "Stock Price", min=1, max=100, value=50, step = 1),
+            sliderInput("strike8", "Strike Price", min=1, max=100, value=50, step = 1),
+            sliderInput("vol8", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
+            sliderInput("time8", "Time", min=0.01, max=2, value=0.5, step = 0.1)
+            ),
+
+        conditionalPanel(
+            condition = "input.xaxis1 == '5'",
+            sliderInput("stock9", "Stock Price", min=1, max=100, value=50, step = 1),
+            sliderInput("strike9", "Strike Price", min=1, max=100, value=50, step = 1),
+            sliderInput("vol9", "Volatility", min=0.01, max=1, value=0.20, step = 0.01),
+            sliderInput("rf9", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01)
+            )
+        ),
+    
+    mainPanel(
+
+        renderMetricsgraphics({
+
+            type1 <- '1'
+            
+            d1 <- function(){(log(stock/strike) + (rf + (vol * vol) / 2) * time) / (vol * sqrt(time))}
+            d2 <- function(){d1() - vol * sqrt(time)}
+
+            ## Delta
+            delta.c <- function(){pnorm(d1())}
+            delta.p <- function(){pnorm(d1()) - 1}
+
+            ## Theta
+            theta.c <- function(){-(stock * dnorm(d1()) * vol) / (2 * time) - rf * strike * exp(-rf * time) * pnorm(d2())}
+            theta.p <- function(){-(stock * dnorm(d1()) * vol) / (2 * time) + rf * strike * exp(-rf * time) * pnorm(-d2())}
+
+            ## Gamma
+            gamma <- function(){dnorm(d1()) / (stock * vol * sqrt(time))}
+
+            ## Vega
+            vega <- function(){stock * sqrt(time) * dnorm(d1())}
+
+            ## Rho
+            rho.c <- function(){strike * time * exp(-rf * time) * pnorm(d2())}
+            rho.p <- function(){-strike * time * exp(-rf * time) * pnorm(-d2())}
+
+            if(input$xaxis1 == '1' & type1 == '1'){
+                stock <- 1:100
+                strike <- input$strike5
+                vol <- input$vol5
+                rf <- input$rf5
+                time <- input$time5
+
+                tmp <- data.frame(Stock.Price = as.numeric(stock), Call.Gamma = as.numeric(gamma()))
+                ## names(data) <- c("Stock Price", "Gamma")
+                tmp %>%
+                    mjs_plot(x = Stock.Price, y = Call.Gamma) %>%
+                        mjs_line() %>%
+                            mjs_labs(x="STOCK PRICE", y="CALL GAMMA") %>%
+                                mjs_add_legend(legend = c("Gamma"))
+                
+            } else {
+                if(input$xaxis1 == '1' & type1 == '2'){
+                    stock <- 1:100
+                    strike <- input$strike5
+                    vol <- input$vol5
+                    rf <- input$rf5
+                    time <- input$time5
+
+                    tmp <- data.frame(Stock.Price = as.numeric(stock), Put.Gamma = as.numeric(gamma()))
+                    ## names(data) <- c("Stock Price", "Gamma")
+                    tmp %>%
+                        mjs_plot(x = Stock.Price, y = Put.Gamma) %>%
+                            mjs_line() %>%
+                                mjs_labs(x="STOCK PRICE", y="PUT GAMMA") %>%
+                                    mjs_add_legend(legend = c("Gamma"))
+                    
+                } else {
+                    if(input$xaxis1 == '2' & type1 == '1'){
+                        stock <- input$stock6
+                        strike <- 1:100
+                        vol <- input$vol6
+                        rf <- input$rf6
+                        time <- input$time6
+
+                        tmp <- data.frame(Strike.Price = as.numeric(strike), Call.Gamma = as.numeric(gamma()))
+                        tmp %>%
+                            mjs_plot(x = Strike.Price, y = Call.Gamma) %>%
+                                mjs_line() %>%
+                                    mjs_labs(x="STRIKE PRICE", y="CALL GAMMA")
+                        
+                    } else {
+                        if(input$xaxis1 == '2' & type1 == '2'){
+                            stock <- input$stock6
+                            strike <- 1:100
+                            vol <- input$vol6
+                            rf <- input$rf6
+                            time <- input$time6
+
+                            tmp <- data.frame(Strike.Price = as.numeric(strike), Put.Gamma = as.numeric(gamma()))
+                            tmp %>%
+                                mjs_plot(x = Strike.Price, y = Put.Gamma) %>%
+                                    mjs_line() %>%
+                                        mjs_labs(x="STRIKE PRICE", y="PUT GAMMA") %>%
+                                            mjs_add_legend(legend = c("Gamma"))
+
+                            
+                        } else {
+                            if(input$xaxis1 == '3' & type1 == '1'){
+                                stock <- input$stock7
+                                strike <- input$strike7
+                                vol <- seq(0.01, 0.5, by = 0.01)
+                                rf <- input$rf7
+                                time <- input$time7
+
+                                tmp <- data.frame(Volatility = as.numeric(vol), Call.Gamma = as.numeric(gamma()))
+                                tmp %>%
+                                    mjs_plot(x = Volatility, y = Call.Gamma) %>%
+                                        mjs_line() %>%
+                                            mjs_labs(x="VOLATILITY", y="CALL GAMMA") %>%
+                                                mjs_add_legend(legend = c("Gamma"))
+
+                                
+                            } else {
+                                if(input$xaxis1 == '3' & type1 == '2'){
+                                    stock <- input$stock7
+                                    strike <- input$strike7
+                                    vol <- seq(0.01, 0.5, by = 0.01)
+                                    rf <- input$rf7
+                                    time <- input$time7
+
+                                    tmp <- data.frame(Volatility = as.numeric(vol), Put.Gamma = as.numeric(gamma()))
+                                    tmp %>%
+                                        mjs_plot(x = Volatility, y = Put.Gamma) %>%
+                                            mjs_line() %>%
+                                                mjs_labs(x="VOLATILITY", y="PUT GAMMA") %>%
+                                                    mjs_add_legend(legend = c("Gamma"))
+
+                                    
+                                } else {
+                                    if(input$xaxis1 == '4' & type1 == '1'){
+                                        stock <- input$stock8
+                                        strike <- input$strike8
+                                        vol <- input$vol8
+                                        rf <- seq(.01, .2, by = 0.01)
+                                        time <- input$time8
+
+                                        tmp <- data.frame(Risk_Free = as.numeric(rf), Call.Gamma = as.numeric(gamma()))
+                                        tmp %>%
+                                            mjs_plot(x = Risk_Free, y = Call.Gamma) %>%
+                                                mjs_line() %>%
+                                                    mjs_labs(x="RISK-FREE", y="CALL GAMMA") %>%
+                                                        mjs_add_legend(legend = c("Gamma"))
+
+                                        
+                                    } else {
+                                        if(input$xaxis1 == '4' & type1 == '2'){
+                                            stock <- input$stock8
+                                            strike <- input$strike8
+                                            vol <- input$vol8
+                                            rf <- seq(0.01, 0.2, by = 0.01)
+                                            time <- input$time8
+
+                                            tmp <- data.frame(Risk_Free = as.numeric(rf), Put.Gamma = as.numeric(gamma()))
+                                            tmp %>%
+                                                mjs_plot(x = Risk_Free, y = Put.Gamma) %>%
+                                                    mjs_line() %>%
+                                                        mjs_labs(x="RISK-FREE", y="PUT GAMMA") %>%
+                                                            mjs_add_legend(legend = c("Gamma"))
+
+                                            
+                                        } else {
+                                            if(input$xaxis1 == '5' & type1 == '1'){
+                                                stock <- input$stock9
+                                                strike <- input$strike9
+                                                vol <- input$vol9
+                                                rf <- input$rf9
+                                                time <- seq(0.1, 2, by = 0.1)
+
+                                                tmp <- data.frame(Time = as.numeric(time), Call.Gamma = as.numeric(gamma()))
+                                                tmp %>%
+                                                    mjs_plot(x = Time, y = Call.Gamma) %>%
+                                                        mjs_line() %>%
+                                                            mjs_labs(x="TIME", y="CALL GAMMA") %>%
+                                                                mjs_add_legend(legend = c("Gamma"))
+
+                                                
+                                            } else {
+                                                if(input$xaxis1 == '5' & type1 == '2'){
+                                                    stock <- input$stock9
+                                                    strike <- input$strike9
+                                                    vol <- input$vol9
+                                                    rf <- input$rf9
+                                                    time <- seq(0.1, 2, by = 0.1)
+
+                                                    tmp <- data.frame(Time = as.numeric(time), Put.Gamma = as.numeric(gamma()))
+                                                    tmp %>%
+                                                        mjs_plot(x = Time, y = Put.Gamma) %>%
+                                                            mjs_line() %>%
+                                                                mjs_labs(x="TIME", y="PUT GAMMA") %>%
+                                                                    mjs_add_legend(legend = c("Gamma"))
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        })
+        )
+)
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+
+sidebarLayout(
+	      sidebarPanel(
+
+			   textInput("ticker1", label = "Stock Ticker", value = "XOM"),
+			   dateRangeInput("dates1", label = "Date Range", start = "2015-01-01", end = Sys.Date()),
+			   sliderInput("loss", label = "% VaR", max = .2, min = 0.01, value = .05, step = .01)
+
+			   ),
+	      mainPanel(
+tabsetPanel(
+	tabPanel(title = "Empirical",
+ 		 renderPlot({
+			  library(fBasics)
+			  library(tseries)
+			  validate(
+				   need(input$ticker1 != "", "Input a valid US stock ticker.")
+				   )
+			  x1 <- get.hist.quote(input$ticker1, start = input$dates1[1], end = input$dates1[2], quote = "Close")
+			  x1 <- ts(x1)
+			  r1 <- log(x1[2:(length(x1))]/x1[1:(length(x1) - 1)])
+			  dens <- density(r1)
+
+			  VaR <- quantile(r1, input$loss)
+			  ret <- max(which(dens$x < VaR))
+			  qn <- min(which(dens$x >= -1))
+			  plot(dens, main = paste(input$ticker1, "VaR and Empirical Density"), lty = 1, col = 1, lwd = 2, ylab = "", xlab = paste("The ", 100*input$loss,"% ", "VaR is"," ", round(100*VaR, 2), "%", sep = ""), cex.lab = 2)
+
+			  legend("topright", c("Stock Return Density"), col = c(1), lty = c(1), lwd = c(2))
+
+			  with(dens, polygon(x=c(x[c(qn,qn:ret,ret)]), y= c(0, y[qn:ret], 0), col="red"))
+
+			})
+	),
+	    tabPanel(title = "Normal",
+		     renderPlot({
+			  library(fBasics)
+			  library(tseries)
+			  validate(
+				   need(input$ticker1 != "", "Input a valid US stock ticker.")
+				   )
+			  x2 <- get.hist.quote(input$ticker1, start = input$dates1[1], end = input$dates1[2], quote = "Close")
+			  x2 <- ts(x2)
+			  r2 <- log(x2[2:(length(x2))]/x2[1:(length(x2) - 1)])
+			  aver.var <- mean(r2)
+			  sd.var <- sd(r2)
+			  r2 <- rnorm(mean = aver.var, sd = sd.var, n = 2000000)
+			  dens2 <- density(r2)
+
+			  VaR2 <- quantile(r2, input$loss)
+			  ret2 <- max(which(dens2$x < VaR2))
+			  qn2 <- min(which(dens2$x >= -1))
+			  plot(dens2, main = paste(input$ticker1, "VaR and Normal Density"), lty = 1, col = 1, lwd = 2, ylab = "", xlab = paste("The ", 100*input$loss,"% ", "VaR is"," ", round(100*VaR2, 2), "%", sep = ""), cex.lab = 2)
+
+			  legend("topright", c("Stock Return Density"), col = c(1), lty = c(1), lwd = c(2))
+
+			  with(dens2, polygon(x=c(x[c(qn2,qn2:ret2,ret2)]), y= c(0, y[qn2:ret2], 0), col="red"))
+		     })
+		     )
+	    )
+			)
+	      )
+
+#}}}
+```
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+
+## Optimal Hedge Ratio Calculator
+
+<!-- optimal hedge ratio calculator -->
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+	      sidebarPanel(
+
+	   sliderInput("spotSD", "Standard Deviation of Spot Changes", min = .01, max = 1, value = 0.1, step = .05),
+	   sliderInput("futSD", "Standard Deviation of Futures Changes", min = .01, max = 1, value = 0.1, step = .05),
+	   sliderInput("correl", "Correlation Coefficient", min = -1, max = 1, value = 0.7, step = .01)
+
+ 
+	   ),
+	      mainPanel(
+
+renderPlot({
+  ohr <- (input$correl * input$spotSD) / input$futSD
+
+  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+  text(x = 0.5, y = 0.5, labels = paste(round(ohr, 2)), cex = 5)
+
+
+})
+)
+	      )
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+<!-- second part of idea: collaboration enabled by github -->
+
+## Collaboration using GitHub
+
+Presently, financial education materials are duplicated through separate efforts by individuals and organizations. This is particularly true for materials targeting the undergraduate level.
+
+We hope to foster a community effort to create a set of finance education and course materials. Collaboration and attribution are managed through GitHub.
+
+-  Very easy to contribute with GitHub's in-browser edit feature.
+
+-  Git/GitHub makes author attribution easy and share-able.  Presentation author linked to GitHub contributors.
+
+-  We hope material users will contribute back to the code.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Milken Institute CFM
+
+The Center for Financial Markets promotes financial market understanding and works to expand access to capital, strengthen—and deepen—financial markets, and develop innovative financial solutions to the most pressing global challenges.
+
+- Website: http://www.milkeninstitute.org/centers/markets
+- Twitter: @MI_CFM
+
+## Matt Brigida
+
+<!--- Assistant Professor of Finance, University of Nebraska--Kearney -->
+
+[github.com/Matt-Brigida](https://github.com/Matt-Brigida)
+
+email: matt@complete-markets.com
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
