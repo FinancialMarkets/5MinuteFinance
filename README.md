@@ -92,6 +92,8 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [An Introduction to Stock Investments](https://micfm.shinyapps.io/stock/)
 
+[An Introduction Stock Markets](https://micfm.shinyapps.io/stock_markets/)
+
 [The Pairs Trade](https://micfm.shinyapps.io/pairs_trade/)
 
 [The Limit Order Book](https://micfm.shinyapps.io/limit_order_book/)
@@ -105,8 +107,6 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 [ETFs](https://micfm.shinyapps.io/ETFs/)
 
 <!-- #### Need to consolidate the stock market presentations below.  -->
-
-[Intro Stock Markets](https://micfm.shinyapps.io/stock_markets/)
 
 <!-- [Stock Markets Dark Pools](https://micfm.shinyapps.io/stock_markets_dark_pools/) -->
 

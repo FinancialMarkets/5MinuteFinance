@@ -70,9 +70,9 @@ Now stocks are traded in many exchanges throughout the U.S., which means we need
 
 Starting in 1975, the SEC began to work on a national market system.   In 2005 much of this work was consolidated into [Reg NMS](https://www.sec.gov/rules/final/34-51808.pdf), which among other things sought to:
 
--   ensure investors were getting the best price across all exchanges for their purchase or sale of stock (known as the "Order Protection Rule").
--  provide all investors fair access to price quotations, and to also set a limit on access fees ("Access Rule").
--  restrict sub-penny quotations.  
+-   Ensure investors were getting the best price across all exchanges for their purchase or sale of stock (known as the "Order Protection Rule").
+-  Provide all investors fair access to price quotations, and to also set a limit on access fees ("Access Rule").
+-  Restrict sub-penny quotations.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
