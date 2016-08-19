@@ -1,0 +1,13 @@
+#+TITLE: 5MinuteFinance Website Notes
+#+OPTIONS: toc:nil
+
+*** Corporate Finance Topics
+**** we should put financial ratios under financial statements.  
+**** there should be a new topic called capital budgeting and under that should be the following concepts:
+1. OCF
+2. NPV and IRR
+
+
+*** Fixed Income and Debt
+**** ETNs is not a topic unto itself.  It is just a presentation/concept.
+**** 
