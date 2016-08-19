@@ -9,13 +9,17 @@ runtime: shiny
 smaller: true
 ---
 
-## The Time Value of Money
+## Motivation
 
-A dollar today is worth more than a dollar you'll receive in a year. This is because of inflation, and the uncertainty regarding actually receiving the promised dollar.  
+What does it mean to say that money has a "time value?". Well, ask yourself the question: Would you rather have a dollar today or a dollar a year from now? You'd rather have the dollar today, so we say that a dollar today has more value than a dollar a year from now.  
 
-In this presentation we'll cover the mechanics of moving money from one point in time to another.
+Why is that? We point to two reasons:
+- Inflation: If the prices of things go up over the course of the year, the dollar you get in a year will buy less goods
+- Credit risk: You have to take the risk for a year that you might not actually get that dollar
 
-- Only once cash flows have been moved to the same time period can they be added or subtracted
+Now we can ask the following question:  How much money would you need to receive a year from now to be indifferent between a dollar today and money in a year.  $1.05? $1.50? $2.00?  That difference is the time value of money to you.  
+
+In this presentation we'll cover the basic mechanics understanding and calculating the time value of money. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
