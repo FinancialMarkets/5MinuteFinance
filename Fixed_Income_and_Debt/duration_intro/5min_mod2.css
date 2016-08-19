@@ -1165,9 +1165,11 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small
 	color: #333333;
 }
 h1, .h1, h2, .h2, h3, .h3 {
-	margin-top: 20px;
-	margin-bottom: 10px;
-	color: #333333;
+    /* margin-top: 20px; */
+    /* move header (and so text) up on every slide */
+    margin-top: 0rem;
+    margin-bottom: 10px;
+    color: #333333;
 }
 h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h1 .small, .h1 .small, h2 .small, .h2 .small, h3 .small, .h3 .small {
 	font-size: 65%;
