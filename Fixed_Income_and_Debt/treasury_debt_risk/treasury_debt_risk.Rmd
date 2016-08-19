@@ -1,7 +1,6 @@
 ---
 title: "Risk in Treasury Debt"
-author: "Milken Institute, CFM"
-date: "October 31, 2015"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod.css
@@ -18,6 +17,8 @@ knitr::opts_chunk$set(echo = FALSE)
 To understand the amount of risk in the US's outstanding Treasury debt, particularly relative to historical levels.
 
 - The result is useful in understanding the risk in the US banking system.
+
+-  Further, ownership of US Treasury debt has been markedly affected by recent unconconventional modetary policy (Quantitative Easing).  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -38,7 +39,7 @@ tabsetPanel(
 # 	   dateRangeInput("dateRange", label = "Start Date", start = "2015-01-01", end = Sys.Date())
 ## radioButtons("statement", label = "Financial Statement", choices = list("Balance Sheet" = 1, "Income Statement" = 2), selected = 2)
 # )
-options(download.file.method = "curl")
+## options(download.file.method = "curl")
 output$percentPlot <- renderDygraph({
     total <- getSymbols("GFDEBTN", src = "FRED", auto.assign = F) / 1000
     fed <- getSymbols("FDHBFRBN", src = "FRED", auto.assign = F)

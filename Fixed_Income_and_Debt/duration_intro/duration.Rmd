@@ -1,5 +1,5 @@
 ---
-title: "An Introduction to     Duration"
+title: "An Introduction to Duration"
 # author: "Milken Institute, Center for Financial Markets"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 affiliation: Milken Institute
