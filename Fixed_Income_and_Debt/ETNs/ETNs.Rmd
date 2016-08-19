@@ -8,20 +8,37 @@ logo: misq.png
 css: 5min.css
 ---
 
-
-
-
 ## Exchange Traded Notes (ETNs)
 
-ETNs are like ETFs in that they track an financial (stock, bond, commodity, foreign exchange, etc) index and trade throughout the day.
+ETNs are like ETFs in that they passively track an financial (stock, bond, commodity, foreign exchange, etc) index and trade throughout the day.
 
--  The difference is that ETNs are debt securities, whereas ETFs are a type of open-ended mutual fund.  This means they are backed only by the credit of the issuer---wheres in an ETF you have a claim on the underlying assets.
+-  The difference is that ETNs are unsecured debt securities, whereas ETFs are a type of open-ended mutual fund.  This means ETNs are backed only by the credit of the issuer---wheres in an ETF you have a claim on the underlying assets.
 
--  Like ETFs, ETNs typically passively match an index's returns.
+-  However, because the ETN doesn't have to buy the assets underlying the fund, there is no tracking error between the ETN and underlying index's returns.  The ETN (like the ETF) does charge a management fee, which mean the ETN's returns will always be lower than the returns it is tracking by this fee.
+
+-  On the next slide the difference between the [insert] ETN and the index it tracks is shown.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## ETNs and Exotic Underlyings
+
+Because an ETN is a promise to pay an underlying's return, and the underlying doesn't actually have to be purchased, the ETN can track returns that ETFs may have a hard time replicating.  
+
+-  For example, consider the [iPath® CBOE S&P 500 BuyWrite IndexSM ETN](http://www.ipathetn.com/US/16/en/instruments.app#/details/19544) which tracks the 
+
+-  For another example there is the [iPath® Asian & Gulf Currency Revaluation ETN](http://www.ipathetn.com/US/16/en/instruments.app#/details/21845)
+
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
 ## ETN Examples
+
+VXX
+VXZ
+
 
  
 

@@ -36,13 +36,11 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios)
 
-#### Valuation 
+#### Time Value of Money
 
-[Intro Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/)
+[Time Value of Money: Single CFs](https://micfm.shinyapps.io/TVM_Single_CFs)
 
-[Intro to Bond Valuation](https://micfm.shinyapps.io/intro_bond_valuation)
-
-[The CAPM](https://micfm.shinyapps.io/The_CAPM)
+[Time Value of Money: Multiple CFs](https://micfm.shinyapps.io/TVM_Multiple_CFs/)
 
 #### Capital Budgeting
 
@@ -50,11 +48,13 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/)
 
-#### Time Value of Money
+#### Valuation 
 
-[Time Value of Money: Single CFs](https://micfm.shinyapps.io/TVM_Single_CFs)
+[Intro Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/)
 
-[Time Value of Money: Multiple CFs](https://micfm.shinyapps.io/TVM_Multiple_CFs/)
+[Intro to Bond Valuation](https://micfm.shinyapps.io/intro_bond_valuation)
+
+[The CAPM](https://micfm.shinyapps.io/The_CAPM)
 
 ### Econometrics
 
