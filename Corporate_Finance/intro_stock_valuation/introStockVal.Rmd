@@ -102,11 +102,19 @@ As an example of scenario 1, say a firm is not expected to pay dividends for the
 
 - Now we just need to discount this value back to today: $V_0 = \frac{\$125}{(1.07^8)} = \$72.75$
 
--  Give stock valuation a try and check your answers with the following app.  The app will use scenario 1 above for the irregular growth case.  
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Discounted Dividend Stock Values App
+
+Give stock valuation a try, and on the next slide you can check your answers with the interactive app.  
+
+-  The app will use scenario 1 above for the irregular growth case.  
+
+-  As you switch between the three types of growth, the inputs will automatically react.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{

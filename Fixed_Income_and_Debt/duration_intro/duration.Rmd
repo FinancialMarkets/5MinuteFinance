@@ -1,12 +1,12 @@
 ---
-title: "An Introduction to Duration"
+title: "An Introduction to     Duration"
 # author: "Milken Institute, Center for Financial Markets"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 affiliation: Milken Institute
 # date: "03/12/2015"
 output: ioslides_presentation
 logo: misq.png
-css: 5min_mobile.css
+css: 5min_mod2.css
 runtime: shiny
 ---
 
@@ -29,7 +29,7 @@ Duration is quoted in 'years'.
 Duration is a linear approximation of a nonlinear relationship.
 
 - Duration is more accurate as the change in the interest rate becomes smaller.  
-- The error when using duration to estimate a bond's sensitivity to interest rates is often called 'convexity'.
+- The error when using duration to estimate a bond's sensitivity to interest rates is often called [*convexity*](https://micfm.shinyapps.io/convexity/).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -39,7 +39,9 @@ Duration is affected by the bond's coupon rate, yield to maturity, and the amoun
 
 -  Duration is inversely related to the bond's coupon rate. 
 -  Duration is inversely related to the bond's yield to maturity (YTM). 
--  Duration can increase or decrease given an increase in the time to maturity (but it usually increases).
+-  Duration can increase or decrease given an increase in the time to maturity (but it usually increases). You can look at this relationship in the upcoming interactive 3D app.
+
+For a review of bond coupon rates and yields see these presentations: [An Introduction to Bond Valuation](https://micfm.shinyapps.io/intro_bond_valuation); [For What is the Yield-to-Maturity Used?](https://micfm.shinyapps.io/For_What_YTM_Used/).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -264,7 +266,7 @@ $\%\Delta P = -8(0.5\%) = 4\%$
 ## Improving on Duration
 
 If we want to improve our estimate of the \% change in the bond's price, we can add a convexity adjustment.
-
+<!-- put above -->
 -  This is covered in the 5MinuteFinance interactive presentation on [Bond Convexity](https://micfm.shinyapps.io/convexity/).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

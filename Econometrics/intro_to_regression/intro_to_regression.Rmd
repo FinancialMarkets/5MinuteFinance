@@ -10,10 +10,16 @@ runtime: shiny
 smaller: true
 ---
 
+
 ## What is Linear Regression?
 
-A tool to 
+Linear regression is the projection of your dependent variable ($y$) into the vector space spanned by your independent variables ($x_i$).  
 
+- OK, so that is a highly technical definition which requires some linear algebra knowledge.  But bear with me because it will make sense shortly.  Say for now we have two independent variables, $x_1$ and $x_2$.
+
+-  What the above definition means is we choose parameters (the $\beta$ coefficients) so that $\beta_1x_1 + \beta_2x_2$ is as close to how $y$ behaves as possible.  Since $\beta_1x_1 + \beta_2x_2$ is linear function, regression gives us a linear approximation of $y$.
+
+-  All that is left is to define "close" and find a method to find the $\beta$ which maximizes the closeness.  
 
 <div class="MIfooter"><img src="mi.png", style="height:50px;"></div> 
 
