@@ -30,9 +30,13 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Corporate Finance
 
+#### Financial Statements
+
 [Intro to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements)
 
 [Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios)
+
+#### Valuation 
 
 [Intro Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/)
 
@@ -40,15 +44,17 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [The CAPM](https://micfm.shinyapps.io/The_CAPM)
 
+#### Capital Budgeting
+
 [OCFs](https://micfm.shinyapps.io/OCFs)
+
+[Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/)
+
+#### Time Value of Money
 
 [Time Value of Money: Single CFs](https://micfm.shinyapps.io/TVM_Single_CFs)
 
 [Time Value of Money: Multiple CFs](https://micfm.shinyapps.io/TVM_Multiple_CFs/)
-
-[Operating Cash Flow](https://micfm.shinyapps.io/operating_cash_flow)
-
-[Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/)
 
 ### Econometrics
 
