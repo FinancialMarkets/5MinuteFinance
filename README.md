@@ -46,7 +46,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 #### Capital Budgeting
 
-[OCFs](https://micfm.shinyapps.io/OCFs)
+[Operating Cash Flow](https://micfm.shinyapps.io/OCFs)
 
 [Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/)
 
