@@ -13,17 +13,25 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-## 5Minute[Finance]
+## 5MinuteFinance
 
 Milken Institute Center for Financial Markets (MICFM) initiative to create short, interactive, educational materials on financial topics written in R/Shiny.  The project welcomes contributions from the wider finance community.  The code is hosted here: [github.com/FinancialMarkets/5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance)
 
 -  All materials and source code are released under open-source and creative commons licenses.
--  A part of a broader open-source initiative at MI: https://github.com/FinancialMarkets  This initiative is just getting started -- more will be added soon.
+-  A part of a new broad open-source initiative at MI: https://github.com/FinancialMarkets  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
-## R/Shiny for Finance Education
+## Interactive Presentations
+
+These presentations take the static financial topics you may see in a textbook, and brings them off the page and allows you to interact with them.  This allows you to learn in a hands-on fashion.  
+
+-  For example, take a look at the interactive app on the next slide.
+
+
+
+
 
 
 
@@ -36,11 +44,11 @@ Milken Institute Center for Financial Markets (MICFM) initiative to create short
 
 R/Shiny allows finance educators to:
 
--  Bring standard text graphs off the page and make them interactive.
+
 
 -  Incorporate the massive amount of financial data generated each day.
 
--  Leverage javascript libraries (htmlwidgets) for innovative visualizations.
+
 
 -  Deliver content widely (in the web browser) at low cost.  Mobile is increasingly good.
 
@@ -122,7 +130,19 @@ polygon(c(1:20, rev(1:20)), c(bondValue, rev(durLine)), col = "grey80", border =
 #}}}
 ```
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+## New Visualizations
+
+These apps will also allow you to look at financial concepts in way they haven't been seen before.  This is often done by leveraging javascript libraries (htmlwidgets).
+
+-  You can interact with these visualizations with the mouse. 
+
+-  For example, the next slide shows the duration surface as a function of coupon rate, and time and yield to maturity.
+
+-  You can move the surface around to get a better look at the relationships---for example take a look at how duration is affected by time to maturity.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ##
 
@@ -202,6 +222,16 @@ tmp[,2] <- -tmp[,2]
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+## Interaction with Financial Data
+
+Financial markets generate massive amounts of data every day.  These apps will give you access to the data, 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+## 
+
+<!-- insert risk over time app here -->
 
 
 ##
