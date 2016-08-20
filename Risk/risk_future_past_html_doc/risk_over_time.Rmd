@@ -1,0 +1,139 @@
+---
+title: "Time Varying Risk"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+output: html_document
+logo: misq.png
+runtime: shiny
+smaller: true
+---
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Measuring Risk
+
+The main problem with risk calculations is that it requires us to predict the future.  
+
+- During stable periods, the past may be a good predictor of the future, so we can use historical data.
+
+- In periods of crisis, however, the future may behave differently from the past rendering historical data irrelevant.
+
+- It is precisely in the latter type of period that we need good measures of risk. In other words, *risk measures tend to work well until you need them.*
+
+
+
+
+## Review of Return Description
+
+To implement any measure of risk we must have a description of how the asset's returns behave.  
+
+- This is described by a probability density function (PDF).  
+
+- For all intervals, the PDF assigns a probability that an asset's return will be within each interval in a given period. For example, the PDF may say there is a 7\% probability the asset's return will be between 1\% and 2\% over the next day.  
+
+-  For an introduction to risk in financial markets see [A First Look at Risk](https://micfm.shinyapps.io/what_is_risk).
+
+
+
+  
+## Let's Take a Look
+
+In the following app you can see how stock returns distributions behaved over different time periods. 
+
+-  Generally, the lower the peak of the distribution, the higher the risk (possible returns are spread over a wider interval of returns). 
+
+-  Be sure to move the 3D graphic around and zoom in and out to get a better look.
+
+- Try and compare small stocks with the distributions on portfolios of large numbers of stocks.  For example, take a look at EGAS and then SPY.  EGAS is a small Natural Gas distributor and SPY is an ETF which tracks the S&P 500.  Are there differences between how risk varies between the two?
+
+-  The app may take 5 seconds or so to load.
+
+
+
+
+## 
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(quantmod)
+library(plotly)
+
+inputPanel(
+    textInput("ticker", label = "Stock Ticker", value = "C")
+)
+
+renderPlotly({
+    ## valdate ticker ----
+    validate(
+        need(input$ticker != "", "Input a valid US stock ticker.")
+    )
+
+    stock <- getSymbols(input$ticker, src = "yahoo", auto.assign = F)
+    adjStock <- Ad(stock)
+    stockRet <- Delt(adjStock)[-1]
+    stock.mat <- matrix(stockRet)
+
+    n <- floor(dim(stock.mat)[1]/30)
+
+    densx <- matrix(0, nrow = n, ncol = 512)
+    densy <- matrix(0, nrow = n, ncol = 512)
+    count <- matrix(0, nrow = n, ncol = 512)
+    
+    a <- rep(0, n)
+    b <- rep(0, n)
+    for (i in 1:n) {
+        g <- 30 * (i - 1)
+        h <- 30 * i
+        densx[i, ] <- density(stock.mat[g:h, 1])$x
+        densy[i, ] <- density(stock.mat[g:h, 1])$y
+        count[i, ] <- rep(i, 512)
+    }
+
+
+    tcount <- t(count)
+    tcount.stacked <- stack(data.frame(tcount))[, -2]
+    tdensx <- t(densx)
+    tdensx.stacked <- stack(data.frame(tdensx))[, -2]
+    tdensy <- t(densy)
+    tdensy.stacked <- stack(data.frame(tdensy))[, -2]
+
+    dat.df <- data.frame(cbind(tcount.stacked, tdensx.stacked, tdensy.stacked))
+    names(dat.df) <- c("month", "return", "density")
+
+    ## Based off of example here: http://rpubs.com/julyanarbel/192923
+    
+    plot_ly(dat.df, x = return, y = month, z = density, group = month, type = "scatter3d", mode = "lines") 
+})
+```
+
+
+
+<!-- go a bit into ARCH/GARCH models -->
+
+##  Predicting Risk: Models
+
+We do have various methods to predict risk, such as the [ARCH/GARCH](https://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity) class of models and predictions from [Kalman Filtering](https://en.wikipedia.org/wiki/Kalman_filter) and [Markov Switching](http://complete-markets.com/2014/02/markov-regime-switching-volatility-in-natural-gas-futures-ngh4/) algorithms.  However in these models future risk is a function of past risk, and so in low risk periods the models will predict low risk in the future and similarly for high risk periods.  This makes sense, because we know [volatility clusters](https://en.wikipedia.org/wiki/Volatility_clustering).  
+
+-  What these models won't tell us is when we'll *transition* from low to high risk periods.  This transition point is a very valuable piece of information.
+
+
+
+##  Predicting Risk: Expectations
+
+Given the weakness of the econometric method of predicting risk, most focus on market based estimates.  Expected risk is an important component of option prices. So we can observe option prices to get an idea of what market participants expect risk to be in the future.
+
+-  This method works well when there are known events -- such as option earnings season.  However it will fail if the events are unforeseen, such as the BP Gulf of Mexico oil spill.
+
+-  A commonly cited measure of overall market risk is the [VIX](https://micfm.shinyapps.io/The_VIX/).  There is even an expected volatility of this VIX in the [VVIX](https://micfm.shinyapps.io/The_VVIX/).
+
+
+
+
+## Credits and Collaboration
+
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Risk/risk_future_past/risk_over_time.Rmd) to see the code and collaborators for this presentation
+
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+
+- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
+
+
+

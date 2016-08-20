@@ -1,0 +1,348 @@
+---
+title: "Foreign Exchange Market"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+header-includes:
+   - \usepackage{eurosym}
+   - \usepackage{textcomp}
+output: html_document
+logo: misq.png
+runtime: shiny
+---
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Foreign Exchange (FX) Market
+
+The FX market allows you to exchange one currency for another.  
+
+-  For example, you can exchange US dollars for euros.  
+
+The *exchange rate* will determine how many euros you receive for a US dollar.  
+
+
+
+
+## Currency Acronyms
+
+In the following presentation we'll use the currency acronyms common on sites such as Bloomberg. 
+
+- EUR: Euros
+- GBP: U.K. Pounds
+- USD: U.S. Dollar
+- CHF: Swiss Franc
+- CAD: Canadian Dollar
+- JPY: Japanese Yen
+
+
+
+## The Exchange Rate
+
+The exchange rate can be quoted in two equivalent ways, the direct and indirect quotes.  Assume we are in the US, and 'foreign currency' refers to anything other than the US dollar. 
+
+-  *Direct quote*: the value of the foreign currency in US dollars.
+-  *Indirect quote*: the value of the US dollar expressed in foreign currency.
+
+Note, like stock, currencies are traded with a bid/ask spread.  Throughout this presentation we'll ignore the spread for simplicity.
+
+
+
+## Direct and Indirect Quotes
+
+Say the direct quote for the EUR is USD 1.25/EUR.  
+
+- this means for each USD 1.25 you will receive 1 EUR.
+
+The indirect quote is then $\frac{1}{\text{USD} 1.25} = \text{EUR}\ 0.8/\text{USD}$.
+
+- this means for each EUR 0.8 you will receive USD 1.
+
+Note that these quotes are equivalent: converting USD 1.25 into 1 EUR, and then converting the 1 EUR back into dollars, affords you USD 1.25.
+
+
+
+## The Following Chart
+
+The following chart shows the direct and indirect quote for the currency you choose.  Remember the:
+
+-  direct quote is the amount of USD required for a unit of foreign currency. 
+
+-  indirect quote is the amount of foreign currency required for a unit of USD.  
+
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(quantmod)
+inputPanel(
+    selectInput("curr", "Select Currency", choices = c("Euro" = "1", "U.K. Pound" = "2", "Swiss Franc" = "3", "Canadian Dollar" = "4"), selected = "1") 
+    )
+renderDygraph({
+  currSym <- switch(input$curr,
+                    "1" = "EXUSEU",
+                    "2" = "EXUSUK",
+                    "3" = "EXSZUS",
+                    "4" = "EXCAUS")
+
+    ## to fix the https issue downloading from FRED, added method = "curl" to getSymbols function call -- 
+    
+    direct1 <- getSymbols(currSym, from = "1900-01-01", auto.assign = FALSE, src = "FRED")
+    indirect1 <- 1/direct1
+
+    ## stocks <- data.frame(
+    ##     time = as.Date(index(direct1)),
+    ##     X = direct1,
+    ##     Y = indirect1)
+    ## names(stocks) <- c("time", "Direct", "Indirect")
+    data1 <- merge.xts(direct1, indirect1)
+    names(data1) <- c("Direct", "Indirect")
+    dygraph(data1, main = "") %>%
+        dyRangeSelector()
+})
+#}}}
+```
+
+<!---
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+## library(metricsgraphics)
+## library(quantmod)
+## inputPanel(
+##     selectInput("curr2", "Select Currency", choices = c("Euro" = "1", "U.K. Pound" = "2", "Swiss Franc" = "3", "Canadian Dollar" = "4", "Japanese Yen" = "5"), selected = "1") 
+##     )
+## renderMetricsgraphics({
+##   currSym <- switch(input$curr2,
+##                     "1" = "EXUSEU",
+##                     "2" = "EXUSUK",
+##                     "3" = "EXSZUS",
+##                     "4" = "EXCAUS")
+
+##     options(download.file.method="wget")
+##     direct <- getSymbols(currSym, from = "1900-01-01", auto.assign = FALSE, src = "FRED")
+##     indirect <- 1/direct
+
+##     stocks <- data.frame(
+##         time = as.Date(index(direct)),
+##         X = direct,
+##         Y = indirect)
+##     names(stocks) <- c("time", "Direct", "Indirect")
+
+##     stocks %>%
+##         mjs_plot(x=time, y=Direct) %>%
+##             mjs_line() %>%
+##                 mjs_add_line(Indirect) %>%
+##                     mjs_axis_x(xax_format="date") %>%
+##                         mjs_add_legend(legend=c("Direct", "Indirect"))
+## })
+#}}}
+```
+-->
+
+
+
+## Practice Currency Conversions
+
+The next slide will allow you to practice converting USD to foreign currency given the exchange rate and whether it is a direct or indirect quote.
+
+
+
+## Converts from USD to Foreign Currency 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        numericInput("num.usd", "Amount of USD", value = 100),        
+        numericInput("fxrate", "Exchange Rate", value = 1),
+        radioButtons("type", "", choices = c("Direct" = "1", "Indirect" = "2"), selected = 1)
+        ),
+    mainPanel(
+        
+        renderPlot({
+            if (input$type == 1){
+                num.fgn <- input$num.usd / input$fxrate
+            } else {
+                num.fgn <- input$num.usd * input$fxrate
+            }            
+            plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+            text(x = 0.5, y = 0.5, labels = paste(round(num.fgn, 2)), cex = 5)
+            text(.22, 0.95, "Foreign Currency:", cex = 2)
+
+        })
+        )
+    )
+#}}}
+```
+
+
+## Cross Rates
+
+In addition to direct and indirect quotes, there are also cross rates.
+
+- A cross rate is a currency quote which does not involve the USD.
+
+-  So a quote of EUR 0.9/CHF, or 0.9 euros for a Swiss Franc, is a cross rate.
+
+
+
+## Calculating Cross Rates
+
+Most currencies are quoted as direct quotes.
+
+-  However, given direct (or indirect) quotes, we can always calculate the cross rate.
+
+-  To do so, note we can treat the currency units algebraically.
+
+-  For example if we multiply the indirect quote for the euro by the direct quote for the UK pound, we have:
+
+$\frac{EUR}{USD}\frac{USD}{GBP} = \frac{EUR}{GBP}$
+
+
+
+## Cross Rate Example
+
+Say we have the following direct quotes:  USD 1.20/EUR and USD 1.5/GBP.  How many EUR does it take to buy a GBP (EUR/GBP)?
+
+-  Solution: note that $\frac{\frac{USD}{GBP}}{\frac{USD}{EUR}} = \frac{EUR}{GBP}$ so it is $\frac{1.50}{1.20} = \text{EUR}\ 1.25/\text{GBP}$
+
+Test yourself using the following cross rate calculator.
+
+
+
+## Cross Rate Calculator
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        numericInput("Quote1", "EUR", value = 1.2),        
+        radioButtons("type1", "", choices = c("Direct" = "1", "Indirect" = "2"), selected = 1),
+        numericInput("Quote2", "GBP", value = 1.5),
+        radioButtons("type2", "", choices = c("Direct" = "1", "Indirect" = "2"), selected = 1)
+        ),
+    mainPanel(
+        
+        renderPlot({
+            if (input$type1 == 1 && input$type2 == 1){
+                crossRate <- input$Quote1 / input$Quote2
+                units <- "GBP/EUR"
+            } else {
+                if (input$type1 == 1 && input$type2 == 2){
+                    crossRate <- input$Quote1 * input$Quote2
+                    units <- "GBP/EUR"
+                } else {
+                    if (input$type1 == 2 && input$type2 == 1){
+                        crossRate <- input$Quote1 * input$Quote2
+                        units <- "EUR/GBP"
+                    } else {
+                        crossRate <- input$Quote1 / input$Quote2
+                        units <- "EUR/GBP"
+                    }
+                }
+            }
+            
+            plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+            text(x = 0.5, y = 0.5, labels = paste(round(crossRate, 2)), cex = 5)
+            text(.12, 0.95, units, cex = 2)
+
+        })
+        )
+    )
+#}}}
+```
+
+
+
+## Spot versus Derivatives
+
+Currency can be traded in the spot or derivative (forward/futures and options) market. 
+
+-  The spot market is for the immediate exchange of currencies.
+
+-  The futures market is for the exchange of currencies at some set date in the future.
+
+In this presentation we'll focus on the spot market.  In future presentations we'll cover currency derivatives.
+
+
+
+## Spot FX Market Structure
+
+The FX market is an interbank market.  What this means is that there is no exchange where trades are cleared (guaranteed) and recorded.  There is no consolidated tape as in the stock market.
+
+-  The FX market is a set of quotes from various banks who are acting as dealers (market makers).  
+
+-  Quotes may be different among market participants -- that is large companies will have access to better quotes than small traders.  
+
+-  Trades may take place with banks across the world.  This means your trades are not necessarily overseen by a US regulator.  
+
+-  Trades are done online much like stock.
+
+
+
+## Spot FX Market Size
+
+The average daily trading volume is about \$4 *trillion*.
+
+- To put this in perspective, the average daily volume of trading in the S&P 500 firms is \$4 billion.
+
+Roughly 40% of all trades involve the USD.  About 80% of trades are in developed market currencies. 
+
+-  Trade in currencies mirrors the amount of import/export between countries.  
+
+
+
+## Spot Market Hours
+
+On weekdays, FX trading occurs in the normal business hours of each time zone. Trading starts in Asia, then moves to Europe, and finally the Amerias.
+
+- There is continuous trading from Monday morning in Tokyo to Friday evening in New York City.
+
+-  On any given day, the opening quote in New York city is based on the prevailing quote in London, and other locations which are actively trading.
+
+
+
+## Bid/Ask Spreads
+
+Like the stock market, FX is quoted with a bid and ask price.  If you are buying the currency, you do so at the ask, if you are selling you do so at the bid.
+
+-  An easy way to remember, is that you will always transact at the price which you would prefer *not* to. That is, you always buy high and sell low.
+
+-  The difference between the ask and bid is compensation to the commercial banks who act as market makers in the FX market. In other words, the bid/ask is a transaction cost for those using the FX market.
+
+
+
+## Bid/Ask Example
+
+Say the direct quote for the GBP is USD 1.50/1.55. The bid is USD 1.50 and the ask is USD 1.55.
+
+-  If you buy GBP you will pay the USD 1.55 ask (note of course this is the one you *don't* prefer).
+
+-  If you sell a GBP you will receive USD 1.50 (again the one you don't prefer).
+
+
+
+## Bid/Ask Percentage Spread
+
+The percentage bid/ask spread is used to compare transaction costs across currencies.  The spread is often calculated as:
+
+-  $\%\ Bid/Ask\ Spread = \frac{Ask - Bid}{Ask}$
+
+-  So in the previous example, the % Bid/Ask spread would be: $\frac{1.55 - 1.50}{1.55} = 3.23\%$
+
+- This tells you if you convert USD 100 to GBP, and then back to USD, you will pay USD 3.23 in transaction costs.
+
+
+
+
+## Credits and Collaboration
+
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Foreign_exchange/fx_market/fx_market.Rmd) to see the code and collaborators for this presentation
+
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+
+- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
+
+
+

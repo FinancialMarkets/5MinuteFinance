@@ -1,0 +1,285 @@
+---
+title: "An Introduction to Duration"
+# author: "Milken Institute, Center for Financial Markets"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+affiliation: Milken Institute
+# date: "03/12/2015"
+output: html_document
+logo: misq.png
+runtime: shiny
+---
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Duration
+
+Duration is a measure of interest rate risk.
+
+When we say, "The duration of the bond is 4 years." We mean:
+
+- "If the interest rate on the bond goes up by 1%, the bond's price will decline by 4%."
+
+Duration is quoted in 'years'.  
+
+-  If a bond has a semi-annual period, we convert duration to years before quoting it (a duration of 8 semi-annual periods is 4 years).
+
+
+
+## Duration is Approximate
+
+Duration is a linear approximation of a nonlinear relationship.
+
+- Duration is more accurate as the change in the interest rate becomes smaller.  
+- The error when using duration to estimate a bond's sensitivity to interest rates is often called [*convexity*](https://micfm.shinyapps.io/convexity/).
+
+
+
+## Determinants of Duration
+
+Duration is affected by the bond's coupon rate, yield to maturity, and the amount of time to maturity.
+
+-  Duration is inversely related to the bond's coupon rate. 
+-  Duration is inversely related to the bond's yield to maturity (YTM). 
+-  Duration can increase or decrease given an increase in the time to maturity (but it usually increases). You can look at this relationship in the upcoming interactive 3D app.
+
+For a review of bond coupon rates and yields see these presentations: [An Introduction to Bond Valuation](https://micfm.shinyapps.io/intro_bond_valuation); [For What is the Yield-to-Maturity Used?](https://micfm.shinyapps.io/For_What_YTM_Used/).
+
+
+
+## Interactive App
+
+With the following app, you can set the maximum yield-to-maturity, and time to maturity, and see the resulting 3D duration surface.  You can also change the coupon rate and see the effect on the duration surface.
+
+-  You can move the 3D surface around, and zoom in and out, with your mouse.
+
+-  How does increasing the yield-to-maturity, or time to maturity, affect the bond's duration?
+
+-  How does increasing the bond's coupon rate affect duration?
+
+-  Can you see the case where duration is decreasing with an increased time to maturity?
+
+
+
+##  <!--- Bond Price and Duration -->
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 4, fig.height = 4}
+#{{{
+library(threejs)
+                                        #library(sigma)
+inputPanel(    
+    sliderInput("maxYtm", label = "Max Yield to Maturity", max = .5, min = 0.01, value = .20, step = .01),
+    sliderInput("coupon", label = "Coupon Rate", max = .2, min = 0.01, value = .05, step = .01),
+    sliderInput("maxMaturity", label = "Max Years to Maturity", max = 50, min = 1, value = 30)
+    )
+
+renderScatterplotThree({
+    ## need duration as a function of ytm, maturity (coupon is also an input but not of the function to be fed into outer ----
+    ## shoot: yy and mm should be vectors for outer ----
+    ## This calculates duration, however yo use outer function would have to be vectorizable ----
+    ## so just use this in nested for loops :) ----
+    ## if we could get this to work though, we could feed it directly into scatterplot3js
+    ff <- function(yy, mm){
+        ## calculate cash flows
+        cc <- rep(input$coupon * 1000, mm)
+        cc[length(cc)] <- cc[length(cc)] + 1000
+
+        ## bond value
+        bb <- (rep(1, mm)) %*% (cc / (1 + yy)^(1:mm))
+
+        ## duration
+        dd <- (1:mm) %*% ((cc / (1 + yy)^(1:mm)) / bb)
+
+        ## modified duration
+        md <- dd / (1 + yy)
+        return(md)
+    }
+
+
+    ## redo to input into 3js
+    ff.res <- 0
+    test <- 0
+    prod <- length(seq(.01, input$maxYtm, by = .01)) * length(1:input$maxMaturity)
+    test <- expand.grid(seq(.01, input$maxYtm, by = .01), 1:input$maxMaturity)
+    for (i in 1:prod){
+        ff.res[i] <- ff(test[i,1], test[i,2])
+    }
+
+    surf <- cbind(test, ff.res)
+    names(surf) <- c("YTM", "Maturity", "Duration")
+
+    
+
+    ## x is a 3 column matrix where the columns refer to the (x,y,z) coordinate.  
+    scatterplot3js(as.matrix(surf), bg = "white", color = rainbow(dim(test)[1] * dim(test)[2]))
+
+    
+})
+    
+                                        #}}}
+```
+
+
+## Calculating Duration
+
+Duration is the slope of the line tangent to the bond's price at the bond's present YTM.  
+
+- Remembering our calculus, we immediately see we need to calculate the derivative of the bond's price with respect to the YTM. See here [link] for a complete derivation.
+
+However, it is customary to first calculate what is called Maucaulay Duration, and then use this to calculate Modified Duration.
+
+- Modified Duration is equivalent to the derivative of the bond's price with respect to the YTM.
+
+- Once we have Modified Duration, we can use it to calculate the bond's price (or \% change) given a change in YTM. 
+
+
+
+## Using Duration
+
+Specifically, the steps in using duration are: 
+
+1.  Calculate 'Macaulay Duration' which is the weighted average of when the bond holder receives their payments.  
+
+2.   We then divide this by $(1 + YTM)$ to get Modified Duration (which is the derivative).
+
+3.  Calculate the \% change in the bond's price as a linear function of modified duration.
+
+
+
+## Macaulay Duration
+
+Let $BP$ be the bond price, $CF_i$ the cash flow from the bond in period $i$, and $n$ the number of periods until maturity. Say the par value is \$1000.  Then Macaulay Duration is:
+
+$Macaulay\ Duration = \sum_{i = 1}^n {(i)\frac{\left(\frac{CF_i}{(1+YTM)^i}\right)}{BP}}$
+
+Note that since $BP = \sum_{i = 1}^n {\frac{CF_i}{(1+YTM)^i}}$ the second term in the summation is the proportion of the bond received at time $i$.  These are weights (and sum to 1). Denoting them $w_i$ we have:
+
+$Macaulay\ Duration = \sum_{i = 1}^n {(i)w_i}$
+
+
+
+## Macaulay Duration
+
+From our definition above, we can make the following observations:
+
+- Duration cannot exceed the number of periods to maturity of the bond.
+- The Duration of a zero-coupon bond is the number of years until maturity. 
+
+Also note, we can calculate the duration of a bond portfolio as the weighted average of the duration of the bond's in the portfolio.
+
+
+
+## Modified Duration 
+
+Macaulay Duration is a bit off however, so we adjust it by dividing it by $(1+YTM)$.  
+
+The result (Modified Duration) then matches the derivative of the bond's price with respect to YTM.
+
+$Modified\ Duration = \frac{Maucaulay\ Duration}{(1+YTM)}$
+
+
+
+## Simple Example
+
+Say we have a 5% coupon bond with annual payments and 8 years until maturity.  Let the bond's YTM be 3%.  
+
+The bond's price is: $P = \$50\frac{1-1/(1.03)^8}{0.03} + \frac{\$1000}{(1.03)^8} = \$1140.39$
+
+$Macaulay\ Duration = \sum_{i = 1}^7 {(i)\frac{\left(\frac{50}{(1.03)^i}\right)}{\$1140.39}} + 8\frac{\left(\frac{1050}{1.03^8}\right)}{\$1140.39} = 6.87\ yrs$
+   
+$Modified\ Duration = \frac{6.87}{1.03} = 6.67\ yrs$
+
+
+
+## Now You Try
+
+Calculate the Macaulay and Modified Durations for the following bonds.  You can check your answers with the interactive app on the following slide. All bond's have annual payments in the interactive app.
+
+- A 15\% coupon bond with 20 years to maturity and a 3\% YTM.
+
+- A 4\% coupon bond with 10 years to maturity and a 7\% YTM.
+
+- A 0\% coupon bond with 10 years to maturity and a 2\% YTM.
+
+You can also use the following app to see duration decrease when maturity increases.
+
+- Set the coupon to 3\%, the YTM to 18\%, and increase years to maturity from 17. 
+
+
+
+## Modified Duration Calculation 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+	      sidebarPanel(
+
+			   sliderInput("coupon1", label = "Coupon Rate", max = .2, min = 0, value = .05, step = .01),
+			   sliderInput("ytm1", label = "Yield to Maturity", max = .2, min = 0.01, value = .05, step = .01),
+			   sliderInput("maturity1", label = "Years to Maturity", max = 50, min = 1, value = 10)
+ 
+	   ),
+	      mainPanel(
+
+			renderPlot({
+			  bondValue <- 0
+			  ytm1Axis <- seq(0.01, .2, by = .01)
+			  period <- 1
+
+			  cash_flows <- 0
+			  for (i in 1:input$maturity1){
+			    cash_flows[i] <- 
+			      (input$coupon1 * 1000) }
+
+			  cash_flows[length(cash_flows)] <- cash_flows[length(cash_flows)] + 1000 
+			  pvCashFlows <- cash_flows / (1 + input$ytm1)^(1:input$maturity1)
+
+			  ### Bond Calculation: 
+			      bondValue <- (input$coupon1 * 1000) * ((1 - 1 / (1 + input$ytm1)^(input$maturity1)) / input$ytm1) + 1000 / (1 + input$ytm1)^(input$maturity1) 
+
+			  ### Calculate Duration and Modified Duration ----
+			  Duration1 <- 1:input$maturity1 %*% (pvCashFlows / bondValue)
+			  modDur1 <- Duration1 / (1 + input$ytm1)
+
+# 			  durLine <- bondValue[index] * (1 + (modDur * (ytm1Axis - input$ytm1)))
+
+			  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+			  text(x = 0.5, y = 0.5, labels = paste(round(modDur1, 2), "years"), cex = 5)
+
+
+})
+)
+	      )
+#}}}
+```
+
+
+## Using Modified Duration
+
+We use Modified Duration to approximate the change in the bond's price for a give change in yield.  In terms of percent, we can say:
+
+$\%\Delta P = -(Modified\ Duration) \Delta YTM$
+
+- For example, if a bond has a Modified Duration of 8, then given a 0.5% increase in yield, the bond is expected to decline by 4\%.
+
+$\%\Delta P = -8(0.5\%) = 4\%$
+
+
+
+## Improving on Duration
+
+If we want to improve our estimate of the \% change in the bond's price, we can add a convexity adjustment.
+<!-- put above -->
+-  This is covered in the 5MinuteFinance interactive presentation on [Bond Convexity](https://micfm.shinyapps.io/convexity/).
+
+
+
+
+## Credits and Collaboration
+
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/duration_intro/duration.Rmd) to see the code and collaborators for this presentation
+
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+
+- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
+
+
+
