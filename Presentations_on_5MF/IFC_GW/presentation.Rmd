@@ -1,5 +1,5 @@
 ---
-title: "Financial Education with R/Shiny"
+title: "[5MinuteFinance](http://www.5minutefinance.org/)"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 date: "August 22, 2016"
 output: ioslides_presentation
@@ -300,7 +300,6 @@ ticker <- comp$symbol[comp$name == input$name]
 #}}}
 ```
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ##  What Types of Calculations Can We Do?
 
@@ -578,7 +577,6 @@ sidebarLayout(
 #}}}
 ```
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ##
 
