@@ -107,14 +107,15 @@ renderDygraph({
     etnDat <- read.csv(etns2, header = TRUE)
     indexRet <- cumsum(Delt(etnDat[,2])[-1])
     etnRet <- cumsum(Delt(etnDat[,3])[-1])
-    dataXts <- as.xts(indexRet, etnRet, order.by = as.Date(etnDat[,1])[-1])
+    dataXts <- as.xts(cbind(indexRet, etnRet), order.by = as.Date(etnDat[,1])[-1])
+    names(dataXts) <- c("Index", names(etnDat)[3])
     ## bothETFs <- getSymbols(etfs2, from = input$date, auto.assign = TRUE)
     ## bothETFs <- merge.xts(Cl(get(bothETFs[[1]])), Ad(get(bothETFs[[2]])), join = "inner")
     ## bothETFs2 <- apply(apply(bothETFs, 2, Delt)[-1,], 2, cumsum)
     ## bothETFs2 <- as.xts(bothETFs2, order.by = index(bothETFs)[-1])
     ## names(bothETFs2)[1] <- etfs2[1]
     ## names(bothETFs2)[2] <- "Index"
-    dygraph(dataXts, main = "Cumulative Returns: ETF and Underlying Index") %>%
+    dygraph(dataXts, main = "Cumulative Returns: ETN and Underlying Index") %>%
         dyRangeSelector()
     ## mjs_plot(etnDat) %>%
         ## mjs_line()
