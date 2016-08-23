@@ -3,9 +3,8 @@ title: "Exchange Traded Notes (ETNs)"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 runtime: shiny
-smaller: true
 logo: misq.png
-css: 5min.css
+css: 5min_mod2.css
 ---
 
 ## Exchange Traded Notes (ETNs)
@@ -14,25 +13,39 @@ ETNs are like ETFs in that they passively track an financial (stock, bond, commo
 
 -  The difference is that ETNs are unsecured debt securities, whereas ETFs are a type of open-ended mutual fund.  This means ETNs are backed only by the credit of the issuer---wheres in an ETF you have a claim on the underlying assets.
 
--  However, because the ETN doesn't have to buy the assets underlying the fund, there is no tracking error between the ETN and underlying index's returns.  The ETN (like the ETF) does charge a management fee, which mean the ETN's returns will always be lower than the returns it is tracking by this fee.
+-  However, because the ETN doesn't have to buy the assets underlying the fund, it is possible there is no tracking error between the ETN and underlying index's returns.  The ETN (like the ETF) does charge a management fee, which means the ETN's returns will always be lower than the returns it is tracking by this fee.
 
--  On the next slide the difference between the [insert] ETN and the index it tracks is shown.  
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##  ETNs Are Debt Securities
+
+But they don't pay interest.  The issuer simply promises to pay the ETN owner an amount determined by the value of the underlying index less fees at some future date---often in 30 years.
+
+
+ETNs also trade throughout the day like Stock and ETFs, and unlike traditional bonds.  Though now some bonds are starting to trade on exchanges throughout the day.
+
+ETNs issue and redeem notes throughout the trading day to keep the ETN price in line with the value of the underlying.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## ETNs and Exotic Underlyings
 
-Because an ETN is a promise to pay an underlying's return, and the underlying doesn't actually have to be purchased, the ETN can track returns that ETFs may have a hard time replicating.  
+Because an ETN is a promise to pay an underlying's return, and the underlying doesn't actually have to be purchased, the ETN can track returns that ETFs may have a hard time replicating.  For example consider:
 
--  For example, consider the [iPath® CBOE S&P 500 BuyWrite IndexSM ETN](http://www.ipathetn.com/US/16/en/instruments.app#/details/19544) which tracks an index which simulates the retursn on a strategy of buying and wimultaneously writing call options on the S&P 500.
+-  The [iPath® CBOE S&P 500 BuyWrite Index ETN](http://www.ipathetn.com/US/16/en/instruments.app#/details/19544) which tracks an index which simulates the returns on a strategy of buying and simultaneously writing call options on the S&P 500.
 
--  For another example there is the [iPath® Asian & Gulf Currency Revaluation ETN](http://www.ipathetn.com/US/16/en/instruments.app#/details/21845) which tracks a pegged currency index.
+-  The [iPath® Asian & Gulf Currency Revaluation ETN](http://www.ipathetn.com/US/16/en/instruments.app#/details/21845) which tracks a pegged currency index.
+
+-  The [iPath® US Treasury Flattener ETN](http://www.ipathetn.com/US/16/en/details.app?instrumentId=259102) which *inversely* tracks the Barclays US Treasury 2Y/10Y Yield Curve Index.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 ## ETN Popularity and Growth
 
+The next slide will show an interactive chart of the relative number of search queries for "Exchange Traded Fund" versus "Exchange Traded Note" as reported by [Google Trends](https://www.google.com/trends/).
+
+-  Note that there are substantially fewer queries for ETN relative to ETF.  This is not surprising given ETFs have been around longer, and contain thelarge index funds.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -50,23 +63,20 @@ renderDygraph({
 })
 #}}}
 ```
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
-## ETNs have No Tracking Error
+## ETNs & Tracking Error
 
-<!-- <script type="text/javascript" src="//www.google.com/trends/embed.js?hl=en-US&q=ETF,+ETN&cmpt=q&tz=Etc/GMT%2B5&tz=Etc/GMT%2B5&content=1&cid=TIMESERIES_GRAPH_0&export=5&w=500&h=330"> -->
-<!-- </script> -->
+While it is possible for ETNs to have no tracking error, that is not always the case. On the next slide is the ETN and underlying index cumulative returns for a random sample of iPath ETNs.  
 
+-  While most do a good job of tracking the index, a few (DTYL, DTYS, and PGD) do not.
 
-## ETN Issuers
+-  This is because inverse and leveraged ETNs are meant to meet thier performanace objective (relative to an underlying index) on a daily basis.  Matching the index over a longer period is not possible given the leverage used in the ETN---which means returns will compound at a different rate between the index and the ETN.  
 
-There are a few major sponsors of ETFs.  Among them are:
+<!-- add more here on why? -->
 
--  [iShares: managed by Blackrock](www.ishares.com/)
--  [Standard & Poor's Depository Receipts: managed by State Street Global Advisors](https://www.spdrs.com/)
--  [PowerShares: managed by Invesco](http://www.invescopowershares.com/)
--  [Market Vectors: managed by Van Eck Global](www.vaneck.com/market-vectors/equity-etfs/)
--  [X-trackers: managed by Deutsche Asset & Wealth Management](www.etf.deutscheawm.com/)
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
@@ -123,23 +133,6 @@ renderDygraph({
 })
 #}}}
 ```
-
-
-<!-- ## ETFs versus ETNs -->
-
-<!-- -  Exchange Traded Notes (ETNs) are unsecured debt obligations of financial institutions. -->
-<!-- -  ETNs are also traded on securities exchanges and can be bought or sold on the exchanges. -->
-<!-- -  ETNs unlike ETFs do not own a portfolio of underlying assets. ETNs calculate the value using a described formula, rather than using net asset value. -->
-
-
-## ETN Examples
-
-VXX
-VXZ
-
-
- 
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
