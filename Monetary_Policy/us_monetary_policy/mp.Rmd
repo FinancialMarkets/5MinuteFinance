@@ -1,12 +1,3 @@
----
-title: "US Monetary Policy"
-author: "Matt Brigida"
-affiliation: Milken Institute CFM
-date: "05/12/2015"
-output: ioslides_presentation
-runtime: shiny
-smaller: true
----
 
 ## US Monetary Policy
 
@@ -18,6 +9,7 @@ The two main controls of monetary policy are:
 
 2.  The reserve requirement ratio
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## app 1
 
@@ -147,6 +139,8 @@ sidebarLayout(
 #}}}
 ```
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## app 2
 
 
@@ -184,13 +178,13 @@ text(1.05, 0.8, "Meaning:", cex = 1.75)
 #}}}
 ```
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Credits and Collaboration
 
 Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Monetary_Policy/us_monetary_policy/mp.Rmd) to see the code and collaborators for this presentation
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
 
-- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
-
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
