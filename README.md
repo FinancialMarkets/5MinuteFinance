@@ -30,43 +30,43 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Corporate Finance
 
-[Intro to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements)
+[An Introduction to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements)
 
 [Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios)
 
-[Time Value of Money: Single CFs](https://micfm.shinyapps.io/TVM_Single_CFs)
+[Time Value of Money: Single Cash Flows](https://micfm.shinyapps.io/TVM_Single_CFs)
 
-[Time Value of Money: Multiple CFs](https://micfm.shinyapps.io/TVM_Multiple_CFs/)
+[Time Value of Money: Multiple Cash Flows](https://micfm.shinyapps.io/TVM_Multiple_CFs/)
 
 [Operating Cash Flow](https://micfm.shinyapps.io/OCFs)
 
 [Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/)
 
-[Intro Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/)
+[An Introduction to Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/)
 
-[Intro to Bond Valuation](https://micfm.shinyapps.io/intro_bond_valuation)
+[An Introduction to Bond Valuation](https://micfm.shinyapps.io/intro_bond_valuation)
 
-[The CAPM](https://micfm.shinyapps.io/The_CAPM)
+[The Capital Asset Pricing Model](https://micfm.shinyapps.io/The_CAPM)
 
 ### Econometrics
 
-[Intro to Correlation Coefficient](https://micfm.shinyapps.io/what_is_correlation)
+[An Introduction to Correlation Coefficient](https://micfm.shinyapps.io/what_is_correlation)
 
 ### Options
 
-[The VIX](https://micfm.shinyapps.io/The_VIX/)
+[The VIX Index](https://micfm.shinyapps.io/The_VIX/)
 
-[Greeks](https://micfm.shinyapps.io/greeks)
+[The Greeks](https://micfm.shinyapps.io/greeks)
 
-[Options Intro](https://micfm.shinyapps.io/option_intro)
+[Options Introduction](https://micfm.shinyapps.io/option_intro)
 
 [Option Spreads](https://micfm.shinyapps.io/option_spreads)
 
 [Black Scholes](https://micfm.shinyapps.io/black_scholes)
 
-[Stochastic Vol](https://micfm.shinyapps.io/stochastic_vol)
+[Stochastic Volatility](https://micfm.shinyapps.io/stochastic_vol)
 
-[VVIX](https://micfm.shinyapps.io/The_VVIX)
+[VVIX: The Vol of Vol](https://micfm.shinyapps.io/The_VVIX)
 
 ### Fixed Income and Debt
 
@@ -76,15 +76,15 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Treasury Debt Risk](https://micfm.shinyapps.io/treasury_debt_risk/)
 
-[ETNs](https://micfm.shinyapps.io/ETNs/)
+[Exchange Traded Notes](https://micfm.shinyapps.io/ETNs/)
 
 [For What is the Yield-to-Maturity Used?](https://micfm.shinyapps.io/For_What_YTM_Used/)
 
 ### Foreign Exchange
 
-[Arbitrage](https://micfm.shinyapps.io/fx_arbitrage/)
+[Foreign Exchange Arbitrage](https://micfm.shinyapps.io/fx_arbitrage/)
 
-[FX Markets](https://micfm.shinyapps.io/fx_market)
+[Foreign Exchange Markets](https://micfm.shinyapps.io/fx_market)
 
 ### Equity Markets
 
@@ -98,11 +98,9 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Short Selling Stock](https://micfm.shinyapps.io/short_selling_stock/)
 
-[Leveraged ETFs](https://micfm.shinyapps.io/leveragedETFs/)
+[Leveraged Exchange Traded Funds](https://micfm.shinyapps.io/leveragedETFs/)
 
-[Intro Stock Options](https://micfm.shinyapps.io/stock_option_intro/)
-
-[ETFs](https://micfm.shinyapps.io/ETFs/)
+[Exchange Traded Funds](https://micfm.shinyapps.io/ETFs/)
 
 <!-- #### Need to consolidate the stock market presentations below.  -->
 
@@ -124,4 +122,4 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Risk Future Past](https://micfm.shinyapps.io/risk_future_past/)
 
-[Intro Portfolio Performance Measures](https://micfm.shinyapps.io/portfolio_performance_measures/)
+[An Introduction to Portfolio Performance Measures](https://micfm.shinyapps.io/portfolio_performance_measures/)
