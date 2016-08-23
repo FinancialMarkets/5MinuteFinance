@@ -1,3 +1,16 @@
+---
+# note this header is for testing, will be stripped before pushing online
+title: "An Introduction to Duration"
+# author: "Milken Institute, Center for Financial Markets"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+affiliation: Milken Institute
+# date: "03/12/2015"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod2.css
+runtime: shiny
+---
+
 
 ## Duration
 
@@ -111,7 +124,7 @@ renderScatterplotThree({
 
 Duration is the slope of the line tangent to the bond's price at the bond's present YTM.  
 
-- Remembering our calculus, we immediately see we need to calculate the derivative of the bond's price with respect to the YTM. See here [link] for a complete derivation.
+- Remembering our calculus, we immediately see we need to calculate the derivative of the bond's price with respect to the YTM. See [this video](https://www.youtube.com/watch?v=B2lYw4HJU-I) for a complete derivation.
 
 However, it is customary to first calculate what is called Maucaulay Duration, and then use this to calculate Modified Duration.
 
