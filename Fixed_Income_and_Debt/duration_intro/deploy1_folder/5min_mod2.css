@@ -13,6 +13,16 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+ul li:before {
+
+  font-size:4rem;
+  Margin-top:-1rem;
+}
+
+slides > slide > hgroup + article {
+  margin-top: 0;
+}
+
 html {
 	font-family: Arial, Helvetica, sans-serif;
 	-ms-text-size-adjust: 100%;
