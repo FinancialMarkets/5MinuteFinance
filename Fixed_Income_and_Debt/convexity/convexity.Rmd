@@ -3,13 +3,13 @@ title: "Convexity"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
-css: 5min_mod.css
+css: 5min_mod2.css
 runtime: shiny
 ---
 
 ## Bond Convexity
 
-Bond convexity refers to the actual convex (non-linear) relationship between a bond's price and yield.  This is stated in relation to the linear duration approximation of the bond price and yield relationship.
+Bond convexity refers to the actual convex (non-linear) relationship between a bond's price and yield.  This is stated in relation to the linear [duration](https://micfm.shinyapps.io/intro_duration/) approximation of the bond price and yield relationship.
 
 -  Convexity is often used as a general term for the error when using duration to approximate interest rate risk.
 
@@ -117,9 +117,13 @@ And so the approximation of the change in the bond's price for a given change in
 
 - where $D^*$ is the bond's *Modified Duration*.
 
+On the next slide is an interactive duration and convexity calculator.  
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Duration and Convexity Calculator
+## 
+
+<!--- Duration and Convexity Calculator -->
 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -133,7 +137,6 @@ sidebarLayout(
         sliderInput("coupon1", "Coupon Rate", min = 0.01, max = 0.2, value = 0.05, step = 0.01)
                   ),
     mainPanel(
-
         renderTable({
             ## calculate payments ----
             coupon.pmt <- (input$coupon1 * 1000) / 2
@@ -194,29 +197,10 @@ sidebarLayout(
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-
-##
-
-[end of presentation graphic]
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Credits and Collaboration
-
-If you have additions or corrections for this presentation, feel free to contribute them [to this GitHub repo](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/convexity/convexity.Rmd).  You will automatically show up as a presentation author.  
-
-- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for its financial support of both the presentation's development and hosting on shinyapps.io.
-
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
 ## Credits and Collaboration
 
 Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/convexity/convexity.Rmd) to see the code and collaborators for this presentation
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
-
-- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
-
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
