@@ -30,25 +30,17 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Corporate Finance
 
-#### Financial Statements
-
 [Intro to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements)
 
 [Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios)
-
-#### Time Value of Money
 
 [Time Value of Money: Single CFs](https://micfm.shinyapps.io/TVM_Single_CFs)
 
 [Time Value of Money: Multiple CFs](https://micfm.shinyapps.io/TVM_Multiple_CFs/)
 
-#### Capital Budgeting
-
 [Operating Cash Flow](https://micfm.shinyapps.io/OCFs)
 
 [Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/)
-
-#### Valuation 
 
 [Intro Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/)
 
