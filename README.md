@@ -54,8 +54,6 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Options
 
-[The VIX Index](https://micfm.shinyapps.io/The_VIX/)
-
 [The Greeks](https://micfm.shinyapps.io/greeks)
 
 [Options Introduction](https://micfm.shinyapps.io/option_intro)
@@ -65,8 +63,6 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 [Black Scholes](https://micfm.shinyapps.io/black_scholes)
 
 [Stochastic Volatility](https://micfm.shinyapps.io/stochastic_vol)
-
-[VVIX: The Vol of Vol](https://micfm.shinyapps.io/The_VVIX)
 
 ### Fixed Income and Debt
 
@@ -123,3 +119,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 [Risk Future Past](https://micfm.shinyapps.io/risk_future_past/)
 
 [An Introduction to Portfolio Performance Measures](https://micfm.shinyapps.io/portfolio_performance_measures/)
+
+[The VIX Index](https://micfm.shinyapps.io/The_VIX/)
+
+[VVIX: The Vol of Vol](https://micfm.shinyapps.io/The_VVIX)
