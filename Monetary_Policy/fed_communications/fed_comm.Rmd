@@ -1,8 +1,5 @@
 ---
 title: "FOMC Communications"
-author: "Milken Institute: Center for Financial Markets"
-affiliation: Milken Institute CFM
-date: "03/30/2016"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod.css
