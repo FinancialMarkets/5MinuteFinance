@@ -60,6 +60,10 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [An Introduction to Correlation Coefficient](https://micfm.shinyapps.io/what_is_correlation)
 
+### Trading and Market Structure
+
+[The Limit Order Book](https://micfm.shinyapps.io/limit_order_book/)
+
 ### Derivatives
 
 [The Greeks](https://micfm.shinyapps.io/greeks)
@@ -98,8 +102,6 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [The Pairs Trade](https://micfm.shinyapps.io/pairs_trade/)
 
-[The Limit Order Book](https://micfm.shinyapps.io/limit_order_book/)
-
 [Short Selling Stock](https://micfm.shinyapps.io/short_selling_stock/)
 
 [Leveraged Exchange Traded Funds](https://micfm.shinyapps.io/leveragedETFs/)
@@ -133,3 +135,4 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 ### Portfolio Finance
 
 [An Introduction to Portfolio Performance Measures](https://micfm.shinyapps.io/portfolio_performance_measures/)
+
