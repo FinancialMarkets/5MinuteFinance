@@ -12,7 +12,15 @@ We hope to foster a community effort to create a set of finance education and co
 
 ## How to contribute.
 
-You can contribute with very little knowledge of Git/GitHub, and no knowledge of R/Shiny.  All you need is a GitHub account.  The easiest way to start contributing is to use the edit-in-browser feature in each file. [We posted a short video tutorial on how to do this here.](https://www.youtube.com/watch?v=iVC9UKkaiko)  
+You can contribute with very little knowledge of Git/GitHub, and no knowledge of R/Shiny.  All you need is a GitHub account.  We have posted a set of three video tutorials below which will help you get started.
+
+**Tutorials:**
+
+-  The easiest way to start contributing is to use the edit-in-browser feature in each file. [We posted a short video tutorial on how to do this here.](https://www.youtube.com/watch?v=iVC9UKkaiko)  
+
+-  This video shows how [to contribute using the command line on mac/linux](https://www.youtube.com/watch?v=pII-Jop07yM). 
+
+-  This video shows how [to contribute using the RStudio IDE](https://www.youtube.com/watch?v=4zDQSibnyzM).
 
 We'll continue to add tutorials here to help make contributing easy.  You can also get started with [GitHub's excellent list of documentation](https://help.github.com/articles/good-resources-for-learning-git-and-github).
 
