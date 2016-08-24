@@ -1,9 +1,9 @@
 ---
-title: "VVIX"
+title: "VVIX: The Vol of Vol"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
-css: 5min.css
+css: 5min_mod2.css
 runtime: shiny
 smaller: true
 ---
@@ -28,12 +28,11 @@ The [VVIX](http://www.cboe.com/micro/vvix/vvixwhitepaper.aspx) is often referred
 
 ## Why Trade the VVIX
 
-Returns on the VVIX are determined by the difference between expected and realized (actual) volatility, and the [volatility risk premium](http://www.bis.org/publ/qtrpdf/r_qt1409v.htm).   So the VVIX allows construction of portfolios which:
+Returns on the VVIX are determined by the difference between expected and realized (actual) volatility, and the [volatility risk premium](http://www.bis.org/publ/qtrpdf/r_qt1409v.htm).   So the VVIX allows construction of portfolios which may earn or pay the volatility risk premium.
 
--  
--  may earn or pay the volatility risk premium.
+There has been a large increase in the number of securities which track the VIX index, such as the iPath S&P 500 VIX Short-Term Futures ETN and the VelocityShares Daily 2x VIX Short-Term ETN.  
 
-
+- If you have a position in these securities, then trading VVIX futures allow you to hedge changes in the VIX.  For example if you are short the VIX, you can buy a set VVIX futures which will protext you from very large increases in the VIX.  
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -104,7 +103,11 @@ There is not a significant correlation between the VVIX returns, and the VIX and
 
 -  While it is true the VVIX and VIX tend to be high at the same time, the VVIX can also be high when the VIX only rises by a modest amount as mentioned.  Also, over the long periods of time without market declines, the VVIX and VIX movements tend to be independent.
 
-- You can see this in the interactive graphic on the next slide.  Move the graphic to see the VVIX and VIX percent change axes.  You see the data points are generally horizontal, which means the VVIX percent change is not greatly affected the the VIX percent change. 
+- You can see this in the next interactive graphic.  Move the graphic to see the VVIX and VIX percent change axes.  You see the data points are generally horizontal, which means the VVIX percent change is not greatly affected the the VIX percent change. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##  VVIX, VIX, and Market Returns 
 
 -  Similarly, if you look at the VVIX percent return and market percent return axes, you can see the VVIX is generally unaffected by the percent return in the market.
 
@@ -155,8 +158,5 @@ renderScatterplotThree({
 Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/The_VVIX/vvix.Rmd) to see the code and collaborators for this presentation
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
-
-- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
-
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
