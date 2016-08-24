@@ -60,7 +60,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [An Introduction to Correlation Coefficient](https://micfm.shinyapps.io/what_is_correlation)
 
-### Options
+### Derivatives
 
 [The Greeks](https://micfm.shinyapps.io/greeks)
 
@@ -72,7 +72,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Stochastic Volatility](https://micfm.shinyapps.io/stochastic_vol)
 
-### Fixed Income and Debt
+### Fixed Income and Other Debt
 
 [Duration](https://micfm.shinyapps.io/intro_duration/)
 
@@ -90,7 +90,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Foreign Exchange Markets](https://micfm.shinyapps.io/fx_market)
 
-### Equity Markets
+### Equity
 
 [An Introduction to Stock Investments](https://micfm.shinyapps.io/stock/)
 
@@ -126,8 +126,10 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Risk Future Past](https://micfm.shinyapps.io/risk_future_past/)
 
-[An Introduction to Portfolio Performance Measures](https://micfm.shinyapps.io/portfolio_performance_measures/)
-
 [The VIX Index](https://micfm.shinyapps.io/The_VIX/)
 
 [VVIX: The Vol of Vol](https://micfm.shinyapps.io/The_VVIX)
+
+### Portfolio Finance
+
+[An Introduction to Portfolio Performance Measures](https://micfm.shinyapps.io/portfolio_performance_measures/)
