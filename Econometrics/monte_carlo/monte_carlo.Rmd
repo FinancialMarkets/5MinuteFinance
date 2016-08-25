@@ -3,7 +3,7 @@ title: "An Introduction to Monte Carlo Methods in Finance"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
-css: 5min_mobile.css
+css: 5min_mod2.css
 runtime: shiny
 smaller: true
 ---
@@ -12,9 +12,10 @@ smaller: true
 
 When an analytic solution is available use it.  
 
--  Monte Carlo is useful when an analytic solution is unavailable or difficult to obtain.
-
 -  If you make the same underlying assumptions, the analytic solution will be the same as the Monte Carlo.
+
+-  Monte Carlo is useful when an analytic solution is unavailable or difficult to obtain.  This is often the case, which makes Monte Carlo an important tool for the analyst.
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -46,7 +47,9 @@ where $N(0, 1)$ is a random draw from a standard Normal distribution.
 
 ## Interactive App
 
-On the next slide 
+On the next slide we calculate the value of a European call option by both the Black-Scholes formula and Monte Carlo.  In both cases we make the same assumptions, namely the stock follows geometric Brownian Motion, and the [market is complete]()[link to slide in binomial option pricing presentation]. 
+
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

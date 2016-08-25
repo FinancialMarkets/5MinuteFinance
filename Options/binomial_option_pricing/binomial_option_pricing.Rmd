@@ -84,6 +84,109 @@ If the market price is not \$3.57, can you create an arbitrage?
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+
+## Option and Stock Replicating a Bond
+
+```{r echo=FALSE, warning=FALSE}
+require(visNetwork, quietly = TRUE)
+# minimal example
+nodes <- data.frame(id = 1:3,
+  label = c("Option", "Stock",  "Bond"),
+  shape = c("circle", "circle", "circle"),
+  group = c("A", "A", "B")
+)
+edges <- data.frame(from = c(1,2,1), to = c(3,3,2),
+                    arrows = c("to", "to", ""))
+visNetwork(nodes, edges, width = "100%")
+
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+We will create a portfolio of the option and stock which pays the same as the bond in both states of the world.
+
+Replicating portfolio:
+
+sell 1 one-year call option with a $105 strike (the same that we are valuing).
+buy $\frac{1}{4}$ share of the stock for $25.
+At time 0 we have a cash flow of $C - $25, where $C is the price of the call option. At time 1, the replicating portfolio will pay:
+
+up-state: $\$\frac{110}{4} - \$5 = \$22.50$
+down-state: $\$\frac{90}{4} - \$0 = \$22.50$
+So no matter what happens, the replicating portfolio will pay \$22.50 in one year. This is a risk-free zero-coupon bond, and therefore the price today is $\$\frac{22.50}{(1+0.05)} = \$21.43$. So we have:
+
+$\$C - \$25 = -\$21.43 \Rightarrow \$C = \$3.57$
+
+This is exactly the same call option value we got using the first method.
+
+Again, if the market price is not \$3.57, can you create an arbitrage?
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## 
+
+```{r message=FALSE, echo=FALSE, warning=FALSE}
+# library(fOptions)
+sidebarLayout(
+sidebarPanel(
+  sliderInput(inputId = "stockToday", label = "Stock Price Today", min = 91, max = 109, step = 1, value = 100),
+  sliderInput(inputId = "strike", label = "Strike Price", min = 91, max = 109, step = 1, value = 105),
+  sliderInput(inputId = "stockUp", label = "Stock Price in Up-State", min = 110, max = 120, step = 1, value = 110),
+  sliderInput(inputId = "stockDn", label = "Stock Price in Down-State", min = 80, max = 90, step = 1, value = 90),
+ sliderInput(inputId = "rf", label = "Risk-Free Rate", min = .01, max = .05, step = .01, value = .01)
+),
+
+mainPanel(
+    renderVisNetwork({
+      ## calculate value of option using first approach ----
+      ## we'll first try using the fOptions package 
+      ## scratch that -- use the fOptions for the binomial tree -- calculate by hand below ----
+
+  if((input$rf + 1) * input$stockToday > input$stockUp) {
+      visNetwork(nodes = data.frame(id = 1, label = "Why bother with the option when you can have free money!", shape = "diamond", color = "darkred"))
+  } else {
+      ### calculating by replicating a bond
+      
+      optionUp <- input$stockUp - input$strike
+      optionDn <- max(input$stockDn - input$strike, 0)
+        
+      delta <- (optionUp - optionDn) / (input$stockUp - input$stockDn)
+      
+      ## replicating port: sell call and buy delta shares of stock.  At time 1 it is worth:
+      portVal1 <- input$stockUp * delta - optionUp
+      portVal0 <- portVal1 / (1 + input$rf)
+      
+      callValue <- input$stockToday * delta - portVal0
+       
+        
+  nodes <- data.frame(id = 1:3,
+    label = c(paste0("Call Today = $", round(callValue, 2)), paste0("Call Up State = $", round(optionUp, 2)),  paste0("Call Down State = $", round(optionDn, 2))),
+  shape = c("circle", "diamond", "diamond"),
+  group = c("C", "D", "D"),
+  color = c("orange", "grey", "grey")
+)
+edges <- data.frame(from = c(1,1), to = c(2,3),
+                    arrows = c("to", "to"))
+visNetwork(nodes, edges, height = "1000px", width = "100%")
+  }
+        
+    })
+)
+  # }
+)
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Importance of Zeros
+
+Note above we used zero-coupon bonds. Zeros are important for derivative valuation because we know exactly what our return will be when we hold them (unlike with coupon bonds).
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Credits and Collaboration
 
 Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Econometrics/monte_carlo/monte_carlo.Rmd) to see the code and collaborators for this presentation
