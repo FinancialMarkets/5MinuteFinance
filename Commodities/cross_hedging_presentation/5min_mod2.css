@@ -12,6 +12,17 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+ul li:before {
+
+  font-size:4rem;
+  Margin-top:-1rem;
+}
+
+slides > slide > hgroup + article {
+  margin-top: 0;
+}
+
 html {
 	font-family: Arial, Helvetica, sans-serif;
 	-ms-text-size-adjust: 100%;
@@ -27,7 +38,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 	display: block;
 	color: #333333;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size:20px;
+	/* font-size:1.375rem; */
+	font-size:22px;
 	
 }
 audio, canvas, progress, video {
@@ -73,6 +85,7 @@ h1, h2, h3, h4, h5, h6 {
 	padding-top: 8px;
 	padding-bottom: 8px;
 	padding-left: 0px;
+	padding-right: 20px;
 	-webkit-font-smoothing: antialiased;
 }
 mark {
@@ -1162,9 +1175,11 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small
 	color: #333333;
 }
 h1, .h1, h2, .h2, h3, .h3 {
-	margin-top: 20px;
-	margin-bottom: 10px;
-	color: #333333;
+    /* margin-top: 20px; */
+    /* move header (and so text) up on every slide */
+    margin-top: 0rem;
+    margin-bottom: 10px;
+    color: #333333;
 }
 h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h1 .small, .h1 .small, h2 .small, .h2 .small, h3 .small, .h3 .small {
 	font-size: 65%;

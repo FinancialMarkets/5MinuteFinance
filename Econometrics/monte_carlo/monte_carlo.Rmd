@@ -122,7 +122,7 @@ Say an option gives you the right to sell one unit of the underlying at the maxi
 
 $dS_t = \kappa(\mu_S - lnS_t)dt + \sigma S_t dB_t$
 
--  There is no analytic solution, so this is where it makes sense to turn to Monte Carlo.
+-  An analytic solution might be possible, but it may take a while to find. This is where it makes sense to turn to Monte Carlo.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
