@@ -1,9 +1,10 @@
 ---
-title: "Risk in Treasury Debt"
+## title: "Risk in Treasury Debt"
+title: "Present Treasury Debt"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
-css: 5min_mod.css
+css: 5min_mod2.css
 runtime: shiny
 smaller: true
 ---
@@ -12,13 +13,19 @@ smaller: true
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+<!--- change presentation to focus on the present state of treasury debt; who owns the debt and what types are outstanding --> 
+
 ## Goal of the Presentation
 
-To understand the amount of risk in the US's outstanding Treasury debt, particularly relative to historical levels.
+<!--- To understand the amount of risk in the US's outstanding Treasury debt, particularly relative to historical levels.
 
 - The result is useful in understanding the risk in the US banking system.
 
--  Further, ownership of US Treasury debt has been markedly affected by recent unconconventional modetary policy (Quantitative Easing).  
+-  Further, ownership of US Treasury debt has been markedly affected by recent unconconventional modetary policy (Quantitative Easing).  -->
+
+To take a look at recent trends in US Treasury ownership and issuance.  This is particularly timely given the effect of Quantitative Easing and other unconventional monetary policy on Treasury markets.  
+
+- Further, unprecedented easing by foreign central banks (particularly the ECB, BOE, and the BOJ) has had a large effect on US Treasury markets.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -154,6 +161,7 @@ New Treasury bonds are issued at a rate reflecting present market yields.
 ## Length of Time to Maturity on Outstanding Debt is Unchanged since 2000
 
 ```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+#{{{
 library(dygraphs)
 library(reshape)
 library(xts)
@@ -168,7 +176,7 @@ renderDygraph({
 
 })
 ```
-
+#}}}
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Outstanding Debt by Time to Maturity
@@ -279,8 +287,5 @@ Consider a 10 year treasury note with an increase in yield from 2\% to 3\%.
 Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/treasury_debt_risk/treasury_debt_risk.Rmd) to see the code and collaborators for this presentation
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
-
-- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
-
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
