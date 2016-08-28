@@ -78,7 +78,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Fixed Income and Other Debt
 
-[Duration](https://micfm.shinyapps.io/intro_duration/) | [Mobile Friendly Version](https://micfm.shinyapps.io/intro_duration)
+[Duration](https://micfm.shinyapps.io/intro_duration/) | [Mobile Friendly Version](https://micfm.shinyapps.io/intro_duration_mobile)
 
 [Convexity](https://micfm.shinyapps.io/convexity/)
 
