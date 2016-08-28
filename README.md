@@ -32,9 +32,9 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Commodities
 
-[Cross Hedging](https://micfm.shinyapps.io/cross_hedging_presentation)
+[Cross Hedging](https://micfm.shinyapps.io/cross_hedging_presentation) | [Mobile Friendly Version](https://micfm.shinyapps.io/cross_hedging_presentation_mobile)
 
-[Crude Oil Markets](https://micfm.shinyapps.io/crude_oil_markets)
+[Crude Oil Markets](https://micfm.shinyapps.io/crude_oil_markets) | [Mobile Friendly Version](https://micfm.shinyapps.io/crude_oil_markets_mobile)
 
 ### Corporate Finance
 
