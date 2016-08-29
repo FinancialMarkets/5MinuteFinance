@@ -30,11 +30,19 @@ If you are already familiar with Git/R/Shiny then feel free to jump in and add t
 
 Many of the presentations below are works-in-progress.  Feel free to contribute fixes and new content. 
 
-### Commodities
+### Risk
 
-[Cross Hedging](https://micfm.shinyapps.io/cross_hedging_presentation) | [Mobile Friendly Version](https://micfm.shinyapps.io/cross_hedging_presentation_mobile)
+[What is Risk](https://micfm.shinyapps.io/what_is_risk/)
 
-[Crude Oil Markets](https://micfm.shinyapps.io/crude_oil_markets) | [Mobile Friendly Version](https://micfm.shinyapps.io/crude_oil_markets_mobile)
+[Risk Future Past](https://micfm.shinyapps.io/risk_future_past/)
+
+[The VIX Index](https://micfm.shinyapps.io/The_VIX/)
+
+[VVIX: The Vol of Vol](https://micfm.shinyapps.io/The_VVIX)
+
+### Portfolio Finance
+
+[An Introduction to Portfolio Performance Measures](https://micfm.shinyapps.io/portfolio_performance_measures/)
 
 ### Corporate Finance
 
@@ -122,17 +130,9 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 <!-- [US Monetary Policy](https://micfm.shinyapps.io/us_monetary_policy/) -->
 
-### Risk
+### Commodities
 
-[What is Risk](https://micfm.shinyapps.io/what_is_risk/)
+[Cross Hedging](https://micfm.shinyapps.io/cross_hedging_presentation) | [Mobile Friendly Version](https://micfm.shinyapps.io/cross_hedging_presentation_mobile)
 
-[Risk Future Past](https://micfm.shinyapps.io/risk_future_past/)
-
-[The VIX Index](https://micfm.shinyapps.io/The_VIX/)
-
-[VVIX: The Vol of Vol](https://micfm.shinyapps.io/The_VVIX)
-
-### Portfolio Finance
-
-[An Introduction to Portfolio Performance Measures](https://micfm.shinyapps.io/portfolio_performance_measures/)
+[Crude Oil Markets](https://micfm.shinyapps.io/crude_oil_markets) | [Mobile Friendly Version](https://micfm.shinyapps.io/crude_oil_markets_mobile)
 
