@@ -126,7 +126,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Monetary Policy
 
-[FOMC Communications](https://micfm.shinyapps.io/fed_communications/)
+[FOMC Communications](https://micfm.shinyapps.io/fed_communications/) | [Mobile Friendly Version](https://micfm.shinyapps.io/fed_communications_mobile)
 
 <!-- [US Monetary Policy](https://micfm.shinyapps.io/us_monetary_policy/) -->
 
