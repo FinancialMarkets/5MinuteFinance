@@ -1,5 +1,5 @@
 ---
-title: "An Intro to Financial Statements"
+title: "An Introduction to Financial Statements"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
