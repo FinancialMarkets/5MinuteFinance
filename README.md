@@ -46,7 +46,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Corporate Finance
 
-[An Introduction to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements) | [Mobile Friendly Version](https://micfm.shinyapps.io/basic_financial_statements)
+[An Introduction to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements) | [Mobile Friendly Version](https://micfm.shinyapps.io/basic_financial_statements_mobile)
 
 [Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios)
 
