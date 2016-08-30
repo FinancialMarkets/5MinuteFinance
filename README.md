@@ -66,7 +66,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Econometrics
 
-[An Introduction to Correlation Coefficient](https://micfm.shinyapps.io/what_is_correlation)
+[An Introduction to Correlation Coefficient](https://micfm.shinyapps.io/what_is_correlation) | [Mobile Friendly Version](https://micfm.shinyapps.io/what_is_correlation_mobile)
 
 ### Trading and Market Structure
 
