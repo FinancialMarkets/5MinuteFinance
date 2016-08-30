@@ -54,7 +54,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Time Value of Money: Multiple Cash Flows](https://micfm.shinyapps.io/TVM_Multiple_CFs/) | [Mobile Friendly Version](https://micfm.shinyapps.io/TVM_Multiple_CFs_mobile)
 
-[Operating Cash Flow](https://micfm.shinyapps.io/OCFs)
+[Operating Cash Flow](https://micfm.shinyapps.io/OCFs) | [Mobile Friendly Version](https://micfm.shinyapps.io/OCFs_mobile)
 
 [Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/) | [Mobile Friendly Version](https://micfm.shinyapps.io/NPV_and_IRR_mobile)
 
