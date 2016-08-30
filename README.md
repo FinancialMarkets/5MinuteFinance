@@ -48,7 +48,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [An Introduction to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements) | [Mobile Friendly Version](https://micfm.shinyapps.io/basic_financial_statements_mobile)
 
-[Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios)
+[Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios) | [Mobile Friendly Version](https://micfm.shinyapps.io/Financial_Ratios_mobile)
 
 [Time Value of Money: Single Cash Flows](https://micfm.shinyapps.io/TVM_Single_CFs) | [Mobile Friendly Version](https://micfm.shinyapps.io/TVM_Single_CFs_mobile)
 
