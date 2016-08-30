@@ -32,7 +32,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Risk
 
-[What is Risk](https://micfm.shinyapps.io/what_is_risk/)
+[A First Look at Risk](https://micfm.shinyapps.io/what_is_risk/) | [Mobile Friendly Version](https://micfm.shinyapps.io/what_is_risk_mobile)
 
 [Risk Future Past](https://micfm.shinyapps.io/risk_future_past/)
 
