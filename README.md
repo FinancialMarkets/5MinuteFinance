@@ -56,7 +56,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Operating Cash Flow](https://micfm.shinyapps.io/OCFs)
 
-[Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/)
+[Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/) | [Mobile Friendly Version](https://micfm.shinyapps.io/NPV_and_IRR_mobile)
 
 [An Introduction to Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/) | [Mobile Friendly Version](https://micfm.shinyapps.io/intro_stock_valuation_mobile)
 
