@@ -58,9 +58,9 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/)
 
-[An Introduction to Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/)
+[An Introduction to Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/) | [Mobile Friendly Version](https://micfm.shinyapps.io/intro_stock_valuation_mobile)
 
-[An Introduction to Bond Valuation](https://micfm.shinyapps.io/intro_bond_valuation) [Mobile Friendly Version](https://micfm.shinyapps.io/intro_bond_valuation_mobile/)
+[An Introduction to Bond Valuation](https://micfm.shinyapps.io/intro_bond_valuation) | [Mobile Friendly Version](https://micfm.shinyapps.io/intro_bond_valuation_mobile/)
 
 [The Capital Asset Pricing Model](https://micfm.shinyapps.io/The_CAPM)
 
