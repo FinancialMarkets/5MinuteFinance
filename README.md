@@ -62,7 +62,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [An Introduction to Bond Valuation](https://micfm.shinyapps.io/intro_bond_valuation) | [Mobile Friendly Version](https://micfm.shinyapps.io/intro_bond_valuation_mobile/)
 
-[The Capital Asset Pricing Model](https://micfm.shinyapps.io/The_CAPM)
+[The Capital Asset Pricing Model](https://micfm.shinyapps.io/The_CAPM) | [Mobile Friendly Version](https://micfm.shinyapps.io/The_CAPM_mobile)
 
 ### Econometrics
 
