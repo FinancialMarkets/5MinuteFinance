@@ -74,7 +74,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Derivatives
 
-[The Greeks](https://micfm.shinyapps.io/greeks)
+[The Greeks](https://micfm.shinyapps.io/greeks) | [Mobile Friendly Version](https://micfm.shinyapps.io/greeks_mobile)
 
 [Options Introduction](https://micfm.shinyapps.io/option_intro)
 
