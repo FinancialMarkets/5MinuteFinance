@@ -38,7 +38,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [The VIX Index](https://micfm.shinyapps.io/The_VIX/) | [Mobile Friendly Version](https://micfm.shinyapps.io/The_VIX_mobile)
 
-[VVIX: The Vol of Vol](https://micfm.shinyapps.io/The_VVIX)
+[VVIX: The Vol of Vol](https://micfm.shinyapps.io/The_VVIX) | [Mobile Friendly Version](https://micfm.shinyapps.io/The_VVIX_mobile)
 
 ### Portfolio Finance
 
@@ -70,7 +70,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Trading and Market Structure
 
-[The Limit Order Book](https://micfm.shinyapps.io/limit_order_book/)
+[The Limit Order Book](https://micfm.shinyapps.io/limit_order_book/) | [Mobile Friendly Version](https://micfm.shinyapps.io/limit_order_book_mobile)
 
 ### Derivatives
 

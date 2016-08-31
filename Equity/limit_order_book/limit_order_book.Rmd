@@ -235,8 +235,6 @@ Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equi
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
 
-- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
-
 - The interactive content in this presentation has used the [orderbook R package](https://cran.r-project.org/web/packages/orderbook/index.html).  Thanks to the package authors for this great tool.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

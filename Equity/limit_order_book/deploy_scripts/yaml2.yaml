@@ -1,10 +1,9 @@
 ---
-title: "VVIX: The Vol of Vol"
+title: "The Limit Order Book"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: html_document
 logo: misq.png
 runtime: shiny
-smaller: true
 ---
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

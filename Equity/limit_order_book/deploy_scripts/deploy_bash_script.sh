@@ -9,7 +9,7 @@ read -e name_of_file
 ## strip yaml header if exists; files will tend to have yaml headers for development
 ## way to strip header from here
 # http://stackoverflow.com/questions/28221779/how-to-remove-yaml-frontmatter-from-markdown-files
-sed '1 { /^---/ { :a N; /\n---/! ba; d} }' $name_of_file > ./temporary_without_yaml.Rmd
+sed '1 { /^---/ { :a N; /\n---/! ba; d} }' ../$name_of_file > ./temporary_without_yaml.Rmd
 
 cat yaml1.yaml temporary_without_yaml.Rmd > ./deploy1_folder/tmp1.Rmd
 
