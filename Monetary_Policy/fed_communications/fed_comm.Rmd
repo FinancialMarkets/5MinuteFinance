@@ -304,10 +304,16 @@ Historically the FOMC language was intentionally vague. They have recently tried
 	    #}}}
 	    selectizeInput("phrase", "FOMC Message",
                  choices = list(
-                 "Risk premia have become compressed." = "Stock prices are too high.",
-                 "Accommodative monetary policy." = "Higher money supply and lower interest rates.",
-		 "Quantitative Easing" = "Fed buying long-term Treasury and other securities.",
-                 "Dual mandate" = "Maximum employment and price stability."    )
+                 "Risk premia have become compressed" = "Stock prices are too high",
+                 "Credit conditions are tight" = "Banks are not lending as much as they would normally",
+                 "Downside risks to growth remain" = "Economic recovery is fragile and could be reversed",
+                 "Open market operations" = "When the Federal Reserve (or any central bank) buys or sells government securities in the open markets to influence market lending rates",
+                 "Gradual adjustments in the stance of monetary policy" = "Slight changes over time to the federal funds rate",
+                 "Substantial resource slack is likely to dampen cost pressures" = "The surplus of supply in oil and gas and other commodity markets is likely to keep energy prices from spiking",
+                 "Sharp and protracted correction" = "An economic crisis or severe downturn following a period of high growth – or, more colloquially, the bust following a boom",
+                 "Accommodative monetary policy" = "Higher money supply and lower interest rates",
+                 "Quantitative easing" = "Fed buying long-term Treasury and other securities",
+                 "Dual mandate" = "Maximum employment and price stability"    )
                  , width = '2000px')
      )
 renderPlot({
