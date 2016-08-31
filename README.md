@@ -36,7 +36,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Risk Over Time](https://micfm.shinyapps.io/risk_future_past/) | [Mobile Friendly Version](https://micfm.shinyapps.io/risk_future_past_mobile)
 
-[The VIX Index](https://micfm.shinyapps.io/The_VIX/)
+[The VIX Index](https://micfm.shinyapps.io/The_VIX/) | [Mobile Friendly Version](https://micfm.shinyapps.io/The_VIX_mobile)
 
 [VVIX: The Vol of Vol](https://micfm.shinyapps.io/The_VVIX)
 
