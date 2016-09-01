@@ -92,7 +92,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Treasury Debt Risk](https://micfm.shinyapps.io/treasury_debt_risk/) | [Mobile Friendly Version](https://micfm.shinyapps.io/treasury_debt_risk_mobile)
 
-[Exchange Traded Notes](https://micfm.shinyapps.io/ETNs/)
+[Exchange Traded Notes](https://micfm.shinyapps.io/ETNs/) | [Mobile Friendly Version](https://micfm.shinyapps.io/ETNs_mobile)
 
 [For What is the Yield-to-Maturity Used?](https://micfm.shinyapps.io/For_What_YTM_Used/)
 
