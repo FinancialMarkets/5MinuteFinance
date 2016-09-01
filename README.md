@@ -80,7 +80,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [An Introduction to Option and Stock Strategies](https://micfm.shinyapps.io/option_spreads) | [Mobile Friendly Version](https://micfm.shinyapps.io/option_spreads_mobile)
 
-[Black Scholes](https://micfm.shinyapps.io/black_scholes)
+[Black Scholes](https://micfm.shinyapps.io/black_scholes) | [Mobile Friendly Version](https://micfm.shinyapps.io/black_scholes_mobile)
 
 [Stochastic Volatility](https://micfm.shinyapps.io/stochastic_vol)
 
