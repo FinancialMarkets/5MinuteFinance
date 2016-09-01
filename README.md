@@ -72,6 +72,8 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [The Limit Order Book](https://micfm.shinyapps.io/limit_order_book/) | [Mobile Friendly Version](https://micfm.shinyapps.io/limit_order_book_mobile)
 
+[The Pairs Trade](https://micfm.shinyapps.io/pairs_trade/)
+
 ### Derivatives
 
 [The Greeks](https://micfm.shinyapps.io/greeks) | [Mobile Friendly Version](https://micfm.shinyapps.io/greeks_mobile)
@@ -107,8 +109,6 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 [An Introduction to Stock Investments](https://micfm.shinyapps.io/stock/)
 
 [An Introduction Stock Markets](https://micfm.shinyapps.io/stock_markets/)
-
-[The Pairs Trade](https://micfm.shinyapps.io/pairs_trade/)
 
 [Short Selling Stock](https://micfm.shinyapps.io/short_selling_stock/)
 
