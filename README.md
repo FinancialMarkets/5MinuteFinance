@@ -76,7 +76,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [The Greeks](https://micfm.shinyapps.io/greeks) | [Mobile Friendly Version](https://micfm.shinyapps.io/greeks_mobile)
 
-[Options Introduction](https://micfm.shinyapps.io/option_intro)
+[An Introduction to Stock Options](https://micfm.shinyapps.io/option_intro) | [Mobile Friendly Version](https://micfm.shinyapps.io/option_intro_mobile)
 
 [Option Spreads](https://micfm.shinyapps.io/option_spreads)
 
