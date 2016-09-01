@@ -78,7 +78,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [An Introduction to Stock Options](https://micfm.shinyapps.io/option_intro) | [Mobile Friendly Version](https://micfm.shinyapps.io/option_intro_mobile)
 
-[Option Spreads](https://micfm.shinyapps.io/option_spreads)
+[An Introduction to Option and Stock Strategies](https://micfm.shinyapps.io/option_spreads) | [Mobile Friendly Version](https://micfm.shinyapps.io/option_spreads_mobile)
 
 [Black Scholes](https://micfm.shinyapps.io/black_scholes)
 
