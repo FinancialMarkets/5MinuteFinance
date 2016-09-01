@@ -67,23 +67,25 @@ By arbitrage, each bond with have the same 1\% YTM.  So this means the bond pric
 <!-- replace with app which shows all prices which have the same YTM -->
 <!-- user change YTM and it plots in coupon price space? -->
 
+app commented -- add
+<!---
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-sidebarLayout(
-    sidebarPanel(
-        sliderInput("coupon2", label = "Coupon Rate", max = .2, min = 0, value = .05, step = .01),
-        sliderInput("maturity2", label = "Years to Maturity", max = 50, min = 1, value = 10)
-    ),
-mainPanel(
-    renderMetricsgraphics({
+## sidebarLayout(
+##     sidebarPanel(
+##         sliderInput("coupon2", label = "Coupon Rate", max = .2, min = 0, value = .05, step = .01),
+##         sliderInput("maturity2", label = "Years to Maturity", max = 50, min = 1, value = 10)
+##     ),
+## mainPanel(
+##     renderMetricsgraphics({
 
 
 
-        })
+##         })
 ```
+-->
 
 
-
-
+##
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
@@ -198,8 +200,5 @@ There are a couple of approaches to determine how much we would pay for a bond.
 Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/For_What_YTM_Used/for_what_YTM_used.Rmd) to see the code and collaborators for this presentation
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
-
-- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
-
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
