@@ -94,11 +94,11 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Exchange Traded Notes](https://micfm.shinyapps.io/ETNs/) | [Mobile Friendly Version](https://micfm.shinyapps.io/ETNs_mobile)
 
-[For What is the Yield-to-Maturity Used?](https://micfm.shinyapps.io/For_What_YTM_Used/)
+[For What is the Yield-to-Maturity Used?](https://micfm.shinyapps.io/For_What_YTM_Used/) | [Mobile Friendly Version](https://micfm.shinyapps.io/For_What_YTM_Used_mobile)
 
 ### Foreign Exchange
 
-[Foreign Exchange Arbitrage](https://micfm.shinyapps.io/fx_arbitrage/)
+[Foreign Exchange Arbitrage](https://micfm.shinyapps.io/fx_arbitrage/) | [Mobile Friendly Version](https://micfm.shinyapps.io/fx_arbitrage_mobile)
 
 [Foreign Exchange Markets](https://micfm.shinyapps.io/fx_market)
 
