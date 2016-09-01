@@ -88,7 +88,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Duration](https://micfm.shinyapps.io/intro_duration/) | [Mobile Friendly Version](https://micfm.shinyapps.io/intro_duration_mobile)
 
-[Convexity](https://micfm.shinyapps.io/convexity/)
+[Convexity](https://micfm.shinyapps.io/convexity/) | [Mobile Friendly Version](https://micfm.shinyapps.io/convexity_mobile)
 
 [Treasury Debt Risk](https://micfm.shinyapps.io/treasury_debt_risk/)
 
