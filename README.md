@@ -102,7 +102,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Foreign Exchange Arbitrage](https://micfm.shinyapps.io/fx_arbitrage/) | [Mobile Friendly Version](https://micfm.shinyapps.io/fx_arbitrage_mobile)
 
-[Foreign Exchange Markets](https://micfm.shinyapps.io/fx_market)
+[Foreign Exchange Markets](https://micfm.shinyapps.io/fx_market) | [Mobile Friendly Version](https://micfm.shinyapps.io/fx_market_mobile)
 
 ### Equity
 
