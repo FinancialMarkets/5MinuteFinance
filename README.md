@@ -72,7 +72,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [The Limit Order Book](https://micfm.shinyapps.io/limit_order_book/) | [Mobile Friendly Version](https://micfm.shinyapps.io/limit_order_book_mobile)
 
-[The Pairs Trade](https://micfm.shinyapps.io/pairs_trade/)
+[The Pairs Trade](https://micfm.shinyapps.io/pairs_trade/) | [Mobile Friendly Version](https://micfm.shinyapps.io/pairs_trade_mobile)
 
 ### Derivatives
 
