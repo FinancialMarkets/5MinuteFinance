@@ -1,14 +1,12 @@
 ---
-title: "Leveraged ETFs"
+title: "Leveraged Exchange Traded Funds"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
-affiliation: "Milken Institute Center for Financial Markets"
-output: ioslides_presentation
-runtime: shiny
+output: html_document
 logo: misq.png
-css: 5min_mod.css
-smaller: true
+runtime: shiny
 ---
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 ## Leveraged ETFs
@@ -19,7 +17,6 @@ Leveraged ETFs seek to return some multiple of an index.  For example, ticker SS
 
 -  There are also inverse leveraged ETFs.  These seek to return some negative multiple of an index.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Leveraged ETF Quotes
 
@@ -29,7 +26,6 @@ On the next slide you can see a quote for an ETF, and a leveraged ETF, on the sa
 
 -  The ETF is the top quote, and the 2X leveraged ETF is below.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
@@ -65,7 +61,6 @@ div(renderDataTable({
 #}}}
 ```
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## When Do Leveraged ETFs Not Work?
 
@@ -75,7 +70,6 @@ Leveraged ETFs do a good job of returning a multiple of an index's return over a
 
 -  Also, the longer you hold the Leveraged ETF, the more its return will diverge from being a multiple of the underlying index.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Why is the Leveraged ETF Error Greater Over Longer Holding Periods?
 
@@ -85,7 +79,6 @@ Say both an ETF on an index and a leveraged ETF are trading for $100.  The index
 
 -  This is caused by the nature of returns, and is not a fault in the way leveraged ETFs are managed. 
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Interactive App
 
@@ -95,7 +88,6 @@ You can use the app on the following slide to see the divergence in the return o
 
 -  Change the length of time, and see how this affects the divergence.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
@@ -137,7 +129,6 @@ renderDygraph({
 #}}}
 ```
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## List of Selected ETFs, Leveraged ETFs, and their Index
 
@@ -150,7 +141,6 @@ renderDygraph({
 - Silver (the metal): SLV and ACQ (2X)
 - US Energy Sector: XLE and ERX (3X)
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 <!---
 old stock plot with technical analysis
@@ -211,7 +201,6 @@ If you would like to make any additions or corrections to this presentation, vis
 - And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
 
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
@@ -219,4 +208,3 @@ Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corp
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
