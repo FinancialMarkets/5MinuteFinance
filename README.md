@@ -108,7 +108,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [An Introduction to Stock Investments](https://micfm.shinyapps.io/stock/) | [Mobile Friendly Version](https://micfm.shinyapps.io/stock_mobile)
 
-[An Introduction Stock Markets](https://micfm.shinyapps.io/stock_markets/)
+[An Introduction Stock Markets](https://micfm.shinyapps.io/stock_markets/) | [Mobile Friendly Version](https://micfm.shinyapps.io/stock_markets_mobile)
 
 [Short Selling Stock](https://micfm.shinyapps.io/short_selling_stock/)
 
