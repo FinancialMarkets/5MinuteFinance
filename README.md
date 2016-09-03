@@ -106,7 +106,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Equity
 
-[An Introduction to Stock Investments](https://micfm.shinyapps.io/stock/)
+[An Introduction to Stock Investments](https://micfm.shinyapps.io/stock/) | [Mobile Friendly Version](https://micfm.shinyapps.io/stock_mobile)
 
 [An Introduction Stock Markets](https://micfm.shinyapps.io/stock_markets/)
 
