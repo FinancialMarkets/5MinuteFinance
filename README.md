@@ -112,7 +112,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Short Selling Stock](https://micfm.shinyapps.io/short_selling_stock/) | [Mobile Friendly Version](https://micfm.shinyapps.io/short_selling_stock_mobile)
 
-[Exchange Traded Funds](https://micfm.shinyapps.io/ETFs/)
+[Exchange Traded Funds](https://micfm.shinyapps.io/ETFs/) | [Mobile Friendly Version](https://micfm.shinyapps.io/ETFs_mobile)
 
 [Leveraged Exchange Traded Funds](https://micfm.shinyapps.io/leveragedETFs/) | [Mobile Friendly Version](https://micfm.shinyapps.io/leveragedETFs_mobile)
 
