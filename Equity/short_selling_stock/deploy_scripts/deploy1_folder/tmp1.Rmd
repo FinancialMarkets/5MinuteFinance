@@ -2,10 +2,9 @@
 title: "Short Selling Stock"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
-runtime: shiny
 logo: misq.png
-css: 5min_mod.css
-smaller: true
+css: 5min_mod2.css
+runtime: shiny
 ---
 
 ## Why Short Stock?

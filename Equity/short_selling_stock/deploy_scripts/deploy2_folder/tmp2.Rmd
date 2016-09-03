@@ -1,13 +1,12 @@
 ---
 title: "Short Selling Stock"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
-output: ioslides_presentation
-runtime: shiny
+output: html_document
 logo: misq.png
-css: 5min_mod.css
-smaller: true
+runtime: shiny
 ---
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 ## Why Short Stock?
 
 By shorting stock we profit when the stock price declines.  So you can use short sales to speculate.
@@ -16,7 +15,6 @@ However, shorting stock is also used by banks to hedge put options they have sol
 
 -  That is, shorting stock is used to lessen the risk taken by bank and other financial intermediaries.  In fact, without the ability to short, put options and other derivatives may not exist. 
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## So How Does It Work?
 
@@ -26,7 +24,6 @@ To short a share of stock, you borrow the stock from someone (say Bob) and sell 
 
 -  To return the stock to Bob, you'll go to the market and buy a share.  You can buy it from anyone, not just Sandra.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Example Profit/Loss
 
@@ -36,7 +33,6 @@ Say the stock is trading in the market for \$80 when you decide to close the pos
 
 -  After the transaction you are left with a profit of \$100 - \$80 = \$20.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Example Profit/Loss
 
@@ -46,7 +42,6 @@ Alternatievly, say the stock is trading in the market for \$110 when you decide 
 
 -  So you sold the stock for \$100, and bought it for \$110, for a loss of \$10.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##  Interactive App
 
@@ -58,7 +53,6 @@ On the next slide you can input the amount of shares you want to short, and the 
 
 -  Complete lines open the short position, and dotted lines close the short.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
@@ -122,7 +116,6 @@ shinyApp(ui = ui, server = server)
 #}}}
 ```
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## How Do You Borrow Shares?
 
@@ -134,7 +127,6 @@ This is handled by your broker -- you don't have to worry about the mechanics be
 
 -  Note, you don't have any sort of right to short, so during times of market turbulence, you may not be able to short many stocks.  
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Naked Shorting
 
@@ -144,7 +136,6 @@ Your broker has some leeway in terms of how soon they have to borrow shares howe
 
 -  The term for shorting while failing to borrow the stock is 'Naked Shorting' and it has been banned by the U.S. Securities and Exchange Commission.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##  Alternatives to Shorting: Inverse ETFs
 
@@ -154,7 +145,6 @@ If you don't want to short (or your brokerage account doesn't allow it), you can
 
 -  Inverse ETFs are not available for individual stocks.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Inverse ETF Performance
 
@@ -164,7 +154,6 @@ The next slide shows the performance of an ETF on the S&P 500 (SPY), and an inve
 
 -  You can see the inverse (short) ETF is a mirror image of the performance of the S&P 500.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## S&P 500 (SPY) and Short S&P 500 (SH)
 
@@ -182,7 +171,6 @@ renderDygraph({
 #}}}
 ```
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 <!---
@@ -201,4 +189,3 @@ Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equi
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

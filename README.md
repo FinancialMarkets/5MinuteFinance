@@ -110,7 +110,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [An Introduction Stock Markets](https://micfm.shinyapps.io/stock_markets/) | [Mobile Friendly Version](https://micfm.shinyapps.io/stock_markets_mobile)
 
-[Short Selling Stock](https://micfm.shinyapps.io/short_selling_stock/)
+[Short Selling Stock](https://micfm.shinyapps.io/short_selling_stock/) | [Mobile Friendly Version](https://micfm.shinyapps.io/short_selling_stock_mobile)
 
 [Leveraged Exchange Traded Funds](https://micfm.shinyapps.io/leveragedETFs/)
 
