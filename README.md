@@ -84,7 +84,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Black Scholes](https://micfm.shinyapps.io/black_scholes) | [Mobile Friendly Version](https://micfm.shinyapps.io/black_scholes_mobile)
 
-[Stochastic Volatility](https://micfm.shinyapps.io/stochastic_vol)
+[Varying Option Volatility](https://micfm.shinyapps.io/stochastic_vol) | [Mobile Friendly Version](https://micfm.shinyapps.io/stochastic_vol_mobile)
 
 ### Fixed Income and Other Debt
 
