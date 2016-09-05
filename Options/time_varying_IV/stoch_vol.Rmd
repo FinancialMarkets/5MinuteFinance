@@ -1,0 +1,90 @@
+---
+title: "Varying Option Volatility"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod2.css
+runtime: shiny
+---
+
+## Characteristics of Implied Volatility
+
+Implied volatility is the market's expectation of a security's volatility extracted from option prices on that security.  It is the volatility expected over the life of that option.  We calculate Implied Volatility using the Black-Scholes option pricing model -- we solve the equation for volatility and plug in the option price we observe in the market.  
+
+Here we take a look at two important observations involving implied volatility.
+
+1. Implied volatility is a function of the option's moneyness.  This is known as the *option smile* (or sometimes referred to as the *option smirk*).
+
+2. Implied volatility is is a function of the option's expiration date.  
+
+3. Implied volatility changes over time, and so does the option smile. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Option Smile
+
+The option smile shows the dependence of an option's implied volatility on the option's moneyness, which is defined as the option's strike price divided by the underlying security's price.  Note, the existence of the option smile is a deviation from the assumptions underlying the Black-Scholes option pricing model. 
+
+-  Generally the option smile for equity markets looks like the chart on the next slide. Note this looks more like a *skew* or *smirk*.  Implied volatility is highest when the underlying security is much higher than the strike (deep out-of-the-money put, and in-the-money call, options).  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+##
+
+```{r echo = FALSE}
+library(metricsgraphics)
+renderMetricsgraphics({
+    gendata <- data.frame(Implied_Volatility = c(0.3, 0.21, .15, 0.13, 0.09, .08),
+                          Moneyness = c(round(0.6, 1), 0.75, .85, 0.9, 1.05, 1.15)
+                          )
+    gendata %>%
+  mjs_plot(x=Moneyness, y=Implied_Volatility) %>%
+      mjs_line() %>%
+      mjs_labs(x="Moneyness", y="Implied Volatility")
+    })
+
+```
+
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## 
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r, echo = FALSE}
+
+library(threejs)
+options("scipen" = 100, "digits" = 6)
+inputPanel({
+  sliderInput("theTime", "Day/Second", value = c(0000000, 310000000), min = 0000000, max = 3100000, animate = animationOptions(interval = 300), sep = "", step = 60)
+})
+renderScatterplotThree({
+ ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1]
+ ez1509es1509$Date <- ez1509es1509$Date - 2015080000000
+tmp <- subset(ez1509es1509, Date > input$theTime[1])
+tmp <- subset(tmp, Date < input$theTime[2])
+## maybe sort to reverse moneyness -- so switches view
+tmp <- tmp[ order(tmp[,2]),]
+tmp[,2] <- -tmp[,2]
+    scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time", "-Moneyness", "Implied Volatility"))
+})
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+
+
+## Credits and Collaboration
+
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/stochastic_vol/stoch_vol.Rmd) to see the code and collaborators for this presentation
+
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
