@@ -64,6 +64,17 @@ The option smile is known to take different shapes depending on the options expi
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Implied Volatility, Expiration, and Moneyness
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+library(plotly)
+renderPlotly({
+    for.plotly.first.half <- read.csv("vol_surface.csv", header = TRUE, stringsAsFactors = FALSE)
+    plot_ly(for.plotly.first.half, x = Years_Until_Expiration, y = Moneyness, z = Implied_Volatility, color = Implied_Volatility, type = "scatter3d", mode = "markers")
+    })
+```
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ##
 
 ```{r, echo = FALSE}
