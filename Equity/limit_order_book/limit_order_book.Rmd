@@ -188,43 +188,51 @@ shinyUI(fluidPage(
     
   fluidRow(
     column(4, numericInput("amount3", "Number of Shares", value = 100)),
-    column(4, numericInput("limit3", "Limit Price", value = 11.37)),
+    column(4, numericInput("limit3", "Limit Price", value = 11.36)),
     column(4, radioButtons("typeBS3", "Buy or Sell", choices = c("Buy" = 1,
                                                       "Sell" = 2), selected = 1))),
   
   fluidRow(
-        column(5, offset = 1,
-               renderPrint({
-                   filename <- system.file("extdata",
-                                           "sample.txt",
-                                           package = "orderbook")
-                   ob <- orderbook(file = filename)
-                   ob <- read.orders(ob, 10000)
-                   display(ob)
-               })
-               ),
-        column(5, offset = 1,
-               renderPrint({
-                   if (input$amount2 <= 0) {
-                       cat("Enter number of shares")
-                   } else {
+      column(5, offset = 1,
+             renderPrint({
+                 filename <- system.file("extdata",
+                                         "sample.txt",
+                                         package = "orderbook")
+                 ob <- orderbook(file = filename)
+                 ob <- read.orders(ob, 10000)
+                 display(ob)
+             })
+             ),
+      column(5, offset = 1,
+             renderPrint({
+                 if (input$amount2 <= 0) {
+                     cat("Enter number of shares")
+                 } else {
                      orderType3 <- switch(input$typeBS3, 
-                                         "1" = "BID",
-                                         "2" = "ASK")
+                                          "1" = "BID",
+                                          "2" = "ASK")
                      filename <- system.file("extdata",
                                              "sample.txt",
                                              package = "orderbook")
                      ob <- orderbook(file = filename)
                      ob <- read.orders(ob, 10000)
-                     ob <- add.order(ob, price = input$limit3, size = input$amount3, type = orderType3)
+                     if (identical(orderType3, "BID") & input$limit3 >= 11.38) {
+                         ob <- market.order(ob, input$amount3, "BUY")
+                     } else {
+                         if (identical(orderType3, "ASK") & input$limit3 <= 11.36) {
+                             ob <- market.order(ob, input$amount3, "SELL")
+                         } else {
+                             ob <- add.order(ob, price = input$limit3, size = input$amount3, type = orderType3)
+                         }
+                     }
                      display(ob)
-                   }
-               })
-               )
-    )
+                 }
+             })
+             )
+  )
 )
 )
-#}}}
+                                        #}}}
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
