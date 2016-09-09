@@ -29,16 +29,32 @@ Given the previous information we know the cash flow structure and the rate at w
 
 - Then the bond will pay $0.05(\$1000) = \$50$ every year for 10 years, with an additional \$1000 in year 10.  In other words the cash flows are \$50 in years 1 through 9, and \$1050 in year 10.
 
-- The present value of these cash flows at the $YTM$ (the value of the bond $B_0$) is:
-$B_0 = \sum_{i=1}^10\frac{50}{1.08^i} + \frac{1000}{1.08^{10}} = \$798.69$
+| Year | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+| ---- | - | - | - | - | - | - | - | - | - | -- |
+|      | $50 |  $50 |  $50 |  $50 |  $50 |  $50 | $50 | $50 | $50 | $1050 | 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Example Continued
+## Bond Value
 
-- This is often calculated using the present value of an ordinary annuity formula: $B_0 = \$50\left(\frac{1-\frac{1}{1.08^{10}}}{.08}\right) + \frac{\$1000}{1.08^{10}} = \$798.69$
+To find the value of the bond we simply sum the present value of each individual cash flow.  So we sum the values in the table below.  Note $1.08 = (1 + YTM)$ where the yield-to-maturity is 8%. 
 
-- The two calculations are equivalent.  The former is more popular if used in a spreadsheet.  The latter was mainly taught because people were doing these calculations by calculator.
+| Year | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+| ---- | - | - | - | - | - | - | - | - | - | -- |
+| | $\frac{\$50}{1.08}$ | $\frac{\$50}{1.08^{2}}$ |  $\frac{\$50}{1.08^{3}}$ | $\frac{\$50}{1.08^{4}}$ | $\frac{\$50}{1.08^{5}}$ | $\frac{\$50}{1.08^{6}}$ | $\frac{\$50}{1.08^{7}}$ | $\frac{\$50}{1.08^{8}}$ | $\frac{\$50}{1.08^{9}}$ | $\frac{\$1050}{1.08^{10}}$ | 
+
+The sum of the present value of these cash flows is \$798.69.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Bond Value
+
+The value of the bond is often written as:
+$B_0 = \sum_{i=1}^{10}\frac{50}{1.08^i} + \frac{1000}{1.08^{10}} = \$798.69$
+
+Which can be rewritten to use the present value of an ordinary annuity formula: $B_0 = \$50\left(\frac{1-\frac{1}{1.08^{10}}}{.08}\right) + \frac{\$1000}{1.08^{10}} = \$798.69$
+
+- These calculations are equivalent, and the differences are only matters of notation.  When using in a spreadsheet, the calculations usually laid out in a form similar to the table.  The annuity formula was mainly taught because prior to spreadsheets people were doing these calculations by calculator.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
