@@ -34,32 +34,35 @@ The option smile shows the dependence of an option's implied volatility on the o
 ##
 
 ```{r echo = FALSE}
-library(metricsgraphics)
-renderMetricsgraphics({
-    gendata <- data.frame(IV_1_Month = c(0.4, 0.31, .25, 0.13, 0.09, .05),
-                          IV_2_Month = c(0.3, 0.21, .15, 0.13, 0.09, .08),
-                          IV_3_Month = c(0.25, 0.17, .15, 0.13, 0.10, .09),
-                          Moneyness = c(round(0.6, 1), 0.75, .85, 0.9, 1.05, 1.15)
-                          )
-    gendata %>%
-  mjs_plot(x = Moneyness, y = IV_1_Month) %>%
-      mjs_line() %>%
-      mjs_add_line(IV_2_Month) %>%
-      mjs_add_line(IV_3_Month) %>%
-      mjs_add_legend(legend = c("IV 1 Month", "IV 2 Month", "IV 3 Month")) %>%
-      mjs_labs(x = "Moneyness", y = "Implied Volatility")
-    })
-
+ library(metricsgraphics)
+ renderMetricsgraphics({
+     gendata <- data.frame(IV_1_Month = c(0.4, 0.31, .25, 0.13, 0.09, .05),
+                           IV_2_Month = c(0.3, 0.21, .15, 0.13, 0.09, .08),
+                           IV_3_Month = c(0.25, 0.17, .15, 0.13, 0.10, .09),
+                           Moneyness = c(round(0.6, 1), 0.75, .85, 0.9, 1.05, 1.15)
+                           )
+     gendata %>%
+   mjs_plot(x = Moneyness, y = IV_1_Month) %>%
+       mjs_line() %>%
+#       mjs_add_line(IV_2_Month) %>%
+#       mjs_add_line(IV_3_Month) %>%
+#       mjs_add_legend(legend = c("IV 1 Month", "IV 2 Month", "IV 3 Month")) %>%
+       mjs_labs(x = "Moneyness", y = "Implied Volatility")
+     })
+ 
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## The Smile for Differing Expirations
 
-The option smile is known to take different shapes depending on the options expiration.  The general form of the smile is the same, however the sensitivity of implied volatility to moneyness amy be different fir varying expirations.  
+The option smile is known to take different shapes depending on the options expiration.  The general form of the smile is the same, however the sensitivity of implied volatility to moneyness may be different for varying expirations.  
 
 -  The option smile is often visualized across expirations, in what is known as the *volatility surface*.  
 
+-  The next slide shows how the smile is affected by option tenor.  The visualization is done with a 3D scatter plot instead of a surface so you see actual IV values, and nothing is interpolated.
+
+-  The chart is done using [plotly]().
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -71,7 +74,7 @@ library(plotly)
 renderPlotly({
     for.plotly.first.half <- read.csv("vol_surface.csv", header = TRUE, stringsAsFactors = FALSE)
     plot_ly(for.plotly.first.half, x = Years_Until_Expiration, y = Moneyness, z = Implied_Volatility, color = Implied_Volatility, type = "scatter3d", mode = "markers")
-    })
+    , height = 200px})
 ```
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
