@@ -3,7 +3,7 @@ title: "An Introduction to Stock Investments"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
-css: 5min_mod.css
+css: 5min_mod2.css
 runtime: shiny
 smaller: true
 ---
@@ -164,19 +164,11 @@ renderPlot({
 
 ## Historical Stock Performance
 
-Stock has historically been one of the best performing asset classes [link to relative performance of asset classes presentation].
-
--  While stock returns have been quite high, stock returns are also volatile.
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## 
-
-In the following interactive app, you can chart stock going as far back as 1950.
+Stock has historically been one of the best performing asset classes.  While stock returns have been quite high, stock returns are also volatile.  In the following interactive app, you can chart stock going as far back as 1950.
 
 - Moving the mouse over the chart at any date will tell you the stock price on that date.
 
-- You can also change the date window using the selector at the bottom.
+- You can also change the date window using the selector at the bottom, or by left-clicking and dragging on the chart itself.
 
 - You can plot the S&P 500 index by using <code>^GSPC</code> as the ticker.
 
