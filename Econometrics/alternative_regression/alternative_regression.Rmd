@@ -1,5 +1,5 @@
 ---
-title: "An Introduction Linear Regression"
+title: "An Alternative Introduction to Linear Regression"
 author: "Milken Institute, Center for Financial Markets"
 affiliation: "Milken Institute Center for Financial Markets"
 date: "06/02/2015"
@@ -10,6 +10,11 @@ runtime: shiny
 smaller: true
 ---
 
+## The Geometric Viewpoint
+
+This presentation will look at linear regression from the geometric viewpoint.  The approach is often taken once the student has taken a course in linear algebra.  
+
+- For a traditional introduction to linear regression see [this presentation]().  
 
 ## What is Linear Regression?
 

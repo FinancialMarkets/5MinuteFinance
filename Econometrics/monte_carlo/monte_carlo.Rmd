@@ -131,6 +131,9 @@ $dS_t = \kappa(\mu_S - lnS_t)dt + \sigma S_t dB_t$
 
 ## Monte Carlo Setup
 
+We'll use the Euler scheme to 
+
+
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
