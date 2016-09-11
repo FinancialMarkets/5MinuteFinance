@@ -133,10 +133,71 @@ $dS_t = \kappa(\mu_S - lnS_t)dt + \sigma S_t dB_t$
 
 We'll use the Euler scheme to 
 
-
-
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+##
+
+```{r echo = FALSE}
+
+## Parameters
+
+## Equation: dSt = k(mu - lnSt)dt + sigmaStdBt
+inputPanel(
+    ## sliderInput("numsim", "Number of Paths to Simulate", min = 1000, max = 100000, value = 10000, step = 100),
+    sliderInput("paramK", "k Parameter", min = .01, max = .8, value = .2, step = .01),
+    sliderInput("paramMu", "Average Price", min = 10, max = 50, value = 30, step = 1),
+    sliderInput("paramSigma", "Sigma Parameter", min = .01, max = .2, value = .05, step = .01)
+    ## sliderInput("strike1", "Strike Price", min = 10, max = 100, value = 35, step = 5)    
+)
+
+renderPlot({
+
+    ## nsim <- input$numsim
+    nsim <- 1000
+    k <- input$paramK
+    mu <- input$paramMu
+    S0 <- 35
+    sigma <- input$paramSigma
+    days <- 252
+
+    ## strike <- input$strike1
+    strike <- 40
+    
+    vol.per.period <- sigma / sqrt(days)
+
+    prices <- matrix(nrow = days, ncol = nsim)
+    changes <- matrix(nrow = days, ncol = nsim)
+    prices[1, ] <- S0
+
+    for (j in 1:nsim) {
+        for (i in 2:days) {
+
+            changes[i, j] <- k * (mu - prices[(i - 1), j]) * (1 / days) + vol.per.period * prices[(i - 1), j] * rnorm(1)
+
+            prices[i, j] <- prices[(i - 1), j] + changes[i, j]
+
+        }
+    }
+
+    maxes <- apply(prices, 2, max)
+
+    ## assuming a complete market ----
+
+    ## payoffs
+
+    payoffs <- 0
+    payoffs <- ifelse((maxes - strike) > 0, (maxes - strike), 0)
+
+    C0 <- exp(-.02) * mean(payoffs)
+
+    matplot(prices, type = 'l')
+})
+
+```
+
+
+
 
 ## Credits and Collaboration
 
