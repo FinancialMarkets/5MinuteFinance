@@ -123,7 +123,7 @@ Say an option gives you the right to sell one unit of the underlying at the maxi
 
 -  However what if your boss wants you to value a lookback option on an underlying which is described by the following process?
 
-$dS_t = \kappa(\mu_S - lnS_t)dt + \sigma S_t dB_t$
+$dS_t = \kappa(\mu_S - S_t)dt + \sigma S_t dB_t$
 
 -  An analytic solution might be possible, but it may take a while to find. This is where it makes sense to turn to Monte Carlo.
 
@@ -131,10 +131,20 @@ $dS_t = \kappa(\mu_S - lnS_t)dt + \sigma S_t dB_t$
 
 ## Monte Carlo Setup
 
-We'll use the Euler scheme to 
+Given the parameters $\mu_S$, $\kappa$, and $\sigma$, and a starting price, we'll simulate various price paths.  We'll calculate the maximum over each of these price paths, which will give us the lookback call option payoff given the path.  Taking the average value and discounting at the risk-free rate (assuming a complete market) affords the lookback call option's value.  
+
+-  Remember, here we need to simulate the entire security's path over the year, not just the terminal value like in the earlier valuation of a European call.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Monte Carlo Setup
+
+In the next slide we'll price a lookback call with 1 year to maturity, on a security with a \$35 price today. The strike price is \$37, and we will simulate a price path with 252 points (one for each trading day of the year).  For each 
+
+-  You can set the $\kappa$, $\mu$, and $\sigma$ parameters using the slider inputs.  When you change any slider the Monte Carlo valuation is re-run.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
@@ -162,7 +172,7 @@ renderPlot({
     days <- 252
 
     ## strike <- input$strike1
-    strike <- 40
+    strike <- 37
     
     vol.per.period <- sigma / sqrt(days)
 
@@ -190,8 +200,13 @@ renderPlot({
     payoffs <- ifelse((maxes - strike) > 0, (maxes - strike), 0)
 
     C0 <- exp(-.02) * mean(payoffs)
+    par(mfrow = c(2,2))
+    matplot(prices, type = 'l', main = "Price Paths")
+    plot(density(maxes), lwd = 3, col = "dodgerblue", main = "Max Price Values")
+    plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+    text(x = 0.5, y = 0.5, labels = paste0("Call = $", round(C0, 2)), cex = 5)
+    plot(density(exp(-.02) * payoffs), col = "dodgerblue", lwd = 3, main = "Present Value of Lookback Call Payoffs")
 
-    matplot(prices, type = 'l')
 })
 
 ```
