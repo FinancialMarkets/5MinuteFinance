@@ -8,6 +8,13 @@ runtime: shiny
 smaller: true
 ---
 
+## Monte Carlo: Solution by Simulation
+
+The goal of this presentation is to show you when to use Monte Carlo, and provide a couple interactive examples with visualizations.  The idea is that you should first have a good understanding of when Monte Carlo is useful before you dive into the math and mechanics of the method.
+
+
+
+
 ## Monte Carlo and Analytic Solutions
 
 When an analytic solution is available use it.  
@@ -48,8 +55,6 @@ where $N(0, 1)$ is a random draw from a standard Normal distribution.
 ## Interactive App
 
 On the next slide we calculate the value of a European call option by both the Black-Scholes formula and Monte Carlo.  In both cases we make the same assumptions, namely the stock follows geometric Brownian Motion, and the [market is complete]()[link to slide in binomial option pricing presentation]. 
-
-
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -117,7 +122,7 @@ As mentioned, Monte Carlo makes sense when an analytic solution is unavailable o
 
 ## Lookback Option
 
-Say an option gives you the right to sell one unit of the underlying at the maximum price from today (time $0$) until expiration (time $T$).  This is a lookback put option.  
+Say an option pays the difference between the *maximum* price of a security over a time period and a set strike price.  So the payoff is: $max(S_{max} - X, 0)$ where $S_{max}$ is the maximum security price over a set interval.  This is a European lookback call option with a fixed strike price (you can also let the strike price float).  
 
 -  If we assume the underlying follows geometric Brownian motion, then this option value [has an analytic solution](https://scholar.google.com/scholar?hl=en&q=goldman+sosin+gatto+1979).
 
@@ -149,7 +154,7 @@ In the next slide we'll price a lookback call with 1 year to maturity, on a secu
 ##
 
 ```{r echo = FALSE}
-
+#{{{
 ## Parameters
 
 ## Equation: dSt = k(mu - lnSt)dt + sigmaStdBt
@@ -170,6 +175,8 @@ renderPlot({
     S0 <- 35
     sigma <- input$paramSigma
     days <- 252
+
+### hacked into place pretty quick -- check to make sure I am not doing something stupid ----
 
     ## strike <- input$strike1
     strike <- 37
@@ -208,11 +215,10 @@ renderPlot({
     plot(density(exp(-.02) * payoffs), col = "dodgerblue", lwd = 3, main = "Present Value of Lookback Call Payoffs")
 
 })
-
+#}}}
 ```
 
-
-
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
