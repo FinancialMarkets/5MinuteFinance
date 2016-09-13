@@ -10,18 +10,19 @@ smaller: true
 
 ## Monte Carlo: Solution by Simulation
 
-The goal of this presentation is to show you when to use Monte Carlo, and provide a couple interactive examples with visualizations.  The idea is that you should first have a good understanding of when Monte Carlo is useful before you dive into the math and mechanics of the method.
+The goal of this presentation is to show you when to use Monte Carlo, and provide a couple interactive examples with visualizations.
 
+-  The idea is that you should first have a good understanding of when Monte Carlo is useful before you dive into the math and mechanics of Monte Carlo.
 
-
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Monte Carlo and Analytic Solutions
 
-When an analytic solution is available use it.  
+When an analytic solution is available, you should generally use it. 
 
--  If you make the same underlying assumptions, the analytic solution will be the same as the Monte Carlo.
+-  If you make the same underlying assumptions, the analytic solution will be the same as the Monte Carlo, though the Monte Carlo solution will have estimation error.
 
--  Monte Carlo is useful when an analytic solution is unavailable or difficult to obtain.  This is often the case, which makes Monte Carlo an important tool for the analyst.
+-  Monte Carlo is useful when an analytic solution is unavailable, difficult to obtain, or the underlying assumptions differ from a continuous-time solution.  This is often the case, which makes Monte Carlo an important tool for the analyst.
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -54,7 +55,9 @@ where $N(0, 1)$ is a random draw from a standard Normal distribution.
 
 ## Interactive App
 
-On the next slide we calculate the value of a European call option by both the Black-Scholes formula and Monte Carlo.  In both cases we make the same assumptions, namely the stock follows geometric Brownian Motion, and the [market is complete]()[link to slide in binomial option pricing presentation]. 
+On the next slide we calculate the value of a European call option by both the Black-Scholes formula and Monte Carlo.  In both cases we make the same assumptions, namely the stock follows geometric Brownian Motion, and the [market is complete](https://en.wikipedia.org/wiki/Complete_market)
+
+<!-- [when binomial option pricing presentation is complete, change link to slide on complete market].  -->
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -217,6 +220,20 @@ renderPlot({
 })
 #}}}
 ```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Parting Note
+
+Monte Carlo is a good approach in the case where we don't have a closed-form solution give a particular underlying process.  However what if we do have a closed-form solution for a *continuous-time* process, but the lookback option samples the price at discrete points?
+
+For example, what if the lookback option's payoff was the max closing price of the security minus the strike price.  Then the continuous-time solution will likely overvalue the option.
+
+-  Consider the probability that the maximum value over a period occurs at a closing price.
+
+So in this case, despite having a closed-form solution for a continuous process, it still makes sense to simulate the process in a Monte Carlo solution because this is closer to the actual payoff function.
+
+-  In sum, a good understanding of the problem, is necessary to choose the most appropriate solution method. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
