@@ -68,6 +68,8 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [An Introduction to Correlation Coefficient](https://micfm.shinyapps.io/what_is_correlation) | [Mobile Friendly Version](https://micfm.shinyapps.io/what_is_correlation_mobile)
 
+[An Introduction to the Uses of Monte Carlo Methods in Finance](https://micfm.shinyapps.io/uses_monte_carlo) | [Mobile Friendly Version](https://micfm.shinyapps.io/uses_monte_carlo_mobile)
+
 ### Trading and Market Structure
 
 [The Limit Order Book](https://micfm.shinyapps.io/limit_order_book/) | [Mobile Friendly Version](https://micfm.shinyapps.io/limit_order_book_mobile)
