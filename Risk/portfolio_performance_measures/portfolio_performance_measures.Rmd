@@ -76,14 +76,19 @@ The following interactive app will calculate the Sharpe Ratio for each select se
 
 library(ggplot2)
 library(quantmod)
+library(highcharter)
+source("../../global_graph_functions.R")
+
 inputPanel(
     sliderInput("year", "Year", min = 1999, max = 2015, step = 1, value = 1999)
     ## selectInput("measure", "Performance Measure", choices = list("Sharpe Ratio" = "1", "Treynor Ratio" = "2", "Information Ratio" = "3", "Jensen's Aplha" = "4"), selected = 1)
     )
 
-renderPlot({
+renderHighchart({
     load("data.RData")
     rets <- data[paste(input$year)]
+    rets <- rets / 100
+   
     ## if(input$measure == 1){
     avg <- apply(rets, 2, mean)
     stdev <- apply(rets, 2, sd)
@@ -97,27 +102,27 @@ renderPlot({
     sharpe <- data.frame(t(sharpe))
     sharpe <- sharpe[,2:10]
 
+    etf_names <- c("Cons Staples","Financials","Energy","Insurance","Cons Discretionary
+","Technology","Materials","Utilities","Industrials")
 
     stuff <- data.frame(rbind(avg, stdev, sharpe), row.names = c("average", "stdev", "Sharpe_Ratio"))
     stuff <- data.frame(t(stuff))
+    rownames(stuff) <- paste(rownames(stuff), " (", etf_names,")", sep = "")
+    
     stuff <- cbind(row.names(stuff), stuff)
     names(stuff) <- c("tickers", "average", "stdev", "Sharpe_Ratio")
     
+    # sort dataframe by sharpe_ratio
+    stuff <- stuff[with(stuff, order(Sharpe_Ratio)), ]
+    stuff[,1] <- as.character(stuff[,1])
+    stuff <- stuff[,-4]
+    colnames(stuff) <- c("Tickers","Average","Std Dev")
 
-    ## plot with ggplot2 ----
-    p <- ggplot(stuff, aes(stdev, average))
-    p + geom_point(aes(size = Sharpe_Ratio, colour = Sharpe_Ratio)) +
-        scale_size(range = c(5, 10)) + 
-        ## scale_size_continuous(range=c(1, 25)) +
-            scale_colour_gradient(high = "green") +
-                labs(title = "Sharpe Ratio") +
-                    ylab("Portfolio Mean Return") +
-                        xlab("Portfolio Standard Deviation") +
-                            geom_text(aes(label=tickers, size=.05, hjust=0, vjust=0))
-
-    ## } else {
-    ##     cat("test")
-    ## }
+    ## plot with higcharts ----
+    graph_highchart(stuff, mode = "scatter", xtitle = "Average (%)", ytitle = "Std Dev (%)", title = "Sharpe Ratios", 
+                    round_data = 2, axis_labels = 18, axis_text = 18, title_text = 20, 
+                    theme = colorRampPalette(brewer.pal(9,"Greens"))(9), 
+                    percent = TRUE, log_ret = FALSE, convert = FALSE, group = "first")
 
 })
 
