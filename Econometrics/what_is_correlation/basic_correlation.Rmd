@@ -46,7 +46,7 @@ The above explains why, during a market crash, stock correlations approach 1 whi
 
 - Some stock returns effectively become linear multiples of the market return---they may decrease 6\% for every 1\% decline in the market.
 
-[graphic]
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Optimal Hedge Ratios
 

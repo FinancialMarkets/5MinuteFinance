@@ -160,8 +160,6 @@ The US consumes about 18 million barrels of crude oil per day.
 
 - Crude oil is primarily refined into gasoline, diesel fuel, and heating oil.  
 
-[graphic:  crude oil going into 3 categories]
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## US Crude Export Restrictions
@@ -169,8 +167,6 @@ The US consumes about 18 million barrels of crude oil per day.
 Crude oil exports are restricted by the 'Energy Policy and Conservation Act' of 1975, which directs the President “to promulgate a rule prohibiting the export of crude oil” produced in the US.  This act was passed after the OPEC embargo.
 
 - Given the recent production increase in the US, there is pressure for the President to allow increased exports. 
-
-[graphic: America with a wall around it and overflowing wells]
 
 <!---  crude oil derived from fields under the State waters of Alaska's Cook Inlet; (2) Alaskan North Slope crude oil; (3) certain domestically produced crude oil destined for Canada; (4) shipments to U.S. territories; and (5) California crude oil to Pacific Rim countries. -->
 
@@ -193,8 +189,6 @@ Sharp increases in oil prices tend to lower stock prices.
 - Research (Jones and Kaul (1996)) has shown that market participants accurately estimate the effect of higher oil prices on firm cash flows, and lower stock prices accordingly.  
 
 - Additional research shows oil may even be able to predict *future* stock market returns (Driesprong, Jacobsen, Maat (2008)).  
-
-[graphic: oil up and stock down]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
