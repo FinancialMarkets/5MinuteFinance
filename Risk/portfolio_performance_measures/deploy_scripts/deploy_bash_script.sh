@@ -2,6 +2,8 @@
 
 ### We have presentations that we want to deploy as both isoslides and as html documents (which play nice on mobile).  However we want to maintain one .Rmd file.  So this script will prepend the appropriate YAML header to the Rmd and deploy.
 ### bash may be the better approach than doing this in R.
+cp ../../../global_graph_functions.R ./deploy1_folder
+cp ../../../global_graph_functions.R ./deploy2_folder
 
 echo "Enter the name of the file containing the document: "
 read -e name_of_file
@@ -30,5 +32,7 @@ Rscript ./deploy2.R
 ## last clean up 
 rm ./deploy1_folder/tmp1.Rmd
 rm ./deploy2_folder/tmp2.Rmd
+rm ./deploy1_folder/global_graph_functions.R
+rm ./deploy2_folder/global_graph_functions.R
 
 exit 0

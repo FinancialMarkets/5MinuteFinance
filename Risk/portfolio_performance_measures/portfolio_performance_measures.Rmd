@@ -77,7 +77,7 @@ The following interactive app will calculate the Sharpe Ratio for each select se
 library(ggplot2)
 library(quantmod)
 library(highcharter)
-source("../../global_graph_functions.R")
+source("./global_graph_functions.R")
 
 inputPanel(
     sliderInput("year", "Year", min = 1999, max = 2015, step = 1, value = 1999)
