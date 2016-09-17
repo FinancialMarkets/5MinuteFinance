@@ -14,7 +14,6 @@ At the core of performance evaluation is the idea that investors prefer high ret
 
 - We therefore need measures which simultaneously reward for higher returns, but penalize for higher risk.
 
-[graphic: scales with risk on one side and return on the other]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -24,7 +23,6 @@ Measuring a portfolios return is easy.  However, how do we measure a portfolio's
 
 - Measuring risk is a little trickier, and will lead to multiple performance measures.
 
-[graphic: four judges with clipboards]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

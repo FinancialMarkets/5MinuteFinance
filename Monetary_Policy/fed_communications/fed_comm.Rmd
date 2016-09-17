@@ -30,7 +30,7 @@ The FOMC is comprised of the 7 members of the Board of Governors, the President 
 
 - The Chairperson of the Board of Governors serves and the Chairperson of the FOMC.
 
-[graphic: roundtable with seven members]
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -44,7 +44,7 @@ All asset values in the economy are simply the present value of the expected cas
 
 Thus in FOMC communications, the market listens closely for any hints of future interest rate changes as an indicator of future asset values.
 
-[graphic: a see-saw]
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
