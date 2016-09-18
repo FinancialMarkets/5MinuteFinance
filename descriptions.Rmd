@@ -1,0 +1,35 @@
+## Topic and Concept Descriptions
+
+### Risk
+
+Risk is the estimation of the size and probability of adverse events. The calculation of risk is heavily dependent on assumptions regarding security behavior.   Topics in risk will show different ways to measure, observe, and understand risk in modern markets.
+
+### Portfolio Finance
+
+Topics in Portfolio Finance cover how to construct portfolios which have the highest return *per unit risk*.  That is, it covers the idea and mathematics of balancing risk and return. Beyond portfolio construction, we also cover portfolio performance measurement and attribution.
+
+### Corporate Finance
+
+A main goal of Corporate Finance is to learn how to decide whether to invest in a project or not.  Toward this end we learn how to estimate cash flows, move those cash flows in time, and estimate risk on the cash flows.  We then can value stock, bonds, and employ investment decision rules (i.e. NPV and IRR).  
+
+### Econometrics
+
+
+
+### Trading and Market Structure
+
+We learn how market structure affects price discovery.
+
+### Derivatives
+
+Derivatives are securities whose payoffs are dependent on other events.  These events can be other security prices or events such as hurricanes and snowfall.
+
+### Fixed Income and Other Debt
+
+### Foreign Exchange
+
+### Equity 
+
+### Monetary Policy
+
+### Commodities

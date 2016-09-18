@@ -1,4 +1,4 @@
-##GitHub Glossary
+##  GitHub Glossary
 
 
 **Branch**: A branch is a parallel version of a repository. It is contained within the repository, but can be edited without changing the primary, or master branch. After you’ve made the desired changes, you merge your branch back into the master branch to publish your changes. 
