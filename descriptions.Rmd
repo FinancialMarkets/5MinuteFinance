@@ -18,7 +18,7 @@ A main goal of Corporate Finance is to learn how to decide whether to invest in 
 
 ### Trading and Market Structure
 
-We learn how market structure affects price discovery.
+Market structure covers how trading is organized, and how this affects liquidity and price discovery.  We also cover how trading takes place in various markets.  
 
 ### Derivatives
 
@@ -30,6 +30,12 @@ Derivatives are securities whose payoffs are dependent on other events.  These e
 
 ### Equity 
 
+Equity represents ownership in a corporation, and has a residual claim on corporate earnings.  We'll also cover how the payoff structure (residual claim) affects equity holder preferences for corporate risk taking.  
+
 ### Monetary Policy
 
+Monetary policy is the control of the money supply to achieve goals, such as in the United States, to provide stable prices and maximum employment.  These presentations will cover how monetary policy makers make decisions, as well as the mechanisms used to control the money supply.  
+
 ### Commodities
+
+We cover trading and risk management in commodity markets.  Commodities are generally products which serve as raw materials for industrial processes. Examples of commodities are natural gas, wheat, and feeder cattle.  
