@@ -4,9 +4,29 @@
 
 Risk is the estimation of the size and probability of adverse events. The calculation of risk is heavily dependent on assumptions regarding security behavior.   Topics in risk will show different ways to measure, observe, and understand risk in modern markets.
 
+#### A First Look At Risk
+
+This interactive presentation covers how to measure risk in financial markets and the assumptions which go into various measures.  It also lets you investigate how risk differs among securities.
+
+#### Risk Over Time 
+
+This interactive presentation allows you to explore how risk changes dynamically over time, and discusses the implications of time-varying risk. It also looks at market measures of future risk. 
+
+#### The VIX Index
+
+The VIX index is the stock market's *fear gauge*. This presentation discusses the calculation of the VIX, its historical performance, and how it can be used. 
+
+#### VVIX: The Vol of Vol
+
+The VVIX index tracks the volatility of the VIX. This presentation discusses the purpose and performance of the VVIX. 
+
 ### Portfolio Finance
 
 Topics in Portfolio Finance cover how to construct portfolios which have the highest return *per unit risk*.  That is, it covers the idea and mathematics of balancing risk and return. Beyond portfolio construction, we also cover portfolio performance measurement and attribution.
+
+#### An Introduction to Portfolio Performance Measures 
+
+How do you rate a portfolio (and portfolio manager's) performance?  We have to balance the portfolio's return, with the risk taken to earn that return, to get the return per unit risk.  However there are various measures of risk, and so various performance measures, which you can explore in this presentation. 
 
 ### Corporate Finance
 
@@ -18,11 +38,11 @@ Econometrics is statistical analysis applied to questions in economics and finan
 
 ### Trading and Market Structure
 
-Market structure covers how trading is organized, and how this affects liquidity and price discovery.  We also cover how trading takes place in various markets.  
+Market structure covers how trading is organized, and how this affects liquidity and price discovery.  We also cover how trading takes place in various markets, the types of orders you can enter, and using margin.  
 
 ### Derivatives
 
-Derivatives are securities whose payoffs are dependent on other events.  These events can be other security prices or events such as hurricanes and snowfall.
+Derivatives are securities whose payoffs are dependent on other events.  These events can be other security prices or events such as hurricanes and snowfall.  We cover types of derivatives and their valuation, how to use them for risk management and speculation, and the various derivative markets.  
 
 ### Fixed Income and Other Debt
 
@@ -42,8 +62,7 @@ Monetary policy is the control of the money supply to achieve goals, such as in 
 
 #### Fed Communications
 
-
-
+Given the influence the US Federal Reserve has over security markets, the Fed is very careful in its communication with markets.  This interactive presentation covers the manner in which the Fed communicates, and lets you explore various Fed statements and how they have evolved over time.  The presentation will also translate careful Fed statements into everyday language. 
 
 ### Commodities
 
