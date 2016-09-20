@@ -14,7 +14,7 @@ A main goal of Corporate Finance is to learn how to decide whether to invest in 
 
 ### Econometrics
 
-
+Econometrics is statistical analysis applied to questions in economics and finance. The branch is driven by unique situations in economics and finance requiring specialized methods, such as errors-in-variables problems and the need for models of heteroskedasticity in finance.  
 
 ### Trading and Market Structure
 
@@ -26,7 +26,11 @@ Derivatives are securities whose payoffs are dependent on other events.  These e
 
 ### Fixed Income and Other Debt
 
+Fixed income and debt markets cover sovereign (such as US Treasury), municipal, corporate, and mortgage and other consumer debt.  Collectively these markets are huge---the US Treasury market alone is over $18 trillion with about $500 billion per day in average trading volume.  
+
 ### Foreign Exchange
+
+Foreign exchange markets are enable exchanging currency in support of international trade and investment. In these presentation we learn about the various currencies and derivatives traded in these market.  The derivatives are used to manage risk in cross-border trade and investment.  We also cover arbitrage in the various currency markets.  
 
 ### Equity 
 
@@ -36,6 +40,15 @@ Equity represents ownership in a corporation, and has a residual claim on corpor
 
 Monetary policy is the control of the money supply to achieve goals, such as in the United States, to provide stable prices and maximum employment.  These presentations will cover how monetary policy makers make decisions, as well as the mechanisms used to control the money supply.  
 
+#### Fed Communications
+
+
+
+
 ### Commodities
 
-We cover trading and risk management in commodity markets.  Commodities are generally products which serve as raw materials for industrial processes. Examples of commodities are natural gas, wheat, and feeder cattle.  
+We cover trading and risk management in commodity markets.  Commodities are generally products which serve as raw materials for industrial processes. Examples of commodities are natural gas, wheat, and feeder cattle.
+
+#### Crude Oil Markets
+
+#### 
