@@ -72,13 +72,46 @@ The capital asset pricing model is the most widely used way to calculate the cos
 
 Econometrics is statistical analysis applied to questions in economics and finance. The branch is driven by unique situations in economics and finance requiring specialized methods, such as errors-in-variables problems and the need for models of heteroskedasticity in finance.  
 
+##### An Introduction to Correlation Coefficient
+
+The correlation coefficient, which is a measure of the linear relationship between two samples, plays an important role in financial relationships (such as the CAPM).  However what correlation meas is often understood.  The apps let you explore the meaning of correlation betweeen random samples, and also between returns of stocks you choose.
+
+##### An Introduction to the Uses of Monte Carlo Methods in Finance
+
+Monte Carlo is a powerful tool in finance which can be used when a closed-form solution for a problem proves intractable.  This presentation show you cases when Monte Carlo is useful in finance, and lets you interactively run Monte Carlo simulations to value options.
+
 ### Trading and Market Structure
 
-Market structure covers how trading is organized, and how this affects liquidity and price discovery.  We also cover how trading takes place in various markets, the types of orders you can enter, and using margin.  
+Market structure covers how trading is organized, and how this affects liquidity and price discovery.  We also cover how trading takes place in various markets, the types of orders you can enter, and using margin.
+
+#### The Limit Order Book
+
+Trading in the vast majority of markets (US stock, option, futures, bonds) requires interacting with a limit order book.  This is the list of waiting buy and sell orders posted by market makers and other traders.  This interactive presentation will freezes the order book in time, and allows you to enter orders and see their effect on the book.
+
+#### The Pairs Trade
+
+The pairs trade is a widely used market-neutral statistical arbitrage trading strategy.  It is used by hedge funds to provide stable returns which are uncorrelated with the market.  This presentation will enable you to implement the pairs trade for any pair of stock you choose and see your return.
 
 ### Derivatives
 
-Derivatives are securities whose payoffs are dependent on other events.  These events can be other security prices or events such as hurricanes and snowfall.  We cover types of derivatives and their valuation, how to use them for risk management and speculation, and the various derivative markets.  
+Derivatives are securities whose payoffs are dependent on other events.  These events can be other security prices or events such as hurricanes and snowfall.  We cover types of derivatives and their valuation, how to use them for risk management and speculation, and the various derivative markets.
+
+#### The Greeks
+
+The *Greeks* measure the sensitivity of Black-Scholes option values to changes in the underlying variables.  They are very important for hedging option books.  This presentation will enable you to see how underlying factors affect the Greeks.
+
+#### An Introduction to Stock Options
+
+This presentation introduces the definition and characteristics of stock options.  It also allows you to interact with characteristics of the option and see how it affects the option's value.  
+
+#### An Introduction to Option and Stock Strategies
+
+
+
+#### Black Scholes
+
+#### Varying Option Volatility
+
 
 ### Fixed Income and Other Debt
 
