@@ -32,6 +32,42 @@ How do you rate a portfolio (and portfolio manager's) performance?  We have to b
 
 A main goal of Corporate Finance is to learn how to decide whether to invest in a project or not.  Toward this end we learn how to estimate cash flows, move those cash flows in time, and estimate risk on the cash flows.  We then can value stock, bonds, and employ investment decision rules (i.e. NPV and IRR).  
 
+#### An Introduction to Financial Statements
+
+Financial statements report corporate profitability (income statement) and capital structure (balance sheet).  In finance we often use these statements to calculate cash flows for valuations and to estimate how much debt a company can manage. 
+
+#### Financial Ratios
+
+Financial ratios use data contained in financial statements to calculate characteristics of a company.  For example a ratio of total debt divided by total equity is a measure of the firm's leverage.  The ratio controls for firm size, enabling us to compare firms.
+
+#### Time Value of Money: Single Cash Flows
+
+Most analyses in finance, such as valuations, require moving cash flows to different points in time.  This presentation will teach you the mechanics to do so, and also provide interactive elements to help you get an intuitive feel for the interrelationships between time, interest rate, and values.
+
+#### Time Value of Money: Multiple Cash Flows
+
+This presentation covers the valuation of common financial contracts with multiple cash flows such as mortgages (an annuity) and preferred stock (a perpetuity).  Interactive apps are included to value these contracts.
+
+#### Operating Cash Flow
+
+We calculate operating cash flow from financial statements, and it tells us how much cash the firm generates.  The cash flows are used to value the firm, and also determine debt capacity.
+
+#### Net Present Value and Internal Rate of Return
+
+Net present value and the internal rate of return are the two most widely used investment decision rules. They are used by corporations to decide whether to accept a project.   
+
+#### An Introduction to Stock Valuation
+
+A widely used method of stock valuation is by discounting expected dividends.  This presentation will show you how to value stock given varying assumptions about dividend payment structure. The interactive apps will give you an intuitive understanding of how stock values relate to dividends, dividend growth rates, and discount rates.  
+
+#### An Introduction to Bond Valuation
+
+This presentation shows how to value coupon bonds, and provides interactive apps where you can calculate bond values and yield-to-maturities.  
+
+#### The Capital Asset Pricing Model 
+
+The capital asset pricing model is the most widely used way to calculate the cost of a firm's equity.  In this presentation we give you an understanding of what the model assumes and says, as well as the ability to visualize the cost of equity for any stock.
+
 ### Econometrics
 
 Econometrics is statistical analysis applied to questions in economics and finance. The branch is driven by unique situations in economics and finance requiring specialized methods, such as errors-in-variables problems and the need for models of heteroskedasticity in finance.  
