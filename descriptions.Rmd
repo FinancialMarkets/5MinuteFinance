@@ -106,24 +106,62 @@ This presentation introduces the definition and characteristics of stock options
 
 #### An Introduction to Option and Stock Strategies
 
+Options are often used to reduce the risk of owning a stock (buying a protective put), or alternatively to generate extra income from owning the stock (writing a covered call).  This presentation will cover common stock and option strategies, and allow you to calculate profit and loss for various inputs. 
 
+#### Black-Scholes
 
-#### Black Scholes
+The creation of the Black-Scholes model was a watershed event in option and derivative pricing.  The model was the genesis of the idea of pricing derivatives by replication in complete markets.  This presentation introduces the model, allows interaction to see how option prices are affected by inputs, and hopefully motivated further study in derivative pricing.
 
 #### Varying Option Volatility
 
+The Black-Scholes model assumes option volatility is constant across strike price and time.  However consistent deviations from these assumptions are observed---the option smile and variation in the VIX over time.  This presentation provides 3D visualizations of option volatility with actual market data for you to explore. 
 
 ### Fixed Income and Other Debt
 
 Fixed income and debt markets cover sovereign (such as US Treasury), municipal, corporate, and mortgage and other consumer debt.  Collectively these markets are huge---the US Treasury market alone is over $18 trillion with about $500 billion per day in average trading volume.  
 
+#### Duration
+
+Duration is a measure of the interest rate risk in a debt security.  It provides a linear approximation of the change in the bond's price for a given change in the bond's yield-to-maturity.This presentation will allow you to visualize the relationship and see how interest rate risk is affected by the bond's terms.
+
+#### Convexity
+
+Convexity is a term for the error in using a linear approximation of the actual (convex) relationship between bond yield and price.  For small changes in yield, convexity is generally small, and conversely for large changes in yield.  This presentation will allow you to see how underlying factors affect convexity.
+
+#### Treasury Debt Risk
+
+This presentation takes a look at recent trends in US Treasury ownership and issuance. These trends are affected by Quantitative Easing and other unconventional monetary policies the US Federal Reserve has enacted since the 2008 financial crisis.
+
+#### Exchange Traded Notes
+
+Exchange traded notes are similar to exchange traded funds, except that they are debt securities so they do not actually have to buy underlying assets in order to match index returns.  We discuss the implications of this regarding the fund's risk and ability to track index returns.
+
+#### For What is the Yield-to-Maturity Used?
+
+This presentation explains the use of the yield-to-maturity in quoting the return on a bond.  However we point out it is not used to find the value (*valuation*) of a bond, but rather simply translate its yield into a price.  
+
 ### Foreign Exchange
 
 Foreign exchange markets are enable exchanging currency in support of international trade and investment. In these presentation we learn about the various currencies and derivatives traded in these market.  The derivatives are used to manage risk in cross-border trade and investment.  We also cover arbitrage in the various currency markets.  
 
+#### Foreign Exchange Arbitrage
+
+#### Foreign Exchange Markets
+
 ### Equity 
 
 Equity represents ownership in a corporation, and has a residual claim on corporate earnings.  We'll also cover how the payoff structure (residual claim) affects equity holder preferences for corporate risk taking.  
+
+#### An Introduction to Stock Investments
+
+#### An Introduction Stock Markets
+
+#### Short Selling Stock
+
+#### Exchange Traded Funds
+
+#### Leveraged Exchange Traded Funds
+
 
 ### Monetary Policy
 
@@ -139,4 +177,4 @@ We cover trading and risk management in commodity markets.  Commodities are gene
 
 #### Crude Oil Markets
 
-#### 
+#### Cross Hedging
