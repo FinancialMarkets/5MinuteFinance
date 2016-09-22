@@ -146,7 +146,11 @@ Foreign exchange markets are enable exchanging currency in support of internatio
 
 #### Foreign Exchange Arbitrage
 
+When arbitrages are possible, they provide a mechanism to determine security and derivative prices.  This presentation will introduce you to three classic arbitrages in foreign exchange and futures markets, and allow you to calculate profits for various inputs.   
+
 #### Foreign Exchange Markets
+
+Foreign exchange markets are extremely important for their ability to facilitate international trade and investment.  However, foreign exchange markets are markedly different from stock and bond markets.  This presentation will introduce you to the organization, structure, and characteristics of foreign exchange markets. 
 
 ### Equity 
 
@@ -154,14 +158,23 @@ Equity represents ownership in a corporation, and has a residual claim on corpor
 
 #### An Introduction to Stock Investments
 
+This presentation will introduce you to the nature of stock and stock trading, as well as a brief introduction to stock market performance.  
+
 #### An Introduction Stock Markets
+
+Stock markets, and how stock is traded, has undergone rapid change in the last 10 to 20 years. We have gone from centralized trading in a few venues, to trading across over a dozen locations across the country. Further, trading has increased in speed up to the limit of physics.
 
 #### Short Selling Stock
 
+If you short sell stock you earn the exact inverse profit than if you had bought stock.  If the stock declines by $1 you gain that dollar, and vice versa.  This presentation explains the mechanics of putting on a short position, and the positions profit and loss.
+
 #### Exchange Traded Funds
+
+Exchange traded funds are open-ended, passively managed, investment funds which generally track an index.  They trade throughout the day like stock, and are known for their low fees.  This presentation will introduce commonly traded ETFs and explore their ability to track their index. 
 
 #### Leveraged Exchange Traded Funds
 
+These are exchange traded funds with built-in leverage---they recreate buying the underlying exchange traded fund on margin. The use of leverage has important implications for the ability of the leveraged exchange traded fund to track a multiple of its underlying index.
 
 ### Monetary Policy
 
@@ -177,4 +190,8 @@ We cover trading and risk management in commodity markets.  Commodities are gene
 
 #### Crude Oil Markets
 
+Crude oil plays an important role in the economy.  Oil is an input into most products given its use in transportation.  So oil prices and markets are often watched for their impact on inflation and consumer disposable income.    
+
 #### Cross Hedging
+
+Commodity futures markets are often used by commodity producing and consuming companies to manage risk.  Often, though, a futures contract does not exist to hedge the exact commodity that a firm wants to hedge.  In this case the firm can hedge with a similar commodity---this is *cross-hedging* and it introduces certain risks to the hedge.
