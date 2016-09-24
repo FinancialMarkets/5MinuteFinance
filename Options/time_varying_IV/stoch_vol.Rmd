@@ -8,17 +8,23 @@ runtime: shiny
 
 ## Characteristics of Implied Volatility
 
-Implied volatility is the market's expectation of a security's volatility extracted from option prices on that security.  It is the volatility expected over the life of that option.  We calculate Implied Volatility using the Black-Scholes option pricing model -- we solve the equation for volatility and plug in the option price we observe in the market.  
+Implied volatility is the market's expectation of a security's volatility extracted from option prices on that security.  It is the volatility expected over the life of that option.  We calculate Implied Volatility using the Black-Scholes option pricing model---solving the equation for volatility and plug in the option price we observe in the market.  
 
 Here we take a look at two important observations involving implied volatility.
 
 1. Implied volatility is a function of the option's moneyness.  This is known as the *option smile* (or sometimes referred to as the *option smirk*).
 
-2. Implied volatility is is a function of the option's expiration date.  
+2. Implied volatility is is a function of the option's expiration date (known as the option's tenor).  
 
-3. Implied volatility changes over time, and so does the option smile. 
+3. Implied volatility changes over time, and so does the functional relationships in 1 and 2. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Implications for Derivative Pricing
 
 Note, the existence of 1, 2, and 3, are each a deviation from the assumptions underlying the Black-Scholes option pricing model. 
+
+In modern derivative pricing in complete markets, we have to hedge away any source of uncertainty in the underlying security.  So any additional risk introduced by the above observations would have to be able to be hedged away to price the derivative.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -30,28 +36,28 @@ The option smile shows the dependence of an option's implied volatility on the o
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-
-<!-- commented, and probably remove; just show smile with real data
+## Typical Shape of Option Smile in Equity Markets
 
 ```{r echo = FALSE}
- ## library(metricsgraphics)
- ## renderMetricsgraphics({
- ##     gendata <- data.frame(IV_1_Month = c(0.4, 0.31, .25, 0.13, 0.09, .05),
- ##                           IV_2_Month = c(0.3, 0.21, .15, 0.13, 0.09, .08),
- ##                           IV_3_Month = c(0.25, 0.17, .15, 0.13, 0.10, .09),
- ##                           Moneyness = c(round(0.6, 1), 0.75, .85, 0.9, 1.05, 1.15)
- ##                           )
- ##     gendata %>%
- ##   mjs_plot(x = Moneyness, y = IV_1_Month) %>%
- ##       mjs_line() %>%
- ##       mjs_add_line(IV_2_Month) %>%
- ##       mjs_add_line(IV_3_Month) %>%
- ##       mjs_add_legend(legend = c("IV 1 Month", "IV 2 Month", "IV 3 Month")) %>%
- ##       mjs_labs(x = "Moneyness", y = "Implied Volatility")
- ##     })
+  library(metricsgraphics)
+  renderMetricsgraphics({
+      gendata <- data.frame(IV_1_Month = c(0.33, 0.24, .18, 0.15, 0.09, .08),
+			    #                             IV_2_Month = c(0.3, 0.21, .15, 0.13, 0.09, .08),
+			    #                             IV_3_Month = c(0.25, 0.17, .15, 0.13, 0.10, .09),
+                            Moneyness = c(round(0.6, 1), 0.75, .85, 0.9, 1.05, 1.15)
+                            )
+      gendata %>%
+    mjs_plot(x = Moneyness, y = IV_1_Month) %>%
+        mjs_line() %>%
+    #         mjs_add_line(IV_2_Month) %>%
+    #         mjs_add_line(IV_3_Month) %>%
+        mjs_add_legend(legend = c("IV 1 Month", "IV 2 Month", "IV 3 Month")) %>%
+        mjs_labs(x = "Moneyness", y = "Implied Volatility")
+      })
  
 ```
--->
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## The Smile for Differing Expirations
 
@@ -77,6 +83,47 @@ renderPlotly({
 ```
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+<!-- same viz just with threejs -->
+
+## Implied Volatility, Expiration, and Moneyness
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+library(threejs)
+renderScatterplotThree({
+    for.threejs.first.half <- read.csv("vol_surface.csv", header = TRUE, stringsAsFactors = FALSE)[,-1]
+    scatterplot3js(for.threejs.first.half, color = rainbow(length(for.threejs.first.half[,1])))
+    })
+```
+
+
+##
+
+```{r, echo = FALSE}
+library(plotly)
+options("scipen" = 100, "digits" = 6)
+inputPanel({
+  sliderInput("theTime2", "Day/Second", value = c(0000000, 310000000), min = 0000000, max = 3100000, animate = animationOptions(interval = 300), sep = "", step = 60)
+})
+renderPlotly({
+ ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1]
+ ez1509es1509$Date <- ez1509es1509$Date - 2015080000000
+tmp <- subset(ez1509es1509, Date > input$theTime2[1])
+tmp <- subset(tmp, Date < input$theTime2[2])
+## maybe sort to reverse moneyness -- so switches view
+tmp <- tmp[ order(tmp[,2]),]
+## tmp[,2] <- -tmp[,2]
+names(tmp)[1] <- "Time_in_Seconds"
+    plot_ly(tmp, x = Moneyness, y = Time_in_Seconds, z = Implied_Volatility, color = Implied_Volatility, type = "scatter3d", mode = "markers")
+    ## scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time", "-Moneyness", "Implied Volatility"))
+})
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+
+
+
 ##
 
 ```{r, echo = FALSE}
@@ -93,7 +140,8 @@ tmp <- subset(ez1509es1509, Date > input$theTime[1])
 tmp <- subset(tmp, Date < input$theTime[2])
 ## maybe sort to reverse moneyness -- so switches view
 tmp <- tmp[ order(tmp[,2]),]
-tmp[,2] <- -tmp[,2]
+# tmp[,2] <- -tmp[,2]
+tmp <- cbind(tmp[,2], tmp[,1], tmp[,3])
     scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time", "-Moneyness", "Implied Volatility"))
 })
 ```

@@ -154,7 +154,7 @@ Foreign exchange markets are extremely important for their ability to facilitate
 
 ### Equity 
 
-Equity represents ownership in a corporation, and has a residual claim on corporate earnings.  Along with debt, is the major way in which corporations finance their assets. We'll cover the markets in which equity is traded, the type of trading, and securities comprised of equity.   We'll also cover how the payoff structure (residual claim) affects equity holder preferences for corporate risk taking.  
+Equity represents ownership in a corporation, and has a residual claim on corporate earnings.  Along with debt, is the major way in which corporations finance their assets. We'll cover the markets in which equity is traded, the types of trading, and securities comprised of equity.   We'll also cover how the payoff structure (residual claim) affects equity holder preferences for corporate risk taking.  
 
 #### An Introduction to Stock Investments
 
