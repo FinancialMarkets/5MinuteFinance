@@ -164,3 +164,23 @@ server = shinyServer(function(input, output) {
   
 })
 )
+```
+
+
+<!---
+Example data for second app:  user chooses the time and the app plots the payoff from the futures and synthetic futures positions.
+
+day         time                strike          type           EZ delivery  EZ price                ES delivery       ES price   years to exp
+20150828  08:34:19              2000             C               1509       33.2500000               1509            1980.891  0.06399223
+20150828  08:34:23              2000             P               1509       52.2500000               1509            1981.093  0.06399236
+
+
+
+20150828  11:31:36              2000             C               1509       34.0000000               1509            1983.044  0.06432953
+20150828  11:31:38              2000             P               1509       50.7500000               1509            1983.342  0.06432959
+
+
+
+20150828  11:07:13              2000             P               1509        53.0000000               1509            1979.500  0.06428314
+20150828  11:07:16              2000             C               1509        32.5000000               1509            1979.066  0.06428323
+-->
