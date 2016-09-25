@@ -8,6 +8,23 @@ output: ioslides_presentation
 runtime: shiny
 ---
 
+## Goal of the Presentation
+
+The goal is to show the relationship between two derivative markets: options and futures.  More broadly, this presentation introduces pricing by replication, which is a fundamental force in financial markets.   
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Futures
+
+Futures are agreements to 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Options
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```

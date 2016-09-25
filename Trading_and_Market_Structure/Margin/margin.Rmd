@@ -1,0 +1,14 @@
+---
+title: "Trading on Margin"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod2.css
+runtime: shiny
+smaller: true
+---
+
+
+## Introduction
+
+This presentation covers trading stock on margin, as well as how margin works in derivative markets.  
