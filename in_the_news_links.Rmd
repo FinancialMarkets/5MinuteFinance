@@ -1,0 +1,197 @@
+## Topic and Concept 'In The News' Links
+
+### Risk
+
+
+
+#### A First Look At Risk
+
+
+
+#### Risk Over Time 
+
+
+
+#### The VIX Index
+
+
+
+#### VVIX: The Vol of Vol
+
+
+
+### Portfolio Finance
+
+
+
+#### An Introduction to Portfolio Performance Measures 
+
+
+
+### Corporate Finance
+
+
+
+#### An Introduction to Financial Statements
+
+
+
+#### Financial Ratios
+
+
+
+#### Time Value of Money: Single Cash Flows
+
+
+
+#### Time Value of Money: Multiple Cash Flows
+
+
+
+#### Operating Cash Flow
+
+
+
+#### Net Present Value and Internal Rate of Return
+
+
+
+#### An Introduction to Stock Valuation
+
+
+
+#### An Introduction to Bond Valuation
+
+
+
+#### The Capital Asset Pricing Model 
+
+
+
+### Econometrics
+
+
+
+##### An Introduction to Correlation Coefficient
+
+
+
+##### An Introduction to the Uses of Monte Carlo Methods in Finance
+
+
+
+### Trading and Market Structure
+
+
+
+#### The Limit Order Book
+
+
+
+#### The Pairs Trade
+
+
+
+### Derivatives
+
+
+
+#### The Greeks
+
+
+
+#### An Introduction to Stock Options
+
+
+
+#### An Introduction to Option and Stock Strategies
+
+
+
+#### Black-Scholes
+
+
+
+#### Varying Option Volatility
+
+
+
+### Fixed Income and Other Debt
+
+
+
+#### Duration
+
+
+
+#### Convexity
+
+
+
+#### Treasury Debt Risk
+
+
+
+#### Exchange Traded Notes
+
+
+
+#### For What is the Yield-to-Maturity Used?
+
+
+
+### Foreign Exchange
+
+
+
+#### Foreign Exchange Arbitrage
+
+
+
+#### Foreign Exchange Markets
+
+
+
+### Equity 
+
+
+
+#### An Introduction to Stock Investments
+
+
+
+#### An Introduction Stock Markets
+
+
+
+#### Short Selling Stock
+
+
+
+#### Exchange Traded Funds
+
+
+
+#### Leveraged Exchange Traded Funds
+
+
+
+### Monetary Policy
+
+
+
+#### Fed Communications
+
+
+
+### Commodities
+
+
+
+#### Crude Oil Markets
+
+
+
+#### Cross Hedging
+
+

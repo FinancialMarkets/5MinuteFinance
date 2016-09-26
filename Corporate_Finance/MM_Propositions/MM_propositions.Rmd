@@ -1,42 +1,25 @@
 ---
-title: "An Introduction to Futures"
+title: "MM Propositions"
+author: "Milken Institute, Center for Financial Markets"
+affiliation: "Milken Institute Center for Financial Markets"
+date: "09/01/2015"
 output: ioslides_presentation
 logo: misq.png
-css: 5min_mod2.css
+css: 5min.css
 runtime: shiny
 smaller: true
 ---
 
-## Futures and Forwards
+## Capital Structure
 
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Who Trades Futures?
-
-Broadly speaking, there are two types of traders in futures markets, hedgers and speculators.
-
--  Hedgers:
--  Speculators:
+## 
 
 
-[CFTC Commitment of Traders Report](http://www.cftc.gov/Marketreports/CommitmentsofTraders/index.htm)
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-
-## Futures Markets
-
-- CME:
-- ICE: 
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-
-##
-
-<!-- interactive app: pull and plot futures data -->
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
