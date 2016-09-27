@@ -42,11 +42,13 @@
 
 #### Time Value of Money: Single Cash Flows
 
+[Negative interest rates vs time value of money: the battle is on |Financial Times, 14 April 2016|](http://on.ft.com/1VYJeyp)
+
 [Is Offering Student Loan Repayment The New 401(k)? |Fast Company, 17 December 2015|](http://www.fastcompany.com/3054749/the-future-of-work/is-student-loan-repayment-the-new-401k)
 
 #### Time Value of Money: Multiple Cash Flows
 
-
+[Pensions: No love, actuary |The Economist, 13 April 2016|](http://econ.st/2bld8v2)
 
 #### Operating Cash Flow
 
@@ -58,7 +60,11 @@
 
 #### An Introduction to Stock Valuation
 
+[Dividends Are What Matters Now |Wall Street Journal, 24 August 2016|](http://www.wsj.com/articles/dividends-are-what-matter-now-1472081992)
 
+[Irrational exuberance begins to surface in US stock market |Financial Times, 17 August 2016|](http://on.ft.com/2bmBAyg)
+
+[Stock Valuations Flash a Warning Sign |Wall Street Journal, 14 August 2016|](http://on.wsj.com/2buQIeE)
 
 #### An Introduction to Bond Valuation
 
@@ -74,7 +80,11 @@
 
 #### An Introduction to Correlation Coefficient
 
-['Macro hysteria’: How markets are dancing to one beat |FT Alphaville, 3 May 2016|](http://www.ft.com/fastft/2016/01/26/macro-hysteria-how-markets-are-dancing-to-one-beat/)
+[This re-correlated world |FT Alphaville, 3 May 2016|](http://ftalphaville.ft.com/2016/05/03/2160706/this-re-correlated-world/)
+
+['Macro hysteria’: How markets are dancing to one beat |Financial Times, 26 January 2016|](http://www.ft.com/fastft/2016/01/26/macro-hysteria-how-markets-are-dancing-to-one-beat/)
+
+[Inverse relationship between gold, stocks has never been this extreme |MarketWatch, 23 August 2016|](http://on.mktw.net/2bfRj2V)
 
 #### An Introduction to the Uses of Monte Carlo Methods in Finance
 
@@ -124,7 +134,13 @@
 
 #### Duration
 
+[Mystery buyers snap up 100-year debt in Europe |Financial Times, 4 May 2016|](http://on.ft.com/1T17rFi)
 
+[It's Dangerous Out There in the Bond Market |Bloomberg, 25 April 2016|](http://bloom.bg/1Ublfw9)
+
+[Duration Risk: The Bomb Ticking Inside Today’s Bond Market |Wall Street Journal , 14 April 2016|](http://www.wsj.com/articles/duration-risk-the-bomb-ticking-inside-todays-bond-market-1460626201)
+
+[Longer is better for bonds as yields shrink |Financial Times, 2 February 2015|](http://on.ft.com/1tUmNiH)
 
 #### Convexity
 
@@ -164,7 +180,9 @@
 
 #### An Introduction to Stock Investments
 
+[How exposed are American households to the stock market? |The Economist, 26 August 2015|](http://www.economist.com/blogs/freeexchange/2015/08/american-economy)
 
+[Losses May Accelerate For China Stock Market |Nasdaq, 24 August 2016|](http://www.nasdaq.com/article/losses-may-accelerate-for-china-stock-market-20160824-00868)
 
 #### An Introduction Stock Markets
 
@@ -172,7 +190,11 @@
 
 #### Short Selling Stock
 
+[In Rare Ruling, SEC Throws Out Own Short-Selling Fraud Case |Wall Street Journal, 19 August 2016|](http://www.wsj.com/articles/sec-throws-out-case-against-maryland-banker-1471628072)
 
+[A company’s battle to show it was a victim of abusive short-selling |The Economist, 10 November 2015|](http://www.economist.com/news/finance-economics/21678146-latest-chapter-companys-battle-show-it-was-victim-abusive)
+
+[China Clamps Down on Short Selling |Wall Street Journal, 4 August 2015|](http://www.wsj.com/articles/china-clamps-down-on-short-selling-1438664957)
 
 #### Exchange Traded Funds
 
@@ -188,7 +210,11 @@
 
 #### Fed Communications
 
+[Jackson LOL |The Economist, 29 August 2016|](http://www.economist.com/blogs/freeexchange/2016/08/jackson-lol)
 
+[How Wall Street Is Preparing for Yellen's Jackson Hole Speech |Wall Street Journal, 4 August 2015|](http://www.wsj.com/articles/china-clamps-down-on-short-selling-1438664957)
+
+[Fedspeak as a Second Language |Liberty Street Economics (New York Fed), 19 April 2014|](http://libertystreeteconomics.newyorkfed.org/2013/04/historical-echoes-fedspeak-as-a-second-language.html)
 
 ### Commodities
 
@@ -196,6 +222,15 @@
 
 #### Crude Oil Markets
 
+[This Week In Petroleum |U.S. Energy Information Administration|](http://www.eia.gov/petroleum/weekly/)
+
+[Petroleum Supply Monthly |U.S. Energy Information Administration|](http://www.eia.gov/petroleum/supply/monthly/)
+
+[Drilling Productivity |U.S. Energy Information Administration|](http://www.eia.gov/petroleum/drilling/)
+
+[Baker Hughes Rig Count |Baker Hughes|](http://phx.corporate-ir.net/phoenix.zhtml?c=79687&p=irol-rigcountsoverview)
+
+[Latest Price for Crude Oil Brent |Nasdaq|](http://www.nasdaq.com/markets/crude-oil-brent.aspx)
 
 
 #### Cross Hedging
