@@ -42,7 +42,7 @@
 
 #### Time Value of Money: Single Cash Flows
 
-
+[Is Offering Student Loan Repayment The New 401(k)? |Fast Company, 17 December 2015|](http://www.fastcompany.com/3054749/the-future-of-work/is-student-loan-repayment-the-new-401k)
 
 #### Time Value of Money: Multiple Cash Flows
 
@@ -110,7 +110,9 @@
 
 #### Black-Scholes
 
+[Nobel Laureate Myron Scholes on the Black–Scholes Option Pricing Model |CFA Institute, 13 October 2014|](http://cfa.is/1s8y9ve)
 
+[Black-Scholes: The maths formula linked to the financial crash |BBC Magazine, 28 April 2012|](http://www.bbc.com/news/magazine-17866646)
 
 #### Varying Option Volatility
 
@@ -126,7 +128,11 @@
 
 #### Convexity
 
+[Manipulation or Brilliant Trade? The Curious Case of Don Wilson |Bloomberg, 9 March 2016|](http://bloom.bg/1R6Y1ak)
 
+[Bond Volatility Approaches Record Low as Fed Drains Convexity |Bloomberg, 20 September 2012|](http://www.bloomberg.com/news/articles/2012-09-20/bond-volatility-approaches-record-low-as-fed-drains-convexity)
+
+[Is negative convexity the new Bernanke conundrum? |FT Alphaville, 28 January 2010|](http://on.ft.com/1g2D4tG)
 
 #### Treasury Debt Risk
 
