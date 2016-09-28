@@ -6,11 +6,17 @@
 
 #### A First Look At Risk
 
+[WEF Global Risk Report |World Economic Forum|](http://reports.weforum.org/global-risks-2016/)
 
+[A Sell-Off Pressure 'Larger Than Brexit' Imperils One of Wall Street's Hottest Trades |Bloomberg, 12 September 2016|](http://www.bloomberg.com/news/articles/2016-09-12/a-sell-off-pressure-larger-than-brexit-imperils-one-of-wall-street-s-hottest-trades)
+
+[Nevsky’s prospects: China, fat tails and opaque markets |The Economist, 10 January 2016|](http://www.economist.com/blogs/buttonwood/2016/01/economics-and-markets)
 
 #### Risk Over Time 
 
+[Wall Street’s ‘fear gauge’ shows it’s about to get wild in the stock market |Market Watch, 14 September 2016|](http://www.marketwatch.com/story/the-stock-markets-calm-is-over-as-wall-streets-fear-gauge-revs-up-2016-09-13)
 
+[European Equity Benchmarks Close Higher; Bank of England Says UK Recession Risk Lower |Nasdaq, 7 September 2016|](http://www.nasdaq.com/article/european-equity-benchmarks-close-higher-bank-of-england-says-uk-recession-risk-lower-cm675791)
 
 #### The VIX Index
 
@@ -26,7 +32,11 @@
 
 #### An Introduction to Portfolio Performance Measures 
 
+[The days of swashbuckling hedge fund managers are over |Business Insider, 4 September 2016|](http://www.businessinsider.com/hugh-hendry-eclectica-on-hedge-fund-returns-2016-9)
 
+[Warren Buffett’s Epic Rant Against Wall Street |Wall Street Journal, 2 May 2016|](http://blogs.wsj.com/moneybeat/2016/05/02/warren-buffetts-epic-rant-against-wall-street/)
+
+[Jack L. Treynor and the Birth of the Quants |CFA Institute, 20 May 2015|](https://blogs.cfainstitute.org/investor/2016/05/20/jack-l-treynor-and-the-birth-of-the-quants/)
 
 ### Corporate Finance
 
@@ -34,11 +44,19 @@
 
 #### An Introduction to Financial Statements
 
+[Legal Fight Escalates Over Tech Startup’s Financials |Wall Street Journal, 18 August 2016|](http://on.wsj.com/2bKs5Lj)
 
+[Deloitte becomes third auditor in a row to quit scandal-hit 1MDB |Financial Times, 27 June 2016|](http://on.ft.com/2a4gQaB)
 
 #### Financial Ratios
 
+[Big Oil Companies Binge on Debt |Wall Street Journal, 24 August 2016|](http://www.wsj.com/articles/largest-oil-companies-debts-hit-record-high-1472031002)
 
+[The Other Side of the EpiPen Price Hike Story |Inc., 24 August 2016|](http://www.inc.com/yoram-solomon/the-other-side-of-the-epipen-price-hike-story.html)
+
+[Europe’s Banks Should Face 3% Minimum Leverage Ratio, EBA Says |Bloomberg, 3 August 2016|](http://bloom.bg/2aTdjhv)
+
+[Alibaba's Cash Problem: Too Much? |Bloomberg, 10 March 2016|](https://www.bloomberg.com/gadfly/articles/2016-03-10/too-much-cash-not-for-alibaba)
 
 #### Time Value of Money: Single Cash Flows
 
@@ -50,11 +68,19 @@
 
 #### Operating Cash Flow
 
+[False Dawn at Tesla |Wall Street Journal, 3 August 2016|](http://www.wsj.com/articles/false-dawn-at-tesla-1470262892)
 
+[BP: Are Investors Already Banking on a Cash Flow Recovery? |Wall Street Journal, 26 April 2016|](http://www.wsj.com/articles/bp-are-investors-already-banking-on-a-cash-flow-recovery-1461678707)
+
+[Why Amazon has no profit—and why it works |Quartz, 10 September 2014|](http://qz.com/262701/why-amazon-has-no-profit-and-why-it-works/)
 
 #### Net Present Value and Internal Rate of Return
 
+[Yale Clears Air on Venture Returns (and Cautions on the Limits of IRR) |Wall Street Journal, 14 April 2016 |](http://blogs.wsj.com/privateequity/2016/04/14/yale-clears-air-on-venture-returns-and-cautions-on-the-limits-of-irr/)
 
+[A Refresher on Internal Rate of Return |Harvard Business Review, 17 March 2016|](https://hbr.org/2016/03/a-refresher-on-internal-rate-of-return)
+
+[A Refresher on Net Present Value |Harvard Business Review, 19 November 2014|](https://hbr.org/2014/11/a-refresher-on-net-present-value)
 
 #### An Introduction to Stock Valuation
 
@@ -66,7 +92,9 @@
 
 #### The Capital Asset Pricing Model 
 
+[Financial services place too much faith in flawed risk models |Financial Times, 20 September 2015|](http://on.ft.com/1VhuJ5B)
 
+[Future prospects |The Economist, 5 August 2013|](http://www.economist.com/blogs/freeexchange/2013/08/prospect-theory-and-economics)
 
 ### Econometrics
 
@@ -136,11 +164,17 @@
 
 #### Treasury Debt Risk
 
+[Buy bonds, buy stocks, sell risk, blame the Fed |Market Watch, 22 September 2016|](http://www.marketwatch.com/story/buy-bonds-buy-stocks-sell-risk-blame-the-fed-2016-09-22)
 
+[BoJ launches new form of policy easing |Financial Times, 21 September 2016 |](https://www.ft.com/content/028d47a8-7faa-11e6-bc52-0c7211ef3198)
+
+[Government-Bond Yields Fall Before Central Bank Decisions |Wall Street Journal, 20 September 2016|](http://www.wsj.com/articles/government-bond-yields-fall-before-central-bank-meetings-1474384083)
 
 #### Exchange Traded Notes
 
+[Credit Suisse Launches New Oil ETN After Barclays’ Oil ETN Crashed Last Month |Barron's, 9 February 2016|](http://blogs.barrons.com/focusonfunds/2016/02/09/credit-suisse-launches-new-oil-etn-after-barclays-oil-etn-crashed-last-month/)
 
+[Why Exchange-Traded Notes Face a Popularity Problem |Wall Street Journal, 5 February 2016 |](http://www.wsj.com/articles/why-exchange-traded-notes-face-a-popularity-problem-1454581802)
 
 #### For What is the Yield-to-Maturity Used?
 
@@ -168,7 +202,9 @@
 
 #### An Introduction Stock Markets
 
+[India's 'flash boys' fret over proposed automated trading curbs |Reuters, 7 September 2016|](http://www.reuters.com/article/india-hft-idUSL3N1BJ41M)
 
+[U.S. SEC approves NYSE request for new market volatility rules |Reuters, 6 July 2016|](http://www.reuters.com/article/us-usa-stocks-rule-idUSKCN0ZM2ES)
 
 #### Short Selling Stock
 
@@ -176,11 +212,21 @@
 
 #### Exchange Traded Funds
 
+[Why millennials love ETFs |Market Watch, 21 September 2016|](http://www.marketwatch.com/story/why-millennials-love-etfs-2016-09-21)
 
+[BoJ’s overhaul of ¥6tn ETF buying risks roiling markets |Financial Times, 22 September 2016|](https://www.ft.com/content/e8a2d39c-8096-11e6-8e50-8ec15fb462f4)
+
+[Roaring ahead |The Economist, 1 August 2015|](http://www.economist.com/news/finance-and-economics/21660169-exchange-traded-funds-have-overtaken-hedge-funds-investment-vehicle-roaring)
 
 #### Leveraged Exchange Traded Funds
 
+[SEC Moves to Curb Leveraged ETFs |Wall Street Journal, 6 June 2016|](http://www.wsj.com/articles/sec-moves-to-curb-leveraged-etfs-1465205401)
 
+[Samsung launches leveraged ETFs in Hong Kong for first time |China Post, 14 June 2016|](http://www.chinapost.com.tw/business/company-focus/2016/06/14/469252/Samsung-launches.htm)
+
+['Trader’s mentality' needed for leveraged ETFs |The Globe and Mail, 27 October 2015|](http://www.theglobeandmail.com/report-on-business/traders-mentality-needed-for-leveraged-etfs/article26979885/)
+
+[Size 3x: How Leveraged ETFs Work |Wall Street Journal, 8 February 2015|](http://www.wsj.com/articles/how-leveraged-etfs-work-1423454476)
 
 ### Monetary Policy
 
