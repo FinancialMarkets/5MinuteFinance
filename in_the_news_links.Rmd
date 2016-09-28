@@ -20,11 +20,19 @@
 
 #### The VIX Index
 
+[Volatility Trade Flames Out as VIX-Loving Bears Cash In on Notes |Bloomberg, 19 September 2016|](http://www.bloomberg.com/news/articles/2016-09-19/volatility-trade-flames-out-as-vix-loving-bears-cash-in-on-notes)
 
+[Stress and volatility flood back to markets |Financial Times, 14 September 2016|](https://www.ft.com/content/3b5a7380-7a5f-11e6-ae24-f193b105145e)
+
+[Volatility Spike Brings Abrupt End to Markets’ Summer Vacation |Wall Street Journal, 11 September 2016|](http://www.wsj.com/articles/volatility-spike-brings-abrupt-end-to-markets-summer-vacation-1473631763)
+
+[With Nowhere to Go, This $64 Billion Asset Manager Bets on VIX |Bloomberg, 4 September 2016|](http://www.bloomberg.com/news/articles/2016-09-04/with-nowhere-to-go-this-64-billion-asset-manager-bets-on-vix)
 
 #### VVIX: The Vol of Vol
 
+[Here’s Why Volatility Has Been One of the Most Volatile Assets |Wall Street Journal, 29 June 2016|](http://blogs.wsj.com/moneybeat/2016/06/29/heres-why-volatility-has-been-one-of-the-most-volatile-assets/)
 
+[With U.S. market volatility down, protection gets cheap |Reuters, 26 February 2016|](http://www.reuters.com/article/us-usa-stocks-hedging-idUSKCN0VZ28J)
 
 ### Portfolio Finance
 
@@ -129,6 +137,7 @@
 #### The Pairs Trade
 
 
+[An Energy Pair Trade To Take Advantage Of Current Turmoil |Oil Price, 10 March 2016|](http://oilprice.com/Energy/Energy-General/An-Energy-Pair-Trade-To-Take-Advantage-Of-Current-Turmoil.html)
 
 ### Derivatives
 
@@ -136,7 +145,9 @@
 
 #### The Greeks
 
+[Mortgages, Taxes and Unicorn Swaps |The Economist, 23 July 2016|](https://www.bloomberg.com/view/articles/2016-09-12/mortgages-taxes-and-unicorn-swaps)
 
+[Dig into the mysterious Buffett derivatives |FT Alphaville, 27 January 2014|](http://ftalphaville.ft.com/2014/01/27/1751902/dig-into-the-mysterious-buffett-derivatives/)
 
 #### An Introduction to Stock Options
 
@@ -182,7 +193,7 @@
 
 [Buy bonds, buy stocks, sell risk, blame the Fed |Market Watch, 22 September 2016|](http://www.marketwatch.com/story/buy-bonds-buy-stocks-sell-risk-blame-the-fed-2016-09-22)
 
-[BoJ launches new form of policy easing |Financial Times, 21 September 2016 |](https://www.ft.com/content/028d47a8-7faa-11e6-bc52-0c7211ef3198)
+[BoJ launches new form of policy easing |Financial Times, 21 September 2016|](https://www.ft.com/content/028d47a8-7faa-11e6-bc52-0c7211ef3198)
 
 [Government-Bond Yields Fall Before Central Bank Decisions |Wall Street Journal, 20 September 2016|](http://www.wsj.com/articles/government-bond-yields-fall-before-central-bank-meetings-1474384083)
 
@@ -190,15 +201,23 @@
 
 [Credit Suisse Launches New Oil ETN After Barclays’ Oil ETN Crashed Last Month |Barron's, 9 February 2016|](http://blogs.barrons.com/focusonfunds/2016/02/09/credit-suisse-launches-new-oil-etn-after-barclays-oil-etn-crashed-last-month/)
 
-[Why Exchange-Traded Notes Face a Popularity Problem |Wall Street Journal, 5 February 2016 |](http://www.wsj.com/articles/why-exchange-traded-notes-face-a-popularity-problem-1454581802)
+[Why Exchange-Traded Notes Face a Popularity Problem |Wall Street Journal, 5 February 2016|](http://www.wsj.com/articles/why-exchange-traded-notes-face-a-popularity-problem-1454581802)
 
 #### For What is the Yield-to-Maturity Used?
 
+[Asian Junk Wins After BOJ as Yield Hunt Counteracts Fed Risks |Bloomberg, 21 September 2016|](https://www.bloomberg.com/view/articles/2016-09-12/mortgages-taxes-and-unicorn-swaps)
 
+[Why markets obsess over bond yields |The Economist, 24 August 2016|](http://www.economist.com/blogs/economist-explains/2016/08/economist-explains-15)
+
+[Is a Higher-Yielding Bond Worth the Risk? |Wall Street Journal, 24 May 2016|](http://www.wsj.com/articles/is-a-higher-yielding-bond-worth-the-risk-1464102238)
 
 ### Foreign Exchange
 
+[HSBC executive pleads not guilty in U.S. over forex scheme |Reuters, 29 August 2016|](http://www.reuters.com/article/us-hsbc-usa-crime-idUSKCN1141RN)
 
+[World's Easiest Currency Trade a Gift from Mexican Drug Dealers |Bloomberg, 30 January 2015|](http://www.bloomberg.com/news/articles/2015-01-30/world-s-easiest-currency-trade-a-gift-from-mexican-drug-dealers)
+
+[Rapid Currency Trades May Kill Arbitrage, N.Y. Fed Paper Says |Bloomberg, 10 March 2014|](http://www.bloomberg.com/news/articles/2014-03-10/rapid-currency-trades-may-kill-arbitrage-n-y-fed-paper-says)
 
 #### Foreign Exchange Arbitrage
 
@@ -206,7 +225,13 @@
 
 #### Foreign Exchange Markets
 
+[High Frequency Traders Elbow Their Way Into the Currency Markets |Bloomberg, 13 September 2016|](http://www.bloomberg.com/news/articles/2016-09-12/fastest-guys-in-stocks-are-becoming-a-force-in-currency-markets)
 
+[London's role at the heart of the global forex markets is under threat |Business Insider, 1 September 2016|](http://www.businessinsider.com/bis-triennial-survey-of-foreign-exchange-markets-2016-9)
+
+[Nigeria’s currency: If you love it… |The Economist, 23 July 2016|](http://econ.st/29QVFsd)
+
+[Peace breaks out in currency markets? |The Economist, 22 April 2016|](http://www.economist.com/blogs/buttonwood/2016/04/currencies-and-economics)
 
 ### Equity 
 
