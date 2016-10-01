@@ -25,6 +25,13 @@ Broadly speaking, there are two types of traders in futures markets, hedgers and
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## The Role of Speculators
+
+Speculators play an important role by taking the other side of order imbalances between hedgers. Without speculators, hedgers would have to wait for other hedgers to trade (causing the market maker to widen bid-ask spreads).  
+
+-  Speculators temporarily hold in imbalance in exchange for a return. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Futures Markets
 

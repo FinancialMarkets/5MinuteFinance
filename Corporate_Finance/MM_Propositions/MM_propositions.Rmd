@@ -1,27 +1,60 @@
 ---
 title: "MM Propositions"
-author: "Milken Institute, Center for Financial Markets"
-affiliation: "Milken Institute Center for Financial Markets"
-date: "09/01/2015"
 output: ioslides_presentation
 logo: misq.png
-css: 5min.css
+css: 5min_mod2.css
 runtime: shiny
-smaller: true
 ---
 
 ## Capital Structure
 
+A firm's capital structure is the proportion of debt and equity used to finance the firm's assets.  
+
+Whether an *optimal* capital structure exists, and the method of finding it, has long been of interest in finance. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Assumptions
+
+- No taxes
+- No transaction costs
+- Both individials and corporations can borrow at the same rate.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## MM Proposition I (No Taxes)
+
+`The value of the levered and unlevered firms are the same.` 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## MM Proposition II (No Taxes)
+
+The cost of equity rises linearly with leverage according to the equation:  $R_E = R_0 + \frac{D}{E}(R_0 - R_D)$, where:
+
+- $R_E$ is the return on equity.
+-
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## MM Proposition I (With Taxes)
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## 
 
+## MM Proposition II (With Taxes)
 
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+
 
 ## Credits and Collaboration
 
