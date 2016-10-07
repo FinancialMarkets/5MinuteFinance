@@ -47,6 +47,53 @@ For a review of bond coupon rates and yields see these presentations: [An Introd
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Average of Time Payments are Received
+
+Duration can be thought of as the weighted-average of when the bondholder received payment.  The weights are the proportion of the bond's total value received in each period. 
+
+-  In the following app, change the bond's coupon, YTM, and maturity and see how it affects the weights.  Check that the way the weights react is consistent with the relationships on the previous slide.
+
+-  This will give you an intuitive understanding of how these variables affect duration.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 4, fig.height = 4}
+#{{{
+library(plotly)
+inputPanel(    
+    sliderInput("maxYtm.p", label = "Yield to Maturity", max = .5, min = 0.01, value = .20, step = .01),
+    sliderInput("coupon.p", label = "Coupon Rate", max = .2, min = 0.01, value = .05, step = .01),
+    sliderInput("maxMaturity.p", label = "Years to Maturity", max = 50, min = 1, value = 30)
+    )
+
+renderPlotly({
+
+    year.p <- 1:input$maxMaturity.p
+
+    ## bond cash flows
+    CFs.p <- rep( 1000 * input$coupon.p, input$maxMaturity.p)
+    CFs.p[length(year.p)] <- CFs.p[length(year.p)] + 1000
+
+    ## PV Cash Flows
+    PVCFs.p <- CFs.p / (1 + input$maxYtm.p)^{year.p}
+    
+    ## bond value
+    BV.p <- sum(PVCFs.p)
+
+    weights.p <- PVCFs.p / BV.p
+
+    dataPlotly <- data.frame(cbind(year.p, weights.p))
+    names(dataPlotly) <- c("Year", "Weight")
+    p <- plot_ly(data = dataPlotly, x = ~Year, y = ~Weight, text = paste("Proportion of Total Bond Value from Cash Flow"), type = "bar")
+    p 
+    })
+
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Interactive App
 
 With the following app, you can set the maximum yield-to-maturity, and time to maturity, and see the resulting 3D duration surface.  You can also change the coupon rate and see the effect on the duration surface.

@@ -43,10 +43,12 @@ Speculators play an important role by taking the other side of order imbalances 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Futures Markets
+## Major Futures Markets
 
-- CME:
-- ICE: 
+- [CME Group](http://www.cmegroup.com/): Comprises the Chicago Mercantile Exchange, Chicago Board of Trade, New York Mercantile Exchange, COMEX, and the CME Europe.  
+- [Intercontinental Exchange]()
+- [Chicago Board Options Exchange](http://www.cboe.com/)
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
