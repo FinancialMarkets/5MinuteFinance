@@ -132,16 +132,15 @@
 
 #### The Limit Order Book
 
+[Merrill Lynch Sold Some Stocks Too Fast |Bloomberg, September 27, 2016|](https://www.bloomberg.com/view/articles/2016-09-27/merrill-lynch-sold-some-stocks-too-fast)
 
+[Order Book Reporting Methods and Their Impact on Some Market Activity Measures |SEC Data Highlight, March 19, 2014|](https://www.sec.gov/marketstructure/research/highlight-2014-03.html)
 
 #### The Pairs Trade
-
 
 [An Energy Pair Trade To Take Advantage Of Current Turmoil |Oil Price, 10 March 2016|](http://oilprice.com/Energy/Energy-General/An-Energy-Pair-Trade-To-Take-Advantage-Of-Current-Turmoil.html)
 
 ### Derivatives
-
-
 
 #### The Greeks
 
