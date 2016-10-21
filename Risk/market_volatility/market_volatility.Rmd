@@ -75,6 +75,53 @@ rChartsCalmap::renderCalheatmap({
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+
+## Try with calheatmapR package: https://github.com/durtal/calheatmapR
+
+devtools::install_github(repo = "durtal/calheatmapR")
+library(calheatmapR)
+#{{{
+
+## add company input and feed into getSymbols below
+
+library(quantmod)
+comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+names(comp) <- c("symbol", "name")
+
+inputPanel(
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name),
+    dateRangeInput("date", "Date Range", start = "2015-01-01", end = Sys.Date())
+    ## add date range input 
+)
+
+## code modified from here:  https://github.com/ramnathv/rChartsCalmap
+renderCalheatmapR({
+    
+    ## valdate name ----
+    validate(
+        need(input$name != "", "Select a US stock name.")
+    )
+
+    ticker <- comp$symbol[comp$name == input$name]
+
+    stock <- getSymbols(ticker, auto.assign = FALSE,from = input$date[1], to = input$date[2])
+
+    time <- as.POSIXct(index(stock)) %>% as.numeric()
+    adjC <- Ad(stock)
+    rets <- as.numeric(Delt(adjC)[-1])
+    names(rets) <- time[-1]
+
+
+
+})
+#}}}
+```
+
+
 ## 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
 
