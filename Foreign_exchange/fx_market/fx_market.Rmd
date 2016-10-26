@@ -27,16 +27,16 @@ In the following presentation we'll use the currency acronyms common on sites su
 
 - EUR: Euros
 - GBP: U.K. Pounds
-- USD: U.S. Dollar
-- CHF: Swiss Franc
-- CAD: Canadian Dollar
+- USD: U.S. Dollars
+- CHF: Swiss Francs
+- CAD: Canadian Dollars
 - JPY: Japanese Yen
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## The Exchange Rate
 
-The exchange rate can be quoted in two equivalent ways, the direct and indirect quotes.  Assume we are in the US, and 'foreign currency' refers to anything other than the US dollar. 
+The exchange rate can be quoted in two equivalent ways, the direct quote and the indirect quote.  Assume we are in the US, and 'foreign currency' refers to anything other than the US dollar. 
 
 -  *Direct quote*: the value of the foreign currency in US dollars.
 -  *Indirect quote*: the value of the US dollar expressed in foreign currency.
@@ -316,9 +316,9 @@ Like the stock market, FX is quoted with a bid and ask price.  If you are buying
 
 Say the direct quote for the GBP is USD 1.50/1.55. The bid is USD 1.50 and the ask is USD 1.55.
 
--  If you buy GBP you will pay the USD 1.55 ask (note of course this is the one you *don't* prefer).
+-  If you buy GBP, you will pay the USD 1.55 ask (note of course this is the one you *don't* prefer).
 
--  If you sell a GBP you will receive USD 1.50 (again the one you don't prefer).
+-  If you sell a GBP, you will receive USD 1.50 (again the one you don't prefer).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
