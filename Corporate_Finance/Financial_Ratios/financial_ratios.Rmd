@@ -138,7 +138,9 @@ Say a firm has \$100 million in net income.  Alone this data point is not too us
 These measures capture what value the market assigns to each dollar of a firm's earnings, sales, or book value.  Examples of *market value ratios* are:
 
 - Earnings Per Share: net income divided by shares outstanding.
+
 - Market-to-Book Ratio: market value per share divided by book value per share.
+
 - Price Earnings Ratio: price per share divided by earnings per share (EPS). 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -148,7 +150,9 @@ These measures capture what value the market assigns to each dollar of a firm's 
 A firm's P/E ratio is its stock price (per share) divided by its earnings per share (EPS).  However, if EPS is negative the ratio is undefined.
 
 - Say a firm has a stock price of \$30 per share, and EPS of \$2, then the firm's P/E ratio is 15.
+
 - We can interpret this as, 'for every \$1 in earnings, the market is willing to pay \$15'.
+
 - The faster a firm is growing, the higher its P/E ratio tends to be.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -156,6 +160,7 @@ A firm's P/E ratio is its stock price (per share) divided by its earnings per sh
 ## When to Use a Ratio
 
 If you are considering buying GE's stock.  Do you care about GE's current ratio?
+
 >- Not really.  The current ratio only considers short term accounts, and as an equity holder you care about the firm's long-term prospects.  
 
 >- You would certainly be interested in the Return on Equity, Debt-to-Equity ratio, and Total Asset Turnover among other measures of long-term performance. 
@@ -166,8 +171,11 @@ If you are considering buying GE's stock.  Do you care about GE's current ratio?
 
 The Dupont Analysis uses ratios to show how firm efficiency and leverage can influence shareholder returns (ROE)
 
--  Where $ROE = Profit\ Margin\: x\: Total\ Asset\ Turnover\: x\: Equity\ Multiplier$ 
--  $\frac{Earnings}{Equity} =  \frac{Earnings}{Sales}\: x\: \frac{Sales}{Assets}\: x\: \frac{Assets}{Equity}$
+$ROE \equiv (Profit\ Margin)(Total\ Asset\ Turnover)(Equity\ Multiplier)$ 
+
+- This can be seen here noting that *Sales* and *Assets* cancel on the right-hand side:
+
+$\frac{Earnings}{Equity} =  \frac{Earnings}{Sales}\: x\: \frac{Sales}{Assets}\: x\: \frac{Assets}{Equity}$
 
 - Profit margin measures a firm's ability to control expenses (operational efficiency)
 - Total asset turnover shows how many dollars of sales are provided by a dollar of asset (asset efficiency)
