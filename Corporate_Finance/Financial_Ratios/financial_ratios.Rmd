@@ -69,7 +69,7 @@ Two widely used *leverage ratios* are the debt-to-equity ratio, and the equity m
 
 To see the relationship between these two ratios, remember $Assets \equiv Liabilities + Equity$:
 
--  Equity Multiplier = $\frac{Assets}{Equity}$ = $\frac{Debt}{Equity} + \frac{Equity}{Equity}$ = Debt-to-Equity Ratio + 1
+$Equity\ Multiplier \equiv \frac{Assets}{Equity}$ = $\frac{Debt}{Equity} + \frac{Equity}{Equity}$ = Debt-to-Equity Ratio + 1
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -175,7 +175,7 @@ $ROE \equiv (Profit\ Margin)(Total\ Asset\ Turnover)(Equity\ Multiplier)$
 
 - This can be seen here noting that *Sales* and *Assets* cancel on the right-hand side:
 
-$\frac{Earnings}{Equity} =  \frac{Earnings}{Sales}\: x\: \frac{Sales}{Assets}\: x\: \frac{Assets}{Equity}$
+$\frac{Earnings}{Equity} =  (\frac{Earnings}{Sales})(\frac{Sales}{Assets})(\frac{Assets}{Equity})$
 
 - Profit margin measures a firm's ability to control expenses (operational efficiency)
 - Total asset turnover shows how many dollars of sales are provided by a dollar of asset (asset efficiency)
@@ -302,7 +302,7 @@ sidebarLayout(
 
             plot(ratio.to.plot[[1]], main = plot.main, type = "l", lty = 1, 
                  col = "green", lwd = 3, ylab = "Profit Margin", xlab = "Year", ylim = c(plot.min, plot.max), xaxt = "n")
-            axis(1, at = c(1,2,3,4), labels = c("2011", "2012", "2013", "2014"))
+            axis(1, at = c(1,2,3,4), labels = c("2012", "2013", "2014", "2015"))
 
             lines(ratio.to.plot[[2]], lty = 1, col = "blue", lwd = 4)
 
