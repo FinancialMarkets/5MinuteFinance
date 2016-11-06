@@ -1,6 +1,6 @@
 ---
 ## title: "Risk in Treasury Debt"
-title: "Present Treasury Debt"
+title: "An Introduction to US Treasury Securities"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
@@ -15,7 +15,38 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <!--- change presentation to focus on the present state of treasury debt; who owns the debt and what types are outstanding --> 
 
-## Goal of the Presentation
+## The Federal Debt
+
+The US Treasury issues Treasury securities in order to finance the federal government's deficit---the amount by which federal spending exceeds receipts over any given time period.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Primary Market
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Secondary Market
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Treasury Quotes
+
+
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Important Roles Played by Treasury Securities
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 <!--- To understand the amount of risk in the US's outstanding Treasury debt, particularly relative to historical levels.
 
