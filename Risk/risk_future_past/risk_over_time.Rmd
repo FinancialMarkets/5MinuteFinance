@@ -57,13 +57,12 @@ In the following app you can see how stock returns distributions behaved over di
 ## 
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
+## rmarkdown::render_delayed({
 library(quantmod)
 library(plotly)
-
 inputPanel(
     textInput("ticker", label = "Stock Ticker", value = "C")
 )
-
 renderPlotly({
     ## valdate ticker ----
     validate(
@@ -104,8 +103,19 @@ renderPlotly({
 
     ## Based off of example here: http://rpubs.com/julyanarbel/192923
     
-    plot_ly(dat.df, x = return, y = month, z = density, group = month, type = "scatter3d", mode = "lines") 
+  ## plot_ly(dat.df, x = return, y = month, z = density, group = month, type = "scatter3d", mode = "lines")
+
+    ## 3D density plots
+    dat.df %>% group_by(month) %>% plot_ly(x = ~return, y = ~month, z = ~density, type = "scatter3d", mode = "lines")
+
+    ## trying to get a surface to work
+## dat.df %>% group_by(month) %>% plot_ly(z = as.matrix(t(dat.df))) %>% add_surface()
+    
+
+
+    ## p %>% plot_ly(dat.df, z = ~density) %>% add_surface() 
 })
+    ## })
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
