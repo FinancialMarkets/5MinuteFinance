@@ -19,15 +19,27 @@ knitr::opts_chunk$set(echo = FALSE)
 
 The US Treasury issues Treasury securities in order to finance the federal government's deficit---the amount by which federal spending exceeds receipts over any given time period.
 
+-  The total debt amount [is posted here](http://www.treasurydirect.gov/NP/debt/current) and is updated daily.  It is divided into debt held by the public (about $14 trillion), and debt held by the government (about $5 trillion).  The US federal government owns debt through various trust funds, for example for [Social Security](https://en.wikipedia.org/wiki/Social_Security_Trust_Fund).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Primary Market
 
+The Treasury sells securities [in auctions](https://www.treasurydirect.gov/indiv/products/prod_auctions_glance.htm).  In these auctions you can submit a *competitive* or *non-competitive* bid (a *bid* is the highest price you are willing to pay).   
+
+-  Non-competitive: you specify a quantity only, and are willing to buy the security at the price resulting from the auction.  You are limited to non-competitive bids totaling \$5 million per auction.  
+
+-  Competitive: you specify both a price and quantity.  
+
+The auction price is determined by ranking the competitive bids (from highest to lowest) and accepting bids until the required funding is reached.  The lowest accepted bid is then applied as the purchase price for all competitive and non-competitive bids.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Secondary Market
+
+There are about [22 primary dealers](https://www.newyorkfed.org/markets/primarydealers.html) who collectively make a secondary market in Treasury securities.  There are roughly 2,000 broker/dealers who are registered to do so, however the bulk of trading is done with the 22 primary dealers.
+
+- When the Federal Reserve conducts open market operations it mainly trades with these primary dealers.  
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -35,9 +47,23 @@ The US Treasury issues Treasury securities in order to finance the federal gover
 
 ## Treasury Quotes
 
+Treasury notes and bonds are quoted as a percent of par, with the number after the colon being the number of 32nds.  For example if a bond's price is quoted as 110:09, then it is trading for $110 + 9/32 = 110.28125$ percent of par.  Par value for Treasuries is \$1000, and so the bond's price is \$1102.8125.
+
+Below is a bond quote-to-price converter.  Try entering in different quotes.
 
 
+```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+inputPanel(
+    textInput("quote", "Price Quote", value = "110:09")
+)
+renderPrint({
 
+    price <- (as.numeric(gsub(":[0-9]+$", "", x = input$quote)) + as.numeric(gsub("^[0-9]+:", "", x = input$quote)) / 32) * 10
+    cat(paste0("$", price))
+
+    })
+
+```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
