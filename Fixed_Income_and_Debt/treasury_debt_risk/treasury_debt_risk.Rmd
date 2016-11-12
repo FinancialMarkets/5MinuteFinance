@@ -53,6 +53,7 @@ Below is a bond quote-to-price converter.  Try entering in different quotes.
 
 
 ```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+#{{{
 inputPanel(
     textInput("quote", "Price Quote", value = "110:09")
 )
@@ -62,7 +63,7 @@ renderPrint({
     cat(paste0("$", price))
 
     })
-
+#}}}
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -85,6 +86,28 @@ renderPrint({
 <!-- - Further, unprecedented easing by foreign central banks (particularly the ECB, BOE, and the BOJ) has had a large effect on US Treasury markets.   -->
 
 <!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
+## Stripped Treasury Bonds
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Treasury Inflation-Protected Securities
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Savings Bonds
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Who Owns Treasury Debt?
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ## The Major Holders of US Treasury Debt
 
@@ -231,8 +254,8 @@ renderDygraph({
     names(realAvgMat) <- "Average Maturity of Outstanding Marketable Treasury Securities (in Months)"
     dygraph(realAvgMat)
 
-                                        #}}}
 })
+#}}}
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
