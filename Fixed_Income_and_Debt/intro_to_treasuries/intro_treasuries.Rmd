@@ -1,5 +1,5 @@
 ---
-title: "Risk in Treasury Debt"
+title: "An Introduction to US Treasury Securities"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
@@ -14,22 +14,80 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <!--- change presentation to focus on the present state of treasury debt; who owns the debt and what types are outstanding --> 
 
-## This presentation is a work-in-progress, feel free to add code on GitHub
+## The Federal Debt
 
-## Goals of the Presentation
+The US Treasury issues Treasury securities in order to finance the federal government's deficit---the amount by which federal spending exceeds receipts over any given time period.
 
-To understand the amount of risk in the US's outstanding Treasury debt, particularly relative to historical levels.
+-  The total debt amount [is posted here](http://www.treasurydirect.gov/NP/debt/current) and is updated daily.  It is divided into debt held by the public (about $14 trillion), and debt held by the government (about $5 trillion).  The US federal government owns debt through various trust funds, for example for [Social Security](https://en.wikipedia.org/wiki/Social_Security_Trust_Fund).
 
-- The result is useful in understanding the risk in the US banking system.
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
--  Further, ownership of US Treasury debt has been markedly affected by recent unconconventional modetary policy (Quantitative Easing).
+## Primary Market
 
-To take a look at recent trends in US Treasury ownership and issuance.  This is particularly timely given the effect of Quantitative Easing and other unconventional monetary policy on Treasury markets.
+The Treasury sells securities [in auctions](https://www.treasurydirect.gov/indiv/products/prod_auctions_glance.htm).  In these auctions you can submit a *competitive* or *non-competitive* bid (a *bid* is the highest price you are willing to pay).   
 
-- Further, unprecedented easing by foreign central banks (particularly the ECB, BOE, and the BOJ) has had a large effect on US Treasury markets.
+-  Non-competitive: you specify a quantity only, and are willing to buy the security at the price resulting from the auction.  You are limited to non-competitive bids totaling \$5 million per auction.  
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+-  Competitive: you specify both a price and quantity.  
 
+The auction price is determined by ranking the competitive bids (from highest to lowest) and accepting bids until the required funding is reached.  The lowest accepted bid is then applied as the purchase price for all competitive and non-competitive bids.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Secondary Market
+
+There are about [22 primary dealers](https://www.newyorkfed.org/markets/primarydealers.html) who collectively make a secondary market in Treasury securities.  There are roughly 2,000 broker/dealers who are registered to do so, however the bulk of trading is done with the 22 primary dealers.
+
+- When the Federal Reserve conducts open market operations it mainly trades with these primary dealers.  
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Treasury Quotes
+
+Treasury notes and bonds are quoted as a percent of par, with the number after the colon being the number of 32nds.  For example if a bond's price is quoted as 110:09, then it is trading for $110 + 9/32 = 110.28125$ percent of par.  Par value for Treasuries is \$1000, and so the bond's price is \$1102.8125.
+
+Below is a bond quote-to-price converter.  Try entering in different quotes.
+
+
+```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+#{{{
+inputPanel(
+    textInput("quote", "Price Quote", value = "110:09")
+)
+renderPrint({
+
+    price <- (as.numeric(gsub(":[0-9]+$", "", x = input$quote)) + as.numeric(gsub("^[0-9]+:", "", x = input$quote)) / 32) * 10
+    cat(paste0("$", price))
+
+    })
+#}}}
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Stripped Treasury Bonds
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Treasury Inflation-Protected Securities
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Savings Bonds
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Who Owns Treasury Debt?
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 ## The Major Holders of US Treasury Debt
@@ -96,23 +154,6 @@ output$dollarsPlot <- renderDygraph({
 #}}}
 ```
 
-<!--- maybe get good data here from Bloomberg
-data from FRED
-foreign holders: FDHBFIN
--->
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
-
-## Determinants of Bond Risk
-
-A Bond is generally more risky the:
-
-1. lower the bond's yield.
-2. lower the bond's coupon rate.
-3. longer the bond's time to maturity.
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
-
 ## Treasury Yields have Declined 
 
 ```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
@@ -150,16 +191,6 @@ dygraph(yields) %>%
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Coupons on Outstanding Treasuries have Declined over Time
-
-New Treasury bonds are issued at a rate reflecting present market yields.
-
--  So, as yields have delined, so have coupon rates on newly issued Treasuries.
-
-<!-- <\!--- get data from Bloomberg? -\-> -->
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## Length of Time to Maturity on Outstanding Debt is Unchanged since 2000
 
@@ -203,23 +234,8 @@ dyOptions(stacked = TRUE)
 })
 #}}}
 ```
-<!--- get data from Bloomberg -->
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Treasury Bonds Today
-
-[Here are historical average rates back to 2001 from the US Treasury](https://www.treasurydirect.gov/govt/rates/pd/avg/avg.htm)
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
-
-## Risk in 2015 is Higher than in 198X
-
-<!-- <\!--- given data above, calculate the effect of a 1\% increase (parallel shift) in yields). -->
-<!-- maybe have an app that lets you choose the year and estimates the losses generated by a 1\% increase in yields -->
-<!-- -\-> -->
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## Treasury and Agency Debt held by Commercial Banks as a Proportion of GDP
 
@@ -247,42 +263,7 @@ dygraph(debtOverGDP) %>%
 #}}}
 ```
 
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-<!---But are commercial banks holding less than before: what does (debt held by banks / total debt) look like? -->
-
-<!---
-Total Debt, quarterly: GFDEBTN
-Other stuff here:  https://research.stlouisfed.org/fred2/search?st=Treasury+Debt
-
--->
-
-## What Does this Mean?
-
-Note risk is assuming a parallel shift along the curve.
-
-Rates won't rise at all points of the yield curve, so this will lessen the impact of a FOMC increase.
-
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
-maybe dont include below 
-## Risk Increases in Lower Yields
-
-Consider a 10 year treasury note with a 5\% coupon.
-
--  If the bond's yield is 8\% and it increases to 8.25\%, then the bond's price will decline by 1.83\%.
-
--  If the bond's yield is 1\% and it increases to 1.25\%, then the bond's price will decline by 2.05\%.
-
-If the differential seems small, keep in mind it is \$2.2 billion difference on \$1 trillion in debt.
-
-## Risk Increases in Lower Coupons
-
-Consider a 10 year treasury note with an increase in yield from 2\% to 3\%.
-
--  If the bond's coupon is 10\%, then the bond's price will decline by \%.
-
--  If the bond's coupon is 1\%, then the bond's price will decline by \%.
 
 ## Credits and Collaboration
 
