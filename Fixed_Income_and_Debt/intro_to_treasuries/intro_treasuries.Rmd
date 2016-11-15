@@ -40,7 +40,6 @@ There are about [22 primary dealers](https://www.newyorkfed.org/markets/primaryd
 
 - When the Federal Reserve conducts open market operations it mainly trades with these primary dealers.  
 
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
@@ -69,17 +68,34 @@ renderPrint({
 
 ## Stripped Treasury Bonds
 
+Treasury securities can be 'stripped' by primary dealers into principal and interest portions, which are often then sold as zero-coupon bonds.  
 
+Zero-Coupon bonds are important to the financial industry because they:
+
+#. Allow investors to guarantee the compounded return on investing in the bond.
+#. Enable the creation of replicating portfolios for derivatives valuation and hedging.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Treasury Inflation-Protected Securities
+## Treasury Inflation-Protected Securities (TIPS)
 
+TIPS are Treasury securities with fixed coupon rates, but with principal amounts which are increased by the amount of U.S. inflation every 6 months.  
+
+-  The coupon rate on TIPS is generally lower than the rate on typical US Treasury securities (of similar maturity).
+
+-  Since the principal adjusts for inflation, the TIPS interest rate on TIPS is an estimate of the *real* interest rate.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Savings Bonds
 
+Savings bonds are Treasury securities which are offered in denominations as low as \$25.  They mature in 30 years and do not have a secondary market.  They can, however, be redeemed early from the Treasury by paying a penalty.
+
+-  [Series EE savings bonds:](http://treasurydirect.gov/indiv/products/prod_eebonds_glance.htm) interest rate is fixed.
+
+-  [Series I savings bonds:](https://www.treasurydirect.gov/indiv/research/indepth/ibonds/res_ibonds.htm) interest rate adjusts with inflation.
+
+Note, all of the previous treasury securities mentioned are exempt from state and local taxes, though not from federal taxes.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -154,7 +170,7 @@ output$dollarsPlot <- renderDygraph({
 #}}}
 ```
 
-## Treasury Yields have Declined 
+## A Look at Treasury Yields Over Time
 
 ```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
 #{{{
