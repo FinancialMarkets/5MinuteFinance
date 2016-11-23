@@ -88,7 +88,7 @@ The following app will calculate OCF for any company you choose.
 library(DT)
 library(quantmod)
 inputPanel(
-    textInput("ticker", label = "Stock Ticker", value = "COP")
+    textInput("ticker", label = "Stock Ticker", value = "GS")
     ## radioButtons("statement", label = "Financial Statement", choices = list("Balance Sheet" = 1, "Income Statement" = 2), selected = 2)
     )
 DT::renderDataTable({
