@@ -5,7 +5,7 @@ affiliation: "Milken Institute Center for Financial Markets"
 date: "03/12/2016"
 output: ioslides_presentation
 logo: misq.png
-css: 5min_mod.css
+css: 5min_mod2.css
 runtime: shiny
 smaller: true
 ---
@@ -14,9 +14,7 @@ smaller: true
 
 The basic idea of the CAPM is this: *A stock is more risky the more its performance is correlated with the other stocks you hold*.
 
-[graphic of two stock next to each other => risky]
-
-[graphic of two stocks far apart => safe]
+-  The CAPM builds on (Markowitz portfolio optimization)[https://micfm.shinyapps.io/markowitz]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
