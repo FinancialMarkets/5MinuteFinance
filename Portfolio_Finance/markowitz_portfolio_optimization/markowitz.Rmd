@@ -7,7 +7,152 @@ runtime: shiny
 smaller: true
 ---
 
-## 
+<!-- Much of this presentation was taken from here: https://github.com/Matt-Brigida/portfolio-theory/blob/master/chapter3/chapter3.Rmd -->
+
+## Diversification
+
+Diversification is an investment strategy which reduces portfolio risk without necessarily reducing portfolio return.
+
+-  It works because the expected return on a portfolio is the weighted-average of the expected returns of the assets in the portfolio, but the standard deviation of the portfolio is less than the weighted average of the individual standard deviations of the assets in the portfolio.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Diversification: The Math
+
+say we have two risky assets, A and B, in our portfolio. The expected return on our portfolio is:
+
+$E(r_p) = w_AE(r_A) + w_BE(r_B)$
+
+where $w$ denotes the weight of the asset in our portfolio. We see that the expected return on a portfolio is the weighted-average of the expected returns of the individual assets in the portfolio. However the variance of the portfolio is:
+
+$\sigma_p^2 = w_A^2\sigma_A^2 + w_B^2\sigma_B^2 + 2w_Aw_B\sigma_A\sigma_B\rho_{A,B}$
+
+Importantly, the portfolio variance is a function of the correlation coefficient between the assets in the portfolio, but the expected return is not.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+##
+
+Now, assume that $\rho_{A,B} = 1$, then:
+
+$\sigma_p^2 = (w_A\sigma_A + w_B\sigma_B)^2 \Rightarrow \sigma_p = w_A\sigma_A + w_B\sigma_B$
+
+and the risk on a portfolio is the weighted-average of the risk of the individual assets in the portfolio. 
+
+-  However, in practice $\rho_{A,B} < 1$ and so risk on a portfolio will be less than the weighted-average of the risk of the individual assets in the portfolio. This is the benefit of diversification. The ability to reduce risk (risk is decreasing with correlation) without necessarily reducing the expected return. The expected return is not a function of asset correlations.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Diversification: An Economic Argument
+
+In economic terms, we can think of the risk on an assets as being decomposable into market and firm-specific induced risks. 
+
+-  Market risks (such as the risk of a sudden increse in interest rates) are common across all assets, and are not diversifiable. 
+-  Examples of firm-specific risks are a fire at a Ford factory or a drop in Facebook users. 
+
+As you add assets to your portfolio the good news from one company text to offset the bad news from another. Adding enough assets, eventually all the firm-specific risk is offset and you hold only market risk.
+
+We are diversifying our portfolio if, given the portfolio has a set size, we split this amount across more and more assets. 
+
+-  Note, diversification doesn't mean you add more money to your portfolio and invest it in a new asset.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##  Portfolio Frontier with Two Risky Assets and Varying Correlation
+
+The following widget shows the efficient frontier for a portfolio of two risky assets. The first risky asset (call it 'Debt') has a 9\% expected return and 11\% standard deviation. The second portfolio (call it 'Equity') has a 12\% expected return and a 20\% standard deviation. You are free to change the correlation coefficient between Debt and Equiry returns, and see the resulting effect on the efficient frontier.
+
+What you should note, is that as you lower the correlation coefficient, you can receive the same expected return for less risk. That is, investors benefit form the lower correlation. If the correlation coefficient is -1, then you can construct a risk-free portfolio. See below for the calculation.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r echo = FALSE, warning = FALSE}
+
+
+### Efficient Frontier: 2 assets ------
+#{{{
+inputPanel({
+    sliderInput("correl", "Correlation Coefficient", min = -1, max = 1, step = 0.01, value = 0.5, animate = TRUE)
+})
+
+renderPlot({
+    ## library(ggvis)
+
+    w.e <- seq(-.5,1.5, by=.01)
+    w.d <- 1 - w.e
+    r.e <- .12
+    r.d <- .09
+    E <- w.e*r.e+w.d*r.d
+    s.e <- .2
+    s.d <- .11
+    S <- sqrt((w.e^2)*s.e^2+(w.d^2)*s.d^2+2*w.d*w.e*s.e*s.d*input$correl)
+    dataEff <- data.frame(cbind(S,E,w.e))
+    ## plot(S, E, type='l', xlim=c(0,.3), xlab='Portfolio Standard Deviation', ylab='Portfolio Expected Return', col = 'green')
+    S.ports <- c(dataEff[dataEff$w.e == 0, ]$S, dataEff[dataEff$w.e == 1, ]$S)
+    E.ports <- c(dataEff[dataEff$w.e == 0, ]$E, dataEff[dataEff$w.e == 1, ]$E)
+    dataPorts <- cbind(S.ports, E.ports)
+    plot(dataPorts, type='p', xlim=c(0,.3), xlab='Portfolio Standard Deviation', ylab='Portfolio Expected Return', col = 'black', ylim = c(.08, .13))
+    lines(S, E, col = "green", lwd = 1.5)
+    text(dataPorts, labels = c("Debt", "Equity"), cex = 1, pos = 2)
+
+    })
+
+
+
+
+
+
+```
+
+
+
+##
+
+```{r echo = FALSE}
+
+library(corrplot)
+library(quantmod)
+inputPanel(
+    textInput("ticker1", "Stock Ticker", value = "XOM"),
+    textInput("ticker2", "Stock Ticker", value = "GE"),
+    textInput("ticker3", "Stock Ticker", value = "TSLA"),
+    textInput("ticker4", "Stock Ticker", value = "AAPL"),
+    textInput("ticker5", "Stock Ticker", value = "UNH")
+)
+
+renderPlot({
+    stock1 <- getSymbols(input$ticker1, from = '2015-01-01', auto.assign = FALSE)
+    stock1 <- to.weekly(stock1)
+    stock1 <- Delt(Ad(stock1))[-1]
+    names(stock1) <- input$ticker1
+    stock2 <- getSymbols(input$ticker2, from = '2015-01-01', auto.assign = FALSE)
+    stock2 <- to.weekly(stock2)
+    stock2 <- Delt(Ad(stock2))[-1]
+    names(stock2) <- input$ticker2
+    stock3 <- getSymbols(input$ticker3, from = '2015-01-01', auto.assign = FALSE)
+    stock3 <- to.weekly(stock3)
+    stock3 <- Delt(Ad(stock3))[-1]
+    names(stock3) <- input$ticker3
+    stock4 <- getSymbols(input$ticker4, from = '2015-01-01', auto.assign = FALSE)
+    stock4 <- to.weekly(stock4)
+    stock4 <- Delt(Ad(stock4))[-1]
+    names(stock4) <- input$ticker4
+    stock5 <- getSymbols(input$ticker5, from = '2015-01-01', auto.assign = FALSE)
+    stock5 <- to.weekly(stock5)
+    stock5 <- Delt(Ad(stock5))[-1]
+    names(stock5) <- input$ticker5
+M <- cor(data.frame(cbind(stock1, stock2, stock3, stock4, stock5)))
+corrplot(M, method = "square")
+})
+
+```
+
+
+
+## *Optimal* Diversification and Markowitz
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

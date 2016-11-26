@@ -14,7 +14,9 @@ smaller: true
 
 The basic idea of the CAPM is this: *A stock is more risky the more its performance is correlated with the other stocks you hold*.
 
--  The CAPM builds on (Markowitz portfolio optimization)[https://micfm.shinyapps.io/markowitz]
+-  The CAPM builds on (Markowitz portfolio optimization)[https://micfm.shinyapps.io/markowitz], by assuming all investors will hold the market portfolio.  
+
+-  If all investors hold the market portfolio, then an asset's risk is simply the amount the asset contributes to the risk of the overall market portfolio.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -94,8 +96,6 @@ legend("topright", c("Portfolio of Stock 1 & 2"), col = c(1), lwd = c(2), lty = 
 If a stock lowers our portfolio risk, we won't require too high of a return from that stock.  
 
 On the other hand, if a stock raises our portfolio risk, we'll ask for more return.
-
-[graphic: person demanding more money from a risky stock]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
