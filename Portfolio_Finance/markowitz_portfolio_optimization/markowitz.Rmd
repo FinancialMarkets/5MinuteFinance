@@ -48,7 +48,7 @@ and the risk on a portfolio is the weighted-average of the risk of the individua
 
 In economic terms, we can think of the risk on an assets as being decomposable into market and firm-specific induced risks. 
 
--  Market risks (such as the risk of a sudden increse in interest rates) are common across all assets, and are not diversifiable. 
+-  Market risks (such as the risk of a sudden increase in interest rates) are common across all assets, and are not diversifiable. 
 -  Examples of firm-specific risks are a fire at a Ford factory or a drop in Facebook users. 
 
 As you add assets to your portfolio the good news from one company text to offset the bad news from another. Adding enough assets, eventually all the firm-specific risk is offset and you hold only market risk.
@@ -61,7 +61,7 @@ We are diversifying our portfolio if, given the portfolio has a set size, we spl
 
 ##  Portfolio Frontier with Two Risky Assets and Varying Correlation
 
-The following widget shows the efficient frontier for a portfolio of two risky assets. The first risky asset (call it 'Debt') has a 9\% expected return and 11\% standard deviation. The second portfolio (call it 'Equity') has a 12\% expected return and a 20\% standard deviation. You are free to change the correlation coefficient between Debt and Equiry returns, and see the resulting effect on the efficient frontier.
+The following widget shows the efficient frontier for a portfolio of two risky assets. The first risky asset (call it 'Debt') has a 9\% expected return and 11\% standard deviation. The second portfolio (call it 'Equity') has a 12\% expected return and a 20\% standard deviation. You are free to change the correlation coefficient between Debt and Equity returns, and see the resulting effect on the efficient frontier.
 
 What you should note, is that as you lower the correlation coefficient, you can receive the same expected return for less risk. That is, investors benefit form the lower correlation. If the correlation coefficient is -1, then you can construct a risk-free portfolio. See below for the calculation.
 
@@ -70,8 +70,6 @@ What you should note, is that as you lower the correlation coefficient, you can 
 ##
 
 ```{r echo = FALSE, warning = FALSE}
-
-
 ### Efficient Frontier: 2 assets ------
 #{{{
 inputPanel({
@@ -107,11 +105,19 @@ renderPlot({
 
 ```
 
+## Correlations and Diversification
 
+So we can see, holding expected returns constant, as we lower the correlation, we lower the portfolio risk without lowering the portfolio return.
+
+-  Often portfolio managers will look for assets with low or negative correlations with the other assets in their portfolio as a way of limiting risk.
+
+-  You can use the following app to investigate the correlation between assets.  Negative correlations will show up in red.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning=FALSE, error=FALSE}
 
 library(corrplot)
 library(quantmod)
@@ -154,9 +160,43 @@ corrplot(M, method = "square")
 
 ## *Optimal* Diversification and Markowitz
 
+In 1952 Harry Markowitz published *[Portfolio Selection](https://scholar.google.com/scholar?cluster=5160592821225000015&hl=en&as_sdt=0,39)*, which introduced the idea of diversifying optimally.
+
+-  Fixing the portfolio expected return we find the weights on each asset in the portfolio such that risk (portfolio variance) is minimized.  
+
+-  Doing this over all portfolio expected returns gives us a set of portfolios which have minimum risk.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+##
+
+```{r echo = FALSE, warning=FALSE, error=FALSE}
+library(stockPortfolio)
+library(quantmod)
+inputPanel(
+    textInput("ticker1a", "Stock Ticker", value = "XOM"),
+    textInput("ticker2a", "Stock Ticker", value = "GE"),
+    textInput("ticker3a", "Stock Ticker", value = "TSLA"),
+    textInput("ticker4a", "Stock Ticker", value = "AAPL"),
+    textInput("ticker5a", "Stock Ticker", value = "UNH")
+)
+
+renderPlot({
+tickers <- c(input$ticker1a,input$ticker2a, input$ticker3a, input$ticker4a, input$ticker5a, "SPY")
+
+gR <- getReturns(tickers, start = (Sys.Date() - 362), end = Sys.Date())
+
+model1 <- stockModel(gR)
+optPort <- optimalPort(model1)
+sim <- stockModel(gR, model="SIM", index=6, shortSelling="y")
+ simOP <- optimalPort(sim)
+plot(simOP) 
+ portPossCurve(sim, add = TRUE)
+ })
+```
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
