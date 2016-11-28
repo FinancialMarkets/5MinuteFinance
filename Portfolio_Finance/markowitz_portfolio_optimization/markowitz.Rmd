@@ -164,7 +164,7 @@ In 1952 Harry Markowitz published *[Portfolio Selection](https://scholar.google.
 
 -  Fixing the portfolio expected return we find the weights on each asset in the portfolio such that risk (portfolio variance) is minimized.  
 
--  Doing this over all portfolio expected returns gives us a set of portfolios which have minimum risk.  
+-  Doing this over all portfolio expected returns gives us a set of portfolios which have minimum risk.  This portfolio is known as the *mean-variance fontier*.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -185,22 +185,43 @@ renderPlot({
 tickers <- c(input$ticker1a,input$ticker2a, input$ticker3a, input$ticker4a, input$ticker5a, "SPY")
 
 gR <- getReturns(tickers, start = (Sys.Date() - 362), end = Sys.Date())
-
-model1 <- stockModel(gR)
-optPort <- optimalPort(model1)
+  
+# model1 <- stockModel(gR)
+# optPort <- optimalPort(model1, Rf = .01)
 sim <- stockModel(gR, model="SIM", index=6, shortSelling="y")
- simOP <- optimalPort(sim)
+ simOP <- optimalPort(sim, Rf = .01)
 plot(simOP) 
  portPossCurve(sim, add = TRUE)
+ abline(coef = c(.01, ((simOP$R - .01) / simOP$risk)))
+ legend('topright', c(paste0("Optimal Portfolio\n ", "Exp. Return = ", round(100 * simOP$R, 2)), paste0("Risk = ", round(100 * simOP$risk, 2))))
  })
 ```
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Efficient Frontier
+
+As you can see in the previous app the *mean-variance frontier* forms one side of a hyperbola.  
+
+-  The section of the frontier from the minimum variance portfolio upwards is known as the *efficient frontier*---investors would hold one of these portfolios.
+
+- The lower half offers the same portfolio variance offered on the efficient frontier, however with a lower expected return.  
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Optimal Portfolios
+
+If we add a risk free asset
+
+The Capital Asset Pricing Model builds on Markowitz
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/The_CAPM/capm1.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Portfolio_Finance/markowitz_portfolio_optimization/markowitz.Rmd) to see the code and collaborators for this presentation
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
