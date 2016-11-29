@@ -1,5 +1,5 @@
 ---
-title: "Markowitz Portfolio Optimization"
+title: "Mean-Variance Portfolio Optimization"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod2.css
