@@ -97,12 +97,7 @@ renderPlot({
     text(dataPorts, labels = c("Debt", "Equity"), cex = 1, pos = 2)
 
     })
-
-
-
-
-
-
+#}}}
 ```
 
 ## Correlations and Diversification
@@ -117,8 +112,8 @@ So we can see, holding expected returns constant, as we lower the correlation, w
 
 ##
 
-```{r echo = FALSE, warning=FALSE, error=FALSE}
-
+```{r echo = FALSE, warning=FALSE, error=FALSE, message = FALSE}
+#{{{
 library(corrplot)
 library(quantmod)
 inputPanel(
@@ -153,7 +148,7 @@ renderPlot({
 M <- cor(data.frame(cbind(stock1, stock2, stock3, stock4, stock5)))
 corrplot(M, method = "square")
 })
-
+#}}}
 ```
 
 
@@ -164,13 +159,44 @@ In 1952 Harry Markowitz published *[Portfolio Selection](https://scholar.google.
 
 -  Fixing the portfolio expected return we find the weights on each asset in the portfolio such that risk (portfolio variance) is minimized.  
 
+-  Note, here we assume either the investor ignores portfolio [skewness](https://en.wikipedia.org/wiki/Skewness) and [kurtosis](https://en.wikipedia.org/wiki/Kurtosis), or returns are distributed according to an elliptical distribution (such as the normal distribution).  
+
 -  Doing this over all portfolio expected returns gives us a set of portfolios which have minimum risk.  This portfolio is known as the *mean-variance fontier*.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Efficient Frontier
+
+As you can see in the previous app the *mean-variance frontier* forms one side of a hyperbola.  
+
+-  The section of the frontier from the minimum variance portfolio upwards is known as the *efficient frontier*---investors would hold one of these portfolios.
+
+- The lower half offers the same portfolio variance offered on the efficient frontier, however with a lower expected return.  
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Optimal Portfolios
+
+If we add a risk free asset we can find the unique *optimal risky portfolio* by choosing the risky portfolio which maximizes the slope of the line starting at the risk free rate and passing one of the set of risky portfolios (*capital allocation line*).   
+
+-  Of great importance is that the optimal portfolio is *not* a function of investor risk preferences.  In fact, two investors who consider the same set of stocks, and have the same estimates of the stock return parameters (expected returns and variance/covariances) will have the *same* optimal portfolio.  
+
+- The Capital Asset Pricing Model builds on Markowitz by assuming all investors hold the market portfolio.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+The app on the next slide allows you to enter 5 stocks, and see the mean-variance frontier, and the optimal portfolio with the capital allocation line passing through it.  We allow short selling stocks in the app, which benefits the frontier.  By better we mean the frontier portfolios have higher return per unit risk.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
 ```{r echo = FALSE, warning=FALSE, error=FALSE}
+#{{{
 library(stockPortfolio)
 library(quantmod)
 inputPanel(
@@ -195,27 +221,8 @@ plot(simOP)
  abline(coef = c(.01, ((simOP$R - .01) / simOP$risk)))
  legend('topright', c(paste0("Optimal Portfolio\n ", "Exp. Return = ", round(100 * simOP$R, 2)), paste0("Risk = ", round(100 * simOP$risk, 2))))
  })
+#}}}
 ```
-
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Efficient Frontier
-
-As you can see in the previous app the *mean-variance frontier* forms one side of a hyperbola.  
-
--  The section of the frontier from the minimum variance portfolio upwards is known as the *efficient frontier*---investors would hold one of these portfolios.
-
-- The lower half offers the same portfolio variance offered on the efficient frontier, however with a lower expected return.  
-
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Optimal Portfolios
-
-If we add a risk free asset
-
-The Capital Asset Pricing Model builds on Markowitz
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
