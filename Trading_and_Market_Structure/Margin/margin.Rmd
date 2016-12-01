@@ -12,3 +12,34 @@ smaller: true
 ## Introduction
 
 This presentation covers trading stock on margin, as well as how margin works in derivative markets.  
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Margin Rates
+
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Performance Bond: Margin in Futures Markets
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Margin Calculator
+
+```{r echo = FALSE, message = FALSE}
+
+
+
+
+
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
