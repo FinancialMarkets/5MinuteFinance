@@ -110,6 +110,7 @@ renderHighchart({
     stuff[,1] <- as.character(stuff[,1])
     stuff[,2] <- round(100 * stuff[,2], 2)
     stuff[,3] <- round(100 * stuff[,3], 2)
+    stuff[,4] <- round(stuff[,4], 2)
     ## stuff <- stuff[,-4]
     colnames(stuff) <- c("Tickers","Average","Std_Dev","Sharpe_Ratio")
 
