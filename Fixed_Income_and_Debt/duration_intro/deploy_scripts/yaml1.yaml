@@ -1,9 +1,7 @@
 ---
 title: "An Introduction to Duration"
-# author: "Milken Institute, Center for Financial Markets"
-author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Fixed_Income_and_Debt/duration_intro/duration.Rmd)"
 affiliation: Milken Institute
-# date: "03/12/2015"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod2.css
