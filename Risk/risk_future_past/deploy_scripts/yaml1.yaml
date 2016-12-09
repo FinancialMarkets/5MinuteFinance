@@ -1,6 +1,6 @@
 ---
 title: "Risk Over Time"
-author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Risk/risk_future_past/risk_over_time.Rmd)"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod2.css
