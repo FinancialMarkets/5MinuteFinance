@@ -34,7 +34,7 @@ $d_2 = d_1 - \sigma\sqrt(T)$
 
 -  $C_0$ is the value of the call option at time 0.
 
-- $S_0$:  the value of the call option at time 0.
+- $S_0$:  the value of the underlying stock at time 0.
 
 - $N()$:  the cumulative standard normal density function (NORMSDIST() in Excel)
 

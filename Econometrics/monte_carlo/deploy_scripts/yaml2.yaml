@@ -1,6 +1,6 @@
 ---
 title: "An Introduction to the Uses of Monte Carlo Methods in Finance"
-author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Econometrics/monte_carlo/monte_carlo.Rmd)"
 output: html_document
 logo: misq.png
 runtime: shiny
