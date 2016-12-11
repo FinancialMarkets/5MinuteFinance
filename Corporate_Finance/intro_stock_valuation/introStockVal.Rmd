@@ -18,7 +18,7 @@ The value of any asset is simply the present value of the future cash flows you 
 
 But what if the stock doesn't pay dividends?
 
--  All stock will at some point return return cash back to stockholders (i.e. pay dividends).  It is common for young firms to keep cash as retained earnings to fuel growth.  Eventually though, like Apple Computer, every company returns cash to shareholders.
+-  All stock will at some point return cash back to stockholders (i.e., pay dividends).  It is common for young firms to keep cash as retained earnings to fuel growth.  Eventually though, like Apple Inc., every company returns cash to shareholders.
 
 -  Another way to think about it is, how much would you pay for a stock for which you never expected to receive cash?  Certainly nothing.
 
@@ -36,7 +36,7 @@ The first step in valuing a stock by discounted dividends is to project what the
 
 ## Constant Dividends
 
-If we assume a stock's dividends will be constant, and since companies are infinitely lived, the dividends are in the form of a perpetuity.  Letting $D$ be the constant dividend, and $k$ be the discount rate we'll apply to the dividends ($k$ comes from something like the CAPM and is a function of the risk in the cash flows), we can value the stock as:
+If we assume a stock's dividends will be constant, and since companies are infinitely lived, the dividends are in the form of a perpetuity.  Letting $D$ be the constant dividend and $k$ be the discount rate we'll apply to the dividends ($k$ comes from something like the Capital Asset Pricing Model, or [CAPM](http://www.5minutefinance.org/concepts/the-capital-asset-pricing-model), and is a function of the risk in the cash flows), we can value the stock as:
 
 $V_0 = \sum_{t=1}^\infty {\frac{D}{(1+k)^t}} = \frac{D}{k}$
 
