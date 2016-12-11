@@ -22,7 +22,7 @@ Measuring a portfolios return is easy.  However, how do we measure a portfolio's
 
 ## Classic Measures
 
-In this presentation we'll cover some classic, and widely used measures.  They are:
+In this presentation we'll cover some classic and widely-used measures. They are:
 
 - Sharpe Ratio
 - Treynor Ratio
@@ -43,11 +43,11 @@ $SR = \frac{\bar{r_p} - r_f}{\sigma_p}$  where $r_p$, $\sigma_p$, and $r_f$  are
 
 ## Notes on Using the Sharpe Ratio
 
-- A higher Sharpe Ratio is better.
+- A higher Sharpe Ratio is better -- reflecting higher returns and a lower standard deviation.
 
 - Since the measure of risk is the standard deviation, the Sharpe Ratio should be used with portfolios of many, and not few, securities.
 
--  Unfortunately, the Sharpe Ratio does not adjust for the use of leverage.
+- Unfortunately, the Sharpe Ratio does not adjust for the use of leverage.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -159,7 +159,7 @@ $TR = \frac{\bar{r_p} - r_f}{\beta_p}$  where $\beta_p$ is the portfolio's beta 
 
 - A higher Treynor Ratio is better.
 
-- The Treynor Ratio does take into account leverage.
+- The Treynor Ratio does account for leverage.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -187,7 +187,7 @@ $IR = \frac{\alpha_p}{\sigma(\epsilon_p)}$  where $\sigma(\epsilon_p)$ is the st
 
 ## Which Measure Should I Use?
 
-For well-diversified portfolios (with no firm-specific risk) the Sharpe Ratio is the preferred measure.  If the portfolio contains leverage, or firm-specific risks that can be diversified away, then the Treynor Ratio, Jensen's Alpha, and the Information Ratio become preferable.
+For well-diversified portfolios (with no firm-specific risk), the Sharpe Ratio is the preferred measure.  If the portfolio contains leverage, or firm-specific risks that can be diversified away, then the Treynor Ratio, Jensen's Alpha, and the Information Ratio become preferable.
 
 -  For this reason alpha-based measures are popular measures of hedge fund performance.  
 
@@ -295,6 +295,6 @@ There are other performance measures based on downside risk, and which take into
 
 Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Risk/portfolio_performance_measures/portfolio_performance_measures.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Risk/portfolio_performance_measures/portfolio_performance_measures.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
