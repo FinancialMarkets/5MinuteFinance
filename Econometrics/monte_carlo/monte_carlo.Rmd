@@ -10,7 +10,9 @@ smaller: true
 
 ## Monte Carlo: Solution by Simulation
 
-The goal of this presentation is to show you when to use Monte Carlo, and provide a couple of interactive examples with visualizations.
+The goal of this presentation is to show you when to use Monte Carlo and to provide a couple of interactive examples with visualizations.
+
+-  Monte Carlo is a computational tool used to guage probabilities.  
 
 -  The idea is that you should first have a good understanding of when Monte Carlo is useful before you dive into the math and mechanics of Monte Carlo.
 
@@ -18,18 +20,18 @@ The goal of this presentation is to show you when to use Monte Carlo, and provid
 
 ## Monte Carlo and Analytic Solutions
 
-When an analytic solution is available, you should generally use it. 
+When an analytic solution (that is, an analytical discovery of patterns in data) is available, you should generally use it. 
 
 -  If you make the same underlying assumptions, the analytic solution will be the same as the Monte Carlo, though the Monte Carlo solution will have estimation error.
 
--  Monte Carlo is useful when an analytic solution is unavailable, difficult to obtain, or the underlying assumptions differ from a continuous-time solution.  This is often the case, which makes Monte Carlo an important tool for the analyst.
+-  Monte Carlo is useful when an analytic solution is unavailable or difficult to obtain or when the underlying assumptions differ from a continuous-time solution. This is often the case, which makes Monte Carlo an important tool for analysts.
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Example: European Option Pricing
 
-Assuming stock follows a geometric Brownian Motion, then at time $T$ in the future we have: 
+Assuming a stockprice follows a [geometric Brownian Motion](https://en.wikipedia.org/wiki/Geometric_Brownian_motion), then at time $T$ in the future we have: 
 
 $S_T = S_0 e^{(\mu - \frac{1}{2}\sigma^2)T + \sigma B_T}$
 
@@ -43,7 +45,7 @@ where $S_0$ is the stock price today, $\mu$ and $\sigma$ are the stock's drift a
 
 ## Drift and Volatility
 
-We estimate volatility $\sigma$ using [historical or forward looking measures](https://micfm.shinyapps.io/risk_future_past_mobile/).  However, in a Black-Scholes world the market is complete, and so we can set the drift $\mu$ equal to the risk free rate $r_f$.  
+We estimate volatility $\sigma$ using [historical or forward looking measures](https://micfm.shinyapps.io/risk_future_past_mobile/).  However, in a [Black-Scholes world](http://www.5minutefinance.org/concepts/black-scholes) the market is complete, and so we can set the drift $\mu$ equal to the risk free rate $r_f$.  
 
 -  Therefore each simulated stock price at time $T$ is:
 
@@ -55,7 +57,7 @@ where $N(0, 1)$ is a random draw from a standard Normal distribution.
 
 ## Interactive App
 
-In both cases we make the same assumptions, namely the stock follows geometric Brownian Motion, $\sigma$ is a constant, and the [market is complete.](https://en.wikipedia.org/wiki/Complete_market)  Therefore the Monte Carlo estimate should be equal to the Black-Scholes analytic solution, which is: $C_0 = S_0N(d_1) - Xe^{-rT}N(d_2)$
+In both cases we make the same assumptions, namely the stock follows geometric Brownian Motion, $\sigma$ is a constant, and the [market is complete.](https://en.wikipedia.org/wiki/Complete_market). Therefore the Monte Carlo estimate should be equal to the Black-Scholes analytic solution, which is: $C_0 = S_0N(d_1) - Xe^{-rT}N(d_2)$
 
 <div class ="columns-2">
 
@@ -246,7 +248,7 @@ For example, what if the lookback option's payoff was the max closing price of t
 
 So in this case, despite having a closed-form solution for a continuous process, it still makes sense to simulate the process in a Monte Carlo solution because this is closer to the actual payoff function.
 
--  In sum, a good understanding of the problem, is necessary to choose the most appropriate solution method. 
+-  In sum, a good understanding of the problem is necessary to choose the most appropriate solution method. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -254,6 +256,6 @@ So in this case, despite having a closed-form solution for a continuous process,
 
 Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Econometrics/monte_carlo/monte_carlo.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Econometrics/monte_carlo/monte_carlo.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
