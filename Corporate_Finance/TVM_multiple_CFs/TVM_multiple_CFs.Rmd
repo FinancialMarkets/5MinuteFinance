@@ -29,7 +29,7 @@ smaller: true
 
 ## Introduction
 
-In this presentation we'll cover the valuation of contracts that are comprised of multiple cash flows.  These contracts will cover:
+In this presentation, we'll look at the valuation of contracts that are comprised of multiple cash flows. We'll cover the following:
 
 - Annuities
 - Perpetuities
@@ -40,7 +40,7 @@ In this presentation we'll cover the valuation of contracts that are comprised o
 
 ## Annuities
 
-An **annuity** is a contract which pays a fixed amount at the end of each period for a fixed number of periods.  Many common financial contracts are annuities, such as fixed rate mortgages and auto loans.  If the payments are in the beginning of a period (such as renting an apartment) the contract is known as an *annuity due*.
+An **annuity** is a contract which pays a fixed amount at the end of each period for a fixed number of periods.  Many common financial contracts are annuities, such as fixed-rate mortgages and auto loans.  If the payments are in the beginning of a period (such as renting an apartment) the contract is known as an *annuity due*.
 
 The annuity is defined by its: 
 
@@ -54,11 +54,11 @@ It is important that each quantity you use is over the same period, i.e. don't u
 
 ## The Present Value of an Annuity
 
-To calculate the present value of an annuity we can simply discount each payment individually, to the same period, and sum them.  In other words we can:
+To calculate the present value (PV) of an annuity, we can simply discount each payment individually, to the same period, and sum them:
 
 $PV_0 = \frac{C}{(1+r)^1} + \frac{C}{(1+r)^2} + ... + \frac{C}{(1+r)^n}$
 
-Note the PV is at time 0 (one period before the first payment in time 1).  This calculation is very easy to do in a spreadsheet.  However annuities are old, so historically we have used a simplified version of the above equation.  Specifically the above is equal to:  
+Note the PV is at time 0 (one period before the first payment in time 1). This calculation is very easy to do in a spreadsheet. But annuities have been around for a long time, so historically we have used a simplified version of the above equation. Specifically, the above is equal to:  
 
 $PV_0 = C(\frac{1 - \frac{1}{(1+r)^n}}{r})$
 
@@ -101,7 +101,7 @@ pv <- sum( cashFlows / ((1 + input$rate) ^ {1:input$periods}) )
 
 ## The Future Value (FV) of an Annuity
 
-We can instead push each cash flow into the last period, and find the total value of the payments then.  This is the FV of the annuity.
+We can instead push each cash flow into the last period and find the total value of the payments then.  This is the future value (FV) of the annuity.
 
 The FV at the last period of the annuity (time $n$) is simply:
 
@@ -362,7 +362,7 @@ A contract with **Irregular cash flows** is any contract that has a cash flow st
 
 Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/TVM_multiple_CFs/TVM_multiple_CFs.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Corporate_Finance/TVM_multiple_CFs/TVM_multiple_CFs.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
