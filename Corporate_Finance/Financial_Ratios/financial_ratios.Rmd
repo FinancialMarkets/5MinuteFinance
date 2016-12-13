@@ -15,20 +15,20 @@ smaller: true
 
 Modern financial statements provide a great deal of data on companies.  Financial ratios turn that data into bits of useful information.
 
--  They often do this, by scaling a data point relative to another aspect of the company.
+-  They often do this by scaling a data point relative to another aspect of the company.
 
 Financial ratios are generally used to:
 
 1.  Compare a single company's performance over time.
-2.  Compare across companies.
+2.  Compare performance across companies.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## A Couple of Pointers
+## A Few Pointers
 
 Financial ratios are most informative when used to compare companies in the *same* industry.
 
-- You should never compare a bank's ratios with that of a biotech.  
+- You should never compare a bank's ratios with that of a biotech company.  
 
 - Know the good and bad values for a ratio.
 
@@ -62,7 +62,7 @@ These ratios measure the firm's long-term ability to meet its debt obligations. 
 
 ## Debt-to-Equity and Equity Multiplier Ratios
 
-Two widely used *leverage ratios* are the debt-to-equity ratio, and the equity multiplier.  
+Two widely used *leverage ratios* are the debt-to-equity ratio and the equity multiplier.  
 
 -  Say a firm has total assets of \$150 million, total liabilities of \$100 million, and total equity of \$50 million. Then its debt-to-equity ratio is \$100/\$150 = 66.67\% and the equity multiplier is 1.6667.
 -  The value that these ratio take is industry and company specific.  Young firms tend to have little to no debt, and so low debt-to-equity ratios. More established firms may have higher ratios.  
@@ -320,7 +320,7 @@ sidebarLayout(
 
 Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/Financial_Ratios/financial_ratios.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Corporate_Finance/Financial_Ratios/financial_ratios.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
