@@ -14,13 +14,13 @@ runtime: shiny
 
 ## Duration
 
-Duration is a measure of interest rate risk.
+Duration is a measure of interest-rate risk. Or, stated differently, duration is a measure of how sensitive the price of a fixed-income insturment is to interest-rate changes.
 
-When we say, "The duration of the bond is 4 years." We mean:
+When we say, "The duration of the bond is 4 years," we mean:
 
 - "If the interest rate on the bond goes up by 1%, the bond's price will decline by 4%."
 
-Duration is quoted in 'years'.  
+Duration is quoted in "years."  
 
 -  If a bond has a semi-annual period, we convert duration to years before quoting it (a duration of 8 semi-annual periods is 4 years).
 
@@ -49,7 +49,7 @@ For a review of bond coupon rates and yields see these presentations: [An Introd
 
 ## Average of Time Payments are Received
 
-Duration can be thought of as the weighted-average of when the bondholder received payment.  The weights are the proportion of the bond's total value received in each period. 
+Duration can be thought of as the weighted average of when the bondholder receives payment.  The weights are the proportion of the bond's total value received in each period. 
 
 -  In the following app, change the bond's coupon, YTM, and maturity and see how it affects the weights.  Check that the way the weights react is consistent with the relationships on the previous slide.
 
@@ -185,9 +185,9 @@ However, it is customary to first calculate what is called Maucaulay Duration, a
 
 Specifically, the steps in using duration are: 
 
-1.  Calculate 'Macaulay Duration' which is the weighted average of when the bond holder receives their payments.  
+1.  Calculate 'Macaulay Duration' which is the weighted average of when the bondholder receives their payments.  
 
-2.   We then divide this by $(1 + YTM)$ to get Modified Duration (which is the derivative).
+2.  Divide this by $(1 + YTM)$ to get Modified Duration (which is the derivative).
 
 3.  Calculate the \% change in the bond's price as a linear function of modified duration.
 
@@ -212,7 +212,7 @@ From our definition above, we can make the following observations:
 - Duration cannot exceed the number of periods to maturity of the bond.
 - The Duration of a zero-coupon bond is the number of years until maturity. 
 
-Also note, we can calculate the duration of a bond portfolio as the weighted average of the duration of the bond's in the portfolio.
+Also note, we can calculate the duration of a bond portfolio as the weighted average of the duration of all of the individual the bonds in the portfolio.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -240,7 +240,7 @@ $Modified\ Duration = \frac{6.87}{1.03} = 6.67\ yrs$
 
 ## Now You Try
 
-Calculate the Macaulay and Modified Durations for the following bonds.  You can check your answers with the interactive app on the following slide. All bond's have annual payments in the interactive app.
+Calculate the Macaulay and Modified Durations for the following bonds.  You can check your answers with the interactive app on the following slide. All bonds have annual payments in the interactive app.
 
 - A 15\% coupon bond with 20 years to maturity and a 3\% YTM.
 
