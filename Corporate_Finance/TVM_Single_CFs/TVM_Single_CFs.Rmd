@@ -11,15 +11,15 @@ smaller: true
 
 ## Motivation
 
-What does it mean to say that money has a "time value?". Well, ask yourself the question: Would you rather have a dollar today or a dollar a year from now? You'd rather have the dollar today, so we say that a dollar today has more value than a dollar a year from now.  
+What does it mean to say that money has a *time value*? Well, ask yourself the question: Would you rather have a dollar today or a dollar a year from now? You'd rather have the dollar today, so we say that a dollar today has more value than a dollar a year from now.  
 
 Why is that? We point to two reasons:
-- Inflation: If the prices of things go up over the course of the year, the dollar you get in a year will buy less goods
-- Credit risk: You have to take the risk for a year that you might not actually get that dollar
+- Inflation: If the prices of things go up over the course of the year, the dollar you get in a year will buy less goods.
+- Credit risk: You have to take the risk for a year that you might not actually get that dollar.
 
 Now we can ask the following question:  How much money would you need to receive a year from now to be indifferent between a dollar today and money in a year.  $1.05? $1.50? $2.00?  That difference is the time value of money to you.  
 
-In this presentation we'll cover the basic mechanics understanding and calculating the time value of money. 
+In this presentation, we'll cover the basic mechanics of understanding and calculating the time value of money. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -37,11 +37,11 @@ Say we have \$1 today, and we can invest this dollar *every year* at 7\% per yea
 
 ## The General Formula 
 
-Proceeding this way for *n* periods (here a period is a year) we can see the future value (*FV*) of some amount of money today (denote this as *PV*) at time *n* is:
+Proceeding this way for *n* periods (here a period is a year), we can see the future value (*FV*) of some amount of money today (denote this as *PV*) at time *n* is:
 
 -  $FV = PV(1 + r)^n$
 
--  Where we assume we can reinvest our money ever year at *r*.
+-  Where we assume we can reinvest our money every year at *r*.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -93,7 +93,7 @@ So now that we have the general formula which describes how a single cash flow m
 
 - $FV = PV(1 + r)^n$
  
-We can now use this to solve for the *PV*, *r*, and *n*.  Rearranging for the present value gives: 
+We can now use this to solve for the *PV*, *r* and *n*.  Rearranging for the present value gives: 
 
 - $PV = \frac{FV}{(1+r)^n}$
 
@@ -132,7 +132,7 @@ Solving our equation for the interest rate we have:
 
  $r = \sqrt[n]{\frac{FV}{PV}} - 1$
 
-- Holding other variables constant, the rate per period $r$ is increasing in $FV$, and decreasing in $PV$ and $r$.
+- Holding other variables constant, the rate per period $r$ is increasing in $FV$ and decreasing in $PV$ and $r$.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -230,8 +230,8 @@ sidebarLayout(
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/TVM_Single_CFs/TVM_Single_CFs.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/TVM_Single_CFs/TVM_Single_CFs.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
