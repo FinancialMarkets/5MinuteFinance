@@ -12,15 +12,13 @@ smaller: true
 
 The goal of this presentation is to show you when to use Monte Carlo and to provide a couple of interactive examples with visualizations.
 
--  Monte Carlo is a computational tool used to guage probabilities.  
-
 -  The idea is that you should first have a good understanding of when Monte Carlo is useful before you dive into the math and mechanics of Monte Carlo.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Monte Carlo and Analytic Solutions
 
-When an analytic solution (that is, an analytical discovery of patterns in data) is available, you should generally use it. 
+When an analytic solution is available, you should generally use it. 
 
 -  If you make the same underlying assumptions, the analytic solution will be the same as the Monte Carlo, though the Monte Carlo solution will have estimation error.
 
