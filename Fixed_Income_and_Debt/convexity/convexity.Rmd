@@ -82,8 +82,8 @@ yAxis <- c("0.01", "", "", "", "0.05", "", "", "", "", "0.10", "", "", "", "", "
 plot(1:20, bondValue, xaxt = "n", main = "Bond Price versus Yield to Maturity", ylab = "Bond Price ($)", xlab = "Yield to Maturity", type = "n", lwd = 4)
 axis(1, at = 1:20, labels = yAxis)
 lines(1:20, bondValue, lwd = 4)
-lines(1:20, durLine, lwd = 5, col = 4)
-legend('topright', c("Bond Price", "Duration Approximation of the Bond Price ", "Duration Error Region (Convexity)"), lty = c(1,1,1,1), col=c(1,4, "grey80"), lwd = c(5,5, 15))
+lines(1:20, durLine, lwd = 5, col = "green")
+legend('topright', c("Bond Price", "Duration Approximation of the Bond Price ", "Duration Error Region (Convexity)"), lty = c(1,1,1,1), col=c(1,"green", "grey80"), lwd = c(5,5, 15))
 ### attempting to shade region between the two lines [not working] ----
 polygon(c(1:20, rev(1:20)), c(bondValue, rev(durLine)), col = "grey80", border = NA)
          
