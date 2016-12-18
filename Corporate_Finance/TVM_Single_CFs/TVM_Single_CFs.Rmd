@@ -11,13 +11,30 @@ smaller: true
 
 ## Motivation
 
-What does it mean to say that money has a *time value*? Well, ask yourself the question: Would you rather have a dollar today or a dollar a year from now? You'd rather have the dollar today, so we say that a dollar today has more value than a dollar a year from now.  
+<!-- What does it mean to say that money has a *time value*? Well, ask yourself the question: Would you rather have a dollar today or a dollar a year from now? You'd rather have the dollar today, so we say that a dollar today has more value than a dollar a year from now.   -->
 
-Why is that? We point to two reasons:
-- Inflation: If the prices of things go up over the course of the year, the dollar you get in a year will buy less goods.
-- Credit risk: You have to take the risk for a year that you might not actually get that dollar.
+<!-- Why is that? We point to two reasons: -->
+<!-- - Inflation: If the prices of things go up over the course of the year, the dollar you get in a year will buy less goods. -->
+<!-- - Credit risk: You have to take the risk for a year that you might not actually get that dollar. -->
 
-Now we can ask the following question:  How much money would you need to receive a year from now to be indifferent between a dollar today and money in a year.  $1.05? $1.50? $2.00?  That difference is the time value of money to you.  
+<!-- Now we can ask the following question:  How much money would you need to receive a year from now to be indifferent between a dollar today and money in a year.  $1.05? $1.50? $2.00?  That difference is the time value of money to you.   -->
+What does it mean to say that money has “time value”? Essentially it means that $1 (or €1 or ¥1 or £1) promised for some future date has a different value (usually lower) than the same amount today. 
+
+-  For example, $100 promised two years from now might be worth $90 today. By “worth” we mean that a saver (lender) would voluntarily give up $90 today in exchange for a promise (offered by the borrower) of $100 two years hence. The value today ($90) is called the present value (PV) of the amount promised ($100). And the ratio (0.9) is called the discount factor. 
+
+-  The time value of money (TVM) is often expressed in terms of an annual interest rate (or discount rate), compounded with some frequency (typically annually or semi-annually). *Compounding* means you earn interest on interest. In the example above, the corresponding interest rate would be 5.409\% (annually compounded for two years) since $\$90(1 + 5.409\%)^2 = \$100$. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Discount Rate
+
+The TVM discount factor (or corresponding discount rate) is determined by a number of factors:
+
+-  Supply of savings – by those wishing to shift consumption from present to future (e.g. for retirement)
+-  Demand for loans – by those wishing to shift consumption from future to present (e.g. for investment)
+-  Maturity (i.e. the future date when the money is due to be repaid)
+-  Expected inflation (or deflation), which affects the purchasing power of cash in the future
+-  Credit risk, which reflects the possibility that the loan won’t be repaid in full and on time
 
 In this presentation, we'll cover the basic mechanics of understanding and calculating the time value of money. 
 
@@ -230,7 +247,7 @@ sidebarLayout(
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/TVM_Single_CFs/TVM_Single_CFs.Rmd) to see the code and collaborators for this presentation.
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/TVM_Single_CFs/TVM_Single_CFs.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Corporate_Finance/TVM_Single_CFs/TVM_Single_CFs.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
