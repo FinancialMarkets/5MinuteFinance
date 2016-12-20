@@ -1,0 +1,14 @@
+** Portfolio Performance Measures
+https://micfm.shinyapps.io/portfolio_performance_measures_app1/
+https://micfm.shinyapps.io/portfolio_performance_measures_app2/
+** Duration
+https://micfm.shinyapps.io/duration_app1/
+https://micfm.shinyapps.io/duration_app2/
+https://micfm.shinyapps.io/duration_app3/
+** Intro Financial Statements
+https://micfm.shinyapps.io/intro_fin_statements_app1/
+** Financial Ratios 
+** Intro to Bond Valuation
+** Intro to Stock Valuation                    
+** TVM: Multiple Cash Flows
+** Risk Over Time
