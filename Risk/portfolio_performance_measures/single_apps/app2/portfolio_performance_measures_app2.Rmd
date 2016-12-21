@@ -1,0 +1,67 @@
+---
+title: 
+author: 
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(DT)
+library(quantmod)
+inputPanel(
+    sliderInput("year1", "Year", min = 1999, max = 2015, step = 1, value = 1999)
+    ## selectInput("measure", "Performance Measure", choices = list("Sharpe Ratio" = "1", "Treynor Ratio" = "2", "Information Ratio" = "3", "Jensen's Aplha" = "4"), selected = 1)
+    )
+
+DT::renderDataTable({
+    load("data.RData")
+    rets <- data[paste(input$year1)]
+    avg <- apply(rets, 2, mean)
+    stdev <- apply(rets, 2, sd)
+    a.s <- rbind(avg, stdev)
+
+    ## Sharpe ratio ----
+    sharpe <- (a.s[1,] - a.s[1,dim(a.s)[2]]) / a.s[2,]
+    avg <- data.frame(t(avg))
+    r.f <- avg[length(avg)]
+    avg <- avg[,2:10]
+    stdev <- data.frame(t(stdev))
+    stdev <- stdev[,2:10]
+    sharpe <- data.frame(t(sharpe))
+    sharpe <- sharpe[,2:10]
+    stuff <- data.frame(rbind(avg, stdev, sharpe), row.names = c("average", "stdev", "Sharpe_Ratio"))
+    stuff <- data.frame(t(stuff))
+    stuff <- cbind(row.names(stuff), stuff)
+    names(stuff) <- c("tickers", "average", "stdev", "Sharpe_Ratio")
+
+    ## run regressions ----
+    alphas <- apply( as.data.frame( rets[ , 2:10 ] ) , 2 , FUN = function(x){ lm( x ~ rets[,1])$coef[1] } )
+    betas <- apply( as.data.frame( rets[ , 2:10 ] ) , 2 , FUN = function(x){ lm( x ~ rets[,1])$coef[2] } )
+    resid.sd <- apply( as.data.frame( rets[ , 2:10 ] ) , 2 , FUN = function(x){ summary(lm( x ~ rets[,1]))[6]$sigma } )
+
+    ## Treynor ratio ----
+    TR <- (avg - as.numeric(r.f)) / betas
+
+    ## Jensen's Alpha -----
+    JA <- alphas
+
+    ## Information Ratio ----
+    IR <- alphas / resid.sd
+
+    SR <- sharpe
+
+    orderSR <- names(sort(SR, decreasing = T))
+    orderTR <- names(sort(TR, decreasing = T))
+    orderJA <- names(sort(JA, decreasing = T))
+    orderIR <- names(sort(IR, decreasing = T))
+    
+    result <- data.frame(cbind(1:9, orderSR, orderTR, orderJA, orderIR), stringsAsFactors = F)
+    names(result) <- c("Rank", "SR", "TR", "JA", "IR")
+    datatable(result, options = list(pageLength = 6), rownames = F)
+})
+#}}}
+```
+

@@ -1,0 +1,95 @@
+---
+title: 
+author: 
+output: html_document
+runtime: shiny
+---
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(ggplot2)
+library(quantmod)
+library(highcharter)
+source("./global_graph_functions.R")
+
+inputPanel(
+    sliderInput("year", "Year", min = 1999, max = 2015, step = 1, value = 1999)
+    ## selectInput("measure", "Performance Measure", choices = list("Sharpe Ratio" = "1", "Treynor Ratio" = "2", "Information Ratio" = "3", "Jensen's Aplha" = "4"), selected = 1)
+    )
+
+renderHighchart({
+    load("data.RData")
+    rets <- data[paste(input$year)]
+    rets <- rets / 100
+   
+    ## if(input$measure == 1){
+    avg <- apply(rets, 2, mean)
+    stdev <- apply(rets, 2, sd)
+    a.s <- rbind(avg, stdev)
+    sharpe <- (a.s[1,] - a.s[1,dim(a.s)[2]]) / a.s[2,]
+
+    avg <- data.frame(t(avg))
+    avg <- avg[,2:10]
+    stdev <- data.frame(t(stdev))
+    stdev <- stdev[,2:10]
+    sharpe <- data.frame(t(sharpe))
+    sharpe <- sharpe[,2:10]
+
+    etf_names <- c("Cons Staples","Financials","Energy","Insurance","Cons Discretionary
+","Technology","Materials","Utilities","Industrials")
+
+    stuff <- data.frame(rbind(avg, stdev, sharpe), row.names = c("average", "stdev", "Sharpe_Ratio"))
+    stuff <- data.frame(t(stuff))
+    rownames(stuff) <- paste(rownames(stuff), " (", etf_names,")", sep = "")
+    
+    stuff <- cbind(row.names(stuff), stuff)
+    names(stuff) <- c("tickers", "average", "stdev", "Sharpe_Ratio")
+    
+    # sort dataframe by sharpe_ratio
+    stuff <- stuff[with(stuff, order(Sharpe_Ratio)), ]
+    stuff[,1] <- as.character(stuff[,1])
+    stuff[,2] <- round(100 * stuff[,2], 2)
+    stuff[,3] <- round(100 * stuff[,3], 2)
+    stuff[,4] <- round(stuff[,4], 2)
+    ## stuff <- stuff[,-4]
+    colnames(stuff) <- c("Tickers","Average","Std_Dev","Sharpe_Ratio")
+
+    colors <- c("#FB1108","#FD150B","#FA7806","#FBE426","#FCFB8F",
+            "#F3F5E7", "#C7E4EA","#ABD6E6","#9AD2E1")
+
+    stuff$color <- colorize(stuff$Sharpe_Ratio, colors)
+
+
+    ## plot with higcharts ----
+    ## graph_highchart(stuff, mode = "scatter", xtitle = "Average (%)", ytitle = "Std Dev (%)", title = "Sharpe Ratios",
+    ##                 round_data = 2, axis_labels = 18, axis_text = 18, title_text = 20, 
+    ##                 theme = colorRampPalette(brewer.pal(9,"Greens"))(9), 
+    ##                 percent = TRUE, log_ret = FALSE, convert = FALSE, group = "first")
+
+    ## changed to below to allow for increasing point size based on Sharpe Ratio.  See if we can incorporate the size argument into the graph_highchart function -----
+
+    thm <- hc_theme(
+        chart = list(
+            backgroundColor = "white"
+        ),
+        yAxis = list(
+            gridLineWidth = 1
+        )
+    )
+    x <- c("Ticker", "Expected Return (%)", "Standard Deviation (%)", "Sharpe Ratio")
+    y <- sprintf("{point.%s}",
+                 c("Tickers", "Average", "Std_Dev", "Sharpe_Ratio"))
+    tltip <- tooltip_table(x, y)
+    hchart(stuff, "point", y = Average, x = Std_Dev, size = Sharpe_Ratio) %>%
+        hc_title(text = "Sharpe Ratios") %>%
+        hc_tooltip(useHTML = TRUE, headerFormat = "", pointFormat = tltip) %>%
+        hc_add_theme(thm)
+})
+
+#}}}
+```
+
+

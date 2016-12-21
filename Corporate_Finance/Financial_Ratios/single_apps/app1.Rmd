@@ -1,0 +1,130 @@
+---
+title: 
+output: html_document
+runtime: shiny
+---
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+## library(metricsgraphics)                                        
+sidebarLayout(
+    sidebarPanel(    
+        textInput("ticker1", label = "Stock Ticker", value = "XOM"),
+        textInput("ticker2", label = "Stock Ticker", value = "COP"),
+        selectizeInput("ratio", label = "Choose a Ratio", choices = list("Debt-to-Equity Ratio" = 1, "Current Ratio" = 2, "Total Asset Turnover" = 3, "Profit Margin" = 4), selected = 1)
+        ),
+
+    mainPanel(
+        renderPlot({
+            library(quantmod)
+            library(tseries)
+            ## valdate tickers ----
+            validate(
+                need(input$ticker1 != "", "Input a valid US stock ticker.")
+                )
+            validate(
+                need(input$ticker2 != "", "Input a valid US stock ticker.")
+                )
+
+            ## get income statement and balance sheet for stock 1
+            f1 <- getFinancials(input$ticker1, src = "google", auto.assign = FALSE)
+            ## IS
+            is1 <- viewFin(f1, type = "IS")
+            ## BS
+            bs1 <- viewFin(f1, type = "BS")
+
+            ## get income statement and balance sheet for stock 2
+            f2 <- getFinancials(input$ticker2, src = "google", auto.assign = FALSE)
+            ## IS
+            is2 <- viewFin(f2, type = "IS")
+            ## BS
+            bs2 <- viewFin(f2, type = "BS")
+
+### Ratios, stock 1
+            
+            ## profit margin stock 1
+            pm1 <- is1[rownames(is1) == "Net Income"] / is1[rownames(is1) == "Revenue"]
+
+            ## total asset turnover stock 1
+            sales1 <- is1[rownames(is1) == "Revenue"]
+            assets1 <- bs1[rownames(bs1) == "Total Assets"]
+            tat1 <- sales1 / assets1
+
+            ## D/E ratio
+
+            debt1 <- bs1[rownames(bs1) == "Total Debt"]
+            equity1 <- bs1[rownames(bs1) == "Total Equity"]
+            de.ratio1 <- debt1 / equity1
+
+
+            ## Current Ratio
+
+            ca1 <- bs1[rownames(bs1) == "Total Current Assets"]
+            cr1 <- ca1 / assets1
+
+            
+### Ratios, stock 2
+
+            ## profit margin stock 2
+            pm2 <- is2[rownames(is2) == "Net Income"] / is2[rownames(is2) == "Revenue"]
+
+            ## total asset turnover stock 2
+            sales2 <- is1[rownames(is2) == "Revenue"]
+            assets2 <- bs2[rownames(bs2) == "Total Assets"]
+            tat2 <- sales2 / assets2
+
+            ## D/E ratio
+
+            debt2 <- bs2[rownames(bs2) == "Total Debt"]
+            equity2 <- bs2[rownames(bs2) == "Total Equity"]
+            de.ratio2 <- debt2 / equity2
+
+            ## Current Ratio
+
+            ca2 <- bs2[rownames(bs2) == "Total Current Assets"]
+            cr2 <- ca2 / assets2
+
+
+### Plot:
+### use if/else or switch statement? If/else will be messy.
+
+            ratio.to.plot <- switch(input$ratio,
+                                    "1" = list(de.ratio1, de.ratio2),
+                                    "2" = list(cr1, cr2),
+                                    "3" = list(tat1, tat2),
+                                    "4" = list(pm1, pm2)
+                                    )
+            
+            plot.main <-  switch(input$ratio,
+                                    "1" = "Debt-to-Equity Ratio by Year",
+                                    "2" = "Current Ratio by Year",
+                                    "3" = "Total Asset Turnover by Year",
+                                    "4" = "Profit Margin by Year"
+                                    )
+            
+            legend.ratio <-  switch(input$ratio,
+                                    "1" = "Debt-to-Equity Ratio",
+                                    "2" = "Current Ratio",
+                                    "3" = "Total Asset Turnover",
+                                    "4" = "Profit Margin"
+                                    )
+            
+            plot.min <- min(min(ratio.to.plot[[1]]), min(ratio.to.plot[[2]]))
+            plot.max <- max(max(ratio.to.plot[[1]]), max(ratio.to.plot[[2]]))
+            
+
+            plot(ratio.to.plot[[1]], main = plot.main, type = "l", lty = 1, 
+                 col = "green", lwd = 3, ylab = "Profit Margin", xlab = "Year", ylim = c(plot.min, plot.max), xaxt = "n")
+            axis(1, at = c(1,2,3,4), labels = c("2012", "2013", "2014", "2015"))
+
+            lines(ratio.to.plot[[2]], lty = 1, col = "blue", lwd = 4)
+
+            legend("bottomright", c(paste(input$ticker1, legend.ratio), paste(input$ticker2, legend.ratio)), col = c("green" , "blue"), lty = c(1, 1), lwd = c(4, 4))
+        })
+        )
+    )
+#}}}
+```
+

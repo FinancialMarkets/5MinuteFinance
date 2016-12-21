@@ -1,0 +1,59 @@
+---
+title: 
+output: html_document
+runtime: shiny
+---
+
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        sliderInput("bondPrice", label = "The Bond's Price", max = 2000, min = 1, value = 1000, step = 10),
+        sliderInput("coupon1", label = "Coupon Rate", max = .2, min = 0, value = .05, step = .01),
+        sliderInput("maturity1", label = "Years to Maturity", max = 50, min = 1, value = 10),
+        radioButtons("period1", "Payment Period", choices = c("Annual" = "1", "Semiannual" = "2"), selected = "1")
+        ),
+
+    mainPanel(
+
+        renderPlot({
+
+            bondValue <- 0
+            ytmAxis <- seq(0.01, .2, by = .01)
+            CFs <- 0
+
+            if (input$period1 == 1) {
+                CFs <- input$coupon1 * 1000 * rep(1, input$maturity1)
+                CFs[length(CFs)] <- CFs[length(CFs)] + 1000
+            } else {
+                CFs <- (input$coupon1 * 1000 * rep(1, (2 * input$maturity1))) / 2
+                CFs[length(CFs)] <- CFs[length(CFs)] + 1000
+            }
+
+            ytmRoot <- function(ytmR){
+                aa <- input$bondPrice
+                bb <- CFs
+                min <- abs(sum(bb / (1+ytmR)^{1:length(CFs)}) - aa)
+                return(min)
+                }
+
+            ytmResult <- optim(.05, ytmRoot, method = "Brent", lower = -1, upper = 2)$par
+
+            if (input$period1 == 1) {
+                ytmResult <- ytmResult
+            } else {
+                ytmResult <- ytmResult * 2
+            }
+            
+            plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+            text(x = 0.5, y = 0.5, labels = paste((100 * round(ytmResult, 4)), "%"), cex = 5)
+
+        })
+        )
+    )
+
+#}}}
+```

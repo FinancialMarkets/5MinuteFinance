@@ -1,0 +1,39 @@
+---
+title: 
+output: html_document
+runtime: shiny
+---
+
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(DT)
+library(quantmod)
+  comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+  comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+  names(comp) <- c("symbol", "name")
+inputPanel(
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name),
+    selectizeInput("statement", label = "Financial Statement", choices = list("Balance Sheet" = 1, "Income Statement" = 2), selected = 2, width = '800px')
+    )
+DT::renderDataTable({
+    ## valdate name ----
+    validate(
+        need(input$name != "", "Select a US stock name.")
+        )
+ticker <- comp$symbol[comp$name == input$name]
+                    
+    f1 <- getFinancials(ticker, src = "google", auto.assign = FALSE)
+    is1 <- viewFin(f1, type = "IS")
+    bs1 <- viewFin(f1, type = "BS")
+    if( input$statement == 1 ){
+        DT::datatable(bs1, options = list(pageLength = 5))
+    } else {
+        DT::datatable(is1, options = list(pageLength = 5))
+        }
+})
+#}}}
+```
+

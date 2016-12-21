@@ -8,7 +8,11 @@ https://micfm.shinyapps.io/duration_app3/
 ** Intro Financial Statements
 https://micfm.shinyapps.io/intro_fin_statements_app1/
 ** Financial Ratios 
+https://micfm.shinyapps.io/financial_ratios_app1/
 ** Intro to Bond Valuation
+https://micfm.shinyapps.io/intro_bond_valuation_app1/
+https://micfm.shinyapps.io/intro_bond_valuation_app2/
 ** Intro to Stock Valuation                    
+
 ** TVM: Multiple Cash Flows
 ** Risk Over Time

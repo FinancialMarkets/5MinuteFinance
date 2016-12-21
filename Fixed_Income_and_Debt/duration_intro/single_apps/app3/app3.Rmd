@@ -1,0 +1,52 @@
+---
+title: 
+output: html_document
+runtime: shiny
+---
+
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+	      sidebarPanel(
+
+			   sliderInput("coupon1", label = "Coupon Rate", max = .2, min = 0, value = .05, step = .01),
+			   sliderInput("ytm1", label = "Yield to Maturity", max = .2, min = 0.01, value = .05, step = .01),
+			   sliderInput("maturity1", label = "Years to Maturity", max = 50, min = 1, value = 10)
+ 
+	   ),
+	      mainPanel(
+
+			renderPlot({
+			  bondValue <- 0
+			  ytm1Axis <- seq(0.01, .2, by = .01)
+			  period <- 1
+
+			  cash_flows <- 0
+			  for (i in 1:input$maturity1){
+			    cash_flows[i] <- 
+			      (input$coupon1 * 1000) }
+
+			  cash_flows[length(cash_flows)] <- cash_flows[length(cash_flows)] + 1000 
+			  pvCashFlows <- cash_flows / (1 + input$ytm1)^(1:input$maturity1)
+
+			  ### Bond Calculation: 
+			      bondValue <- (input$coupon1 * 1000) * ((1 - 1 / (1 + input$ytm1)^(input$maturity1)) / input$ytm1) + 1000 / (1 + input$ytm1)^(input$maturity1) 
+
+			  ### Calculate Duration and Modified Duration ----
+			  Duration1 <- 1:input$maturity1 %*% (pvCashFlows / bondValue)
+			  modDur1 <- Duration1 / (1 + input$ytm1)
+
+# 			  durLine <- bondValue[index] * (1 + (modDur * (ytm1Axis - input$ytm1)))
+
+			  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+			  text(x = 0.5, y = 0.5, labels = paste(round(modDur1, 2), "years"), cex = 5)
+
+
+})
+)
+	      )
+#}}}
+```
