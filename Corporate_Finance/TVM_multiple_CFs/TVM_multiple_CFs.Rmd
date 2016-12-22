@@ -145,7 +145,7 @@ fv <- sum( cashFlows * ((1 + input$rate.fva) ^ {1:input$periods.fva}) )
 ```
 
 
-[Should we put a calculator which will return *FV*, *PV*, *r*, and *n* given the other inputs?]
+<!-- [Should we put a calculator which will return *FV*, *PV*, *r*, and *n* given the other inputs?] -->
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
