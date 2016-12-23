@@ -1,32 +1,54 @@
 ** Portfolio Performance Measures
+
 https://micfm.shinyapps.io/portfolio_performance_measures_app1/
+
 https://micfm.shinyapps.io/portfolio_performance_measures_app2/
 ** Duration
+
 https://micfm.shinyapps.io/duration_app1/
+
 https://micfm.shinyapps.io/duration_app2/
+
 https://micfm.shinyapps.io/duration_app3/
 ** Intro Financial Statements
+
 https://micfm.shinyapps.io/intro_fin_statements_app1/
 ** Financial Ratios 
+
 https://micfm.shinyapps.io/financial_ratios_app1/
 ** Intro to Bond Valuation
+
 https://micfm.shinyapps.io/intro_bond_valuation_app1/
+
 https://micfm.shinyapps.io/intro_bond_valuation_app2/
 ** Intro to Stock Valuation                    
+
 https://micfm.shinyapps.io/intro_stock_valuation_app1/
 ** TVM: Multiple Cash Flows
+
 https://micfm.shinyapps.io/TVM_Multiple_CFs_app1/
+
 https://micfm.shinyapps.io/TVM_Multiple_CFs_app2/
+
 https://micfm.shinyapps.io/TVM_Multiple_CFs_app3/
+
 https://micfm.shinyapps.io/TVM_Multiple_CFs_app4/
+
 https://micfm.shinyapps.io/TVM_Multiple_CFs_app5/
+
 https://micfm.shinyapps.io/TVM_Multiple_CFs_app6/
 ** Risk Over Time
+
 https://micfm.shinyapps.io/risk_future_past_app1/
 ** Monte Carlo
+
 https://micfm.shinyapps.io/uses_monte_carlo_app1/
+
 https://micfm.shinyapps.io/uses_monte_carlo_app2/
 ** TVM Single CFs
+
 https://micfm.shinyapps.io/TVM_Single_CFs_app1/
+
 https://micfm.shinyapps.io/TVM_Single_CFs_app2/
+
 https://micfm.shinyapps.io/TVM_Single_CFs_app3/
