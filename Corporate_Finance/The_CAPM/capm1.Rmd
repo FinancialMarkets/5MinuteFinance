@@ -43,7 +43,7 @@ inputPanel(
 renderPlot({
   par(mfrow = c(2,1), mai = c(.1,.8,.3,.1))
   x <- seq(0, 2 * pi, by = .01)
-  plot(0.25 * sin(x) + 0.1, type = 'l', lwd = 2, col = 3, ylab = "Asset Return", ylim = c(-.2, .4), xlab = "", xaxt = 'n', yaxt = 'n')
+  plot(0.25 * sin(10 * x) + 0.1, type = 'l', lwd = 2, col = 3, ylab = "Asset Return", ylim = c(-.2, .4), xlab = "", xaxt = 'n', yaxt = 'n')
   axis(2, at = axTicks(2), labels = c("-20%", "-10%", "0%", "10%", "20%", "30%", "40%"), las = 1)
   abline(h = 0, col = 2)
   abline(h = 0.1, col = "aquamarine")
