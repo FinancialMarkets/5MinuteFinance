@@ -1,0 +1,33 @@
+---
+title: 
+output: html_document
+runtime: shiny
+---
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+### PV of a Growing Perpetuity ----
+#{{{
+inputPanel(
+	   sliderInput("rate.pvgp", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
+	   sliderInput("growth.rate.pvgp", label = "CF Growth Rate per Period", min = 0, max = 0.5, step = .01, value = .02),
+	   sliderInput("cash.pvgp", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100)
+	   )
+
+renderPlot({
+  pvgp <- input$cash.pvgp / (input$rate.pvgp - input$growth.rate.pvgp)
+  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+  if (input$rate.pvgp <= input$growth.rate.pvgp) {
+    text(x = 0.5, y = 0.5, labels = paste("Growth Rate must be less than Discount Rate"), cex = 2)
+  } else {
+    text(x = 0.5, y = 0.5, labels = paste("$", round(pvgp, 2)), cex = 5)
+      text(x = 0.5, y = 0.95, labels = paste("PV of a Growing Perpetuity"), cex = 2)
+  }
+
+})
+#}}}
+```
+
+

@@ -1,0 +1,85 @@
+---
+title: 
+output: html_document
+runtime: shiny
+---
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        selectInput("type", label = "Solve For:", choices = c("Future Value" = "fv",
+                                                              "Present Value" = "pv",
+                                                              "Rate Per Period" = "r",
+                                                              "Number of Periods" = "n")),
+        conditionalPanel(
+            condition = "input.type == 'fv'",
+            numericInput("pv", "Present Value", value = 100, step = .01),
+            numericInput("r", "Rate Per Period", value = 0.05),
+            numericInput("n", "Number of Periods", value = 10)
+        ),
+        conditionalPanel(
+            condition = "input.type == 'pv'",
+            numericInput("fv2", "Future Value", value = 100, step = .01),
+            numericInput("r2", "Rate Per Period", value = 0.05),
+            numericInput("n2", "Number of Periods", value = 10)
+        ),
+        conditionalPanel(
+            condition = "input.type == 'r'",
+            numericInput("pv3", "Present Value", value = 100, step = .01),
+            numericInput("fv3", "Future Value", value = 150),
+            numericInput("n3", "Number of Periods", value = 10)
+        ),
+        conditionalPanel(
+            condition = "input.type == 'n'",
+            numericInput("pv4", "Present Value", value = 100, step = .01),
+            numericInput("fv4", "Future Value", value = 150),
+            numericInput("r4", "Rate Per Periods", value = 0.05)
+        )
+
+
+        ## div(style="height: 75px;", numericInput("Stock", "Present Stock Price", min = .01, max = 2000, value = 50, step = .05)),
+        ## div(style="height: 75px;", numericInput("Vol", "Annualized Volatility", min = .01, max = 20, value = 0.20, step = .01)),
+        ## div(style="height: 75px;", numericInput("Strike", "Strike Price", min = .01, max = 1, value = 52, step = .05)),
+        ## div(style="height: 75px;", numericInput("Rf", "Risk Free Rate", min = 0.001, max = 0.5, value = 0.01, step = .001)),
+        ## div(style="height: 75px;", numericInput("Time", "Years to Expiration", min = 0.01, max = 50, value = 1, step = .01)),
+        ## div(style="height: 75px;", numericInput("Div", "Dividend Yield", min = 0, max = 1, value = 0, step = .01))#,
+        ## ## div(style="height: 75px;", radioButtons("out", "Value to See", choices = list("Call Price" = 1, "d1" = 2, "d2" = 3), selected = 1)) 
+    ),
+    mainPanel(
+
+        renderPlot({
+            if (input$type == 'fv'){
+                fv = input$pv * (1 + input$r)^{input$n}
+                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "TVM: Single CFs")
+                text(x = 0.5, y = 0.5, labels = paste0("FV = $", round(fv, 2)), cex = 3)
+                ## text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
+            } else {
+                if (input$type == 'pv'){
+                    pv2 = input$fv2 / (1 + input$r2)^{input$n2}
+                    plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "TVM: Single CFs")
+                    text(x = 0.5, y = 0.5, labels = paste0("PV = $", round(pv2, 2)), cex = 3)
+                    ## text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
+                } else {
+                    if (input$type == 'r'){
+                        r3 = ( input$fv3 / input$pv3 )^{(1 / input$n3 )} - 1 
+                        plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "TVM: Single CFs")
+                        text(x = 0.5, y = 0.5, labels = paste0("Rate = ", 100 * round(r3, 4), "%"), cex = 3)
+                        ## text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
+                    } else {
+                        n4 = log(input$fv4 / input$pv4 ) / log( 1 + input$r4 )
+                        plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "TVM: Single CFs")
+                        text(x = 0.5, y = 0.5, labels = paste0("Periods = ", round(n4, 2)), cex = 3)
+                        ## text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
+                    }
+                }
+            }
+            
+            
+        })
+    )
+)
+#}}}
+```

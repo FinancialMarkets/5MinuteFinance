@@ -1,0 +1,27 @@
+---
+title: 
+output: html_document
+runtime: shiny
+---
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(metricsgraphics)
+inputPanel(
+	   sliderInput("rate1", label = "Annual Interest Rate", min = -.05, max =0.5, step = .01, value = .05),
+	   sliderInput("years1", label = "Years Discounted", min = 1, max =50, step = 1, value = 10)
+	   )
+
+renderMetricsgraphics({
+    pv <- 1 / ((1 + input$rate1)^{1:input$years1})
+    pv <- c(1, pv)
+    pv <- as.data.frame(cbind(seq(0, input$years1, by = 1), pv))
+    names(pv) <- c("year", "Present_Value")
+    pv %>%
+        mjs_plot(x=year, y=Present_Value) %>%
+        mjs_line() 
+})
+                                        #}}}
+```

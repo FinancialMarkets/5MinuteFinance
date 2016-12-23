@@ -1,0 +1,72 @@
+---
+title: 
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r echo = FALSE}
+#{{{
+## Parameters
+
+## Equation: dSt = k(mu - lnSt)dt + sigmaStdBt
+inputPanel(
+    ## sliderInput("numsim", "Number of Paths to Simulate", min = 1000, max = 100000, value = 10000, step = 100),
+    sliderInput("paramK", "k Parameter", min = .01, max = .8, value = .2, step = .01),
+    sliderInput("paramMu", "Average Price", min = 10, max = 50, value = 30, step = 1),
+    sliderInput("paramSigma", "Sigma Parameter", min = .01, max = .2, value = .05, step = .01)
+    ## sliderInput("strike1", "Strike Price", min = 10, max = 100, value = 35, step = 5)    
+)
+
+renderPlot({
+
+    ## nsim <- input$numsim
+    nsim <- 1000
+    k <- input$paramK
+    mu <- input$paramMu
+    S0 <- 35
+    sigma <- input$paramSigma
+    days <- 252
+
+### hacked into place pretty quick -- check to make sure I am not doing something stupid ----
+
+    ## strike <- input$strike1
+    strike <- 37
+    
+    vol.per.period <- sigma / sqrt(days)
+
+    prices <- matrix(nrow = days, ncol = nsim)
+    changes <- matrix(nrow = days, ncol = nsim)
+    prices[1, ] <- S0
+
+    for (j in 1:nsim) {
+        for (i in 2:days) {
+
+            changes[i, j] <- k * (mu - prices[(i - 1), j]) * (1 / days) + vol.per.period * prices[(i - 1), j] * rnorm(1)
+
+            prices[i, j] <- prices[(i - 1), j] + changes[i, j]
+
+        }
+    }
+
+    maxes <- apply(prices, 2, max)
+
+    ## assuming a complete market ----
+
+    ## payoffs
+
+    payoffs <- 0
+    payoffs <- ifelse((maxes - strike) > 0, (maxes - strike), 0)
+
+    C0 <- exp(-.02) * mean(payoffs)
+    par(mfrow = c(2,2))
+    matplot(prices, type = 'l', main = "Price Paths")
+    plot(density(maxes), lwd = 3, col = "dodgerblue", main = "Max Price Values")
+    plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+    text(x = 0.5, y = 0.5, labels = paste0("Call = $", round(C0, 2)), cex = 5)
+    plot(density(exp(-.02) * payoffs), col = "dodgerblue", lwd = 3, main = "Present Value of Lookback Call Payoffs")
+
+})
+#}}}
+```

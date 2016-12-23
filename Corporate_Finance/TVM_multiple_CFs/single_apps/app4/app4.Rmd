@@ -1,0 +1,34 @@
+---
+title: 
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+### FV of a Growing Annuity ----
+#{{{
+sidebarLayout(
+	      sidebarPanel(
+inputPanel(
+	   sliderInput("rate.fvga", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
+	   sliderInput("periods.fvga", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
+	   sliderInput("cash.fvga", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100),
+	   sliderInput("cash.gr.fvga", label = "Cash Flow Growth Rate per Period", min = 0, max = .2, step = .01, value = .02)
+	   )
+),
+
+			   mainPanel(
+renderPlot({
+    cashFlows <- rep(input$cash.fvga, input$periods.fvga) * (1 + input$cash.gr.fvga)^{1:input$periods.fvga}
+## again, not using the FV of an annuity formula ----
+    fvga <- sum( cashFlows * ((1 + input$rate.fvga) ^ {1:input$periods.fvga}) )
+    plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+    text(x = 0.5, y = 0.5, labels = paste(round(fvga, 2)), cex = 5)
+    text(x = 0.5, y = 0.95, labels = paste("FV of a Growing Annuity"), cex = 2)
+})
+)
+			   )
+#}}}
+```

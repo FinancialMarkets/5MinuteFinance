@@ -1,0 +1,26 @@
+---
+title: 
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(
+	   sliderInput("rate", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
+	   sliderInput("periods", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
+	   sliderInput("cash", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100)
+	   )
+
+renderPlot({
+cashFlows <- rep(input$cash, input$periods)
+## note I am not using the annuity formula below -- no need -- R is vectorized ---
+pv <- sum( cashFlows / ((1 + input$rate) ^ {1:input$periods}) )
+  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+  text(x = 0.5, y = 0.5, labels = paste(round(pv, 2)), cex = 5)
+      text(x = 0.5, y = 0.95, labels = paste("PV of an Annuity"), cex = 2)
+})
+#}}}
+```

@@ -1,0 +1,26 @@
+---
+title: 
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+### PV of a Perpetuity ----
+#{{{
+inputPanel(
+	   sliderInput("rate.pvp", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
+	   sliderInput("cash.pvp", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100)
+	   )
+
+renderPlot({
+  pvp <- input$cash.pvp / input$rate.pvp
+  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+  text(x = 0.5, y = 0.5, labels = paste(round(pvp, 2)), cex = 5)
+      text(x = 0.5, y = 0.95, labels = paste("PV of a Perpetuity"), cex = 2)
+})
+#}}}
+```
+
+

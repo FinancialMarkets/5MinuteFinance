@@ -1,0 +1,35 @@
+---
+title: 
+output: html_document
+runtime: shiny
+---
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+### PV of a Growing Annuity ----
+#{{{
+sidebarLayout(
+	      sidebarPanel(
+			   inputPanel(
+				      sliderInput("rate.pvga", label = "Interest Rate per Period", min = 0, max = 0.5, step = .01, value = .05),
+				      sliderInput("periods.pvga", label = "Number of Periods", min = 1, max = 50, step = 1, value = 10),
+				      sliderInput("cash.pvga", label = "Cash Flow per Period", min = 0, max = 2000, step = 10, value = 100),
+				      sliderInput("cash.gr.pvga", label = "Cash Flow Growth Rate per Period", min = 0, max = .2, step = .01, value = .02)
+				      )
+			   ),
+
+	      mainPanel(
+			renderPlot({
+			  cashFlows <- rep(input$cash.pvga, input$periods.pvga) * (1 + input$cash.gr.pvga)^{1:input$periods.pvga}
+			  ## again, not using the PV of an annuity formula ----
+			  pvga <- sum( cashFlows / ((1 + input$rate.pvga) ^ {1:input$periods.pvga}) )
+			  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+			  text(x = 0.5, y = 0.5, labels = paste(round(pvga, 2)), cex = 5)
+      text(x = 0.5, y = 0.95, labels = paste("PV of a Growing Annuity"), cex = 2)
+			})
+			)
+	      )
+#}}}
+```
+
