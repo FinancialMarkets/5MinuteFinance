@@ -11,6 +11,9 @@ smaller: true
 ## [Can Financial Engineering Cure Cancer? (2013)](http://www.rogermstein.com/wp-content/uploads/AER2013_Pub1.pdf)
 
 This presentation will introduce you to a present problem in funding cancer research, and possible solutions.  
+
+
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
@@ -21,9 +24,10 @@ This presentation will introduce you to a present problem in funding cancer rese
 
 ```{r echo = FALSE, warning = FALSE}
 
+## read in simulation ----
+#{{{  --------
+
 ## below is code written by others.  See first paragraph below, and the GNU License at the end.  It has been modified to allow different input parameters and be displayed as a shiny app.  The original authors are not involved in this modification, so please don't consider the results from this simulation to be in any way endorsed by the original authors.  For their original code see thier Nature Biotechnology paper.  It is also here: 
-
-
 
 ##################################################################################################################################
 ##################################################################################################################################
@@ -40,15 +44,15 @@ This presentation will introduce you to a present problem in funding cancer rese
 
 simulate.CFs.fn<-function(init=T,show.progress=T)
 
-#This is the main function that simulates the evolution of compounds and its cash flows. 
-#It starts by initializing the parameters and variables used in the simulation
-#It includes some nested functions that use these variables
+##This is the main function that simulates the evolution of compounds and its cash flows. 
+##It starts by initializing the parameters and variables used in the simulation
+##It includes some nested functions that use these variables
 
 {
 	if(init) params<<-init.params.fn()
 	if(show.progress) prog.bar.click<-round(params$simu$NSIMUS/10,0)
 	
-    #-- global variabls & constants ---
+    ##-- global variabls & constants ---
    	NSIMUS		<-params$simu$NSIMUS
    	NPERS		<- params$simu$TIMESTEPS
    	HORIZON 	<-NPERS+ceiling(max(params$assets$sale.time))
@@ -76,7 +80,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		}
 	}
 
-    # ----------------------------------
+    ## ----------------------------------
 
 	rho					<-params$assets$rho
 	bond.value			<-params$bonds$nominal
@@ -91,13 +95,13 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 	first.cash			<-params$simu$initial.cash
 	temp.bond.value		<-bond.value
 			
-	# state of securities
+	## state of securities
 	cash			  	<-c(first.cash,rep(0, HORIZON-1))
 	missed.int		    <-rep(0,length(params$bonds$nominal))
 	IC.ratio            <-matrix(0,length(params$bonds$nominal), NPERS)
 	IC.shortfall		<-matrix(0,length(params$bonds$nominal), NPERS)
 	
-	#record keeping 
+	##record keeping 
 	sales				<-matrix(0,NSIMUS, NSTATES,dimnames=list(rep("a",NSIMUS),ALL.STATES)) 
 	withdrawals			<-matrix(0,NSIMUS, NSTATES,dimnames=list(rep("a",NSIMUS),ALL.STATES)) 
 	initial.compounds	<-matrix(0,NSIMUS, NSTATES,dimnames=list(rep("a",NSIMUS),ALL.STATES)) 
@@ -126,13 +130,13 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 	final.compounds		<-matrix(0,1, NSTATES,dimnames=list(rep("a",1),ALL.STATES)) 
 	
 		
-	#----------------------------------    
-    #- functions that use global vars - 
-	#----------------------------------
+	##----------------------------------    
+    ##- functions that use global vars - 
+	##----------------------------------
 	
 	pay.principal.ffn<-function(cur.per)
 	{
-		for(b in 1:NBONDS) #pay principal
+		for(b in 1:NBONDS) ##pay principal
 		{
 			P<<-AMORT.SCHED[b,cur.per]
 			principal.paid[b,cur.per]<<-min(P,current.cash)
@@ -143,11 +147,11 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		return(NULL)
 	}
 	
-	#----------------------------------
+	##----------------------------------
 	
 	pay.interest.ffn<-function(cur.per)
 	{
-		for(b in 1:NBONDS) # pay int
+		for(b in 1:NBONDS) ## pay int
 		{
 			I<-params$bonds$coupon[b]*bond.value[b]
 			interest.paid[b,i]<<-min(I,current.cash)
@@ -156,7 +160,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		return(NULL)
 	}
 	
-	#----------------------------------
+	##----------------------------------
 	
 	check.for.default.ffn<-function(cur.per)
 	{
@@ -185,7 +189,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		return (default)
 	}
 	
-	#----------------------------------	
+	##----------------------------------	
 	
 	check.for.transitions.ffn<-function(rho=0,z=0)
 	{
@@ -200,7 +204,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		return(NULL)
 	}
 	
-	#----------------------------------
+	##----------------------------------
 	
 	sell.compound.ffn<-function(comp.idx,cur.per)
 	{
@@ -212,18 +216,18 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		mu   <-params$assets$pricing.params[phase.idxs,"vmu"]
 		sigma<-params$assets$pricing.params[phase.idxs,"vsigma"]
 		price<-compound.sale.price.fn(compounds[remaining.indxs],sale.per,mu,sigma,mx,rho,z)*equity.in.compound[remaining.indxs]
-		# here is where we adjust for uninvested compounds
+		## here is where we adjust for uninvested compounds
 		rem.not.invested <- !invested[remaining.indxs]
 		if(any(rem.not.invested)){
 			price[rem.not.invested]<-pmax(price[rem.not.invested]-invest.cost[rem.not.invested],0)
 		}
 		
-		# update main function vars
+		## update main function vars
 		update.sale.ffn(price,remaining.indxs,cur.per,FALSE)
 		return(price)
 	}
 	
-	#----------------------------------
+	##----------------------------------
 
 	withdraw.compound.ffn<-function(old.phase,cur.per)
 	{
@@ -231,7 +235,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		counts.Per<-((names(counts)))
 		counts.Freq<-(as.vector(counts))
 		
-		#Update main function bookmarking.
+		##Update main function bookmarking.
 		for (loop in (1:length(counts.Per)))
 		{
 			withdrawals[s,counts.Per[loop]]<<-withdrawals[s,counts.Per[loop]]+counts.Freq[loop]
@@ -240,28 +244,28 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		return(NULL)
 	}
 
-	#----------------------------------
+	##----------------------------------
 
 	transition.compound.ffn<-function(idx)
 	{
 		ndaidx <- (compounds=="NDA")
 		cindxs<-phase2index.fn(compounds[!ndaidx & idx])
 		
-		#update main function vars
+		##update main function vars
 		invested[ndaidx & idx] <<- TRUE
 		invested[!ndaidx & idx] <<- FALSE
 		invest.cost[!ndaidx & idx]<<-trial.cost.fn(compounds[!ndaidx & idx])+params$assets$pricing.params[cindxs,"Milestone"]
 		time.in.phase[idx]<<-0
 	}
 
-	#----------------------------------
+	##----------------------------------
 
 	calc.svc.due.this.per.ffn<-function(values)
 	{
 		svc.due.this.per<-params$bonds$servicing.rate*sum(values)
 		return(svc.due.this.per)
 	}
-	#----------------------------------
+	##----------------------------------
 	
 	pay.servicing.ffn<-function(cur.per)
 	{
@@ -274,7 +278,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 			svc.paid<-min(svc.due,current.cash)
 			if(svc.paid<svc.due) svc.OK<-F
 		
-			# update main function vars
+			## update main function vars
 			history.service[s]<<-history.service[s]+svc.paid
 			unpaid.svc<<-round((svc.due-svc.paid),5)
 			current.cash<<-current.cash-svc.paid
@@ -282,7 +286,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		return(svc.OK)
 	}
 
-	#----------------------------------
+	##----------------------------------
 	
 	ic.test.result.ffn<-function(b,i,current.cash)
 	{
@@ -327,7 +331,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		return (list(IC.ratio=IC.ratio,cash.due=cash.due,K=K))
 	}
 	
-	#----------------------------------	
+	##----------------------------------	
 	update.sale.ffn<-function(price,remaining.indxs,cur.per,forCoverage)
 	{
 	
@@ -337,7 +341,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 			sell.value[remaining.indxs] <- price
 		}
 		
-		#Update main function variables.
+		##Update main function variables.
 		counts<-(table(phase.idxs))
 		counts.idx<-(as.numeric(names(counts)))
 		counts.freq<-(as.vector(counts))
@@ -362,7 +366,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		time.in.phase[remaining.indxs]<<-0
 	}
 	
-	#----------------------------------	
+	##----------------------------------	
 	liquidate.portfolio.ffn<-function(cur.per)
 	{
 		remaining.comp.idx<-compounds != "DSC" & compounds !="SLD"
@@ -377,16 +381,16 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		rem.inv.cost <- invest.cost[remaining.comp.idx]
 		rem.not.invested <- !invested[remaining.comp.idx]
 		if(any(rem.not.invested)) price[rem.not.invested]<-pmax(price[rem.not.invested]-rem.inv.cost[rem.not.invested],0)
-		#adjust for compounds that have not transitioned at all until liquidation.
+		##adjust for compounds that have not transitioned at all until liquidation.
 		rem.not.transitioned <- time.in.phase[remaining.comp.idx]==cur.per-1
 		if(any(rem.not.transitioned)) price[rem.not.transitioned]<-price[rem.not.transitioned]*params$assets$ratio.unchanged
 		
-		# update main function vars
+		## update main function vars
 		update.sale.ffn(price,remaining.comp.idx,cur.per,FALSE)
 		return(NULL)
 	}
 
-	#----------------------------------	
+	##----------------------------------	
 	
 	sell.compounds.to.cover.shortfall.ffn<-function(shortfall,cur.per)
 	{
@@ -418,15 +422,15 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 
 			remaining.comp.loc <- which(remaining.comp.idx)
 			
-			#update main function vars
+			##update main function vars
 			update.sale.ffn(prices[indxSold],remaining.comp.loc[indxSold],cur.per,TRUE)
 		}
 		return(NULL)
 	}
 	
-	#----------------------------------	
-	#----------------------------------	
-	#----------------------------------
+	##----------------------------------	
+	##----------------------------------	
+	##----------------------------------
 	
 	if(show.progress) cat("Simulation of ",NSIMUS," paths: 0% complete\n")
 	startTime<-proc.time()
@@ -437,11 +441,11 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 			if(!(s %% prog.bar.click)) cat("Simulation ", (s/NSIMUS)*100,"% complete\n")
 		}
 		
-		# reset variables for next path of simulation
+		## reset variables for next path of simulation
 
 		NCOMPOUNDS<-sum(params$simu$initial.compounds)
 		
-		# state of compounds
+		## state of compounds
 		invested   			<-rep(T,NCOMPOUNDS)
 		compounds 			<-START.STATES
 		time.in.phase		<-rep(0,NCOMPOUNDS)
@@ -449,14 +453,14 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		sell.value			<-rep(0,NCOMPOUNDS)
 		equity.in.compound	<-rep(params$assets$equity.stake,NCOMPOUNDS)
 
-		# state of securities
+		## state of securities
 		temp.bond.value		<-bond.value
 		cash				<-c(rep(0,HORIZON))
 		missed.int			<-rep(0,length(params$bonds$nominal))
 		IC.ratio        	<-matrix(0,length(params$bonds$nominal)-1, NPERS)
 		IC.shortfall    	<-matrix(0,length(params$bonds$nominal)-1, NPERS)
 		
-		#record keeping 
+		##record keeping 
 		interest.paid		<-matrix(0,length(params$bonds$nominal), NPERS)
 		principal.paid  	<-matrix(0,length(params$bonds$nominal), NPERS)
 
@@ -469,9 +473,9 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 	
 		invest.cost			<-trial.cost.fn(compounds)
 		
-		# temporary variables to make sure we spend only our target percentage
+		## temporary variables to make sure we spend only our target percentage
 		cash.left.to.spend	<- cash[1] - params$bonds$IC.pers*params$bonds$nominal[1]*params$bonds$coupon[1] -params$bonds$IC.pers*params$bonds$nominal[2]*params$bonds$coupon[2] 
-		# number of compounds we actually buy per phase
+		## number of compounds we actually buy per phase
 		num.compounds 		<- rep(0,NSTATES)
 		
 		money.spent			<- rep(0,NCOMPOUNDS)
@@ -484,7 +488,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		
 	    for(i in 1:NCOMPOUNDS) 
 		{
-			# If we have enough cash, buy it and update our initial cash
+			## If we have enough cash, buy it and update our initial cash
 			if (cash.left.to.spend >= price.tmp[i] + FutureCostEst[i])
 			{
 				money.spent[i]<- price.tmp[i]
@@ -499,40 +503,40 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		cash[2]<-cash[1]
 		cash.begin.per[s,2]<-cash[1]
 
-		#----- simulate one trajectory ----
-		#
-		# I) For each time period
-		#    1) Check for transitions
-		#	 2) Apply waterfall rules
-		#		A) if insufficient cash to pay this period's obligations transaction is in default
-		#			i) liquidate portfolio 
-		#			ii) use proceeds to pay servicing and then all P&I for A1, then P&I for A2, etc.
-		#		B) if not in default
-		#			i)Pay obligations 
-		#				a) Pay servicing
-		#				b) Pay P&I for A1, then for A2, etc.
-		#			ii) check coverage test 
-		#			iii) If coverage is not OK 
-		#				a) sell enough assets to bring ratio back in line (coarse approximation)
-		#			iv) make investmensts in compounds as cash permits
-		# II) If last time period
-		#	1) liquidate portfolio
-		#	2) Make final payements to bonds
-		#	3) Residual cash goes to equity
-		#
+		##----- simulate one trajectory ----
+		##
+		## I) For each time period
+		##    1) Check for transitions
+		##	 2) Apply waterfall rules
+		##		A) if insufficient cash to pay this period's obligations transaction is in default
+		##			i) liquidate portfolio 
+		##			ii) use proceeds to pay servicing and then all P&I for A1, then P&I for A2, etc.
+		##		B) if not in default
+		##			i)Pay obligations 
+		##				a) Pay servicing
+		##				b) Pay P&I for A1, then for A2, etc.
+		##			ii) check coverage test 
+		##			iii) If coverage is not OK 
+		##				a) sell enough assets to bring ratio back in line (coarse approximation)
+		##			iv) make investmensts in compounds as cash permits
+		## II) If last time period
+		##	1) liquidate portfolio
+		##	2) Make final payements to bonds
+		##	3) Residual cash goes to equity
+		##
 		
 		A1.in.default<-F
 		A2.in.default<-F
 		svc.in.default<-F
 		
-		#Value of systematic factor to induce correlations in portfolio valuations.
+		##Value of systematic factor to induce correlations in portfolio valuations.
 		z<-rnorm(1)		
-		for (i in 2:NPERS) # during life of bonds
+		for (i in 2:NPERS) ## during life of bonds
 		{
 			old.compounds<-compounds
 			current.cash<-cash[i]
 
-			# ----------- first determine current state of portfolio
+			## ----------- first determine current state of portfolio
 			old.phase	<-compounds
 			elig.idxs 	<- invested & !((compounds=="DSC") | (compounds=="SLD") | (compounds=="APP"))
 			check.for.transitions.ffn(cur.rho,z)
@@ -550,22 +554,22 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 			stat.idxs 	<- elig.idxs & !sell.idxs & !dsc.idxs & !trans.idxs
 			time.in.phase[stat.idxs]=time.in.phase[stat.idxs]+1
 			
-			# ----------- accounting balance
+			## ----------- accounting balance
 			A1.realized.vals[s,i]<-bond.value[1]
 			A2.realized.vals[s,i]<-bond.value[2]
 			
-			#------------ next calc payments of servicing and bonds							
+			##------------ next calc payments of servicing and bonds							
 			if(!in.default) in.default <- check.for.default.ffn(i)
 			
-			#------------ next if not in default pay P&I; if in default liquidate portfolio
+			##------------ next if not in default pay P&I; if in default liquidate portfolio
 			if (!in.default)
 			{
-				#Now pay current period interest etc.
+				##Now pay current period interest etc.
 				pay.servicing.ffn(i)
 				pay.interest.ffn(i)
 				pay.principal.ffn(i)
-				#------------ next check coverage
-				for(b in 1:NBONDS) #calc IC coverage
+				##------------ next check coverage
+				for(b in 1:NBONDS) ##calc IC coverage
 				{
 					if(bond.value[b]>0)
 					{
@@ -580,7 +584,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 					else IC.shortfall[b]<-0
 				}
 
-				#------------ check equity svc coverage
+				##------------ check equity svc coverage
 				eq.svc.due<-unpaid.svc
 				for (k in 1:ceiling(max(params$assets$sale.time)))
 				{
@@ -588,7 +592,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 				}
 				eq.shortfall<- eq.svc.due - current.cash
 					
-				#------------ next if IC too low, sell compounds to cover
+				##------------ next if IC too low, sell compounds to cover
 				max.shortfall<-max(IC.shortfall[,i],eq.shortfall)
 				if(max.shortfall > 0) 
 				{
@@ -599,7 +603,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 				{
 					OK.to.fund<-T
 				}				
-				#------------ next if IC is OK fund next phases of research for compounds 
+				##------------ next if IC is OK fund next phases of research for compounds 
 				compounds.to.fund[s,i]<-sum(compounds != "DSC" & compounds != "APP" & compounds != "SLD" & !invested)
 
 				if(OK.to.fund)
@@ -631,7 +635,7 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 		
 						if(cash.to.invest>0)
 						{
-							compounds.to.fund.idx<-(1:NCOMPOUNDS)[!invested & compounds != "DSC" & compounds != "APP" & compounds !="SLD"] 								#index of compounds that need funding
+							compounds.to.fund.idx<-(1:NCOMPOUNDS)[!invested & compounds != "DSC" & compounds != "APP" & compounds !="SLD"] 								##index of compounds that need funding
 							cash.spent<-0
 							for(k in compounds.to.fund.idx)
 							{
@@ -649,12 +653,12 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 					}
 				}
 			}
-			else # already in default
+			else ## already in default
 			{
 				liquidate.portfolio.ffn(i)
 				pay.servicing.ffn(i) 
-				#PAY P&I
-				for(b in 1:NBONDS) # pay down bonds sequentially
+				##PAY P&I
+				for(b in 1:NBONDS) ## pay down bonds sequentially
 					{
 						if(current.cash>0)
 						{
@@ -672,13 +676,13 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 			cash[i]<-current.cash
 			if(i!=NPERS) 
 			{
-				#cash left over at end of period accrues interest
+				##cash left over at end of period accrues interest
 				cash[i+1]<-cash[i+1]+(current.cash*(1+params$bonds$cash.accrual.int.rate))
 				cash.begin.per[s,i+1]<-cash[i+1]				
 			}
 			
 				
-		}	##END TIMESTEP ITERATION#####
+		}	####END TIMESTEP ITERATION#####
 		
 		final.compounds = final.compounds + c(sum(compounds=='DSC'), sum(compounds=='PRE'), sum(compounds=='P1'), sum(compounds=='P2'), sum(compounds=='P3'), sum(compounds=='NDA'), sum(compounds=='APP'))/NSIMUS
 		liquidate.portfolio.ffn(NPERS)
@@ -743,59 +747,59 @@ simulate.CFs.fn<-function(init=T,show.progress=T)
 
 init.params.fn<-function()
 
-#initializes all parameters used by the simulation. Contains all default values used.
-#Rationale behind these numbers is explained in the Supplementary Information section of the paper "Commercializing biomedical research through securitization tecniques" (Fernandez, Stein, Lo; Nature Biotechnology; October 2012)
+##initializes all parameters used by the simulation. Contains all default values used.
+##Rationale behind these numbers is explained in the Supplementary Information section of the paper "Commercializing biomedical research through securitization tecniques" (Fernandez, Stein, Lo; Nature Biotechnology; October 2012)
 
 {
 
-	# ------- ASSET PARAMETERS
+###------- ASSET PARAMETERS
 
-	a.params<-list(
-		rho=0.2,
-		trans.prob=matrix(c(
-		    #DSC    PRE	  P1        P2         P3         NDA        APP
-		    #
-			1.000000000000000,  0,   0,        			0,         			0.000000000000000, 	0,         			0,          				#DSC
-			0.155000000000000,  0.5, 0.345,    			0,         			0.000000000000000,	0,         			0,         				#PRE
-			0.053215560704185,  0,   0.807859886086702,	0.133437226118754, 	0.005307429700172,	0.000157443915296,	0.000022453474890,		#P1
-			0.085093613975923,  0,   0,    				0.844734609586595,	0.066750087871169,	0.002866145785922, 	0.000555542780392,    	#P2
-			0.062545675724766,  0,   0,        			0,         			0.848420924719526,	0.068234113621235, 	0.020799285934472,    	#P3
-			0.021663504081486,  0,   0,        			0,         			0,         			0.566729918370271, 	0.411606577548242,    	#NDA
-			0,			        0,   0,        			0,         			0,         			0,         			1.000000000000000    	#APP
-          	),
-         	byrow=T,
-         	nrow=7,ncol=7, 
-         	dimnames=list
-         	(
-         			c("DSC","PRE","P1","P2","P3","NDA","APP"),
-         			c("DSC","PRE","P1","P2","P3","NDA","APP")
-         	)
+    a.params<-list(
+        rho=0.2,
+        trans.prob=matrix(c(
+                                        #DSC    PRE	  P1        P2         P3         NDA        APP
+                                        #
+            1.000000000000000,  0,   0,        			0,         			0.000000000000000, 	0,         			0,          				#DSC
+            0.155000000000000,  0.5, 0.345,    			0,         			0.000000000000000,	0,         			0,         				#PRE
+            0.053215560704185,  0,   0.807859886086702,	0.133437226118754, 	0.005307429700172,	0.000157443915296,	0.000022453474890,		#P1
+            0.085093613975923,  0,   0,    				0.844734609586595,	0.066750087871169,	0.002866145785922, 	0.000555542780392,    	#P2
+            0.062545675724766,  0,   0,        			0,         			0.848420924719526,	0.068234113621235, 	0.020799285934472,    	#P3
+            0.021663504081486,  0,   0,        			0,         			0,         			0.566729918370271, 	0.411606577548242,    	#NDA
+            0,			        0,   0,        			0,         			0,         			0,         			1.000000000000000    	#APP
+        ),
+        byrow=T,
+        nrow=7,ncol=7, 
+        dimnames=list
+        (
+            c("DSC","PRE","P1","P2","P3","NDA","APP"),
+            c("DSC","PRE","P1","P2","P3","NDA","APP")
+        )
         ),  
-		pricing.params=matrix(c(
-	   #     vmu     vsimga   vmx   UpFront   MileStone    mu       sigma      max   FutureCostEst
-               0,      			1,         0,  	0,		          	0,     				0,       			0,          0,      0,     #DSC
-             2.354733621857371, 0.939,   100,  	2.506648325603443, 	1.253324162801722,  1.573797446769595,  0.785050619780075,      20,    	134,     #PRE
-             2.976737648081240, 0.939,   250,  	7.519944976810328, 	3.759972488405164,  2.722501027059631,  0.732114106934504,    50,    	121,     #P1
-             3.996945974057142, 0.939,   500,   20.053186604827545,	10.026593302413772, 3.702027419856847,  0.795995957236353,     	120,   	85,     #P2
-             5.802748472629424, 0.939,  1000,  	75.199449768103278,	37.599724884051639, 5.065276957812039,	0.633123896262475,   	500,    0,     #P3
-             7.277762431143847, 0.939,  2500,  	0,          		0,    				0,       			0,          0,      0,     #NDA
-             7.239151725642049, 0.939,  5000, 	0,          		0,    				0,       			0,          0,      0     #APP
-            ),
-            byrow=T,
-            nrow=7,ncol=9,
-            dimnames=list
-         	(
-         			c("DSC","PRE","P1","P2","P3","NDA","APP"),
-         			c("vmu","vsigma","vmx","UpFront","Milestone","mu","sigma","max","FutureCostEst")
-         	)
+        pricing.params=matrix(c(
+                                        #     vmu     vsimga   vmx   UpFront   MileStone    mu       sigma      max   FutureCostEst
+            0,      			1,         0,  	0,		          	0,     				0,       			0,          0,      0,     #DSC
+            2.354733621857371, 0.939,   100,  	2.506648325603443, 	1.253324162801722,  1.573797446769595,  0.785050619780075,      20,    	134,     #PRE
+            2.976737648081240, 0.939,   250,  	7.519944976810328, 	3.759972488405164,  2.722501027059631,  0.732114106934504,    50,    	121,     #P1
+            3.996945974057142, 0.939,   500,   20.053186604827545,	10.026593302413772, 3.702027419856847,  0.795995957236353,     	120,   	85,     #P2
+            5.802748472629424, 0.939,  1000,  	75.199449768103278,	37.599724884051639, 5.065276957812039,	0.633123896262475,   	500,    0,     #P3
+            7.277762431143847, 0.939,  2500,  	0,          		0,    				0,       			0,          0,      0,     #NDA
+            7.239151725642049, 0.939,  5000, 	0,          		0,    				0,       			0,          0,      0     #APP
+        ),
+        byrow=T,
+        nrow=7,ncol=9,
+        dimnames=list
+        (
+            c("DSC","PRE","P1","P2","P3","NDA","APP"),
+            c("vmu","vsigma","vmx","UpFront","Milestone","mu","sigma","max","FutureCostEst")
+        )
 
-		),
+        ),
 
-		sell.in.phase="P2",
-		sale.time=c(DSC=1.5,PRE=1.5,P1=1.5,P2=1.5,P3=1.5,NDA=1.5,APP=1.5),
-		ratio.unchanged = 1,
-		equity.stake = 0.85
-	)	
+        sell.in.phase="P2",
+        sale.time=c(DSC=1.5,PRE=1.5,P1=1.5,P2=1.5,P3=1.5,NDA=1.5,APP=1.5),
+        ratio.unchanged = 1,
+        equity.stake = 0.85
+    )	
 	
 	# ------- BOND PARAMETERS	
 
@@ -1119,13 +1123,30 @@ trial.cost.fn<-function(comp.phase)
 #
 #
 
+#}}} -----
 
+## Shiny app starts here-----
 
+ui <- bootstrapPage(
+        tabsetPanel(type = "tabs",
+                    # tabPanel("Data", DT::dataTableOutput("datatable")),
+                    tabPanel("Plot", plotOutput("plot"))
+                    )
+    )
+    
+server <- function(input, output){
 
+output$plot <- renderPlot({ 
 
+results <- simulate.CFs.fn()
 
+summarize.results.fn(results)
 
+})
 
+}
+
+shinyApp(ui = ui, server = server)
 ```
 
 
