@@ -216,7 +216,7 @@ Implementation of the trade requires thresholds at which you open and close your
 ## Adjusting for Market Risk
 
 
-If the two stocks are really good substitutes for one another, they likely have similar levels of market risk (measured by [beta coefficients](http://www.5minutefinance.org/concepts/the-greeks)). You can therefore buy and short equal dollar amounts. 
+If the two stocks are really good substitutes for one another, they likely have similar levels of market risk (measured by [beta coefficients](http://www.5minutefinance.org/concepts/the-capital-asset-pricing-model)). You can therefore buy and short equal dollar amounts. 
 
 - However, if the stocks have substantially different beta coefficients (first, reconsider if it is a good pair), you may want to weight your investment in each so that the beta of the position is close to zero.
 
