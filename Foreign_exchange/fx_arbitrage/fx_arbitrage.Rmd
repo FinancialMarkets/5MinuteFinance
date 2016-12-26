@@ -10,7 +10,7 @@ smaller: true
 
 ## Arbitrage in Foreign Exchange (FX) Markets
 
-In this presentation we'll cover three arbitrages which are common in FX markets.  These are:
+In this presentation we'll cover three arbitrages that are common in FX markets.  These are:
 
 -  Locational Arbitrage
 -  Triangular Arbitrage
@@ -49,11 +49,11 @@ Note that in this presentation we will be using the following common abbreviatio
 
 ## Locational Arbitrage with Bid/Ask
 
-Now consider East quotes USD 1.50/1.55 for GBP, and West quotes USD 1.56/1.58.  The notation refers to the bid/ask.  Is there an arbitrage?
+Now consider East quotes USD 1.50/1.55 for GBP, and West quotes USD 1.56/1.58.  The notation refers to the bid/ask.  Is there an arbitrage opportunity?
 
--  Yes, buy 1 GBP from East for USD 1.55, and sell it to west for USD 1.56, earning USD 0.01 per GBP traded.
+-  Yes, buy 1 GBP from East for USD 1.55, and sell it to West for USD 1.56, earning USD 0.01 per GBP traded.
 
-What about if East quotes USD 1.50/1.55 for GBP, and West quotes USD 1.54/1.58?  Is there an arbitrage?
+What about if East quotes USD 1.50/1.55 for GBP, and West quotes USD 1.54/1.58?  Is there an arbitrage opportunity?
 
 -  No, you would be buying a GBP at East for USD 1.55 and selling at West for USD 1.54, thereby losing USD 0.01 per GBP traded.
 
@@ -153,11 +153,11 @@ shinyApp(ui = ui, server = server)
 ```
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Currency Cross-Rates
+## Currency Cross Rates
 
-Before talking about triangular arbitrage, it is helpful to define a 'cross-rate'.
+Before talking about triangular arbitrage, it is helpful to define a 'cross rate.'
 
--  A currency cross-rate is an exchange rate which does not involve the USD.
+-  A currency cross-rate is an exchange rate that does not involve the USD.
 
 -  For example, EUR/CHF and GBP/AUD are cross rates.  CHF/USD is *not* a cross-rate.
 
@@ -171,7 +171,7 @@ Given direct or indirect quotes (quotes involving the USD) we can calculate the 
 
 -  To know that 1.875 is the amount of CHF for a GBP, you can manipulate the units algebraically: $\frac{\frac{USD}{GBP}}{\frac{USD}{CHF}} = \frac{USD}{GBP}\frac{CHF}{USD} = \frac{CHF}{GBP}$
 
--  Or simple note that it must be more than 1 CHF for a GBP, and not vice versa.
+-  Or simply note that it must be more than 1 CHF for a GBP, and not vice versa.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -184,13 +184,13 @@ Triangular arbitrage takes advantage of mispriced cross-rates.  For example, if 
 -  EUR 1.3/GBP
 
 
-Is there an arbitrage?
+Is there an arbitrage opportunity?
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Triangular Arbitrage
 
-Let's check.  The cross-rate implied by the USD/EUR and USD/GBP quotes is EUR 1.25/GBP.  However the quote on our terminal is EUR 1.3/GBP, so yes, there is an arbitrage.
+Let's check.  The cross-rate implied by the USD/EUR and USD/GBP quotes is EUR 1.25/GBP.  However, the quote on our terminal is EUR 1.3/GBP, so yes, there is an arbitrage.
 
 -  We'll replicate buying the cross rate at EUR 1.25/GBP by trading through the USD/EUR and USD/GBP.  We'll also sell GBP for the quoted rate of EUR 1.3/GBP.  Doing so correctly will earn us EUR 0.05.
 
@@ -340,6 +340,8 @@ shinyApp(ui = ui, server = server)
 
 Given spot FX rates and interest rates, covered interest arbitrage will tell us what the forward/futures rate must be.
 
+-  Covered interest arbitrage exploits interest rate differentials using forward/futures contracts to mitigate FX risk.
+
 -  It ensures that you get a reasonable futures price for currency if you are trading in a liquid market.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -470,11 +472,12 @@ shinyApp(ui = ui, server = server)
 
 ## 'Uncovered' Interest Arbitrage
 
-If you don't sell the currency forward, then you are engaging in uncovered interest arbitrage.
+If you don't sell the currency forward, then you are engaging in uncovered interest arbitrage, meaning you are attempting to exploit an interest rate differential without using forward/futures contracts.
 
--  This is a particularly bad title, because it is *not* an arbitrage.
+-  *Uncovered interest arbitrage* is a inaccurate name, though, because the activity it describes is *not* an arbitrage. The trade is uncovered, and so there is exposure -- sometimes significant -- to FX risk.
 
--  A better title -- and one that is often used -- is the 'Carry Trade'.  
+
+-  A better title -- and one that is often used -- is the 'Carry Trade.'
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -645,8 +648,8 @@ shinyApp(ui = ui, server = server)
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Foreign_exchange/fx_arbitrage/fx_arbitrage.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Foreign_exchange/fx_arbitrage/fx_arbitrage.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
