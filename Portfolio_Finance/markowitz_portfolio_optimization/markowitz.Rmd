@@ -151,15 +151,13 @@ corrplot(M, method = "square")
 #}}}
 ```
 
-
-
 ## *Optimal* Diversification and Markowitz
 
 In 1952 Harry Markowitz published *[Portfolio Selection](https://scholar.google.com/scholar?cluster=5160592821225000015&hl=en&as_sdt=0,39)*, which introduced the idea of diversifying optimally.
 
 -  Fixing the portfolio expected return we find the weights on each asset in the portfolio such that risk (portfolio variance) is minimized.  
 
--  Note, here we assume either the investor ignores portfolio [skewness](https://en.wikipedia.org/wiki/Skewness) and [kurtosis](https://en.wikipedia.org/wiki/Kurtosis), or returns are distributed according to an elliptical distribution (such as the normal distribution).  
+-  Note, here we assume either the investor ignores portfolio [skewness](https://en.wikipedia.org/wiki/Skewness) and [kurtosis](https://en.wikipedia.org/wiki/Kurtosis) in their utility function, or returns are distributed according to an elliptical distribution (such as the normal distribution).  
 
 -  Doing this over all portfolio expected returns gives us a set of portfolios which have minimum risk.  This portfolio is known as the *mean-variance fontier*.  
 
