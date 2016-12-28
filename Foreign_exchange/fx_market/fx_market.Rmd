@@ -16,7 +16,7 @@ The FX market allows you to exchange one currency for another.
 
 -  For example, you can exchange US dollars for euros.  
 
-The *exchange rate* will determine how many euros you receive for a US dollar.  
+-  The *exchange rate* will determine how many euros you receive per US dollar.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -36,12 +36,12 @@ In the following presentation we'll use the currency acronyms common on sites su
 
 ## The Exchange Rate
 
-The exchange rate can be quoted in two equivalent ways, the direct quote and the indirect quote.  Assume we are in the US, and 'foreign currency' refers to anything other than the US dollar. 
+The exchange rate can be quoted in two equivalent ways, the direct quote and the indirect quote.  For our purposes, we'll assume we are in the United States and that 'foreign currency' refers to anything other than the U.S. dollar. 
 
 -  *Direct quote*: the value of the foreign currency in US dollars.
 -  *Indirect quote*: the value of the US dollar expressed in foreign currency.
 
-Note, like stock, currencies are traded with a bid/ask spread.  Throughout this presentation we'll ignore the spread for simplicity.
+Note, like stock, currencies are traded with a bid/ask spread. Throughout this presentation we'll ignore the spread for simplicity.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -49,11 +49,11 @@ Note, like stock, currencies are traded with a bid/ask spread.  Throughout this 
 
 Say the direct quote for the EUR is USD 1.25/EUR.  
 
-- this means for each USD 1.25 you will receive 1 EUR.
+- *This means for each USD 1.25 you will receive 1 EUR.*
 
 The indirect quote is then $\frac{1}{\text{USD} 1.25} = \text{EUR}\ 0.8/\text{USD}$.
 
-- this means for each EUR 0.8 you will receive USD 1.
+- *This means for each EUR 0.8 you will receive USD 1.*
 
 Note that these quotes are equivalent: converting USD 1.25 into 1 EUR, and then converting the 1 EUR back into dollars, affords you USD 1.25.
 
@@ -61,11 +61,11 @@ Note that these quotes are equivalent: converting USD 1.25 into 1 EUR, and then 
 
 ## The Following Chart
 
-The following chart shows the direct and indirect quote for the currency you choose.  Remember the:
+The following chart shows the direct and indirect quote for the currency you choose.  Remember the following:
 
--  direct quote is the amount of USD required for a unit of foreign currency. 
+-  The direct quote is the amount of USD required for a unit of foreign currency. 
 
--  indirect quote is the amount of foreign currency required for a unit of USD.  
+-  Thie indirect quote is the amount of foreign currency required for a unit of USD.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -143,7 +143,7 @@ renderDygraph({
 
 ## Practice Currency Conversions
 
-The next slide will allow you to practice converting USD to foreign currency given the exchange rate and whether it is a direct or indirect quote.
+The next slide will allow you to practice converting USD to foreign currency by manipulating the exchange rate and whether it is a direct or indirect quote.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -180,7 +180,7 @@ sidebarLayout(
 
 In addition to direct and indirect quotes, there are also cross rates.
 
-- A cross rate is a currency quote which does not involve the USD.
+-  A cross rate is a currency quote which does not involve the USD.
 
 -  So a quote of EUR 0.9/CHF, or 0.9 euros for a Swiss Franc, is a cross rate.
 
@@ -190,11 +190,11 @@ In addition to direct and indirect quotes, there are also cross rates.
 
 Most currencies are quoted as direct quotes.
 
--  However, given direct (or indirect) quotes, we can always calculate the cross rate.
+-  That said, given direct (or indirect) quotes, we can always calculate the cross rate.
 
--  To do so, note we can treat the currency units algebraically.
+-  To do so, we can treat the currency units algebraically.
 
--  For example if we multiply the indirect quote for the euro by the direct quote for the UK pound, we have:
+-  For example, if we multiply the indirect quote for the euro by the direct quote for the British pound, we have:
 
 $\frac{EUR}{USD}\frac{USD}{GBP} = \frac{EUR}{GBP}$
 
@@ -256,13 +256,13 @@ sidebarLayout(
 
 ## Spot versus Derivatives
 
-Currency can be traded in the spot or derivative (forward/futures and options) market. 
+Currency can be traded in the spot market or the derivative (forward/futures and options) market. 
 
 -  The spot market is for the immediate exchange of currencies.
 
 -  The futures market is for the exchange of currencies at some set date in the future.
 
-In this presentation we'll focus on the spot market.  In future presentations we'll cover currency derivatives.
+In this presentation we focus on the spot market. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -272,11 +272,11 @@ The FX market is an interbank market.  What this means is that there is no excha
 
 -  The FX market is a set of quotes from various banks who are acting as dealers (market makers).  
 
--  Quotes may be different among market participants -- that is large companies will have access to better quotes than small traders.  
+-  Quotes may be different among market participants -- that is, large companies will have access to better quotes than small traders.  
 
--  Trades may take place with banks across the world.  This means your trades are not necessarily overseen by a US regulator.  
+-  Trades may take place with banks across the world. This means your trades are not necessarily overseen by a US regulator.
 
--  Trades are done online much like stock.
+-  FX trades are done online much like stock trades.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -286,7 +286,7 @@ The average daily trading volume is about \$4 *trillion*.
 
 - To put this in perspective, the average daily volume of trading in the S&P 500 firms is \$4 billion.
 
-Roughly 40% of all trades involve the USD.  About 80% of trades are in developed market currencies. 
+Roughly 40% of all trades involve the USD.  About 80% of trades are in developed-market currencies. 
 
 -  Trade in currencies mirrors the amount of import/export between countries.  
 
@@ -294,11 +294,11 @@ Roughly 40% of all trades involve the USD.  About 80% of trades are in developed
 
 ## Spot Market Hours
 
-On weekdays, FX trading occurs in the normal business hours of each time zone. Trading starts in Asia, then moves to Europe, and finally the Amerias.
+On weekdays, FX trading occurs in the normal business hours of each time zone. Trading starts in Asia, then moves to Europe, and later finally arrives the Amerias.
 
 - There is continuous trading from Monday morning in Tokyo to Friday evening in New York City.
 
--  On any given day, the opening quote in New York city is based on the prevailing quote in London, and other locations which are actively trading.
+-  On any given day, the opening quote in New York is based on the prevailing quote in London -- and other locations which are actively trading.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -306,7 +306,7 @@ On weekdays, FX trading occurs in the normal business hours of each time zone. T
 
 Like the stock market, FX is quoted with a bid and ask price.  If you are buying the currency, you do so at the ask, if you are selling you do so at the bid.
 
--  An easy way to remember, is that you will always transact at the price which you would prefer *not* to. That is, you always buy high and sell low.
+-  An easy way to remember this is that you will always transact at the price which you would prefer *not* to. That is, you always buy high and sell low.
 
 -  The difference between the ask and bid is compensation to the commercial banks who act as market makers in the FX market. In other words, the bid/ask is a transaction cost for those using the FX market.
 
@@ -316,7 +316,7 @@ Like the stock market, FX is quoted with a bid and ask price.  If you are buying
 
 Say the direct quote for the GBP is USD 1.50/1.55. The bid is USD 1.50 and the ask is USD 1.55.
 
--  If you buy GBP, you will pay the USD 1.55 ask (note of course this is the one you *don't* prefer).
+-  If you buy GBP, you will pay the USD 1.55 ask (note, of course, that this is the one you *don't* prefer).
 
 -  If you sell a GBP, you will receive USD 1.50 (again the one you don't prefer).
 
@@ -337,8 +337,8 @@ The percentage bid/ask spread is used to compare transaction costs across curren
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Foreign_exchange/fx_market/fx_market.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Foreign_exchange/fx_market/fx_market.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
