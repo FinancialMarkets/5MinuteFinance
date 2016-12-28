@@ -19,17 +19,17 @@ The *limit order book* is the list of orders (prices at which you can transact) 
 
 -  Depending on the security, these orders may be on one exchange, or aggregated across many exchanges.
 
--  This presentation will give a basic description of the orderbook, and how your transactions will be handled by (and effect) the book.
+-  This presentation will give a basic description of the order book, and how your transactions will be handled by (and how they will affect) the book.
 
--  You will transact in an orderbook if you trade stock, futures, options, and other securities.  However, in this presentation we'll use stock examples.  
+-  You will transact in an order book if you trade stock, futures, options, and/or other securities.  However, in this presentation we'll use stock examples.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Order Book Description
 
-In the next slide, the plot on the right shows the full orderbook -- sell orders from \$11.38 to about \$12.50, and buy orders from \$11.36 down to about \$10.20.
+In the next slide, the plot on the right shows the full order book -- sell orders from \$11.38 to about \$12.50, and buy orders from \$11.36 down to about \$10.20.
 
--  We generally only show the book 5 or 10 levels deep, as in the graphic on the left which shows the book 5 levels deep.
+-  We generally only show the book 5 or 10 levels deep, as in the graphic on the left, which shows the book 5 levels deep.
 
 Example: reading the first 2 levels of the book:
 
@@ -75,7 +75,7 @@ shinyUI(fluidPage(
 
 ## Inside Quotes
 
-The *inside quotes*, which are also known as the *Best Bid and Offer* or *BBO*, are the highest bid, and lowest ask, in the orderbook.  
+The *inside quotes*, which are also known as the *Best Bid and Offer* or *BBO*, are the highest bid, and lowest ask, in the order book.  
 
 - They are the prices at which the next market buy (with the best offer) or market sell (with the best bid) will transact.
 
@@ -83,11 +83,11 @@ The *inside quotes*, which are also known as the *Best Bid and Offer* or *BBO*, 
 
 In this case the bid/ask spread is \$11.36 - \$11.38 = \$0.02, or $\frac{\$0.02}{\$11.38} = 0.1757\%$.
 
--  The bid/ask percentage spread measures the cost to transact in that security---the larger the spread the larger the transaction costs.  
+-  The bid/ask percentage spread measures the cost to transact in that security---the larger the spread, the larger the transaction costs.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Orderbook and Liquidity
+## The Order Book and Liquidity
 
 The smaller the bid/ask spread, and the more limit orders in the book, the greater the security's *liquidity*.  
 
@@ -97,19 +97,19 @@ The smaller the bid/ask spread, and the more limit orders in the book, the great
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## The [Market Maker](https://www.sec.gov/answers/mktmaker.htm)
+## The Market Maker
 
-A *Market Maker's* job is to maintain, at all times, bids and offers in the orderbook.  This provides liquidity to the market.  
+A *market maker's* job is to maintain, at all times, bids and offers in the order book.  This provides liquidity to the market.  
 
--  The market maker attempts to earn the bid/ask spread -- repeatedly buying at the bid and selling at the ask.
+-  The [market maker](https://www.sec.gov/answers/mktmaker.htm) attempts to earn the bid/ask spread -- repeatedly buying at the bid and selling at the ask.
 
--  The orderbook is comprised of the market maker's limit orders, as well as limit orders entered by other investors and traders.  However, the market maker **must** maintain orders in the book, and other market participants do not have this requirement.
+-  The order book is comprised of the market maker's limit orders, as well as limit orders entered by other investors and traders.  However, the market maker **must** maintain orders in the book, and other market participants do not have this requirement.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## Entering a Market Order
 
-If you want to buy or sell a stock, one type of order you can enter is a *market order*.  This will buy or sell the stock at the best available price in the market at the time the order arrives.  With a market order, you are guaranteed that you will buy or sell, however you are not sure of the price at which you will trade.
+If you want to buy or sell a stock, one type of order you can enter is a *market order*.  This will buy or sell the stock at the best available price in the market at the time the order arrives.  With a market order, you are guaranteed that you will buy or sell; however, you are not sure of the price at which you will trade.
 
 -  A market buy will buy at the lowest ask price.  If it buys all available shares at the lowest ask, the next ask above will become the new lowest ask, and that is where additional shares will be bought.
 
@@ -169,13 +169,13 @@ shinyUI(fluidPage(
 
 ## Entering a Limit Order
 
-You can also buy or sell stock with a *limit order*.  In this type of order, you specify the highest/lowest price at which you will buy/sell.  With a limit order, you are guaranteed the price at which you will buy or sell (if the trade is executed), however you are not guaranteed that you will actually trade.
+You can also buy or sell stock with a *limit order*.  In this type of order, you specify the highest/lowest price at which you will buy/sell.  With a limit order, you are guaranteed the price at which you will buy or sell (if the trade is executed); however, you are not guaranteed that you will actually trade.
 
 -  Say you enter a limit order to buy shares at \$50.03. Your order will sit in the limit order book until a sell order executes against your trade at \$50.03.  
 
 - Similarly, a limit sell will sit in the book until a buy order executes against your sell.   
 
-What if I enter a limit order to buy at \$50.03 and the present ask is \$50.01?  Your broker will likely warn you, however if you enter the order it will immediately trigger, turn into a market order, and execute at \$50.01. A limit buy simply specifies the highest price at which you will trade---you will always get the best available price when transacting.
+What if I enter a limit order to buy at \$50.03 and the present ask is \$50.01?  Your broker will likely warn you, but if you enter the order it will immediately trigger, turn into a market order, and execute at \$50.01. A limit buy simply specifies the highest price at which you will trade -- you will always get the best available price when transacting.
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
@@ -239,9 +239,9 @@ shinyUI(fluidPage(
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/limit_order_book/limit_order_book.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/limit_order_book/limit_order_book.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 - The interactive content in this presentation has used the [orderbook R package](https://cran.r-project.org/web/packages/orderbook/index.html).  Thanks to the package authors for this great tool.
 
