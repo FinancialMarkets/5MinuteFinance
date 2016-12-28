@@ -65,7 +65,7 @@ The following chart shows the direct and indirect quote for the currency you cho
 
 -  The direct quote is the amount of USD required for a unit of foreign currency. 
 
--  Thie indirect quote is the amount of foreign currency required for a unit of USD.  
+-  The indirect quote is the amount of foreign currency required for a unit of USD.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
