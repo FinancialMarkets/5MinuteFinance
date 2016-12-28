@@ -14,7 +14,7 @@ smaller: true
 
 The basic idea of the CAPM is this: *A stock is more risky the more its performance is correlated with the other stocks you hold*.
 
--  The CAPM builds on (Markowitz portfolio optimization)[https://micfm.shinyapps.io/markowitz], by assuming all investors will hold the market portfolio.  
+-  The CAPM assumes all investors will hold the market portfolio.  
 
 -  If all investors hold the market portfolio, then an asset's risk is simply the amount the asset contributes to the risk of the overall market portfolio.
 
@@ -22,7 +22,7 @@ The basic idea of the CAPM is this: *A stock is more risky the more its performa
 
 ## The Following App
 
-In the following app the returns on stock 1 are fixed.  The expected returns are 10\% on both stock 1 and 2.
+In the following app, the returns on stock 1 are fixed.  The expected returns are 10\% on both stock 1 and 2.
 
 You can change the returns on stock 2 so that is has a -1, 0, or 1 correlation with stock 1.  Look at the result of your choice on the variation in portfolio returns.
 
@@ -91,11 +91,11 @@ legend("topright", c("Portfolio of Stock 1 & 2"), col = c(1), lwd = c(2), lty = 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## What Does this Mean for Return?
+## What Does This Mean for Return?
 
 If a stock lowers our portfolio risk, we won't require too high of a return from that stock.  
 
-On the other hand, if a stock raises our portfolio risk, we'll ask for more return.
+On the other hand, if a stock raises our portfolio risk, we'll ask for more return to compensate us for taking on the additional risk.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -114,7 +114,7 @@ The following app will calculate a Beta coefficient for any stock you choose usi
 
 - On what type of stock will you tend to require a higher return?
 
-- You can find the beta of entire stock sectors by putting in Exchange Traded Fund (ETF) tickers.
+- You can find the beta of entire stock sectors by putting in sector-specific Exchange Traded Fund (ETF) tickers.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -165,8 +165,8 @@ print(p + stat_smooth(method = "lm", se = TRUE))
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/The_CAPM/capm1.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/The_CAPM/capm1.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
