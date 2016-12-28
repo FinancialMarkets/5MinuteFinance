@@ -13,11 +13,11 @@ runtime: shiny
 
 ## What are the Greeks?
 
-Broadly, the Greeks measure the sensitivity of an option's premium to changes in the underlying variables.
+Broadly, the Greeks measure the sensitivity of an option's premium to changes in the underlying variables. They are necessary for determining how to properly hedge a portfolio and are therefore important for risk management.
 
--  In this presentation we'll cover Greeks in the [Black-Scholes](https://micfm.shinyapps.io/black_scholes) world.  This means we are assuming options are European on a non-dividend paying stock.  It also assumes the underlying stock follows a geometric Brownian motion process.
+-  In this presentation we'll cover Greeks in the [Black-Scholes](https://micfm.shinyapps.io/black_scholes) world.  This means we are assuming options are European on a non-dividend paying stock.  It also assumes the underlying stock follows a geometric Brownian motion process (e.g., a random walk).
 
--  This means the underlying variables are the: stock price; volatility; risk-free rate; time.
+-  This means the underlying variables are the follwing: the stock price, volatility, the risk-free rate, and time.
 
 -  Note, each Greek (being a partial derivative of the Black-Scholes equation) assumes all other variables remain constant.  The Black-Scholes equation for the premium of a European call option is shown on the next slide.
 
@@ -384,7 +384,7 @@ Suppose the Gamma of a call option on a stock is 0.03.
 
 -  This means that a \$1 increase in the stock's price will increase the Delta of the option by 0.03.
 
-To create a Gamma neutral portfolio, you'll have to trade in an option on the underlying---or some derivative which is not linearly related to the underlying.
+To create a Gamma-neutral portfolio, you'll have to trade in an option on the underlying stock -- or some derivative which is not linearly related to the underlying stock.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -1538,8 +1538,8 @@ Firstly, the Black-Scholes model relies on an replication argument.  We replicat
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/greeks/greeks.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/greeks/greeks.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
