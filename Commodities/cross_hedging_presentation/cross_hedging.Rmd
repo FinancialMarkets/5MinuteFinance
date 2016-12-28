@@ -19,17 +19,17 @@ Futures and forwards both allow for purchase or sale of a commodity at a set pri
 
 Forwards: 
 
-- May be customized in terms of size, delivery date, and delivery location.
+- May be customized in terms of size, delivery date, and delivery location
 
-- Counterparty risk, no margin required.
+- Counterparty risk, no margin required
 
 Futures:
 
-- Standardized forwards.
+- Standardized forwards
 
-- Cleared on exchange, margin required.
+- Cleared on exchange, margin required
 
-Standardization leads to greater volume of trading. 
+Standardization leads to greater volume of trading
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -40,7 +40,7 @@ Say we will produce a barrel of oil in 1 month. The price of oil today is \$70/b
 
 - Our risk is that the price of oil will fall over the month (we are naturally long crude oil).
 
-- So we sell barrel of oil one month forward (take a short position in a futures contract).  
+- So we sell our barrel of oil one month forward (take a short position in a futures contract).  
 
 - This guarantees *today* the price we will receive for our oil in one month.
 
@@ -50,15 +50,15 @@ Say we will produce a barrel of oil in 1 month. The price of oil today is \$70/b
 
 The hedge is never perfect, however. Consider that in our crude oil example we may not be able to enter into a contract for the same:  
 
-- delivery point. 
+- Delivery point
 
-- delivery date. 
+- Delivery date
 
 This creates a difference *between the price of oil in the forward contract* we are using to hedge *and the spot price* of the barrel of oil we are hedging.  
 
-- This difference is called 'the basis'.  
+- This difference is called **the basis**.
 
-- The risk that the prices diverge is called 'basis risk'. 
+- The risk that the prices diverge is called **basis risk**.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -146,11 +146,11 @@ renderDygraph({
 
 ## Closing Out the Hedge
 
-If we won't deliver the crude to fulfill the contract, due to differing delivery points and dates, then we must:
+If, due to differing delivery points and dates, we won't deliver the crude to fulfill the contract, then we must:
 
-- Buy the forward contract back prior to expiration.
+- Buy the forward contract back prior to expiration
 
-- Deliver on the spot market.  
+- Deliver on the spot market  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -170,14 +170,14 @@ Now, imagine that when we close out the contract in one month, by buying the con
 
 ## The Basis: More Examples
 
-Say, $S_0 = \$70$, $F_{0,1} = \$68$, $S_1 = \$65$, and $F_1 = \$63$.  
+Say that $S_0 = \$70$, $F_{0,1} = \$68$, $S_1 = \$65$, and $F_1 = \$63$.  
 
 - Our effective selling price is: $S_1 - \Delta F = \$65 + \$3 = \$68$
 
 - Our basis went from \$2 to \$2.  
 
 
-Say, $S_0 = \$70$, $F_{0,1} = \$68$, $S_1 = \$68$, and $F_1 = \$60$.  
+Say that $S_0 = \$70$, $F_{0,1} = \$68$, $S_1 = \$68$, and $F_1 = \$60$.  
 
 - Our effective selling price is: $S_1 - \Delta F = \$68 + \$8 = \$76$
 
@@ -187,7 +187,7 @@ Say, $S_0 = \$70$, $F_{0,1} = \$68$, $S_1 = \$68$, and $F_1 = \$60$.
 
 ## Basis Risk
 
-From the above we see our basis risk is caused by the spot price decreasing by more than the forward price.
+From the above, we see our basis risk is caused by the spot price decreasing by more than the forward price.
 
 - If we are purchasing futures at time 0 as a hedge, then our risk is the inverse. 
 
@@ -195,13 +195,13 @@ From the above we see our basis risk is caused by the spot price decreasing by m
 
 ## Cross Hedging
 
-Now, say we will deliver 1000 gallons of kerosene to a delivery point in Oregon.   
+Now, imagine that we will deliver 1,000 gallons of kerosene to a delivery point in Oregon.   
 
 - Given a lack of liquidity in kerosene futures and forward contracts, you may be forced to hedge kerosene with another more liquid futures contract.  
 
 -  Likely candidates with heavily traded futures are: RBOB Gasoline (ticker: RB), Heating Oil (HO), Crude Oil (CL). 
 
-Hedging an asset with a similar (through not the same) asset is referred to as cross hedging.    
+Hedging an asset with a similar (through not the same) asset is referred to as **cross hedging**.    
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -217,11 +217,11 @@ Now our basis risk is driven by different factors:
 
 ## Choosing Amounts to Hedge
 
-If we are to hedge 1000 gallons of kerosene with, say, gasoline, then should we sell 1000 gallons of gasoline?
+If we are to hedge 1,000 gallons of kerosene with, say, gasoline, then should we sell 1,000 gallons of gasoline?
 
 - What if gasoline price changes are twice as volatile as kerosene price changes?  Then with a correlation of 1, every time kerosene increases by \$1 then gasoline will increase by \$2.  
 
-- In this case it would make sense to sell 500 gallons of gasoline to hedge 1000 gallons of kerosene. 
+- In this case it would make sense to sell 500 gallons of gasoline to hedge 1,000 gallons of kerosene. 
 
 - What if the correlation is only 0.5?  Then we should hedge with even less gasoline because it is not as good of a hedge.  
 
@@ -235,7 +235,7 @@ A common way to choose the optimal hedge ratio ($h$) is to find the $h$ which mi
 
 - In our case, where we are naturally long the commodity and are short futures, the change in the value of out hedged position is $\Delta S - h \Delta F$ where $h$ is the hedge ratio.  
 
-- To minimize this we can use unconstrained optimization from basic calculus.
+- To minimize this, we can use unconstrained optimization from basic calculus.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -255,7 +255,7 @@ $h = \rho \frac{\sigma_S}{\sigma_F}$
 
 An optimal hedge ratio of 0.8 means we sell 8 gallons of gasoline futures for every 10 gallons of kerosene we wish to hedge.  
 
-In the next slide, try to interpret the optimal hedge ratios.  Be careful of the units of each contract (for example CL is in \$/barrel).
+In the next slide, try to interpret the optimal hedge ratios.  Be careful of the units of each contract (for example, CL is in \$/barrel).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -354,7 +354,7 @@ renderDataTable({
 
 ## Intuition
 
-The next slide will calculate the optimal hedge ratio given the standard deviation of spot and futures price changes, and the correlation coefficient.  Try to predict what effect a given change in the input will have on the optimal hedge ratio, and then make the change.  For example:
+The next slide will calculate the optimal hedge ratio given the standard deviation of spot and futures price changes, as well as the correlation coefficient.  Try to predict what effect a given change in the input will have on the optimal hedge ratio, and then make the change.  For example:
 
 - If you increase the standard deviation of the futures price changes, what will happen to the optimal hedge ratio?  
 - If you decrease the correlation coefficient, what will happen to the optimal hedge ratio?  
@@ -393,8 +393,8 @@ renderPlot({
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Commodities/cross_hedging_presentation/cross_hedging.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Commodities/cross_hedging_presentation/cross_hedging.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
