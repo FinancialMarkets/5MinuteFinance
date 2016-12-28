@@ -15,7 +15,7 @@ runtime: shiny
 
 Broadly, the Greeks measure the sensitivity of an option's premium to changes in the underlying variables. They are necessary for determining how to properly hedge a portfolio and are therefore important for risk management.
 
--  In this presentation we'll cover Greeks in the [Black-Scholes](https://micfm.shinyapps.io/black_scholes) world.  This means we are assuming options are European on a non-dividend paying stock.  It also assumes the underlying stock follows a geometric Brownian motion process (e.g., a random walk).
+-  In this presentation we'll cover Greeks in the [Black-Scholes](https://micfm.shinyapps.io/black_scholes) world.  This means we are assuming options are European on a non-dividend paying stock.  It also assumes the underlying stock follows a geometric Brownian motion process.
 
 -  This means the underlying variables are the follwing: the stock price, volatility, the risk-free rate, and time.
 
