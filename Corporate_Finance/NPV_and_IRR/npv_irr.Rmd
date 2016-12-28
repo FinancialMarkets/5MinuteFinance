@@ -21,7 +21,7 @@ In this interactive presentation we'll cover the most widely used investment dec
 
 ## Net Present Value (NPV)
 
-*Net Present Value* is the sum of the investment's expected cash inflows and outflows discounted back to their present value at a risk adjusted rate. If the Net Present Value is greater than $0, the project is accepted. Otherwise the project is rejected. 
+*Net Present Value* is the sum of the investment's expected cash inflows and outflows discounted back to their present value at a risk adjusted rate. If the Net Present Value is greater than \$0, the project is accepted. Otherwise the project is rejected. 
 
 The Net Present Value is defined by its: 
 
@@ -43,6 +43,7 @@ NPV can be interpreted as the amount the market value of the firm will increase/
 ## 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
 sidebarLayout(
     sidebarPanel(
         inputPanel(
@@ -61,6 +62,7 @@ sidebarLayout(
         })
     )
 )
+#}}}
 ```
 
 
@@ -97,14 +99,19 @@ renderPlot({
 
 
 <!-- use code from here to make a version of app which will read data from file:  http://stackoverflow.com/questions/29253481/data-specific-selectinput-choices-in-rmd-shiny/29255723#29255723 -->
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
-## Mutually Exclusive \& Conventional CFs 
+## Choosing Between Projects
 
-When the accept/reject decision on one project does not affect another (projects are *mutually exclusive*), and  the project has negative cash flows followed by all positive cash flows (*conventional CFs*), then NPV and IRR will lead to the same accept/reject decision, i.e. $NPV \iff IRR$
+When the accept/reject decision on one project does not affect another project, these projects are known as **independent**.  If accepting one project means you must reject another, then these projects are **mutually exclusive**. 
 
--  If you must rank projects (projects are *not* mutually exclusive) or cash flows are unconventional, then use *NPV*.  *NPV* will generate the correct decision, though *IRR* may not.
+If a project has negative cash flows followed by all positive cash flows, then the project's cash flows are known as **conventional**
+
+-  If two projects are independent and have conventional cash flows, then NPV and IRR will lead to the same accept/reject decision, i.e. $NPV \iff IRR$
+
+-  However, if you must rank projects, and projects are either mutually exclusive or cash flows are not conventional, then use NPV.  NPV will generate the correct decision, though IRR may not.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
