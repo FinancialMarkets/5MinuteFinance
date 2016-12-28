@@ -14,9 +14,9 @@ Risk is a statement about the likelihood of adverse events.  There are differing
 
 - The average return deviation from the mean (standard deviation)
 
-- The expected loss if the return over a period is less than 10\%.
+- The expected loss if the return over a period is less than 10\%
 
-- The probability you lose over $\$X$ in a given month.
+- The probability you lose over $\$X$ in a given month
 
 To find these values, we'll need some description of how our security (or portfolio) behaves.  
 
@@ -30,21 +30,23 @@ We'll either have to:
 
 1.  Assume a particular PDF and estimate the parameters which describe the PDF.
 
-2.  Use an empirical PDF---a PDF that fits what has happened over some past period.
+2.  Use an empirical PDF -- that is, a PDF that fits what has happened over some past period.
 
-Either way we must use historical data, or our judgment, to describe future event probabilities.
+Either way we must use historical data, or our own judgment, to describe future event probabilities.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## The Normal Distribution
 
-The most often assumed PDF is the normal distribution.
+The most-commonly assumed PDF is the normal distribution.
 
 - This is partly for mathematical ease: the sum of normals is normal.
 
+
+
 The normal distribution is completely determined by its mean and variance (or standard deviation).
 
-- So once we determine these values, we can state the probability of a return being less than any value.
+- Once we determine these values, we can state the probability of a return being less than any value.
 
 - Note, the normal distribution is symmetric about its mean value.
 
@@ -64,11 +66,11 @@ The standard deviation is the average *squared* deviation from the mean.
 
 ## Allowing Asymmetry
 
-What if return distributions are not symmetric?  Say the distribution is left-skewed.
+What if return distributions are not symmetric?  Say, for instance, that the distribution is left-skewed.
 
 - Then the average negative return is greater than the average positive return.
 
-- In this case using a measure like standard deviation would understate risk.
+- In this case, a measure like standard deviation would understate risk.
 
 For non-symmetric distributions, the act of squaring loses important information about risk.
 
@@ -78,7 +80,7 @@ For non-symmetric distributions, the act of squaring loses important information
 
 ## What about Fat Tails?
 
-Fat tails (excess kurtosis) is also a salient feature of asset returns.
+Fat tails (excess kurtosis) are also a salient feature of asset returns.
 
 - A normal distribution has a kurtosis of 3.  A distribution has fat tails if the kurtosis is greater than 3.
 
@@ -92,7 +94,7 @@ In the following app we'll calculate and plot the empirical PDF of the stock's r
 
 - If the empirical distribution seems to lean (is skewed) relative to the normal, then standard deviation is a poor measure of risk.
 
-- Similarly, pay attention to the difference between the two distributions near the tails.
+- Similarly, we need to pay attention to the difference between the two distributions near the tails.
 
 <!---
 On the second tab the results of hypothesis tests for skewness ad kurtosis are returned.
@@ -102,11 +104,11 @@ On the second tab the results of hypothesis tests for skewness ad kurtosis are r
 
 ## Empirical vs Normal Distribution
 
-- Take a look at Twitter (TWTR) over 2014.  The stock's returns exhibit both negative skewness and kurtosis.  This means the standard deviation would have understated risk. 
+- Take a look at Twitter ([TWTR](https://www.bloomberg.com/quote/TWTR:US)) over 2014.  The stock's returns exhibit both negative skewness and kurtosis.  This means the standard deviation would have understated risk. 
 
-- Looking at Apple (AAPL) from 1/2015 through 4/2015 shows a symmetric, fairly normal, distribution -- the standard deviation would have been a good measure of risk.
+- Looking at Apple ([AAPL](https://www.bloomberg.com/quote/AAPL:US)) from 1/2015 through 4/2015 shows a symmetric, fairly normal, distribution -- the standard deviation would have been a good measure of risk.
 
-- GE from 1/2015 to 4/2015 shows positive skewness.  The standard deviation would have overstated risk.
+- [GE](https://www.bloomberg.com/quote/GE:US) from 1/2015 to 4/2015 shows positive skewness.  The standard deviation would have overstated risk.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -203,15 +205,15 @@ VaR still requires an assumption concerning the returns' PDF.
 
 - We can again assume a normal, empirical, or other distribution. 
 
-- If we assume a normal, then VaR is simply a function of the mean and standard deviation.  
+- If we assume a normal distribution, then VaR is simply a function of the mean and standard deviation.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## VaR App
 
-The following app will calculate the \% VaR for any stock over any tome interval you choose.  
+The following app will calculate the \% VaR for any stock over any time interval you choose.  
 
-- Click the "Normal" and "Empirical" tabs to see the VaR assuming a normal PDF (using the historical mean and standard deviation), and a PDF fit to historical data. 
+- Click the *Normal* and *Empirical* tabs to see the VaR that assumes a normal PDF (using the historical mean and standard deviation) and a PDF fit to historical data. 
 
 - Can you find stocks for which the normal and empirical VaR are different?  Is the difference in VaR greater if you use 1\% VaR versus 5\% VaR?
 
@@ -290,18 +292,18 @@ tabsetPanel(
 
 ## Continuing from Here
 
-In the following presentations on risk we'll cover topics such as:
+In the following [presentations on risk](http://www.5minutefinance.org/topics/risk) we'll cover topics such as:
 
-- The extent to which the parameters of the PDF change over time (and particularly during a financial crisis).
+- The extent to which the parameters of the PDF change over time (and particularly during a financial crisis)
 
-- Measures specifically designed for asymmetric distributions, such as *Lower Partial Standard Deviation*.
+- Measures specifically designed for asymmetric distributions, such as *Lower Partial Standard Deviation*
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Risk/what_is_risk/risk.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Risk/what_is_risk/risk.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
