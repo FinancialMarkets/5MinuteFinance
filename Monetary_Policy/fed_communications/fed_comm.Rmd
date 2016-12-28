@@ -16,25 +16,28 @@ width: 100%;
 
 ## The FOMC
 
-The FOMC is the committee within the Fed which controls monetary policy.
+The Federal Open Market Committee (FOMC) is the committee within the Federal Reserve of the United States -- or just, the Fed, as it is often called -- which controls monetary policy.
 
 - Monetary policy is the control of the money supply (often through targeting an interest rate). 
-- The stated goal of our monetary policy is 'maximum employment and price stability'. 
+- The stated goal of U.S. monetary policy is "maximum employment and price stability."
 - The FOMC is also concerned with other real economic variables (GDP, production, etc). 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## FOMC Members
 
-The FOMC is comprised of the 7 members of the Board of Governors, the President of the New York Fed, and the Presidents of 4 Fed District Banks.  The Fed District Bank members rotate.
+The FOMC is comprised of the following:
 
-- The Chairperson of the Board of Governors serves and the Chairperson of the FOMC.
+-  The seven members of the Board of Governors
+-  The President of the New York Fed
+-  The Presidents of four Fed District Banks
 
+The Fed District Bank members rotate, and the Chairperson of the Board of Governors serves and the Chairperson of the FOMC.
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Why is the FOMC Important 
+## Why is the FOMC Important? 
 
 All asset values in the economy are simply the present value of the expected cash flows (where the discount rate reflects the risk in the cash flows).  
 
@@ -42,17 +45,16 @@ All asset values in the economy are simply the present value of the expected cas
 
 - Conversely, a lower interest rate lowers the discount rate on all assets and raises asset values.
 
-Thus in FOMC communications, the market listens closely for any hints of future interest rate changes as an indicator of future asset values.
-
+Thus, when the FOMC issues communications, the market listens closely for any hints of future interest rate changes as an indicator of future asset values.
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## FOMC Meetings
 
-The FOMC holds 8 meeting per year.  
+The FOMC holds eight meeting per year.  
 
-- About 2 weeks prior to each meeting the FOMC members receive the *Beige Book* for each of the Fed's 12 districts.  The Beige Book contains a report on regional economic conditions.
+- About two weeks prior to each meeting, the FOMC members receive the *Beige Book* for each of the Fed's 12 districts.  The Beige Book contains a report on regional economic conditions.
 
 - Each FOMC meeting starts with staff member presentations on current economic conditions.  
 
@@ -64,23 +66,25 @@ The FOMC holds 8 meeting per year.
 
 ## FOMC Statement
 
-The committee then issues a statement summarizing its outlook and decision. 
+After the vote, the committee issues a statement summarizing its outlook and decision. 
 
-- Since 2007 the committee also votes on the statement.
+- Since 2007, the committee also votes on the statement.
 
-- Prior to 2007, the FOMC's language was often vague and difficult for the layperson to interpret.  Since, the FOMC has tried to make its language more clear. 
+- Prior to 2007, the FOMC's language was often vague and difficult for the layperson to interpret.  
+
+- Recently, though, the FOMC has tried to make its language more clear. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Implementation
 
-The FOMC then sends its monetary policy decision to the trading desk at the FRB New York in the form of a statement called the *policy directive*. 
+The FOMC then sends its monetary policy decision to the trading desk at the Federal Reserve Bank of New York in the form of a statement called the *policy directive*. 
 
 - This directive contains the target Federal Funds rate.
 
-- The trading desk then buys or sells Treasury securities (open market operations) to target the rate. The desk has also traded other securities (such as mortgage-backed securities) in support of Quantitative Easing.
+- The trading desk then buys or sells Treasury securities (*open market operations*) to target the rate. The desk has also traded other securities (such as mortgage-backed securities) in support of Quantitative Easing.
 
-- Open market operations continue through the year, and it is just the targets which change with each policy directive.
+- Open market operations continue through the year; only the targets change with each policy directive.
 
 - The FOMC can issue policy directives between FOMC scheduled meetings if necessary.
 
@@ -189,7 +193,7 @@ sidebarLayout(
 			   #                            actionButton("update", "Change"),
 			   sliderInput("freq", 
 				       "Minimum Frequency:", 
-				       min = 1,  max = 10, value = 5),
+				       min = 1,  max = 10, value = 3),
 			   sliderInput("max", 
 				       "Maximum Number of Words:", 
 				       min = 1,  max = 30,  value = 25)
@@ -281,7 +285,7 @@ sidebarLayout(
 
 Historically the FOMC language was intentionally vague. They have recently tried to make it more clear and meaningful.  
 
--  The following app allows you to choose some common FOMC phrases and see its translation in everyday terms.  
+The following app allows you to choose some typical FOMC phrases and see their translation into everyday terms.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -331,8 +335,8 @@ text(1.05, 0.8, "Meaning:", cex = 1.75)
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Monetary_Policy/fed_communications/fed_comm.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Monetary_Policy/fed_communications/fed_comm.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
