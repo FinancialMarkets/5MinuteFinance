@@ -17,13 +17,13 @@ When you own a company's stock, you have a residual claim on the company's incom
 
 - This is unlike bondholders, who are promised a set payment. 
 
-- Stock also represents ownership, which affords the holder rights such as electing board members, and voting on corporate actions.
+- Stock also represents ownership, which affords the holder rights such as electing board members and voting on corporate actions.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Limited Liability
 
-As a stock holder you are not liable for the company's debts.
+As a stockholder you are not liable for the company's debts.
 
 -  This means if the company goes bankrupt, the unpaid bondholders or other claimants cannot try to get the money from you.
 
@@ -33,7 +33,7 @@ As a stock holder you are not liable for the company's debts.
 
 ## Gains from Ownership
 
-Stockholders may gain from owning stock by receiving dividends, and through price appreciation.
+Stockholders may gain from owning stock by receiving dividends and through price appreciation.
 
 -  Dividends are payments the corporation makes to stockholders using *after-tax* income.  Companies are not obligated to pay dividends.
 
@@ -43,27 +43,25 @@ Stockholders may gain from owning stock by receiving dividends, and through pric
 
 ## Trading Stock
 
-Stock is traded on many exchanges across the US.
+Stock is traded on many exchanges across the United States. 
 
--  There are [18 national securities exchanges](http://www.sec.gov/divisions/marketreg/mrexchanges.shtml) registered with the US Securities and Exchange Commission.
+-  There are [18 national securities exchanges](http://www.sec.gov/divisions/marketreg/mrexchanges.shtml) registered with the U.S. Securities and Exchange Commission.
 
 - Many of these exchanges are Electronic Communication Networks (ECNs), which are located in a computer server. 
 
-- The best quotes across all exchanges are reported in the "Consolidated Tape", which ensures investors receive the best price across all exchanges when they buy or sell stock.
+- The best quotes across all exchanges are reported in the 'Consolidated Tape,' which ensures investors receive the best price across all exchanges when they buy or sell stock.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Stock Quotes
 
-Stocks are often identified by a specific ticker symbol, such as <code>CL</code> for the Colgate-Palmolive Company.  This ticker is unique to Colgate-Palmolive across all US stock exchanges.
-
--  However <code>CL</code> means the light sweet crude oil contract on the New York Mercantile Exchange.  So <code>CL</code> can have different meanings on other types of exchanges.
+Stocks are often identified by a specific ticker symbol, such as <code>CL</code> for the Colgate-Palmolive Company.  This ticker is unique to Colgate-Palmolive across all U.S. *stock exchanges*. But please note that on the New York Mercantile Exchange (which is a commodities exchange) <code>CL</code> means a light sweet crude oil contract.  So <code>CL</code> can have different meanings on other types of exchanges.
 
 When you see a stock ticker with something like: <code>CL 67.04 +0.04</code> it means Colgate-Palmolive last traded for \$67.04 per share, which is 4 cents higher than the last trade in Colgate-Palmolive yesterday.  The last trade in Colgate-Palmolive yesterday is known as yesterday's *closing price*.  The last trade could have taken place on any exchange. 
 
-- We get stock quotes, like those on the next slide, from the consolidated tape.
+- We get stock quotes from the consolidated tape. 
 
-- Input tickers and get the most recent quotes.
+- On the next slide, you can input ticker symbols to compare the stock of different companies. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -94,13 +92,13 @@ div(renderDataTable({
 
 ## Stock Analysis
 
-Methods to predict future stock performance generally fall into two categories, fundamental and technical analysis.
+Methods to predict future stock performance generally fall into two categories: fundamental analysis and technical analysis.
 
 - Fundamental analysis uses financial statement data to identify companies which are undervalued or are likely to grow.
 
 - Technical analysis uses past prices to predict future prices.
 
-- An interactive chart with stock price, volume, and a choice of some common technical analysis indicators is on the next slide.
+The next slide features an interactive chart with stock price, volume, and a choice of some common technical analysis indicators.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -168,7 +166,7 @@ Stock has historically been one of the best performing asset classes.  While sto
 
 - Moving the mouse over the chart at any date will tell you the stock price on that date.
 
-- You can also change the date window using the selector at the bottom, or by left-clicking and dragging on the chart itself.
+- You can also change the date window using the selector at the bottom or by left-clicking and dragging on the chart itself.
 
 - You can plot the S&P 500 index by using <code>^GSPC</code> as the ticker.
 
@@ -198,8 +196,8 @@ renderDygraph({
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/stock/stock.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/stock/stock.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
