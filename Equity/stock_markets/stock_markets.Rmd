@@ -324,7 +324,7 @@ The benefit of sending an order to a dark pool is that you may be able to hide l
 
 Despite trading in a dark pool, you should still receive no worse than the best bids and offers among public exchanges.  
 
--  Dark pools should not (and they say they don't) execute trades at prices worse than the NBBO -- the national best bid and offer. However, they don't report their trades with the accuracy required to check their claim. 
+-  However, trade data from dark pools are difficult to obtain, and therefore we are constrained in our ability to verify that trades in dark pools are not at prices worse than available from public exchanges. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
