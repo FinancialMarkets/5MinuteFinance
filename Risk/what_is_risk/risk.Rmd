@@ -10,7 +10,7 @@ smaller: true
 
 ## Risk
 
-Risk is a statement about the likelihood of adverse events.  There are differing ways to classify 'adverse event' which leads to differing measures and ways of stating risk, such as:
+Risk is a statement about the likelihood and magnitude of adverse events.  There are differing ways to classify 'adverse event' which leads to differing measures and ways of stating risk, such as:
 
 - The average return deviation from the mean (standard deviation)
 
@@ -217,6 +217,8 @@ The following app will calculate the \% VaR for any stock over any time interval
 
 - Can you find stocks for which the normal and empirical VaR are different?  Is the difference in VaR greater if you use 1\% VaR versus 5\% VaR?
 
+-  VaR is most useful for portfolios, or an entire book of business.  In the following app the default ticker is SPY, an exchange traded fund which tracks the S&P 500 index.
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Value at Risk (VaR)
@@ -226,7 +228,7 @@ The following app will calculate the \% VaR for any stock over any time interval
 sidebarLayout(
 	      sidebarPanel(
 
-			   textInput("ticker1", label = "Stock Ticker", value = "XOM"),
+			   textInput("ticker1", label = "Stock Ticker", value = "SPY"),
 			   dateRangeInput("dates1", label = "Date Range", start = "2015-01-01", end = Sys.Date()),
 			   sliderInput("loss", label = "% VaR", max = .2, min = 0.01, value = .05, step = .01)
 
@@ -302,7 +304,7 @@ In the following [presentations on risk](http://www.5minutefinance.org/topics/ri
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Risk/what_is_risk/risk.Rmd) to see the code and collaborators for this presentation.
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Risk/what_is_risk/risk.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Risk/what_is_risk/risk.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
