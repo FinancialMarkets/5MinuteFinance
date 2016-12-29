@@ -31,7 +31,7 @@ smaller: true
 
 The first modern well was drilled in 1859 near Titusville in western Pennsylvania.
 
-- Around the same time oil was being produced (first by digging then by drilling) in Ontario, Canada.
+- Around the same time, oil was being produced (first by digging then by drilling) in Ontario, Canada.
 
 - Much of this oil was refined into kerosene.
 
@@ -61,7 +61,7 @@ The Texas oil boom was kicked off in 1901, when oil was found in the Spindletop 
 
 Crude oil prices didn't fluctuate much prior to 1973.
 
-- A set of US oil companies held the price stable with production controls. These *Seven Sisters*, as they were known, were Anglo-Persian Oil (now BP), Gulf Oil, Jersey Standard Oil (now Exxon), Royal Dutch Shell, Standard Oil of California (now Chevron), Standard Oil of New York (Socony), and Texaco. 
+- A set of U.S. oil companies held the price stable with production controls. These *Seven Sisters*, as they were known, were Anglo-Persian Oil (now BP), Gulf Oil, Jersey Standard Oil (now Exxon), Royal Dutch Shell, Standard Oil of California (now Chevron), Standard Oil of New York (Socony), and Texaco. 
 
 - After the Yom Kippur war in 1973, control of crude oil prices transferred to the Organization of the Petroleum Exporting Countries (OPEC), an inter-governmental organization started in 1960 by Iran, Iraq, Kuwait, Saudi Arabia and Venezuela.  Prices have since become more volatile. 
 
@@ -71,23 +71,23 @@ Crude oil prices didn't fluctuate much prior to 1973.
 
 Today, three types of oil serve as global benchmarks for other oil prices:
 
-1.  West Texas Intermediate (WTI):  US price benchmark.
+1.  West Texas Intermediate (WTI): the U.S. price benchmark
 
-2.  Brent North Sea:  European price benchmark.
+2.  Brent North Sea: the European price benchmark
 
-3.  Dubai: Asian price benchmark. 
+3.  Dubai: the Asian price benchmark
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Crude Oil Grades
 
-Crude oil is graded by density (light/heavy) and sulphur (sweet/sour) content.  
+Crude oil is graded by density (light/heavy) and sulphur content (sweet/sour).  
 
 - Low density (light) and low sulphur (sweet) is cheaper to refine than more heavy and sour crude oil.
 
 -  For example, both WTI and Brent are light sweet crudes (but WTI is lighter and sweeter), whereas Dubai is medium sour.
 
-- For this reason, historically (prior to 2010), WTI has traded at a premium to Brent.  Since 2010, the difference in grade has been more than offset by the supply of crude from North Dakota and the western Canadian provinces. 
+- For this reason, historically (that is, prior to 2010), WTI has traded at a premium to Brent.  Since 2010, the difference in grade has been more than offset by the supply of crude from North Dakota and the western Canadian provinces. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -116,17 +116,17 @@ renderDygraph({
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## US Crude Oil Production
+## U.S. Crude Oil Production
 
-The US produces about 8 million barrels of crude per day.  
+The U.S. produces about 8 million barrels of crude per day.  
 
--  US production has increased since the introduction of technology to extract tight oil (oil from shale formations such as the Bakken formation in western North Dakota).
+-  U.S. production has increased since the introduction of technology to extract tight oil (oil from shale formations such as the Bakken formation in western North Dakota).
 
 <img src="fracking.jpg" alt="Drawing" style="width: 300px;" text-align="center" />
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## US Crude Oil Production
+## U.S. Crude Oil Production
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, cache = FALSE}
 #{{{
@@ -154,19 +154,19 @@ renderDygraph({
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## US Crude Oil Consumption
+## U.S. Crude Oil Consumption
 
-The US consumes about 18 million barrels of crude oil per day.  
+The U.S. consumes about 18 million barrels of crude oil per day.  
 
 - Crude oil is primarily refined into gasoline, diesel fuel, and heating oil.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## US Crude Export Restrictions
+## U.S. Crude Export Restrictions
 
-Crude oil exports are restricted by the 'Energy Policy and Conservation Act' of 1975, which directs the President “to promulgate a rule prohibiting the export of crude oil” produced in the US.  This act was passed after the OPEC embargo.
+Crude oil exports are restricted by the 'Energy Policy and Conservation Act' of 1975, which directs the President “to promulgate a rule prohibiting the export of crude oil” produced in the U.S.  This act was passed after the OPEC embargo.
 
-- Given the recent production increase in the US, there is pressure for the President to allow increased exports. 
+- Given the recent production increase in the U.S., there is pressure for the President to allow increased exports. 
 
 <!---  crude oil derived from fields under the State waters of Alaska's Cook Inlet; (2) Alaskan North Slope crude oil; (3) certain domestically produced crude oil destined for Canada; (4) shipments to U.S. territories; and (5) California crude oil to Pacific Rim countries. -->
 
@@ -174,17 +174,12 @@ Crude oil exports are restricted by the 'Energy Policy and Conservation Act' of 
 
 ## Crude Oil and the Macroeconomy
 
-In a study from the year 2000, the International Monetary Fund (IMF) estimated a \$5 increase in crude oil prices reduces global economic growth by 0.3\% in the following year. 
+In a study from the year 2000, the International Monetary Fund (IMF) [estimated](https://www.imf.org/external/pubs/ft/oil/2000/oilrep.PDF) a \$5 increase in crude oil prices reduces global economic growth by 0.3\% in the following year. 
 
 Also, since crude oil is used in the transport and production of many goods, it is a prominent driver of inflation.
 
--  Accordingly, it is closely watched by the Federal Reserve when setting monetary policy.  
+Accordingly, it is closely watched by the Federal Reserve when setting monetary policy.  
 
-
-
-Reference: 
-
--  [International Monetary Fund (2000). "The impact of higher oil prices on the global economy." Research department.](www.imf.org/external/pubs/ft/oil/2000/oilrep/pdf)
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -192,26 +187,19 @@ Reference:
 
 Sharp increases in oil prices tend to lower stock prices. 
 
-- Research has shown that market participants accurately estimate the effect of higher oil prices on firm cash flows, and so stock prices fall accordingly.  
+- Research [has shown](http://econpapers.repec.org/article/eeejfinec/v_3a89_3ay_3a2008_3ai_3a2_3ap_3a307-327.htm) that market participants accurately estimate the effect of higher oil prices on firm cash flows, and so stock prices fall accordingly.  
 
-- Another study shows oil may even be able to predict *future* stock market returns.  
+- Other work [has concluded](http://econpapers.repec.org/article/blajfinan/v_3a51_3ay_3a1996_3ai_3a2_3ap_3a463-91.htm) that oil may even be able to predict *future* stock market returns.  
 
-
-
-References:
-
-- Driesprong, G. B. Jacobsen, and B. Maat (2008) "Striking oil: Another puzzle?" Journal of Financial Economics 89, 307--327.
-
-- Jones, C. M., and G. Kaul (1996). "Oil and the Stock Markets" Journal of Finance 51, 463--491.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Commodities/crude_oil_markets/oil_markets.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Commodities/crude_oil_markets/oil_markets.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
