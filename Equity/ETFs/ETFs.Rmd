@@ -14,7 +14,7 @@ ETFs are typically portfolios of stock which track an index and trade throughout
 
 -  They are like open-ended mutual funds, which have replaced active management with a strategy of passively matching an index's returns.
 
--  For example, the ticker SPY is for an ETF which matches the return (prior to fees) on the S&P 500 index. Because the find is passively managed, fees are usually very low at around 0.10% of assets per year.
+-  For example, the ticker SPY is for an ETF which matches the return (prior to fees) on the S&P 500 index. Because the fund is passively managed, fees are usually very low at around 0.10% of assets per year.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -22,7 +22,7 @@ ETFs are typically portfolios of stock which track an index and trade throughout
 
 ETFs have become very popular in the last decade.  Among their advantages over traditional mutual funds are:
 
--  ETFs can be traded throughout the day, and may be [shorted](https://micfm.shinyapps.io/short_selling_stock/) and bought on margin.  The cost of buying an ETF is the same as stock.
+-  ETFs can be traded throughout the day, and may be [shorted](http://www.5minutefinance.org/concepts/short-selling-stock) and bought on margin.  The cost of buying an ETF is the same as stock.
 -  Selling an ETF doesn't cause fund redemptions -- which can have adverse tax consequences.
   + Fund redemption fees are charges made typically by mutual fund companies to discourage investors from making short term trades
 -  ETFs have low fees -- many prominent ETFs have annual fees that are less than 0.15% of assets.
@@ -59,13 +59,13 @@ renderDygraph({
 
 ## New ETFs
 
-While the first ETFs were mainly for broad stock indexes (the NASDAQ 100, S&P 500, and the Dow Jones Industrial Average for example), their rising popularity of has spurred the creation of ETFs for a variety of underlying assets, such as:
+While the first ETFs were mainly for broad stock indexes (the NASDAQ 100, S&P 500, and the Dow Jones Industrial Average, as a few examples), their rising popularity of has spurred the creation of ETFs for a variety of underlying assets, such as the following:
 
 -  Stock sectors: Financials, Energy, etc. 
--  Commodities: Crude Oil, Gold, Natural Gas, among others.
--  Non-Stock Indexes: the VIX volatility index.
+-  Commodities: Crude Oil, Gold, Natural Gas, among others
+-  Non-Stock Indexes: the VIX volatility index
 -  'Actively managed' ETFs
--  [Leveraged ETFs](https://micfm.shinyapps.io/leveragedETFs/)
+-  [Leveraged ETFs](http://www.5minutefinance.org/concepts/leveraged-exchange-traded-funds)
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -134,9 +134,9 @@ renderDygraph({
 
 ## ETF Performance
 
-As you can see in the previous app, the difference in cumulative returns, between the ETF and the actual stock index, over 10 years is generally less than a percent.
+As you can see, the difference in cumulative returns between the ETF and the actual stock index over 10 years is generally less than a percent.
 
--  So these ETFs do a good job of matching index performance.
+In summary, these ETFs do a good job of matching index performance.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -150,8 +150,8 @@ As you can see in the previous app, the difference in cumulative returns, betwee
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/ETFs/ETFs.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/ETFs/ETFs.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
