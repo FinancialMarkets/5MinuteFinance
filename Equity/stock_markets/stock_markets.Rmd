@@ -24,7 +24,7 @@ The goal of stock markets is to facilitate the exchange of ownership of corporat
 -  Primary: an exchange of stock in which the company is a buyer or seller.  This is the market for Initial Public Offerings and Seasoned Equity Offerings.
 -  Secondary:  an exchange of stock in which the company is not involved.
 
-The secondary market is the one you see every day in the news, and the one we'll cover in this presentation.
+The secondary market is the one you see every day in the news, and it's the one we'll cover in this presentation.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -36,25 +36,25 @@ Companies want a well-functioning secondary market because it means they get hig
 
 The more money a company can raise in the primary market, the more the company can invest in real assets, research and development, and other uses.
 
--  So well-functioning secondary stock markets lead to higher levels of investment and employment, and faster economic growth.  
+So well-functioning secondary stock markets lead to higher levels of investment and employment, and faster economic growth.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## The Market Participants
 
-The market is comprised of the market makers, and those wishing to exchange stock.
+The market is comprised of the market makers and those wishing to exchange stock.
 
 -  A market maker, at all times, posts prices at which they are willing to buy (the bid) or sell (the offer or ask).
 
--  Those wishing to trade stock could be trading for themselves, or on behalf of another (in which case they are acting as a broker).
+-  Those wishing to trade stock could be trading for themselves or on behalf of another party (in which case they are acting as a broker).
 
 -  The U.S. Securities and Exchange Commission regulates stock markets.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Where Are the Markets? 
+## Where are the Markets? 
 
-Until recently, the market was a physical place.  It was the place that the market maker stood.  
+Until recently, the market was a physical place.  It was the place where the market maker was literally standing.  
 
 -  Brokers and traders who wanted to trade, say GE, would congregate around GE's market maker.
 
@@ -62,7 +62,7 @@ Until recently, the market was a physical place.  It was the place that the mark
 
 Now stocks are traded in many exchanges throughout the U.S., which means we need mechanisms to ensure investors trade at the best price across exchanges.  
 
--  Facilitating this is the central reporting of trades and quotes through the [consolidated tape system](http://www.sec.gov/answers/consolt.htm) implemented in 1976.
+The [consolidated tape system](http://www.sec.gov/answers/consolt.htm), implemented in 1976, facilitates this by establishing the central reporting of trades and quotes.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -70,9 +70,9 @@ Now stocks are traded in many exchanges throughout the U.S., which means we need
 
 Starting in 1975, the SEC began to work on a national market system.   In 2005 much of this work was consolidated into [Reg NMS](https://www.sec.gov/rules/final/34-51808.pdf), which among other things sought to:
 
--   Ensure investors were getting the best price across all exchanges for their purchase or sale of stock (known as the "Order Protection Rule").
--  Provide all investors fair access to price quotations, and to also set a limit on access fees ("Access Rule").
--  Restrict sub-penny quotations.  
+-   Ensure investors were getting the best price across all exchanges for their purchase or sale of stock (known as the "Order Protection Rule")
+-  Provide all investors fair access to price quotations, while also setting a limit on access fees ("Access Rule")
+-  Restrict sub-penny quotations
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -84,11 +84,11 @@ Reg NMS likely created unintended consequences which
 
 ## What is an Exchange Today?
 
-An exchange is a data center which houses computer servers which runs an order matching engine. A good description of an order matching system is provided by the [Chicago Stock Exchange](http://www.chx.com/trading-information/matching-system/).
+An exchange is a data center that houses computer servers which run an order-matching engine. A good description of an order matching system is provided by the [Chicago Stock Exchange](http://www.chx.com/trading-information/matching-system/).
 
-- The order matching engine is an algorithm which handles orders according to a set of rules.  Some rules are exchange specific, and some rules are the same across all exchanges. 
+- The order-matching engine is an algorithm which handles orders according to a set of rules.  Some rules are exchange specific, and some rules are the same across all exchanges. 
 
-- In essence the matching engine receives orders, maintains a ranking of orders according to a set of rules, and looks at whether it can fill the order within the NBBO.  If it cannot it doesn't execute the order.
+- In essence, the matching engine receives orders, maintains a ranking of orders according to a set of rules, and looks at whether it can fill the order within the NBBO.  If it cannot, it doesn't execute the order.
 
 There are presently [18 national securities exchanges](http://www.sec.gov/divisions/marketreg/mrexchanges.shtml) registered with the SEC (their servers are mostly located in New Jersey and Chicago).
 
@@ -98,21 +98,21 @@ There are presently [18 national securities exchanges](http://www.sec.gov/divisi
 
 There are still market makers, brokers, and investors in today's markets.
 
--  What has changed is where they communicate, and many of the rules by which they trade (such as order type and who gets to trade first).
+-  What has changed includes where/how they communicate and many of the rules by which they trade (such as order type and who gets to trade first).
 
--  Moving to purely electronic communication has also greatly increased the speed with which market participants can trade.  In fact, there are now those who specialize in speed---known as *High Frequency Traders*. 
+-  Moving to purely electronic communication has also greatly increased the speed at which market participants can trade.  In fact, there are now those who specialize in speed -- known as *High Frequency Traders*. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Market Location Interactive Map
 
--  The following map shows locations of the exchanges -- note this is the location of the servers, and not the corporate headquarters.   
+-  The following map shows locations of the exchanges -- note this is the location of the servers, not the corporate headquarters.   
 
 -  You can zoom in and move the map with your mouse to see more detail. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Exchanges
+## Location of U.S. Exchange Servers
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
@@ -229,7 +229,7 @@ renderLeaflet({
 
 Because it takes time for information to travel from one exchange to another, orders at one exchange are not instantaneously reflected at another exchange.  
 
-- Exchanges which are closer to each other will tend to have more similar quotes (at the millisecond and microsecond level).
+-  Exchanges which are closer to each other will tend to have more similar quotes (at the millisecond and microsecond level).
 
 -  This means we can see exchanges as a set of linked groups, where each group has a similar information content. 
 
@@ -237,9 +237,9 @@ Because it takes time for information to travel from one exchange to another, or
 
 ## Exchange Network
 
-- In the next app, we'll show a different view of the US stock market.  Exchanges are grouped by how similar their quotes will be to other exchanges (based on distance to the other exchange).  
+The next app that you'll see will offer a different view of the U.S. stock market.  Exchanges are grouped by how similar their quotes will be to other exchanges (based on distance to the other exchanges).  
   
-- The two exchange groups are light blue for the New Jersey area, and dark blue for the CME (where S&P 500 futures are traded) and Chicago Stock Exchange.
+- The two exchange groups are light blue for the New Jersey area and dark blue for the CME (where S&P 500 futures are traded) and the Chicago Stock Exchange.
 
 -  The lines linking the exchanges represent paths of information flow. The longer the line between two exchanges, the longer it takes for information to be exchanged.
 
@@ -249,17 +249,17 @@ Because it takes time for information to travel from one exchange to another, or
 
 ## Information Generation
   
-- The orange nodes represent where a great deal of information, which affects stock prices, is generated.  These are Manhattan (NYC) and Washington D.C. (where the Federal Open Market Committee (FOMC) releases its statements on monetary policy).
+- The orange nodes in the upcoming app represent where a great deal of information, which affects stock prices, is generated.  These are Manhattan (NYC) and Washington D.C. (where the Federal Open Market Committee (FOMC) releases its statements on monetary policy).
 
 -  The closer an exchange is to where the information is generated, the faster it will incorporate that information into prices.
 
--  Feel free to move the nodes around to get a better look.
+-  Feel free to move the nodes in the app around to get a better look.
 
 -  Placing the cursor over a node will show its name. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Grouped by Information Similarity
+## U.S. Stock Exchanges Grouped by Information Similarity
 <!--- should we add freely floating nodes for dark pools -->
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -306,9 +306,9 @@ renderForceNetwork({
 
 In addition to national and regional stock exchanges, some organizations have set up *Dark Pools*.
 
--  If you send an order to an exchange, the order can be seen by the public.  Also trades on a public exchange generate information which is then reflected on other public exchanges.  
+-  If you send an order to an exchange, the order can be seen by the public. Trades on a public exchange also generate information which is then reflected on other public exchanges.
 
--  In a dark pool you can send an indication of interest to buy or sell a stock, and this indication is only available to those with access to the dark pool. Also trades in the dark pool are not quickly made known to public exchanges.
+-  In a dark pool, you can send an indication of interest to buy or sell a stock, and this indication is only available to those with access to the dark pool. Moreover, trades in the dark pool are not quickly made known to public exchanges.
 
 Dark pools are run by (1) independent organizations, (2) broker-dealers such as JP Morgan, Credit Suisse, and Fidelity, and (3) public exchanges.  
 
@@ -340,7 +340,7 @@ Dark pools might show up in our network as independent nodes.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Grouped by Information Similarity
+## Exchanges Grouped by Information Similarity
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
@@ -382,7 +382,7 @@ renderForceNetwork({
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## MIC Code: Exchange Name
+## MIC Code: Exchange Names
 
 -  BATY: BATS BYX Exchange
 -  BATS: BATS BZX Exchange
@@ -397,7 +397,7 @@ renderForceNetwork({
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-##
+## MIC Code: Exchange Names (continued)
 
 -  XPHL: NASDAQ OMX PHLX
 -  XBOS: NASDAQ OMX BX
@@ -409,8 +409,8 @@ renderForceNetwork({
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/stock_markets/stock_markets.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/stock_markets/stock_markets.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
