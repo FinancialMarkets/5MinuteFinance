@@ -195,6 +195,19 @@ Sharp increases in oil prices tend to lower stock prices.
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
+## Industry Resources
+
+While not an exhaustive list of informative sources, the resources from the U.S. government's Energy Information Administration provided below are commonly referenced by industry players and investors.
+
+-  [*This Week in Petroleum*](http://www.eia.gov/petroleum/weekly/)
+-  [*Petroluem Supply Monthly*](http://www.eia.gov/petroleum/supply/monthly/)
+-  [*Drilling Productivity*](http://www.eia.gov/petroleum/drilling/)
+
+You might also be intersted in taking a look at the [Baker Hughes rig count](http://phx.corporate-ir.net/phoenix.zhtml?c=79687&p=irol-rigcountsoverview), which has been a standard industry resource since 1944. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
 ## Credits and Collaboration
 
 Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Commodities/crude_oil_markets/oil_markets.Rmd) to see the code and collaborators for this presentation.
