@@ -12,15 +12,15 @@ smaller: true
 
 By shorting stock we profit when the stock price declines.  So you can use short sales to speculate.
 
-However, shorting stock is also used by banks to hedge put options they have sold, and other derivative positions.
+However, shorting stock is also used by banks to hedge put options they have sold, as well as other derivative positions.
 
--  That is, shorting stock is used to lessen the risk taken by bank and other financial intermediaries.  In fact, without the ability to short, put options and other derivatives may not exist. 
+In other words, shorting stock is used to lessen the risk taken by banks and other financial intermediaries.  In fact, without the ability to short, put options and other derivatives may not exist. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## So How Does It Work?
 
-To short a share of stock, you borrow the stock from someone (say Bob) and sell it to someone else (say Sandra).  Say you sold it to Sandra for \$100.  The cash balance in your account will increase by \$100, and you will hold a -1 position in the stock.  
+To short a share of stock, you borrow the stock from someone (say, Bob) and sell it to someone else (say, Sandra).  Say that you sold it to Sandra for \$100.  The cash balance in your account will increase by \$100, and you will hold a -1 position in the stock.  
 
 -  Eventually, you'll have to return the stock to Bob to close our your short position.
 
@@ -30,7 +30,7 @@ To short a share of stock, you borrow the stock from someone (say Bob) and sell 
 
 ## Example Profit/Loss
 
-Say the stock is trading in the market for \$80 when you decide to close the position.
+Imagine that the stock is trading in the market for \$80 when you decide to close the position.
 
 -  To close the postion, you buy the stock for \$80 and return it to Bob.
 
@@ -50,9 +50,9 @@ Alternatievly, say the stock is trading in the market for \$110 when you decide 
 
 ##  Interactive App
 
-On the next slide you can input the amount of shares you want to short, and the prices at which you open and close the short position.
+On the next slide you can input the amount of shares you want to short, as well as the prices at which you open and close the short position.
 
--  The app shows each transaction made in the course of the short sale, and also your ultimate profit.
+-  The app shows each transaction made in the course of the short sale and also your ultimate profit.
 
 -  A negative profit is a loss.
 
@@ -132,15 +132,15 @@ This is handled by your broker -- you don't have to worry about the mechanics be
 
 -  Sometimes your broker doesn't think it will be able to borrow shares, and will indicate the stock is not available for shorting.
 
--  Note, you don't have any sort of right to short, so during times of market turbulence, you may not be able to short many stocks.  
+-  Note, you don't have any sort of right to short, and so during times of market turbulence, you may not be able to short many stocks.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Naked Shorting
 
-Your broker has some leeway in terms of how soon they have to borrow shares however -- generally they have a few days.
+Your broker has some leeway in terms of how soon they have to borrow shares -- generally, a few days.
 
--  In the past however, some brokers never bothered to borrow the shares.
+-  In the past, however, some brokers never bothered to borrow the shares.
 
 -  The term for shorting while failing to borrow the stock is 'Naked Shorting' and it has been banned by the U.S. Securities and Exchange Commission.
 
@@ -148,7 +148,7 @@ Your broker has some leeway in terms of how soon they have to borrow shares howe
 
 ##  Alternatives to Shorting: Inverse ETFs
 
-If you don't want to short (or your brokerage account doesn't allow it), you can simply buy an inverse [Exchange Traded Fund (ETF)](link_to_ETF_presentation).
+If you don't want to short (or your brokerage account doesn't allow it), you can simply buy an inverse [Exchange Traded Fund (ETF)](http://www.5minutefinance.org/concepts/exchange-traded-funds).
 
 -  Buying an inverse ETF on a portfolio will afford a return very similar to shorting the portfolio.
 
@@ -158,11 +158,11 @@ If you don't want to short (or your brokerage account doesn't allow it), you can
 
 ## Inverse ETF Performance
 
-The next slide shows the performance of an ETF on the S&P 500 (SPY), and an inverse ETF on the S&P 500 (SH).
+The next slide shows the performance of an ETF on the S&P 500 (SPY) and an inverse ETF on the S&P 500 (SH).
 
 -  To zoom in or focus on a subinterval, use the range selector at the bottom of the chart.
 
--  You can see the inverse (short) ETF is a mirror image of the performance of the S&P 500.
+-  You can see the inverse ETF (short) is a mirror image of the performance of the S&P 500.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -197,8 +197,8 @@ In our example, Bob ownes a share, we *owe* one share, and Sandra ownes a share.
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/short_selling_stock/short_selling_stock.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/short_selling_stock/short_selling_stock.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
