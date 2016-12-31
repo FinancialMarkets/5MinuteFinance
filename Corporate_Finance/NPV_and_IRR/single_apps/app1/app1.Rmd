@@ -1,0 +1,32 @@
+---
+title: ""
+output: html_document
+runtime: shiny
+---
+
+
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        inputPanel(
+            sliderInput("cf.npv", label = "Cash Flow Per Period", min = 1, max = 500, step = 10, value = 50),
+            sliderInput("periods.npv", label = "Number of Periods", min = 1, max = 50, step = 1, value = 20),
+            sliderInput("initial.inv.npv", label = "Time 0 Investment", min = 1, max = 500, step = 1, value = 300),
+            sliderInput("rate", label = "Discount Rate per Period", min = 0, max = .3, step = .01, value = .05)
+        )
+    ),
+    mainPanel(
+        renderPlot({
+            cfs.npv <- c(-1 * (input$initial.inv.npv), rep(input$cf.npv, input$periods.npv))
+            npv.sol <- sum(cfs.npv / (1 + input$rate)^{1:length(cfs.npv)})
+            plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+            text(x = 0.5, y = 0.5, labels = paste0("NPV = $", round(npv.sol * 100, 2)), cex = 4)
+        })
+    )
+)
+#}}}
+```

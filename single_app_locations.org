@@ -52,3 +52,8 @@ https://micfm.shinyapps.io/TVM_Single_CFs_app1/
 https://micfm.shinyapps.io/TVM_Single_CFs_app2/
 
 https://micfm.shinyapps.io/TVM_Single_CFs_app3/
+** NPV and IRR
+
+https://micfm.shinyapps.io/NPV_and_IRR_app1/
+
+https://micfm.shinyapps.io/NPV_and_IRR_app2/

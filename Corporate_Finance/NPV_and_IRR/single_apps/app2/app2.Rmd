@@ -1,0 +1,25 @@
+---
+title: ""
+output: html_document
+runtime: shiny
+---
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(
+    sliderInput("cf.irr", label = "Cash Flow Per Period", min = 1, max = 500, step = 10, value = 50),
+    sliderInput("periods.irr", label = "Number of Periods", min = 1, max = 50, step = 1, value = 20),
+    sliderInput("initial.inv.irr", label = "Time 0 Investment", min = 1, max = 500, step = 1, value = 300)
+)
+
+renderPlot({
+    source(file = 'https://raw.githubusercontent.com/FinancialMarkets/corpfin/master/irr.R')
+    cfs <- c(-1 * (input$initial.inv.irr), rep(input$cf.irr, input$periods.irr))
+    irr.sol <- irr(cfs)$IRR
+    plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+    text(x = 0.5, y = 0.5, labels = paste("IRR = ", round(irr.sol * 100, 2), "%"), cex = 5)
+})
+#}}}
+```

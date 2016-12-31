@@ -42,8 +42,6 @@ The most-commonly assumed PDF is the normal distribution.
 
 - This is partly for mathematical ease: the sum of normals is normal.
 
-
-
 The normal distribution is completely determined by its mean and variance (or standard deviation).
 
 - Once we determine these values, we can state the probability of a return being less than any value.
@@ -56,7 +54,7 @@ The normal distribution is completely determined by its mean and variance (or st
 
 The standard deviation is the average *squared* deviation from the mean. 
 
--   Squaring means the standard deviation treats positive and negative deviations from the mean equally: $(-7\%)^2 = 7\%^2$. 
+- Squaring means the standard deviation treats positive and negative deviations from the mean equally: $(-7\%)^2 = 7\%^2$. 
 
 - But we only care about the negative returns when calculating risk.
 

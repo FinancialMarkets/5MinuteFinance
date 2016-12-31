@@ -78,7 +78,7 @@ renderDygraph({
     dygraph(b.xts)
 
 })
-		```
+```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
