@@ -1,0 +1,73 @@
+** DONE Tier 1
+***** DONE Portfolio Performance Measures
+***** DONE Duration
+***** DONE Intro to Financial Statements
+***** DONE Financial Ratios 
+***** DONE Intro to Bond Valuation
+***** DONE Intro to Stock Valuation                    
+***** DONE TVM: Multiple Cash Flows
+***** DONE Risk Over Time
+***** DONE Monte Carlo [see comments] 
+Monte Carlo:
+·       Typo: The goal of this presentation is to show you when to use Monte Carlo, and provide a couple interactive examples with visualizations. (I think there is a missing “of”.)
+·       I think it would be valuable to define and/or give an example of an analytical solution early in the presentation.
+·       Do you want to provide a link to one or two software packages that are especially user-friendly in doing Monte Carlo simulations?
+·       This is a very effective presentation.
+
+***** DONE TVM: Single Cash Flow [see comments]
+As written, the introductory section suggests that money has time value only because people (consumers) need to be compensated (in real terms) for not immediately consuming all their wealth. But that’s not exactly right (e.g. people save even w negative interest rates); and in any case it seems incomplete.
+
+Some suggested alternative text:
+
+What does it mean to say that money has “time value”? Essentially it means that $1 (or €1 or ¥1 or £1) promised for some future date has a different value (usually lower) than the same amount today. 
+
+For example, $100 promised two years from now might be worth $90 today. By “worth” we mean that a saver (lender) would voluntarily give up $90 today in exchange for a promise (offered by the borrower) of $100 two years hence. The value today ($90) is called the present value (PV) of the amount promised ($100). And the ratio (0.9) is called the discount factor. 
+
+The time value of money (TVM) is often expressed in terms of an annual interest rate (or discount rate), compounded with some frequency (typically annually or semi-annually). Compounding means you earn interest on interest. In the example above, the corresponding interest rate would be 5.409% (annually compounded for two years) since $90 x (1 + 5.409%) ^ 2 = $100.
+
+The TVM discount factor (or corresponding discount rate) is determined by a number of factors:
+Supply of savings – by those wishing to shift consumption from present to future (e.g. for retirement)
+Demand for loans – by those wishing to shift consumption from future to present (e.g. for investment)
+Maturity (i.e. the future date when the money is due to be repaid)
+Expected inflation (or deflation), which affects the purchasing power of cash in the future
+Credit risk, which reflects the possibility that the loan won’t be repaid in full and on time
+
+[Could then talk briefly about each of these in turn. This would allow you to introduce important fundamental concepts like the risk free rate, real and nominal interest rates, term structure of interest rates, and credit spreads, perhaps with links to more advanced sections on those topics.]
+
+** Tier 2
+***** TODO Operating Cash Flow                        
+***** DONE Net Present Value and Internal Rate of Return
+***** TODO Capital Asset Pricing Model              
+***** TODO A First Look at Risk
+***** DONE FX Arbitrage                                      
+***** DONE FX Markets
+***** TODO Limit Order Book                               
+***** TODO Pairs Trade
+***** TODO The Greeks                                       
+***** TODO Intro to Stock Options
+** Tier 3
+*** Correlation Coefficient.
+**** TODO I am worried that readers who are learning what a correlation coefficient is will understand references to beta or optimal hedge ratios.
+·      The interactive map is great.
+Other risk presentations; Portfolio performance, Derivatives, etc.
+·      I worry about the audience.
+·      It seems than people would need a reasonable understanding before accessing these descriptions, e.g., pdf, volatility clusters.
+·      That said, they were clear to me.
+*** TODO Add all other presentations here
+*** TODO Corporate Finance:
+·      These are well done.
+**** TODO On balance sheets, I would draw have an interactive map that shows everything in a t-account format too.
+ 
+Monetary Policy.
+·      I thought that this was relatively weak.
+·      Perhaps, eliminate and/or just refer to the Fed’s website that provide lots of information.
+·      Or, if you really like the word cloud, then explain better what this is and how it can be used.
+ 
+*** TODO Trading and Market Structure
+·      This is not my area of expertise, but I see many seminars on this.
+**** TODO It seems that the offerings on the Milken site on the range of issues associated with market microstructure is too limited as it stand. 
+
+A first look at Risk.
+·       It states, “Risk is a statement about the likelihood of adverse events. There are differing ways to classify ‘adverse event’ which leads to differing measures and ways of stating risk, such as:” Is this correct?  There could be a certain adverse outcome with no potential fluctuations in either the timing or the severity of the outcome.  It seems to me that risk is a statement about the distribution of future outcomes, regardless of whether they are considered adverse or not.
+·       The graphics effectively illustrate the concepts.
+ 
