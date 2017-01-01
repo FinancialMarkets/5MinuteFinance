@@ -103,42 +103,6 @@ renderDygraph({
 #}}}
 ```
 
-<!---
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-#{{{
-## library(metricsgraphics)
-## library(quantmod)
-## inputPanel(
-##     selectInput("curr2", "Select Currency", choices = c("Euro" = "1", "U.K. Pound" = "2", "Swiss Franc" = "3", "Canadian Dollar" = "4", "Japanese Yen" = "5"), selected = "1") 
-##     )
-## renderMetricsgraphics({
-##   currSym <- switch(input$curr2,
-##                     "1" = "EXUSEU",
-##                     "2" = "EXUSUK",
-##                     "3" = "EXSZUS",
-##                     "4" = "EXCAUS")
-
-##     options(download.file.method="wget")
-##     direct <- getSymbols(currSym, from = "1900-01-01", auto.assign = FALSE, src = "FRED")
-##     indirect <- 1/direct
-
-##     stocks <- data.frame(
-##         time = as.Date(index(direct)),
-##         X = direct,
-##         Y = indirect)
-##     names(stocks) <- c("time", "Direct", "Indirect")
-
-##     stocks %>%
-##         mjs_plot(x=time, y=Direct) %>%
-##             mjs_line() %>%
-##                 mjs_add_line(Indirect) %>%
-##                     mjs_axis_x(xax_format="date") %>%
-##                         mjs_add_legend(legend=c("Direct", "Indirect"))
-## })
-#}}}
-```
--->
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Practice Currency Conversions
