@@ -1,0 +1,106 @@
+---
+title: ""
+output: html_document
+runtime: shiny
+---
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+#{{{
+library(shiny)
+library(DiagrammeR)
+
+ui = shinyUI(fluidPage(
+titlePanel("Covered Interest Arbitrage Calculator"),
+
+fluidRow(
+    column(3, numericInput("fxS", "Spot USD/EUR", value = 1.50)),
+    column(3, numericInput("fxF", "Forward USD/EUR", value = 1.31)),
+    ## column(3, numericInput("time", "Length of Time (in years)", value = 1)),
+    column(3, numericInput("irateU", "Interest Rate: USD", value = 0.05)),
+    column(3, numericInput("irateE", "Interest Rate: EUR", value = 0.03))
+    ),
+fluidRow(
+    column(12,
+           DiagrammeROutput('diagram7', width = "100%")
+           )
+    )
+    )
+             )
+
+server = function(input, output){
+
+    output$diagram7 <- renderDiagrammeR({
+
+        fxS <- input$fxS
+        fxF <- input$fxF
+        irateU <- input$irateU
+        irateE <- input$irateE
+        ## time <- input$time
+
+        ## direction 1 Profit
+
+        ## borrow 1 USD and convert to EUR @ Spot
+        ## invest in EUR @ rate for Period
+        ## enter into forward to convert back
+        ## repay 1 USD + interest
+        profit1 <- ((1/fxS) * (1 + irateE)) * fxF - 1 * (1 + irateU)
+     
+        ## direction 2 Profit
+
+        ## borrow 1 EUR and convert to USD @ Spot
+        ## invest in USD @ rate for Period
+        ## enter into forward to convert back
+        ## repay 1 EUR + interest
+
+        profit2 <- ((1 * fxS) * (1 + irateU)) / fxF - 1 * (1 + irateE)
+
+        
+        
+        if(irateE <= 0 | irateU <= 0 | fxS <=- 0 | fxF <= 0){
+mermaid("
+graph LR
+  A(All values must be greater than 0)
+")
+        } else {
+            
+            if (profit1 > 0 & profit2 < 0){
+                mermaid(paste("
+sequenceDiagram
+US Bank->>You: Borrow 1 USD
+You->>Spot Market: Convert 1 USD to ", round(1/fxS, 2), " EUR
+You->>European Bank: Invest at ", irateE, " for 1 period
+You->>Forward Market: Sell ", round((1/fxS)*(1+irateE), 2), " EUR forward at ", fxF, "
+Forward Market->>You: Receive ", round((1/fxS)*(1+irateE) * fxF, 2), " from foward sale
+You->>US Bank: Repay USD ", 1 * (1+irateU), " owed
+You->>You: Profit USD ", round(profit1, 2), "
+"))
+            } else {
+                if(profit1 < 0 & profit2 > 0){
+                mermaid(paste("
+sequenceDiagram
+European Bank->>You: Borrow 1 EUR
+You->>Spot Market: Convert 1 EUR to ", round(1 * fxS, 2), " USD
+You->>US Bank: Invest at ", irateU, " for 1 period
+You->>Forward Market: Sell ", round((1 * fxS)*(1+irateU), 2), " USD forward at ", fxF, "
+Forward Market->>You: Receive ", round((1 * fxS)*(1+irateU)/ fxF, 2), " from foward sale
+You->>European Bank: Repay EUR ", 1 * (1+irateE), " owed
+You->>You: Profit EUR ", round(profit2, 2), "
+"))
+            } else {
+                mermaid("
+graph LR
+  A(No Arbitrage)
+")
+
+            }
+            }
+        }
+    })
+    }
+
+shinyApp(ui = ui, server = server)
+#}}}
+```

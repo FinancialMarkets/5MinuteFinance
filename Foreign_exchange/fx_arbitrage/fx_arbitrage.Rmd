@@ -215,6 +215,7 @@ In the following app, you can put in any values for the exchange rates and see a
 
 
 ##
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
 #{{{
 library(shiny)

@@ -57,3 +57,10 @@ https://micfm.shinyapps.io/TVM_Single_CFs_app3/
 https://micfm.shinyapps.io/NPV_and_IRR_app1/
 
 https://micfm.shinyapps.io/NPV_and_IRR_app2/
+** FX Arbitrage
+
+https://micfm.shinyapps.io/fx_arbitrage_app1/
+
+https://micfm.shinyapps.io/fx_arbitrage_app2/
+
+https://micfm.shinyapps.io/fx_arbitrage_app3/

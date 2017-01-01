@@ -1,0 +1,126 @@
+---
+title: ""
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+#{{{
+library(shiny)
+library(DiagrammeR)
+
+ui = shinyUI(fluidPage(
+## pageWithSidebar(
+## headerPanel("Triangular Arbitrage"),
+## sidebarPanel(
+titlePanel("Triangular Arbitrage Calculator"),
+
+fluidRow(
+    column(3, numericInput("usdeur1", "USD/EUR", value = 1.20)),
+    column(3, numericInput("usdgbp1", "USD/GBP", value = 1.50)),
+    column(3, numericInput("eurgbp1", "EUR/GBP", value = 1.30)),
+    ## column(3, radioButtons("currency.p1", "Currency to State Profit", choices = c("EUR", "USD"), selected = "EUR"))
+    column(3, radioButtons("triDiag", "Triangle Diagram", choices = c("Yes", "No"), selected = "No"))
+    ),
+fluidRow(
+    column(12,
+           ## mainPanel( ##tabsetPanel(## can I make this a fluidrow so can print $ arb below? 
+           DiagrammeROutput('diagram', width = "100%")
+           )
+    ),
+fluidRow(
+    ## column(3, plotOutput("test5")),
+    column(12,
+           plotOutput("test4", width = "100%")
+           )
+    )
+    )
+             )
+server = function(input, output){
+
+    output$diagram <- renderDiagrammeR({
+
+        if(input$triDiag == "No"){
+            cross <- input$usdgbp1 / input$usdeur1          
+            if (cross > input$eurgbp1){
+                usd <- 1
+                euro <- 1/input$usdeur1
+                pound <- euro / input$eurgbp1
+                usd.profit <- pound * input$usdgbp1 - 1
+                mermaid(paste("
+sequenceDiagram
+USD->>EUR: USD 1 to EUR", round(euro, 2), "
+EUR->>GBP: EUR ", round(euro, 2), " to GBP ", round(pound, 2), "
+GBP->>USD: GBP ", round(pound, 2), " to USD ", round(usd, 2), "
+USD->>USD: Repay USD 1 and profit USD ", round(usd.profit, 2), "
+"))
+            } else {
+                usd <- 1
+                pound <- usd / input$usdgbp1
+                euro <- pound * input$eurgbp1
+                usd.profit <<- euro * input$usdeur1 - 1
+                mermaid(paste("
+sequenceDiagram
+USD->>GBP: USD 1 to GBP", round(pound, 2), "                         
+GBP->>EUR: GBP ", round(pound, 2), " to EUR ", round(euro, 2), "                                
+EUR->>USD: EUR ", round(euro, 2), " to USD ", round(usd, 2), "
+USD->>USD: Repay USD 1 and profit USD ", round(usd.profit, 2), "
+"))        
+            }
+            
+        } else {
+       
+    ## output$diagram <- renderDiagrammeR({
+
+        cross <- input$usdgbp1 / input$usdeur1
+        ## eur.profit <- abs(cross - input$eurgbp1)
+        ## usd.profit <- eur.profit * input$usdeur1
+
+        if (cross > input$eurgbp1){
+            mermaid("
+graph LR
+GBP(GBP)-->USD(USD)
+EUR(EUR)-->GBP(GBP)
+USD(USD)-->EUR(EUR)
+")
+
+        } else {
+            mermaid("
+graph LR
+EUR(EUR)-->USD(USD)
+GBP(GBP)-->EUR(EUR)
+USD(USD)-->GBP(GBP)
+")
+        }
+        }
+                                        })
+                                       
+    output$test4 <-         renderPlot({
+
+        cross <- input$usdgbp1 / input$usdeur1
+
+        if (cross > input$eurgbp1){
+            usd <- 1
+            euro <- 1/input$usdeur1
+            pound <- euro / input$eurgbp1
+            usd.profit <- pound * input$usdgbp1 - 1
+
+            plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+            text(x = 0.5, y = 0.5, labels = paste("USD", round(usd.profit, 2), sep = " "), cex = 5)
+
+        } else {
+            usd <- 1
+            pound <- usd / input$usdgbp1
+            euro <- pound * input$eurgbp1
+            usd.profit <<- euro * input$usdeur1 - 1 
+            plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+            text(x = 0.5, y = 0.5, labels = paste("USD", round(usd.profit, 2), sep = " "), cex = 5)
+        }
+    })
+}
+
+shinyApp(ui = ui, server = server)
+#}}}
+```

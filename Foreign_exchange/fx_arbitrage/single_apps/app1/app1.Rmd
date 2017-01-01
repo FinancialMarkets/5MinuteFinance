@@ -1,0 +1,98 @@
+---
+title: ""
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+#{{{
+library(shiny)
+library(DiagrammeR)
+
+ui = shinyUI(fluidPage(
+## pageWithSidebar(
+## headerPanel("Triangular Arbitrage"),
+## sidebarPanel(
+titlePanel("Locational Arbitrage Calculator"),
+
+fluidRow(
+    column(3, numericInput("bidUsdeurY", "Bid: Bank Y", value = 1.29)),
+    column(3, numericInput("askUsdeurY", "Ask: Bank Y", value = 1.31)),
+    column(3, numericInput("bidUsdeurZ", "Bid: Bank Z", value = 1.25)),
+    column(3, numericInput("askUsdeurZ", "Ask: Bank Z", value = 1.27))
+    ## column(3, radioButtons("currency.p2", "Currency to State Profit", choices = c("EUR", "USD"), selected = "EUR"))
+    ),
+fluidRow(
+    column(12,
+           ## mainPanel( ##tabsetPanel(## can I make this a fluidrow so can print $ arb below? 
+           DiagrammeROutput('diagram2', width = "100%")
+           )
+    )#,
+## fluidRow(
+##     ## column(3, plotOutput("test5")),
+##     column(12,
+##            plotOutput("test8", width = "100%")
+##            )
+##     )
+    )
+             )
+server = function(input, output){
+
+    output$diagram2 <- renderDiagrammeR({
+
+        askUsdeurY <- input$askUsdeurY
+        askUsdeurZ <- input$askUsdeurZ
+
+        bidUsdeurY <- input$bidUsdeurY
+        bidUsdeurZ <- input$bidUsdeurZ
+        
+        if(askUsdeurY < bidUsdeurY | askUsdeurZ < bidUsdeurZ){
+mermaid("
+graph LR
+  A(Ask must be greater than bid)
+")
+        } else {
+            
+            if (askUsdeurZ < bidUsdeurY){
+                mermaid(paste("
+sequenceDiagram
+Bank Z->>You: Buy 1 EUR for USD", askUsdeurZ, "
+You->>Bank Y: Sell 1 EUR for USD", bidUsdeurY, "
+You->>You: Profit: USD", round(bidUsdeurY - askUsdeurZ, 2), "
+"))
+            } else {
+                if(askUsdeurY < bidUsdeurZ){
+                mermaid(paste("
+sequenceDiagram
+Bank Y->>You: Buy 1 EUR for USD", askUsdeurY, "
+You->>Bank Z: Sell 1 EUR for USD", bidUsdeurZ, "
+You->>You: Profit: USD", round(bidUsdeurZ - askUsdeurY, 2), "
+"))
+            } else {
+                mermaid("
+graph LR
+  A(No Arbitrage)
+")
+
+            }
+            }
+        }
+    })
+    
+    ## output$test8 <- renderPlot({
+
+        
+    ##     plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+    ##     ## if(input$currency.p2 == "EUR"){
+    ##         ## text(x = 0.5, y = 0.5, labels = paste("EUR", round(10, 2), sep = " "), cex = 5)
+    ##     ## } else {
+    ##         text(x = 0.5, y = 0.5, labels = paste("USD", round(10, 2), sep = " "), cex = 5)
+    ##     ## }
+    ## })
+}
+
+shinyApp(ui = ui, server = server)
+#}}}
+```
