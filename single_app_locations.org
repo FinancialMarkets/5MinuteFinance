@@ -24,6 +24,7 @@ https://micfm.shinyapps.io/intro_bond_valuation_app2/
 ** Intro to Stock Valuation                    
 
 https://micfm.shinyapps.io/intro_stock_valuation_app1/
+
 ** TVM: Multiple Cash Flows
 
 https://micfm.shinyapps.io/TVM_Multiple_CFs_app1/
@@ -64,3 +65,11 @@ https://micfm.shinyapps.io/fx_arbitrage_app1/
 https://micfm.shinyapps.io/fx_arbitrage_app2/
 
 https://micfm.shinyapps.io/fx_arbitrage_app3/
+
+** FX Market
+
+https://micfm.shinyapps.io/fx_market_app1/
+
+https://micfm.shinyapps.io/fx_market_app2/
+
+https://micfm.shinyapps.io/fx_market_app3/
