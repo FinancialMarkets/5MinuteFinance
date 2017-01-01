@@ -37,7 +37,7 @@ Credit risk, which reflects the possibility that the loan won’t be repaid in f
 ** Tier 2
 ***** TODO Operating Cash Flow                        
 ***** DONE Net Present Value and Internal Rate of Return
-***** TODO Capital Asset Pricing Model              
+***** DONE Capital Asset Pricing Model              
 ***** TODO A First Look at Risk
 ***** DONE FX Arbitrage                                      
 ***** DONE FX Markets

@@ -73,3 +73,8 @@ https://micfm.shinyapps.io/fx_market_app1/
 https://micfm.shinyapps.io/fx_market_app2/
 
 https://micfm.shinyapps.io/fx_market_app3/
+** The CAPM
+
+https://micfm.shinyapps.io/The_CAPM_app1/
+
+https://micfm.shinyapps.io/The_CAPM_app2/
