@@ -9,11 +9,11 @@ runtime: shiny
 
 ## Bond Convexity
 
-Bond convexity refers to the actual convex (non-linear) relationship between a bond's price and yield.  This is stated in relation to the linear [duration](https://micfm.shinyapps.io/intro_duration/) approximation of the bond price and yield relationship.
+Bond convexity refers to the actual convex (non-linear) relationship between a bond's price and yield.  This is stated in relation to the linear [duration](http://www.5minutefinance.org/concepts/duration) approximation of the bond price and yield relationship.
 
--  Convexity is often used as a general term for the error when using duration to approximate interest rate risk.
+-  Convexity is often used as a general term for the error made when using duration to approximate interest rate risk.
 
--  The idea is, duration is a linear (first derivative) approximation.  To make the approximation more accurate, we can include a second-derivative adjustment, which is known as the *convexity adjustment*.  
+-  The idea is this: duration is a linear (first derivative) approximation.  To make the approximation more accurate, we can include a second-derivative adjustment, which is known as the *convexity adjustment*.  
 
 -  The convexity adjustment is more important as the change in yield increases.
 
@@ -25,9 +25,9 @@ Bond convexity refers to the actual convex (non-linear) relationship between a b
 
 The interactive app on the following slide allows you to see, for varying yields, a bond's actual price, the price predicted by duration, and the effect of convexity.  
 
-- Observe that duration always predicts the bond's price will be lower than it will actually be.  Bond owners love convexity!
+- Observe that duration always predicts that the bond's price will be lower than it will actually be. Bond owners love convexity!
 
-You can also see the effect of the coupon, YTM, and maturity on the bond's duration and convexity.
+You can also see the effect of the coupon, [YTM](http://www.5minutefinance.org/concepts/for-what-is-the-yield-to-maturity-used), and maturity on the bond's duration and convexity.
 
 - A steeper slope means a higher duration (more interest rate risk).
 
@@ -199,8 +199,8 @@ sidebarLayout(
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/convexity/convexity.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/convexity/convexity.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
