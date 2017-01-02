@@ -30,27 +30,36 @@ We'll cover the following very common strategies:
 -  Protective Put
 -  Collar
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
 ## Covered Call
 
-The covered call strategy consists of buying a share of stock, and selling a call option on that share.  Generally the call's strike price is above the present price of the stock.  
+The covered call strategy consists of buying a share of stock while selling a call option on that share.  Generally the call's strike price is above the present price of the stock.  
 
-- For example: Buy 100 shares of TWTR for \$40/share and sell a call option contract with a \$45 strike price.  Say we received a price of \$1.50 per option.  
+- Example: Buy 100 shares of TWTR for \$40/share and sell a call option contract with a \$45 strike price.  Say we received a price of \$1.50 per option.  
 
 - The effect of the sale of the call option is to effectively lower the purchase price of the stock by \$1.50 per share.  Nothing is free however.  In exchange we have given up any gain from the stock increasing over \$45 per share.
 
 -  The covered call is similar to buying a stock and setting a limit sell order.  
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
 ## Covered Call 
 
 For our example we can calculate the max gain, loss, and the stock price at which we break-even.  
 
-- Max gain at option expiration: If the stock increases to \$45, then we earn \$5 on the stock, and we pay \$0 on the option (keeping the entire \$1.50 premium).  So our max gain is: \$5 + \$1.50 = \$6.50 per share, or \$650 for the entire contract.  
+- *Max gain at option expiration*: If the stock increases to \$45, then we earn \$5 on the stock, and we pay \$0 on the option (keeping the entire \$1.50 premium).  So our max gain is: \$5 + \$1.50 = \$6.50 per share, or \$650 for the entire contract.  
 
-Max loss:  This is easy---if the stock falls to \$0 we will lose \$40 - \$1.50 = \$38.50 per share. We of course kept the option premium.
+- *Max loss*:  This is easy---if the stock falls to \$0 we will lose \$40 - \$1.50 = \$38.50 per share. We of course kept the option premium.
 
-- Break-even:  If the stock falls to \$38.50 then we will lose \$1.50 on the stock and gain \$1.50 on the option to break even.  
+- *Break-even*:  If the stock falls to \$38.50, then we will lose \$1.50 on the stock and gain \$1.50 on the option to break even.  
 
-- Note the above ignores the time-value-of-money.  
+- Note that the above ignores the time-value-of-money.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ## 
 
@@ -174,15 +183,21 @@ A second common strategy is the protective put.  Here we buy a stock and limit o
 
 -  In a protective put, we own the stock and also have a guaranteed price at which we can sell that stock.  So it is similar to buying the stock and setting a stop loss order. 
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
 ## Protective Put
 
-For example, say we bought 100 shares of AAPL for \$100 per share, and simultaneously bought 1 put option contract with a \$90 strike price for a \$2 premium.
+For example, say we bought 100 shares of AAPL for \$100 per share and that we simultaneously bought 1 put option contract with a \$90 strike price for a \$2 premium.
 
 -  Our maximum loss is \$12 per share, which is a \$10 loss on the stock plus the \$2 put option premium.
 
 -  We break even when AAPL trades at \$102.  This is a \$2 gain on AAPL, and a \$2 loss on the option.
 
 -  Our maximum gain is unbounded.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ##
 
@@ -286,17 +301,23 @@ sidebarLayout(
 
 In a collar you buy a share of stock, sell a call with a higher strike, and buy a put with a lower strike.  
 
--  In essence a collar is a protective put, where the cost of the put is partially financed through the sale of a call.
+In essence, a collar is a protective put, where the cost of the put is partially financed through the sale of a call.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ## Collar Example
 
 Say you bought 100 shares of CSCO stock for $30, sold a \$35 call for \$1, and bought a \$25 put for \$2.
 
--  The most you can lose is \$6 (lose \$5 on the stock and \$2 on the put, and gain \$1 on the call).
+-  The most you can lose is \$6 (lose \$5 on the stock and \$2 on the put, but gain \$1 on the call).
 
--  The most you can gain is \$4 (gain \$5 on the stock plus \$1 on the call, and lose \$2 on the put).
+-  The most you can gain is \$4 (gain \$5 on the stock plus \$1 on the call, but lose \$2 on the put).
 
 -  You break even when the CSCO trades for \$29.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 ##
@@ -382,11 +403,9 @@ sidebarLayout(
 
 These strategies only work only until the option expires.  If you want to continue the option strategy, you have to enter into new option trades.
 
--  Each time you enter into new trades you incur transaction costs, which must be considered when evaluating the effectiveness of the strategy.
+Each time you enter into new trades you incur transaction costs, which must be considered when evaluating the effectiveness of the strategy.
 
-##
-
-[end of presentation graphic]
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
