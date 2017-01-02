@@ -41,7 +41,7 @@ Credit risk, which reflects the possibility that the loan won’t be repaid in f
 ***** TODO A First Look at Risk
 ***** DONE FX Arbitrage                                      
 ***** DONE FX Markets
-***** TODO Limit Order Book                               
+***** DONE Limit Order Book                               
 ***** TODO Pairs Trade
 ***** TODO The Greeks                                       
 ***** TODO Intro to Stock Options

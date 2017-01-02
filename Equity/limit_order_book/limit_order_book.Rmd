@@ -7,11 +7,6 @@ css: 5min_mod.css
 runtime: shiny
 ---
 
-<!---
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, messsage = FALSE, warning = FALSE)
-```
--->
 
 ## The Limit Order Book
 
@@ -119,7 +114,7 @@ Use the app in the next slide to enter market orders and see the effect on the l
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
-***
+##
 
 ```{r messsage=FALSE, warning=FALSE, echo = FALSE}
 #{{{
@@ -180,7 +175,7 @@ What if I enter a limit order to buy at \$50.03 and the present ask is \$50.01? 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
-***
+##
 
 ```{r messsage=FALSE, warning=FALSE, echo = FALSE}
 #{{{
@@ -205,7 +200,7 @@ shinyUI(fluidPage(
              ),
       column(5, offset = 1,
              renderPrint({
-                 if (input$amount2 <= 0) {
+                 if (input$amount3 <= 0) {
                      cat("Enter number of shares")
                  } else {
                      orderType3 <- switch(input$typeBS3, 
@@ -239,55 +234,13 @@ shinyUI(fluidPage(
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/limit_order_book/limit_order_book.Rmd) to see the code and collaborators for this presentation.
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/limit_order_book/limit_order_book.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Equity/limit_order_book/limit_order_book.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 - The interactive content in this presentation has used the [orderbook R package](https://cran.r-project.org/web/packages/orderbook/index.html).  Thanks to the package authors for this great tool.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-
-<!---
-Old Market Buy app:  Commenting because added app with both buy and sell.
-## Market Order
-
-```{r messsage=FALSE, warning=FALSE, echo = FALSE}
-#{{{
-library(orderbook)
-library(shiny)
-inputPanel(
-    numericInput("amount", "Number of Shares to Buy", value = 100)
-    )
-shinyUI(fluidPage(
-    fluidRow(
-        column(6, 
-               renderPrint({
-                   filename <- system.file("extdata",
-                                           "sample.txt",
-                                           package = "orderbook")
-                   ob <- orderbook(file = filename)
-                   ob <- read.orders(ob, 10000)
-                   display(ob)
-               })
-               ),
-        column(6,
-               renderPrint({
-                   if (input$amount <= 0) {
-                       cat("Enter number of shares")
-                       } else {
-                       ob <- market.order(ob, input$amount, "BUY")
-    display(ob)
-                       }
-               })
-               )
-    )
-)
-)
-#}}}
-```
--->
-
 
 <!-- maybe include later here or in higher level presentation -->
 <!-- ## Limit Orders as Options -->
