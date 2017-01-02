@@ -23,9 +23,9 @@ Leveraged ETFs seek to return some multiple of an index.  For example, ticker SS
 
 ## Leveraged ETF Quotes
 
-On the next slide you can see a quote for an ETF, and a leveraged ETF, on the same index.
+On the next slide you can see a quote for an ETF and a leveraged ETF on the same index.
 
--  The quote shows the daily percent return.  Note the leverage ETF does a fairly good job of returning a multiple of the index over a single day.
+-  The quote shows the daily percent return.  Note that the leveraged ETF does a fairly good job of returning a multiple of the index over a single day.
 
 -  The ETF is the top quote, and the 2X leveraged ETF is below.
 
@@ -71,19 +71,19 @@ div(renderDataTable({
 
 Leveraged ETFs do a good job of returning a multiple of an index's return over a single day.
 
--  However, over any time period longer than a day, the Leveraged ETF return will depart from being a simple multiple of the index.
+-  However, over any time period longer than a day, returns from the leveraged ETF will depart from being a simple multiple of the index.
 
--  Also, the longer you hold the Leveraged ETF, the more its return will diverge from being a multiple of the underlying index.
+-  Also, the longer you hold the Leveraged ETF, the more its returns will diverge from being a multiple of the underlying index.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Why is the Leveraged ETF Error Greater Over Longer Holding Periods?
+## Why is the Error Greater Over Longer Holding Periods?
 
 Say both an ETF on an index and a leveraged ETF are trading for $100.  The index declines by 2% today, so the ETF declines to $98 and the leveraged ETF declines to $96.  Now say tomorrow the index increases by 3%, so the ETF increases to $100.94 and the leveraged ETF increases to $99.64.
 
 -  The ETF has a two-day return of 0.94%, and the leveraged ETF returned -0.36%.
 
--  This is caused by the nature of returns, and is not a fault in the way leveraged ETFs are managed. 
+-  This is caused by the nature of returns and is not a fault in the way leveraged ETFs are managed. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -93,7 +93,7 @@ You can use the app on the following slide to see the divergence in the return o
 
 -  The ETF returns are multiplied by 2, because each leveraged ETF is a 2X.
 
--  Change the length of time, and see how this affects the divergence.
+-  Change the length of time to see how this affects the divergence.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -139,16 +139,16 @@ renderDygraph({
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## List of Selected ETFs, Leveraged ETFs, and their Index
+## List of Selected ETFs, Leveraged ETFs, and their Indices
 
 - S&P 500: SPY and SSO (2X)
 - Russell 2000: IWM and UWM (2X)
 - Russell 1000: IWM and TNA (3X)
 - NASDAQ 100: QQQ and QLD (2X)
-- Dow Jones Industrial Avg., DIA and DDM (2X)
-- Barclay's 7--10 yr. Treasury: IEF and UST (2X)
+- Dow Jones Industrial Average: DIA and DDM (2X)
+- Barclay's 7-10 yr. Treasury: IEF and UST (2X)
 - Silver (the metal): SLV and ACQ (2X)
-- US Energy Sector: XLE and ERX (3X)
+- U.S. Energy Sector: XLE and ERX (3X)
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -205,8 +205,8 @@ renderPlot({
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/TVM_Single_CFs/TVM_Single_CFs.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/TVM_Single_CFs/TVM_Single_CFs.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
