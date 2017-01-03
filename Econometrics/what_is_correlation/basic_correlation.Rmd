@@ -12,23 +12,21 @@ smaller: true
 
 ## What is Correlation?
 
-Most have a general idea that correlation is a measure of how closely the behavior of one variable mirrors the behavior of another.  
+Most have a general idea that correlation is a measure of how closely the behavior of one variable mirrors the behavior of another.  This is true, with some important qualifications we'll discuss below.  
 
--  This is true, with some important qualifications noted below.  
+Correlation is measured on a scale ranging from -1 to 1.  
 
--  Correlation is measured on a scale ranging from -1 to 1.  
+-  -1: perfect negative correlation
 
-     -1: perfect negative correlation
-
-      0: no correlation
+-  0: no correlation
   
-      1: perfect positive correlation
+-  1: perfect positive correlation
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Correlation is Linear!
 
-Most often, correlation is measured with the 'Pearson product-moment correlation coefficient'.  
+Most often, correlation is measured with the **Pearson product-moment correlation coefficient**.
 
 - The most important thing to remember about this measure is that is *linear*.  It is a measure of linear dependence.  
 
@@ -36,7 +34,7 @@ Most often, correlation is measured with the 'Pearson product-moment correlation
 
 $Cor(X, Y) = Cor(X, 5Y) = Cor(8X, 2Y) = Cor(7X, Y)$  
 
-- Where $Cor$ denotes correlation, and of course we can replace the numbers 5, 8, 2 and 7 with any others.
+- Where $Cor$ denotes correlation and where we can, of course, replace the numbers 5, 8, 2 and 7 with any others.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -44,25 +42,20 @@ $Cor(X, Y) = Cor(X, 5Y) = Cor(8X, 2Y) = Cor(7X, Y)$
 
 The above explains why, during a market crash, stock correlations approach 1 while many stocks have high (> 5) betas.
 
-- Some stock returns effectively become linear multiples of the market return---they may decrease 6\% for every 1\% decline in the market.
+- Some stock returns effectively become linear multiples of the market return -- they may decrease 6\% for every 1\% decline in the market.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Optimal Hedge Ratios
-
-This also helps explain the optimal hedge ratio (see the Cross Hedging and Basis Risk presentation).
-
-- Even if the assets are perfectly correlated, you will likely have a hedge ratio different from 1 given different volatilities.
+This also helps explain the optimal hedge ratio (see the [Cross Hedging](http://www.5minutefinance.org/concepts/cross-hedging) and [First Look at Risk](http://www.5minutefinance.org/concepts/intro-risk) presentations). Even if the assets are perfectly correlated, you will likely have a hedge ratio different from 1 given different volatilities.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Interactive App
 
-In the app on the following slide, change the 'Correlation' slider to generate random numbers with a particular correlation. ^[It may be a bit off because it is a random sample taken from a distribution with that correlation coefficient.]
+In the app on the following slide, change the 'Correlation' slider to generate random numbers with a particular correlation. (Note: it may be a bit off because it is a random sample taken from a distribution with that correlation coefficient.)
 
 -  Changing the 'Multiple' slider will multiply the 'x' variable by that number.  You'll see it doesn't change the correlation coefficient -- only the slope of the graph. Linear transformations do not affect correlation.
 
--  Then choose the radio button to square z.  You'll see this transformation will change the correlation.  Nonlinear transformations do affect correlation. 
+-  Then choose the radio button to square 'z'.  You'll see this transformation will change the correlation.  Nonlinear transformations do affect correlation. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -159,8 +152,8 @@ corrplot(M, method = "square")
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Econometrics/what_is_correlation/basic_correlation.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Econometrics/what_is_correlation/basic_correlation.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
