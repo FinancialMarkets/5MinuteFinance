@@ -56,7 +56,7 @@ Returns on the VVIX are determined by the difference between expected and realiz
 
 Both the VVIX and the VIX tend to be inversely correlated with the stock market.  
 
--  When the market declines [volatility tends to increase](http://quant.stackexchange.com/questions/4954/what-is-the-leverage-effect-for-stocks) which increased the VIX.  The increase in the VIX then causes an increase in the volatility of the VIX (VVIX). 
+-  When the market declines [volatility tends to increase](http://quant.stackexchange.com/questions/4954/what-is-the-leverage-effect-for-stocks) which increases the VIX.  The increase in the VIX then causes an increase in the volatility of the VIX (VVIX). 
 
 -  So we generally see the VIX and VVIX peak at similar times. For example, in the interactive graphic in the next slide we see the VIX and the VVIX both reaching high values during the 2008 financial crisis and 2010 flash crash.   
 
