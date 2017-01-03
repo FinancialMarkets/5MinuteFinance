@@ -42,7 +42,8 @@ Credit risk, which reflects the possibility that the loan won’t be repaid in f
 ***** DONE FX Arbitrage                                      
 ***** DONE FX Markets
 ***** DONE Limit Order Book                               
-***** TODO Pairs Trade
+***** DONE Pairs Trade :not deployed 5MF:
+Apps are dependent, so cannot deploy them individually.
 ***** TODO The Greeks                                       
 ***** TODO Intro to Stock Options
 ** Tier 3
