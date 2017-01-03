@@ -8,7 +8,7 @@ runtime: shiny
 
 ## Characteristics of Implied Volatility
 
-Implied volatility is the market's expectation of a security's volatility extracted from option prices on that security.  It is the volatility expected over the life of that option.  We calculate Implied Volatility using the Black-Scholes option pricing model---solving the equation for volatility and plug in the option price we observe in the market.  
+Implied volatility is the market's expectation of a security's volatility extracted from option prices on that security.  It is the volatility expected over the life of that option.  We calculate Implied Volatility using the [Black-Scholes option pricing model](http://www.5minutefinance.org/concepts/black-scholes) -- solving the equation for volatility and plugging in the option price we observe in the market.  
 
 Here we take a look at two important observations involving implied volatility.
 
@@ -32,7 +32,9 @@ In modern derivative pricing in complete markets, we have to hedge away any sour
 
 The option smile shows the dependence of an option's implied volatility on the option's moneyness, which is defined as the option's strike price divided by the underlying security's price.  
 
--  Generally the option smile for equity markets looks like the chart on the next slide. Note this looks more like a *skew* or *smirk*.  Implied volatility is highest when the underlying security is much higher than the strike (deep out-of-the-money put, and in-the-money call, options).  
+-  Generally the option smile for equity markets looks like the chart on the next slide. Note this looks more like a *skew* or *smirk*.  
+
+- Implied volatility is highest when the underlying security is much higher than the strike (deep out-of-the-money put, and in-the-money call, options).  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -61,13 +63,13 @@ The option smile shows the dependence of an option's implied volatility on the o
 
 ## The Smile for Differing Expirations
 
-The option smile is known to take different shapes depending on the options expiration.  The general form of the smile is the same, however the sensitivity of implied volatility to moneyness may be different for varying expirations.  
+The option smile is known to take different shapes depending on the options expiration.  The general form of the smile is the same, although the sensitivity of implied volatility to moneyness may be different for varying expirations.  
 
 -  The option smile is often visualized across expirations, in what is known as the *volatility surface*.  
 
 -  The next slide shows how the smile is affected by option tenor.  The visualization is done with a 3D scatter plot instead of a surface so you see actual IV values, and nothing is interpolated.
 
--  The chart is done using [plotly]().
+-  The chart is done using [plotly](https://plot.ly/products/industries/finance-analytics/).
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -153,8 +155,8 @@ tmp <- cbind(tmp[,2], tmp[,1], tmp[,3])
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/stochastic_vol/stoch_vol.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/stochastic_vol/stoch_vol.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
