@@ -1,5 +1,5 @@
 ---
-title: "For What is the Yield to Maturity (YTM) Used?"
+title: "Yield to Maturity (YTM) and What It's Used For"
 author: "Matt Brigida"
 date: "June 8, 2016"
 logo: misq.png
@@ -15,13 +15,13 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## YTM Gives Us the Bond's Price
 
-Given the YTM, and the bond's cash flows, we can calculate the bond's price.  Say a 10 year bond pays an annual \$50 coupon, and has a 3\% YTM.  Then the bond's value is (using the present value of an annuity formula):
+Given the YTM and a bond's cash flows, we can calculate the bond's price.  Say a 10-year bond pays an annual \$50 coupon and has a 3\% YTM.  Then the bond's value is (using the present value of an annuity formula):
 
 $V_0 = \$50(\frac{1 - \frac{1}{1.03^{10}}}{0.03}) + \frac{\$1000}{1.03^{10}} = \$1170.60$
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## How to We Get the YTM?
+## How Do We Get the YTM?
 
 To get the YTM, we solve for the rate which makes the present value of the bond's payments equal to the bond's price. So say a bond's price is \$900 and it pays an \$80 annual coupon for the next 5 years.  Then the YTM is:
 
@@ -35,17 +35,17 @@ We can solve this equation for $YTM$ using methods such as [Newton-Raphson](http
 
 So we get the bond's price be using the YTM, but we get the YTM by observing the bond's price.  Isn't this circular?  
 
-Seemingly yes.  What the YTM actually does is quote the bond's return to you.  We quote a bond's return, instead of its price, because it is much more informative.  
+Seemingly, yes.  What the YTM actually does is quote the bond's return to you.  We quote a bond's return, instead of its price, because it is much more informative.  
 
--  We do not use the YTM to determine how much to pay for a bond (as in bond valuation).  We can only use it to know what the present price is.
+-  We do not use the YTM to determine how much to pay for a bond (as in [bond valuation](http://www.5minutefinance.org/concepts/an-introduction-to-bond-valuation)).  We can only use it to know what the present price is.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Why Quote a Bond's Return?
 
-Different 5-year US Treasury Notes (for example) may each have different prices.  But all will have the same YTM.  
+Different 5-year U.S. Treasury Notes, as one example, may each have different prices.  *But all will have the same YTM.*  
 
-For example, say we have the following three 5-year notes:
+For instance, say we have the following three 5-year notes:
 
 - Note A: 30-year bond issued 25 years ago with a 15\% coupon rate.
 - Note B: 10-year bond issued 5 years ago with a 9% coupon rate.
@@ -61,13 +61,9 @@ By arbitrage, each bond with have the same 1\% YTM.  So this means the bond pric
 
 <!--- add arbitrage to prove they must all have 1% YTM? -->
 
-## 
-
 <!-- app bleow is not telling the story -->
 <!-- replace with app which shows all prices which have the same YTM -->
 <!-- user change YTM and it plots in coupon price space? -->
-
-app commented -- add
 <!---
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 ## sidebarLayout(
@@ -183,13 +179,11 @@ sidebarLayout(
 #}}}
 ```
 
-
-
 ## So How do You Value a Bond?
 
 There are a couple of approaches to determine how much we would pay for a bond.  
 
--  For a default risk free coupon bond, we can discount each cash flow by the market determined zero coupon rate.  If the bond is not default free, we can adjust the rate for risk.
+-  For a coupon bond with no default risk, we can discount each cash flow by the market-determined zero coupon rate.  If the bond is not default-risk free, we can adjust the rate for risk.
 
 -  Often to value a corporate bond, you can use the YTM of a bond with similar risk.
 
@@ -197,8 +191,8 @@ There are a couple of approaches to determine how much we would pay for a bond.
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/For_What_YTM_Used/for_what_YTM_used.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/For_What_YTM_Used/for_what_YTM_used.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
