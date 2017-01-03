@@ -1,6 +1,6 @@
 ---
 title: "The Greeks"
-author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Options/greeks/greeks.Rmd)"
 output: html_document
 logo: misq.png
 runtime: shiny

@@ -44,7 +44,7 @@ Credit risk, which reflects the possibility that the loan won’t be repaid in f
 ***** DONE Limit Order Book                               
 ***** DONE Pairs Trade :not deployed 5MF:
 Apps are dependent, so cannot deploy them individually.
-***** TODO The Greeks                                       
+***** DONE The Greeks                                       
 ***** TODO Intro to Stock Options
 ** Tier 3
 *** Correlation Coefficient.
