@@ -11,7 +11,7 @@ runtime: shiny
 
 Bond convexity refers to the actual convex (non-linear) relationship between a bond's price and yield.  This is stated in relation to the linear [duration](http://www.5minutefinance.org/concepts/duration) approximation of the bond price and yield relationship.
 
--  Convexity is often used as a general term for the error made when using duration to approximate interest rate risk.
+-  Convexity is often used as a general term for the approximation error that exists when using duration to approximate interest rate risk.
 
 -  The idea is this: duration is a linear (first derivative) approximation.  To make the approximation more accurate, we can include a second-derivative adjustment, which is known as the *convexity adjustment*.  
 
