@@ -15,7 +15,7 @@ Very Useful Bloomberg article: http://www.bloomberg.com/news/articles/2015-09-08
 
 ## The VVIX
 
-The [VVIX](http://www.cboe.com/micro/vvix/vvixwhitepaper.aspx) is often referred to as `the [VIX](https://micfm.shinyapps.io/The_VIX/) on the VIX' or 'the vol of vol'.  
+The [VVIX](http://www.cboe.com/micro/vvix/vvixwhitepaper.aspx) is often referred to as 'the [VIX](http://www.5minutefinance.org/concepts/the-vix-index) of the VIX' or 'the vol of vol' -- that is, the volatility of volatility.   
 
 -  The VIX is a measure of the expected volatility in S&P 500 index options.  It trades as a futures contract, and there are also options traded on this futures contract.  
 
@@ -26,13 +26,15 @@ The [VVIX](http://www.cboe.com/micro/vvix/vvixwhitepaper.aspx) is often referred
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Why Trade the VVIX
+## Why Trade the VVIX?
 
-Returns on the VVIX are determined by the difference between expected and realized (actual) volatility, and the [volatility risk premium](http://www.bis.org/publ/qtrpdf/r_qt1409v.htm).   So the VVIX allows construction of portfolios which may earn or pay the volatility risk premium.
+Returns on the VVIX are determined by the difference between expected and realized (actual) volatility and the [volatility risk premium](http://www.bis.org/publ/qtrpdf/r_qt1409v.htm). So the VVIX allows construction of portfolios which may earn or pay the volatility risk premium.
 
-There has been a large increase in the number of securities which track the VIX index, such as the iPath S&P 500 VIX Short-Term Futures ETN and the VelocityShares Daily 2x VIX Short-Term ETN.  
+- There has been a large increase in the number of securities which track the VIX index, such as the iPath S&P 500 VIX Short-Term Futures ETN and the VelocityShares Daily 2x VIX Short-Term ETN.  
 
-- If you have a position in these securities, then trading VVIX futures allow you to hedge changes in the VIX.  For example if you are short the VIX, you can buy a set VVIX futures which will protext you from very large increases in the VIX.  
+- If you have a position in these securities, then trading VVIX futures allow you to hedge changes in the VIX.  
+
+- For example, if you are short the VIX, you can buy a set VVIX futures which will protext you from very large increases in the VIX.  
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -40,10 +42,11 @@ There has been a large increase in the number of securities which track the VIX 
 
 ## Characteristics of the VVIX
 
--  The VVIX is strongly mean reverting.  Note since each VVIX contract expires at a set point, you can't easily earn profits by simply betting on mean reversion.  It must revert prior to your contract expiring.  
+-  The VVIX is strongly [mean reverting](https://en.wikipedia.org/wiki/Mean_reversion_(finance)). 
 
--  Term structure refers to the relationship between price and contract maturity.  The VVIX term structure is generally downward sloping, which means the VVIX price tends to decrease with increasing contract maturity.  This reflects that short term predictions tend to be more volatile than long term predictions.  
+-  Since each VVIX contract expires at a set point, you can't easily earn profits by simply betting on mean reversion; it must revert prior to your contract expiring.  
 
+-  *Term structure* refers to the relationship between price and contract maturity.  The VVIX term structure is generally downward sloping, which means the VVIX price tends to decrease with increasing contract maturity.  This reflects that short term predictions tend to be more volatile than long term predictions.  
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -51,7 +54,9 @@ There has been a large increase in the number of securities which track the VIX 
 
 ## The VVIX, VIX, and the Stock Market
 
-Both the VVIX and the VIX tend to be inversely correlated with the stock market.  When the market declines [volatility tends to increase](http://quant.stackexchange.com/questions/4954/what-is-the-leverage-effect-for-stocks) which increased the VIX.  The increase in the VIX then causes and increase in the volatility of the VIX (VVIX). 
+Both the VVIX and the VIX tend to be inversely correlated with the stock market.  
+
+-  When the market declines [volatility tends to increase](http://quant.stackexchange.com/questions/4954/what-is-the-leverage-effect-for-stocks) which increased the VIX.  The increase in the VIX then causes an increase in the volatility of the VIX (VVIX). 
 
 -  So we generally see the VIX and VVIX peak at similar times. For example, in the interactive graphic in the next slide we see the VIX and the VVIX both reaching high values during the 2008 financial crisis and 2010 flash crash.   
 
@@ -99,11 +104,13 @@ renderDygraph({
 ##  VVIX, VIX, and Market Returns 
 
 
-There is not a significant correlation between the VVIX returns, and the VIX and S&P 500 returns.  
+There is not a significant correlation between the VVIX returns and the VIX and S&P 500 returns.  
 
--  While it is true the VVIX and VIX tend to be high at the same time, the VVIX can also be high when the VIX only rises by a modest amount as mentioned.  Also, over the long periods of time without market declines, the VVIX and VIX movements tend to be independent.
+-  While it is true that the VVIX and VIX tend to be high at the same time, the VVIX can also be high when the VIX only rises by a modest amount, as mentioned above.  
 
-- You can see this in the next interactive graphic.  Move the graphic to see the VVIX and VIX percent change axes.  You see the data points are generally horizontal, which means the VVIX percent change is not greatly affected the the VIX percent change. 
+-  Over the long periods of time without market declines, the VVIX and VIX movements tend to be independent.
+
+-  You can see this in the next interactive graphic.  Move the graphic to see the VVIX and VIX percent change axes.  You see the data points are generally horizontal, which means the VVIX percent change is not greatly affected the the VIX percent change. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -155,8 +162,8 @@ renderScatterplotThree({
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/The_VVIX/vvix.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/The_VVIX/vvix.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
