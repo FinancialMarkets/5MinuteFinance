@@ -11,15 +11,15 @@ runtime: shiny
 
 The value of any financial asset is the the sum of *expected cash flows* from that asset discounted at a risk-adjusted rate.  Thus the first step in valuing any asset is determining the expected cash flows that the asset will generate.
 
-- We pay stock and bond holders in cash, and not with measures such as "profit".
+We pay stock and bond holders in cash, and not with measures such as 'profit.'
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Why Not Profit?
 
-Non-cash deductions, such as Depreciation and Amortization, are made when calculating profit.
+-  Non-cash deductions, such as Depreciation and Amortization, are made when calculating profit, but these non-cash deductions cannot be used to pay asset holders. 
 
-- But this cash is really retained by the firm, and can be used to pay asset holders.
+-  Cash, on the other hand, is really retained by the firm, and can be used to pay asset holders.
 
 <!---Also, cash payments for large items are not deducted when they are made, but depreciated over time.  
 
@@ -29,7 +29,7 @@ Non-cash deductions, such as Depreciation and Amortization, are made when calcul
 
 ## Finance Cash Flow $\neq$ Accounting Cash Flow
 
-The term 'Cash Flow' in finance is different from the accounting 'Statement of Cash Flows'.   
+The term 'Cash Flow' in finance is different from the accounting term 'Statement of Cash Flows.'
 
 Also in finance, we usually are most interested in cash flow from operating the business, and *not* cash flows from financing activities.
 
@@ -41,10 +41,10 @@ Also in finance, we usually are most interested in cash flow from operating the 
 
 There are various measures of cash flow, such as Operating Cash Flow and Free Cash Flow.
 
-- Also there can be particular ways to calculate cash flows for unique industries (such as movie production companies).
+- Also, there can be particular ways to calculate cash flows for unique industries (such as movie production companies).
 - Some may even define "Free Cash Flow" in different ways. 
 
-The key is however, we are trying to estimate the amount of cash we can regularly return to investors.
+The key, however, is that we are trying to estimate the amount of cash we can regularly return to investors.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -66,7 +66,7 @@ OCF is calculated as earnings before interest and taxes (EBIT) plus Depreciation
 
 [graphic: someone with coffee using a calculator]
 
-- Note we don't deduct interest expense even though it is a cash charge.  This is because interest expense is not an operating charge, but rather determined by how we chose to finance our assets.
+- Note that we don't deduct interest expense even though it is a cash charge.  This is because interest expense is not an operating charge, but rather determined by how we chose to finance our assets.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -126,9 +126,9 @@ DT::renderDataTable({
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/OCF/OCF.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/OCF/OCF.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
