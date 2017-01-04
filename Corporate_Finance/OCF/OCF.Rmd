@@ -11,7 +11,7 @@ runtime: shiny
 
 The value of any financial asset is the the sum of *expected cash flows* from that asset discounted at a risk-adjusted rate.  Thus the first step in valuing any asset is determining the expected cash flows that the asset will generate.
 
-- We pay stock and bond holders in cash, and not with measures such as "profit".
+- We pay stock and bond holders in cash, and not with measures such as 'profit'.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -19,11 +19,11 @@ The value of any financial asset is the the sum of *expected cash flows* from th
 
 Non-cash deductions, such as Depreciation and Amortization, are made when calculating profit.
 
-- But this cash is really retained by the firm, and can be used to pay asset holders.
+- While these deductions lower profit, they do not actually lower cash held by the firm, which can be used to pay asset holders.
 
-<!---Also, cash payments for large items are not deducted when they are made, but depreciated over time.  
+Also, cash payments for certain items are not deducted when they are made, but depreciated over time.  
 
-- This means profit may be higher than the available cash for investors. -->
+- This means at times profit may be higher than the available cash for investors.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -41,10 +41,10 @@ Also in finance, we usually are most interested in cash flow from operating the 
 
 There are various measures of cash flow, such as Operating Cash Flow and Free Cash Flow.
 
-- Also there can be particular ways to calculate cash flows for unique industries (such as movie production companies).
+- Also, there can be particular ways to calculate cash flows for unique industries (such as movie production companies).
 - Some may even define "Free Cash Flow" in different ways. 
 
-The key is however, we are trying to estimate the amount of cash we can regularly return to investors.
+The key, however, is that we are trying to estimate the amount of cash we can regularly return to investors.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -54,8 +54,6 @@ A very common definition is Operating Cash Flow (OCF).
 
 - This is cash flow from operating your firm's assets, and excludes cash flows from financing activities. 
 
-[graphic: factory churning out money]
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## OCF
@@ -64,9 +62,7 @@ OCF is calculated as earnings before interest and taxes (EBIT) plus Depreciation
 
 - $OCF = EBIT + D - T$
 
-[graphic: someone with coffee using a calculator]
-
-- Note we don't deduct interest expense even though it is a cash charge.  This is because interest expense is not an operating charge, but rather determined by how we chose to finance our assets.
+- Note, that we don't deduct interest expense even though it is a cash charge.  This is because interest expense is not an operating charge, but rather determined by how we chose to finance our assets.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -76,8 +72,6 @@ OCF is calculated as earnings before interest and taxes (EBIT) plus Depreciation
 The following app will calculate OCF for any company you choose.  
 
 - Note how different OCF can be from Net Income.
-
-[graphic: person pulling data from the internet]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -126,7 +120,7 @@ DT::renderDataTable({
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/OCF/OCF.Rmd) to see the code and collaborators for this presentation
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/OCF/OCF.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Corporate_Finance/OCF/OCF.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
 
