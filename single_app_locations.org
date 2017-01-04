@@ -111,4 +111,8 @@ https://micfm.shinyapps.io/option_intro_app3/
 
 https://micfm.shinyapps.io/OCFs_app1/
 
-** A First Look at Risk
+** Risk and Value-At-Risk [renamed from: A First Look at Risk]
+
+https://micfm.shinyapps.io/what_is_risk_app1/
+
+https://micfm.shinyapps.io/what_is_risk_app2/

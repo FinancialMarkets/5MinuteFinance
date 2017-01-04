@@ -34,11 +34,11 @@ Credit risk, which reflects the possibility that the loan won’t be repaid in f
 
 [Could then talk briefly about each of these in turn. This would allow you to introduce important fundamental concepts like the risk free rate, real and nominal interest rates, term structure of interest rates, and credit spreads, perhaps with links to more advanced sections on those topics.]
 
-** Tier 2
-***** TODO Operating Cash Flow                        
+** DONE Tier 2
+***** DONE Operating Cash Flow                        
 ***** DONE Net Present Value and Internal Rate of Return
 ***** DONE Capital Asset Pricing Model              
-***** TODO A First Look at Risk
+***** DONE A First Look at Risk
 ***** DONE FX Arbitrage                                      
 ***** DONE FX Markets
 ***** DONE Limit Order Book                               
@@ -47,7 +47,7 @@ Apps are dependent, so cannot deploy them individually.
 ***** DONE The Greeks                                       
 ***** DONE Intro to Stock Options
 ** Tier 3
-*** Correlation Coefficient.
+*** TODO Correlation Coefficient.
 **** TODO I am worried that readers who are learning what a correlation coefficient is will understand references to beta or optimal hedge ratios.
 ·      The interactive map is great.
 Other risk presentations; Portfolio performance, Derivatives, etc.
