@@ -55,9 +55,9 @@ $d_2 = d_1 - \sigma\sqrt(T)$
 
 The groundbreaking feature of the Black-Scholes model, as opposed to earlier attempts at option valuation, is that it does not require the  stock's expected return as an input.
 
--  This is important, because we simply cannot know what the stock's return will be.
+-  This is important, because we don't know the stock's expected return.
 
--  The idea is that we don't need the expected return because we are going to hedge our risk from the stock's returns (whatever they are).
+-  The idea is that we don't need the expected return because we are going to hedge out risk from the stock's returns (whatever they are).
 
 -  You can also view the expected return as being already included in the stock's price, which is determined by the stock's level of risk and return.
 
@@ -159,7 +159,7 @@ The present stock price is easily observable, and the exercise price and time to
 
 ## The Risk Free Rate
 
-The risk free rate should be the annualized-continuously compounded rate on a default free security *with the same maturity* as the expiration data of the option.
+The risk free rate should be the annualized continuously-compounded rate on a default free security *with the same maturity* as the expiration data of the option.
 
 -  For example, if the option expired in 3 months, you can use the continuously compounded annual rate for a 3-month Treasury Bill.
 
@@ -369,7 +369,7 @@ So far we have only looked at call options, but can Black-Scholes also value put
 
 -  Yes, we can write an explicit formula for the Black-Scholes value of a European put option.
 
-- However it is much more convenient to simply use put-call parity, which is another topic altogether.
+-  However it is much more convenient to simply use **put-call parity**.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
