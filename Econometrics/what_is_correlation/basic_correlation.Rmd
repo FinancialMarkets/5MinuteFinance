@@ -1,4 +1,4 @@
----
+--
 title: "An Introduction to the Correlation Coefficient"
 author: "Milken Institute, Center for Financial Markets"
 affiliation: "Milken Institute Center for Financial Markets"
@@ -40,10 +40,9 @@ $Cor(X, Y) = Cor(X, 5Y) = Cor(8X, 2Y) = Cor(7X, Y)$
 
 ## Correlation, Beta, and Market Crashes
 
-The above explains why, during a market crash, stock correlations approach 1 while many stocks have high (> 5) betas.
+The above explains why, during a market crash, stock correlations approach 1 while many stocks have high (> 5) [betas](http://www.5minutefinance.org/concepts/the-capital-asset-pricing-model).
 
 - Some stock returns effectively become linear multiples of the market return -- they may decrease 6\% for every 1\% decline in the market.
-
 
 This also helps explain the optimal hedge ratio (see the [Cross Hedging](http://www.5minutefinance.org/concepts/cross-hedging) and [First Look at Risk](http://www.5minutefinance.org/concepts/intro-risk) presentations). Even if the assets are perfectly correlated, you will likely have a hedge ratio different from 1 given different volatilities.
 
