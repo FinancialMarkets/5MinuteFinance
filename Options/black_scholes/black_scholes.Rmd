@@ -12,13 +12,13 @@ smaller: true
 
 ## The Black-Scholes World
 
-If we assume that stock options exist in world where:
+If we assume that stock options exist in world where...
 
--  the market is complete, meaning given a stock and a bond we can replicate call and put options.
--  the risk-free interest rate and stock price volatility are both constant.
--  stock prices follow a lognormal distribution.  
+-  ...the market is complete, meaning given a stock and a bond we can replicate call and put options,
+-  the risk-free interest rate and stock price volatility are both constant,
+-  and stock prices follow a lognormal distribution...
 
-Then we can value European Call Options on Non-Dividend Paying Stocks using the Black-Scholes Formula shown on the next slide.
+...then we can value European Call Options on Non-Dividend Paying Stocks using the Black-Scholes Formula shown on the next slide.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -55,11 +55,11 @@ $d_2 = d_1 - \sigma\sqrt(T)$
 
 The groundbreaking feature of the Black-Scholes model, as opposed to earlier attempts at option valuation, is that it does not require the  stock's expected return as an input.
 
--  This is important, because we don't know the stock's expected return.
+-  This is important, because we simply cannot know what the stock's return will be.
 
--  The idea is that we don't need the expected return, because we are going to hedge out risk from the stocks returns (whatever they are).
+-  The idea is that we don't need the expected return because we are going to hedge our risk from the stock's returns (whatever they are).
 
--  You can also view the expected return as being already in the stock's price, which is determined by the stock's level of risk and return.
+-  You can also view the expected return as being already included in the stock's price, which is determined by the stock's level of risk and return.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -69,15 +69,15 @@ Looking at the option value formula: $C_0 = S_0N(d_1) - Xe^{-rT}N(d_2)$
 
 You can look at the $N(d)$ terms as the likelihood that the option will be exercised at expiration (that $S_T > X$).
 
--  If both $N(d)$ are close to 1, then the option's value is about $S_0 - Xe^{-rT}$ or the present stock price minus the present value of the strike price. This makes sense given that at expiration (if $S_0 > X$) the option pays $S_T - X$.
+-  If both $N(d)$ terms are close to 1, then the option's value is about $S_0 - Xe^{-rT}$ or the present stock price minus the present value of the strike price. This makes sense given that at expiration (if $S_0 > X$) the option pays $S_T - X$.
 
-- If the option has little chance of being exercised (both $N(d)$s are near 0) then the option will have a near \$0 value.
+- If the option has little chance of being exercised (that is, both $N(d)$s are near 0), then the option will have a near \$0 value.
 
 - For other values in the 0 to 1 range, the call value can be viewed as the payoff $S_0 - Xe{-rT}$ weighted by the probability that the call is exercised.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-##
+## Black-Scholes App
 
 The following app will calculate the Black-Scholes European call option price for a set of given inputs.
 
@@ -151,17 +151,17 @@ sidebarLayout(
 
 The present stock price is easily observable, and the exercise price and time to maturity are aspects of the option contract. The parameters which are less easily observed are:
 
--  risk-free rate
--  dividend yield
--  volatility
+-  Risk-free rate
+-  Dividend yield
+-  Volatility
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## The Risk Free Rate
 
-The risk free rate should be the annualized continuously compounded rate on a default free security *with the same maturity* as the expiration data of the option.
+The risk free rate should be the annualized-continuously compounded rate on a default free security *with the same maturity* as the expiration data of the option.
 
--  For example, if the option expired in 3 months, you can use the continuously compounded annual rate for a 3 month Treasury Bill.
+-  For example, if the option expired in 3 months, you can use the continuously compounded annual rate for a 3-month Treasury Bill.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -183,38 +183,39 @@ In the Black-Scholes world (where the option is European) we can reduce the stoc
 
 -  The discounting is done from the ex-dividend date to the present.
 
--  We can use the risk free rate, though this assumes we are certain about the amount of the dividend payment.
+-  We can use the risk-free rate, though this assumes we are certain about the amount of the dividend payment.
 
--  Note, we only include dividend to be paid during the life of the option.  So if the option expires in a month, and the next dividend paid by the stock is in two months, we do *not* include a dividend adjustment. 
+-  Note, we only include the dividend to be paid during the life of the option.  So if the option expires in a month and the next dividend paid by the stock is in two months, we do *not* include a dividend adjustment. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Volatility
 
-Volatility (the standard deviation of log-returns) is not directly observable, and is the toughest input to determine.  Two common ways to estimate volatility:
+Volatility (the standard deviation of log-returns) is not directly observable, and it is the toughest input to determine.  Two common ways to estimate volatility:
 
 -  Use historical data
 -  Extracting volatility from other options
 
-**Important Note:** Volatility is assumed to be constant in the Black-Scholes model.  This is why you can estimate volatility over a historical period, and use that volatility over a later period.  However this assumption was made for mathematical ease, and is not realistic.
 
-- So in the model's world, using historical volatility is fine. Though in the real world it is a poor approach. 
+**Important Note:** Volatility is assumed to be constant in the Black-Scholes model.  This is why you can estimate volatility over a historical period and use that volatility over a later period.  But this assumption was made for mathematical ease, and it is not realistic.
+
+So in the model's world, using historical volatility is fine, even though in the real world it is a poor approach. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Historical Data
 
-We can use historical stock price data to calculate continuously compounded returns (log-returns).  We can then take the standard deviation of these returns (using STDEV() in Excel ofr example), and annualize the standard deviation, affording an estimate of annual volatility.
+We can use historical stock price data to calculate continuously compounded returns (log-returns).  We can then take the standard deviation of these returns (using *STDEV()* in Excel, for example) and annualize the standard deviation, affording an estimate of annual volatility.
 
--  To do so, we must choose our sampling frequency (daily, weekly, or monthly prices), and the amount of history to use.
+-  To do so, we must choose our sampling frequency (daily, weekly, or monthly prices) and the amount of history to use.
 
--  Commonly used are daily prices over the last 100 days.
+-  Daily prices over the last 100 days are commonly used.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Annualizing the Standard Deviation
 
-Once we have the standard deviation of log returns, we must annualize it.  To do so we use, where $\sigma_a$ and $sigma_p$ are the annual and sample period standard deviations:
+Once we have the standard deviation of log returns, we must annualize it.  To do so we use the equation below, where $\sigma_a$ and $sigma_p$ are the annual and sample period standard deviations:
 
 $\sigma_a = \sigma_p \sqrt{\#\ periods\ in\ a\ year}$
 
@@ -293,9 +294,11 @@ renderDygraph({
 
 ## Extracting Volatility from Other Options
 
-We can also extract volatility from similar options, and use that as the volatility for our options.  This is often referred to as 'calibrating to the market'.
+We can also extract volatility from similar options and use that number as the volatility for our options.  
 
--  This has the benefit of being a forward looking measure, which will take into account market expectations of the volatility from future events.  Historical volatility only looks backwards.
+-  This is often referred to as 'calibrating to the market'.
+
+-  It has the benefit of being a forward-looking measure, which will take into account market expectations of the volatility from future events.  Historical volatility, on the other hand, only looks backwards.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -303,13 +306,13 @@ We can also extract volatility from similar options, and use that as the volatil
 
 This distinction is particularly important if there is an event which will take place during the life of the option, which hasn't happened historically.
 
--  For example, say you own options expiring in 3 months on Chevron (CVX), and in one month Congress will vote on legislation to allow unfettered exports of crude oil from the US (exports are now substantially limited).
+-  Consider, for example, what the consequences might be if you own options expiring in 3 months on Chevron (CVX) and in one month Congress will vote on legislation to allow unfettered exports of crude oil from the U.S. (exports are now substantially limited).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Implied Volatility
 
-We can extract a volatility estimate from traded options by plugging the option price into the Black-Scholes formula, and solving for volatility. This volatility estimate is called the option's 'Implied Volatility'.
+We can extract a volatility estimate from traded options by plugging the option price into the Black-Scholes formula and solving for volatility. This volatility estimate is called the option's 'implied volatility'.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -360,20 +363,20 @@ sidebarLayout(
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## But what About Put Options?
+## But What about Put Options?
 
 So far we have only looked at call options, but can Black-Scholes also value put options?
 
 -  Yes, we can write an explicit formula for the Black-Scholes value of a European put option.
 
-- However it is much more convenient to simply use [put-call parity](http://127.0.0.1), which we cover in the linked presentation.
+- However it is much more convenient to simply use put-call parity, which is another topic altogether.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/black_scholes/black_scholes.Rmd) to see the code and collaborators for this presentation
+Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/black_scholes/black_scholes.Rmd) to see the code and collaborators for this presentation.
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
