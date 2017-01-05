@@ -2,9 +2,9 @@
 title: "Market Volatility"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 date: "R/Finance: May 20, 2016"
-output: ioslides_presentation
-logo: misq.png
-css: 5min_mod.css
+output: html_document
+<!-- logo: misq.png -->
+<!-- css: 5min_mod.css -->
 runtime: shiny
 ---
 
@@ -123,7 +123,8 @@ renderCalheatmapR({
 
 
 ## 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
 
 ## Try with rbokeh
 ## maybe use the rbokeh hexbin to plot the abs value of returns for two stocks over the same set of dates.
@@ -139,34 +140,44 @@ comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
 names(comp) <- c("symbol", "name")
 
 inputPanel(
-    selectizeInput("name1", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name),
-    dateRangeInput("date1", "Date Range", start = "2015-01-01", end = Sys.Date())
+    selectizeInput("name2", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name),
+    dateRangeInput("date2", "Date Range", start = "2005-01-01", end = Sys.Date())
     ## add date range input 
 )
 
 ## code modified from here:  https://github.com/ramnathv/rChartsCalmap
     rbokeh::renderRbokeh({
     ## valdate name ----
-    # validate(
-    #     need(input$name1 != "", "Select a US stock name.")
-    # )
-    # 
-    # ticker <- comp$symbol[comp$name == input$name1]
-    # 
-    # stock <- getSymbols(ticker, auto.assign = FALSE,from = input$date1[1], to = input$date1[2])
-    # xts_to_df <- function(xt){
-    #     data.frame(
-    #         date = format(as.Date(index(xt)), '%Y-%m-%d'),
-    #         coredata(xt)
-    #     )
-    # }
-    # 
-    # dat0 <- 100 * abs(Delt(Ad(stock)[-1]))
-    # names(dat0) <- "vol"
-    # dat = xts_to_df(dat0)
+    validate(
+        need(input$name2 != "", "Select a US stock name.")
+    )
+    
+    ticker <- comp$symbol[comp$name == input$name2]
 
+    stock <- getSymbols(ticker, auto.assign = FALSE,from = input$date2[1], to = input$date2[2])
 
-    figure() %>% ly_hexbin(rnorm(10000), rnorm(10000))
+    time <- as.POSIXct(index(stock)) %>% as.numeric()
+    adjC <- Ad(stock)
+    rets <- as.numeric(Delt(adjC)[-1])
+    names(rets) <- time[-1]
+    
+    ## stock <- getSymbols(ticker, auto.assign = FALSE,from = input$date1[1], to = input$date1[2])
+    ## xts_to_df <- function(xt){
+    ##     data.frame(
+    ##         date = format(as.Date(index(xt)), '%Y-%m-%d'),
+    ##         coredata(xt)
+    ##     )
+    ## }
+    
+    ## dat0 <- 100 * abs(Delt(Ad(stock)[-1]))
+    ## names(dat0) <- "vol"
+    ## dat = xts_to_df(dat0)
+
+n <- dim(rets)[1]
+    ramp <- colorRampPalette(c("green", "red"))(n)
+  ##   colors <- c("#a6cee3", "#1f78b4", "#fdbf6f", "#b2df8a", "#33a02c",
+  ## "#bbbb88", "#baa2a6", "#e08e79")
+    figure() %>% ly_hexbin(rets)  #, palette = colors) 
 })
 #}}}
 ```
