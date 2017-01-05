@@ -116,3 +116,10 @@ https://micfm.shinyapps.io/OCFs_app1/
 https://micfm.shinyapps.io/what_is_risk_app1/
 
 https://micfm.shinyapps.io/what_is_risk_app2/
+** Black Scholes
+
+https://micfm.shinyapps.io/black_scholes_app1/
+
+https://micfm.shinyapps.io/black_scholes_app2/
+
+https://micfm.shinyapps.io/black_scholes_app3/

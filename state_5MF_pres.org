@@ -74,3 +74,4 @@ A first look at Risk.
 ·       It states, “Risk is a statement about the likelihood of adverse events. There are differing ways to classify ‘adverse event’ which leads to differing measures and ways of stating risk, such as:” Is this correct?  There could be a certain adverse outcome with no potential fluctuations in either the timing or the severity of the outcome.  It seems to me that risk is a statement about the distribution of future outcomes, regardless of whether they are considered adverse or not.
 ·       The graphics effectively illustrate the concepts.
  
+**** DONE Black Scholes
