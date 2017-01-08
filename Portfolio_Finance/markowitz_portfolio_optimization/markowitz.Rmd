@@ -19,7 +19,7 @@ Diversification is an investment strategy which reduces portfolio risk without n
 
 ## Diversification: The Math
 
-say we have two risky assets, A and B, in our portfolio. The expected return on our portfolio is:
+Say we have two risky assets, A and B, in our portfolio. The expected return on our portfolio is:
 
 $E(r_p) = w_AE(r_A) + w_BE(r_B)$
 

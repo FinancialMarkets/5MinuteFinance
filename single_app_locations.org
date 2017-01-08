@@ -123,3 +123,12 @@ https://micfm.shinyapps.io/black_scholes_app1/
 https://micfm.shinyapps.io/black_scholes_app2/
 
 https://micfm.shinyapps.io/black_scholes_app3/
+** Intro to Stock Investments
+
+https://micfm.shinyapps.io/stock_app1/
+
+https://micfm.shinyapps.io/stock_app2/
+
+https://micfm.shinyapps.io/stock_app3/
+
+** 
