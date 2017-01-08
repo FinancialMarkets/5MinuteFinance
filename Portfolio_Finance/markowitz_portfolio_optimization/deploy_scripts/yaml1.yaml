@@ -1,6 +1,6 @@
 ---
 title: "Mean-Variance Portfolio Optimization"
-author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Portfolio_Finance/markowitz_portfolio_optimization/markowitz.Rmd)"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod2.css
