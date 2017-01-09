@@ -131,4 +131,19 @@ https://micfm.shinyapps.io/stock_app2/
 
 https://micfm.shinyapps.io/stock_app3/
 
+** Optimal Mean-Variance Portfolios (Markowitz)
+
+https://micfm.shinyapps.io/markowitz_app1/
+
+https://micfm.shinyapps.io/markowitz_app2/
+
+https://micfm.shinyapps.io/markowitz_app3/
+
+** ETFs
+
+https://micfm.shinyapps.io/ETFs_app1/
+
+
+https://micfm.shinyapps.io/ETFs_app2/
+
 ** 
