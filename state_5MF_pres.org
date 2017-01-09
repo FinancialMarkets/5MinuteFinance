@@ -47,7 +47,7 @@ Apps are dependent, so cannot deploy them individually.
 ***** DONE The Greeks                                       
 ***** DONE Intro to Stock Options
 ** TODO Tier 3
-***** TODO Correlation Coefficient.
+***** DONE Correlation Coefficient.
 ****** DONE I am worried that readers who are learning what a correlation coefficient is will understand references to beta or optimal hedge ratios.
 ******* added links to presentations
 **·      The interactive map is great.

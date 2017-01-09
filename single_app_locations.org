@@ -159,3 +159,9 @@ https://micfm.shinyapps.io/stock_markets_app1/
 https://micfm.shinyapps.io/stock_markets_app2/
 
 https://micfm.shinyapps.io/stock_markets_app3/
+
+** An Introduction to the Correlation Coefficient
+
+https://micfm.shinyapps.io/what_is_correlation_app1/
+
+https://micfm.shinyapps.io/what_is_correlation_app2/
