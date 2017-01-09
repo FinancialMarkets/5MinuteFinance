@@ -152,4 +152,10 @@ https://micfm.shinyapps.io/leveragedETFs_app1/
 
 https://micfm.shinyapps.io/leveragedETFs_app2/
 
-** 
+** Stock Markets
+
+https://micfm.shinyapps.io/stock_markets_app1/
+
+https://micfm.shinyapps.io/stock_markets_app2/
+
+https://micfm.shinyapps.io/stock_markets_app3/

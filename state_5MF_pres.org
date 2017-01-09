@@ -80,5 +80,5 @@ A first look at Risk.
 ***** TODO Cross Hedging
 ***** TODO Crude Oil Markets
 ***** DONE Intro Stock Investments
-***** TODO Intro Stock Markets
+***** DONE Intro Stock Markets
 ***** DONE Markowitz
