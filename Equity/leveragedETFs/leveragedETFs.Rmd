@@ -5,7 +5,7 @@ affiliation: "Milken Institute Center for Financial Markets"
 output: ioslides_presentation
 runtime: shiny
 logo: misq.png
-css: 5min_mod.css
+css: 5min_mod2.css
 smaller: true
 ---
 
@@ -152,60 +152,9 @@ renderDygraph({
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-<!---
-old stock plot with technical analysis
-
-## 
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-#{{{
-inputPanel(
-    textInput("ticker1", label = "Stock Ticker", value = "XOM"),
-    dateInput(inputId = "startDate", label = "Start Date", value = "2014-06-01", min = "2008-01-01"),
-    selectInput(inputId = "study", label = "Technical Indicator", choices = list("Bollinger Bands" = 1,
-                                                                  "Moving Average" = 2,
-                                                                  "Directional Movement Index" = 3,
-                                                                  "Relative Strength Index" = 4,
-                                                                  "MACD" = 5), selected = 1)        
-                                        #         ),
-    )
-                                        #               mainPanel(
-renderPlot({
-    library(quantmod)
-    ## valdate tickers ----
-    validate(
-        need(input$ticker1 != "", "Input a valid US stock ticker.")
-        )
-
-    stock <- getSymbols(input$ticker1, src = "google", auto.assign = FALSE)
-    stock <- stock[paste(input$startDate, "/", sep = "")]
-
-    if(input$study == 1){
-        chartSeries(stock, theme = "white", name = ""); addBBands()
-    } else {
-        if(input$study == 2) {
-            chartSeries(stock, theme = "white", name = ""); addSMA()
-        } else {
-            if(input$study == 3) {
-                chartSeries(stock, theme = "white", name = ""); addADX()
-            } else {
-                if(input$study == 4) {
-                    chartSeries(stock, theme = "white", name = ""); addRSI()
-                } else {
-                    chartSeries(stock, theme = "white", name = ""); addMACD()
-                }
-            }
-        }
-    }
-
-})
-#}}}
-```
--->
-
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/TVM_Single_CFs/TVM_Single_CFs.Rmd) to see the code and collaborators for this presentation.
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/leveragedETFs/leveragedETFs.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Equity/leveragedETFs/leveragedETFs.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
