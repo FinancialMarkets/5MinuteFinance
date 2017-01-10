@@ -46,39 +46,16 @@ Credit risk, which reflects the possibility that the loan won’t be repaid in f
 Apps are dependent, so cannot deploy them individually.
 ***** DONE The Greeks                                       
 ***** DONE Intro to Stock Options
-** TODO Tier 3
+** DONE Tier 3
 ***** DONE Correlation Coefficient.
 ****** DONE I am worried that readers who are learning what a correlation coefficient is will understand references to beta or optimal hedge ratios.
 ******* added links to presentations
-**·      The interactive map is great.
-****** Other risk presentations; Portfolio performance, Derivatives, etc.
-**·      I worry about the audience.
-**·      It seems than people would need a reasonable understanding before accessing these descriptions, e.g., pdf, volatility clusters.
-**·      That said, they were clear to me.
-***** TODO Add all other presentations here
-***** TODO Corporate Finance:
-·      These are well done.
-**** TODO On balance sheets, I would draw have an interactive map that shows everything in a t-account format too.
- 
-**** DONE Monetary Policy.
-·      I thought that this was relatively weak.
-·      Perhaps, eliminate and/or just refer to the Fed’s website that provide lots of information.
-·      Or, if you really like the word cloud, then explain better what this is and how it can be used.
-***** removed 
- 
-***** TODO Trading and Market Structure
-·      This is not my area of expertise, but I see many seminars on this.
-**** TODO It seems that the offerings on the Milken site on the range of issues associated with market microstructure is too limited as it stand. 
-
-A first look at Risk.
-·       It states, “Risk is a statement about the likelihood of adverse events. There are differing ways to classify ‘adverse event’ which leads to differing measures and ways of stating risk, such as:” Is this correct?  There could be a certain adverse outcome with no potential fluctuations in either the timing or the severity of the outcome.  It seems to me that risk is a statement about the distribution of future outcomes, regardless of whether they are considered adverse or not.
-·       The graphics effectively illustrate the concepts.
- 
+********·      The interactive map is great.
 ***** DONE Black Scholes
 ***** DONE ETFs
 ***** DONE Leveraged ETFs
 ***** DONE Cross Hedging
-***** TODO Crude Oil Markets
+***** DONE Crude Oil Markets
 ***** DONE Intro Stock Investments
 ***** DONE Intro Stock Markets
 ***** DONE Markowitz
@@ -87,16 +64,31 @@ A first look at Risk.
 ***** DONE Intro to Stock and Options Strats
 ***** DONE Convexity
 ***** DONE ETNs
-
-
-
-
-
 ***** DONE Short Selling Stock
-
-** Works in Progress; Not Deployed for 5MF
+** Works in Progress; Not Deployed for 5MF; and Other Notes
 
 ***** TODO For what is YTM used?
 ***** TODO Varying Option Volatility
 ***** TODO An Intro to US Treasuries
 ***** TODO Treasury Debt Risk
+***** TODO Add all other presentations here
+***** TODO Corporate Finance:
+      ·      These are well done.
+***** TODO On balance sheets, I would draw have an interactive map that shows everything in a t-account format too. 
+***** TODO Trading and Market Structure
+      ·      This is not my area of expertise, but I see many seminars on this.
+***** TODO It seems that the offerings on the Milken site on the range of issues associated with market microstructure is too limited as it stand. 
+
+A first look at Risk.
+·       It states, “Risk is a statement about the likelihood of adverse events. There are differing ways to classify ‘adverse event’ which leads to differing measures and ways of stating risk, such as:” Is this correct?  There could be a certain adverse outcome with no potential fluctuations in either the timing or the severity of the outcome.  It seems to me that risk is a statement about the distribution of future outcomes, regardless of whether they are considered adverse or not.
+·       The graphics effectively illustrate the concepts.
+***** DONE Monetary Policy.
+·      I thought that this was relatively weak.
+·      Perhaps, eliminate and/or just refer to the Fed’s website that provide lots of information.
+·      Or, if you really like the word cloud, then explain better what this is and how it can be used.
+
+:removed from 5MF for now:
+***** Other risk presentations; Portfolio performance, Derivatives, etc.
+**·      I worry about the audience.
+**·      It seems than people would need a reasonable understanding before accessing these descriptions, e.g., pdf, volatility clusters.
+**·      That said, they were clear to me.
