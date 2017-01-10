@@ -86,4 +86,4 @@ A first look at Risk.
 ***** DONE VVIX
 ***** DONE Intro to Stock and Options Strats
 ***** TODO Varying Option Volatility
-***** TODO Convexity
+***** DONE Convexity

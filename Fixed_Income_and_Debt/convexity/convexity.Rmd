@@ -179,11 +179,11 @@ sidebarLayout(
 
             error <- abs(predicted.bv - new.bond.value)
 
-            df <- data.frame(c(macaulay.duration, modified.duration.in.years, convexity, percent.change.by.duration * 100, percent.change.by.duration.convexity * 100, actual.percent.change * 100, price.change.by.duration, price.change.by.duration.convexity, actual.price.change, new.bond.value, predicted.bv, error), row.names = c("Macaulay Duration", "Modified Duration", "Convexity", "% Change by Duration", "% Change by Duration and Convexity", "Actual % Change", "Price Change by Duration", "Price Change by Duration and Convexity", "Actual Price Change", "Actual New Price", "Predicted New Price", "Difference: Predicted vs Actual Value"), stringsAsFactors = "FALSE")
+            df <- data.frame(c(macaulay.duration, modified.duration.in.years, convexity, percent.change.by.duration * 100, percent.change.by.duration.convexity * 100, actual.percent.change * 100, price.change.by.duration, price.change.by.duration.convexity, actual.price.change, new.bond.value, predicted.bv, error), row.names = c("Macaulay Duration", "Modified Duration", "Convexity", "% Change by Duration", "% Change by Duration and Convexity", "Actual % Change", "Price Change by Duration", "Price Change by Duration and Convexity", "Actual Price Change", "Actual New Price", "Predicted New Price", "Difference: Predicted vs Actual"), stringsAsFactors = "FALSE")
 
             names(df) <- ""
             df
-            }, align = 'lr')
+            }, rownames = TRUE)#, align = 'c')
 
         ## renderPlot({
         ##         plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
@@ -199,7 +199,8 @@ sidebarLayout(
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/convexity/convexity.Rmd) to see the code and collaborators for this presentation.
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/convexity/convexity.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Fixed_Income_and_Debt/convexity/convexity.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+) to see the code and collaborators for this presentation.
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
