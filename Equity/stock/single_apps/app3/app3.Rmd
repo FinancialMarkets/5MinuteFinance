@@ -1,0 +1,26 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(quantmod)
+inputPanel(
+    textInput(inputId = "ticker2", label = "Stock Ticker", value = "XOM")
+    )
+renderDygraph({
+    validate(
+        need(input$ticker2 != "", "Input a valid US stock ticker.")
+        )
+    stock2 <- getSymbols(input$ticker2, from = "1900-01-01", auto.assign = FALSE)
+    dygraph(Ad(stock2), main = "") %>%
+        dyRangeSelector()
+})
+#}}}
+```

@@ -1,0 +1,40 @@
+---
+title: ""
+output: html_document
+runtime: shiny
+---
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(quantmod)
+inputPanel(
+    selectInput("curr", "Select Currency", choices = c("Euro" = "1", "U.K. Pound" = "2", "Swiss Franc" = "3", "Canadian Dollar" = "4"), selected = "1") 
+    )
+renderDygraph({
+  currSym <- switch(input$curr,
+                    "1" = "EXUSEU",
+                    "2" = "EXUSUK",
+                    "3" = "EXSZUS",
+                    "4" = "EXCAUS")
+
+    ## to fix the https issue downloading from FRED, added method = "curl" to getSymbols function call -- 
+    
+    direct1 <- getSymbols(currSym, from = "1900-01-01", auto.assign = FALSE, src = "FRED")
+    indirect1 <- 1/direct1
+
+    ## stocks <- data.frame(
+    ##     time = as.Date(index(direct1)),
+    ##     X = direct1,
+    ##     Y = indirect1)
+    ## names(stocks) <- c("time", "Direct", "Indirect")
+    data1 <- merge.xts(direct1, indirect1)
+    names(data1) <- c("Direct", "Indirect")
+    dygraph(data1, main = "") %>%
+        dyRangeSelector()
+})
+#}}}
+```

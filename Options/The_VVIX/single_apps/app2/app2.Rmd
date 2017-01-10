@@ -1,0 +1,40 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(threejs)
+library(quantmod)
+ 
+renderScatterplotThree({
+    sp1 <- getSymbols('^gspc', auto.assign = FALSE, from = "2000-01-01")
+    vix1 <- getSymbols('^vix', auto.assign = FALSE, from = "2000-01-01")
+
+    vvix1 <- read.csv('vixvixtermstructure.csv', header= TRUE, stringsAsFactors = FALSE, colClasses = c("character", "character", "character"))
+    vvix1 <- vvix1[vvix1$"VVIX" != ".", ]
+    vvix1 <- as.xts(as.numeric(vvix1$"VVIX"), order.by = as.Date(strptime(vvix1$Date, format = "%d-%b-%y")))
+    names(vvix1) <- "VVIX"
+
+    ## chart is not compelling -- probably because VVIX is strongly mean reverting.  Maybe change to weekly or daily.  
+    spm <- to.daily(sp1)
+    vixm <- to.daily(vix1)
+    vvixm <- to.daily(vvix1)
+
+    spmr <- Delt(Ad(spm), type = "log")
+    vixmr <- Delt(Ad(vixm), type = "log")
+    vvixmr <- Delt(Cl(vvixm), type = "log") [-1]
+    
+    abs.data1 <- merge.xts(abs(spmr), abs(vixmr), abs(vvixmr), join = 'inner')
+    data1 <- merge.xts(spmr, vixmr, vvixmr, join = 'inner')
+    names(data1) <- c("S&P 500 % Change", "VIX % Change", "VVIX % Change")
+
+    scatterplot3js(data1, color = rainbow(length(data1$"S&P 500 % Change")), labels = paste("Month: ", as.Date(index(data1)), sep = ""))
+                        
+    })
+#}}}
+```

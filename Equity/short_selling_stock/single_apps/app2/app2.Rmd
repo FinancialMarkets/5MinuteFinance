@@ -1,0 +1,21 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(quantmod)
+renderDygraph({
+    stock1 <- getSymbols("SPY", from = "1900-01-01", auto.assign = FALSE)
+    stock2 <- getSymbols("SH", from = "1900-01-01", auto.assign = FALSE)
+    stocks <- merge.xts(Ad(stock1), Ad(stock2), join = "inner")
+    dygraph(Ad(stocks), main = "") %>%
+        dyRangeSelector()
+})
+#}}}
+```

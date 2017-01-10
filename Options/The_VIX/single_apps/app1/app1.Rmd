@@ -1,0 +1,32 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(quantmod)
+
+renderDygraph({
+    sp <- getSymbols('^gspc', auto.assign = FALSE, from = "2000-01-01")
+    vix <- getSymbols('^vix', auto.assign = FALSE, from = "2000-01-01")
+
+    data <- merge.xts(Ad(sp), Ad(vix), join = 'inner')
+    names(data) <- c("S&P 500", "VIX")
+
+    dygraph(data, main = "S&P 500 vs. VIX", width = "100%") %>%
+        dySeries("VIX", axis = 'y2') %>%
+            dyRangeSelector() %>%
+                dyAxis('y', label = "S&P 500") %>%
+                    dyAxis('y2', label = "VIX") 
+                        
+    })
+
+
+#}}}
+```

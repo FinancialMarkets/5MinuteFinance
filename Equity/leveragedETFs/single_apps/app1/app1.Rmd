@@ -1,0 +1,39 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(quantmod)
+## library(DT)
+inputPanel(
+    selectInput(inputId = "index", label = "Index", choices = list("S&P 500" = 1,
+                                                    "Russell 2000" = 2,
+                                      #              "Russell 1000" = 3, it is a 3x
+                                                    "NASDAQ 100" = 3,
+                                                    "DJIA" = 4,
+                                                    "Barclay 7-10 yr. Treas." = 5), selected = "S&P 500")
+    )
+div(renderDataTable({
+    ## validate(
+    ##     need(input$ticker3 != "", "Input a valid US stock ticker.")
+    ##     )
+    etfs <- switch(input$index,
+                   "1" = c("SPY", "SSO"),
+                   "2" = c("IWM", "UWM"),
+                   ## "3" = c("IWB", "FAS"),
+                   "3" = c("QQQ", "QLD"),
+                   "4" = c("DIA", "DDM"),
+                   "5" = c("IEF", "UST"))
+                   
+    quote <- getQuote(etfs)
+    quote <- cbind(row.names(quote), quote[,c(1:4,8)])
+    names(quote)[1] <- "Ticker"
+    quote
+}), style = "font-size:60%")
+#}}}
+```

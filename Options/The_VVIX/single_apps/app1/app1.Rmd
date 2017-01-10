@@ -1,0 +1,39 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(quantmod)
+
+## VVIX data are from here: https://www.cboe.com/publish/vvixtimeseries/vixvixtermstructure.xls
+## may want to just have it read from internet in the future. 
+
+renderDygraph({
+    sp <- getSymbols('^gspc', auto.assign = FALSE, from = "2000-01-01")
+    vix <- getSymbols('^vix', auto.assign = FALSE, from = "2000-01-01")
+    
+    vvix <- read.csv('vixvixtermstructure.csv', header= TRUE, stringsAsFactors = FALSE, colClasses = c("character", "character", "character"))
+    vvix <- vvix[vvix$"VVIX" != ".", ]
+    vvix <- as.xts(as.numeric(vvix$"VVIX"), order.by = as.Date(strptime(vvix$Date, format = "%d-%b-%y")))
+    names(vvix) <- "VVIX"
+    
+    data <- merge.xts(Ad(sp)/10, Ad(vix), vvix, join = 'inner')
+    names(data) <- c("S&P 500", "VIX", "VVIX")
+
+    dygraph(data, main = "VVIX, VIX, and S&P 500") %>%
+        dySeries("VIX", axis = 'y2') %>%
+            dyRangeSelector() %>%
+                dyAxis('y', label = "(S&P 500)/10 and VVIX") %>%
+                    dyAxis('y2', label = "VIX") 
+                        
+    })
+
+
+#}}}
+```

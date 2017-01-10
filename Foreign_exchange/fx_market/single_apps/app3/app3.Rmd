@@ -1,0 +1,47 @@
+---
+title: ""
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        numericInput("Quote1", "EUR", value = 1.2),        
+        radioButtons("type1", "", choices = c("Direct" = "1", "Indirect" = "2"), selected = 1),
+        numericInput("Quote2", "GBP", value = 1.5),
+        radioButtons("type2", "", choices = c("Direct" = "1", "Indirect" = "2"), selected = 1)
+        ),
+    mainPanel(
+        
+        renderPlot({
+            if (input$type1 == 1 && input$type2 == 1){
+                crossRate <- input$Quote1 / input$Quote2
+                units <- "GBP/EUR"
+            } else {
+                if (input$type1 == 1 && input$type2 == 2){
+                    crossRate <- input$Quote1 * input$Quote2
+                    units <- "GBP/EUR"
+                } else {
+                    if (input$type1 == 2 && input$type2 == 1){
+                        crossRate <- input$Quote1 * input$Quote2
+                        units <- "EUR/GBP"
+                    } else {
+                        crossRate <- input$Quote1 / input$Quote2
+                        units <- "EUR/GBP"
+                    }
+                }
+            }
+            
+            plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+            text(x = 0.5, y = 0.5, labels = paste(round(crossRate, 2)), cex = 5)
+            text(.12, 0.95, units, cex = 2)
+
+        })
+        )
+    )
+#}}}
+```

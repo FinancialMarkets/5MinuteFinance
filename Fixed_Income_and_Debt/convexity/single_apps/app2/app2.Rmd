@@ -1,0 +1,79 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+## 
+
+<!--- Duration and Convexity Calculator -->
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+
+        sliderInput("years", "Years to Maturity", min = 0.5, max = 30, value = 10, step = 0.5),
+        sliderInput("ytm1", "Yield to Maturity", min = 0.01, max = 0.2, value = 0.05, step = 0.01),
+        sliderInput("change.ytm", "Change in Yield to Maturity", min = -0.05, max = 0.05, value = 0.01, step = 0.01),
+        sliderInput("coupon1", "Coupon Rate", min = 0.01, max = 0.2, value = 0.05, step = 0.01)
+                  ),
+    mainPanel(
+        renderTable({
+            ## calculate payments ----
+            coupon.pmt <- (input$coupon1 * 1000) / 2
+            periods <- seq_along(seq(from = 0.5, to = input$years, by = 0.5))
+            payments <- rep(coupon.pmt, max(periods))
+            payments[max(periods)] <- payments[max(periods)] + 1000
+
+            ## bond value ----
+            bv <- payments %*% (1 / (1 + (input$ytm1 / 2))^periods)
+
+            ## duration ----
+            numerator.duration <- periods %*% (payments * (1 / (1 + (input$ytm1 / 2))^periods))
+            duration.in.periods <- numerator.duration / bv
+            macaulay.duration <- duration.in.periods / 2
+            ## modified.duration.in.periods <- duration.in.periods / (1 + input$ytm1)
+            ## modified.duration.in.years <- modified.duration.in.periods / 2
+            modified.duration.in.years <- macaulay.duration / (1 + input$ytm1 / 2)
+
+            ## convexity ----
+            second.derivative <- (periods * (periods + 1)) %*% ((payments * (1 / (1 + input$ytm1 / 2)^(periods + 2))))
+            
+            convexity <- second.derivative / bv
+
+            ## annualize semiannual convexity
+            convexity <- convexity / (2^2)
+
+            ## approximate change in price
+            price.change.by.duration <- -modified.duration.in.years * bv * input$change.ytm
+            price.change.by.duration.convexity <- price.change.by.duration + 0.5 * convexity * bv * (input$change.ytm)^2
+
+            ## approximate percent change
+            percent.change.by.duration <- -modified.duration.in.years * input$change.ytm
+            percent.change.by.duration.convexity <- percent.change.by.duration + 0.5 * convexity * (input$change.ytm)^2
+            predicted.bv <- bv + price.change.by.duration.convexity 
+           
+
+            new.bond.value <- payments %*% (1 / (1 + ((input$ytm1 + input$change.ytm) / 2))^periods)
+            actual.price.change <- (new.bond.value / bv - 1) * bv
+            actual.percent.change <- (new.bond.value / bv - 1)
+
+            error <- abs(predicted.bv - new.bond.value)
+
+            df <- data.frame(c(macaulay.duration, modified.duration.in.years, convexity, percent.change.by.duration * 100, percent.change.by.duration.convexity * 100, actual.percent.change * 100, price.change.by.duration, price.change.by.duration.convexity, actual.price.change, new.bond.value, predicted.bv, error), row.names = c("Macaulay Duration", "Modified Duration", "Convexity", "% Change by Duration", "% Change by Duration and Convexity", "Actual % Change", "Price Change by Duration", "Price Change by Duration and Convexity", "Actual Price Change", "Actual New Price", "Predicted New Price", "Difference: Predicted vs Actual"), stringsAsFactors = "FALSE")
+
+            names(df) <- ""
+            df
+            }, rownames = TRUE)#, align = 'c')
+
+        ## renderPlot({
+        ##         plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
+        ##         text(x = 0.5, y = 0.5, labels = paste(round(d2, 5)), cex = 5)
+        ##         text(x = 0.03, y = 0.95, labels = "d2", cex = 2)
+        ## })
+)
+	      )
+#}}}
+```

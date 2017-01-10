@@ -1,0 +1,19 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(xts)
+renderDygraph({
+    data <- read.csv("time_series.csv", header = TRUE)
+    data <- as.xts(data[,2:3], order.by = as.Date(data[,1]))
+    dygraph(data, main = "Google Trends: \"ETF\" vs \"Mutual Fund\"") %>%
+        dyRangeSelector()
+    })
+#}}}
+```

@@ -1,0 +1,77 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+<!-- Value at Risk (VaR) -->
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+
+sidebarLayout(
+	      sidebarPanel(
+
+			   textInput("ticker1", label = "Stock Ticker", value = "SPY"),
+			   dateRangeInput("dates1", label = "Date Range", start = "2015-01-01", end = Sys.Date()),
+			   sliderInput("loss", label = "% VaR", max = .2, min = 0.01, value = .05, step = .01)
+
+			   ),
+	      mainPanel(
+tabsetPanel(
+	tabPanel(title = "Empirical",
+ 		 renderPlot({
+			  library(fBasics)
+			  library(tseries)
+			  validate(
+				   need(input$ticker1 != "", "Input a valid US stock ticker.")
+				   )
+			  x1 <- get.hist.quote(input$ticker1, start = input$dates1[1], end = input$dates1[2], quote = "Close")
+			  x1 <- ts(x1)
+			  r1 <- log(x1[2:(length(x1))]/x1[1:(length(x1) - 1)])
+			  dens <- density(r1)
+
+			  VaR <- quantile(r1, input$loss)
+			  ret <- max(which(dens$x < VaR))
+			  qn <- min(which(dens$x >= -1))
+			  plot(dens, main = paste(input$ticker1, "VaR and Empirical Density"), lty = 1, col = 1, lwd = 2, ylab = "", xlab = paste("The ", 100*input$loss,"% ", "VaR is"," ", round(100*VaR, 2), "%", sep = ""), cex.lab = 2)
+
+			  legend("topright", c("Stock Return Density"), col = c(1), lty = c(1), lwd = c(2))
+
+			  with(dens, polygon(x=c(x[c(qn,qn:ret,ret)]), y= c(0, y[qn:ret], 0), col="red"))
+
+			})
+	),
+	    tabPanel(title = "Normal",
+		     renderPlot({
+			  library(fBasics)
+			  library(tseries)
+			  validate(
+				   need(input$ticker1 != "", "Input a valid US stock ticker.")
+				   )
+			  x2 <- get.hist.quote(input$ticker1, start = input$dates1[1], end = input$dates1[2], quote = "Close")
+			  x2 <- ts(x2)
+			  r2 <- log(x2[2:(length(x2))]/x2[1:(length(x2) - 1)])
+			  aver.var <- mean(r2)
+			  sd.var <- sd(r2)
+			  r2 <- rnorm(mean = aver.var, sd = sd.var, n = 2000000)
+			  dens2 <- density(r2)
+
+			  VaR2 <- quantile(r2, input$loss)
+			  ret2 <- max(which(dens2$x < VaR2))
+			  qn2 <- min(which(dens2$x >= -1))
+			  plot(dens2, main = paste(input$ticker1, "VaR and Normal Density"), lty = 1, col = 1, lwd = 2, ylab = "", xlab = paste("The ", 100*input$loss,"% ", "VaR is"," ", round(100*VaR2, 2), "%", sep = ""), cex.lab = 2)
+
+			  legend("topright", c("Stock Return Density"), col = c(1), lty = c(1), lwd = c(2))
+
+			  with(dens2, polygon(x=c(x[c(qn2,qn2:ret2,ret2)]), y= c(0, y[qn2:ret2], 0), col="red"))
+		     })
+		     )
+	    )
+			)
+	      )
+
+#}}}
+```

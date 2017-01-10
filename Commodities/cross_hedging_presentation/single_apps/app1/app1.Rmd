@@ -1,0 +1,86 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache = FALSE}
+#{{{
+library(EIAdata)
+library(quantmod)
+library(dygraphs)
+## library(metricsgraphics)
+
+inputPanel(    
+      selectInput("symb1", label = "Commodity", 
+		 choices = list("NYMEX Crude Oil" = 1 ,
+			       	"Natural Gas" = 2,
+			       	"Heating Oil (No. 2)" = 3,
+			       	"RBOB Gasoline" = 4),
+# 			       	"Propane (Tx)" = 5),
+		selected = 1)#,  
+    
+      ## dateRangeInput("dates", 
+      ##   "Date range",
+      ##   start = "2014-01-01", 
+      ##   end = as.character(Sys.Date()))
+)
+
+renderDygraph({
+## renderMetricsgraphics({
+    key <- source("./key")$value  
+
+    ticker1 <- switch(input$symb1,
+                      "1" = c("PET.RCLC1.W","PET.RCLC2.W","PET.RCLC3.W","PET.RCLC4.W"),
+		      "2" = c("NG.RNGC1.W","NG.RNGC2.W","NG.RNGC3.W","NG.RNGC4.W"),
+		      "3" = c("PET.EER_EPD2F_PE1_Y35NY_DPG.W", "PET.EER_EPD2F_PE2_Y35NY_DPG.W","PET.EER_EPD2F_PE3_Y35NY_DPG.W","PET.EER_EPD2F_PE4_Y35NY_DPG.W"),
+		      "4" = c("PET.EER_EPMRR_PE1_Y35NY_DPG.W",
+                      "PET.EER_EPMRR_PE2_Y35NY_DPG.W","PET.EER_EPMRR_PE3_Y35NY_DPG.W","PET.EER_EPMRR_PE4_Y35NY_DPG.W")#, 
+                                        #           "5" = c("PET.EER_EPLLPA_PE1_Y44MB_DPG.W","PET.EER_EPLLPA_PE2_Y44MB_DPG.W","PET.EER_EPLLPA_PE3_Y44MB_DPG.W","PET.EER_EPLLPA_PE4_Y44MB_DPG.W")
+                      )
+
+    fut1 <- getEIA(ticker1[1], key = key)
+    fut2 <- getEIA(ticker1[2], key = key)
+    fut3 <- getEIA(ticker1[3], key = key)
+    fut4 <- getEIA(ticker1[4], key = key)
+
+    ## commented because no longer working, error cannot open the connection ----
+    ## fut1 <- fut1[paste(input$dates[1], "/", input$dates[2], sep = "")]
+    ## fut2 <- fut2[paste(input$dates[1], "/", input$dates[2], sep = "")]
+    ## fut3 <- fut3[paste(input$dates[1], "/", input$dates[2], sep = "")]
+    ## fut4 <- fut4[paste(input$dates[1], "/", input$dates[2], sep = "")]
+
+    ## futurezz <- data.frame(cbind(index(fut1), fut1, fut2, fut3, fut4))
+    ## names(futurezz) <- c("date", "X", "Y", "Z", "W")
+    ## time = index(fut1),
+    ## X = fut1,
+    ## Y = fut2,
+    ## Z = fut3,
+    ## W = fut4)
+
+    ## futurezz %>%
+    ##     mjs_plot(x=futurezz[,1], y=futurezz[,2]) %>%
+    ##         mjs_line() %>%
+    ##             mjs_add_line(Y) %>%
+    ##                 mjs_add_line(Z) %>%
+    ##                     mjs_add_line(W) %>%
+    ##                         mjs_axis_x(xax_format="date") %>%
+    ##                             mjs_add_legend(legend=c("X", "Y", "Z", "W"))
+    futs <- merge.xts(fut1, fut2, fut3, fut4, join = 'inner')
+    names(futs) <- c("1-Month", "2-Month", "3-Month", "4-Month")
+    dygraph(futs) %>%
+        dyRangeSelector() %>%
+            dyHighlight(highlightCircleSize = 5, 
+              highlightSeriesBackgroundAlpha = 0.2,
+              hideOnMouseOut = FALSE)
+    ##   plot(fut1, main = "Futures Prices", ylab = "$")
+    ##   lines(fut2, col=2)
+    ##   lines(fut3, col=3)
+    ##   lines(fut4, col=4)
+    ## legend('topright', c("Front month", "2 months", "3 months", "4 months"), lty = c(1,1,1,1), col=c(1,2,3,4))
+})
+#}}}
+```

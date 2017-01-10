@@ -1,0 +1,62 @@
+---
+title: 
+output: html_document
+runtime: shiny
+---
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(
+	   sliderInput("corr", label = "Stock Correlation", min = -1, max =1, step = 1, value = 1)
+	   )
+
+renderPlot({
+  par(mfrow = c(2,1), mai = c(.1,.8,.3,.1))
+  x <- seq(0, 2 * pi, by = .01)
+  plot(0.25 * sin(x) + 0.1, type = 'l', lwd = 2, col = 3, ylab = "Asset Return", ylim = c(-.2, .4), xlab = "", xaxt = 'n', yaxt = 'n')
+  axis(2, at = axTicks(2), labels = c("-20%", "-10%", "0%", "10%", "20%", "30%", "40%"), las = 1)
+  abline(h = 0, col = 2)
+  abline(h = 0.1, col = "aquamarine")
+  text(40, 0.14, "10% Expected Return")
+legend("topright", c("Stock 1", "Stock 2"), col = c(3, 4), lwd = c(2,2), lty = c(1,2))
+
+  y <- 0
+  if (input$corr == -1){
+    lines(-0.25 * sin(x) + 0.1, type = 'l', lwd = 2, col = 4, lty = 2)
+  } else {
+    if (input$corr == 0){
+      lines(0.25 * cos(x) + 0.1, type = 'l', lwd = 2, col = 4, lty = 2)
+    } else {
+      lines(0.25 * sin(x) + 0.1, type = 'l', lwd = 2, col = 4, lty = 2)
+    }
+  }
+
+  if (input$corr == -1){
+    plot(0 * sin(x) + 0.1, ylim = c(-.2, .4), ylab = "Port. Return", type  = 'l', lwd = 2, xaxt = 'n', xlab = "Time", yaxt = 'n')
+  axis(2, at = axTicks(2), labels = c("-20%", "-10%", "0%", "10%", "20%", "30%", "40%"), las = 1)
+  abline(h = 0, col = 2)
+  abline(h = 0.1, col = "aquamarine")
+  text(40, 0.14, "10% Expected Return")
+legend("topright", c("Portfolio of Stock 1 & 2"), col = c(1), lwd = c(2), lty = c(1))
+  } else {
+    if (input$corr == 0){
+      plot(0.5 * 0.25 * sin(x) + 0.1, ylim = c(-.2, .4), ylab = "Port. Return", type  = 'l', lwd = 2, xaxt = 'n', xlab = "Time", yaxt = 'n')
+  axis(2, at = axTicks(2), labels = c("-20%", "-10%", "0%", "10%", "20%", "30%", "40%"), las = 1)
+  abline(h = 0, col = 2)
+  abline(h = 0.1, col = "aquamarine")
+  text(40, 0.14, "10% Expected Return")
+legend("topright", c("Portfolio of Stock 1 & 2"), col = c(1), lwd = c(2), lty = c(1))
+    } else {
+      plot(0.25 * sin(x) + 0.1, ylim = c(-.2, .4), ylab = "Port. Return", type  = 'l', lwd = 2, xaxt = 'n', xlab = "Time", yaxt = 'n')
+  axis(2, at = axTicks(2), labels = c("-20%", "-10%", "0%", "10%", "20%", "30%", "40%"), las = 1)
+  abline(h = 0, col = 2)
+  abline(h = 0.1, col = "aquamarine")
+  text(40, 0.14, "10% Expected Return")
+legend("topright", c("Portfolio of Stock 1 & 2"), col = c(1), lwd = c(2), lty = c(1))
+    }
+  } 
+  })
+#}}}
+```

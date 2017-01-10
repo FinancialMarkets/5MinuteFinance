@@ -1,0 +1,46 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        div(style="height: 75px;", sliderInput("stock1", label = "Stock Price", max = 100, min = 0, value = 50, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("strike1", label = "Strike Price", max = 100, min = 0, value = 50, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("volatility1", label = "Return Volatility", max = .5, min = 0.01, value = .20, step = .01, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("maturity1", label = "Years to Maturity", max = 2, min = .1, value = .5, step = .1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("riskFree1", label = "Risk Free Rate", max = .2, min = .01, value = .02, step = .01, ticks = FALSE)),
+        div(style="height: 75px;", radioButtons("type1", label = "Option Type", choices = c("Call" = "3", "Put" = "4"), selected = "3"))
+        ),
+
+    mainPanel(
+        renderPlot({
+            ## calculate intrinsic value ----
+            intrinsic1 <- input$stock1 - input$strike1
+            intrinsic1[intrinsic1 < 0] <- 0
+
+            ## calculate time value by Black-Scholes for all integer stock1 prices from 1 to 100 ----
+            d11 <- (log(input$stock1/input$strike1) + (input$riskFree1 + (input$volatility1^2)/2) * input$maturity1) / (input$volatility1 * sqrt(input$maturity1))
+            d21 <- d11 - input$volatility1 * sqrt(input$maturity1)
+            optionValue1 <- input$stock1 * pnorm(d11) - input$strike1 * exp(-input$riskFree1 * input$maturity1) * pnorm(d21)
+            putValue <- optionValue1 + input$strike1 * exp(-input$riskFree1 * input$maturity1) - input$stock1
+            timeValue1 <- optionValue1 - intrinsic1 
+
+            if (input$type1 == "3") {
+                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Value of a European Call", sub = "Non-dividend paying stock")
+                text(x = 0.5, y = 0.5, labels = paste("$", round(optionValue1, 2)), cex = 5)
+            } else {
+                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Value of a European Put", sub = "Non-dividend paying stock")
+                text(x = 0.5, y = 0.5, labels = paste("$", round(putValue, 2)), cex = 5)
+            }
+
+        })
+        )
+    )
+#}}}
+```

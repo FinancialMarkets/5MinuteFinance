@@ -1,0 +1,45 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(dygraphs)
+library(quantmod)
+## library(DT)
+inputPanel(
+    selectInput(inputId = "index2", label = "Index", choices = list("S&P 500" = 1,
+                                                    "Russell 2000" = 2,
+                                      #              "Russell 1000" = 3, it is a 3x
+                                                    "NASDAQ 100" = 3,
+                                                    "DJIA" = 4,
+                                                     "Barclay 7-10 yr. Treas." = 5), selected = "S&P 500"),
+    dateRangeInput("date", label = "Date Range", start = "2005-01-01", end = Sys.Date())
+    )
+
+renderDygraph({
+
+    etfs2 <- switch(input$index2,
+                   "1" = c("SPY", "SSO"),
+                   "2" = c("IWM", "UWM"),
+                   ## "3" = c("IWB", "FAS"),
+                   "3" = c("QQQ", "QLD"),
+                   "4" = c("DIA", "DDM"),
+                   "5" = c("IEF", "UST"))
+
+    bothETFs <- getSymbols(etfs2, from = input$date, auto.assign = TRUE)
+    bothETFs <- merge.xts(Ad(get(bothETFs[[1]])), Ad(get(bothETFs[[2]])), join = "inner")
+    bothETFs2 <- apply(apply(bothETFs, 2, Delt)[-1,], 2, cumsum)
+    bothETFs2[,1] <-     bothETFs2[,1] * 2
+    bothETFs2 <- as.xts(bothETFs2, order.by = index(bothETFs)[-1])
+    names(bothETFs2)[1] <- paste("2*", etfs2[1], sep = "")
+    names(bothETFs2)[2] <- etfs2[2]
+    dygraph(bothETFs2, main = "") %>%
+        dyRangeSelector()
+})
+#}}}
+```

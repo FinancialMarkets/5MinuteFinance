@@ -1,0 +1,82 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(grid)
+library(htmltools)
+library(htmlwidgets)
+library(RColorBrewer)
+library(metricsgraphics)
+sidebarLayout(
+    sidebarPanel(
+        div(style="height: 75px;", sliderInput("callStrike", label = "Call Strike Price", max = 100, min = 0, value = 60, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("callPremium", label = "Call Option Premium", max = 100, min = 0, value = 1, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("putStrike", label = "Put Strike Price", max = 100, min = 0, value = 40, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("putPremium", label = "Put Option Premium", max = 100, min = 0, value = 2, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("stock2", label = "Stock Purchase Price", max = 100, min = 0, value = 50, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", radioButtons("show2", label = "Show Stock Profit and Option Intrinsic", choices = c("Yes" = "1", "No" = "2"), selected = "No"))
+        ),
+    mainPanel(
+        ## renderMetricsgraphics({
+        renderPlot({
+            
+            ## calculate call intrinsic value
+            callIntrinsic <- 1:100 - input$callStrike
+            callIntrinsic[callIntrinsic < 0] <- 0
+            callIntrinsic <- -callIntrinsic #because Short
+            
+            ## calculate put intrinsic value
+            putIntrinsic <- input$putStrike - 1:100
+            putIntrinsic[putIntrinsic < 0] <- 0
+
+            ## Calculate P&L on stock
+            PnL <- 1:100 - input$stock2
+
+            ## Spread Payoff
+            payoff <- PnL + callIntrinsic + putIntrinsic
+            
+            profit <- payoff + input$callPremium - input$putPremium
+
+
+### Added 7/23
+            ## dataGraphics <- data.frame(cbind(1:100, callIntrinsic, putIntrinsic, PnL, payoff, profit))
+            ## names(dataGraphics) <- c("Stock", "Short Call Option Intrinsic", "Long Put Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit")
+            ## dataGraphics <- dataGraphics[(dataGraphics$Stock < input$stock2 + 20) & (dataGraphics$Stock > input$stock2 - 20), ]
+
+            ## dataGraphics %>%
+            ##     mjs_plot(x = 'Stock', y = 'Short Call Option Intrinsic') %>%
+            ##         mjs_line() %>%
+            ##             mjs_add_line('Long Put Option Intrinsic') %>%
+            ##                 mjs_add_line('Stock P/L') %>%
+            ##                     mjs_add_line('Spread Payoff') %>%
+            ##                         mjs_add_line('Spread Profit') %>%
+            ##                             mjs_axis_x(xax_format="plain") %>%
+            ##     mjs_add_legend(legend = c("Short Call Option Intrinsic", "Long Put Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit"))
+
+            if (input$show2 == '1'){
+
+                plot(payoff, main = "Collar", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "khaki1", sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock1 - input$strike1 + input$premium1, 2), " | Breakeven:", round(input$stock1 - input$premium1, 2)), ylim = range(PnL))
+                ## lines(payoff, lwd = 4, col = "khaki1", lty = 1)
+                lines(profit, lwd = 4, col = "darkseagreen1", lty = 1)
+                lines(putIntrinsic, lwd = 1, lty = 2, col = 1)
+                lines(callIntrinsic, lwd = 1, lty = 2, col = 1)
+                lines(PnL, lwd = 1, lty = 3, col = 1)
+                legend('topleft', c("Profit on Stock", "Option Intrinsic Value", "Payoff: Collar", "Profit: Collar"), col=c(1, 1,"khaki1","darkseagreen1"), lty = c(2,3,1,1), lwd = c(1,1,4,4))
+
+		            } else {
+                plot(profit, main = "Collar", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "darkseagreen1", ylim = c(-80, 80), sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock - input$premium, 2), " | Breakeven:", round(input$stock - input$premium, 2)))
+                lines(payoff, lwd = 4, lty = 1, col = "khaki1")
+                ## abline(h = 0)
+                legend('topleft', c("Payoff: Collar", "Profit: Collar"), col=c("darkseagreen1","khaki1"), lty = c(1,1), lwd = c(4,4))
+                            }
+        })
+        )
+    )
+#}}}
+```

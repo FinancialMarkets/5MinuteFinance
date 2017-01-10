@@ -1,0 +1,28 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache = FALSE}
+#{{{
+library(EIAdata)
+library(quantmod)
+library(dygraphs)
+
+
+renderDygraph({
+  key <- source("./key")$value  
+
+  wti <- getEIA("PET.RWTC.M", key = key)
+  brent <- getEIA("PET.RBRTE.M", key = key)
+
+  data <- merge.xts(wti, brent, join = "inner")
+  names(data) <- c("WTI", "Brent")
+  dygraph(data, main = "", ylab = "$") %>%
+  dyRangeSelector()
+})
+#}}}
+```

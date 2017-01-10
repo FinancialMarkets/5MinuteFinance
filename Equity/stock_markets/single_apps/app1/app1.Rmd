@@ -1,0 +1,116 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(leaflet)
+library(maps)
+
+renderLeaflet({
+    mapStates = map("state", fill = TRUE, plot = FALSE)
+
+    content1 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nasdaq.com'>NASDAQ</a></b>",
+                      "Stock",
+                      "Carteret, NJ")
+    content2 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.batstrading.com'>BATS</a></b>",
+                      "Stock",
+                      "Weehawken, NJ")
+    content3 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.cme.com'>CME</a></b>",
+                      "Stock Index and Other Derivatives",
+                      "Aurora, IL")
+    content4 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.cme.com'>Chicago Stock Exch.</a></b>",
+                      "Stock",
+                      "Chicago, IL")
+    content5 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>NYSE MKT LLC</a></b>",
+                      "Stock",
+                      "Mahwah, NJ")
+    content6 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>NYSE LLC</a></b>",
+                      "Stock",
+                      "Mahwah, NJ")
+    content7 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>NYSE Arca Inc.</a></b>",
+                      "Stock",
+                      "Mahwah, NJ")
+    content8 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>EDGA Exch. Inc.</a></b>",
+                      "Stock",
+                      "Seacaucas, NJ")
+    content9 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>EDGX Exch. Inc.</a></b>",
+                      "Stock",
+                      "Seacaucas, NJ")
+    content10 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>Box Options Exch. LLC</a></b>",
+                      "Stock",
+                      "Seacaucas, NJ")
+    content11 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>ISE LLC</a></b>",
+                      "Stock",
+                      "Seacaucas, NJ")
+    content12 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>ISE Gemini LLC</a></b>",
+                      "Stock",
+                      "Seacaucas, NJ")
+    content13 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nyse.com'>Miami Intl. Securities Exch.</a></b>",
+                      "Stock",
+                      "Princeton, NJ")
+    content14 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nasdaq.com'>NASDAQ OMX BX</a></b>",
+                      "Stock",
+                      "Carteret, NJ")
+    content15 <- paste(sep = "<br/>",
+                      "<b><a href='http://www.nasdaq.com'>NASDAQ OMX PHLX</a></b>",
+                      "Stock",
+                      "Carteret, NJ")
+
+
+
+    leaflet(data = mapStates) %>% addTiles() %>%
+        addPolygons(fillColor = topo.colors(10, alpha = NULL), stroke = FALSE) %>%
+            addPopups(-74.2233075, 40.5917557, content1,
+                      options = popupOptions(closeButton = FALSE)) %>%
+                addPopups(-74.0208313, 40.7680423, content2,
+                          options = popupOptions(closeButton = FALSE)) %>%
+                    addPopups(-88.3067189, 41.7509724, content3,
+                              options = popupOptions(closeButton = FALSE)) %>%
+                        addPopups(-87.7321554, 41.8337329, content4,
+                                  options = popupOptions(closeButton = FALSE)) %>%
+                            addPopups(-74.176363, 41.0780147, content5,
+                                      options = popupOptions(closeButton = FALSE)) %>%
+                                addPopups(-74.171400, 41.0786200, content6,
+                                          options = popupOptions(closeButton = FALSE)) %>%
+                                    addPopups(-74.179363, 41.0790147, content7,
+                                              options = popupOptions(closeButton = FALSE)) %>%
+                                        addPopups(-74.0635047,40.7815342 , content8,
+                                                  options = popupOptions(closeButton = FALSE)) %>%
+                                            addPopups(-74.0639047,40.7812342, content9,
+                                                      options = popupOptions(closeButton = FALSE)) %>%
+                                                ## addPopups(-74.0630047,40.7839342, content10,
+                                                ##           options = popupOptions(closeButton = FALSE)) %>%
+                                                    addPopups(-74.0640047,40.7845342, content11,
+                                                              options = popupOptions(closeButton = FALSE)) %>%
+                                                        addPopups(-74.0645047,40.7849342, content12,
+                                                                  options = popupOptions(closeButton = FALSE)) %>%
+                                                            addPopups(-74.638525, 40.3606794, content13,
+                                                                      options = popupOptions(closeButton = FALSE)) %>%
+                                                                addPopups(-74.2239075, 40.5927557, content14,
+                                                                          options = popupOptions(closeButton = FALSE)) %>%
+                                                                    addPopups(-74.2231075, 40.5937557, content15,
+                                                                              options = popupOptions(closeButton = FALSE))
+
+
+})
+#}}}
+```

@@ -1,0 +1,77 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+<!-- Empirical vs Normal Distribution -->
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+	      sidebarPanel(    
+			   # inputPanel(
+			   textInput("ticker", label = "Stock Ticker", value = "XOM"),
+			   dateRangeInput("dates", label = "Date Range", start = "2015-01-01", end = Sys.Date())
+			   ),
+
+	      mainPanel(
+			#                         tabsetPanel(
+			#                                     tabPanel("Plot", 
+			renderPlot({
+			  library(fBasics)
+			  library(tseries)
+			  validate(
+				   need(input$ticker != "", "Input a valid US stock ticker.")
+				   )
+			  x <- get.hist.quote(input$ticker, start = input$dates[1], end = input$dates[2], quote = "Close")
+			  x <- ts(x)
+			  r <- log(x[2:(length(x))]/x[1:(length(x) - 1)])
+
+			  plot(density(r), main = paste(input$ticker, "Stock Returns vs the Normal Distribution"), lty = 1, 
+			       col = 1, lwd = 2, xlab = "Log-Returns in %/100")
+
+			  lines(density(rnorm(5e+05, mean = mean(r), sd = sd(r))), lty = 4, col = 2, 
+				lwd = 2)
+
+			  legend("topright", c("Stock Return Density", "Normal Density"), col = c(1, 2), 
+				 lty = c(1, 4), lwd = c(2, 2))
+			})
+			### old tabset panel stuff ----
+			#{{{
+			#                                              ),
+
+			#                                     tabPanel("Statistics", renderPrint({ 
+			#                                       validate(
+			#                                                need(input$ticker != "", "Input a valid US stock ticker.")
+			#                                                )
+			#                                       x <- get.hist.quote(input$ticker, start = input$dates[1], end = input$dates[2], quote = "Close", quiet = T)
+			#                                       x <- ts(x)
+			#                                       r <- log(x[2:(length(x))]/x[1:(length(x) - 1)])
+			#                                       p1 <- 2 * (1 - pt(abs(skewness(r)/(sqrt(6/length(r)))), length(r) - 1))
+			#                                       p2 <- 2 * (1 - pt(abs(kurtosis(r)/(sqrt(24/length(r)))), length(r) - 1))
+			#                                              row.names <- c("Sample Skewness", "t-statistic (skewness)", "p-value (skewness)", "Outcome (skewness)", "", "Sample Kurtosis", "t-statistic (kurtosis)", "p-value (kurtosis)", "Outcome (kurtosis)")
+			#                                              df <- data.frame(as.character(c(round(skewness(r), 2),round(skewness(r)/(sqrt(6/length(r))), 2), round(p1, 2), ifelse(p1 < 0.05, "Reject the null. The distribution is skewed.", "Do not reject. Not skewed"), "", round(kurtosis(r)[1], 2), round(kurtosis(r)/(sqrt(24/length(r))), 2), round(p2), ifelse(p2 < 0.05, "Reject the null. Has fat tails.", 
+			#                                                                                                                                                                                                                                                                                                                                                         "Do not reject. No fat tails.")  )) , row.names = row.names)
+			#                                       cat("Sample skewness:", round(skewness(r), 2), "\n")
+			#                                       cat("For a t-statistic of", round(skewness(r)/(sqrt(6/length(r))), 2), "\n")
+			#                                       cat("And a p-value of", round(p1, 2), "\n")
+			#                                       cat("So we", ifelse(p1 < 0.05, "reject the null.\nThe distribution is skewed.", 
+			#                                                           "do not reject the null.\nThe distribution is symmetric."), "\n")
+			#                                       cat("\n")
+			# 
+			#                                       cat("The sample excess kurtosis is", round(kurtosis(r)[1], 2), "\n")
+			#                                       cat("For a t-statistic of", round(kurtosis(r)/(sqrt(24/length(r))), 2), "\n")
+			#                                       cat("And a p-value of", round(p2,2), "\n")
+			#                                       cat("So we", ifelse(p2 < 0.05, "reject the null.\nThe distribution has fat tails.", 
+			#                                                           "do not reject the null.\nThe distribution does not have fat tails."), 
+			#                                           "\n")
+			#                                     })
+			#                                     )
+			# 
+			#                           , position = "right")
+			#}}}
+			)
+	      )
+#}}}
+```

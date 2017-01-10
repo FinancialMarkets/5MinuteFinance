@@ -1,0 +1,61 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+## <!--- Bond Price, Duration, and Convexity -->
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(    
+       sliderInput("ytm", label = "Yield to Maturity", max = .2, min = 0.01, value = .05, step = .01),
+       sliderInput("coupon", label = "Coupon Rate", max = .2, min = 0.01, value = .05, step = .01),
+       sliderInput("maturity", label = "Years to Maturity", max = 50, min = 1, value = 10)
+)
+
+renderPlot({
+
+bondValue <- 0
+ytmAxis <- seq(0.01, .2, by = .01)
+period <- 1
+
+cash_flows <- 0
+    for (i in 1:input$maturity){
+        cash_flows[i] <- 
+            (input$coupon * 1000) }
+
+    cash_flows[length(cash_flows)] <- cash_flows[length(cash_flows)] + 1000 
+    pvCashFlows <- cash_flows / (1 + input$ytm)^(1:input$maturity)
+
+### Bond Calculation: includes semiannual case which is not used ----   
+     if (period == 1) {
+         for (i in seq_along(ytmAxis)){
+          bondValue[i] <- (input$coupon * 1000) * ((1 - 1 / (1 + ytmAxis[i])^(input$maturity)) / ytmAxis[i]) + 1000 / (1 + ytmAxis[i])^(input$maturity) }
+ }    else {
+         for (i in seq_along(ytmAxis)){
+          bondValue[i] <- (input$coupon * (1000 / 2)) * ((1 - 1 / (1 + (ytmAxis[i] / 2))^(input$maturity * 2)) / (ytmAxis[i] / 2)) + 1000 / (1 + (ytmAxis[i] / 2))^(input$maturity * 2)
+              }
+          }
+
+### find on x-axis where ytm equals the input ytm -----
+   index <- seq_along(seq(0.01, .2, by = .01))[round(input$ytm,2) == round(ytmAxis, 2)]
+
+### Calculate Duration and Modified Duration ----
+    Duration <- 1:input$maturity %*% (pvCashFlows / bondValue[index])
+    modDur <- -1 * Duration / (1 + input$ytm)
+    durLine <- bondValue[index] * (1 + (modDur * (ytmAxis - input$ytm)))
+
+yAxis <- c("0.01", "", "", "", "0.05", "", "", "", "", "0.10", "", "", "", "", "0.15", "", "", "", "", "0.20")
+
+plot(1:20, bondValue, xaxt = "n", main = "Bond Price versus Yield to Maturity", ylab = "Bond Price ($)", xlab = "Yield to Maturity", type = "n", lwd = 4)
+axis(1, at = 1:20, labels = yAxis)
+lines(1:20, bondValue, lwd = 4)
+lines(1:20, durLine, lwd = 5, col = 4)
+legend('topright', c("Bond Price", "Duration Approximation of the Bond Price ", "Duration Error Region (Convexity)"), lty = c(1,1,1,1), col=c(1,4, "grey80"), lwd = c(5,5, 15))
+### attempting to shade region between the two lines [not working] ----
+polygon(c(1:20, rev(1:20)), c(bondValue, rev(durLine)), col = "grey80", border = NA)
+         
+   })
+#}}}
+```

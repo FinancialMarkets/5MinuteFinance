@@ -1,0 +1,35 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(threejs)
+library(quantmod)
+
+renderScatterplotThree({
+    sp1 <- getSymbols('^gspc', auto.assign = FALSE, from = "2000-01-01")
+    vix1 <- getSymbols('^vix', auto.assign = FALSE, from = "2000-01-01")
+
+    spm <- to.monthly(sp1)
+    vixm <- to.monthly(vix1)
+
+    spmr <- Delt(Ad(spm))
+    vixmd <- diff(Ad(vixm))
+    spmv <- Vo(spm)[-1] / 1000000000 
+    
+    data1 <- merge.xts(spmr, vixmd, spmv, join = 'inner')
+    names(data1) <- c("S&P 500 Return", "Change in VIX", "S&P 500 Volume")
+
+    scatterplot3js(data1, color = rainbow(length(data1$"S&P 500 Volume")), labels = paste("Month: ", as.Date(index(data1)), sep = ""))
+                        
+    })
+
+
+#}}}
+```

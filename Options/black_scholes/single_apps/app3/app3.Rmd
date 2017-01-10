@@ -1,0 +1,50 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+
+        div(style="height: 75px;", numericInput("Stock1", "Present Stock Price", min = .01, max = 2000, value = 50, step = .05)),
+        div(style="height: 75px;", numericInput("Option1", "Call Option Premium", min = .01, max = 20, value = 2, step = .01)),
+        div(style="height: 75px;", numericInput("Strike1", "Strike Price", min = .01, max = 1, value = 52, step = .05)),
+        div(style="height: 75px;", numericInput("Rf1", "Risk Free Rate", min = 0.001, max = 0.5, value = 0.01, step = .001)),
+        div(style="height: 75px;", numericInput("Time1", "Years to Expiration", min = 0.01, max = 50, value = 1, step = .01)),
+        div(style="height: 75px;", numericInput("Div1", "Dividend Yield", min = 0, max = 1, value = 0, step = .01))
+                  ),
+    mainPanel(
+
+        renderPlot({
+            
+            stock1 <- input$Stock1
+            option1 <- input$Option1
+            strike1 <- input$Strike1
+            rf1 <- input$Rf1
+            time1 <- input$Time1
+            div1 <- input$Div1
+            ## adjustment for dividends
+            stock1 <- stock1 * exp(-1 * div1 * time1)
+
+            call.func <- function(vol){ (stock1 * pnorm((log(stock1/strike1) + (rf1 + (vol * vol) / 2) * time1) / (vol * sqrt(time1))) - strike1 * exp(-rf1 * time1) * pnorm((log(stock1/strike1) + (rf1 + (vol * vol) / 2) * time1) / (vol * sqrt(time1)) - vol * sqrt(time1)) - option1)^2 }
+
+            ## L-BFGS-B seems to work.  Brent did not.  
+            result <- optim(par = 0.1, fn = call.func, method = "L-BFGS-B", lower = 0, upper = 1000)
+
+            ## already annual 
+            vol.solution <- result$par * 100
+            
+                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Annualized Implied Volatility")
+                text(x = 0.5, y = 0.5, labels = paste(round(vol.solution, 2), "%", sep = ""), cex = 5)
+            
+        })
+)
+	      )
+#}}}
+```

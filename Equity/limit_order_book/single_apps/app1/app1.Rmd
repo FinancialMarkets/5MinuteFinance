@@ -1,0 +1,37 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r messsage=FALSE, warning=FALSE, echo = FALSE}
+#{{{
+shinyUI(fluidPage(
+    fluidRow(
+        column(6, 
+               renderPrint({
+                   library(orderbook)
+                   library(shiny)
+
+                   filename <- system.file("extdata",
+                                           "sample.txt",
+                                           package = "orderbook")
+                   ob <- orderbook(file = filename)
+                   ob <- read.orders(ob, 10000)
+		   display(ob)
+                   ob <<- ob
+               })
+
+               ),
+        column(6,
+               renderPlot({
+                   plot(ob)
+               })
+               )
+    )
+)
+)
+#}}}
+```

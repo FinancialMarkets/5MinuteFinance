@@ -1,0 +1,67 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+#{{{
+library(shiny)
+library(DiagrammeR)
+
+ui = shinyUI(fluidPage(
+## pageWithSidebar(
+## headerPanel("Triangular Arbitrage"),
+## sidebarPanel(
+titlePanel("Short Sale Sequence Diagram"),
+
+fluidRow(
+    column(3, numericInput("numShorted", "# Shares Shorted", value = 100)),
+    column(3, numericInput("priceShorted", "Price Shorted", value = 80)),
+    column(3, numericInput("priceClosed", "Price Closed", value = 70))
+        ),
+
+##     numericInput("numShorted", "# Shares Shorted", value = 100),
+##     numericInput("priceShorted", "Price Shorted", value = 80),
+##     numericInput("priceClosed", "Price Closed", value = 70)
+## ),
+
+             
+fluidRow(
+    column(12,
+           ## mainPanel( ##tabsetPanel(## can I make this a fluidrow so can print $ arb below? 
+           DiagrammeROutput('diagram', width = "100%")
+           )
+##     ),
+## fluidRow(
+##     ## column(3, plotOutput("test5")),
+##     column(12,
+##            plotOutput("PL", width = "100%")
+##            )
+    )
+    )
+             )
+
+server = function(input, output){
+
+    output$diagram <- renderDiagrammeR({
+
+            mermaid(paste("
+sequenceDiagram
+  Bob->>You: ", input$numShorted, " shares borrowed
+  You->>Sandra: ", input$numShorted, " shares sold
+  Sandra->>You: $", round(input$numShorted * input$priceShorted, 2), "
+  You-->>Other Person: $", round(input$numShorted * input$priceClosed, 2), "
+  Other Person-->>You:", input$numShorted, " shares bought
+  You-->>Bob:", input$numShorted, " shares returned
+  You-->>You: Profit: ", round(input$numShorted * (input$priceShorted - input$priceClosed), 2), "
+"
+, sep = ""), width = "200px")
+    })
+    }
+
+shinyApp(ui = ui, server = server)
+#}}}
+```

@@ -1,0 +1,266 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(metricsgraphics)
+library(htmltools)
+library(htmlwidgets)
+library(RColorBrewer)
+sidebarLayout(
+    sidebarPanel(
+        selectizeInput("xaxis3", "X-Axis", choices = list("Stock Price" = 1,
+                                          "Strike Price" = 2,
+                                          "Volatility" = 3,
+                                          "Risk Free" = 4,
+                                          "Time" = 5), selected = 1),
+
+        selectizeInput('type3', "Type", choices = list("Call" = 1, "Put" = 2), selected = '1'),
+
+        ## have conditional input -- whatever is chosen above is not included below
+        ## note, we want to reproduce the charts like in page 313 of Hull
+
+        conditionalPanel(
+            condition = "input.xaxis3 == '1'",
+            div(style="height: 75px;", sliderInput("strike15", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol15", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf15", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time15", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
+            ),
+
+        conditionalPanel(
+            condition = "input.xaxis3 == '2'",
+            div(style="height: 75px;", sliderInput("stock16", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol16", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf16", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time16", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
+            ),
+
+        conditionalPanel(
+            condition = "input.xaxis3 == '3'",
+            div(style="height: 75px;", sliderInput("stock17", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("strike17", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf17", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time17", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
+            ),
+
+        conditionalPanel(
+            condition = "input.xaxis3 == '4'",
+            div(style="height: 75px;", sliderInput("stock18", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("strike18", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol18", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("time18", "Time", min=0.01, max=2, value=0.5, step = 0.1, ticks = FALSE))
+            ),
+
+        conditionalPanel(
+            condition = "input.xaxis3 == '5'",
+            div(style="height: 75px;", sliderInput("strike19", "Strike Price", min=1, max=100, value=50, step = 1, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("vol19", "Volatility", min=0.01, max=1, value=0.20, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("rf19", "Risk-Free", min=0.01, max=0.2, value=0.02, step = 0.01, ticks = FALSE)),
+            div(style="height: 75px;", sliderInput("stock19", "Stock Price", min=1, max=100, value=50, step = 1, ticks = FALSE))
+            )
+        ),
+    
+    mainPanel(
+
+        renderMetricsgraphics({
+            d1 <- function(){(log(stock/strike) + (rf + (vol * vol) / 2) * time) / (vol * sqrt(time))}
+            d2 <- function(){d1() - vol * sqrt(time)}
+
+            ## Delta
+            delta.c <- function(){pnorm(d1())}
+            delta.p <- function(){pnorm(d1()) - 1}
+
+            ## Theta
+            theta.c <- function(){-(stock * dnorm(d1()) * vol) / (2 * time) - rf * strike * exp(-rf * time) * pnorm(d2())}
+            theta.p <- function(){-(stock * dnorm(d1()) * vol) / (2 * time) + rf * strike * exp(-rf * time) * pnorm(-d2())}
+
+            ## Gamma
+            gamma <- function(){dnorm(d1()) / (stock * vol * sqrt(time))}
+
+            ## Vega
+            vega <- function(){stock * sqrt(time) * dnorm(d1())}
+
+            ## Rho
+            rho.c <- function(){strike * time * exp(-rf * time) * pnorm(d2())}
+            rho.p <- function(){-strike * time * exp(-rf * time) * pnorm(-d2())}
+
+            if(input$xaxis3 == '1' & input$type3 == '1'){
+                stock <- 1:100
+                strike <- input$strike15
+                vol <- input$vol15
+                rf <- input$rf15
+                time <- input$time15
+
+                tmp <- data.frame(Stock.Price = as.numeric(stock), Call.Rho = as.numeric(rho.c()))
+                ## names(data) <- c("Stock Price", "Rho")
+                tmp %>%
+                    mjs_plot(x = Stock.Price, y = Call.Rho) %>%
+                        mjs_line() %>%
+                            mjs_labs(x="STOCK PRICE", y="CALL RHO") %>%
+                                mjs_add_legend(legend = c("Rho"))
+                
+            } else {
+                if(input$xaxis3 == '1' & input$type3 == '2'){
+                    stock <- 1:100
+                    strike <- input$strike15
+                    vol <- input$vol15
+                    rf <- input$rf15
+                    time <- input$time15
+
+                    tmp <- data.frame(Stock.Price = as.numeric(stock), Put.Rho = as.numeric(rho.p()))
+                    ## names(data) <- c("Stock Price", "Rho")
+                    tmp %>%
+                        mjs_plot(x = Stock.Price, y = Put.Rho) %>%
+                            mjs_line() %>%
+                                mjs_labs(x="STOCK PRICE", y="PUT RHO") %>%
+                                    mjs_add_legend(legend = c("Rho"))
+                    
+                } else {
+                    if(input$xaxis3 == '2' & input$type3 == '1'){
+                        stock <- input$stock16
+                        strike <- 1:100
+                        vol <- input$vol16
+                        rf <- input$rf16
+                        time <- input$time16
+
+                        tmp <- data.frame(Strike.Price = as.numeric(strike), Call.Rho = as.numeric(rho.c()))
+                        tmp %>%
+                            mjs_plot(x = Strike.Price, y = Call.Rho) %>%
+                                mjs_line() %>%
+                                    mjs_labs(x="STRIKE PRICE", y="CALL RHO")
+                        
+                    } else {
+                        if(input$xaxis3 == '2' & input$type3 == '2'){
+                            stock <- input$stock16
+                            strike <- 1:100
+                            vol <- input$vol16
+                            rf <- input$rf16
+                            time <- input$time16
+
+                            tmp <- data.frame(Strike.Price = as.numeric(strike), Put.Rho = as.numeric(rho.p()))
+                            tmp %>%
+                                mjs_plot(x = Strike.Price, y = Put.Rho) %>%
+                                    mjs_line() %>%
+                                        mjs_labs(x="STRIKE PRICE", y="PUT RHO") %>%
+                                            mjs_add_legend(legend = c("Rho"))
+
+                            
+                        } else {
+                            if(input$xaxis3 == '3' & input$type3 == '1'){
+                                stock <- input$stock17
+                                strike <- input$strike17
+                                vol <- seq(0.01, 0.5, by = 0.01)
+                                rf <- input$rf17
+                                time <- input$time17
+
+                                tmp <- data.frame(Volatility = as.numeric(vol), Call.Rho = as.numeric(rho.c()))
+                                tmp %>%
+                                    mjs_plot(x = Volatility, y = Call.Rho) %>%
+                                        mjs_line() %>%
+                                            mjs_labs(x="VOLATILITY", y="CALL RHO") %>%
+                                                mjs_add_legend(legend = c("Rho"))
+
+                                
+                            } else {
+                                if(input$xaxis3 == '3' & input$type3 == '2'){
+                                    stock <- input$stock17
+                                    strike <- input$strike17
+                                    vol <- seq(0.01, 0.5, by = 0.01)
+                                    rf <- input$rf17
+                                    time <- input$time17
+
+                                    tmp <- data.frame(Volatility = as.numeric(vol), Put.Rho = as.numeric(rho.p()))
+                                    tmp %>%
+                                        mjs_plot(x = Volatility, y = Put.Rho) %>%
+                                            mjs_line() %>%
+                                                mjs_labs(x="VOLATILITY", y="PUT RHO") %>%
+                                                    mjs_add_legend(legend = c("Rho"))
+
+                                    
+                                } else {
+                                    if(input$xaxis3 == '4' & input$type3 == '1'){
+                                        stock <- input$stock18
+                                        strike <- input$strike18
+                                        vol <- input$vol18
+                                        rf <- seq(.01, .2, by = 0.01)
+                                        time <- input$time18
+
+                                        tmp <- data.frame(Risk_Free = as.numeric(rf), Call.Rho = as.numeric(rho.c()))
+                                        tmp %>%
+                                            mjs_plot(x = Risk_Free, y = Call.Rho) %>%
+                                                mjs_line() %>%
+                                                    mjs_labs(x="RISK-FREE", y="CALL RHO") %>%
+                                                        mjs_add_legend(legend = c("Rho"))
+
+                                        
+                                    } else {
+                                        if(input$xaxis3 == '4' & input$type3 == '2'){
+                                            stock <- input$stock18
+                                            strike <- input$strike18
+                                            vol <- input$vol18
+                                            rf <- seq(0.01, 0.2, by = 0.01)
+                                            time <- input$time18
+
+                                            tmp <- data.frame(Risk_Free = as.numeric(rf), Put.Rho = as.numeric(rho.p()))
+                                            tmp %>%
+                                                mjs_plot(x = Risk_Free, y = Put.Rho) %>%
+                                                    mjs_line() %>%
+                                                        mjs_labs(x="RISK-FREE", y="PUT RHO") %>%
+                                                            mjs_add_legend(legend = c("Rho"))
+
+                                            
+                                        } else {
+                                            if(input$xaxis3 == '5' & input$type3 == '1'){
+                                                stock <- input$stock19
+                                                strike <- input$strike19
+                                                vol <- input$vol19
+                                                rf <- input$rf19
+                                                time <- seq(0.1, 2, by = 0.1)
+
+                                                tmp <- data.frame(Time = as.numeric(time), Call.Rho = as.numeric(rho.c()))
+                                                tmp %>%
+                                                    mjs_plot(x = Time, y = Call.Rho) %>%
+                                                        mjs_line() %>%
+                                                            mjs_labs(x="TIME", y="CALL RHO") %>%
+                                                                mjs_add_legend(legend = c("Rho"))
+
+                                                
+                                            } else {
+                                                if(input$xaxis3 == '5' & input$type3 == '2'){
+                                                    stock <- input$stock19
+                                                    strike <- input$strike19
+                                                    vol <- input$vol19
+                                                    rf <- input$rf19
+                                                    time <- seq(0.1, 2, by = 0.1)
+
+                                                    tmp <- data.frame(Time = as.numeric(time), Put.Rho = as.numeric(rho.p()))
+                                                    tmp %>%
+                                                        mjs_plot(x = Time, y = Put.Rho) %>%
+                                                            mjs_line() %>%
+                                                                mjs_labs(x="TIME", y="PUT RHO") %>%
+                                                                    mjs_add_legend(legend = c("Rho"))
+
+                                                    
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        })
+        )
+    )
+#}}}
+```

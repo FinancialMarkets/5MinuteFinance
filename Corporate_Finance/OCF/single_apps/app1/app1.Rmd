@@ -1,0 +1,46 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(DT)
+library(quantmod)
+inputPanel(
+    textInput("ticker", label = "Stock Ticker", value = "GS")
+    ## radioButtons("statement", label = "Financial Statement", choices = list("Balance Sheet" = 1, "Income Statement" = 2), selected = 2)
+    )
+DT::renderDataTable({
+    ## valdate ticker ----
+    validate(
+        need(input$ticker != "", "Input a valid US stock ticker.")
+        )
+
+    f1 <- getFinancials(input$ticker, src = "google", auto.assign = FALSE)
+    is1 <- viewFin(f1, type = "IS")
+    ## bs1 <- viewFin(f1, type = "BS")
+    ## if(input$statement == 1){
+    ##     DT::datatable(bs1, options = list(pageLength = 5))
+    ## } else {
+    ##     DT::datatable(is1, options = list(pageLength = 5))
+    ##     }
+
+    ## calculate OCF
+    EBIT <- is1["Operating Income",]
+    EBIT[is.na(EBIT)] <-  0
+    Depreciation <- is1["Depreciation/Amortization",]
+    Depreciation[is.na(Depreciation)] <-  0
+    Taxes <- is1["Income Before Tax",] - is1["Income After Tax",]
+    Taxes[is.na(Taxes)] <-  0
+    OCF = EBIT + Depreciation - Taxes
+    Net_Income <- is1["Net Income",]
+    Net_Income[is.na(Net_Income)] <- 0
+    DT::datatable(rbind(EBIT, Depreciation, Taxes, OCF, Net_Income))
+    
+})
+#}}}
+```

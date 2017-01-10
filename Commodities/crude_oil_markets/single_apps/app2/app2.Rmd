@@ -1,0 +1,31 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache = FALSE}
+#{{{
+library(EIAdata)
+library(quantmod)
+library(dygraphs)
+
+
+renderDygraph({
+    key <- source("./key")$value  
+
+    USprod <- getEIA("PET.MCRFPUS1.A", key = key) / 1000
+    USres <- getEIA("PET.RCRR01NUS_1.A", key = key) 
+
+    data <- merge.xts(USprod, USres, join = "inner")
+    names(data) <- c("Production", "Proved Reserves")
+    dygraph(data, main = "") %>%
+        dyAxis("y", label = "Production:  in million barrels") %>%
+            dyAxis("y2", label = "Proved Reserves:  in million barrels", independentTicks = TRUE) %>%
+                dySeries("Proved\ Reserves", axis = 'y2') %>%
+                    dyRangeSelector()
+})
+#}}}
+```

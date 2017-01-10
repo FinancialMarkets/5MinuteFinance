@@ -1,0 +1,119 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(grid)
+library(htmltools)
+library(htmlwidgets)
+library(RColorBrewer)
+library(metricsgraphics)
+sidebarLayout(
+    sidebarPanel(
+        sliderInput("strike", label = "Call Strike Price", max = 100, min = 0, value = 55, step = 1),
+        sliderInput("premium", label = "Call Option Premium", max = 100, min = 0, value = 3, step = 1),
+        sliderInput("stock", label = "Stock Purchase Price", max = 100, min = 0, value = 50, step = 1),
+        radioButtons("show", label = "Show Stock Profit and Option Intrinsic", choices = c("Yes" = "1", "No" = "2"), selected = "No")
+        ),
+    mainPanel(
+        ## renderMetricsgraphics({
+        renderPlot({
+            ## calculate intrinsic value
+            intrinsic <- 1:100 - input$strike
+            intrinsic[intrinsic < 0] <- 0
+
+            ## Calculate P&L on stock
+            PnL <- 1:100 - input$stock
+
+            ## Spread Payoff
+            payoff <- PnL - intrinsic
+            
+            profit <- payoff + input$premium
+
+
+### Added 7/23
+    ##         dataGraphics <- data.frame(cbind(1:100, -intrinsic, PnL, payoff, profit))
+    ##         names(dataGraphics) <- c("Stock", "Short Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit")
+    ##         dataGraphics <- dataGraphics[(dataGraphics$Stock < input$strike + 20) & (dataGraphics$Stock > input$strike - 20), ]
+
+    ##         dataGraphics %>%
+    ##             mjs_plot(x = Stock, y = 'Short Option Intrinsic') %>%
+    ##                 mjs_line() %>%
+    ##                     mjs_add_line('Stock P/L') %>%
+    ##                     mjs_add_line('Spread Payoff') %>%
+    ##                         mjs_add_line('Spread Profit') %>%
+    ##                             mjs_axis_x(xax_format="plain") %>%
+    ##                             mjs_add_legend(legend = c("Short Option Intrinsic", "Stock P/L", "Spread Payoff", "Spread Profit"))
+    ##     })
+    ##     )
+    ## )
+            
+            ## calculate time value by Black-Scholes for all integer stock prices from 1 to 100 ----
+            ## d1 <- (log(1:100/input$strike) + (input$riskFree + (input$volatility^2)/2) * input$maturity) / (input$volatility * sqrt(input$maturity))
+            ## d2 <- d1 - input$volatility * sqrt(input$maturity)
+            ## optionValue <- 1:100 * pnorm(d1) - input$strike * exp(-input$riskFree * input$maturity) * pnorm(d2)
+            ## timeValue <- optionValue - intrinsic
+
+            if (input$show == 1){
+
+                plot(payoff, main = "Covered Call", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "khaki1", sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock - input$premium, 2), " | Breakeven:", round(input$stock - input$premium, 2)), ylim = range(PnL))
+                ## lines(payoff, lwd = 4, col = "khaki1", lty = 1)
+                lines(profit, lwd = 4, col = "darkseagreen1", lty = 1)
+                lines(intrinsic, lwd = 1, lty = 2, col = 1)
+                lines(PnL, lwd = 1, lty = 3, col = 1)
+                legend('topleft', c("Profit on Stock", "Option Intrinsic Value", "Payoff: Covered Call", "Profit: Covered Call"), col=c(1, 1,"khaki1","darkseagreen1"), lty = c(2,3,1,1), lwd = c(1,1,4,4))
+
+            } else {
+                plot(profit, main = "Covered Call", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, lty = 1, col = "darkseagreen1", ylim = c(-80, 80), sub = paste("Max Gain:", round(max(profit), 2), " | Max Loss:", round(input$stock - input$premium, 2), " | Breakeven:", round(input$stock - input$premium, 2)))
+                lines(payoff, lwd = 4, lty = 1, col = "khaki1")
+                ## abline(h = 0)
+                legend('topleft', c("Payoff: Covered Call", "Profit: Covered Call"), col=c("darkseagreen1","khaki1"), lty = c(1,1), lwd = c(4,4))
+            }
+            })
+        )
+    )
+    
+                ##                grid.text("What do we want?  Text in the corner!\nWhere do we want it?
+                ## Here!",
+                ##                          x=unit(2, "mm"), y=unit(1, "npc") - unit(2, "mm"),
+                ##                          just=c("left", "top"))
+                ## text(y = (max(profit) + 20), x = 80, paste("Breakeven:", 5, "\nMax Gain:", 
+                ##                                            4, "\nMax Loss:", 4), pos = 4)
+                
+               
+
+
+            #}
+
+
+            ## attempting to shade region between the two lines [not working] ----
+            ## polygon(c(1:100, rev(1:100)), c(intrinsic, rev(optionValue)), col = "orange", border = NA)
+
+        ## })#,
+                                        #{{{
+			#         tabPanel(title = "Time",
+			#                  renderPlot({
+			#             intrinsic <- 1:100 - input$strike
+			#             intrinsic[intrinsic < 0] <- 0
+			# 
+			#                          calculate time value by Black-Scholes for all integer stock prices from 1 to 100 ----
+			#             d1 <- (log(1:100/input$strike) + (input$riskFree + (input$volatility^2)/2) * input$maturity) / (input$volatility * sqrt(input$maturity))
+			#             d2 <- d1 - input$volatility * sqrt(input$maturity)
+			#             optionValue <- 1:100 * pnorm(d1) - input$strike * exp(-input$riskFree * input$maturity) * pnorm(d2)
+			#             timeValue <- optionValue - intrinsic 
+			# 
+			#             plot(timeValue, main = "Call Option Price and Intrinsic Value", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4)
+			#                  })
+                                        #         )
+                  #}}}
+    ##     )
+    ## )
+                                        #                 )
+                                        #)
+                                        #}}}
+```

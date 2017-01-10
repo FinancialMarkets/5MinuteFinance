@@ -1,0 +1,47 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+## took this version from my Portfolio Theory Lecture notes.  Improve by allowing for an arbitrary number of inputs with a selectizeInput()
+## also allow for a data range input
+library(corrplot)
+library(quantmod)
+inputPanel(
+    textInput("ticker1", "Stock Ticker", value = "XOM"),
+    textInput("ticker2", "Stock Ticker", value = "GLD"),
+    textInput("ticker3", "Stock Ticker", value = "TSLA"),
+    textInput("ticker4", "Stock Ticker", value = "AAPL"),
+    textInput("ticker5", "Stock Ticker", value = "UNH")
+)
+
+renderPlot({
+    stock1 <- getSymbols(input$ticker1, from = '2015-01-01', auto.assign = FALSE)
+    stock1 <- to.weekly(stock1)
+    stock1 <- Delt(Ad(stock1))[-1]
+    names(stock1) <- input$ticker1
+    stock2 <- getSymbols(input$ticker2, from = '2015-01-01', auto.assign = FALSE)
+    stock2 <- to.weekly(stock2)
+    stock2 <- Delt(Ad(stock2))[-1]
+    names(stock2) <- input$ticker2
+    stock3 <- getSymbols(input$ticker3, from = '2015-01-01', auto.assign = FALSE)
+    stock3 <- to.weekly(stock3)
+    stock3 <- Delt(Ad(stock3))[-1]
+    names(stock3) <- input$ticker3
+    stock4 <- getSymbols(input$ticker4, from = '2015-01-01', auto.assign = FALSE)
+    stock4 <- to.weekly(stock4)
+    stock4 <- Delt(Ad(stock4))[-1]
+    names(stock4) <- input$ticker4
+    stock5 <- getSymbols(input$ticker5, from = '2015-01-01', auto.assign = FALSE)
+    stock5 <- to.weekly(stock5)
+    stock5 <- Delt(Ad(stock5))[-1]
+    names(stock5) <- input$ticker5
+M <- cor(data.frame(cbind(stock1, stock2, stock3, stock4, stock5)))
+corrplot(M, method = "square")
+})
+```

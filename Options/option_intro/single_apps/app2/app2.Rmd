@@ -1,0 +1,54 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        div(style="height: 75px;", sliderInput("strike.p", label = "Strike Price", max = 100, min = 0, value = 50, step = 1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("volatility.p", label = "Return Volatility", max = .5, min = 0.01, value = .20, step = .01, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("maturity.p", label = "Years to Maturity", max = 2, min = .1, value = .5, step = .1, ticks = FALSE)),
+        div(style="height: 75px;", sliderInput("riskFree.p", label = "Risk Free Rate", max = .2, min = .01, value = .02, step = .01, ticks = FALSE)),
+	div(style="height: 75px;", sliderInput("divYield.p", label = "Dividend Yield", max = .2, min = 0, value = 0, step = .01, ticks = FALSE))
+        ),
+    mainPanel(
+        renderPlot({
+            ## calculate intrinsic value
+	  stock.price.p <- 1:100
+	  div.adj.stock.price.p <- stock.price.p * exp(-input$divYield.p * input$maturity.p)
+	  intrinsic.p <- stock.price.p - input$strike.p
+	  intrinsic.p[intrinsic.p < 0] <- 0
+
+            ## calculate time value by Black-Scholes for all integer stock prices from 1 to 100 ----
+            d1.p <- (log(div.adj.stock.price.p/input$strike.p) + (input$riskFree.p + (input$volatility.p^2)/2) * input$maturity.p) / (input$volatility.p * sqrt(input$maturity.p))
+            d2.p <- d1.p - input$volatility.p * sqrt(input$maturity.p)
+            optionValue.p <- div.adj.stock.price.p * pnorm(d1.p) - input$strike.p * exp(-input$riskFree.p * input$maturity.p) * pnorm(d2.p)
+            timeValue.p <- optionValue.p - intrinsic.p
+
+            ## calculate put value by put-call parity
+            putValue.p <- optionValue.p + input$strike.p * exp(-input$riskFree.p * input$maturity.p) - div.adj.stock.price.p
+
+            ## calculate put intrinsic value ----
+            intrinsicPut.p <- input$strike.p - 1:100
+            intrinsicPut.p[intrinsicPut.p < 0] <- 0
+
+            
+                plot(intrinsicPut.p, main = "Put Option Premium and Intrinsic Value", ylab = "$", xlab = "Underlying Stock Price ($)", type = "l", lwd = 4, sub = "Black-Sholes value for a European put on a non-dividend paying stock")
+                                        #             axis(1, at = 1:20, labels = yAxis)
+                lines(putValue.p, lwd = 4, col = "dodgerblue4")
+                                        #           lines(1:20, durLine, lwd = 5, col = 3)
+                legend('topright', c("Intrinsic Value", "Option Premium", "Time Value"), lty = c(1,1,1), col=c(1,"dodgerblue4", "lightblue"), lwd = c(4,4, 15))
+                ##  shade region  ----
+                polygon(c(1:100, rev(1:100)), c(intrinsicPut.p, rev(putValue.p)), col = "lightblue", border = NA)
+                
+            })
+        )
+    )
+#}}}
+```

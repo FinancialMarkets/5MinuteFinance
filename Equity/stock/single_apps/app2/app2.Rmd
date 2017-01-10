@@ -1,0 +1,62 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+  comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+  comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+  names(comp) <- c("symbol", "name")
+inputPanel(
+    # textInput("ticker1", label = "Stock Ticker", value = "XOM"),
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name),
+    dateInput(inputId = "startDate", label = "Start Date", value = "2014-06-01", min = "2008-01-01"),
+    selectizeInput(inputId = "study", label = "Technical Indicator", choices = list("Bollinger Bands" = 1,
+                                                                  "Moving Average" = 2,
+                                                                  "Directional Movement Index" = 3,
+                                                                  "Relative Strength Index" = 4,
+                                                                  "MACD" = 5), selected = 1)        
+                                        #         ),
+    )
+                                        #               mainPanel(
+renderPlot({
+    library(quantmod)
+    ## valdate tickers ----
+    # validate(
+    #     need(input$ticker1 != "", "Input a valid US stock ticker.")
+    #     )
+    validate(
+        need(input$name != "", "Choose a stock.")
+        )
+  ticker1 <- comp$symbol[comp$name == input$name]
+
+    # stock <- getSymbols(input$ticker1, src = "google", auto.assign = FALSE)
+    stock <- getSymbols(ticker1, src = "google", auto.assign = FALSE)
+    stock <- stock[paste(input$startDate, "/", sep = "")]
+
+    if(input$study == 1){
+        chartSeries(stock, theme = "white", name = ""); addBBands()
+    } else {
+        if(input$study == 2) {
+            chartSeries(stock, theme = "white", name = ""); addSMA()
+        } else {
+            if(input$study == 3) {
+                chartSeries(stock, theme = "white", name = ""); addADX()
+            } else {
+                if(input$study == 4) {
+                    chartSeries(stock, theme = "white", name = ""); addRSI()
+                } else {
+                    chartSeries(stock, theme = "white", name = ""); addMACD()
+                }
+            }
+        }
+    }
+
+})
+#}}}
+```

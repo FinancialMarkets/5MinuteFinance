@@ -1,0 +1,62 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+
+        div(style="height: 75px;", numericInput("Stock", "Present Stock Price", min = .01, max = 2000, value = 50, step = .05)),
+        div(style="height: 75px;", numericInput("Vol", "Annualized Volatility", min = .01, max = 20, value = 0.20, step = .01)),
+        div(style="height: 75px;", numericInput("Strike", "Strike Price", min = .01, max = 1, value = 52, step = .05)),
+        div(style="height: 75px;", numericInput("Rf", "Risk Free Rate", min = 0.001, max = 0.5, value = 0.01, step = .001)),
+        div(style="height: 75px;", numericInput("Time", "Years to Expiration", min = 0.01, max = 50, value = 1, step = .01)),
+        div(style="height: 75px;", numericInput("Div", "Dividend Yield", min = 0, max = 1, value = 0, step = .01))#,
+        ## div(style="height: 75px;", radioButtons("out", "Value to See", choices = list("Call Price" = 1, "d1" = 2, "d2" = 3), selected = 1)) 
+                  ),
+    mainPanel(
+
+        renderPlot({
+            stock <- input$Stock
+            vol <- input$Vol
+            strike <- input$Strike
+            rf <- input$Rf
+            time <- input$Time
+            div <- input$Div
+            ## adjustment for dividends
+            stock <- stock * exp(-div * time)
+
+
+            d1 <- (log(stock/strike) + (rf + (vol * vol) / 2) * time) / (vol * sqrt(time))
+            d2 <- d1 - vol * sqrt(time)
+            C <- stock * pnorm(d1) - strike * exp(-rf * time) * pnorm(d2)
+
+	    #             if (input$out == 1){
+                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
+                text(x = 0.5, y = 0.5, labels = paste0("Call Premium = $", round(C, 2)), cex = 3)
+                ## text(x = 0.1, y = 0.95, labels = "Call Price", cex = 2)
+                text(x = 0.5, y = 0.3, labels = paste("d1 = ", round(d1, 5)))
+                text(x = 0.5, y = 0.2, labels = paste("d2 = ", round(d2, 5)))
+		#             } else {
+		#                 if (input$out == 2){
+		#                     plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
+		#                 text(x = 0.5, y = 0.5, labels = paste(round(d1, 5)), cex = 5)
+		#                 text(x = 0.03, y = 0.95, labels = "d1", cex = 2)
+		#             } else {
+		#                 plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Black-Scholes Call Option Valuation")
+		#                 text(x = 0.5, y = 0.5, labels = paste(round(d2, 5)), cex = 5)
+		#                 text(x = 0.03, y = 0.95, labels = "d2", cex = 2)
+		#             }
+		#             }
+            
+        })
+)
+	      )
+#}}}
+```

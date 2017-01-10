@@ -1,0 +1,30 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(quantmod)
+library(DT)
+inputPanel(
+    textInput(inputId = "ticker3", label = "Stock Ticker", value = "AAPL"),
+    textInput(inputId = "ticker4", label = "Stock Ticker", value = "XOM"),
+    textInput(inputId = "ticker5", label = "Stock Ticker", value = "GS")
+    )
+div(renderDataTable({
+    validate(
+        need(input$ticker3 != "", "Input a valid US stock ticker."),
+        need(input$ticker4 != "", "Input a valid US stock ticker."),
+        need(input$ticker5 != "", "Input a valid US stock ticker.")
+    )
+    datatable(
+        getQuote(c(input$ticker3, input$ticker4, input$ticker5)), options = list(processing = FALSE)
+        )
+}), style = "font-size:60%")
+#}}}
+```

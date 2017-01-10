@@ -1,0 +1,33 @@
+---
+title: ""
+output: html_document
+runtime: shiny
+---
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(
+        numericInput("num.usd", "Amount of USD", value = 100),        
+        numericInput("fxrate", "Exchange Rate", value = 1),
+        radioButtons("type", "", choices = c("Direct" = "1", "Indirect" = "2"), selected = 1)
+        ),
+    mainPanel(
+        
+        renderPlot({
+            if (input$type == 1){
+                num.fgn <- input$num.usd / input$fxrate
+            } else {
+                num.fgn <- input$num.usd * input$fxrate
+            }            
+            plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+            text(x = 0.5, y = 0.5, labels = paste(round(num.fgn, 2)), cex = 5)
+            text(.22, 0.95, "Foreign Currency:", cex = 2)
+
+        })
+        )
+    )
+#}}}
+```
