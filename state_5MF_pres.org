@@ -82,3 +82,5 @@ A first look at Risk.
 ***** DONE Intro Stock Investments
 ***** DONE Intro Stock Markets
 ***** DONE Markowitz
+***** DONE VIX
+***** TODO VVIX
