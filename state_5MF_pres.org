@@ -87,3 +87,5 @@ A first look at Risk.
 ***** DONE Intro to Stock and Options Strats
 ***** TODO Varying Option Volatility
 ***** DONE Convexity
+***** DONE ETNs
+***** TODO For what is YTM used?
