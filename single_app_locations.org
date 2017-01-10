@@ -172,3 +172,18 @@ https://micfm.shinyapps.io/The_VIX_app1/
 https://micfm.shinyapps.io/The_VIX_app2/
 
 ** The VVIX
+
+https://micfm.shinyapps.io/The_VVIX_app1/
+
+https://micfm.shinyapps.io/The_VVIX_app2/
+
+
+** Intro to Stock and Options Strats
+
+https://micfm.shinyapps.io/option_spreads_app1/
+
+https://micfm.shinyapps.io/option_spreads_app2/
+
+https://micfm.shinyapps.io/option_spreads_app3/
+
+** 

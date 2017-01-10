@@ -83,4 +83,7 @@ A first look at Risk.
 ***** DONE Intro Stock Markets
 ***** DONE Markowitz
 ***** DONE VIX
-***** TODO VVIX
+***** DONE VVIX
+***** DONE Intro to Stock and Options Strats
+***** TODO Varying Option Volatility
+***** TODO Convexity
