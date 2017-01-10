@@ -85,7 +85,18 @@ A first look at Risk.
 ***** DONE VIX
 ***** DONE VVIX
 ***** DONE Intro to Stock and Options Strats
-***** TODO Varying Option Volatility
 ***** DONE Convexity
 ***** DONE ETNs
+
+
+
+
+
+***** DONE Short Selling Stock
+
+** Works in Progress; Not Deployed for 5MF
+
 ***** TODO For what is YTM used?
+***** TODO Varying Option Volatility
+***** TODO An Intro to US Treasuries
+***** TODO Treasury Debt Risk
