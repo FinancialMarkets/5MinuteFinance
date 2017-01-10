@@ -204,3 +204,10 @@ https://micfm.shinyapps.io/short_selling_stock_app1/
 
 https://micfm.shinyapps.io/short_selling_stock_app2/
 
+** Cross Hedging
+
+https://micfm.shinyapps.io/cross_hedging_presentation_app1/
+
+https://micfm.shinyapps.io/cross_hedging_presentation_app2/
+
+https://micfm.shinyapps.io/cross_hedging_presentation_app3/

@@ -77,7 +77,7 @@ A first look at Risk.
 ***** DONE Black Scholes
 ***** DONE ETFs
 ***** DONE Leveraged ETFs
-***** TODO Cross Hedging
+***** DONE Cross Hedging
 ***** TODO Crude Oil Markets
 ***** DONE Intro Stock Investments
 ***** DONE Intro Stock Markets
