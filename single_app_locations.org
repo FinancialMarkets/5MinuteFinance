@@ -211,3 +211,8 @@ https://micfm.shinyapps.io/cross_hedging_presentation_app1/
 https://micfm.shinyapps.io/cross_hedging_presentation_app2/
 
 https://micfm.shinyapps.io/cross_hedging_presentation_app3/
+** Crude Oil Markets
+
+https://micfm.shinyapps.io/crude_oil_markets_app1/
+
+https://micfm.shinyapps.io/crude_oil_markets_app2/
