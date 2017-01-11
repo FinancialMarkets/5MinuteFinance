@@ -1,0 +1,49 @@
+---
+title: "Interest Compounding"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod2.css
+runtime: shiny
+---
+
+## Quoted Rates
+
+Interest rates are often *quoted* as annual rates, even though the payment and interest period is antually less than a year.  For example, you might see an interest rate quoted as, '8\% compounded semiannually'.  
+
+-  What this actually means is the interest rate is 4\% over 6-months.  
+
+-  Importantly, 8\% over a year is **not** the same return as 4\% over 6 months.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## 
+
+Because of this the annual 8\% rate is referred to as the *quoted* rate, to make it clear it is not the actual rate earned.  Quoted rates are calculated, by convention, as the rate per period multiplied by the number of periods in a year.
+
+-  In the above example, this is $4\% * 2 = 8\%$ where the $2$ denoted two 6 month periods.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+ 
+## Effective Annual Rates
+
+
+$EAR = \left(1 + \frac{Q}{m}\right)^m - 1$
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r}
+inputPanel(
+ sliderInput("quoted", "Quoted Rate", min = 0, max = .5, step = .01, value = .12),
+ selectizeInput("comp", "Number of Periods in a Year", options = c("Yearly", "Semiannual", "Monthly", "Daily", "Infinite"))
+)
+renderPlot({
+  
+  
+})
+```
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
