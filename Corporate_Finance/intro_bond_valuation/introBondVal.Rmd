@@ -7,7 +7,7 @@ author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinanc
 output: ioslides_presentation
 runtime: shiny
 logo: misq.png
-css: 5min_mod.css
+css: 5min_mod2.css
 smaller: true
 ---
 

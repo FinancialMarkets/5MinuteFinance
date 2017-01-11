@@ -4,7 +4,7 @@ author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinanc
 affiliation: "Milken Institute Center for Financial Markets"
 output: ioslides_presentation
 logo: misq.png
-css: 5min_mod.css
+css: 5min_mod2.css
 runtime: shiny
 smaller: true
 ---
