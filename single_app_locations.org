@@ -177,7 +177,6 @@ https://micfm.shinyapps.io/The_VVIX_app1/
 
 https://micfm.shinyapps.io/The_VVIX_app2/
 
-
 ** Intro to Stock and Options Strats
 
 https://micfm.shinyapps.io/option_spreads_app1/

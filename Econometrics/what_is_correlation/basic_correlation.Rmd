@@ -1,4 +1,4 @@
---
+---
 title: "An Introduction to the Correlation Coefficient"
 author: "Milken Institute, Center for Financial Markets"
 affiliation: "Milken Institute Center for Financial Markets"

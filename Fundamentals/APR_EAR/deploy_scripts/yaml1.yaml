@@ -1,0 +1,8 @@
+---
+title: "Interest Compounding and EAR"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Fundamentals/APR_EAR/apr.Rmd)"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod2.css
+runtime: shiny
+---
