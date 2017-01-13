@@ -22,7 +22,7 @@ This presentation will introduce you to a present problem in funding cancer rese
 
 ##
 
-```{r echo = FALSE, warning = FALSE}
+```{r echo = FALSE, warning = FALSE, message = FALSE}
 
 ## read in simulation ----
 #{{{  --------
@@ -1130,15 +1130,24 @@ trial.cost.fn<-function(comp.phase)
 ui <- bootstrapPage(
         tabsetPanel(type = "tabs",
                     # tabPanel("Data", DT::dataTableOutput("datatable")),
-                    tabPanel("Plot", plotOutput("plot"))
+                    tabPanel("Plot", plotOutput("plot1")),
+                    tabPanel("Plot", plotOutput("plot2")),
+                    tabPanel("Plot", plotOutput("plot3")),
+                    tabPanel("Plot", plotOutput("plot4"))
                     )
     )
     
 server <- function(input, output){
 
-output$plot <- renderPlot({ 
+    results <<- simulate.CFs.fn()
 
-results <- simulate.CFs.fn()
+output$plot1 <- renderPlot({ 
+
+summarize.results.fn(results)
+
+})
+
+    output$plot2 <- renderPlot({ 
 
 summarize.results.fn(results)
 
