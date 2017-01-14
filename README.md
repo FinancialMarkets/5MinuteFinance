@@ -46,6 +46,10 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Mean-Variance Optimal Portfolios](https://micfm.shinyapps.io/markowitz/) | [Mobile Friendly Version](https://micfm.shinyapps.io/markowitz_mobile)
 
+### Fundamentals
+
+[Interest Compounding: EAR and APR](https://micfm.shinyapps.io/compounding) | [Mobile Friendly Version](https://micfm.shinyapps.io/compounding_mobile/)
+
 ### Corporate Finance
 
 [An Introduction to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements) | [Mobile Friendly Version](https://micfm.shinyapps.io/basic_financial_statements_mobile)

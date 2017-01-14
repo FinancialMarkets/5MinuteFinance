@@ -8,7 +8,7 @@ runtime: shiny
 
 ## Quoted Rates
 
-Interest rates are often *quoted* as annual rates, even though the payment and interest period is antually less than a year.  For example, you might see an interest rate quoted as, '8\% compounded semiannually'.  
+Interest rates are often *quoted* as annual rates, even though the payment and interest period is actually less than a year.  For example, you might see an interest rate quoted as, '8\% compounded semiannually'.  
 
 -  What this actually means is the interest rate is 4\% over 6-months.  
 
@@ -24,9 +24,9 @@ Because of this the annual 8\% rate is referred to as the *quoted* rate, to make
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
  
-## Effective Annual Rates
+## Effective Annual Rates (EAR)
 
-We can calculate the EAR with: $EAR = \left(1 + \frac{Q}{m}\right)^m - 1$
+We can calculate the EAR with: $EAR = \left(1 + \frac{Q}{m}\right)^m - 1$.  This is the actual interest rate over a year.
 
 -  The idea is this equation is we first take the quoted rate and calculate the rate per period $\frac{Q}{m}$.  This is the actual interest rate.  
 

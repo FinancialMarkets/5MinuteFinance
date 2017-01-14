@@ -24,6 +24,7 @@ This presentation will introduce you to a present problem in funding cancer rese
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 
+library(plotly)
 ## read in simulation ----
 #{{{  --------
 
@@ -1131,9 +1132,9 @@ ui <- bootstrapPage(
         tabsetPanel(type = "tabs",
                     # tabPanel("Data", DT::dataTableOutput("datatable")),
                     tabPanel("Plot", plotOutput("plot1")),
-                    tabPanel("Plot", plotOutput("plot2")),
+                    tabPanel("ROE Histogram", plotlyOutput("plot2")),
                     tabPanel("Plot", plotOutput("plot3")),
-                    tabPanel("Plot", plotOutput("plot4"))
+                    tabPanel("Plot", plotlyOutput("plot4"))
                     )
     )
     
@@ -1147,9 +1148,13 @@ summarize.results.fn(results)
 
 })
 
-    output$plot2 <- renderPlot({ 
+    output$plot2 <- renderPlotly({ 
 
-summarize.results.fn(results)
+   	ROE.raw<-results$ROE
+	NYEARS<-length(results$cash[1,])/2
+    ROE.annualized<-((1+ROE.raw)^(1/NYEARS))-1
+	## plot(hist(ROE.annualized,main="ROE.annualized",col=4,xlab=""))
+        plot_ly(data.frame(ROE.annualized), type = "histogram")
 
 })
 
