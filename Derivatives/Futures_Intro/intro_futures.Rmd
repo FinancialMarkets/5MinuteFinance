@@ -52,6 +52,43 @@ Speculators play an important role by taking the other side of order imbalances 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## 
+
+<!-- app to bring in various futures contracts from quandl; continuous front month or each individual contracts -->
+
+<!-- NOT WORKING YET -->
+```{r echo = FALSE, message = FALSE}
+library(Quandl)
+library(highcharter)
+
+renderHighchart({
+    Quandl("CME/CLF2004")
+    xt <- as.xts(x[,-c(5,6)], order.by = x[,1])
+
+    hchart()
+    })
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Open Interest
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## 
+
+<!-- use Quandl call from above to plot open interest -->
+
+```{r echo = FALSE, message = FALSE}
+
+
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
 
 ##
 
