@@ -51,7 +51,7 @@ In the following app you can see how stock returns distributions behaved over di
 
 - Try and compare small stocks with the distributions on portfolios of large numbers of stocks.  For example, take a look at EGAS and then SPY.  EGAS is a small Natural Gas distributor and SPY is an ETF which tracks the S&P 500.  Are there differences between how risk varies between the two?
 
--  The app may take 5 seconds or so to load.
+-  The app may take 5 seconds or so to load.  Hit backspace and start typing in a company's name.  The app will search for the company as you type.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -61,16 +61,24 @@ In the following app you can see how stock returns distributions behaved over di
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 library(quantmod)
 library(plotly)
+
+comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+names(comp) <- c("symbol", "name")
+
 inputPanel(
-    textInput("ticker", label = "Stock Ticker", value = "C")
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name)
+    ## textInput("ticker", label = "Stock Ticker", value = "C")
 )
 renderPlotly({
     ## valdate ticker ----
     validate(
-        need(input$ticker != "", "Input a valid US stock ticker.")
+        ## need(input$ticker != "", "Input a valid US stock ticker.")
+        need(input$name != "", "Select a US stock name.")
     )
+ticker <- comp$symbol[comp$name == input$name]
 
-    stock <- getSymbols(input$ticker, src = "yahoo", auto.assign = F)
+    stock <- getSymbols(ticker, src = "yahoo", auto.assign = F)
     adjStock <- Ad(stock)
     stockRet <- Delt(adjStock)[-1]
     stock.mat <- matrix(stockRet)
