@@ -20,7 +20,7 @@ Interest rates are often *quoted* as annual rates, even though the payment and i
 
 Because of this the annual 8\% rate is referred to as the *quoted* rate, to make it clear it is not the actual rate earned.  Quoted rates are calculated, by convention, as the rate per period multiplied by the number of periods in a year.
 
--  In the above example, this is $4\% * 2 = 8\%$ where the $2$ denoted two 6 month periods.  
+-  In the above example, this is $4\% * 2 = 8\%$ where the $2$ denotes two 6 month periods.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
  
@@ -28,7 +28,7 @@ Because of this the annual 8\% rate is referred to as the *quoted* rate, to make
 
 We can calculate the EAR with: $EAR = \left(1 + \frac{Q}{m}\right)^m - 1$.  This is the actual interest rate over a year.
 
--  The idea is this equation is we first take the quoted rate and calculate the rate per period $\frac{Q}{m}$.  This is the actual interest rate.  
+-  The idea in this equation is we first take the quoted rate and calculate the rate per period $\frac{Q}{m}$.  This is the actual interest rate (which in the previous example was 4\% over 6-months).  
 
 -  We then calculate the future value at the end of the year, given an interest rate of $\frac{Q}{m}$ per period, and $m$ periods in a year.  You can think of this as the future value of \$1 invested over the year: $FV = \$1\left(1 + \frac{Q}{m}\right)^m$.  
 
@@ -40,7 +40,7 @@ We can calculate the EAR with: $EAR = \left(1 + \frac{Q}{m}\right)^m - 1$.  This
 
 Use the following app to get an idea of how the quoted interest rate and compounding period affect the effective annual rate.
 
--  Notice the greater the quoted rate, the larget the effect of increasing the compounding period.  
+-  Notice the greater the quoted rate, the larger the effect of increasing the compounding period.  
 
 ##
 
