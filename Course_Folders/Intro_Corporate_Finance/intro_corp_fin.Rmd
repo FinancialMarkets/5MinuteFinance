@@ -1,0 +1,39 @@
+---
+title: Course Outline with Presentations: Intro to Corporate Finance
+output: html_document
+---
+
+# Introduction to Financial Management
+
+# Financial Statements and Cash Flows
+
+## 
+
+## Operating Cash Flow
+
+## 
+
+# The Time Value of Money 
+
+# Discounted Cash Flow Valuation
+
+# Stock and Bond Valuation
+
+# Capital Budgeting
+
+## NPV and IRR
+
+## Other Investment Decision Rules 
+
+## Making Investment Decisions
+
+# Risk and Return
+
+## Historical Context
+
+## The CAPM
+
+# Capital Market Financing
+
+## Dividends
+
