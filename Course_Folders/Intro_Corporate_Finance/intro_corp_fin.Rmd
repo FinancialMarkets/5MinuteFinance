@@ -7,21 +7,37 @@ output: html_document
 
 # Financial Statements and Cash Flows
 
+[An Introduction to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements) | [Mobile Friendly Version](https://micfm.shinyapps.io/basic_financial_statements_mobile)
+
+[Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios) | [Mobile Friendly Version](https://micfm.shinyapps.io/Financial_Ratios_mobile)
+
 ## 
 
 ## Operating Cash Flow
+
+[Operating Cash Flow](https://micfm.shinyapps.io/OCFs) | [Mobile Friendly Version](https://micfm.shinyapps.io/OCFs_mobile)
 
 ## 
 
 # The Time Value of Money 
 
+[Time Value of Money: Single Cash Flows](https://micfm.shinyapps.io/TVM_Single_CFs) | [Mobile Friendly Version](https://micfm.shinyapps.io/TVM_Single_CFs_mobile)
+
+[Time Value of Money: Multiple Cash Flows](https://micfm.shinyapps.io/TVM_Multiple_CFs/) | [Mobile Friendly Version](https://micfm.shinyapps.io/TVM_Multiple_CFs_mobile)
+
 # Discounted Cash Flow Valuation
 
 # Stock and Bond Valuation
 
+[An Introduction to Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/) | [Mobile Friendly Version](https://micfm.shinyapps.io/intro_stock_valuation_mobile)
+
+[An Introduction to Bond Valuation](https://micfm.shinyapps.io/intro_bond_valuation) | [Mobile Friendly Version](https://micfm.shinyapps.io/intro_bond_valuation_mobile/)
+
 # Capital Budgeting
 
 ## NPV and IRR
+
+[Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/) | [Mobile Friendly Version](https://micfm.shinyapps.io/NPV_and_IRR_mobile)
 
 ## Other Investment Decision Rules 
 
@@ -32,6 +48,8 @@ output: html_document
 ## Historical Context
 
 ## The CAPM
+
+[The Capital Asset Pricing Model](https://micfm.shinyapps.io/The_CAPM) | [Mobile Friendly Version](https://micfm.shinyapps.io/The_CAPM_mobile)
 
 # Capital Market Financing
 
