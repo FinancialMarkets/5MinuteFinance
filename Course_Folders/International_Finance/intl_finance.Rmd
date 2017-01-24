@@ -1,0 +1,24 @@
+---
+title: Course Outline with Presentations: International Financial Management
+output: html_document
+---
+
+
+# The Balance of Payments
+
+# International Financial MArkets
+
+# How Exchange Rates are Determined
+
+# Currency Derivatives
+
+## Futures and Forwards
+
+## Currency Options
+
+# Arbitrage in Foreign Exchange Markets
+
+## Interest Rate Parity
+
+
+# Exchange Rate Forecasting
