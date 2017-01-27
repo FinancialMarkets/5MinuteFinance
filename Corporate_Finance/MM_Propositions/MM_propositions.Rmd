@@ -14,10 +14,20 @@ Whether an *optimal* capital structure exists, and the method of finding it, has
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Modigliani and Miller (MM)
+
+In a series of papers that would lead to a Nobel Prize, M&M made important contributions to understanding the relationship between a firm's capital structure, value, and cost of capital.  Their main conclusion can be summarized as:
+
+-  In the absence of taxes, firm capital structure is irrelevant. 
+
+-  With taxes, a firm's cost of capital can be lowered through issuing debt.  This highlights the importance of debt as a tax shield.
+
+-  Too much debt increases default probabilities, which raises the cost of capital. Balancing the tax shield with bankruptcy risk may lead to an optimal capital structure.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Assumptions
 
-- No taxes
 - No transaction costs
 - Both individials and corporations can borrow at the same rate.
 
@@ -36,7 +46,9 @@ Whether an *optimal* capital structure exists, and the method of finding it, has
 The cost of equity rises linearly with leverage according to the equation:  $R_E = R_0 + \frac{D}{E}(R_0 - R_D)$, where:
 
 - $R_E$ is the return on equity.
--
+- $R_0$ is the return on the firm's unlevered equity.
+- $R_D$ is the return on the firm's debt.
+- $D$ and $E$ are the market values of the firm's debt and equity respectively.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -53,14 +65,55 @@ The cost of equity rises linearly with leverage according to the equation:  $R_E
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Modigliani and Miller (M&M) Proposition II
+
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE,}
+#{{{
+inputPanel(
+    sliderInput("taxRate", label = "Tax Rate", max = .7, min = 0, value = .35, step = .01),
+    sliderInput("costULEquity", label = "Cost of Unlevered Equity", max = .5, min = 0.01, value = .20, step = .01),
+    sliderInput("costDebt", label = "Cost of Debt", max = .5, min = 0.01, value = .10, step = .01)
+)
+library(plotly)
+renderPlotly({
+    validate(
+        need(input$costULEquity - input$costDebt > .05, "Cost of Equity should be greater than the Cost of Debt")
+    )
+
+    valueEquity <- seq(0.01, 1, by = .01)
+    valueDebt <- (1 - valueEquity)
+    valueAssets <- 1
+    DERatio <- valueDebt / valueEquity
+    
+    Rs <- input$costULEquity + DERatio * (1 - input$taxRate) * (input$costULEquity - input$costDebt) 
+    Rwacc <- valueEquity * Rs + valueDebt * input$costDebt * (1 - input$taxRate)
+
+    dataMM <- data.frame(cbind(DERatio, Rs, input$costDebt, Rwacc))
+    ## note return on equity is simply called Percent Return below so that is what shows up on the y axis
+    names(dataMM) <- c("Debt_Equity_Ratio", "Required_Return", "Cost_Debt", "Rwacc")
+    dataMM <- subset(dataMM, Debt_Equity_Ratio < 1)
+
+    pMM <- plot_ly(data = dataMM, y = ~Required_Return, x = ~Debt_Equity_Ratio, text = paste(""), type = "scatter", mode = "line", name = "Cost of Equity") %>%
+        add_trace(y = ~Cost_Debt, name = 'Cost of Debt', mode = 'line') %>%
+        add_trace(y = ~Rwacc, name = 'Weighted-Avg. Cost of Capital', mode = 'line') 
+    pMM 
+
+})
+#}}}
+```
+
 
 
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Commodities/nat_gas_markets/nat_gas_markets.Rmd) to see the code and collaborators for this presentation
-
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
