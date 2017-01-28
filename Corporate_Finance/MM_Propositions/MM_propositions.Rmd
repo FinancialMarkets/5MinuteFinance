@@ -8,15 +8,16 @@ runtime: shiny
 
 ## Capital Structure
 
-A firm's capital structure is the proportion of debt and equity used to finance the firm's assets.  
+A firm's capital structure is the proportion of debt and equity used to finance the firm's assets.  We can write the value of the firm as $V = D + E$ where $V$ is the firm's value, and $D$ and $E$ are the market values of the firm's debt and equity respectively.
 
-Whether an *optimal* capital structure exists, and the method of finding it, has long been of interest in finance. 
+-  The idea of an *optimal* capital structure, is that there is some proportion of debt versus equity financing which maximizes $V$. 
+-  Whether such an capital structure exists, and the method of finding it, has long been of interest in finance. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Modigliani and Miller (MM)
 
-In a series of papers that would lead to a Nobel Prize, M&M made important contributions to understanding the relationship between a firm's capital structure, value, and cost of capital.  Their main conclusion can be summarized as:
+In a series of papers that would lead to a Nobel Prize, M&M made important contributions to understanding the relationship between a firm's capital structure, value, and cost of capital.  Their main conclusions can be summarized as:
 
 -  In the absence of taxes, firm capital structure is irrelevant. 
 
