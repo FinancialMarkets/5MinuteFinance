@@ -23,24 +23,36 @@ In a series of papers that would lead to a Nobel Prize, M&M made important contr
 
 -  With taxes, a firm's cost of capital can be lowered through issuing debt.  This highlights the importance of debt as a tax shield.
 
--  Too much debt increases default probabilities, which raises the cost of capital. Balancing the tax shield with bankruptcy risk may lead to an optimal capital structure.
+A common extension of MM says that too much debt increases default probabilities, which raises the cost of capital. Balancing the tax shield with bankruptcy risk **may** lead to an optimal capital structure.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Assumptions
+## MM Proposition I (No Taxes)
 
-- No transaction costs
+First assume that:
+
+- There are no corporate taxes. 
+- There are no transaction costs.
 - Both individials and corporations can borrow at the same rate.
+
+In this case MM show that:
+
+`The value of the levered and unlevered firms are the same.` 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 
 ## MM Proposition I (No Taxes)
 
-`The value of the levered and unlevered firms are the same.` 
+This result rests on the assumption that individials and corporations can borrow at the same rate.
+
+-  If they do, and leveraged firms are priced higher than unleveraged firms, then investors can buy the unleveraged firms on margin.
+
+-  By doing so investors create leveraged firms, which increases the values of these firms, earning the investors profits.  
+
+-  The key here is that it does not matter to the investor if the debt is held by the company or by the investor herself.  The latter case is termed *homemade leverage*.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
 
 ## MM Proposition II (No Taxes)
 
@@ -50,6 +62,16 @@ The cost of equity rises linearly with leverage according to the equation:  $R_E
 - $R_0$ is the return on the firm's unlevered equity.
 - $R_D$ is the return on the firm's debt.
 - $D$ and $E$ are the market values of the firm's debt and equity respectively.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## MM Proposition II (No Taxes)
+
+The cost of debt is generally less than the cost of equity.  That is if a firm pays a 5\% yield on its debt, it will have to earn, say, 9\% on its equity.  So people often assume firms should borrow to take advantage of the cheaper rate.  
+
+-  What MM II says is that if you increase borrowing to get the cheaper rate, you will also increase the amount you will have to pay on your equity. In fact, the two will *exactly* offset leaving your (overall) weighted-average cost of capital the same.  
+
+-  So in effect, you cannot lower your cost of capital by exchanging debt for equity.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
