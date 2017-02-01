@@ -31,13 +31,11 @@ A common extension of MM says that too much debt increases default probabilities
 
 First assume that:
 
-- There are no corporate taxes. 
+- There are no taxes. 
 - There are no transaction costs.
 - Both individials and corporations can borrow at the same rate.
 
-In this case MM show that:
-
-`The value of the levered and unlevered firms are the same.` 
+In this case MM show that:  `The value of the levered and unlevered firms are the same.` In notation, $V_L = V_U$ where $V_L$ and $V_U$ are the values of the levered and unlevered firms respectively.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -78,9 +76,19 @@ The cost of debt is generally less than the cost of equity.  That is if a firm p
 
 ## MM Proposition I (With Taxes)
 
+If we now allow for taxes, the firm can increase its value by financing with debt.  This is because debt allows the firm to pay less in taxes.
+
+-  Specifically, the tax shield from debt in a given period is $t_cI$ where $t_c$ is the corporate tax rate and $I$ is the interest paid during the period.
+
+-  If we assume the firm pays the same amount $I$ every period, in perpetuity, then the present value of this tax shield is $t_cD$ where $D$ is the total amount of outstanding debt.  This can be seen by noting the present value of a perpetuity which pays $I$ every period is $\frac{I}{r_D}$, and $I$ is simply $r_DB$ (where $r_D$ is the per-period cost of debt.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## MM Proposition I (With Taxes)
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## MM Proposition II (With Taxes)
 
@@ -88,10 +96,11 @@ The cost of debt is generally less than the cost of equity.  That is if a firm p
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Modigliani and Miller (M&M) Proposition II
+##  The Usefulness of Debt
 
+From previous discussion, it should be clear that debt is valuable to the firm because of its ability to shield the firm from taxes.
 
-
+-  Without taxes the firm does not benefit from financing with debt.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
