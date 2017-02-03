@@ -23,7 +23,6 @@ In a series of papers that would lead to a Nobel Prize, M&M made important contr
 
 -  With taxes, a firm's cost of capital can be lowered through issuing debt.  This highlights the importance of debt as a tax shield.
 
-A common extension of MM says that too much debt increases default probabilities, which raises the cost of capital. Balancing the tax shield with bankruptcy risk **may** lead to an optimal capital structure.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -86,21 +85,33 @@ If we now allow for taxes, the firm can increase its value by financing with deb
 
 ## MM Proposition I (With Taxes)
 
+So, in the case of perpetual debt the value of the leverd firm is $V_L = V_U + t_cD$.  
 
+From previous discussion, it should be clear that debt is valuable to the firm because of its ability to shield the firm from taxes.
+
+-  Without taxes the firm does not benefit from financing with debt.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## MM Proposition II (With Taxes)
 
+With corporate taxes there is still a positive relationship between leverage and the cost of equity, however the cost of equity is lower than it would be without taxes. The exact relationship is:
 
+$R_E = R_0 + \frac{D}{E}(1 - t_c)(R_0 - R_D)$
+
+Note, by setting $t_c = 0$ the equation reduces to MM Proposition II without taxes.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-##  The Usefulness of Debt
+## MM and the WACC
 
-From previous discussion, it should be clear that debt is valuable to the firm because of its ability to shield the firm from taxes.
+A levered firm's market value can be written as $V_L = E + D$ and its weighted-average cost of capital (WACC) is thus:
 
--  Without taxes the firm does not benefit from financing with debt.
+$R_{WACC} = \frac{E}{V_L}R_E + \frac{D}{V_L}R_D(1 - t_c)$
+
+-  In the following interactive app you can change the tax rate, and costs of unlevered equity and debt, and see the cost of levered equity, debt, and WACC as a function of the debt-to-equity ratio.  
+
+-  Note that the benefit of debt on the WACC is increasing in the tax rate. If the tax rate is set to 0\%, then there is no benefit of debt on the WACC.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -142,7 +153,13 @@ renderPlotly({
 ```
 
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Beyond MM
+
+A common extension of MM says that too much debt increases default probabilities, which raises the cost of capital. Balancing the tax shield with bankruptcy risk **may** lead to an optimal capital structure.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
