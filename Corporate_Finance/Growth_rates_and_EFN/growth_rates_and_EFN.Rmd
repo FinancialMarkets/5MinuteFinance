@@ -8,10 +8,28 @@ runtime: shiny
 smaller: true
 ---
 
+## External Financing Needed (EFN)
 
-## 
+$EFN = \frac{Assets}{Sales}\Delta Sales + \frac{Spon. Debt}{Sales}\Delta Sales - PM(Pro. Sales)(1 - d)$
+
+where 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Internal Growth Rate (IGR)
+
+$IGR = \frac{ROA(b)}{1 - ROA(b)}$
+
+where *ROA* is the firm's return on assets, and *b* is the firm's plowback ratio.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Sustainable Growth Rate (SGR)
+
+$SGR = \frac{ROE(b)}{1 - ROE(b)}$
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ## Credits and Collaboration
 
