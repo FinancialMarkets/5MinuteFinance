@@ -157,7 +157,11 @@ renderPlotly({
 
 ## Beyond MM
 
-A common extension of MM says that too much debt increases default probabilities, which raises the cost of capital. Balancing the tax shield with bankruptcy risk **may** lead to an optimal capital structure.
+A common extension of MM says that too much debt increases default probabilities, which raises the cost of capital. 
+
+-  Beyond a certain point, the benefit of the tax shield on lowering the cost of capital is more than offset by the effect of bankruptcy risk on raising the cost of capital.
+
+-  Balancing the tax shield with bankruptcy risk **may** lead to an optimal capital structure.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

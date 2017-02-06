@@ -12,7 +12,7 @@ smaller: true
 
 $EFN = \frac{Assets}{Sales}\Delta Sales + \frac{Spon. Debt}{Sales}\Delta Sales - PM(Pro. Sales)(1 - d)$
 
-where 
+where *d* is the firm's dividend payout ratio, and *PM* the profit margin.  *Spon. Debt* is the amount of debt which is affected by changes in sales. *Pro. Sales* is projected sales, and $\Delta Sales$ is the projected change in sales.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
