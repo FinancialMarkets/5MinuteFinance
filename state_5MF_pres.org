@@ -65,6 +65,7 @@ Apps are dependent, so cannot deploy them individually.
 ***** DONE Convexity
 ***** DONE ETNs
 ***** DONE Short Selling Stock
+***** DONE Yield to Maturity (YTM) and What It’s Used For
 ** Works in Progress; Not Deployed for 5MF; and Other Notes
 
 ***** TODO For what is YTM used?

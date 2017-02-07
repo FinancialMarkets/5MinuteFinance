@@ -73,7 +73,7 @@ You can look at the $N(d)$ terms as the likelihood that the option will be exerc
 
 - If the option has little chance of being exercised (that is, both $N(d)$s are near 0), then the option will have a near \$0 value.
 
-- For other values in the 0 to 1 range, the call value can be viewed as the payoff $S_0 - Xe{-rT}$ weighted by the probability that the call is exercised.
+- For other values in the 0 to 1 range, the call value can be viewed as the payoff $S_0 - Xe^{-rT}$ weighted by the probability that the call is exercised.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

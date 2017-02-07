@@ -215,3 +215,6 @@ https://micfm.shinyapps.io/cross_hedging_presentation_app3/
 https://micfm.shinyapps.io/crude_oil_markets_app1/
 
 https://micfm.shinyapps.io/crude_oil_markets_app2/
+** Yield to Maturity (YTM) and What It’s Used For
+
+   https://micfm.shinyapps.io/For_What_YTM_Used_app1/
