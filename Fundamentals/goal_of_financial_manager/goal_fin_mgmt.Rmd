@@ -6,7 +6,53 @@ css: 5min_mod2.css
 runtime: shiny
 ---
 
-## 
+## Purpose
+
+This presentation will explain the goal of the financial manager.  
+
+-  Importatly, we'll also explain why this measure makes sense, and limits excessive risk-taking. 
+
+-  We'll also discuss other potential measures, and why they would lead to excessive risk taking or other undesirable outcomes.  
+
+-  Lastly, note we are discussing the financial manager of a US corporation.  The goal may differ for managers at non-US companies. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Goal
+
+`The goal of financial management is to maximize shareholder wealth.` 
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Alternative Measures
+
+Some might offer goals such as `maximize cash flows` or `maximize profit`.  There are some minor problems with these goals, and a major problem.  Minor problems relate to how to measure the cash flows---should they be the average cash flow over some period (and what period)?
+
+-  The major problem is that they will lead to excessive risk taking.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Excessive Risk
+
+Say the goal was to maximize cash flow.  Assume the following scenario.  
+
+-  Your company has \$100,000 to invest in houses.  Each house costs \$100,000, and their prices will increase by 1\% over the next year. 
+
+-  You are able to borrow up to a maximum of 100-to-1 leverage.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Value of the Firm
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Coherent Measure:  Limiting Risk
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##
 
@@ -25,6 +71,15 @@ renderPlot({
    
 })
 ```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## The Goal in Other Countries
+
+The goal of financial management may differ in on other countries.  
+
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
