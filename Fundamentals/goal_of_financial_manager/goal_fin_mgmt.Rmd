@@ -10,7 +10,7 @@ runtime: shiny
 
 This presentation will explain the goal of the financial manager.  
 
--  Importatly, we'll also explain why this measure makes sense, and limits excessive risk-taking. 
+-  Importantly, we'll also explain why this measure makes sense, and limits excessive risk-taking. 
 
 -  We'll also discuss other potential measures, and why they would lead to excessive risk taking or other undesirable outcomes.  
 
@@ -27,9 +27,15 @@ This presentation will explain the goal of the financial manager.
 
 ## Alternative Measures
 
-Some might offer goals such as `maximize cash flows` or `maximize profit`.  There are some minor problems with these goals, and a major problem.  Minor problems relate to how to measure the cash flows---should they be the average cash flow over some period (and what period)?
+Some might offer goals such as `maximize cash flows` or `maximize profit`.  There are some often cited minor problems with these goals, and a deeper problem which is often held back form the beginner.  
 
--  The major problem is that they will lead to excessive risk taking.
+-  First we'll discuss the minor problems, which may be all that your text covers.  We'll then discuss the more significant problem, which has broad implications in throughout finance.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Minor Problems 
+
+Minor problems relate to how to measure the cash flows---should they be the average cash flow over some period (and what period)?
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
