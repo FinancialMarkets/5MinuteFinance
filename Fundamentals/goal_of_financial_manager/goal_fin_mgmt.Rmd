@@ -37,15 +37,77 @@ Some might offer goals such as `maximize cash flows` or `maximize profit`.  Ther
 
 Minor problems relate to how to measure the cash flows---should they be the average cash flow over some period (and what period)?
 
+-  In other words the measures are *ambiguous*. 
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Larger Problem
+
+The larger problem with measures such as `maximizing profit` or `cash flows` is that the they lack *balance*. In finance and investments we must balance risk with reward.  You can't have one without the other, and so you can't consider the reward without also considering the risk you *must* take to earn that reward.
+
+- That is the problem with these possible measures.  They consider reward (profit and cash flows) without considering the risk it takes to maximize them.
+
+- Thus, setting these as goals of management, may lead management to take excessive risks (because risk isn't even considered).
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+<!--- emphasize the importance of balance in finance, balancing risk and reward.  Maximizing shareholder wealth is a balanced approach, whereas maximizing cash flows or profits is not. -->
 
 ## Excessive Risk
 
-Say the goal was to maximize cash flow.  Assume the following scenario.  
+As an example, say the goal was to maximize cash flow.  Assume the following scenario.  
 
--  Your company has \$100,000 to invest in houses.  Each house costs \$100,000, and their prices will increase by 1\% over the next year. 
+-  Your company has \$100,000 to invest in houses.  There are 100 houses, each house costs \$100,000, and their prices will increase by 1\% over the next year. 
 
 -  You are able to borrow up to a maximum of 100-to-1 leverage.  
+
+-  You will sell all investments at the end of the year.
+
+-  Assume interest rates and taxes are 0\% (this is only saves us from immaterial calculations).
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Expected Cash Flow
+
+Consider the two possible investments:
+
+#. You can invest \$100,000 in one house.  In this case you expect to earn \$1,000 cash flow (or profit) over the year.
+
+#. You can invest \$1,000 each in 100 houses.  Now you expect \$100,000 in cash flow.  
+
+In fact, you can see `maximizing cash flow` or `profit` will simply instruct management to borrow as much as possible and use it all to buy houses (take on as much risk as possible).
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Goal of the Financial Manager
+
+The goal of the financial manager is to `maximize shareholder wealth`.  For a public company this means maximizing the present price per share. 
+
+- First note that this measure is not ambiguous.  There is one unique share price.  
+
+- To understand how this measure balances risk and return, however, we need to know a bit about [stock valuation](http://www.5minutefinance.org/concepts/an-introduction-to-stock-valuation).  You can look at the linked presentation if you wish, but we explain what you need to know below.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## A Stock's Value
+
+The value of a stock (or any asset) is the sum of all the stock's discounted expected future cash flows (dividends), where the discount rate reflects the risk taken to earn those cash flows.  So, for example, say a company expects to pay \$10 in dividends per share every year forever.  Then the value of the firm's stock is:
+
+$Value = \$10 + \frac{\$10}{1+k} + \frac{\$10}{(1+k)^2} + \frac{\$10}{(1+k)^3} + \ldots$
+
+where *k* is the firm's cost of equity capital (which increases with the risk the firm takes).  If we assume $k = 8\%$, then the value of the firm's stock is \$125.  
+
+## Limiting Risk 
+
+So how does this limit risk? A firm may increase risk to increase the value of the stock.  Say the firm can pay \$12 in dividends annually, but it will increase their cost of equity capital to 9\%.  Then the value of the stock is \$133.33, and management of the firm should take the additional risk.
+
+-  However, what if to increase dividends to \$14, the firm's cost of equity becomes 11\%.  Then the firm's value is \$127.27.  The firm thus should not take on the additional risk. Generally, at a certain point, the increase in the cost of equity will always more than offset the increase in increased dividends. 
+
+-  In this way, the goal of financial management naturally limits risk.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Private Firms
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
