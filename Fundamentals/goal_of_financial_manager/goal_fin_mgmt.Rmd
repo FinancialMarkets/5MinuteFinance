@@ -6,23 +6,13 @@ css: 5min_mod2.css
 runtime: shiny
 ---
 
-## Purpose
-
-This presentation will explain the goal of the financial manager.  
-
--  Importantly, we'll also explain why this measure makes sense, and limits excessive risk-taking. 
-
--  We'll also discuss other potential measures, and why they would lead to excessive risk taking or other undesirable outcomes.  
-
--  Lastly, note we are discussing the financial manager of a US corporation.  The goal may differ for managers at non-US companies. 
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## The Goal
+## The Goal of Financial Management
 
 `The goal of financial management is to maximize shareholder wealth.` 
 
+-  Importantly, we'll explain why this measure makes sense, and limits excessive risk-taking. 
 
+-  We'll also discuss other potential measures, and why they would lead to excessive risk taking or other undesirable outcomes.  
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Alternative Measures
@@ -117,11 +107,6 @@ So how does this limit risk? A firm may increase risk to increase the value of t
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Coherent Measure:  Limiting Risk
-
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
 ##
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
@@ -145,7 +130,11 @@ renderPlot({
 
 ## The Goal in Other Countries
 
-The goal of financial management may differ in on other countries.  
+This presentation has covered the goal of financial management for U.S. firms.  The goal of financial management may differ for firms based in other countries.
+
+-  For example in other countries, such as Germany, it is a common requirement to have representative of labor on the Board of Directors of certain firms.  In this case `maximizing shareholder wealth` is not the sole goal of the financial manager.  
+
+- 
 
 
 
