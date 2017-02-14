@@ -28,7 +28,7 @@ Broadly, the Greeks measure the sensitivity of an option's premium to changes in
 ## Black-Scholes Formula: 
 
 - $Call_0 = S_0N(d_1) - Xe^{-rT}N(d_2)$
-- $Put_0 = N(-d_2)K\e{-r(T-t)} - N(-d_1)S_0$
+- $Put_0 = N(-d_2)Ke^{-r(T-t)} - N(-d_1)S_0$
 
 <div class ="columns-2">
 
