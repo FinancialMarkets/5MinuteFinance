@@ -72,11 +72,11 @@ The value of a stock* (or any asset) is the sum of all the stock's discounted ex
 
 $Value = \$10 + \frac{\$10}{1+k} + \frac{\$10}{(1+k)^2} + \frac{\$10}{(1+k)^3} + \ldots$
 
-where *k* is the firm's cost of equity capital (which increases with the risk the firm takes).  If we assume $k = 8\%$, then the value of the firm's stock is \$125.  
+where *k* is the firm's cost of equity capital (which increases with the risk the firm takes).  If we assume $k = 8\%$, then the value of the firm's stock is \$125.
 
 * See this presentation on [stock valuation](http://www.5minutefinance.org/concepts/an-introduction-to-stock-valuation) for a more detailed treatment.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## Limiting Risk 
 
@@ -88,35 +88,52 @@ So how does this limit risk? A firm may increase risk to increase the value of t
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Interactive App
+
+The following interactive application gives you a general idea of how a stock's price reacts to increasing risk. 
+
+-  As you increase risk, both expected cash flows and the required return on equity increase, however the effect of increasing expected cash flows dominate, and the stock price increases.
+
+-  However, as risk rises, at some point the effect of the increased required return dominates, and increasing risk will decrease the stock price.
+
+-  Below is a general example.  The exact point where the effect on the required return dominates would vary from firm to firm.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
 ##
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 inputPanel(
  sliderInput("risk", "Risk (Leverage)", min = 0, max = 100, step = 1, value = 20)
 )
+
 renderPlot({
- 
-  rate <- 0.05 + sqrt(((input$risk - 60) / 50)^2 + .02)
-  CFs <- 10 * sqrt((input$risk / 60))
-  Value = CFs / rate
-  
-  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
-  
-  text(x = 0.5, y = 0.5, labels = paste(round( Value, 2)), cex = 5)
-   
+
+  rate <- 0.05 + sqrt( ( (input$risk - 60) / 50) ^ 2 + .02 )
+  CFs <- 10 * sqrt( (input$risk / 60) )
+  Value <- CFs / rate
+
+  plot(0, ylim = c(0, 1), xlim = c(0, 1), type = "n",
+       xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+
+  text(x = 0.2, y = 0.5,
+       labels = paste0("Stock price = ", round( Value, 2), "; Cash Flows = ",
+                       round( CFs, 2 ), "; Req. Return = ", round( rate, 2 )),
+       cex = 4)
+
 })
 ```
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 
 ## The Goal in Other Countries
 
 This presentation has covered the goal of financial management for U.S. firms.  The goal of financial management may differ for firms based in other countries.
 
--  For example in other countries, such as Germany, it is a common requirement to have representative of labor on the Board of Directors of certain firms.  In this case `maximizing shareholder wealth` is not the sole goal of the financial manager.  
+-  For example in other countries, such as Germany, it is a common requirement to have representative of labor on the Board of Directors of certain firms.  In this case `maximizing shareholder wealth` is not the sole goal of the financial manager.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## Credits and Collaboration
 
