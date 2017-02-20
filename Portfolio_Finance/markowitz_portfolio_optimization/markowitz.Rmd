@@ -108,7 +108,7 @@ So we can see, holding expected returns constant, as we lower the correlation, w
 
 -  Often portfolio managers will look for assets with low or negative correlations with the other assets in their portfolio as a way of limiting risk.
 
--  You can use the following app to investigate the correlation between assets.  Negative correlations will show up in red.
+-  You can use the following app to investigate the correlation between assets.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -116,17 +116,17 @@ So we can see, holding expected returns constant, as we lower the correlation, w
 
 ```{r echo = FALSE, warning=FALSE, error=FALSE, message = FALSE}
 #{{{
-library(corrplot)
+library(highcharter)
 library(quantmod)
 inputPanel(
     textInput("ticker1", "Stock Ticker", value = "XOM"),
-    textInput("ticker2", "Stock Ticker", value = "GE"),
+    textInput("ticker2", "Stock Ticker", value = "GLD"),
     textInput("ticker3", "Stock Ticker", value = "TSLA"),
-    textInput("ticker4", "Stock Ticker", value = "AAPL"),
+    textInput("ticker4", "Stock Ticker", value = "TLT"),
     textInput("ticker5", "Stock Ticker", value = "UNH")
 )
 
-renderPlot({
+renderHighchart({
     stock1 <- getSymbols(input$ticker1, from = '2015-01-01', auto.assign = FALSE)
     stock1 <- to.weekly(stock1)
     stock1 <- Delt(Ad(stock1))[-1]
@@ -148,7 +148,7 @@ renderPlot({
     stock5 <- Delt(Ad(stock5))[-1]
     names(stock5) <- input$ticker5
 M <- cor(data.frame(cbind(stock1, stock2, stock3, stock4, stock5)))
-corrplot(M, method = "square")
+hchart(M)
 })
 #}}}
 ```

@@ -44,7 +44,7 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [An Introduction to Portfolio Performance Measures](https://micfm.shinyapps.io/portfolio_performance_measures/) | [Mobile Friendly Version](https://micfm.shinyapps.io/portfolio_performance_measures_mobile)
 
-[Mean-Variance Optimal Portfolios](https://micfm.shinyapps.io/markowitz/) | [Mobile Friendly Version](https://micfm.shinyapps.io/markowitz_mobile)
+[Mean-Variance Portfolio Optimization](https://micfm.shinyapps.io/markowitz/) | [Mobile Friendly Version](https://micfm.shinyapps.io/markowitz_mobile)
 
 ### Fundamentals
 

@@ -131,7 +131,7 @@ https://micfm.shinyapps.io/stock_app2/
 
 https://micfm.shinyapps.io/stock_app3/
 
-** Optimal Mean-Variance Portfolios (Markowitz)
+** Mean-Variance Portfolio Optimization (Markowitz)
 
 https://micfm.shinyapps.io/markowitz_app1/
 
