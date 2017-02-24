@@ -17,9 +17,9 @@ Every undergraduate Finance student learns the CAPM, and at some point ([similar
 
 $R_{s,t} = \alpha + \beta R_{m,t} + e_t$
 
-where $R_{s,t}$, and $R_{m,t}$, are the return on some stock, and the return on the market, at time $t$
+where $R_{s,t}$, and $R_{m,t}$, are the return on some stock, and the return on the market, at time $t$.
 
-Often the interested student will ask if market risk is really constant as the above equation assumes.  We could investigate this by breaking up a long time period into smaller subintervals, and estimating the above equation for each subinterval.  
+Often the interested student will ask if market risk is really constant as the above equation assumes.  We could investigate this by breaking up a long time period into smaller subintervals, and estimating the above equation for each subinterval.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -27,9 +27,9 @@ Often the interested student will ask if market risk is really constant as the a
 
 Input a ticker in the app on the following slide, and it will break the last 5 years into 30 day periods, estimate $\beta$ over each period, and plot the time series of $\beta$s.
 
--  The default shows Citigroup's (ticker 'C') $\beta$ coefficient over time.  It starts at about 1 in 2010, and increases to about 4 by 2011.  From 2012 onward it ranges from 1 to 2.5.  Clearly there is significant variation in Citigroup's market risk over time.  
+-  The default shows Citigroup's (ticker 'C') $\beta$ coefficient over time.  It starts at about 1 in 2010, and increases to about 4 by 2011.  From 2012 onward it ranges from 1 to 2.5.  Clearly there is significant variation in Citigroup's market risk over time.
 
--  For a formal test of instability in estimated coefficients see [the code for](https://github.com/Matt-Brigida/BDE_75/blob/master/BDE_75_test.R) the [Brown, Durbin, and Evans (1975)](https://scholar.google.com/scholar?hl=en&q=brown+durbin+evans+1975) test.  
+-  For a formal test of instability in estimated coefficients see [the code for](https://github.com/Matt-Brigida/BDE_75/blob/master/BDE_75_test.R) the [Brown, Durbin, and Evans (1975)](https://scholar.google.com/scholar?hl=en&q=brown+durbin+evans+1975) test.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -82,8 +82,21 @@ renderDygraph({
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Model Form
+
+In addition to non-constant market risk, the beta coefficient may vary also because of ommitted variables---other factors are known to affect the return on stock.  
+
+-  Below we don't intend to provide a complete model of asset returns (which is an ongoing area of research).
+
+-  That said, whatever factors you use may have a time-varying effect on asset return, and thus they can be modeled using the below approach.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ## A More Formal Approach
+
+Instead of running a separate regression over short intervals (assuming the coefficient is constant over each interval), we can formally assume that the coefficient may vary.  We do so by writing the equation in [state space]() form.  We then construct the likelihood function using [prediction error decomposition]().  
+
 
 
 

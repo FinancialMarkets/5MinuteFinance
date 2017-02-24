@@ -20,6 +20,7 @@ Futures and forwards are used by firms in the same way in order to manage risk. 
 Broadly speaking, there are two types of traders in futures markets, hedgers and speculators.
 
 -  Hedgers: Companies who use futures to manage risk.  They generally buy futures contract on product they consume, and sell contracts on products they produce.
+
 -  Speculators: Individuals and firms who trade futures contracts based on expectations of future prices.  This is risk taking behavior.
 
 Types of traders and their aggregate positions are summarized in the [CFTC Commitment of Traders Report](http://www.cftc.gov/Marketreports/CommitmentsofTraders/index.htm).
@@ -30,18 +31,17 @@ Types of traders and their aggregate positions are summarized in the [CFTC Commi
 
 Say you are a deregulated utility which operates a natural-gas fired power plant.  Your business requires you to buy natural gas and sell electricity.  The prices of both gas and electricity freely fluctuate.
 
-- In this case your company would be more profitable if the difference between the gas and electricity prices rises, and less profitable if it falls.  
+- In this case your company would be more profitable if the difference between the gas and electricity prices rises, and less profitable if it falls.
 
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## The Role of Speculators
 
-Speculators play an important role by taking the other side of order imbalances between hedgers. Without speculators, hedgers would have to wait for other hedgers to trade (causing the market maker to widen bid-ask spreads).  
+Speculators play an important role by taking the other side of order imbalances between hedgers. Without speculators, hedgers would have to wait for other hedgers to trade (causing the market maker to widen bid-ask spreads).
 
--  Speculators temporarily hold in imbalance in exchange for a return. 
+-  Speculators temporarily hold in imbalance in exchange for a return.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## Major Futures Markets
 
@@ -61,11 +61,29 @@ Speculators play an important role by taking the other side of order imbalances 
 library(Quandl)
 library(highcharter)
 
-renderHighchart({
-    Quandl("CME/CLF2004")
-    xt <- as.xts(x[,-c(5,6)], order.by = x[,1])
+inputPanel(
+    selectizeInput("contract", c("CLF4" = 1,
+                                 "CLG4" = 2,
+                                 "CLH4" = 3,
+                                 "CLJ4" = 4,
+                                 "CLK4" = 5,
+                                 
+                                 ))
+    )
+renderHighchart({    
 
-    hchart()
+    clf4 <- Quandl("CME/CLF2004")
+    clg4 <- Quandl("CME/CLG2004")
+    clh4 <- Quandl("CME/CLH2004")
+    clj4 <- Quandl("CME/CLJ2004")
+    clk4 <- Quandl("CME/CLK2004")
+    
+    xt <- as.xts(data[, -c(1, 5, 6)], order.by = data[, 1])
+    OHLCV <- xt[, -c(5, 6)]
+    names(OHLCV)[4] <- "Close"
+    
+    hchart(OHLCV)
+    
     })
 ```
 
