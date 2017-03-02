@@ -86,7 +86,10 @@ https://micfm.shinyapps.io/limit_order_book_app1/
 https://micfm.shinyapps.io/limit_order_book_app2/
 
 https://micfm.shinyapps.io/limit_order_book_app3/
-** The Pairs Trade [apps not deployed individually] 
+** The Pairs Trade
+
+https://micfm.shinyapps.io/pairs_trade_app1/
+
 ** The Greeks
 
 https://micfm.shinyapps.io/greeks_app1/

@@ -1,0 +1,185 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+<!-- Estimation Period -->
+
+
+```{r, messsage=FALSE, warning=FALSE, echo = FALSE}
+#{{{
+## in the process of translating this code into a Shiny app
+## just run for each pair?
+library(dygraphs)
+shinyUI(fluidPage(
+    ## titlePanel("submitButton example"),
+    fluidRow(
+        column(3, wellPanel(
+                      ## inputPanel( 
+                      ## dateRangeInput("estim_period", "Estimation Period", start = "2015-09-01", end = "2015-12-31"),
+                      dateInput("estim_period_start", "Estimation Period Start", value = "2015-08-01"), 
+                      dateInput("estim_period_end", "End", value = "2016-01-01"), 
+                      ## selectizeInput(tickers, "Enter Tickers", )
+                      textInput("ticker1", "First Stock Ticker", value = "XOM"),
+                      textInput("ticker2", "Second Stock Ticker", value = "CVX")
+                  )),
+        column(9,
+               renderDygraph({
+               library(quantmod)
+               ## Estimation period
+               ## from <- input$estim_period[1]
+               ## to <- input$estim_period[2]
+
+               from <- input$estim_period_start
+               to <- input$estim_period_end
+
+               ## The code below to calculate an xts object of returns is from an SO or Quant.SE post.  I need to find it and cite.
+               env <- new.env()
+               Symbols <- c(input$ticker1, input$ticker2)
+               getSymbols(Symbols = Symbols, env = env, from = from, to = to)
+               args <- eapply(env = env, FUN = function(x){ClCl(x)})[Symbols]
+               returns <- na.omit(do.call(what = merge, args = args))
+               colnames(returns) <- Symbols
+               ## convert reutrns to  normalized prices
+               norm.prices <<- cumsum(returns)
+
+               norm.prices.df <<- as.data.frame(norm.prices)
+
+
+
+                   update1 <- input$ticker1
+                   update2 <- input$ticker2
+                   update.e1 <- input$estim_period_start
+                   update.e2 <- input$estim_period_end                   
+                   dygraph(norm.prices) 
+                                        #}}} 
+               }),
+
+
+               renderPrint({    
+                   ## function to find the average squared deviation of the normalized prices for two stocks
+                   update3 <- input$ticker1
+                   update4 <- input$ticker2
+                   update.e3 <- input$estim_period_start
+                   update.e4 <- input$estim_period_end                   
+                   
+                   ## Calculate the estimation period parameters (the average squared deviation and the standard deviation of the squared deviations):
+                   asd.e <<- mean(( norm.prices.df[,1] - norm.prices.df[,2])^2 )
+                   ssd.e <<- sd(( norm.prices.df[,1] - norm.prices.df[,2])^2 )
+                   cat("The average squared deviation is", asd.e ,"\n")
+                   cat("The standard deviation of the squared deviations is:", ssd.e ,"\n")
+                   ## paste("The average squared deviation is", asd.e ,"\n")
+                   ## paste("The standard deviation of the squared deviations is:", ssd.e ,"\n")
+
+               })
+               )
+    )
+)
+)
+#}}}
+```
+
+##
+
+```{r, messsage=FALSE, warning=FALSE, echo = FALSE}
+#{{{
+inputPanel(
+
+    sliderInput("buy", "Enter Trade at Threshold:", min = .5, max = 4, value = 2, step = .1, animate = FALSE),
+
+    sliderInput("sell", "Close Trade at Threshold", min = 0, max = 1.5, value = 0.5, step = .1, animate = FALSE)
+)
+
+renderDygraph({
+from.t <- input$estim_period_end + 1
+to.t <- Sys.Date()
+
+## The code below to calculate an xts object of returns is from an SO or Quant.SE post.  I need to find it and cite.
+env.t <- new.env()
+Symbols <- c(input$ticker1, input$ticker2)
+getSymbols(Symbols = Symbols, env = env.t, from = from.t, to = to.t)
+args <- eapply(env = env.t, FUN = function(x){ClCl(x)})[Symbols]
+returns.t <- na.omit(do.call(what = merge, args = args))
+colnames(returns.t) <- Symbols
+## convert reutrns to  normalized prices
+norm.prices.t <<- cumsum(returns.t)## ll <- dim(norm.prices.df)[2]
+
+numSD <- ( (norm.prices.t[,1] - norm.prices.t[,2])^2 - asd.e ) / ssd.e
+
+## nope
+## signal <- numSD
+## signal[signal < 0] <- 1
+## signal[signal > 0 & signal < 2] <- 0
+## signal[signal > 2] <- 2
+trade <- rep(0, length(seq_along(numSD)))
+position <- rep(0, length(seq_along(numSD)))
+
+for (i in 2:length(seq_along(numSD))) {
+    if (numSD[i] > input$buy && numSD[i-1] < input$buy && position[i-1] < 1) {
+        trade[i] <- 1
+    } else {
+        if (numSD[i] < input$sell && numSD[i-1] > input$sell && position[i-1] == 1) {
+            trade[i] <- -1
+        } else {
+            trade[i] <- 0
+        }
+    }
+    position[i] <- trade[i] + position[i-1]
+}
+
+### Now add profit calculation here ----
+## First calculate how many standard deviations we made -----
+stdev.when.trade <- trade * numSD
+profitSD <- sum(stdev.when.trade)
+
+if(position[length(position)] == 1) {
+    profitSD = profitSD - numSD[length(numSD)]
+} else {
+    profitSD = profitSD
+    }
+
+## Now calculate the percent profit per standard deviation ----
+### square root of the standard dev (now in units of deviations instead of sq devs) of squared devs times the number of standard devs
+#### Don't know if this is the correct calculation -- probably not.
+## amt.devs.percent <- 100 * sqrt(ssd.e) * profitSD
+
+## This % profit calculation looks correct ----
+## instead, just look at spread on that day in norm.prices.t
+spread.when.trade <- trade * abs(norm.prices.t[,1] - norm.prices.t[,2])
+profit.percent <- sum(spread.when.trade)
+
+
+if(position[length(position)] == 1) {
+    profit.percent = profit.percent - abs(norm.prices.t[dim(norm.prices.t)[1], 1] - norm.prices.t[dim(norm.prices.t)[1], 2])
+} else {
+    profit.percent = profit.percent
+    }
+
+profit.percent <- profit.percent * 100
+
+data.dygraph <- cbind(numSD, as.xts(position, order.by = index(numSD)))
+names(data.dygraph) <- c("# of Standard Deviations", "Position: 0 = no trade, 1 = trade on")
+
+dygraph( data.dygraph  , main = paste0(colnames(returns.t)[1], " & ", colnames(returns.t)[2], ":  Profit in Standard Deviations: ", round(profitSD, 2) , ", Percent Profit ", round(profit.percent, 2), "%"), ylab = "# Standard Deviations") %>%
+dyOptions(colors = RColorBrewer::brewer.pal(2, "Set1"))
+#}}}    
+
+})
+```
+
+##
+
+```{r, messsage=FALSE, warning=FALSE, echo = FALSE}
+#{{{
+library(dygraphs)
+renderDygraph({
+    update3 <- input$ticker1
+    update4 <- input$ticker2
+    update.e2 <- input$estim_period
+    dygraph(norm.prices.t, main = "Normalized Prices Over the Trading Period") 
+#}}}    
+})
+```
