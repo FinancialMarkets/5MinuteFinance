@@ -8,6 +8,29 @@ runtime: shiny
 smaller: true
 ---
 
+## Dividends 
+
+In general, any payment made directly from the corporation to shareholders is a *dividend*.
+
+-  Often these are cash payments made from *earnings*.  If they are cash dividends from other sources than earnings (selling equipment for example) they are referred to as *liquidating dividends* or as *distributions*.
+
+-  Dividends can also be paid in *stock*. A stock dividend increases the number of shares outstanding, and does not represent a cash payment.
+
+A corporation's Board of Directors sets *dividend policy*.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Making a Cash Dividend Payment
+
+There are 4 steps in the payment of a cash dividend.  
+
+1.  First the dividend must be *declared*.  This date is important because the firm is not required to pay dividends.  However once the dividend is declared by the Board of Directors, it becomes a liability of the firm.  
+
+2.  
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## 
 
