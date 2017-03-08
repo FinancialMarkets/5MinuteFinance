@@ -225,3 +225,7 @@ https://micfm.shinyapps.io/crude_oil_markets_app2/
 
 https://micfm.shinyapps.io/compounding_app1/
 
+** The Goal of Financial Management
+
+https://micfm.shinyapps.io/goal_fin_mgmt_app1/
+

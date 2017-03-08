@@ -48,6 +48,8 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 ### Fundamentals
 
+[The Goal of Financial Management](https://micfm.shinyapps.io/goal_fin_mgmt/) | [Mobile Friendly Version](https://micfm.shinyapps.io/goal_fin_mgmt_mobile/)
+
 [Interest Compounding: EAR and APR](https://micfm.shinyapps.io/compounding) | [Mobile Friendly Version](https://micfm.shinyapps.io/compounding_mobile/)
 
 ### Corporate Finance

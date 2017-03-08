@@ -1,0 +1,33 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+inputPanel(
+ sliderInput("risk", "Risk (Leverage)", min = 0, max = 100, step = 1, value = 10)
+)
+
+renderPlot({
+
+  ## make rate cubic in risk
+  rate <- (input$risk / 100)^3 + .02
+  ## casf flows increase linearly
+  CFs <- 10 *  (input$risk / 100 + 1) - 10
+  Value <- CFs / rate
+
+  plot(0, ylim = c(0, 1), xlim = c(0, 1), type = "n",
+       xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+
+  text(x = 0.5, y = 0.75,
+       labels = paste0("Stock price = ", round( Value, 2)), cex = 3)
+  
+  text(x = .5, y = .5, paste0("Cash Flows = ",
+                       round( CFs, 2 ), ";   Req. Return = ", 100 * round( rate, 2 ), "%"),
+       cex = 1)
+
+})
+```
