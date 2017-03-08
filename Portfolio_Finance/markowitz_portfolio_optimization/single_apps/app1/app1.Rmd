@@ -1,0 +1,38 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+```{r echo = FALSE, warning = FALSE}
+### Efficient Frontier: 2 assets ------
+#{{{
+inputPanel({
+    sliderInput("correl", "Correlation Coefficient", min = -1, max = 1, step = 0.01, value = 0.5, animate = TRUE)
+})
+
+renderPlot({
+    ## library(ggvis)
+
+    w.e <- seq(-.5,1.5, by=.01)
+    w.d <- 1 - w.e
+    r.e <- .12
+    r.d <- .09
+    E <- w.e*r.e+w.d*r.d
+    s.e <- .2
+    s.d <- .11
+    S <- sqrt((w.e^2)*s.e^2+(w.d^2)*s.d^2+2*w.d*w.e*s.e*s.d*input$correl)
+    dataEff <- data.frame(cbind(S,E,w.e))
+    ## plot(S, E, type='l', xlim=c(0,.3), xlab='Portfolio Standard Deviation', ylab='Portfolio Expected Return', col = 'green')
+    S.ports <- c(dataEff[dataEff$w.e == 0, ]$S, dataEff[dataEff$w.e == 1, ]$S)
+    E.ports <- c(dataEff[dataEff$w.e == 0, ]$E, dataEff[dataEff$w.e == 1, ]$E)
+    dataPorts <- cbind(S.ports, E.ports)
+    plot(dataPorts, type='p', xlim=c(0,.3), xlab='Portfolio Standard Deviation', ylab='Portfolio Expected Return', col = 'black', ylim = c(.08, .13))
+    lines(S, E, col = "green", lwd = 1.5)
+    text(dataPorts, labels = c("Debt", "Equity"), cex = 1, pos = 2)
+
+    })
+#}}}
+```
