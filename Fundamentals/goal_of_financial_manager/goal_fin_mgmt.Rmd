@@ -104,22 +104,26 @@ The following interactive application gives you a general idea of how a stock's 
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 inputPanel(
- sliderInput("risk", "Risk (Leverage)", min = 0, max = 100, step = 1, value = 20)
+ sliderInput("risk", "Risk (Leverage)", min = 0, max = 100, step = 1, value = 10)
 )
 
 renderPlot({
 
-  rate <- 0.05 + sqrt( ( (input$risk - 60) / 50) ^ 2 + .02 )
-  CFs <- 10 * sqrt( (input$risk / 60) )
+  ## make rate cubic in risk
+  rate <- (input$risk / 100)^3 + .02
+  ## casf flows increase linearly
+  CFs <- 10 *  (input$risk / 100 + 1) - 10
   Value <- CFs / rate
 
   plot(0, ylim = c(0, 1), xlim = c(0, 1), type = "n",
        xaxt = "n", yaxt = "n", ylab = "", xlab = "")
 
-  text(x = 0.2, y = 0.5,
-       labels = paste0("Stock price = ", round( Value, 2), "; Cash Flows = ",
-                       round( CFs, 2 ), "; Req. Return = ", round( rate, 2 )),
-       cex = 4)
+  text(x = 0.5, y = 0.75,
+       labels = paste0("Stock price = ", round( Value, 2)), cex = 3)
+  
+  text(x = .5, y = .5, paste0("Cash Flows = ",
+                       round( CFs, 2 ), ";   Req. Return = ", 100 * round( rate, 2 ), "%"),
+       cex = 1)
 
 })
 ```
@@ -137,7 +141,7 @@ This presentation has covered the goal of financial management for U.S. firms.  
 
 ## Credits and Collaboration
 
-Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fundamentals/APR_EAR/apr.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Fundamentals/APR_EAR/apr.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fundamentals/goal_of_financial_manager/goal_fin_mgmt.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Fundamentals/goal_of_financial_manager/goal_fin_mgmt.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
