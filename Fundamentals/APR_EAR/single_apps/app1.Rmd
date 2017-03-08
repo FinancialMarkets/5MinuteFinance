@@ -1,0 +1,21 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+inputPanel(
+ sliderInput("quoted", "Quoted Rate", min = 0, max = 50, step = .1, value = 12),
+ selectizeInput(inputId = "comp", label = "Number of Periods in a Year", choices = c("Yearly"= "y", "Semiannual" = "s", "Monthly" = "mo", "Daily" = "d", "Infinite" = "i"))
+)
+renderPlot({
+ 
+  m <- switch(input$comp, "y" = 1, "s" = 2, "mo" = 12, "d" = 365, "i" = 99999999)
+  ear <- (1 + (input$quoted / 100) / m)^m - 1
+  
+  plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+  text(x = 0.5, y = 0.5, labels = paste(round( 100 * ear, 2)), cex = 5)
+   
+})
+```
