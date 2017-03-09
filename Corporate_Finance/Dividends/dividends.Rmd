@@ -1,10 +1,9 @@
 ---
 title: "Dividends"
-author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
-output: ioslides_presentation
+output: html_document
+runtime: shiny
 logo: misq.png
 css: 5min_mod2.css
-runtime: shiny
 smaller: true
 ---
 
@@ -16,19 +15,61 @@ In general, any payment made directly from the corporation to shareholders is a 
 
 -  Dividends can also be paid in *stock*. A stock dividend increases the number of shares outstanding, and does not represent a cash payment.
 
-A corporation's Board of Directors sets *dividend policy*.  
+A corporation's Board of Directors sets *dividend policy*.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Making a Cash Dividend Payment
 
-There are 4 steps in the payment of a cash dividend.  
+There are 4 steps in the payment of a cash dividend.
 
-1.  First the dividend must be *declared*.  This date is important because the firm is not required to pay dividends.  However once the dividend is declared by the Board of Directors, it becomes a liability of the firm.  
+#.  First the dividend must be *declared*.  This date is important because the firm is not required to pay dividends.  However once the dividend is declared by the Board of Directors, it becomes a liability of the firm.
 
-2.  
+#. An *ex-dividend* date is set by brokerage firms to ensure that the dividends are paid to the correct owners.  The date is two business days before the corporation's date of record, which is described in the next step. If you buy the stock on the *ex-dividend* date or later, you do not get the dividend.  If you bought the stock prior to the ex-date, and sold the stock on the ex-date you do get the dividend. 
 
+#.  This corporation's date of record is the date at which the corporation determines the owners of its stock. This information is augmented by the broker's ex-date data when payments are paid.  So if you sold the stock on the ex-date, therefore not owning the stock on the date of record, you still receive the dividend payment.
 
+#. The date when the dividends are actually paid.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Stock Price Around Ex-Dividend
+
+Say a stock will go ex-dividend tomorrow.  It is trading for \$50 now, and will pay a \$1 dividend.  
+
+-  Could we earn free money by buying a stock for \$50 now, and selling the stock early on the ex-date tomorrow (hopefully for \$50), pocketing the dividend?
+
+-  No, the stock price will open the following day at about \$49, so adjust for the \$1 less that the firm has in cash.  In general, it may open at a price slightly different than \$49 due to the effect of taxes.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+library(quantmod)
+library(dygraphs)
+  comp1 <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+  comp1 <- data.frame(comp1$Symbol, comp1$Security.Name, stringsAsFactors = FALSE)
+  names(comp1) <- c("symbol", "name")
+inputPanel(
+    selectizeInput("name1", label = "Type a Stock's Name", multiple = FALSE, choices = comp1$name)
+    )
+renderDygraph({
+    ## valdate name ----
+    validate(
+        need(input$name1 != "", "Select a US stock name.")
+        )
+ticker <- comp1$symbol[comp1$name == input$name1]
+                    
+    D1 <- getDividends(ticker, auto.assign = FALSE)
+    prices <- getSymbols(ticker, auto.assign = FALSE)
+
+    dygraph(Cl(prices)) %>%
+        dyEvent(index(D1), as.numeric(D1), labelLoc = "bottom")
+})
+#}}}
+```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -71,4 +112,5 @@ Click the following links to see the [code](https://github.com/FinancialMarkets/
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
