@@ -1,0 +1,38 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+library(quantmod)
+library(highcharter)
+  comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+  comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+  names(comp) <- c("symbol", "name")
+
+inputPanel(
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name)
+    )
+
+renderHighchart({
+    ## valdate name ----
+    validate(
+        need(input$name != "", "Enter a stock's name.")
+    )
+    
+    ticker <- comp$symbol[comp$name == input$name]
+    
+    D <- getDividends(ticker, auto.assign = FALSE)
+    
+    if( dim(D)[1] == 0 ){
+        ## dygraph(as.ts(0))
+        hchart(as.ts(0))
+    } else {
+        hchart(D)
+        }
+})
+
+```

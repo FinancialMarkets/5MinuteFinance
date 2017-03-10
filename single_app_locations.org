@@ -229,3 +229,8 @@ https://micfm.shinyapps.io/compounding_app1/
 
 https://micfm.shinyapps.io/goal_fin_mgmt_app1/
 
+** Dividends
+
+https://micfm.shinyapps.io/dividends_app1/
+
+https://micfm.shinyapps.io/dividends_app2/

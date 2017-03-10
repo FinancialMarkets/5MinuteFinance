@@ -95,11 +95,11 @@ renderDygraph({
 
 In the following interactive app you can chart the dividend for any stock.  This will allow you to see the general trend in dividend payments, and also how dividends react to events and recessions.
 
--  To see the dividend for the `SPY` (the S&P 500 SPDR) type `SPY` as the input.  Note the general trend is an increase in dividend payment amount---this is different from bonds whose payments are fixed.  
+-  Look at the dividend for the `SPDR S&P 500` (ticker: `SPY`).  Note the general trend is an increase in dividend payment amount---this is different from bonds whose payments are fixed.  
 
--  Note the decline in S&P 500 dividends in the wake of the 2008 financial crises and recession.
+-  Also, note the decline in S&P 500 dividends in the wake of the 2008 financial crises and recession.
 
--  Type in `BP` to bring in BP's common stock dividend.  You can see after the Gulf of Mexico spill BP's dividend dropped to \$0.  This highlights the fact that dividends to not have to be paid.
+-  Looking at `BP p.l.c.'s` (ticker: `BP`) common stock dividend, you can see after the Gulf of Mexico spill BP's dividend dropped to \$0.  This highlights the fact that dividends to not have to be paid.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

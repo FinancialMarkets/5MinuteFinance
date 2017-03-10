@@ -74,6 +74,8 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Modigliani and Miller Propositions](https://micfm.shinyapps.io/MM_propositions/) | [Mobile Friendly Version](https://micfm.shinyapps.io/MM_propositions_mobile/)
 
+[Dividends](https://micfm.shinyapps.io/dividends/) | [Mobile Friendly Version](https://micfm.shinyapps.io/dividends_mobile/)
+
 ### Econometrics
 
 [An Introduction to Correlation Coefficient](https://micfm.shinyapps.io/what_is_correlation) | [Mobile Friendly Version](https://micfm.shinyapps.io/what_is_correlation_mobile)
