@@ -1,9 +1,10 @@
 ---
 title: "Dividends"
-output: html_document
-runtime: shiny
-css: 5min_mod2.css
+author: ""
+output: ioslides_presentation
 logo: misq.png
+css: 5min_mod2.css
+runtime: shiny
 smaller: true
 ---
 
@@ -23,13 +24,13 @@ A corporation's Board of Directors sets *dividend policy*.
 
 There are 4 steps in the payment of a cash dividend.
 
-#.  First the dividend must be *declared*.  This date is important because the firm is not required to pay dividends.  However once the dividend is declared by the Board of Directors, it becomes a liability of the firm.
+1.  First the dividend must be *declared*.  This date is important because the firm is not required to pay dividends.  However once the dividend is declared by the Board of Directors, it becomes a liability of the firm.
 
-#. An *ex-dividend* date is set by brokerage firms to ensure that the dividends are paid to the correct owners.  The date is two business days before the corporation's date of record, which is described in the next step. If you buy the stock on the *ex-dividend* date or later, you do not get the dividend.  If you bought the stock prior to the ex-date, and sold the stock on the ex-date you do get the dividend. 
+2. An *ex-dividend* date is set by brokerage firms to ensure that the dividends are paid to the correct owners.  The date is two business days before the corporation's date of record, which is described in the next step. If you buy the stock on the *ex-dividend* date or later, you do not get the dividend.  If you bought the stock prior to the ex-date, and sold the stock on the ex-date you do get the dividend. 
 
-#.  This corporation's date of record is the date at which the corporation determines the owners of its stock. This information is augmented by the broker's ex-date data when payments are paid.  So if you sold the stock on the ex-date, therefore not owning the stock on the date of record, you still receive the dividend payment.
+3.  This corporation's date of record is the date at which the corporation determines the owners of its stock. This information is augmented by the broker's ex-date data when payments are paid.  So if you sold the stock on the ex-date, therefore not owning the stock on the date of record, you still receive the dividend payment.
 
-#. The date when the dividends are actually paid.
+4. The date when the dividends are actually paid.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -88,9 +89,13 @@ ticker <- comp1$symbol[comp1$name == input$name1]
 
 ## Interactive App
 
-In the following interactive app you can chart the dividend for any stock.  
+In the following interactive app you can chart the dividend for any stock.  This will allow you to see the general trend in dividend payments, and also how dividends react to events and recessions.
 
--  To see the dividend for the `SPY` (the S&P 500 SPDR) start typing `sp` and it will be the first option.  
+-  To see the dividend for the `SPY` (the S&P 500 SPDR) start typing `sp` and it will be the first option.  Note the general trend is an increase in dividend payment amount---this is different from bonds whose payments are fixed.  
+
+-  Note the decline in S&P 500 dividends in the wake of the 2008 financial crises and recession.
+
+-  Type in `bp` to bring in BP's common stock dividend.  You can see after the Gulf of Mexico spill BP's dividend dropped to \$0.  This highlights the fact that dividends to not have to be paid.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -126,6 +131,30 @@ ticker <- comp$symbol[comp$name == input$name]
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Dividend Policy
+
+Does it matter if a firm pays a high dividend or low (or no) dividend?  The truth is we don't know.  There are compelling theoretical arguments that dividend policy is irrelevant.  However practitioners tend to view dividend policy as important.
+
+-  *Dividend Irrelevance*:  Say there are no taxes.  Then once a stock goes ex-dividend its price is lower than before it went ex-divided by exactly the same amount as the dividend.  So assuming prior to ex-dividend the stock's price is \$50, and after it is \$49.  The questions is do you prefer \$50 in stock, or \$49 in stock and \$1 in cash?  There is no difference (assuming no behavioral preference for cash), and so paying the dividend is irrelevant.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Why Dividend Policy May Matter
+
+*Taxes*:  In the above example we assumed no taxes.  
+
+-  However if there are taxes, then paying a dividend forces investors to pay taxes on that \$1.  If the \$1 is retained by the firm, the investor can prefer to wait to sell the stock (thus indefinitely deferring the taxes paid on the \$1).  Additionally, dividends are often taxed higher than capital gain, worsening the tax implications of paying the cash dividend.
+
+-  Conversely, there are certain investors who receive favorable tax treatment for dividends.  Firstly, some investors are tax exempt (such as pension funds).  Secondly, corporations who own stock in other corporations do not have to pay taxes on 70\% of the dividend payments received.  These investors would be happy owning high dividend-paying stock.
+
+## Why Dividend Policy May Matter
+
+Differing tax treatments lead to the *clientele hypothesis*, which says company's may target investor types through dividend policy.  If a firm would like corporate and pension fund investors, they can set a high dividend.  Alternatively, if they want individual investors, the firm can set a low (or no) dividend.  
+
+There are also *behavioral* reasons investors may demand high dividend-paying stocks, such as being able to receive income without selling stock.  Selling stock incurs transaction costs as well.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Credits and Collaboration
 
 Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/basic_financial_statements/basic_financial_statements.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Corporate_Finance/basic_financial_statements/basic_financial_statements.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
@@ -133,5 +162,3 @@ Click the following links to see the [code](https://github.com/FinancialMarkets/
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-
