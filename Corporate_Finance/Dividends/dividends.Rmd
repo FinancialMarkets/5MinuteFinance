@@ -24,15 +24,20 @@ A corporation's Board of Directors sets *dividend policy*.
 
 There are 4 steps in the payment of a cash dividend.
 
-1.  First the dividend must be *declared*.  This date is important because the firm is not required to pay dividends.  However once the dividend is declared by the Board of Directors, it becomes a liability of the firm.
+**Step 1**:  First the dividend must be *declared*.  This date is important because the firm is not required to pay dividends.  However once the dividend is declared by the Board of Directors, it becomes a liability of the firm.
 
-2. An *ex-dividend* date is set by brokerage firms to ensure that the dividends are paid to the correct owners.  The date is two business days before the corporation's date of record, which is described in the next step. If you buy the stock on the *ex-dividend* date or later, you do not get the dividend.  If you bought the stock prior to the ex-date, and sold the stock on the ex-date you do get the dividend. 
-
-3.  This corporation's date of record is the date at which the corporation determines the owners of its stock. This information is augmented by the broker's ex-date data when payments are paid.  So if you sold the stock on the ex-date, therefore not owning the stock on the date of record, you still receive the dividend payment.
-
-4. The date when the dividends are actually paid.
+**Step 2**: An *ex-dividend* date is set by brokerage firms to ensure that the dividends are paid to the correct owners.  The date is two business days before the corporation's date of record, which is described in the next step. If you buy the stock on the *ex-dividend* date or later, you do not get the dividend.  If you bought the stock prior to the ex-date, and sold the stock on the ex-date you do get the dividend. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Making a Cash Dividend Payment
+
+**Step 3**:  This corporation's date of record is the date at which the corporation determines the owners of its stock. This information is augmented by the broker's ex-date data when payments are paid.  So if you sold the stock on the ex-date, therefore not owning the stock on the date of record, you still receive the dividend payment.
+
+**Step 4**: The date when the dividends are actually paid.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ## The Stock Price Around Ex-Dividend
 
@@ -44,36 +49,37 @@ Say a stock will go ex-dividend tomorrow.  It is trading for \$50 now, and will 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+
 ## Interactive App
 
 The interactive app on the next slide will plot the opening and closing prices for your choice of stock, as well as the ex-dividend dates and the dividend amount. 
-
-- To find a stock, backspace the present stock, and start typing the company's name. The app will start selecting matching stocks.
 
 - You can zoom in on any time period by left-clicking the mouse and dragging over the interval.  
 
 Look at the relationship between the close on the day before the ex-dividend date, and the open on the following date.  The open is, on average, below the close by the dividend amount. 
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ##
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-#{{{
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(quantmod)
 library(dygraphs)
-  comp1 <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
-  comp1 <- data.frame(comp1$Symbol, comp1$Security.Name, stringsAsFactors = FALSE)
-  names(comp1) <- c("symbol", "name")
+  ## comp1 <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+  ## comp1 <- data.frame(comp1$Symbol, comp1$Security.Name, stringsAsFactors = FALSE)
+  ## names(comp1) <- c("symbol", "name")
 inputPanel(
-    selectizeInput("name1", label = "Type a Stock's Name", multiple = FALSE, choices = comp1$name)
-    )
+    ## selectizeInput("name1", label = "Type a Stock's Name", multiple = FALSE, choices = comp1$name)
+    textInput("name1", "Enter a Stock's Ticker", value = "BP")
+)
 renderDygraph({
     ## valdate name ----
     validate(
-        need(input$name1 != "", "Select a US stock name.")
+        need(input$name1 != "", "Enter a stock's ticker.")
         )
-ticker <- comp1$symbol[comp1$name == input$name1]
+    ## ticker <- comp1$symbol[comp1$name == input$name1]
+    ticker <- input$name1
                     
     D1 <- getDividends(ticker, auto.assign = FALSE)
     prices <- getSymbols(ticker, auto.assign = FALSE)
@@ -81,44 +87,47 @@ ticker <- comp1$symbol[comp1$name == input$name1]
     dygraph(cbind(Op(prices), Cl(prices))) %>%
         dyEvent(index(D1), as.numeric(D1), labelLoc = "bottom")
 })
-#}}}
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
 
 ## Interactive App
 
 In the following interactive app you can chart the dividend for any stock.  This will allow you to see the general trend in dividend payments, and also how dividends react to events and recessions.
 
--  To see the dividend for the `SPY` (the S&P 500 SPDR) start typing `sp` and it will be the first option.  Note the general trend is an increase in dividend payment amount---this is different from bonds whose payments are fixed.  
+-  To see the dividend for the `SPY` (the S&P 500 SPDR) type `SPY` as the input.  Note the general trend is an increase in dividend payment amount---this is different from bonds whose payments are fixed.  
 
 -  Note the decline in S&P 500 dividends in the wake of the 2008 financial crises and recession.
 
--  Type in `bp` to bring in BP's common stock dividend.  You can see after the Gulf of Mexico spill BP's dividend dropped to \$0.  This highlights the fact that dividends to not have to be paid.
+-  Type in `BP` to bring in BP's common stock dividend.  You can see after the Gulf of Mexico spill BP's dividend dropped to \$0.  This highlights the fact that dividends to not have to be paid.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+
 ## 
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-#{{{
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
 library(quantmod)
 library(highcharter)
-  comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
-  comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
-  names(comp) <- c("symbol", "name")
+  ## comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+  ## comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+  ## names(comp) <- c("symbol", "name")
+
 inputPanel(
-    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name)
+    ## selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name)
+    textInput("name", "Enter a Stock's Ticker", value = "SPY")
     )
+
 renderHighchart({
     ## valdate name ----
     validate(
-        need(input$name != "", "Select a US stock name.")
+        need(input$name != "", "Enter a stock's ticker symbol.")
         )
-ticker <- comp$symbol[comp$name == input$name]
-                    
-    D <- getDividends(ticker, auto.assign = FALSE)
+## ticker <- comp$symbol[comp$name == input$name]
+    ticker2 <- input$name
+    
+    D <- getDividends(ticker2, auto.assign = FALSE)
     if( dim(D)[1] == 0 ){
         ## dygraph(as.ts(0))
         hchart(as.ts(0))
@@ -126,7 +135,7 @@ ticker <- comp$symbol[comp$name == input$name]
         hchart(D)
         }
 })
-#}}}
+
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -139,6 +148,7 @@ Does it matter if a firm pays a high dividend or low (or no) dividend?  The trut
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+
 ## Why Dividend Policy May Matter
 
 *Taxes*:  In the above example we assumed no taxes.  
@@ -146,6 +156,8 @@ Does it matter if a firm pays a high dividend or low (or no) dividend?  The trut
 -  However if there are taxes, then paying a dividend forces investors to pay taxes on that \$1.  If the \$1 is retained by the firm, the investor can prefer to wait to sell the stock (thus indefinitely deferring the taxes paid on the \$1).  Additionally, dividends are often taxed higher than capital gain, worsening the tax implications of paying the cash dividend.
 
 -  Conversely, there are certain investors who receive favorable tax treatment for dividends.  Firstly, some investors are tax exempt (such as pension funds).  Secondly, corporations who own stock in other corporations do not have to pay taxes on 70\% of the dividend payments received.  These investors would be happy owning high dividend-paying stock.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Why Dividend Policy May Matter
 
