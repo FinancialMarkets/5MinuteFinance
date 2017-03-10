@@ -2,8 +2,8 @@
 title: "Dividends"
 output: html_document
 runtime: shiny
-logo: misq.png
 css: 5min_mod2.css
+logo: misq.png
 smaller: true
 ---
 
@@ -43,6 +43,18 @@ Say a stock will go ex-dividend tomorrow.  It is trading for \$50 now, and will 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Interactive App
+
+The interactive app on the next slide will plot the opening and closing prices for your choice of stock, as well as the ex-dividend dates and the dividend amount. 
+
+- To find a stock, backspace the present stock, and start typing the company's name. The app will start selecting matching stocks.
+
+- You can zoom in on any time period by left-clicking the mouse and dragging over the interval.  
+
+Look at the relationship between the close on the day before the ex-dividend date, and the open on the following date.  The open is, on average, below the close by the dividend amount. 
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
 ##
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -65,11 +77,20 @@ ticker <- comp1$symbol[comp1$name == input$name1]
     D1 <- getDividends(ticker, auto.assign = FALSE)
     prices <- getSymbols(ticker, auto.assign = FALSE)
 
-    dygraph(Cl(prices)) %>%
+    dygraph(cbind(Op(prices), Cl(prices))) %>%
         dyEvent(index(D1), as.numeric(D1), labelLoc = "bottom")
 })
 #}}}
 ```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Interactive App
+
+In the following interactive app you can chart the dividend for any stock.  
+
+-  To see the dividend for the `SPY` (the S&P 500 SPDR) start typing `sp` and it will be the first option.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
