@@ -1,0 +1,8 @@
+---
+title: "The Balance Sheet Identity"
+output: html_document
+logo: misq.png
+runtime: shiny
+---
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

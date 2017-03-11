@@ -234,3 +234,6 @@ https://micfm.shinyapps.io/goal_fin_mgmt_app1/
 https://micfm.shinyapps.io/dividends_app1/
 
 https://micfm.shinyapps.io/dividends_app2/
+** The Balance Sheet Identity
+
+https://micfm.shinyapps.io/balance_sheet_identity_app1/

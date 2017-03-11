@@ -1,0 +1,42 @@
+---
+title: ""
+output: html_document
+runtime: shiny
+---
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#{{{
+inputPanel(
+    sliderInput("cap", label = "Percent Debt Financed", max = 1, min = 0, value = .35, step = .01),
+    sliderInput("assets", label = "New Value of Assets", max = 120, min = 1, value = 100, step = 1)
+)
+library(plotly)
+renderPlot({
+
+    type <- c("Assets", "Debt_and_Equity")
+
+    Assets <- c(input$assets, 0, 0)
+    Debt_and_Equity <- c(0, (100 * input$cap), (input$assets - 100 * input$cap))
+            
+    dataBS <- cbind(Assets, Debt_and_Equity)
+
+    if((input$assets - 100 * input$cap) > 0){
+        barplot(as.matrix(dataBS), col = c('gray62', 'bisque2', 'aquamarine'), cex.main = 2)
+        title(expression("Assets" * phantom(" = Debt + Equity")), col.main = 'gray62', cex.main = 2)
+        title(expression(phantom("Assets") * " = " * phantom("Debt + Equity")), col.main = 1, cex.main = 2)
+        title(expression(phantom("Assets = ") * "Debt" * phantom("+ Equity")), col.main = 'bisque2', cex.main = 2)
+        title(expression(phantom("Assets = Debt") * "+" * phantom("Equity")), col.main = 1, cex.main = 2)
+        title(expression(phantom("Assets = Debt + ") * "Equity"), col.main = 'aquamarine', cex.main = 2)
+    } else {
+        barplot(as.matrix(dataBS), col = c('gray62', 'bisque2', 'coral1'), cex.main = 2)
+        title(expression("Assets" * phantom(" = Debt + Equity")), col.main = 'gray62', cex.main = 2)
+        title(expression(phantom("Assets") * " = " * phantom("Debt + Equity")), col.main = 1, cex.main = 2)
+        title(expression(phantom("Assets = ") * "Debt" * phantom("+ Equity")), col.main = 'bisque2', cex.main = 2)
+        title(expression(phantom("Assets = Debt") * "+" * phantom("Equity")), col.main = 1, cex.main = 2)
+        title(expression(phantom("Assets = Debt + ") * "Equity"), col.main = 'coral1', cex.main = 2)
+    }        
+
+#}}}
+})
+```

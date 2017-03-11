@@ -52,6 +52,8 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Interest Compounding: EAR and APR](https://micfm.shinyapps.io/compounding) | [Mobile Friendly Version](https://micfm.shinyapps.io/compounding_mobile/)
 
+[The Balance Sheet Identity](https://micfm.shinyapps.io/balance_sheet_identity/) | [Mobile Friendly Version](https://micfm.shinyapps.io/balance_sheet_identity_mobile/)
+
 ### Corporate Finance
 
 [An Introduction to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements) | [Mobile Friendly Version](https://micfm.shinyapps.io/basic_financial_statements_mobile)
