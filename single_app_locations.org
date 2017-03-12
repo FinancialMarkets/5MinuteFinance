@@ -237,3 +237,7 @@ https://micfm.shinyapps.io/dividends_app2/
 ** The Balance Sheet Identity
 
 https://micfm.shinyapps.io/balance_sheet_identity_app1/
+
+** Modigliani and Miller Propositions
+
+https://micfm.shinyapps.io/MM_propositions_app1/
