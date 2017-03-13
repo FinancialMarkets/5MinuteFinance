@@ -1,0 +1,46 @@
+---
+title: "Modified Internal Rate of Return"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod2.css
+runtime: shiny
+---
+
+## Multiple Internal Rates of Return (IRRs)
+
+If the cash flows from a project change signs *X* times, then there are up to *X* IRRs for the project.  
+
+-  In the following interactive app, enter cash flows, and the app will try to return all valid IRRs.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Interactive App
+
+```{r echo = FALSE, warning = FALSE, error = FALSE}
+inputPanel(
+    numericInput("cf0", "Cash Flow at Time 0", value = -100),
+    numericInput("cf1", "Cash Flow at Time 0", value = 150),
+    numericInput("cf2", "Cash Flow at Time 0", value = -100),
+    numericInput("cf3", "Cash Flow at Time 0", value = 500)
+)
+
+renderTable({
+
+    ## read in IRR function
+    source("https://raw.githubusercontent.com/FinancialMarkets/corpfin/master/irr.R")
+
+    cfs <- c(input$cf0, input$cf1, input$cf2, input$cf3)
+
+    irrs <- 0
+
+    for(i in seq(-100, 100, by = .5)){
+        irrs[i] <- round(irr(cfs)$IRR, 2)
+    }
+
+    unique(irrs)
+    
+})
+
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
