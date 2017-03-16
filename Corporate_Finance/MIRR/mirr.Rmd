@@ -8,7 +8,9 @@ runtime: shiny
 
 ## Multiple Internal Rates of Return (IRRs)
 
-If the cash flows from a project change signs *X* times, then there are up to *X* IRRs for the project.  
+A problem with the IRR investment decision rule, is if the cash flows from a project change signs *X* times, then there are up to *X* IRRs for the project.  
+
+-  The problem is no one IRR is more correct than another, and so the multiple IRRs may give differing accept/reject decisions.  
 
 -  In the following interactive app, enter cash flows, and the app will try to return all valid IRRs.
 
@@ -46,5 +48,42 @@ renderTable({
 
 })
 ```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Modified IRR (MIRR)
+
+We can solve the multiple IRR formula by putting the cash flows into *conventional* form. By *conventional* we mean cash outflows followed by cash inflows, so there is only one chance in the sign of the cash flows.
+
+- We do so by moving cash flows in time at a *discount rate*, until the cash flows are conventional.
+
+- Note a potential benefit of the IRR approach was that it did not require a discount rate (though it does require a threshold rate).  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## MIRR Example
+
+Say we have the following cash flows (the default in the above app):
+
+| Year | 0 | 1 | 2 | 3 |
+| ---- |---|---|---|---|
+| Cash Flow | -100 | 300 | -200 | 50 |
+
+Assume the discount rate is 8%.  Then we can move the -\$200 in year two to year 1. This affords the following modified cash flows:
+
+| Year | 0 | 1 | 2 | 3 |
+| ---- |---|---|---|---|
+| Cash Flow | -100 | 114.81 | 0 | 50 |
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+## Net Present Value (NPV)
+
+Given MIRR requires a discount rate, and still suffers from the [loss of scale problem](INSERT LINK), it makes sense to simply use NPV.
+
+
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
