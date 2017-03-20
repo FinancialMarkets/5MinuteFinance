@@ -1,0 +1,13 @@
+---
+title: "Other Investment Decision Rules"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod2.css
+runtime: shiny
+---
+
+## 
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
