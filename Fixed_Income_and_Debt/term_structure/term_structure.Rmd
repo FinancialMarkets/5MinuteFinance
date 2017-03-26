@@ -1,0 +1,60 @@
+---
+title: The Term Structure of Interest Rates
+runtime: shiny
+output: ioslides_presentation
+---
+
+##
+
+The following interactive app shows the yield curve over time, with period of recesion indicated in red.
+
+
+
+##
+
+<!-- yield curve with recessions -->
+
+```{r, echo = FALSE, message = FALSE, error = FALSE, cache=FALSE}
+#{{{
+### chart yield data from FRED ----
+library(quantmod)
+library(dygraphs)
+# inputPanel(
+# 	   textInput("ticker", label = "Stock Ticker", value = "COP"),
+# 	   dateRangeInput("dateRange", label = "Start Date", start = "2015-01-01", end = Sys.Date())
+## radioButtons("statement", label = "Financial Statement", choices = list("Balance Sheet" = 1, "Income Statement" = 2), selected = 2)
+# )
+renderDygraph({
+  ff <- getSymbols("FEDFUNDS", src = "FRED", auto.assign = F)
+  oneMonth <- getSymbols("GS1M", src = "FRED", auto.assign = F)
+  threeMonth <- getSymbols("GS3M", src = "FRED", auto.assign = F)
+  sixMonth <- getSymbols("GS6M", src = "FRED", auto.assign = F)
+  oneYear <- getSymbols("GS1", src = "FRED", auto.assign = F)
+  twoYear <- getSymbols("GS2", src = "FRED", auto.assign = F)
+  threeYear <- getSymbols("GS3", src = "FRED", auto.assign = F)
+  fiveYear <- getSymbols("GS5", src = "FRED", auto.assign = F)
+  sevenYear <- getSymbols("GS7", src = "FRED", auto.assign = F)
+  tenYear <- getSymbols("GS10", src = "FRED", auto.assign = F)
+  twentyYear <- getSymbols("GS20", src = "FRED", auto.assign = F)
+  thirtyYear <- getSymbols("GS30", src = "FRED", auto.assign = F)
+
+yields <- merge.xts(ff, oneMonth, threeMonth, sixMonth, oneYear, twoYear, threeYear, fiveYear, sevenYear, tenYear, twentyYear, thirtyYear, join = "outer")
+
+names(yields) <- c("Federal Funds", "1-Month", "3-Month", "6-Month", "1-Year", "2-Year", "3-Year", "5-Year", "7-Year", "10-Year", "20-Year", "30-Year")
+
+  dygraph(yields) %>%
+      dyShading(from = "1953-7-1", to = "1954-5-1", color = "#FFE6E6") %>%
+      dyShading(from = "1957-8-1", to = "1958-4-1", color = "#FFE6E6") %>%
+      dyShading(from = "1960-4-1", to = "1961-2-1", color = "#FFE6E6") %>%
+      dyShading(from = "1969-12-1", to = "1970-11-1", color = "#FFE6E6") %>%
+      dyShading(from = "1973-11-1", to = "1975-3-1", color = "#FFE6E6") %>%
+      dyShading(from = "1980-1-1", to = "1980-7-1", color = "#FFE6E6") %>%
+      dyShading(from = "1981-7-1", to = "1982-11-1", color = "#FFE6E6") %>%
+      dyShading(from = "1990-7-1", to = "1991-3-1", color = "#FFE6E6") %>%
+      dyShading(from = "2001-3-1", to = "2001-11-1", color = "#FFE6E6") %>%
+      dyShading(from = "2007-12-1", to = "2009-6-1", color = "#FFE6E6") %>%
+  dyRangeSelector()
+
+})
+#}}}
+```
