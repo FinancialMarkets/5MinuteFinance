@@ -101,7 +101,17 @@ Note, all of the previous treasury securities mentioned are exempt from state an
 
 ## Who Owns Treasury Debt?
 
+Broadly, the US debt is held by 
 
+-  foreign governments
+
+-  individuals and corporations (both US based and foreign)
+
+-  the US Federal Reserve
+
+-  parts of the US government such as the Social Security Trust Fund and the Federal Housing Administration.
+
+The following interactive app shows the major holders of US Treasury debt, and the proportion of the debt each owns over time.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
