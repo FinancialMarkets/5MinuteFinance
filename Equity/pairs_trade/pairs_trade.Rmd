@@ -283,7 +283,8 @@ stdev.when.trade <- trade * numSD
 profitSD <- sum(stdev.when.trade)
 
 if(position[length(position)] == 1) {
-    profitSD = profitSD - numSD[length(numSD)]
+    ## have to subtract SD when entered last trade, still get some negatives though with positive profit.
+    profitSD = profitSD - (numSD[length(numSD)] - as.numeric(stdev.when.trade[tail(which(stdev.when.trade != 0), 1)]))
 } else {
     profitSD = profitSD
     }
