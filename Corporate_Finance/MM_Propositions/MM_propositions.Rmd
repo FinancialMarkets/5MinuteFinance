@@ -10,14 +10,15 @@ runtime: shiny
 
 A firm's capital structure is the proportion of debt and equity used to finance the firm's assets.  We can write the value of the firm as $V = D + E$ where $V$ is the firm's value, and $D$ and $E$ are the market values of the firm's debt and equity respectively.
 
--  The idea of an *optimal* capital structure, is that there is some proportion of debt versus equity financing which maximizes $V$. 
--  Whether such an capital structure exists, and the method of finding it, has long been of interest in finance. 
+-  The idea of an *optimal* capital structure is that there is some proportion of debt versus equity financing which maximizes $V$. 
+
+-  Whether such an capital structure exists -- and the method of finding it -- has long been of interest in finance. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Modigliani and Miller (MM)
+## Modigliani and Miller
 
-In a series of papers that would lead to a Nobel Prize, M&M made important contributions to understanding the relationship between a firm's capital structure, value, and cost of capital.  Their main conclusions can be summarized as:
+In a series of papers that would lead to a Nobel Prize, M&M (or, often, MM) made important contributions to understanding the relationship between a firm's capital structure, value, and cost of capital.  Their main conclusions can be summarized by the following statements:
 
 -  In the absence of taxes, firm capital structure is irrelevant. 
 
@@ -28,10 +29,14 @@ In a series of papers that would lead to a Nobel Prize, M&M made important contr
 
 ## MM Proposition I (No Taxes)
 
-First assume that:
+Now, let's see how these conclusions play out through a couple of propositions -- or thought experiments.
+
+First, assume that:
 
 - There are no taxes. 
+
 - There are no transaction costs.
+
 - Both individials and corporations can borrow at the same rate.
 
 In this case MM show that:  `The value of the levered and unlevered firms are the same.` In notation, $V_L = V_U$ where $V_L$ and $V_U$ are the values of the levered and unlevered firms respectively.
@@ -43,9 +48,9 @@ In this case MM show that:  `The value of the levered and unlevered firms are th
 
 This result rests on the assumption that individials and corporations can borrow at the same rate.
 
--  If they do, and leveraged firms are priced higher than unleveraged firms, then investors can buy the unleveraged firms on margin.
+-  If they can, and if leveraged firms are priced higher than unleveraged firms, then investors can buy the unleveraged firms on margin.
 
--  By doing so investors create leveraged firms, which increases the values of these firms, earning the investors profits.  
+-  By doing so, investors create leveraged firms, and this increases the values of these firms, earning profits for the investors.  
 
 -  The key here is that it does not matter to the investor if the debt is held by the company or by the investor herself.  The latter case is termed *homemade leverage*.
 
@@ -56,17 +61,20 @@ This result rests on the assumption that individials and corporations can borrow
 The cost of equity rises linearly with leverage according to the equation:  $R_E = R_0 + \frac{D}{E}(R_0 - R_D)$, where:
 
 - $R_E$ is the return on equity.
+
 - $R_0$ is the return on the firm's unlevered equity.
+
 - $R_D$ is the return on the firm's debt.
+
 - $D$ and $E$ are the market values of the firm's debt and equity respectively.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## MM Proposition II (No Taxes)
 
-The cost of debt is generally less than the cost of equity.  That is if a firm pays a 5\% yield on its debt, it will have to earn, say, 9\% on its equity.  So people often assume firms should borrow to take advantage of the cheaper rate.  
+The cost of debt is generally less than the cost of equity.  That is, if a firm pays a 5\% yield on its debt, it will have to earn, say, 9\% on its equity.  So people often assume that firms should borrow to take advantage of the cheaper rate.  
 
--  What MM II says is that if you increase borrowing to get the cheaper rate, you will also increase the amount you will have to pay on your equity. In fact, the two will *exactly* offset leaving your (overall) weighted-average cost of capital the same.  
+-  What MM II says is that if you increase borrowing to get the cheaper rate, you will also increase the amount you will have to pay on your equity. In fact, the two will *exactly* offset leaving the firm's (overall) weighted-average cost of capital the same.  
 
 -  So in effect, you cannot lower your cost of capital by exchanging debt for equity.
 
@@ -85,17 +93,17 @@ If we now allow for taxes, the firm can increase its value by financing with deb
 
 ## MM Proposition I (With Taxes)
 
-So, in the case of perpetual debt the value of the leverd firm is $V_L = V_U + t_cD$.  
+The result is that, in the case of perpetual debt, the value of the levered firm is $V_L = V_U + t_cD$.  
 
-From previous discussion, it should be clear that debt is valuable to the firm because of its ability to shield the firm from taxes.
+-  From the previous discussion, it should be clear that debt is valuable to the firm because of its ability to shield the firm from taxes.
 
--  Without taxes the firm does not benefit from financing with debt.
+-  Without taxes, the firm does not benefit from financing with debt.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## MM Proposition II (With Taxes)
 
-With corporate taxes there is still a positive relationship between leverage and the cost of equity, however the cost of equity is lower than it would be without taxes. The exact relationship is:
+With corporate taxes there is still a positive relationship between leverage and the cost of equity; however, the cost of equity is lower than it would be without taxes. The exact relationship is:
 
 $R_E = R_0 + \frac{D}{E}(1 - t_c)(R_0 - R_D)$
 
@@ -105,11 +113,11 @@ Note, by setting $t_c = 0$ the equation reduces to MM Proposition II without tax
 
 ## MM and the WACC
 
-A levered firm's market value can be written as $V_L = E + D$ and its weighted-average cost of capital (WACC) is thus:
+A levered firm's market value can be written as $V_L = E + D$, and its weighted-average cost of capital (WACC) is thus:
 
 $R_{WACC} = \frac{E}{V_L}R_E + \frac{D}{V_L}R_D(1 - t_c)$
 
--  In the following interactive app you can change the tax rate, and costs of unlevered equity and debt, and see the cost of levered equity, debt, and WACC as a function of the debt-to-equity ratio.  
+-  In the following interactive app you can change the tax rate, as well as the costs of unlevered equity and debt, and see the cost of levered equity, debt, and WACC as a function of the debt-to-equity ratio.  
 
 -  Note that the benefit of debt on the WACC is increasing in the tax rate. If the tax rate is set to 0\%, then there is no benefit of debt on the WACC.
 
