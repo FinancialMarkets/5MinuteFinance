@@ -12,11 +12,11 @@ smaller: true
 
 In general, any payment made directly from the corporation to shareholders is a *dividend*.
 
--  Often these are cash payments made from *earnings*.  If they are cash dividends from other sources than earnings (selling equipment for example) they are referred to as *liquidating dividends* or as *distributions*.
+-  Often these are cash payments made from *earnings*.  If they are cash dividends from other sources than earnings (selling equipment, for example), they are referred to as *liquidating dividends* or as *distributions*.
 
--  Dividends can also be paid in *stock*. A stock dividend increases the number of shares outstanding, and does not represent a cash payment.
+-  Dividends can also be paid in *stock*. A stock dividend increases the number of shares outstanding and does not represent a cash payment.
 
-A corporation's Board of Directors sets *dividend policy*.
+A corporation's Board of Directors sets its *dividend policy*.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -24,7 +24,7 @@ A corporation's Board of Directors sets *dividend policy*.
 
 There are 4 steps in the payment of a cash dividend.
 
-**Step 1**:  First the dividend must be *declared*.  This date is important because the firm is not required to pay dividends.  However once the dividend is declared by the Board of Directors, it becomes a liability of the firm.
+**Step 1**:  First, the dividend must be *declared*.  This date is important because the firm is not required to pay dividends.  However, once the dividend is declared by the Board of Directors, it becomes a liability of the firm.
 
 **Step 2**: An *ex-dividend* date is set by brokerage firms to ensure that the dividends are paid to the correct owners.  The date is two business days before the corporation's date of record, which is described in the next step. If you buy the stock on the *ex-dividend* date or later, you do not get the dividend.  If you bought the stock prior to the ex-date, and sold the stock on the ex-date you do get the dividend. 
 
@@ -32,9 +32,9 @@ There are 4 steps in the payment of a cash dividend.
 
 ## Making a Cash Dividend Payment
 
-**Step 3**:  This corporation's date of record is the date at which the corporation determines the owners of its stock. This information is augmented by the broker's ex-date data when payments are paid.  So if you sold the stock on the ex-date, therefore not owning the stock on the date of record, you still receive the dividend payment.
+**Step 3**:  The corporation's date of record is the date at which the corporation determines the owners of its stock. This information is augmented by the broker's ex-date data when payments are paid.  So if you sold the stock on the ex-date, therefore not owning the stock on the date of record, you still receive the dividend payment.
 
-**Step 4**: The date when the dividends are actually paid.
+**Step 4**: The dividends are actually paid on a set date.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -45,7 +45,7 @@ Say a stock will go ex-dividend tomorrow.  It is trading for \$50 now, and will 
 
 -  Could we earn free money by buying a stock for \$50 now, and selling the stock early on the ex-date tomorrow (hopefully for \$50), pocketing the dividend?
 
--  No, the stock price will open the following day at about \$49, so adjust for the \$1 less that the firm has in cash.  In general, it may open at a price slightly different than \$49 due to the effect of taxes.
+-  No, the stock price will typically open the following day at about \$49, so adjust for the \$1 less that the firm has in cash.  In general, it may open at a price slightly different than \$49 due to the effect of taxes.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -56,7 +56,7 @@ The interactive app on the next slide will plot the opening and closing prices f
 
 - You can zoom in on any time period by left-clicking the mouse and dragging over the interval.  
 
-Look at the relationship between the close on the day before the ex-dividend date, and the open on the following date.  The open is, on average, below the close by the dividend amount. 
+Look at the relationship between the close on the day before the ex-dividend date and the open on the following date.  The open is, on average, below the close by the dividend amount. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -93,13 +93,13 @@ renderDygraph({
 
 ## Interactive App
 
-In the following interactive app you can chart the dividend for any stock.  This will allow you to see the general trend in dividend payments, and also how dividends react to events and recessions.
+In the following interactive app you can chart the dividend for any stock.  This will allow you to see the general trend in dividend payments, and the app also shows how dividends react to events and recessions.
 
--  Look at the dividend for the `SPDR S&P 500` (ticker: `SPY`).  Note the general trend is an increase in dividend payment amount---this is different from bonds whose payments are fixed.  
+-  Look at the dividend for the `SPDR S&P 500` (ticker: `SPY`).  Note that the general trend is an increase in dividend payment amount---this is different from bonds whose payments are fixed.  
 
 -  Also, note the decline in S&P 500 dividends in the wake of the 2008 financial crises and recession.
 
--  Looking at `BP p.l.c.'s` (ticker: `BP`) common stock dividend, you can see after the Gulf of Mexico spill BP's dividend dropped to \$0.  This highlights the fact that dividends to not have to be paid.
+-  Looking at `BP p.l.c.'s` (ticker: `BP`) common stock dividend, you can see after the Gulf of Mexico spill, at the end of April 2010, BP's dividend dropped to \$0.  This highlights the fact that dividends do not have to be paid.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -142,9 +142,11 @@ renderHighchart({
 
 ## Dividend Policy
 
-Does it matter if a firm pays a high dividend or low (or no) dividend?  The truth is we don't know.  There are compelling theoretical arguments that dividend policy is irrelevant.  However practitioners tend to view dividend policy as important.
+Does it matter if a firm pays a high dividend or low (or no) dividend?  The truth is we don't know.  There are compelling theoretical arguments that dividend policy is irrelevant.  However, practitioners tend to view dividend policy as important.
 
--  *Dividend Irrelevance*:  Say there are no taxes.  Then once a stock goes ex-dividend its price is lower than before it went ex-divided by exactly the same amount as the dividend.  So assuming prior to ex-dividend the stock's price is \$50, and after it is \$49.  The questions is do you prefer \$50 in stock, or \$49 in stock and \$1 in cash?  There is no difference (assuming no behavioral preference for cash), and so paying the dividend is irrelevant.  
+-  *Dividend Irrelevance*:  Imagine there're no taxes (it's easy if you try).  Then once a stock goes ex-dividend its price is lower than before it went ex-divided by exactly the same amount as the dividend.  So assuming prior to ex-dividend the stock's price is \$50, and after it is \$49.  
+
+-  The questions is do you prefer \$50 in stock, or \$49 in stock and \$1 in cash?  There is no difference (assuming no behavioral preference for cash), and so paying the dividend is irrelevant.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -153,9 +155,11 @@ Does it matter if a firm pays a high dividend or low (or no) dividend?  The trut
 
 *Taxes*:  In the above example we assumed no taxes.  
 
--  However if there are taxes, then paying a dividend forces investors to pay taxes on that \$1.  If the \$1 is retained by the firm, the investor can prefer to wait to sell the stock (thus indefinitely deferring the taxes paid on the \$1).  Additionally, dividends are often taxed higher than capital gain, worsening the tax implications of paying the cash dividend.
+-  However if there are taxes, then paying a dividend forces investors to pay taxes on that \$1.  
 
--  Conversely, there are certain investors who receive favorable tax treatment for dividends.  Firstly, some investors are tax exempt (such as pension funds).  Secondly, corporations who own stock in other corporations do not have to pay taxes on 70\% of the dividend payments received.  These investors would be happy owning high dividend-paying stock.
+-  If the \$1 is retained by the firm, the investor can prefer to wait to sell the stock (thus indefinitely deferring the taxes paid on the \$1).  Additionally, dividends are often taxed higher than capital gain, worsening the tax implications of paying the cash dividend.
+
+-  Conversely, there are certain investors who receive favorable tax treatment for dividends.  First, some investors are tax exempt (such as pension funds).  Second, corporations who own stock in other corporations do not have to pay taxes on 70\% of the dividend payments received.  These investors would be happy owning high dividend-paying stock.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
