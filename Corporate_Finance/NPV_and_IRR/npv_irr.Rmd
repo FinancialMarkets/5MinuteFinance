@@ -123,19 +123,6 @@ renderPlot({
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-
-## Choosing Between Projects
-
-When the accept/reject decision on one project does not affect another project, these projects are known as **independent**.  If accepting one project means you must reject another, then these projects are **mutually exclusive**. 
-
-If a project has negative cash flows followed by all positive cash flows, then the project's cash flows are known as **conventional**.
-
--  If two projects are independent and have conventional cash flows, then NPV and IRR will lead to the same accept/reject decision, i.e. $NPV \iff IRR$
-
--  However, if you must rank projects -- and projects are either mutually exclusive or cash flows are not conventional -- then use NPV.  NPV will generate the correct decision, though IRR may not.
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
 ## 
 
 <!-- interactive app showing NVP for all discount rates and therefore IRR when crossing the x-axis -->
@@ -168,16 +155,16 @@ renderHighchart({
     # hchart(chart.data, "line", hcaes(x = discount.rates, y = npv.sol))
 h2 <- highchart() %>% 
   hc_chart(type = "line") %>% 
-  hc_add_series(data = chart.data$npv.sol) %>% 
+  hc_add_series(data = round(chart.data$npv.sol, 2), name = "NPV") %>% 
   hc_xAxis(title = list(text = "Discount Rate"),
            categories = chart.data$discount.rates,
         plotLines = list(list(
           value = seq_along(chart.data$discount.rates)[chart.data$discount.rates == round(irr.sol2, 2)], 
-          color = '#ff0ff0',
+          color = '#000fff',
           width = 3,
           zIndex = 4,
           label = list(text = paste0("IRR = ", round(irr.sol2, 2)),
-                       style = list( color = '#ff0ff0', fontWeight = 'bold'   )
+                       style = list( color = '#000fff', fontWeight = 'bold'   )
           ))))
 h2
 # plot(chart.data$npv.sol ~ chart.data$discount.rates, type = 'l')
@@ -187,6 +174,20 @@ h2
 
 ```
 
+
+## Choosing Between Projects
+
+When the accept/reject decision on one project does not affect another project, these projects are known as **independent**.  If accepting one project means you must reject another, then these projects are **mutually exclusive**. 
+
+If a project has negative cash flows followed by all positive cash flows, then the project's cash flows are known as **conventional**.
+
+-  If two projects are independent and have conventional cash flows, then NPV and IRR will lead to the same accept/reject decision, i.e. $NPV \iff IRR$
+
+-  However, if you must rank projects -- and projects are either mutually exclusive or cash flows are not conventional -- then use NPV.  NPV will generate the correct decision, though IRR may not.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+<!-- insert interactive app which shows differing ranked projects by npv and irr -->
 
 ## Credits and Collaboration
 
