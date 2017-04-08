@@ -8,35 +8,54 @@ runtime: shiny
 smaller: true
 ---
 
-## Introduction
+## Businesses Make Binary Decisions
 
-In this interactive presentation, we'll cover the most widely used investment decision rules: Net Present Value (NPV) and Internal Rate of Return (IRR).
-
-- These rules are used to decide whether to invest in a project or asset.
-
--  It is important to note that, while NPV and IRR calculations give a number as an output, they are fed into a decision rule which is binary.  The final output from NPV and IRR is either to *reject* or *accept* the investment.
+<center>**Invest or Do Not Invest**</center>
+<br>
+<center>![](./binary.jpg)</center>
+<br>
+<center>**So we need binary decision rules.**</center>
+<br>
+<br>
+This presentation will provide an introduction to the two most important, Net Present Value (NPV) and Internal Rate of Return (IRR).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Maximize Shareholder Wealth
+
+Early in your study of corporate finance you should have learned the **Goal of Financial Management** above.  Clearly any decision rules we define must be consistent with this goal.
+
+-  NPV will be the change in the value of the firm's equity if the project is accepted.
+
+-  IRR will also generate accept decisions only if doing so increases the firm's equity.
+
+Thus accepting all projects which have NPV > 0 will maximize shareholder wealth.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Net Present Value (NPV)
 
 *Net Present Value* is the sum of the investment's expected cash inflows and outflows discounted back to their present value at a risk adjusted rate. If the NPV is greater than \$0, the project is accepted. Otherwise the project is rejected. 
 
-The NPV is defined by its: 
-
-- $r$, which is the discount rate per period
-- $n$, the number of periods
-- $C$, the cash flow per period
-- $C_0$, the initial investment
+The NPV is defined by: 
 
 $NPV = -C_0 + \frac{C_1}{(1+r)^1} + \frac{C_2}{(1+r)^2} + ... + \frac{C_n}{(1+r)^n}$ 
 
+where: 
+
+- $r$, is the discount rate per period
+- $n$, the number of periods in the project's life
+- $C$, the expected *incremental* cash flows per period
+- $C_0$, the initial investment
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
-## NPV: Interpretation
+## The Discount Rate
 
-NPV can be interpreted as the amount the market value of the firm will increase/decrease if the project is accepted.
+The discount rate is appropriate for the risk of the project.  
+
+-  Often the project is as risky as a company's existing operations, in which case you use the company's weighted average cost of capital (WACC).
+
 
 In the following app, you can manipulate the variables we've introduced and see how they affect NPV. 
 
@@ -116,6 +135,57 @@ If a project has negative cash flows followed by all positive cash flows, then t
 -  However, if you must rank projects -- and projects are either mutually exclusive or cash flows are not conventional -- then use NPV.  NPV will generate the correct decision, though IRR may not.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## 
+
+<!-- interactive app showing NVP for all discount rates and therefore IRR when crossing the x-axis -->
+
+```{r, echo = FALSE, message = FALSE}
+library(highcharter)
+
+inputPanel(
+    sliderInput("cfs1", label = "Cash Flow Per Period", min = 1, max = 45, step = 1, value = 30),
+    sliderInput("periods1", label = "Number of Periods", min = 1, max = 50, step = 1, value = 20),
+    sliderInput("initial.inv1", label = "Time 0 Investment", min = 170, max = 500, step = 1, value = 300)
+)
+
+renderHighchart({
+
+    cfs.npv1 <- c(-1 * (input$initial.inv1), rep(input$cfs1, input$periods1))
+    discount.rates <- seq(0, .3, by = .001)
+
+    npv.sol <- 0
+    for (i in 1:length(discount.rates) ){
+        npv.sol[i] <- sum(cfs.npv1 / (1 + discount.rates[i])^{1:length(cfs.npv1)})        
+    }
+
+    source(file = 'https://raw.githubusercontent.com/FinancialMarkets/corpfin/master/irr.R')
+    irr.sol2 <- irr(cfs.npv1)$IRR
+    
+    chart.data <- data.frame(cbind(discount.rates, npv.sol))
+    names(chart.data) <- c("discount.rates", "npv.sol")
+    
+    # hchart(chart.data, "line", hcaes(x = discount.rates, y = npv.sol))
+h2 <- highchart() %>% 
+  hc_chart(type = "line") %>% 
+  hc_add_series(data = chart.data$npv.sol) %>% 
+  hc_xAxis(title = list(text = "Discount Rate"),
+           categories = chart.data$discount.rates,
+        plotLines = list(list(
+          value = seq_along(chart.data$discount.rates)[chart.data$discount.rates == round(irr.sol2, 2)], 
+          color = '#ff0ff0',
+          width = 3,
+          zIndex = 4,
+          label = list(text = paste0("IRR = ", round(irr.sol2, 2)),
+                       style = list( color = '#ff0ff0', fontWeight = 'bold'   )
+          ))))
+h2
+# plot(chart.data$npv.sol ~ chart.data$discount.rates, type = 'l')
+
+})
+
+
+```
 
 
 ## Credits and Collaboration
