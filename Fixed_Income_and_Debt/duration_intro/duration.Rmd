@@ -183,13 +183,13 @@ However, it is customary to first calculate what is called Maucaulay Duration, a
 
 ## Using Duration
 
-Specifically, the steps in using duration are: 
+Specifically, the common steps in calculating and using duration are: 
 
 1.  Calculate 'Macaulay Duration' which is the weighted average of when the bondholder receives their payments.  
 
 2.  Divide this by $(1 + YTM)$ to get Modified Duration (which is the derivative).
 
-3.  Calculate the \% change in the bond's price as a linear function of modified duration.
+3.  Calculate the percent change in the bond's price as a linear function of modified duration.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -218,7 +218,7 @@ Also note, we can calculate the duration of a bond portfolio as the weighted ave
 
 ## Modified Duration 
 
-Macaulay Duration is a bit off however, so we adjust it by dividing it by $(1+YTM)$.  
+As mentioned above, Macaulay Duration is a bit different than the derivative value we want.  We can adjust it by dividing it by $(1+YTM)$.  
 
 The result (Modified Duration) then matches the derivative of the bond's price with respect to YTM.
 
@@ -255,6 +255,7 @@ You can also use the following app to see duration decrease when maturity increa
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Modified Duration Calculation 
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
 sidebarLayout(
