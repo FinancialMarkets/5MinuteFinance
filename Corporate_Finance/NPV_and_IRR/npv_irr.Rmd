@@ -53,19 +53,21 @@ where:
 ## NPV Desicion Rule
 <br>
 <br>
-- $NPV > \$0 \Rightarrow Accept$
-
-- $NPV < \$0 \Rightarrow Reject$
+<br>
+<br>
+<center>$NPV > \$0 \Rightarrow \text{Accept}$
+<br>
+<br>
+<br>
+$NPV < \$0 \Rightarrow \text{Reject}$</center>
 
 ## The Discount Rate
 
-The discount rate is appropriate for the risk of the project. That is, it is the rate required on other project of similar risk.  You can think of it as an *opportunity cost*, because if the firm didn't use the funds for the project, then it could be paid as a dividend to shareholders.  They then can invest the money in a financial asset earning that assets required return.
+The discount rate is the rate required on other projects of similar risk.  You can think of it as an *opportunity cost*, because if the firm didn't use the funds for the project, then it could be paid as a dividend to shareholders.  Shareholders then can invest the money in a financial asset earning that assets required return.
 
 -  Often the project is as risky as a company's existing operations, in which case you use the company's weighted average cost of capital (WACC).
 
 -  It is incorrect to use the firm's cost of borrowing, for a couple reasons.  First the investment decision should be independent of the capital structure decision.  Also, by increasing borrowing, you increase your cost of equity capital [Modigliani and Miller, Proposition II](https://micfm.shinyapps.io/MM_propositions_mobile/). So debt only *appears* cheap.
-
-In the following app, you can manipulate the variables we've introduced and see how they affect NPV. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
@@ -111,9 +113,13 @@ Note while NPV will have a unique solution, IRR may have multiple solutions depe
 ## IRR Desicion Rule
 <br>
 <br>
-- $IRR > \text{Discount Rate} \Rightarrow Accept$
-
-- $IRR < \text{Discount Rate} \Rightarrow Reject$
+<br>
+<br>
+<center>$IRR > \text{Discount Rate} \Rightarrow \text{Accept}$
+<br>
+<br>
+<br>
+$IRR < \text{Discount Rate} \Rightarrow \text{Reject}$</center>
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
