@@ -35,7 +35,7 @@ Thus accepting all projects which have NPV > 0 will maximize shareholder wealth.
 
 ## Net Present Value (NPV)
 
-*Net Present Value* is the sum of the investment's expected cash inflows and outflows discounted back to their present value at a risk adjusted rate. If the NPV is greater than \$0, the project is accepted. Otherwise the project is rejected. 
+*Net Present Value* is the sum of the investment's expected cash inflows and outflows discounted back to their present value at a risk adjusted rate. 
 
 The NPV is defined by: 
 
@@ -45,17 +45,25 @@ where:
 
 - $r$, is the discount rate per period
 - $n$, the number of periods in the project's life
-- $C$, the expected *incremental* cash flows per period
+- $C$, the expected **incremental** cash flows per period
 - $C_0$, the initial investment
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
+## NPV Desicion Rule
+<br>
+<br>
+- $NPV > \$0 \Rightarrow Accept$
+
+- $NPV < \$0 \Rightarrow Reject$
+
 ## The Discount Rate
 
-The discount rate is appropriate for the risk of the project.  
+The discount rate is appropriate for the risk of the project. That is, it is the rate required on other project of similar risk.  You can think of it as an *opportunity cost*, because if the firm didn't use the funds for the project, then it could be paid as a dividend to shareholders.  They then can invest the money in a financial asset earning that assets required return.
 
 -  Often the project is as risky as a company's existing operations, in which case you use the company's weighted average cost of capital (WACC).
 
+-  It is incorrect to use the firm's cost of borrowing, for a couple reasons.  First the investment decision should be independent of the capital structure decision.  Also, by increasing borrowing, you increase your cost of equity capital [Modigliani and Miller, Proposition II](https://micfm.shinyapps.io/MM_propositions_mobile/). So debt only *appears* cheap.
 
 In the following app, you can manipulate the variables we've introduced and see how they affect NPV. 
 
@@ -91,12 +99,24 @@ sidebarLayout(
 
 ## Internal Rate of Return (IRR)
 
-*Internal Rate of Return* is the discount rate ($r_{IRR}$) that makes the Net Present Value equal zero. It is normally used to compare projects. Projects with a higher IRR above a set threshold are accepted.
-
+*Internal Rate of Return* is the discount rate ($r_{IRR}$) that makes the Net Present Value equal zero.  That is, we solve the following equation for the $IRR$, using an algorithm such as the [Newton-Raphson method](https://en.wikipedia.org/wiki/Newton%27s_method).
+<br>
+<br>
 $-C_0 + \frac{C_1}{(1+r_{IRR})^1} + \frac{C_2}{(1+r_{IRR})^2} + ... + \frac{C_n}{(1+r_{IRR})^n} = 0$ 
 
+Note while NPV will have a unique solution, IRR may have multiple solutions depending on the signs of the cash flows.  The interested reader can understand why by consulting the [Fundamental Theorem of Algebra](https://en.wikipedia.org/wiki/Fundamental_theorem_of_algebra), [Descartes' Rule of Signs](https://en.wikipedia.org/wiki/Descartes%27_rule_of_signs), and [Sturm's Theorem](https://en.wikipedia.org/wiki/Sturm%27s_theorem).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## IRR Desicion Rule
+<br>
+<br>
+- $IRR > \text{Discount Rate} \Rightarrow Accept$
+
+- $IRR < \text{Discount Rate} \Rightarrow Reject$
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ## 
 
@@ -120,6 +140,18 @@ renderPlot({
 
 
 <!-- use code from here to make a version of app which will read data from file:  http://stackoverflow.com/questions/29253481/data-specific-selectinput-choices-in-rmd-shiny/29255723#29255723 -->
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Choosing Between Projects
+
+When the accept/reject decision on one project does not affect another project, these projects are known as **independent**.  If accepting one project means you must reject another, then these projects are **mutually exclusive**. 
+
+If a project has negative cash flows followed by all positive cash flows, then the project's cash flows are known as **conventional**.
+
+-  If two projects are independent and have conventional cash flows, then NPV and IRR will lead to the same accept/reject decision, i.e. $NPV \iff IRR$.  This is shown on the app in the following slide.
+
+-  However, if you must rank projects -- and projects are either mutually exclusive or cash flows are not conventional -- then use NPV.  NPV will generate the correct decision, though IRR may not.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -174,18 +206,6 @@ h2
 
 ```
 
-
-## Choosing Between Projects
-
-When the accept/reject decision on one project does not affect another project, these projects are known as **independent**.  If accepting one project means you must reject another, then these projects are **mutually exclusive**. 
-
-If a project has negative cash flows followed by all positive cash flows, then the project's cash flows are known as **conventional**.
-
--  If two projects are independent and have conventional cash flows, then NPV and IRR will lead to the same accept/reject decision, i.e. $NPV \iff IRR$
-
--  However, if you must rank projects -- and projects are either mutually exclusive or cash flows are not conventional -- then use NPV.  NPV will generate the correct decision, though IRR may not.
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 <!-- insert interactive app which shows differing ranked projects by npv and irr -->
 
