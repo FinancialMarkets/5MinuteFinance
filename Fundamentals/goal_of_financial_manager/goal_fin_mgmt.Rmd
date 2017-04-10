@@ -12,27 +12,27 @@ runtime: shiny
 
 -  We'll discuss the drawbacks of other potential measures.
 
--  We'll also explain why this measure makes sense, and limits excessive risk-taking. 
+-  We'll also explain why this measure makes sense, and why it limits excessive risk-taking. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Alternative Measures
 
-Some might offer goals such as `maximize cash flows` or `maximize profit`.  
+Some might offer goals such as `maximize cash flows` or `maximize profit` for financial management. What problems arise from these goals? 
 
--  Relatively minor problems with these goals relate to how to measure the cash flows---should they be the average cash flow over some period (and what period)?
+-  Relatively minor problems relate to how to measure the cash flows---should they be the average cash flow over some period (and what period)?
 
--  In other words these measures are *ambiguous*. 
+-  In other words, these measures are *ambiguous*. 
 
 -  `Maximizing shoreholder wealth` is not ambiguous.  There is one unique share price.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Larger Problem
+## The Larger Problem
 
-The larger problem with measures such as `maximizing profit` or `cash flows` is that the they lack *balance*. In finance and investments risk is balanced with reward.  You can't have one without the other, and so you can't consider the reward without also considering the risk you *must* take to earn that reward.
+The larger problem with measures such as `maximizing profit` or `cash flows` is that the they lack *balance*. In finance and investments, risk is balanced with reward.  You can't have one without the other. And so you can't consider the reward without also considering the risk you *must* take to earn that reward.
 
-- That is the problem with these possible measures.  They consider reward (profit and cash flows) without considering the risk it takes to maximize them.
+- That is the problem with these alternative measures.  They consider reward (profit and cash flows) without considering the risk it takes to maximize them.
 
 - Thus, setting these as goals of management, may lead management to take excessive risks (because risk isn't even considered).
 
@@ -42,7 +42,7 @@ The larger problem with measures such as `maximizing profit` or `cash flows` is 
 
 ## Excessive Risk
 
-As an example, say the goal was to maximize cash flow.  Assume the following scenario.  
+As an example, let's say the goal was to maximize cash flow.  Now, assume the following scenario:  
 
 -  Your company has \$100,000 to invest in houses.  There are 100 houses, each house costs \$100,000, and their prices will increase by 1\% over the next year. 
 
@@ -62,13 +62,13 @@ Consider the two possible investments:
 
 #. You can invest \$1,000 each in 100 houses.  Now you expect \$100,000 in cash flow.  
 
-In fact, you can see `maximizing cash flow` or `profit` will simply instruct management to borrow as much as possible and use it all to buy houses (take on as much risk as possible).
+In fact, you can see `maximizing cash flow` or `profit` will simply instruct management to borrow as much as possible and use it all to buy houses---that is, this goal will incentivize management *to take on as much risk as possible* without considering the consequences.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## A Stock's Value
 
-The value of a stock* (or any asset) is the sum of all the stock's discounted expected future cash flows (dividends), where the discount rate reflects the risk taken to earn those cash flows.  So, for example, say a company expects to pay \$10 in dividends per share every year forever.  Then the value of the firm's stock is:
+The value of a stock (or any asset) is *the sum of all the stock's discounted expected future cash flows (dividends), where the discount rate reflects the risk taken to earn those cash flows*.  So, for example, say a company expects to pay \$10 in dividends per share every year forever.  Then the value of the firm's stock is:
 
 $Value = \$10 + \frac{\$10}{1+k} + \frac{\$10}{(1+k)^2} + \frac{\$10}{(1+k)^3} + \ldots$
 
@@ -92,9 +92,9 @@ So how does this limit risk? A firm may increase risk to increase the value of t
 
 The following interactive application gives you a general idea of how a stock's price reacts to increasing risk. 
 
--  As you increase risk, both expected cash flows and the required return on equity increase, however the effect of increasing expected cash flows dominate, and the stock price increases.
+-  As you increase risk, both expected cash flows and the required return on equity increase. As long as the effect of increasing expected cash flows dominates, the stock price also increases.
 
--  However, as risk rises, at some point the effect of the increased required return dominates, and increasing risk will decrease the stock price.
+-  However, as risk rises, at some point the effect of the increased required return begins to dominate outcomes, and increasing risk will decrease the stock price.
 
 -  Below is a general example.  The exact point where the effect on the required return dominates would vary from firm to firm.
 
@@ -133,9 +133,11 @@ renderPlot({
 
 ## The Goal in Other Countries
 
-This presentation has covered the goal of financial management for U.S. firms.  The goal of financial management may differ for firms based in other countries.
+This presentation has covered the goal of financial management *for U.S. firms*.  The goal of financial management may differ for firms based in other countries.
 
--  For example in other countries, such as Germany, it is a common requirement to have representative of labor on the Board of Directors of certain firms.  In this case `maximizing shareholder wealth` is not the sole goal of the financial manager.
+-  For example in other countries, such as Germany, it is a common requirement to have labor representatives on the Board of Directors of certain firms to advocate for the well-being of workers.  
+
+-  In this case `maximizing shareholder wealth` is not the sole goal of the financial manager.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
