@@ -6,11 +6,130 @@ css: 5min_mod2.css
 runtime: shiny
 ---
 
-## 
+## The Average Cost of A Firm's Assets
+
+
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## The Cost of Equity
+
+$P_0 = \frac{D_1}{r - g} \Rightarrow r = \frac{D_1}{P_0} + g$
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The CAPM Approach
+
+We can also use the CAPM to estimate the cost of equity capital.  Remembering the CAPM:
+
+$R_e = R_f$
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## 
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+
+
+
+
+```
+
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Cost of Debt
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Cost of Preferred Stock
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+##  The WACC
+
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+
+library(highcharter)
+library(dplyr)
+
+inputPanel(
+ numericInput("costE", "Cost of Equity", value = .18),
+ numericInput("costD", "Cost of Debt", value = .10),
+ numericInput("de", "Debt-to-Equity Ratio", value = .6),
+ numericInput("tax", "Tax Rate", value = .4)
+)
+
+renderHighchart({
+
+    ## Capital structure weights
+    we <- ( 1 / (input$de + 1) ) * 100
+    wd <- ( 100 - we )
+    capStruct <- tbl_df(cbind(rbind("Weight_Equity", "Weight_Debt"), rbind(we, wd)))
+    names(capStruct) <- c("bar", "percent")
+    capStruct$percent <- as.numeric(capStruct$percent)
+
+    WACC <- we * input$costE + wd * input$costD * (1 - input$tax)
+    WACC <- tbl_df(cbind("WACC", WACC))
+    names(WACC) <- c("pie", "percent")
+    WACC$percent <- as.numeric(WACC$percent)
+
+highchart() %>% 
+  # Data
+  hc_add_series(WACC, "column", hcaes(x = pie, y = percent), name = "WACC") %>%
+  hc_add_series(capStruct, "pie", hcaes(name = bar, y = percent), name = "Capital Structure") %>%
+  # Options for each type of series
+  hc_plotOptions(
+    series = list(
+      showInLegend = FALSE,
+      pointFormat = "{point.y}%"
+    ),
+    column = list(
+      colorByPoint = TRUE
+    ),
+    pie = list(
+      colorByPoint = TRUE, center = c('30%', '10%'),
+      size = 120, dataLabels = list(enabled = FALSE)
+  )
+) %>%
+  # Axis
+  hc_yAxis(
+    title = list(text = "WACC"),
+    labels = list(format = "{value}%"), max = 50
+  ) %>% 
+  hc_xAxis(categories = "\ ") %>%
+  # Titles and credits
+  hc_title(
+    text = "WACC and Capital Structure"
+  ) %>%
+  hc_subtitle(text = "WACC in the Bar, and Capital Structure in the Pie Chart ") %>% 
+  hc_credits(
+    enabled = TRUE, text = "",
+    href = "http://complete-markets.com",
+    style = list(fontSize = "12px")
+  )
+})
+
+```
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
