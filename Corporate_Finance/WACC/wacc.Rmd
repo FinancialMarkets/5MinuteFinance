@@ -8,15 +8,27 @@ runtime: shiny
 
 ## The Average Cost of A Firm's Assets
 
+The weighted-average cost of capital (WACC) is the overall cost of capital for the firm.  You can think of it as the required return on the firm's assets as a whole.  
 
+-  If we are considering investing in a project that is about as risky as the overall firm, we can use the WACC as the discount rate in our [NPV](https://micfm.shinyapps.io/NPV_and_IRR_mobile) calculation.
 
+-  The WACC is a function of the firm's capital structure, costs of debt and equity (and preferred stock if present), and the firm's tax rate.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## The Cost of Equity
 
+If we assume that the firm pays dividends, and these dividends (and hence the stock itself) grows at a constant rate, then we can calculate the cost of equity as:
+
 $P_0 = \frac{D_1}{r - g} \Rightarrow r = \frac{D_1}{P_0} + g$
 
+where *r* is the cost of equity, *P_0* the stock price today, *D_1* the dividend in the next period, and *g* the growth rate of dividends and the stock price.
+
+The downsides of this approach are:
+
+#.  The stock must pay a constantly increasing dividend.
+
+#.  It doesn't explicitly take into account risk.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -24,7 +36,7 @@ $P_0 = \frac{D_1}{r - g} \Rightarrow r = \frac{D_1}{P_0} + g$
 
 We can also use the CAPM to estimate the cost of equity capital.  Remembering the CAPM:
 
-$R_e = R_f$
+$R_e = R_f + \Beta_e(R_m - R_f)$
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
