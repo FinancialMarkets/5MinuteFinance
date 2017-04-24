@@ -8,8 +8,43 @@ runtime: shiny
 
 ## Capital Structure
 
-Broadly, a firm can finance its assets with either debt or equity.  The proportion of debt realtive to equity used, is known as the firm's *capital structure* (also sometimes referred to as its *capital stack*).
+Broadly, a firm can finance its assets with either debt or equity.  The proportion of debt relative to equity used, is known as the firm's *capital structure* (also sometimes referred to as its *capital stack*).
 
+-  A method to determine the *best* capital structure for a given firm is not known (either in theory or practice).
+
+-  However an understanding of the implications of given structures, will allow financial managers to strike a reasonable balance between debt and equity.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Modifying A Capital Structure
+
+Before we talk about the firms choice of capital structure, it is useful to know that firms can change their capital structure (known as *capital restructuring*).
+
+-  To increase the debt-to-equity ratio, the firm can issue debt, and use the proceeds to buy back stock.
+
+-  Conversely, to decrease the debt-to-equity ratio, the firm can issue stock, and use the proceeds to buy back debt.
+
+Note these restructurings **do not** affect the firm's assets. This highlights the fact that:
+
+`The capital structure decision is independent of the investment decision.`
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##  The Goal of Financial Management
+
+Remember, the goal of financial management is to maximize the value of the firm's equity.  So the firm should seek a capital structure which does this.
+
+-  Interestingly, maximizing the value of equity will be equivalent to maximizing the value of the whole firm.  We'll usually state our goal as the latter.
+
+-  Further, the value of the firm will be maximized when the firm's weighted-average cost of capital (WACC) is minimized.  So central in our discussion will be the effect of changing the firm's capital structure on the firm's cost of financing.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Financial Leverage
+
+*Leverage* refers to the use of debt in the firm's capital structure---the analogy being debt magnifies returns like mechanical leverage magnifies force.  
+
+-  In what follows we'll demonstrate the effect of leverage on the return on equity.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
