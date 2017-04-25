@@ -44,9 +44,155 @@ Remember, the goal of financial management is to maximize the value of the firm'
 
 *Leverage* refers to the use of debt in the firm's capital structure---the analogy being debt magnifies returns like mechanical leverage magnifies force.  
 
--  In what follows we'll demonstrate the effect of leverage on the return on equity.  
+-  In what follows we'll demonstrate the effect of leverage on the return on equity.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## An Example of Leverage
+
+Say your firm, PA Solar, has assets with a *market value* of \$10 million.  The firm is all equity financed, and has 50,000 shares outstanding, at \$200 per share ($10 million / 50,000).
+
+-  Your firm is considering a restructuring that will add \$5 million in debt to the firm's capital structure.  The debt will pay 10\%.  
+
+-  The proceeds from issuing \$5 million in debt can be used to buy back 25,000 shares of stock (\$5 million / \$200).  There will then be 25,000 shares left outstanding.  
+
+-  The firm will be financed with 50\% debt, and 50\% equity after the restructuring.  This means the debt-to-equity ratio is 1.  
+
+-  The stock price is unchanged by the restructuring, $\frac{\$5,000,000}{25,000} = \$200$.  Note, we have ignored any impact of the restrucutring on taxes.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## 
+
+Below is a table showing the current and restructured capital structures.
+
+|                    |  Current     | Restructured |
+|--------------------|--------------|--------------|
+| Assets             | \$10,000,000 | \$10,000,000 |
+| Equity             | \$10,000,000 | \$5,000,000  |
+| Debt               | \$0          | \$5,000,000  |
+| Share Price        | \$200        | \$200        |
+| Shares Outstanding | 50,000       | 25,000       |
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Effect of Capital Structure
+
+Here we investigate the effect of differing capital structures on the return on equity (ROE) and earnings per share (EPS).  We do so in three future scenarios---recession, normal, and expansion.  
+
+- In the recession and expansion, EBIT will be 50\% and 150\% of the EBIT in the normal scenario respectively.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Current (No Debt)
+
+|              |   Recession  |   Normal    |   Expansion   |
+|--------------|--------------|-------------|---------------|
+|    EBIT      |   \$600,000  | \$1,200,000 |  \$1,800,000  |
+|  Interest    |   \$0        |   \$0       |    \$0        |
+|  Net Income  |   \$600,000  | \$1,200,000 |  \$1,800,000  |
+|     ROE      |   6\%        |  12\%       |   18\%        |
+|     EPS      |   \$12       |   \$24      |   \$36        |
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Restructured
+
+|              |   Recession  |   Normal    |   Expansion   |
+|--------------|--------------|-------------|---------------|
+|    EBIT      |   \$600,000  | \$1,200,000 |  \$1,800,000  |
+|  Interest    |   \$500,000  |   \$500,000 |   \$500,000   |
+|  Net Income  |   \$100,000  | \$700,000   |  \$1,300,000  |
+|     ROE      |   2\%        |  14\%       |   26\%        |
+|     EPS      |   \$4        |   \$28      |   \$52        |
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Effect of Leverage
+
+The above examples show the effect of leverage is to increase the variability of ROE and EPS as a function of EBIT.  That is, `leverage magnifies gains and losses`.  
+
+-  In the following interactive app, you can set the percent that EBIT will be increased/decreased i the expansion/recession scenarios.
+
+-  It will then calculate ROE and EPS in each scenario, given EBIT.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+##
+
+<!-- interactive app -->
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##  EPS, EBIT, and Debt
+
+The following interactive app will plot EPS as a function of EBIT in both cases with debt and no debt.  
+
+-  What this app shows is how EPS benefits from debt if EBIT is above a certain point, however is lowered if EBIT is below that point. In short, leverage is good on the upside, and bad on the downside.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## 
+
+<!-- interactive app -->
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+library(highcharter)
+library(dplyr)
+
+inputPanel(
+    sliderInput("deRatio", "Debt-to-Equity Ratio", value = .5, min = 0, max = 10, step = .1, animate = TRUE)
+)
+renderHighchart({
+
+    proportionEquity <- 1 / (1 + input$deRatio)
+    proportionDebt <- 1 - proportionEquity
+    ebit <- seq(0, 3000000, by = 100)
+    interest.rate <- .1
+    assets <- 10000000
+    amountDebt <- proportionDebt * assets
+    amountEquity <- proportionEquity * assets
+
+    pricePerShare <- 200
+
+    originalNumShares <- 50000
+    newNumShares <- originalNumShares - amountDebt / pricePerShare
+
+    noDebtEPS <- ebit / originalNumShares
+
+    debtEPS <- (ebit - amountDebt * interest.rate) / newNumShares
+
+    data <- tbl_df(cbind(ebit, debtEPS, noDebtEPS))
+    names(data) <- c("EBIT", "With_Debt", "No_Debt")
+
+    highchart() %>%
+        hc_add_series(data$With_Debt, name = "EPS: With Debt") %>%
+        hc_add_series(data$No_Debt, name = "EPS: No Debt") %>%
+
+    hc_yAxis(
+        title = list(text = "EPS")
+    ) %>% 
+    hc_xAxis(title = list(text = "EBIT")) %>%
+                                        # Titles and credits
+    hc_title(
+        text = "The Effect of Leverage on EPS"
+    ) %>%
+    hc_subtitle(text = "") %>% 
+    hc_credits(
+        enabled = TRUE, text = "Matt_Brigida",
+        href = "http://complete-markets.com",
+        style = list(fontSize = "12px")
+    ) %>%
+    hc_add_theme(hc_theme_flatdark())
+    
+})
+
+```
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 
 ## Credits and Collaboration
 
