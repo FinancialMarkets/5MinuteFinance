@@ -245,6 +245,46 @@ renderHighchart({
 ```
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Does Capital Structure Matter?
+
+From the above we see that leverage magnifies the returns to equity (on the upside and downside).  So it would seem that the capital structure is important for equity investors considering owning the stock?
+
+-  Interestigly, equity investors may view the capital structure as irrelevant.  This is because the equity investors can create any capital structure they want for the firm, by borrowing or lending in their own account.  This is referred to as *homemade leverage*.
+
+-  In the following example we'll show how an equity investor can turn a position in the all-equity stock, into a position leveraged with a debt-to-equity ratio of 1.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Creating a Leveraged Position
+
+Assume an investor want to buy \$10,000 of the proposed restructured firm (50 shares @ \$200 per share), however the firm is presently all-equity.  The EPS in the restructured case is \$4, \$28, and \$52 in the recession, normal, and expansion cases.   
+
+-  Now assume the investor buys \$20,000 of the all-equity firm (100 shares @ \$200 per share), by using \$10,000 of her own money, and \$10,000 borrowed at 10\%.
+
+-  In this case the investor's EPS and ROW will match the EPS and ROW in the restructured case.  The investor has replicated teh leveraged position herself, and did not need the firm to do it.
+
+-  The only assumption needed was that the investor can borrow at the same rate as the company, which is reasonable (see margin rates on stock brokerage accounts).
+
+-  In a similar fashion (through lending) an investor can create an all-equity firm from a leveraged firm.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## The Modigliani and Miller Propositions
+
+The idea of *homemade leverage* was introduced my Modigliani and Miller early in their famous work (Nobel Memorial Prize winning) on capital structure.  Their groundbreaking propositions are [worthy of their own presentation](https://micfm.shinyapps.io/MM_propositions_mobile/).  Be sure to check out that presentation.  Briefly, their propositions are:
+
+**No Taxes**
+1.  The value of the leveraged and unleveraged firms are equal (capital structure irrelevance). 
+2.  The cost of equity is: $R_e = R_u + \frac{D}{E}(R_u - R_d)$
+
+**Taxes**
+1. 
+2.
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
