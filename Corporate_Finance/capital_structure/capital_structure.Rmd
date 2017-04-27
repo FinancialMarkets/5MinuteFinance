@@ -270,17 +270,40 @@ Assume an investor want to buy \$10,000 of the proposed restructured firm (50 sh
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## The Modigliani and Miller Propositions
+## The Modigliani and Miller (M\&M) Propositions
 
-The idea of *homemade leverage* was introduced my Modigliani and Miller early in their famous work (Nobel Memorial Prize winning) on capital structure.  Their groundbreaking propositions are [worthy of their own presentation](https://micfm.shinyapps.io/MM_propositions_mobile/).  Be sure to check out that presentation.  Briefly, their propositions are:
+The idea of *homemade leverage* was introduced my M\&M early in their famous work (Nobel Memorial Prize winning) on capital structure.  Their groundbreaking propositions are [worthy of their own presentation](https://micfm.shinyapps.io/MM_propositions_mobile/).  Be sure to check out that presentation.  Briefly, their propositions are:
 
 **No Taxes**
+
 1.  The value of the leveraged and unleveraged firms are equal (capital structure irrelevance). 
-2.  The cost of equity is: $R_e = R_u + \frac{D}{E}(R_u - R_d)$
+
+2.  The cost of equity is: $R_e = R_u + \frac{D}{E}(R_u - R_d)$, where $R_u$ and $R_d$ are the required returns on the unlevered firm, and debt respectively.
+
+## M\&M with Taxes
 
 **Taxes**
-1. 
+
+1. The value of the levered firm is equal to the value of the unlevered firm plus the present value of the interest tax shield.
+
 2.
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Adding the Cost of Financial Distress
+
+M\&M proposition II with taxes says that the firm's WACC is decreasing in the debt-to-equity ratio.  However, this doesn't take into account that the more debt the firm has, the greater the probability of financial distress (or ultimate bankruptcy).  Remember, interest, unlike dividends, must be paid.
+
+
+-  There are costs merely to financial distress, even if bankruptcy does not occur, such as employees leaving, supplier demanding up-front payments instead of allowing credit, and NPV positive investments may not be taken to preserve cash.
+
+-  Also, bankruptcy itself, if it occurs, is very costly. Legal and administrative expenses alone are substantial.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Optimal Capital Structure
 
 
 
