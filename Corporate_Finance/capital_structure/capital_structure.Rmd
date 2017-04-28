@@ -286,16 +286,13 @@ The idea of *homemade leverage* was introduced my M\&M early in their famous wor
 
 1. The value of the levered firm is equal to the value of the unlevered firm plus the present value of the interest tax shield.
 
-2.
-
-
+2.  The cost of equity is: $R_e = R_u + \frac{D}{E}(R_u - R_d)(1 - \tau)$, where $R_u$ and $R_d$ are the required returns on the unlevered firm, and debt respectively. $\tau$ denotes the tax rate. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Adding the Cost of Financial Distress
 
 M\&M proposition II with taxes says that the firm's WACC is decreasing in the debt-to-equity ratio.  However, this doesn't take into account that the more debt the firm has, the greater the probability of financial distress (or ultimate bankruptcy).  Remember, interest, unlike dividends, must be paid.
-
 
 -  There are costs merely to financial distress, even if bankruptcy does not occur, such as employees leaving, supplier demanding up-front payments instead of allowing credit, and NPV positive investments may not be taken to preserve cash.
 
@@ -304,6 +301,83 @@ M\&M proposition II with taxes says that the firm's WACC is decreasing in the de
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Optimal Capital Structure
+
+Balanacing the benefit of the debt tax shield with the cost of financial distress, implies the existence of an optimal capital structure. That doesn't mean we have a formula---only that there is evidence that such a capital structure exists.   
+
+-  This is called the *static trade-off theory of capital structure*. Firms borrow until the marginal gain of the tax benefit equals the cost of the increased probability of financial distress.  
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Static Trade-off Theory Graphic
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Observed Capital Structures
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+
+library(quantmod)
+comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+names(comp) <- c("symbol", "name")
+
+inputPanel(
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name)
+)
+
+renderHighchart({
+
+
+    validate(
+        need(input$name != "", "Select a US stock name.")
+    )
+    ticker <- comp$symbol[comp$name == input$name]
+
+
+    f2 <- getFinancials(ticker, src = "google", auto.assign = FALSE)
+    bs2 <- viewFin(f2, type = "BS")
+    
+
+
+    ## D/E ratio
+
+    debt2 <- bs2[rownames(bs2) == "Total Debt"][1]
+    equity2 <- bs2[rownames(bs2) == "Total Equity"][1]
+
+    capStruct <- tbl_df(cbind(rbind("Weight_Equity", "Weight_Debt"), rbind(equity2, debt2)))
+    names(capStruct) <- c("bar", "percent")
+    capStruct$percent <- as.numeric(capStruct$percent)
+
+
+
+    highchart() %>%
+        hc_add_series(capStruct, "pie", hcaes(name = bar, y = percent), name = "Capital Structure") %>%
+        hc_plotOptions(
+            pie = list(
+                colorByPoint = TRUE, center = c('50%', '50%'),
+                size = 220, dataLabels = list(enabled = FALSE)
+            )
+        ) %>%
+                                        # Titles and credits
+        hc_title(
+            text = "Capital Structure"
+        ) %>%
+        hc_subtitle(text = "Using Balance Sheet Numbers (not market values)") %>% 
+        hc_credits(
+            enabled = TRUE, text = "",
+            href = "http://complete-markets.com",
+            style = list(fontSize = "12px")
+        )
+
+
+
+    
+})
+
+```
+
 
 
 
