@@ -261,14 +261,14 @@ Assume an investor want to buy \$10,000 of the proposed restructured firm (50 sh
 
 -  Now assume the investor buys \$20,000 of the all-equity firm (100 shares @ \$200 per share), by using \$10,000 of her own money, and \$10,000 borrowed at 10\%.
 
--  In this case the investor's EPS and ROW will match the EPS and ROW in the restructured case.  The investor has replicated teh leveraged position herself, and did not need the firm to do it.
+-  In this case the investor's EPS and ROE will match the EPS and ROE in the restructured case.  The investor has replicated the leveraged position herself, and did not need the firm to do it.
 
 -  The only assumption needed was that the investor can borrow at the same rate as the company, which is reasonable (see margin rates on stock brokerage accounts).
 
 -  In a similar fashion (through lending) an investor can create an all-equity firm from a leveraged firm.
 
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
 
 ## The Modigliani and Miller (M\&M) Propositions
 
@@ -302,17 +302,15 @@ M\&M proposition II with taxes says that the firm's WACC is decreasing in the de
 
 ## Optimal Capital Structure
 
-Balanacing the benefit of the debt tax shield with the cost of financial distress, implies the existence of an optimal capital structure. That doesn't mean we have a formula---only that there is evidence that such a capital structure exists.   
+Balancing the benefit of the debt tax shield with the cost of financial distress, implies the existence of an optimal capital structure. That doesn't mean we have a formula---only that there is evidence that such a capital structure exists.   
 
--  This is called the *static trade-off theory of capital structure*. Firms borrow until the marginal gain of the tax benefit equals the cost of the increased probability of financial distress.  
+-  This is called the *static trade-off theory of capital structure*. Firms borrow until the marginal gain of the tax benefit equals the cost of the increased probability of financial distress.
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Static Trade-off Theory Graphic
-
-
+-  At this point, the value of the levered firm is maximized, and simultaneously the WACC is minimized.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+<!-- at some point put in the chart of V_l and the wacc as functions of debt showing the optimal cap struct -->
 
 ## Observed Capital Structures
 
@@ -369,23 +367,16 @@ renderHighchart({
             enabled = TRUE, text = "",
             href = "http://complete-markets.com",
             style = list(fontSize = "12px")
-        )
-
-
-
-    
+        )    
 })
 
 ```
-
-
-
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
-Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/MM_Propositions/MM_propositions.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Corporate_Finance/MM_Propositions/MM_propositions.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/capital_structure/capital_structure.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Corporate_Finance/capital_structure/capital_structure.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
 If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
