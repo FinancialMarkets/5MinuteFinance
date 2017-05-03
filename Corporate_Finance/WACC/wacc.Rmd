@@ -108,10 +108,14 @@ The cost of debt is yield required by the market on the firm's debt. If the debt
 
 ## The Cost of Preferred Stock
 
+Since preferred stock pays a constant dividend every period forever, it is a perpetuity.  Its price today is thus $P_{0, ps} = \frac{D}{R_{ps}}$.
 
+
+-  We can rearrange this for the cost of preferred stock, $R_{ps} = \frac{D}{P_{0, ps}}$.
+
+-  Like common stock dividends, preferred stock dividends are paid after tax, and so we do not need to adjust the preferred stock required return for taxes.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
 
 ##  The WACC
 
