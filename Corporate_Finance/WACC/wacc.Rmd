@@ -49,7 +49,7 @@ where *R_e* is the cost of equity, *R_f* is the risk-free rate, $\Beta_e$ is the
 ## 
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
-
+#{{{
 sidebarLayout(
     sidebarPanel(    
         ## inputPanel(
@@ -85,6 +85,7 @@ sidebarLayout(
         })
     )
 )
+#}}}
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -95,21 +96,15 @@ The cost of debt is yield required by the market on the firm's debt. If the debt
 
 -  Unlike equity, debt provides the firm a tax shield.  This tax shield lowers the cost of debt---in essence the government is paying a portion of the interest.  
 
--  We thus adjust the cost of debt by the amount of the tax shield, $y_{at} = y_{bt}(1 - \tau)$ where $y_{at}$ is the yield after tax, $y_{bt}$ is the yield before tax, and $\tau$ is the tax rate.  $y_{at}$ is the cost of debt.
+-  We thus adjust the cost of debt $R_d$ by the amount of the tax shield, $R_d(1-\tau)$ where $\tau$ is the firm's tax rate.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-##
-
-<!-- cost of debt app -->
-
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<!-- cost of debt app?  maybe at some point; now should we link to YTM calculation in other presentation? -->
 
 ## The Cost of Preferred Stock
 
 Since preferred stock pays a constant dividend every period forever, it is a perpetuity.  Its price today is thus $P_{0, ps} = \frac{D}{R_{ps}}$.
-
 
 -  We can rearrange this for the cost of preferred stock, $R_{ps} = \frac{D}{P_{0, ps}}$.
 
@@ -119,7 +114,11 @@ Since preferred stock pays a constant dividend every period forever, it is a per
 
 ##  The WACC
 
+Putting the cost of equity, debt, and preferred stock together, we get the weighted average cost of capital:
 
+$WACC = w_eR_e + w_dR_d(1-\tau) + w_{ps}R_{ps}$
+
+where $w_E$, $w_d$, and $w_{ps}$ are the (market-value) weights of equity, debt, and preferred stock in the firm's capital structure.
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -127,7 +126,7 @@ Since preferred stock pays a constant dividend every period forever, it is a per
 ##
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
-
+#{{{
 library(highcharter)
 library(dplyr)
 
@@ -187,9 +186,8 @@ highchart() %>%
     style = list(fontSize = "12px")
   )
 })
-
+#}}}
 ```
-
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
