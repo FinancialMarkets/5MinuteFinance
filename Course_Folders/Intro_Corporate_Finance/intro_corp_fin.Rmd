@@ -5,13 +5,19 @@ output: html_document
 
 ## Introduction to Financial Management
 
+[The Goal of Financial Management](https://micfm.shinyapps.io/goal_fin_mgmt/) | [Mobile Friendly Version](https://micfm.shinyapps.io/goal_fin_mgmt_mobile/)
+
+[The Agency Problem]()
+
 ## Financial Statements and Cash Flows
 
 [An Introduction to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements) | [Mobile Friendly Version](https://micfm.shinyapps.io/basic_financial_statements_mobile)
 
+[The Balance Sheet Identity](https://micfm.shinyapps.io/balance_sheet_identity/)
+
 [Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios) | [Mobile Friendly Version](https://micfm.shinyapps.io/Financial_Ratios_mobile)
 
-[**Add** Growth Rates (SGR and IGR) and EFN]()
+[Firm Growth Rates (SGR and IGR) and EFN]()
 
 [Operating Cash Flow](https://micfm.shinyapps.io/OCFs) | [Mobile Friendly Version](https://micfm.shinyapps.io/OCFs_mobile)
 
@@ -20,6 +26,8 @@ output: html_document
 [Time Value of Money: Single Cash Flows](https://micfm.shinyapps.io/TVM_Single_CFs) | [Mobile Friendly Version](https://micfm.shinyapps.io/TVM_Single_CFs_mobile)
 
 [Time Value of Money: Multiple Cash Flows](https://micfm.shinyapps.io/TVM_Multiple_CFs/) | [Mobile Friendly Version](https://micfm.shinyapps.io/TVM_Multiple_CFs_mobile)
+
+[Interest Compounding: EAR and APR](https://micfm.shinyapps.io/compounding) | [Mobile Friendly Version](https://micfm.shinyapps.io/compounding_mobile/)
 
 ### Stock and Bond Valuation
 
@@ -31,13 +39,13 @@ output: html_document
 
 [Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/) | [Mobile Friendly Version](https://micfm.shinyapps.io/NPV_and_IRR_mobile)
 
-[**Add** Other Investment Decision Rules Presentation]() 
+[Other Investment Decision Rules]() 
 
 ## Risk and Return
 
 ### Historical Context
 
-[**Add** Historical Risk and Return by Asset Class Presentation]()
+[Historical Risk and Return by Asset Class]()
 
 ### The CAPM
 
@@ -47,8 +55,12 @@ output: html_document
 
 [Weighted-Average Cost of Capital]()
 
-[Capital Structure]()
+[Capital Structure](https://micfm.shinyapps.io/capital_structure/) | [Mobile Friendly Version](https://micfm.shinyapps.io/capital_structure_mobile/)
+
+[The Modigliani and Miller Propositions](https://micfm.shinyapps.io/MM_propositions/) | [Mobile Friendly Version](https://micfm.shinyapps.io/MM_propositions_mobile/)
 
 ### Dividends
 
-[Dividends]()
+[Dividends](https://micfm.shinyapps.io/dividends/) | [Mobile Friendly Version](https://micfm.shinyapps.io/dividends_mobile/)
+
+[Stock Splits]() | [Mobile Friendly Version]()
