@@ -8,19 +8,19 @@ runtime: shiny
 
 ## Capital Structure
 
-Broadly, a firm can finance its assets with either debt or equity.  The proportion of debt relative to equity used, is known as the firm's *capital structure* (also sometimes referred to as its *capital stack*).
+Generally speaking, a firm can finance its assets with either debt or equity.  The proportion of debt relative to equity a firm uses, is known as the firm's *capital structure* (also sometimes referred to as its *capital stack*).
 
 -  A method to determine the *best* capital structure for a given firm is not known (either in theory or practice).
 
--  However an understanding of the implications of given structures, will allow financial managers to strike a reasonable balance between debt and equity.
+-  But an understanding of the implications of given structures will allow financial managers to strike a reasonable balance between debt and equity.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Modifying A Capital Structure
 
-Before we talk about the firms choice of capital structure, it is useful to know that firms can change their capital structure (known as *capital restructuring*).
+Before we talk about the firm's choice of capital structure, it is useful to know that firms can change their capital structure (known as *capital restructuring*).
 
--  To increase the debt-to-equity ratio, the firm can issue debt, and use the proceeds to buy back stock.
+-  To increase the debt-to-equity ratio, the firm can issue debt and then use the proceeds to buy back stock.
 
 -  Conversely, to decrease the debt-to-equity ratio, the firm can issue stock, and use the proceeds to buy back debt.
 
@@ -42,7 +42,7 @@ Remember, the goal of financial management is to maximize the value of the firm'
 
 ## Financial Leverage
 
-*Leverage* refers to the use of debt in the firm's capital structure---the analogy being debt magnifies returns like mechanical leverage magnifies force.  
+*Leverage* refers to the use of debt in the firm's capital structure---the analogy being that debt magnifies returns just as mechanical leverage magnifies force.  
 
 -  In what follows we'll demonstrate the effect of leverage on the return on equity.
 
@@ -52,7 +52,7 @@ Remember, the goal of financial management is to maximize the value of the firm'
 
 Say your firm, PA Solar, has assets with a *market value* of \$10 million.  The firm is all equity financed, and has 50,000 shares outstanding, at \$200 per share (\$10 million / 50,000).
 
--  Your firm is considering a restructuring that will add \$5 million in debt to the firm's capital structure.  The debt will pay 10\%.  
+-  Your firm is considering a restructuring that will add \$5 million in debt to the firm's capital structure.  The debt will pay your creditors 10\%.  
 
 -  The proceeds from issuing \$5 million in debt can be used to buy back 25,000 shares of stock (\$5 million / \$200).  There will then be 25,000 shares left outstanding.  
 
@@ -114,9 +114,9 @@ Here we investigate the effect of differing capital structures on the return on 
 
 The above examples show the effect of leverage is to increase the variability of ROE and EPS as a function of EBIT.  That is, `leverage magnifies gains and losses`.  
 
--  In the following interactive app, you can set the percent that EBIT will be increased/decreased i the expansion/recession scenarios.
+-  In the following interactive app, you can set the percent that EBIT will be increased/decreased in the expansion/recession scenarios.
 
--  It will then calculate ROE and EPS in each scenario, given EBIT.
+-  You can then calculate ROE and EPS in each scenario, given EBIT.
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
@@ -257,7 +257,7 @@ From the above we see that leverage magnifies the returns to equity (on the upsi
 
 ## Creating a Leveraged Position
 
-Assume an investor want to buy \$10,000 of the proposed restructured firm (50 shares @ \$200 per share), however the firm is presently all-equity.  The EPS in the restructured case is \$4, \$28, and \$52 in the recession, normal, and expansion cases.   
+Assume an investor wants to buy \$10,000 of the proposed restructured firm (50 shares @ \$200 per share), however the firm is presently all-equity.  The EPS in the restructured case is \$4, \$28, and \$52 in the recession, normal, and expansion cases.   
 
 -  Now assume the investor buys \$20,000 of the all-equity firm (100 shares @ \$200 per share), by using \$10,000 of her own money, and \$10,000 borrowed at 10\%.
 
@@ -272,13 +272,13 @@ Assume an investor want to buy \$10,000 of the proposed restructured firm (50 sh
 
 ## The Modigliani and Miller (M\&M) Propositions
 
-The idea of *homemade leverage* was introduced my M\&M early in their famous work (Nobel Memorial Prize winning) on capital structure.  Their groundbreaking propositions are [worthy of their own presentation](https://micfm.shinyapps.io/MM_propositions_mobile/).  Be sure to check out that presentation.  Briefly, their propositions are:
+The idea of *homemade leverage* was introduced my M\&M early in their famous work (Nobel Memorial Prize winning) on capital structure.  Their groundbreaking propositions are [worthy of their own presentation](http://www.5minutefinance.org/concepts/modigliani-and-miller-propositions).  Be sure to check out that presentation.  Briefly, their propositions are:
 
 **No Taxes**
 
 1.  The value of the leveraged and unleveraged firms are equal (capital structure irrelevance). 
 
-2.  The cost of equity is: $R_e = R_u + \frac{D}{E}(R_u - R_d)$, where $R_u$ and $R_d$ are the required returns on the unlevered firm, and debt respectively.
+2.  The cost of equity is: $R_e = R_u + \frac{D}{E}(R_u - R_d)$, where $R_u$ and $R_d$ are the required returns on the unlevered firm and debt, respectively.
 
 ## M\&M with Taxes
 
@@ -286,15 +286,15 @@ The idea of *homemade leverage* was introduced my M\&M early in their famous wor
 
 1. The value of the levered firm is equal to the value of the unlevered firm plus the present value of the interest tax shield.
 
-2.  The cost of equity is: $R_e = R_u + \frac{D}{E}(R_u - R_d)(1 - \tau)$, where $R_u$ and $R_d$ are the required returns on the unlevered firm, and debt respectively. $\tau$ denotes the tax rate. 
+2.  The cost of equity is: $R_e = R_u + \frac{D}{E}(R_u - R_d)(1 - \tau)$, where $R_u$ and $R_d$ are the required returns on the unlevered firm and debt, respectively. $\tau$ denotes the tax rate. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Adding the Cost of Financial Distress
 
-M\&M proposition II with taxes says that the firm's WACC is decreasing in the debt-to-equity ratio.  However, this doesn't take into account that the more debt the firm has, the greater the probability of financial distress (or ultimate bankruptcy).  Remember, interest, unlike dividends, must be paid.
+M\&M proposition II with taxes says that the firm's WACC is decreasing in the debt-to-equity ratio.  However, this doesn't take into account that the more debt the firm has, the greater the probability of financial distress (or ultimate bankruptcy).  Remember that interest, unlike dividends, must be paid.
 
--  There are costs merely to financial distress, even if bankruptcy does not occur, such as employees leaving, supplier demanding up-front payments instead of allowing credit, and NPV positive investments may not be taken to preserve cash.
+-  There are costs merely to financial distress, even if bankruptcy does not occur, such as employees leaving, suppliers demanding up-front payments instead of allowing credit, and NPV positive investments may not be taken to preserve cash.
 
 -  Also, bankruptcy itself, if it occurs, is very costly. Legal and administrative expenses alone are substantial.
 
@@ -306,7 +306,7 @@ Balancing the benefit of the debt tax shield with the cost of financial distress
 
 -  This is called the *static trade-off theory of capital structure*. Firms borrow until the marginal gain of the tax benefit equals the cost of the increased probability of financial distress.
 
--  At this point, the value of the levered firm is maximized, and simultaneously the WACC is minimized.
+-  At this point, the value of the levered firm is maximized--and simultaneously the WACC is minimized.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
