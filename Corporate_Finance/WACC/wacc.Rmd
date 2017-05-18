@@ -6,11 +6,11 @@ css: 5min_mod2.css
 runtime: shiny
 ---
 
-## The Average Cost of A Firm's Assets
+## WACC: The Average Cost of a Firm's Assets
 
 The weighted-average cost of capital (WACC) is the overall cost of capital for the firm.  You can think of it as the required return on the firm's assets as a whole.  
 
--  If we are considering investing in a project that is about as risky as the overall firm, we can use the WACC as the discount rate in our [NPV](https://micfm.shinyapps.io/NPV_and_IRR_mobile) calculation.
+-  If we are considering investing in a project that is about as risky as the overall firm, we can use the WACC as the discount rate in our [NPV](http://www.5minutefinance.org/concepts/net-present-value-and-internal-rate-of-return) calculation.
 
 -  The WACC is a function of the firm's capital structure, costs of debt and equity (and preferred stock if present), and the firm's tax rate.
 
@@ -34,13 +34,13 @@ The downsides of this approach are:
 
 ## The CAPM Approach
 
-We can also use the CAPM to estimate the cost of equity capital.  Remembering the CAPM:
+We can also use the CAPM to estimate the cost of equity capital.  Remember, the [CAPM](http://www.5minutefinance.org/concepts/the-capital-asset-pricing-model):
 
 $R_e = R_f + \Beta_e(R_m - R_f)$
 
 where *R_e* is the cost of equity, *R_f* is the risk-free rate, $\Beta_e$ is the amount of systematic risk in the asset *e*, and the expected return on the market minus the risk-free rate $(R_m - R_f)$ is the reward for bearing systematic risk.
 
--  The benefits of this approach are that it can be applied to any stock (any capital asset), and it explicitly takes into account risk. 
+-  The benefits of this approach are that it can be applied to any stock (any capital asset) and that it explicitly takes into account risk. 
 
 -  The downside is that we have to estimate two values, wheres previously we only had to estimate the dividend growth rate.
 
@@ -92,7 +92,7 @@ sidebarLayout(
 
 ## The Cost of Debt
 
-The cost of debt is yield required by the market on the firm's debt. If the debt is actively traded (meaning we can trust the price), then it is the bond's yield-to-maturity.  If no debt is actively traded, you can infer the cost of debt from the outstanding debt's credit rating.
+The cost of debt is the yield required by the market on the firm's debt. If the debt is actively traded (meaning we can trust the price), then it is the bond's [yield-to-maturity](http://www.5minutefinance.org/concepts/for-what-is-the-yield-to-maturity-used).  If no debt is actively traded, you can infer the cost of debt from the outstanding debt's credit rating.
 
 -  Unlike equity, debt provides the firm a tax shield.  This tax shield lowers the cost of debt---in essence the government is paying a portion of the interest.  
 
