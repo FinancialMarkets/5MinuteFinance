@@ -68,6 +68,7 @@ Both the VVIX and the VIX tend to be inversely correlated with the stock market.
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
+devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
 library(dygraphs)
 library(quantmod)
 
@@ -127,6 +128,7 @@ There is not a significant correlation between the VVIX returns and the VIX and 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
+devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
 library(threejs)
 library(quantmod)
  

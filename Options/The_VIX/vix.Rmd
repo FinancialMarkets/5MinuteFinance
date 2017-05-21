@@ -23,7 +23,7 @@ The Chicago Board Options Exchange's Volatility Index -- or VIX -- is based on o
 
 ## Interpreting the VIX
 
-Say the VIX is presently 10. This means there is about a 68\% chance (one standard deviation) that the absolute value of the market's return will be less than $\frac{10%}{\sqrt{12}} = 2.89%$ over the next 30 days (one month).  
+Say the VIX is presently 10. This means there is about a 68\% chance (one standard deviation) that the absolute value of the market's return will be less than $\frac{10\%}{\sqrt{12}} = 2.89\%$ over the next 30 days (one month).  
 
 -  We divide by $\sqrt{12}$ to convert from the annualized volatility (in which VIX is quoted) into the monthly volatility. 
 
@@ -47,6 +47,7 @@ You can see this effect in the following slide, which plots the S&P 500 index an
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
+devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
 library(dygraphs)
 library(quantmod)
 
@@ -64,8 +65,6 @@ renderDygraph({
                     dyAxis('y2', label = "VIX") 
                         
     })
-
-
 #}}}
 ```
 
@@ -97,6 +96,7 @@ The following app shows how expected market volatility (VIX) is related to marke
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
+devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
 library(threejs)
 library(quantmod)
 
