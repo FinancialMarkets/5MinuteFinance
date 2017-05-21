@@ -122,6 +122,7 @@ The following app will calculate a Beta coefficient for any stock you choose usi
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
+devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
 library(quantmod)
 library(ggplot2)
 inputPanel(

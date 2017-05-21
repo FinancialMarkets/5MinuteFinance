@@ -7,17 +7,17 @@ output: html_document
 
 [The Goal of Financial Management](https://micfm.shinyapps.io/goal_fin_mgmt/) | [Mobile Friendly Version](https://micfm.shinyapps.io/goal_fin_mgmt_mobile/)
 
-[The Agency Problem]()
+[*Need to Add:*  The Agency Problem]()
 
 ## Financial Statements and Cash Flows
 
 [An Introduction to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements) | [Mobile Friendly Version](https://micfm.shinyapps.io/basic_financial_statements_mobile)
 
-[The Balance Sheet Identity](https://micfm.shinyapps.io/balance_sheet_identity/)
+[The Balance Sheet Identity](https://micfm.shinyapps.io/balance_sheet_identity/) | [Mobile Friendly Version](https://micfm.shinyapps.io/balance_sheet_identity_mobile/)
 
 [Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios) | [Mobile Friendly Version](https://micfm.shinyapps.io/Financial_Ratios_mobile)
 
-[Firm Growth Rates (SGR and IGR) and EFN]()
+[*Need to Add:*  Firm Growth Rates (SGR and IGR) and EFN]()
 
 [Operating Cash Flow](https://micfm.shinyapps.io/OCFs) | [Mobile Friendly Version](https://micfm.shinyapps.io/OCFs_mobile)
 
@@ -39,13 +39,13 @@ output: html_document
 
 [Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/) | [Mobile Friendly Version](https://micfm.shinyapps.io/NPV_and_IRR_mobile)
 
-[Other Investment Decision Rules]() 
+[*Need to Add:*  Other Investment Decision Rules]() 
 
 ## Risk and Return
 
 ### Historical Context
 
-[Historical Risk and Return by Asset Class]()
+[*Need to Add:*  Historical Risk and Return by Asset Class]()
 
 ### The CAPM
 
@@ -53,7 +53,7 @@ output: html_document
 
 ## Capital Market Financing
 
-[Weighted-Average Cost of Capital]()
+[*Need to Add:*  Weighted-Average Cost of Capital]()
 
 [Capital Structure](https://micfm.shinyapps.io/capital_structure/) | [Mobile Friendly Version](https://micfm.shinyapps.io/capital_structure_mobile/)
 
@@ -63,4 +63,4 @@ output: html_document
 
 [Dividends](https://micfm.shinyapps.io/dividends/) | [Mobile Friendly Version](https://micfm.shinyapps.io/dividends_mobile/)
 
-[Stock Splits]() | [Mobile Friendly Version]()
+[*Need to Add:*  Stock Splits]() | [Mobile Friendly Version]()
