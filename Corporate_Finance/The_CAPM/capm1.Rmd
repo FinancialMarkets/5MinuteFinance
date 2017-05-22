@@ -126,9 +126,8 @@ devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
 library(quantmod)
 library(ggplot2)
 inputPanel(
-	   textInput("ticker", label = "Stock Ticker", value = "COP"),
-	   dateRangeInput("dateRange", label = "Start Date", start = "2015-01-01", end = Sys.Date())
-	   ## radioButtons("statement", label = "Financial Statement", choices = list("Balance Sheet" = 1, "Income Statement" = 2), selected = 2)
+    textInput("ticker", label = "Stock Ticker", value = "COP"),
+    dateRangeInput("dateRange", label = "Start Date", start = "2015-01-01", end = Sys.Date())
 	   )
 renderPlot({
   ## valdate ticker ----

@@ -112,6 +112,7 @@ In the following app you can input stock tickers and see the correlation matrix 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 ## took this version from my Portfolio Theory Lecture notes.  Improve by allowing for an arbitrary number of inputs with a selectizeInput()
 ## also allow for a data range input
+devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
 library(corrplot)
 library(quantmod)
 inputPanel(

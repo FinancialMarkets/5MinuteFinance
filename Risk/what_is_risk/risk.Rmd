@@ -115,70 +115,33 @@ On the second tab the results of hypothesis tests for skewness ad kurtosis are r
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
 sidebarLayout(
-	      sidebarPanel(    
-			   # inputPanel(
-			   textInput("ticker", label = "Stock Ticker", value = "XOM"),
-			   dateRangeInput("dates", label = "Date Range", start = "2015-01-01", end = Sys.Date())
-			   ),
+    sidebarPanel(
+        textInput("ticker", label = "Stock Ticker", value = "XOM"),
+        dateRangeInput("dates", label = "Date Range", start = "2015-01-01", end = Sys.Date())
+    ),
 
-	      mainPanel(
-			#                         tabsetPanel(
-			#                                     tabPanel("Plot", 
-			renderPlot({
-			  library(fBasics)
-			  library(tseries)
-			  validate(
-				   need(input$ticker != "", "Input a valid US stock ticker.")
-				   )
-			  x <- get.hist.quote(input$ticker, start = input$dates[1], end = input$dates[2], quote = "Close")
-			  x <- ts(x)
-			  r <- log(x[2:(length(x))]/x[1:(length(x) - 1)])
+    mainPanel(
+        renderPlot({
+            devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
+            library(quantmod)
+            validate(
+                need(input$ticker != "", "Input a valid US stock ticker.")
+            )
 
-			  plot(density(r), main = paste(input$ticker, "Stock Returns vs the Normal Distribution"), lty = 1, 
-			       col = 1, lwd = 2, xlab = "Log-Returns in %/100")
+            stockprices <- getSymbols(input$ticker, auto.assign = FALSE, from = input$dates[1], to = input$dates[2])
+            r <- Delt(Ad(stockprices), type = 'log')
 
-			  lines(density(rnorm(5e+05, mean = mean(r), sd = sd(r))), lty = 4, col = 2, 
-				lwd = 2)
+            plot(density(r, na.rm = TRUE), main = paste(input$ticker, "Stock Returns vs the Normal Distribution"), lty = 1,
+                 col = 1, lwd = 2, xlab = "Log-Returns in %/100")
 
-			  legend("topright", c("Stock Return Density", "Normal Density"), col = c(1, 2), 
-				 lty = c(1, 4), lwd = c(2, 2))
-			})
-			### old tabset panel stuff ----
-			#{{{
-			#                                              ),
+            lines(density(rnorm(5e+05, mean = mean(r, na.rm = TRUE), sd = sd(r, na.rm = TRUE))), lty = 4, col = 2,
+                  lwd = 2)
 
-			#                                     tabPanel("Statistics", renderPrint({ 
-			#                                       validate(
-			#                                                need(input$ticker != "", "Input a valid US stock ticker.")
-			#                                                )
-			#                                       x <- get.hist.quote(input$ticker, start = input$dates[1], end = input$dates[2], quote = "Close", quiet = T)
-			#                                       x <- ts(x)
-			#                                       r <- log(x[2:(length(x))]/x[1:(length(x) - 1)])
-			#                                       p1 <- 2 * (1 - pt(abs(skewness(r)/(sqrt(6/length(r)))), length(r) - 1))
-			#                                       p2 <- 2 * (1 - pt(abs(kurtosis(r)/(sqrt(24/length(r)))), length(r) - 1))
-			#                                              row.names <- c("Sample Skewness", "t-statistic (skewness)", "p-value (skewness)", "Outcome (skewness)", "", "Sample Kurtosis", "t-statistic (kurtosis)", "p-value (kurtosis)", "Outcome (kurtosis)")
-			#                                              df <- data.frame(as.character(c(round(skewness(r), 2),round(skewness(r)/(sqrt(6/length(r))), 2), round(p1, 2), ifelse(p1 < 0.05, "Reject the null. The distribution is skewed.", "Do not reject. Not skewed"), "", round(kurtosis(r)[1], 2), round(kurtosis(r)/(sqrt(24/length(r))), 2), round(p2), ifelse(p2 < 0.05, "Reject the null. Has fat tails.", 
-			#                                                                                                                                                                                                                                                                                                                                                         "Do not reject. No fat tails.")  )) , row.names = row.names)
-			#                                       cat("Sample skewness:", round(skewness(r), 2), "\n")
-			#                                       cat("For a t-statistic of", round(skewness(r)/(sqrt(6/length(r))), 2), "\n")
-			#                                       cat("And a p-value of", round(p1, 2), "\n")
-			#                                       cat("So we", ifelse(p1 < 0.05, "reject the null.\nThe distribution is skewed.", 
-			#                                                           "do not reject the null.\nThe distribution is symmetric."), "\n")
-			#                                       cat("\n")
-			# 
-			#                                       cat("The sample excess kurtosis is", round(kurtosis(r)[1], 2), "\n")
-			#                                       cat("For a t-statistic of", round(kurtosis(r)/(sqrt(24/length(r))), 2), "\n")
-			#                                       cat("And a p-value of", round(p2,2), "\n")
-			#                                       cat("So we", ifelse(p2 < 0.05, "reject the null.\nThe distribution has fat tails.", 
-			#                                                           "do not reject the null.\nThe distribution does not have fat tails."), 
-			#                                           "\n")
-			#                                     })
-			#                                     )
-			# 
-			#                           , position = "right")
-			#}}}
-			)
-	      )
+            legend("topright", c("Stock Return Density", "Normal Density"), col = c(1, 2),
+                   lty = c(1, 4), lwd = c(2, 2))
+        })
+    )
+)
 #}}}
 ```
 
@@ -236,17 +199,16 @@ sidebarLayout(
 tabsetPanel(
 	tabPanel(title = "Empirical",
  		 renderPlot({
-			  library(fBasics)
-			  library(tseries)
+			  library(quantmod)
 			  validate(
 				   need(input$ticker1 != "", "Input a valid US stock ticker.")
-				   )
-			  x1 <- get.hist.quote(input$ticker1, start = input$dates1[1], end = input$dates1[2], quote = "Close")
-			  x1 <- ts(x1)
-			  r1 <- log(x1[2:(length(x1))]/x1[1:(length(x1) - 1)])
-			  dens <- density(r1)
+                          )
+                          stockprices1 <- getSymbols(input$ticker1, auto.assign = FALSE, from = input$dates1[1], to = input$dates1[2])
+                          r1 <- Delt(Ad(stockprices1), type = 'log')
 
-			  VaR <- quantile(r1, input$loss)
+			  dens <- density(r1, na.rm = TRUE)
+
+			  VaR <- quantile(r1, input$loss, na.rm = TRUE)
 			  ret <- max(which(dens$x < VaR))
 			  qn <- min(which(dens$x >= -1))
 			  plot(dens, main = paste(input$ticker1, "VaR and Empirical Density"), lty = 1, col = 1, lwd = 2, ylab = "", xlab = paste("The ", 100*input$loss,"% ", "VaR is"," ", round(100*VaR, 2), "%", sep = ""), cex.lab = 2)
@@ -259,20 +221,19 @@ tabsetPanel(
 	),
 	    tabPanel(title = "Normal",
 		     renderPlot({
-			  library(fBasics)
-			  library(tseries)
+			  library(quantmod)
 			  validate(
 				   need(input$ticker1 != "", "Input a valid US stock ticker.")
-				   )
-			  x2 <- get.hist.quote(input$ticker1, start = input$dates1[1], end = input$dates1[2], quote = "Close")
-			  x2 <- ts(x2)
-			  r2 <- log(x2[2:(length(x2))]/x2[1:(length(x2) - 1)])
-			  aver.var <- mean(r2)
-			  sd.var <- sd(r2)
-			  r2 <- rnorm(mean = aver.var, sd = sd.var, n = 2000000)
-			  dens2 <- density(r2)
+                          )
+                          stockprices2 <- getSymbols(input$ticker1, auto.assign = FALSE, from = input$dates1[1], to = input$dates1[2])
+                          r2 <- Delt(Ad(stockprices2), type = 'log')
 
-			  VaR2 <- quantile(r2, input$loss)
+			  aver.var <- mean(r2, na.rm = TRUE)
+			  sd.var <- sd(r2, na.rm = TRUE)
+			  r2 <- rnorm(mean = aver.var, sd = sd.var, n = 2000000)
+			  dens2 <- density(r2, na.rm = TRUE)
+
+			  VaR2 <- quantile(r2, input$loss, na.rm = TRUE)
 			  ret2 <- max(which(dens2$x < VaR2))
 			  qn2 <- min(which(dens2$x >= -1))
 			  plot(dens2, main = paste(input$ticker1, "VaR and Normal Density"), lty = 1, col = 1, lwd = 2, ylab = "", xlab = paste("The ", 100*input$loss,"% ", "VaR is"," ", round(100*VaR2, 2), "%", sep = ""), cex.lab = 2)
