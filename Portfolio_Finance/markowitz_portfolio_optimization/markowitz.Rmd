@@ -116,6 +116,7 @@ So we can see, holding expected returns constant, as we lower the correlation, w
 
 ```{r echo = FALSE, warning=FALSE, error=FALSE, message = FALSE}
 #{{{
+devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
 library(highcharter)
 library(quantmod)
 inputPanel(
@@ -197,6 +198,7 @@ The app on the next slide allows you to enter 5 stocks, and see the mean-varianc
 
 ```{r echo = FALSE, warning=FALSE, error=FALSE}
 #{{{
+devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
 library(stockPortfolio)
 library(quantmod)
 inputPanel(
@@ -208,18 +210,18 @@ inputPanel(
 )
 
 renderPlot({
-tickers <- c(input$ticker1a,input$ticker2a, input$ticker3a, input$ticker4a, input$ticker5a, "SPY")
+tickers <- c(input$ticker1a, input$ticker2a, input$ticker3a, input$ticker4a, input$ticker5a, "SPY")
 
 gR <- getReturns(tickers, start = (Sys.Date() - 362), end = Sys.Date())
   
 # model1 <- stockModel(gR)
 # optPort <- optimalPort(model1, Rf = .01)
 sim <- stockModel(gR, model="SIM", index=6, shortSelling="y")
- simOP <- optimalPort(sim, Rf = 0)
+simOP <- optimalPort(sim, Rf = 0)
 plot(simOP) 
- portPossCurve(sim, add = TRUE)
- abline(coef = c(.01, ((simOP$R - .01) / simOP$risk)))
- legend('topright', c(paste0("Optimal Portfolio\n ", "Exp. Return = ", round(100 * simOP$R, 2)), paste0("Risk = ", round(100 * simOP$risk, 2))))
+portPossCurve(sim, add = TRUE)
+abline(coef = c(.01, ((simOP$R - .01) / simOP$risk)))
+legend('topright', c(paste0("Optimal Portfolio\n ", "Exp. Return = ", round(100 * simOP$R, 2)), paste0("Risk = ", round(100 * simOP$risk, 2))))
  })
 #}}}
 ```

@@ -24,8 +24,16 @@ If we assume that stock options exist in world where...
 
 ## Black-Scholes Formula: $C_0 = S_0N(d_1) - Xe^{-rT}N(d_2)$
 
-<div class ="columns-2">
+<style>
+#col {
+-moz-column-count: 2;
+-webkit-column-count: 2;
+column-count: 2;
+}
+</style>
 
+<!-- <div class ="columns-2"> -->
+<div id="col">
 *where*
 
 $d_1 = \frac{ln(\frac{S_0}{X}) + (r+\frac{\sigma^2}{2})T}{\sigma\sqrt(T)}$
@@ -47,9 +55,10 @@ $d_2 = d_1 - \sigma\sqrt(T)$
 - $\sigma$: the annualized standard deviations of log returns.
 
 -  $e$ and $ln$ are the exponential and natural log functions respectively (EXP() and LN() in Excel).
+
 </div>
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
 
 ## Where is the Expected Return?
 
@@ -235,27 +244,24 @@ $\sigma_a = \sigma_p \sqrt{\#\ periods\ in\ a\ year}$
 
 ##
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, error = FALSE}
 #{{{
-## library(dygraphs)
-library(quantmod)
 inputPanel(
     textInput(inputId = "ticker2", label = "Stock Ticker", value = "XOM"),
-    dateRangeInput("range", "Date Range", start = "2015-01-01", end = Sys.Date())
+    dateRangeInput("range", "Date Range", start = "2015-01-05", end = Sys.Date())
     )
 renderPlot({
+    devtools::install_github("joshuaulrich/quantmod", ref = "157_yahoo_502")
+    library(quantmod)
     validate(
         need(input$ticker2 != "", "Input a valid US stock ticker.")
         )
-    stock2 <- getSymbols(input$ticker2, from = "1900-01-01", auto.assign = FALSE)
-    stock2 <- stock2[paste(input$range[1], "/", input$range[2], sep = "")]
+    stock2 <- getSymbols(input$ticker2, from = input$range[1], to = input$range[2], auto.assign = FALSE)
     returns <- Delt(Ad(stock2), type = 'log')[-1]
     annSD <- sd(returns) * sqrt(252) * 100
                                      
     plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "", main = "Annualized Historical Volatility")
     text(x = 0.5, y = 0.5, labels = paste(round(annSD, 2), "%", sep = ""), cex = 5)
-    ## dygraph(Ad(stock2), main = "") %>%
-    ##     dyRangeSelector()
 })
 #}}}
 ```

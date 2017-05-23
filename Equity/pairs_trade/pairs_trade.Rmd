@@ -111,7 +111,7 @@ The app on the slide 10 allows you to chart normalized prices for any pair and e
 <!-- Estimation Period -->
 
 
-```{r, messsage=FALSE, warning=FALSE, echo = FALSE}
+```{r, messsage=FALSE, warning=FALSE, echo = FALSE, error = FALSE}
 #{{{
 ## in the process of translating this code into a Shiny app
 ## just run for each pair?
@@ -130,6 +130,7 @@ shinyUI(fluidPage(
                   )),
         column(9,
                renderDygraph({
+                   devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
                library(quantmod)
                ## Estimation period
                ## from <- input$estim_period[1]
