@@ -177,6 +177,7 @@ Stock has historically been one of the best performing asset classes.  While sto
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
 library(dygraphs)
+devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
 library(quantmod)
 inputPanel(
     textInput(inputId = "ticker2", label = "Stock Ticker", value = "XOM")
@@ -185,7 +186,7 @@ renderDygraph({
     validate(
         need(input$ticker2 != "", "Input a valid US stock ticker.")
         )
-    stock2 <- getSymbols(input$ticker2, from = "1900-01-01", auto.assign = FALSE)
+    stock2 <- getSymbols(input$ticker2, from = "1950-01-03", auto.assign = FALSE)
     dygraph(Ad(stock2), main = "") %>%
         dyRangeSelector()
 })
