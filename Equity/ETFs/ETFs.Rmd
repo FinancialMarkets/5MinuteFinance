@@ -95,6 +95,7 @@ The next slide will show you the cumulative returns for the ETF and index you ch
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
+devtools::install_github("joshuaulrich/quantmod")
 library(dygraphs)
 library(quantmod)
 inputPanel(

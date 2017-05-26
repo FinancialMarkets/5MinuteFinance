@@ -101,6 +101,7 @@ You can use the app on the following slide to see the divergence in the return o
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
+devtools::install_github("joshuaulrich/quantmod")
 library(dygraphs)
 library(quantmod)
 ## library(DT)

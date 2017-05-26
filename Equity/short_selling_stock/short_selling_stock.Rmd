@@ -171,10 +171,11 @@ The next slide shows the performance of an ETF on the S&P 500 (SPY) and an inver
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
 library(dygraphs)
+devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
 library(quantmod)
 renderDygraph({
-    stock1 <- getSymbols("SPY", from = "1900-01-01", auto.assign = FALSE)
-    stock2 <- getSymbols("SH", from = "1900-01-01", auto.assign = FALSE)
+    stock1 <- getSymbols("SPY", from = "1950-01-03", auto.assign = FALSE)
+    stock2 <- getSymbols("SH", from = "1950-01-03", auto.assign = FALSE)
     stocks <- merge.xts(Ad(stock1), Ad(stock2), join = "inner")
     dygraph(Ad(stocks), main = "") %>%
         dyRangeSelector()
