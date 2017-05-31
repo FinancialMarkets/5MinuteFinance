@@ -8,6 +8,11 @@ runtime: shiny
 smaller: true
 ---
 
+## Growth Rates
+
+This presentation will give you an idea of how the growth rate of the firm relates to financing required.
+
+
 ## External Financing Needed (EFN)
 
 $EFN = \frac{Assets}{Sales}\Delta Sales + \frac{Spon. Debt}{Sales}\Delta Sales - PM(Pro. Sales)(1 - d)$
