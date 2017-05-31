@@ -1,5 +1,5 @@
 ---
-title: "Dividends"
+title: "Growth Rates and Financing Needed"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 output: ioslides_presentation
 logo: misq.png
@@ -10,14 +10,27 @@ smaller: true
 
 ## Growth Rates
 
-This presentation will give you an idea of how the growth rate of the firm relates to financing required.
+This presentation will give you an idea of how the growth rate of the firm relates to financing required.  Let's say you increase your firm's expected sales.  Then:
 
+-  You will also need more assets to provide for the increased sales.
+
+-  An increase in assets will require an increase in the firm's liabilities and/or equity (remember the balance sheet identity).
+
+The amount of assets required will affect the proportion of debt and equity required.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##  Importance
+
+Understanding the relationship between growth and financing will help the firm set coherent goals. For example, you may hear a firm say they want to both increase sales and lower debt levels.  Are these goals compatible?  The following discussion will answer this question.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## External Financing Needed (EFN)
 
-$EFN = \frac{Assets}{Sales}\Delta Sales + \frac{Spon. Debt}{Sales}\Delta Sales - PM(Pro. Sales)(1 - d)$
+Say we expect sales to increase by $\$\Delta Sales$, and denote the firm's profit margin and dividend payout ratio by *PM* and *d* respectively. Define *Variable Debt* as the amount of debt that increases and decreases with assets. *Pro. Sales* is projected sales, and $\Delta Sales$ is the projected change in sales.  Lastly assume the amount of assets needed to generate a dollar in sales is constant over the range of sales we are considering (constant assets over sales ratio).  Then for a given change in sales, the amount of external financing needed can be calculated by:
 
-where *d* is the firm's dividend payout ratio, and *PM* the profit margin.  *Spon. Debt* is the amount of debt which is affected by changes in sales. *Pro. Sales* is projected sales, and $\Delta Sales$ is the projected change in sales.
+$EFN = \frac{Assets}{Sales}\Delta Sales + \frac{Variable Debt}{Sales}\Delta Sales - PM(Pro. Sales)(1 - d)$
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
