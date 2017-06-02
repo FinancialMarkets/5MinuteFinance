@@ -1,0 +1,8 @@
+---
+title: Investments
+output: html_document
+---
+
+## 
+
+[The Goal of Financial Management](https://micfm.shinyapps.io/goal_fin_mgmt/) | [Mobile Friendly Version](https://micfm.shinyapps.io/goal_fin_mgmt_mobile/)
