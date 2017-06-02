@@ -78,6 +78,8 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Capital Structure](https://micfm.shinyapps.io/capital_structure/) | [Mobile Friendly Version](https://micfm.shinyapps.io/capital_structure_mobile/)
 
+[The Weighted-Average Cost of Captital](https://micfm.shinyapps.io/WACC) | [Mobile Friendly Version](https://micfm.shinyapps.io/WACC_mobile/)
+
 [Dividends](https://micfm.shinyapps.io/dividends/) | [Mobile Friendly Version](https://micfm.shinyapps.io/dividends_mobile/)
 
 ### Econometrics
