@@ -22,7 +22,7 @@ If we assume that the firm pays dividends, and these dividends (and hence the st
 
 $P_0 = \frac{D_1}{r - g} \Rightarrow r = \frac{D_1}{P_0} + g$
 
-where *r* is the cost of equity, *P_0* the stock price today, *D_1* the dividend in the next period, and *g* the growth rate of dividends and the stock price.
+where *r* is the cost of equity, $P_0$ the stock price today, $D_1$ the dividend in the next period, and *g* the growth rate of dividends and the stock price.
 
 The downsides of this approach are:
 
@@ -36,9 +36,9 @@ The downsides of this approach are:
 
 We can also use the CAPM to estimate the cost of equity capital.  Remember, the [CAPM](http://www.5minutefinance.org/concepts/the-capital-asset-pricing-model):
 
-$R_e = R_f + \Beta_e(R_m - R_f)$
+$R_e = R_f + \beta_e(R_m - R_f)$
 
-where *R_e* is the cost of equity, *R_f* is the risk-free rate, $\Beta_e$ is the amount of systematic risk in the asset *e*, and the expected return on the market minus the risk-free rate $(R_m - R_f)$ is the reward for bearing systematic risk.
+where $R_e$ is the cost of equity, $R_f$ is the risk-free rate, $\beta_e$ is the amount of systematic risk in the asset *e*, and the expected return on the market minus the risk-free rate $(R_m - R_f)$ is the reward for bearing systematic risk.
 
 -  The benefits of this approach are that it can be applied to any stock (any capital asset) and that it explicitly takes into account risk. 
 
