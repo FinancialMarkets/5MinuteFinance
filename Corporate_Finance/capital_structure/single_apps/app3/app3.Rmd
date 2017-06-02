@@ -1,0 +1,64 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+library(highcharter)
+library(dplyr)
+library(quantmod)
+comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+names(comp) <- c("symbol", "name")
+
+inputPanel(
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name)
+)
+
+renderHighchart({
+
+
+    validate(
+        need(input$name != "", "Select a US stock name.")
+    )
+    ticker <- comp$symbol[comp$name == input$name]
+
+
+    f2 <- getFinancials(ticker, src = "google", auto.assign = FALSE)
+    bs2 <- viewFin(f2, type = "BS")
+    
+
+
+    ## D/E ratio
+
+    debt2 <- bs2[rownames(bs2) == "Total Debt"][1]
+    equity2 <- bs2[rownames(bs2) == "Total Equity"][1]
+
+    capStruct <- tbl_df(cbind(rbind("Weight_Equity", "Weight_Debt"), rbind(equity2, debt2)))
+    names(capStruct) <- c("bar", "percent")
+    capStruct$percent <- as.numeric(capStruct$percent)
+
+
+
+    highchart() %>%
+        hc_add_series(capStruct, "pie", hcaes(name = bar, y = percent), name = "Capital Structure") %>%
+        hc_plotOptions(
+            pie = list(
+                colorByPoint = TRUE, center = c('50%', '50%'),
+                size = 220, dataLabels = list(enabled = FALSE)
+            )
+        ) %>%
+                                        # Titles and credits
+        hc_title(
+            text = "Capital Structure"
+        ) %>%
+        hc_subtitle(text = "Using Balance Sheet Numbers (not market values)") %>% 
+        hc_credits(
+            enabled = TRUE, text = "",
+            href = "http://complete-markets.com",
+            style = list(fontSize = "12px")
+        )    
+})
+
+```

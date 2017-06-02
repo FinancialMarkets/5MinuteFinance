@@ -1,0 +1,62 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+
+## 
+
+<!-- interactive app -->
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+library(highcharter)
+library(dplyr)
+
+inputPanel(
+    sliderInput("deRatio", "Debt-to-Equity Ratio", value = .5, min = 0, max = 10, step = .1, animate = TRUE)
+)
+renderHighchart({
+
+    proportionEquity <- 1 / (1 + input$deRatio)
+    proportionDebt <- 1 - proportionEquity
+    ebit <- seq(0, 3000000, by = 100)
+    interest.rate <- .1
+    assets <- 10000000
+    amountDebt <- proportionDebt * assets
+    amountEquity <- proportionEquity * assets
+
+    pricePerShare <- 200
+
+    originalNumShares <- 50000
+    newNumShares <- originalNumShares - amountDebt / pricePerShare
+
+    noDebtEPS <- ebit / originalNumShares
+
+    debtEPS <- (ebit - amountDebt * interest.rate) / newNumShares
+
+    data <- tbl_df(cbind(ebit, debtEPS, noDebtEPS))
+    names(data) <- c("EBIT", "With_Debt", "No_Debt")
+
+    highchart() %>%
+        hc_add_series(data$With_Debt, name = "EPS: With Debt") %>%
+        hc_add_series(data$No_Debt, name = "EPS: No Debt") %>%
+
+    hc_yAxis(
+        title = list(text = "EPS")
+    ) %>% 
+    hc_xAxis(title = list(text = "EBIT")) %>%
+                                        # Titles and credits
+    hc_title(
+        text = "The Effect of Leverage on EPS"
+    ) %>%
+    hc_subtitle(text = "") %>% 
+    hc_credits(
+        enabled = TRUE, text = "Matt_Brigida",
+        href = "http://complete-markets.com",
+        style = list(fontSize = "12px")
+    ) %>%
+    hc_add_theme(hc_theme_flatdark())
+    
+})
+
+```

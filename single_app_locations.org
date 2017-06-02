@@ -240,4 +240,13 @@ https://micfm.shinyapps.io/balance_sheet_identity_app1/
 
 ** Modigliani and Miller Propositions
 
-https://micfm.shinyapps.io/MM_propositions_app1/
+   https://micfm.shinyapps.io/MM_propositions_app1/
+** Capital Structure
+
+https://micfm.shinyapps.io/capital_structure_app1/
+
+https://micfm.shinyapps.io/capital_structure_app2/
+
+https://micfm.shinyapps.io/capital_structure_app3/
+
+** The Weighted-Average Cost of Capital

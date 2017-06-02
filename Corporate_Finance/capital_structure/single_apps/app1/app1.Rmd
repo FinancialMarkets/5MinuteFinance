@@ -1,0 +1,61 @@
+---
+title:
+output: html_document
+runtime: shiny
+---
+
+##
+
+<!-- interactive app -->
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(DT)
+inputPanel(
+  sliderInput("per", label = "Percent Increase/Decrease", min = 0, max = 100, value = 50, animate = TRUE),
+  sliderInput("de", "Debt-to-Equity Ratio", value = 1, min = 0, max = 10, step = .1, animate = TRUE)
+)
+DT::renderDataTable({
+ ebitNormal <- 1200000 
+ ebitUP <- 1200000 * (1 + (input$per / 100)) 
+ ebitDOWN <- 1200000 * (1 - (input$per / 100))  
+ int <- 500000 
+ int.rate <- .1
+ 
+ aassets <- 10000000
+ 
+ propEquity <- 1 / (1 + input$de)
+ propDebt <- 1 - propEquity
+ amtDebt <- propDebt * aassets
+ amtEquity <- propEquity * aassets
+
+ pPerShare <- 200
+
+ origNumShares <- 50000
+ nNumShares <- origNumShares - amtDebt / pPerShare
+
+ ## no debt EPS and ROE
+ noDebtEPSNormal <- ebitNormal / origNumShares
+ noDebtEPSUP <- ebitUP / origNumShares
+ noDebtEPSDOWN <- ebitDOWN / origNumShares
+
+ noDebtROENormal <- ebitNormal / 10000000 # 10000000 is the amount of equity in the no debt case
+ noDebtROEUP <- ebitUP / 10000000
+ noDebtROEDOWN <- ebitDOWN / 10000000
+
+ ## with debt EPS and ROE
+ debtEPSNormal <- round((ebitNormal - amtDebt * int.rate) / nNumShares, 2)
+ debtEPSUP <- round((ebitUP - amtDebt * int.rate) / nNumShares, 2)
+ debtEPSDOWN <- round((ebitDOWN - amtDebt * int.rate) / nNumShares, 2)
+
+ debtROENormal <- round((ebitNormal  - amtDebt * int.rate) / amtEquity, 2) # antEquity is the amount of equity in the debt case
+ debtROEUP <- round((ebitUP  - amtDebt * int.rate) / amtEquity, 2)
+ debtROEDOWN <- round((ebitDOWN  - amtDebt * int.rate) / amtEquity, 2)
+
+ dataForDT <- data.frame(rbind(c(noDebtROEDOWN, noDebtROENormal, noDebtROEUP), c(noDebtEPSDOWN, noDebtEPSNormal, noDebtEPSUP), c(debtROEDOWN, debtROENormal, debtROEUP), c(debtEPSDOWN, debtEPSNormal, debtEPSUP)))
+ colnames(dataForDT) <- c("Recession", "Normal", "Expansion")
+ row.names(dataForDT) <- c("No Debt: ROE", "No Debt: EPS", "Debt: ROE", "Debt: EPS")
+
+ datatable(dataForDT)
+
+})
+
+```
