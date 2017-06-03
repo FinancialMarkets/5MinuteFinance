@@ -1,0 +1,20 @@
+name: "5MinuteFinance Educator/Student Site"
+output_dir: "."
+navbar:
+  title: "HOME"
+  icon: fa-home
+  left:
+    - text: "Courses"
+      icon: fa-graduation-cap
+      menu:
+         - text: "Corporate Finance"
+           href: 
+         - text: "Investments"
+           href: 
+    - text: "Contributing"
+      href: 
+      icon: fa-bar-chart
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
