@@ -9,10 +9,16 @@ navbar:
       menu:
          - text: "Corporate Finance"
            href: intro_corp_fin.html 
+           icon: fa-book
          - text: "Investments"
-           href: 
-         - text: International Finance
-           href:
+           href: investments.Rmd
+           icon: fa-bar-chart
+         - text: "International Finance"
+           href: intl_finance.html
+           icon: glyphicon-euro
+         - text: "Financial Markets and Institutions"
+           href: fin_mkts.html
+           icon: fa-building
     - text: "Contributing"
       href: 
       icon: fa-bar-chart

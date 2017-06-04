@@ -1,5 +1,5 @@
 ---
-title: Course Outline with Presentations: International Financial Management
+title: International Financial Management
 output: html_document
 ---
 

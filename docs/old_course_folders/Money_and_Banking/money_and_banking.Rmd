@@ -1,5 +1,5 @@
 ---
-title: Money and Banking Putline and Presentations
+title: Money and Banking Outline and Presentations
 output: html_document
 ---
 
