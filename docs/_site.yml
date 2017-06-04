@@ -20,7 +20,7 @@ navbar:
            href: fin_mkts.html
            icon: fa-building
     - text: "How to Contribute"
-      href: 
+      href: contributing.html
       icon: fa-pencil
 output:
   html_document:
