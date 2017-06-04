@@ -11,7 +11,7 @@ navbar:
            href: intro_corp_fin.html 
            icon: fa-book
          - text: "Investments"
-           href: investments.Rmd
+           href: investments.html
            icon: fa-bar-chart
          - text: "International Finance"
            href: intl_finance.html
