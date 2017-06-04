@@ -19,9 +19,9 @@ navbar:
          - text: "Financial Markets and Institutions"
            href: fin_mkts.html
            icon: fa-building
-    - text: "Contributing"
+    - text: "How to Contribute"
       href: 
-      icon: fa-bar-chart
+      icon: fa-pencil
 output:
   html_document:
     theme: cosmo
