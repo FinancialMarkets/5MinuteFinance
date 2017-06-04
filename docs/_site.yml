@@ -9,6 +9,13 @@ navbar:
       menu:
          - text: "Corporate Finance"
            href: 
+           menu:
+             - text: "Capital Structure"
+               href:
+               icon:
+             - text: "Dividends"
+               href:
+               icon:
          - text: "Investments"
            href: 
     - text: "Contributing"
