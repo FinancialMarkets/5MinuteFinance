@@ -8,16 +8,11 @@ navbar:
       icon: fa-graduation-cap
       menu:
          - text: "Corporate Finance"
-           href: 
-           menu:
-             - text: "Capital Structure"
-               href:
-               icon:
-             - text: "Dividends"
-               href:
-               icon:
+           href: intro_corp_fin.html 
          - text: "Investments"
            href: 
+         - text: International Finance
+           href:
     - text: "Contributing"
       href: 
       icon: fa-bar-chart
