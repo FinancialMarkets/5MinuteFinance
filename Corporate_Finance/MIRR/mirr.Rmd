@@ -57,7 +57,7 @@ We can solve the multiple IRR formula by putting the cash flows into *convention
 
 - We do so by moving cash flows in time at a *discount rate*, until the cash flows are conventional.
 
-- Note a potential benefit of the IRR approach was that it did not require a discount rate (though it does require a threshold rate).  
+- Note a potential benefit of the IRR approach was that it did not require a discount rate (though it does require a threshold rate).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -75,16 +75,37 @@ Assume the discount rate is 8%.  Then we can move the -\$200 in year two to year
 | ---- |---|---|---|---|
 | Cash Flow | -100 | 114.81 | 0 | 50 |
 
+With one change in sign we are ensured of only one IRR solution, which in this case is: 40.23\%.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## MIRR Example Continued
 
-## Net Present Value (NPV)
+Of course, you could also move the negative cash flow at year 3 to year 0.  This would afford the following cash flows:
 
-Given MIRR requires a discount rate, and still suffers from the [loss of scale problem](INSERT LINK), it makes sense to simply use NPV.
+<br>
 
+| Year | 0 | 1 | 2 | 3 |
+| ---- |---|---|---|---|
+| Cash Flow | -271.47 | 300 | 0 | 50 |
 
+<br>
 
+for which the IRR is 22.74\%.  This highlights that, since the discount rate is different than the IRR, the decision on where to move the cash flows will affect the MIRR.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## MIRR vs NPV
+
+| MIRR | NPV |
+|------|-----|
+| Requires a discount rate | Requires a discount rate |
+| Loses Scale | Retains Scale |
+| Returns Percent | Returns increase in firm equity |
+
+<br>
+
+Given MIRR requires a discount rate, suffers from the loss of scale problem, and can lead to making incorrect investment decisions under capital constraints, it makes sense to simply use NPV.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

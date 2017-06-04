@@ -39,6 +39,8 @@ output: html_document
 
 [Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/) | [Mobile Friendly Version](https://micfm.shinyapps.io/NPV_and_IRR_mobile)
 
+[*Need to Add:*  Modified Internal Rate of Return]() 
+
 [*Need to Add:*  Other Investment Decision Rules]() 
 
 ## Risk and Return
