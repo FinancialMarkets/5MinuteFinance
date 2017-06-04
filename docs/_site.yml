@@ -22,6 +22,9 @@ navbar:
     - text: "How to Contribute"
       href: contributing.html
       icon: fa-pencil
+    - text: "Supporters"
+      href: supporters.html
+      icon: ion-android-contacts
 output:
   html_document:
     theme: cosmo
