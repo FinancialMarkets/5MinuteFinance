@@ -1,0 +1,121 @@
+---
+title: "Modified Internal Rate of Return"
+author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Corporate_Finance/MIRR/mirr.Rmd)"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod2.css
+runtime: shiny
+---
+
+## Multiple Internal Rates of Return (IRRs)
+
+A problem with the IRR investment decision rule, is if the cash flows from a project change signs *X* times, then there are up to *X* IRRs for the project.  
+
+-  The problem is no one IRR is more correct than another, and so the multiple IRRs may give differing accept/reject decisions.  
+
+-  In the following interactive app, enter cash flows, and the app will try to return all valid IRRs.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Interactive App
+
+```{r echo = FALSE, warning = FALSE, error = FALSE}
+library(financial)
+inputPanel(
+    numericInput("cf0", "Cash Flow at Time 0", value = -100),
+    numericInput("cf1", "Cash Flow at Time 0", value = 300),
+    numericInput("cf2", "Cash Flow at Time 0", value = -200),
+    numericInput("cf3", "Cash Flow at Time 0", value = 10)
+)
+
+renderTable({
+
+    ## read in IRR function
+    ## source("https://raw.githubusercontent.com/FinancialMarkets/corpfin/master/irr.R")
+    
+    cfs <- c(input$cf0, input$cf1, input$cf2, input$cf3)
+
+    ## irrs <- 0
+
+    ## for(i in seq(-100, 100, by = .5)){
+    ##     irrs[i] <- round(irr(cfs)$IRR, 2)
+    ## }
+
+    ## unique(irrs)
+
+    out <- as.data.frame(cf(cfs)[2]$irr)
+    names(out) <- "IRRs (in %)"
+    out
+
+})
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Modified IRR (MIRR)
+
+We can solve the multiple IRR formula by putting the cash flows into *conventional* form. By *conventional* we mean cash outflows followed by cash inflows, so there is only one chance in the sign of the cash flows.
+
+- We do so by moving cash flows in time at a *discount rate*, until the cash flows are conventional.
+
+- Note a potential benefit of the IRR approach was that it did not require a discount rate (though it does require a threshold rate).
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## MIRR Example
+
+Say we have the following cash flows (the default in the above app):
+
+| Year | 0 | 1 | 2 | 3 |
+| ---- |---|---|---|---|
+| Cash Flow | -100 | 300 | -200 | 50 |
+
+Assume the discount rate is 8%.  Then we can move the -\$200 in year two to year 1. This affords the following modified cash flows:
+
+| Year | 0 | 1 | 2 | 3 |
+| ---- |---|---|---|---|
+| Cash Flow | -100 | 114.81 | 0 | 50 |
+
+With one change in sign we are ensured of only one IRR solution, which in this case is: 40.23\%.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## MIRR Example Continued
+
+Of course, you could also move the negative cash flow at year 3 to year 0.  This would afford the following cash flows:
+
+<br>
+
+| Year | 0 | 1 | 2 | 3 |
+| ---- |---|---|---|---|
+| Cash Flow | -271.47 | 300 | 0 | 50 |
+
+<br>
+
+for which the IRR is 22.74\%.  This highlights that, since the discount rate is different than the IRR, the decision on where to move the cash flows will affect the MIRR.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## MIRR vs NPV
+
+| MIRR | NPV |
+|------|-----|
+| Requires a discount rate | Requires a discount rate |
+| Loses Scale | Retains Scale |
+| Returns Percent | Returns increase in firm equity |
+
+<br>
+
+Given MIRR requires a discount rate, suffers from the loss of scale problem, and can lead to making incorrect investment decisions under capital constraints, it makes sense to simply use NPV.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Credits and Collaboration
+
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/MM_Propositions/MM_propositions.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Corporate_Finance/MM_Propositions/MM_propositions.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
