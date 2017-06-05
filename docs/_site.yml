@@ -1,7 +1,7 @@
 name: "5MinuteFinance Educator/Student Site"
 output_dir: "."
 navbar:
-  title: "HOME"
+  title: "5MinuteFinance"
   icon: fa-home
   left:
     - text: "Courses"
@@ -19,9 +19,16 @@ navbar:
          - text: "Financial Markets and Institutions"
            href: fin_mkts.html
            icon: fa-building
-    - text: "How to Contribute"
-      href: contributing.html
+    - text: "Write Your Own or Contribute"
+      # href: contributing.html
       icon: fa-pencil
+      menu:
+         - text: "Why Write/Contribute?"
+         - href:
+         - icon:
+         - text: "How to use GitHub"
+         - href:
+         - icon: 
     - text: "Supporters"
       href: supporters.html
       icon: ion-android-contacts

@@ -1,10 +1,14 @@
 ---
-title: "5MinuteFinance Educator and Student Site"
+title: "5MinuteFinance Instructor Site"
 date: "May 5, 2017"
 output: html_document
 ---
 
-This is ....
+This site organizes the 5MinuteFinance interactive presentations into course outlines.  To see a course outline, choose it from the 'Courses' dropdown box above.  The idea is to make it very easy to incorporate these presentations into your course---simply place a link in Blackboard to the course outline.
+
+## What is 5MinuteFinance
+
+[Insert link to video]
 
 
 
