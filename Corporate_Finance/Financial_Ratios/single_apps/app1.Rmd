@@ -116,7 +116,7 @@ sidebarLayout(
             
 
             plot(ratio.to.plot[[1]], main = plot.main, type = "l", lty = 1, 
-                 col = "green", lwd = 3, ylab = "Profit Margin", xlab = "Year", ylim = c(plot.min, plot.max), xaxt = "n")
+                 col = "green", lwd = 3, ylab = legend.ratio, xlab = "Year", ylim = c(plot.min, plot.max), xaxt = "n")
             axis(1, at = c(1,2,3,4), labels = c("2012", "2013", "2014", "2015"))
 
             lines(ratio.to.plot[[2]], lty = 1, col = "blue", lwd = 4)
