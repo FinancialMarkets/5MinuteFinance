@@ -30,7 +30,7 @@ The first step in valuing a stock by discounted dividends is to project what the
 
 1.  Constant dividends.
 2.  Constant *growth rate* in dividends.
-3.  Irregular growth in dividends.
+3.  Nonconstant growth in dividends.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -84,7 +84,7 @@ Sometimes this is asked in a trickier fashion.  Instead, say the firm *just paid
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Irregular Growth in Dividends
+## Nonconstant Growth in Dividends
 
 This covers all other cases.  The most common scenarios are:
 
@@ -94,7 +94,7 @@ This covers all other cases.  The most common scenarios are:
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Example of Irregular Growth
+## Example of Nonconstant Growth
 
 As an example of scenario 1, say a firm is not expected to pay dividends for the next 8 years.  In year 9 the firm will pay a \$5 dividend which is expected to grow at 3% thereafter.  The discount rate $k$ is 7%.
 
@@ -123,7 +123,7 @@ sidebarLayout(
         ## inputPanel(
         selectInput("type", label = "Select Dividend Growth Type", choices = c("No Growth" = "no",
                                                                    "Constant Growth" = "c",
-                                                                   "Irregular Growth" = "ig")),
+                                                                   "Nonconstant Growth" = "ig")),
         conditionalPanel(
             condition = "input.type == 'no'",
             numericInput("dr1", "Discount Rate", value = 0.05, step = .01),
