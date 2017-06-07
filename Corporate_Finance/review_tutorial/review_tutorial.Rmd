@@ -1,0 +1,35 @@
+---
+title: "Corporate Finance Review"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    df_print: default
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+```
+
+
+## Review
+
+In this tutorial we'll test some key knowledge from the corporate finance presentations. 
+
+## Financial Statements, Ratios, and Operating Cash Flow
+
+
+## The Time Value of Money
+
+
+## Investment Decision Rules
+
+
+## Capital Structure
+
+
+
+
+
+
