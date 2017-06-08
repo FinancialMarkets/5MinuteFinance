@@ -1,0 +1,46 @@
+---
+title:
+runtime: shiny
+---
+
+## 
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+#{{{
+sidebarLayout(
+    sidebarPanel(    
+        ## inputPanel(
+        selectInput("type", label = "Select Estimation Type", choices = c("Constant Dividend Growth" = "dg",
+                                                                          "CAPM" = "capm")
+                    ),
+        conditionalPanel(
+            condition = "input.type == 'dg'",
+            numericInput("price", "Stock Price Today", value = 100, step = 1),
+            numericInput("div", "Next Year's Dividend", value = 3),
+            numericInput("growth", "Growth Rate", value = .05)
+        ),
+        conditionalPanel(
+            condition = "input.type == 'capm'",
+            numericInput("rf", "Risk-Free Rate", value = 0.05, step = .01),
+            numericInput("beta", "Beta", value = 1.5, step = .01),
+            numericInput("market", "Expected Return on Market", value = .1)
+        )
+    ),
+    
+    mainPanel(
+        renderPlot({
+            if(input$type == "dg"){
+                rateE1 <- input$div / input$price + input$growth
+                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+                text(x = 0.5, y = 0.5, labels = paste(100 * round(rateE1, 2), "%"), cex = 5)
+            } else {
+                ## if(input$type == "c"){
+                rateE2 <- input$rf + input$beta * (input$market - input$rf)
+                plot(0, ylim = c(0,1), xlim = c(0,1), type = "n", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+                text(x = 0.5, y = 0.5, labels = paste(100 * round(rateE2, 2), "%"), cex = 5)
+            }
+        })
+    )
+)
+#}}}
+```

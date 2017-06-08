@@ -250,3 +250,7 @@ https://micfm.shinyapps.io/capital_structure_app2/
 https://micfm.shinyapps.io/capital_structure_app3/
 
 ** The Weighted-Average Cost of Capital
+
+https://micfm.shinyapps.io/WACC_app1/
+
+https://micfm.shinyapps.io/WACC_app2/
