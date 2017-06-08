@@ -10,7 +10,6 @@ runtime: shiny
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #{{{
-
 sidebarLayout(
 	      sidebarPanel(
 
@@ -23,17 +22,16 @@ sidebarLayout(
 tabsetPanel(
 	tabPanel(title = "Empirical",
  		 renderPlot({
-			  library(fBasics)
-			  library(tseries)
+			  library(quantmod)
 			  validate(
 				   need(input$ticker1 != "", "Input a valid US stock ticker.")
-				   )
-			  x1 <- get.hist.quote(input$ticker1, start = input$dates1[1], end = input$dates1[2], quote = "Close")
-			  x1 <- ts(x1)
-			  r1 <- log(x1[2:(length(x1))]/x1[1:(length(x1) - 1)])
-			  dens <- density(r1)
+                          )
+                          stockprices1 <- getSymbols(input$ticker1, auto.assign = FALSE, from = input$dates1[1], to = input$dates1[2])
+                          r1 <- Delt(Ad(stockprices1), type = 'log')
 
-			  VaR <- quantile(r1, input$loss)
+			  dens <- density(r1, na.rm = TRUE)
+
+			  VaR <- quantile(r1, input$loss, na.rm = TRUE)
 			  ret <- max(which(dens$x < VaR))
 			  qn <- min(which(dens$x >= -1))
 			  plot(dens, main = paste(input$ticker1, "VaR and Empirical Density"), lty = 1, col = 1, lwd = 2, ylab = "", xlab = paste("The ", 100*input$loss,"% ", "VaR is"," ", round(100*VaR, 2), "%", sep = ""), cex.lab = 2)
@@ -46,20 +44,19 @@ tabsetPanel(
 	),
 	    tabPanel(title = "Normal",
 		     renderPlot({
-			  library(fBasics)
-			  library(tseries)
+			  library(quantmod)
 			  validate(
 				   need(input$ticker1 != "", "Input a valid US stock ticker.")
-				   )
-			  x2 <- get.hist.quote(input$ticker1, start = input$dates1[1], end = input$dates1[2], quote = "Close")
-			  x2 <- ts(x2)
-			  r2 <- log(x2[2:(length(x2))]/x2[1:(length(x2) - 1)])
-			  aver.var <- mean(r2)
-			  sd.var <- sd(r2)
-			  r2 <- rnorm(mean = aver.var, sd = sd.var, n = 2000000)
-			  dens2 <- density(r2)
+                          )
+                          stockprices2 <- getSymbols(input$ticker1, auto.assign = FALSE, from = input$dates1[1], to = input$dates1[2])
+                          r2 <- Delt(Ad(stockprices2), type = 'log')
 
-			  VaR2 <- quantile(r2, input$loss)
+			  aver.var <- mean(r2, na.rm = TRUE)
+			  sd.var <- sd(r2, na.rm = TRUE)
+			  r2 <- rnorm(mean = aver.var, sd = sd.var, n = 2000000)
+			  dens2 <- density(r2, na.rm = TRUE)
+
+			  VaR2 <- quantile(r2, input$loss, na.rm = TRUE)
 			  ret2 <- max(which(dens2$x < VaR2))
 			  qn2 <- min(which(dens2$x >= -1))
 			  plot(dens2, main = paste(input$ticker1, "VaR and Normal Density"), lty = 1, col = 1, lwd = 2, ylab = "", xlab = paste("The ", 100*input$loss,"% ", "VaR is"," ", round(100*VaR2, 2), "%", sep = ""), cex.lab = 2)
@@ -72,6 +69,7 @@ tabsetPanel(
 	    )
 			)
 	      )
+
 
 #}}}
 ```
