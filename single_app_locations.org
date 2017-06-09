@@ -3,6 +3,7 @@
 https://micfm.shinyapps.io/portfolio_performance_measures_app1/
 
 https://micfm.shinyapps.io/portfolio_performance_measures_app2/
+
 ** Duration						       :Difficulty_3:
 
 https://micfm.shinyapps.io/duration_app1/
@@ -10,17 +11,21 @@ https://micfm.shinyapps.io/duration_app1/
 https://micfm.shinyapps.io/duration_app2/
 
 https://micfm.shinyapps.io/duration_app3/
+
 ** Intro Financial Statements						 :Difficulty_1:
 
 https://micfm.shinyapps.io/intro_fin_statements_app1/
+
 ** Financial Ratios							 :Difficulty_1:
 
 https://micfm.shinyapps.io/financial_ratios_app1/
+
 ** Intro to Bond Valuation						 :Difficulty_2:
 
 https://micfm.shinyapps.io/intro_bond_valuation_app1/
 
 https://micfm.shinyapps.io/intro_bond_valuation_app2/
+
 ** Intro to Stock Valuation						 :Difficulty_2:
 
 https://micfm.shinyapps.io/intro_stock_valuation_app1/
@@ -38,14 +43,17 @@ https://micfm.shinyapps.io/TVM_Multiple_CFs_app4/
 https://micfm.shinyapps.io/TVM_Multiple_CFs_app5/
 
 https://micfm.shinyapps.io/TVM_Multiple_CFs_app6/
+
 ** Risk Over Time					       :Difficulty_3:
 
 https://micfm.shinyapps.io/risk_future_past_app1/
+
 ** Monte Carlo						       :Difficulty_3:
 
 https://micfm.shinyapps.io/uses_monte_carlo_app1/
 
 https://micfm.shinyapps.io/uses_monte_carlo_app2/
+
 ** TVM Single CFs					       :Difficulty_2:
 
 https://micfm.shinyapps.io/TVM_Single_CFs_app1/
@@ -53,11 +61,13 @@ https://micfm.shinyapps.io/TVM_Single_CFs_app1/
 https://micfm.shinyapps.io/TVM_Single_CFs_app2/
 
 https://micfm.shinyapps.io/TVM_Single_CFs_app3/
+
 ** NPV and IRR						       :Difficulty_2:
 
 https://micfm.shinyapps.io/NPV_and_IRR_app1/
 
 https://micfm.shinyapps.io/NPV_and_IRR_app2/
+
 ** FX Arbitrage						       :Difficulty_2:
 
 https://micfm.shinyapps.io/fx_arbitrage_app1/
@@ -73,6 +83,7 @@ https://micfm.shinyapps.io/fx_market_app1/
 https://micfm.shinyapps.io/fx_market_app2/
 
 https://micfm.shinyapps.io/fx_market_app3/
+
 ** The CAPM						       :Difficulty_2:
 
 https://micfm.shinyapps.io/The_CAPM_app1/
@@ -86,6 +97,7 @@ https://micfm.shinyapps.io/limit_order_book_app1/
 https://micfm.shinyapps.io/limit_order_book_app2/
 
 https://micfm.shinyapps.io/limit_order_book_app3/
+
 ** The Pairs Trade					       :Difficulty_3:
 
 https://micfm.shinyapps.io/pairs_trade_app1/
@@ -119,6 +131,7 @@ https://micfm.shinyapps.io/OCFs_app1/
 https://micfm.shinyapps.io/what_is_risk_app1/
 
 https://micfm.shinyapps.io/what_is_risk_app2/
+
 ** Black Scholes					       :Difficulty_3:
 
 https://micfm.shinyapps.io/black_scholes_app1/
@@ -126,6 +139,7 @@ https://micfm.shinyapps.io/black_scholes_app1/
 https://micfm.shinyapps.io/black_scholes_app2/
 
 https://micfm.shinyapps.io/black_scholes_app3/
+
 ** Intro to Stock Investments				       :Difficulty_1:
 
 https://micfm.shinyapps.io/stock_app1/
@@ -168,6 +182,7 @@ https://micfm.shinyapps.io/stock_markets_app3/
 https://micfm.shinyapps.io/what_is_correlation_app1/
 
 https://micfm.shinyapps.io/what_is_correlation_app2/
+
 ** The VIX						       :Difficulty_2:
 
 https://micfm.shinyapps.io/The_VIX_app1/
@@ -213,14 +228,17 @@ https://micfm.shinyapps.io/cross_hedging_presentation_app1/
 https://micfm.shinyapps.io/cross_hedging_presentation_app2/
 
 https://micfm.shinyapps.io/cross_hedging_presentation_app3/
+
 ** Crude Oil Markets					       :Difficulty_1:
 
 https://micfm.shinyapps.io/crude_oil_markets_app1/
 
 https://micfm.shinyapps.io/crude_oil_markets_app2/
+
 ** Yield to Maturity (YTM) and What It’s Used For	       :Difficulty_3:
 
-   https://micfm.shinyapps.io/For_What_YTM_Used_app1/
+https://micfm.shinyapps.io/For_What_YTM_Used_app1/
+
 ** APR and EAR						       :Difficulty_2:
 
 https://micfm.shinyapps.io/compounding_app1/
@@ -234,13 +252,15 @@ https://micfm.shinyapps.io/goal_fin_mgmt_app1/
 https://micfm.shinyapps.io/dividends_app1/
 
 https://micfm.shinyapps.io/dividends_app2/
+
 ** The Balance Sheet Identity						 :Difficulty_1:
 
 https://micfm.shinyapps.io/balance_sheet_identity_app1/
 
 ** Modigliani and Miller Propositions			       :Difficulty_3:
 
-   https://micfm.shinyapps.io/MM_propositions_app1/
+https://micfm.shinyapps.io/MM_propositions_app1/
+
 ** Capital Structure					       :Difficulty_2:
 
 https://micfm.shinyapps.io/capital_structure_app1/
