@@ -1,31 +1,31 @@
-** Portfolio Performance Measures
+** Portfolio Performance Measures			       :Difficulty_3:
 
 https://micfm.shinyapps.io/portfolio_performance_measures_app1/
 
 https://micfm.shinyapps.io/portfolio_performance_measures_app2/
-** Duration
+** Duration						       :Difficulty_3:
 
 https://micfm.shinyapps.io/duration_app1/
 
 https://micfm.shinyapps.io/duration_app2/
 
 https://micfm.shinyapps.io/duration_app3/
-** Intro Financial Statements
+** Intro Financial Statements						 :Difficulty_1:
 
 https://micfm.shinyapps.io/intro_fin_statements_app1/
-** Financial Ratios 
+** Financial Ratios							 :Difficulty_1:
 
 https://micfm.shinyapps.io/financial_ratios_app1/
-** Intro to Bond Valuation
+** Intro to Bond Valuation						 :Difficulty_2:
 
 https://micfm.shinyapps.io/intro_bond_valuation_app1/
 
 https://micfm.shinyapps.io/intro_bond_valuation_app2/
-** Intro to Stock Valuation                    
+** Intro to Stock Valuation						 :Difficulty_2:
 
 https://micfm.shinyapps.io/intro_stock_valuation_app1/
 
-** TVM: Multiple Cash Flows
+** TVM: Multiple Cash Flows				       :Difficulty_2:
 
 https://micfm.shinyapps.io/TVM_Multiple_CFs_app1/
 
@@ -38,27 +38,27 @@ https://micfm.shinyapps.io/TVM_Multiple_CFs_app4/
 https://micfm.shinyapps.io/TVM_Multiple_CFs_app5/
 
 https://micfm.shinyapps.io/TVM_Multiple_CFs_app6/
-** Risk Over Time
+** Risk Over Time					       :Difficulty_3:
 
 https://micfm.shinyapps.io/risk_future_past_app1/
-** Monte Carlo
+** Monte Carlo						       :Difficulty_3:
 
 https://micfm.shinyapps.io/uses_monte_carlo_app1/
 
 https://micfm.shinyapps.io/uses_monte_carlo_app2/
-** TVM Single CFs
+** TVM Single CFs					       :Difficulty_2:
 
 https://micfm.shinyapps.io/TVM_Single_CFs_app1/
 
 https://micfm.shinyapps.io/TVM_Single_CFs_app2/
 
 https://micfm.shinyapps.io/TVM_Single_CFs_app3/
-** NPV and IRR
+** NPV and IRR						       :Difficulty_2:
 
 https://micfm.shinyapps.io/NPV_and_IRR_app1/
 
 https://micfm.shinyapps.io/NPV_and_IRR_app2/
-** FX Arbitrage
+** FX Arbitrage						       :Difficulty_2:
 
 https://micfm.shinyapps.io/fx_arbitrage_app1/
 
@@ -66,31 +66,31 @@ https://micfm.shinyapps.io/fx_arbitrage_app2/
 
 https://micfm.shinyapps.io/fx_arbitrage_app3/
 
-** FX Market
+** FX Market						       :Difficulty_2:
 
 https://micfm.shinyapps.io/fx_market_app1/
 
 https://micfm.shinyapps.io/fx_market_app2/
 
 https://micfm.shinyapps.io/fx_market_app3/
-** The CAPM
+** The CAPM						       :Difficulty_2:
 
 https://micfm.shinyapps.io/The_CAPM_app1/
 
 https://micfm.shinyapps.io/The_CAPM_app2/
 
-** Limit Order Book
+** Limit Order Book					       :Difficulty_2:
 
 https://micfm.shinyapps.io/limit_order_book_app1/
 
 https://micfm.shinyapps.io/limit_order_book_app2/
 
 https://micfm.shinyapps.io/limit_order_book_app3/
-** The Pairs Trade
+** The Pairs Trade					       :Difficulty_3:
 
 https://micfm.shinyapps.io/pairs_trade_app1/
 
-** The Greeks
+** The Greeks						       :Difficulty_3:
 
 https://micfm.shinyapps.io/greeks_app1/
 
@@ -102,7 +102,7 @@ https://micfm.shinyapps.io/greeks_app4/
 
 https://micfm.shinyapps.io/greeks_app5/
 
-** Option Intro
+** Option Intro						       :Difficulty_2:
 
 https://micfm.shinyapps.io/option_intro_app1/
 
@@ -110,23 +110,23 @@ https://micfm.shinyapps.io/option_intro_app2/
 
 https://micfm.shinyapps.io/option_intro_app3/
 
-** Operating Cash Flow (OCF)
+** Operating Cash Flow (OCF)				       :Difficulty_1:
 
 https://micfm.shinyapps.io/OCFs_app1/
 
-** Risk and Value-At-Risk [renamed from: A First Look at Risk]
+** Risk and Value-At-Risk [renamed from: A First Look at Risk] :Difficulty_3:
 
 https://micfm.shinyapps.io/what_is_risk_app1/
 
 https://micfm.shinyapps.io/what_is_risk_app2/
-** Black Scholes
+** Black Scholes					       :Difficulty_3:
 
 https://micfm.shinyapps.io/black_scholes_app1/
 
 https://micfm.shinyapps.io/black_scholes_app2/
 
 https://micfm.shinyapps.io/black_scholes_app3/
-** Intro to Stock Investments
+** Intro to Stock Investments				       :Difficulty_1:
 
 https://micfm.shinyapps.io/stock_app1/
 
@@ -134,7 +134,7 @@ https://micfm.shinyapps.io/stock_app2/
 
 https://micfm.shinyapps.io/stock_app3/
 
-** Mean-Variance Portfolio Optimization (Markowitz)
+** Mean-Variance Portfolio Optimization (Markowitz)	       :Difficulty_3:
 
 https://micfm.shinyapps.io/markowitz_app1/
 
@@ -142,20 +142,20 @@ https://micfm.shinyapps.io/markowitz_app2/
 
 https://micfm.shinyapps.io/markowitz_app3/
 
-** ETFs
+** ETFs							       :Difficulty_1:
 
 https://micfm.shinyapps.io/ETFs_app1/
 
 
 https://micfm.shinyapps.io/ETFs_app2/
 
-** Leveraged ETFs
+** Leveraged ETFs					       :Difficulty_1:
 
 https://micfm.shinyapps.io/leveragedETFs_app1/
 
 https://micfm.shinyapps.io/leveragedETFs_app2/
 
-** Stock Markets
+** Stock Markets					       :Difficulty_2:
 
 https://micfm.shinyapps.io/stock_markets_app1/
 
@@ -163,24 +163,24 @@ https://micfm.shinyapps.io/stock_markets_app2/
 
 https://micfm.shinyapps.io/stock_markets_app3/
 
-** An Introduction to the Correlation Coefficient
+** An Introduction to the Correlation Coefficient	       :Difficulty_2:
 
 https://micfm.shinyapps.io/what_is_correlation_app1/
 
 https://micfm.shinyapps.io/what_is_correlation_app2/
-** The VIX
+** The VIX						       :Difficulty_2:
 
 https://micfm.shinyapps.io/The_VIX_app1/
 
 https://micfm.shinyapps.io/The_VIX_app2/
 
-** The VVIX
+** The VVIX						       :Difficulty_2:
 
 https://micfm.shinyapps.io/The_VVIX_app1/
 
 https://micfm.shinyapps.io/The_VVIX_app2/
 
-** Intro to Stock and Options Strats
+** Intro to Stock and Options Strats			       :Difficulty_3:
 
 https://micfm.shinyapps.io/option_spreads_app1/
 
@@ -188,60 +188,60 @@ https://micfm.shinyapps.io/option_spreads_app2/
 
 https://micfm.shinyapps.io/option_spreads_app3/
 
-** Convexity
+** Convexity						       :Difficulty_3:
 
 https://micfm.shinyapps.io/convexity_app1/
 
 https://micfm.shinyapps.io/convexity_app2/
 
-** ETNs
+** ETNs							       :Difficulty_1:
 
 https://micfm.shinyapps.io/ETNs_app1/
 
 https://micfm.shinyapps.io/ETNs_app2/
 
-** Short Selling Stock
+** Short Selling Stock					       :Difficulty_2:
 
 https://micfm.shinyapps.io/short_selling_stock_app1/
 
 https://micfm.shinyapps.io/short_selling_stock_app2/
 
-** Cross Hedging
+** Cross Hedging					       :Difficulty_3:
 
 https://micfm.shinyapps.io/cross_hedging_presentation_app1/
 
 https://micfm.shinyapps.io/cross_hedging_presentation_app2/
 
 https://micfm.shinyapps.io/cross_hedging_presentation_app3/
-** Crude Oil Markets
+** Crude Oil Markets					       :Difficulty_1:
 
 https://micfm.shinyapps.io/crude_oil_markets_app1/
 
 https://micfm.shinyapps.io/crude_oil_markets_app2/
-** Yield to Maturity (YTM) and What It’s Used For
+** Yield to Maturity (YTM) and What It’s Used For	       :Difficulty_3:
 
    https://micfm.shinyapps.io/For_What_YTM_Used_app1/
-** APR and EAR
+** APR and EAR						       :Difficulty_2:
 
 https://micfm.shinyapps.io/compounding_app1/
 
-** The Goal of Financial Management
+** The Goal of Financial Management			       :Difficulty_1:
 
 https://micfm.shinyapps.io/goal_fin_mgmt_app1/
 
-** Dividends
+** Dividends						       :Difficulty_1:
 
 https://micfm.shinyapps.io/dividends_app1/
 
 https://micfm.shinyapps.io/dividends_app2/
-** The Balance Sheet Identity
+** The Balance Sheet Identity						 :Difficulty_1:
 
 https://micfm.shinyapps.io/balance_sheet_identity_app1/
 
-** Modigliani and Miller Propositions
+** Modigliani and Miller Propositions			       :Difficulty_3:
 
    https://micfm.shinyapps.io/MM_propositions_app1/
-** Capital Structure
+** Capital Structure					       :Difficulty_2:
 
 https://micfm.shinyapps.io/capital_structure_app1/
 
@@ -249,7 +249,7 @@ https://micfm.shinyapps.io/capital_structure_app2/
 
 https://micfm.shinyapps.io/capital_structure_app3/
 
-** The Weighted-Average Cost of Capital
+** The Weighted-Average Cost of Capital			       :Difficulty_2:
 
 https://micfm.shinyapps.io/WACC_app1/
 
