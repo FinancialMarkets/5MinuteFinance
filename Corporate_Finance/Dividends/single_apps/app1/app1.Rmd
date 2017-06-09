@@ -8,18 +8,20 @@ runtime: shiny
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(quantmod)
 library(dygraphs)
-  comp1 <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
-  comp1 <- data.frame(comp1$Symbol, comp1$Security.Name, stringsAsFactors = FALSE)
-  names(comp1) <- c("symbol", "name")
+  ## comp1 <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+  ## comp1 <- data.frame(comp1$Symbol, comp1$Security.Name, stringsAsFactors = FALSE)
+  ## names(comp1) <- c("symbol", "name")
 inputPanel(
-    selectizeInput("name1", label = "Type a Stock's Name", multiple = FALSE, choices = comp1$name)
+    ## selectizeInput("name1", label = "Type a Stock's Name", multiple = FALSE, choices = comp1$name)
+    textInput("name1", "Enter a Stock's Ticker", value = "BP")
 )
 renderDygraph({
     ## valdate name ----
     validate(
-        need(input$name1 != "", "Enter a stock's name.")
+        need(input$name1 != "", "Enter a stock's ticker.")
         )
-    ticker <- comp1$symbol[comp1$name == input$name1]
+    ## ticker <- comp1$symbol[comp1$name == input$name1]
+    ticker <- input$name1
                     
     D1 <- getDividends(ticker, auto.assign = FALSE)
     prices <- getSymbols(ticker, auto.assign = FALSE)

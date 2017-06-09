@@ -64,7 +64,6 @@ Look at the relationship between the close on the day before the ex-dividend dat
 ##
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
 library(quantmod)
 library(dygraphs)
   ## comp1 <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
@@ -108,7 +107,7 @@ In the following interactive app you can chart the dividend for any stock.  This
 ## 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-devtools::install_github("joshuaulrich/quantmod", ref="157_yahoo_502")
+
 library(quantmod)
 library(highcharter)
   ## comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
