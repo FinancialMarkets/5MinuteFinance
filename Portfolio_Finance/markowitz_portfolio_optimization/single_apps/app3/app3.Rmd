@@ -9,6 +9,7 @@ runtime: shiny
 
 ```{r echo = FALSE, warning=FALSE, error=FALSE, message=FALSE}
 #{{{
+devtools::install_github("joshuaulrich/quantmod")
 library(stockPortfolio)
 library(quantmod)
 inputPanel(

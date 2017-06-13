@@ -69,13 +69,17 @@ The following app will pull data on total, and short sale, volume for the 6700+ 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
 #{{{
+library(readxl)
 inputPanel(
     dateInput("date", "Input a Trading Day", format = "yyyy-mm-dd", startview = "month", weekstart = 0, language = "en", value = "2015-08-07")
     )
 DT::renderDataTable({
 
+        ## link move to ftp://ftp.nyxdata.com/NYSEGroupConsolidatedShortInterest/NYSEGroupConsolidatedShortInterest2017/NYSEGroupConsolidatedShortInterest201703/NYSE_Group_Consolidated_Short_Interest_20170309.xls for example
+        ## above linkonly has consolidated data -- no good
     ## pull report from NYSE
-    data <- read.table(file = paste("ftp://ftp.nyxdata.com/publicdata/ARCAshvol/ARCAshvol", format(input$date, "%Y"), "/ARCAshvol", format(input$date, "%Y"), format(input$date, "%m"), "/ARCAshvol", format(input$date, "%Y"), format(input$date, "%m"), format(input$date, "%d"), ".txt", sep = ""), header = TRUE, sep = "|", stringsAsFactors = FALSE)
+    data <- readxl::read_xls(file = paste("ftp://ftp.nyxdata.com/NYSEGroupConsolidatedShortInterest/NYSEGroupConsolidatedShortInterest", format(input$date, "%Y"), "/NYSEGroupConsolidatedShortInterest", format(input$date, "%Y"), format(input$date, "%m"), "/NYSE_Group_Consolidated_Short_Interest_", format(input$date, "%Y"), format(input$date, "%m"), format(input$date, "%d"), ".xls", sep = ""))
+    ## data <- read.table(file = paste("ftp://ftp.nyxdata.com/publicdata/ARCAshvol/ARCAshvol", format(input$date, "%Y"), "/ARCAshvol", format(input$date, "%Y"), format(input$date, "%m"), "/ARCAshvol", format(input$date, "%Y"), format(input$date, "%m"), format(input$date, "%d"), ".txt", sep = ""), header = TRUE, sep = "|", stringsAsFactors = FALSE)
 
     data <- data[, 1:4]
     percent <- round(100 * (data[,3] / data[,4]), 2)
