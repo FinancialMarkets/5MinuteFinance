@@ -1,0 +1,120 @@
+* Don't have to do:
+
+​Commodities
+Corporate finance
+Equity
+Foreign exchange
+
+* Derivatives
+
+** The Greeks							       :done:
+
+1.  The Greeks measure the sensitivity of the ______ price to changes in the underlying variables.
+
+a.  stock's
+b.  option's **
+c.  bond's
+
+2.  Delta can be used to hedge changes in:
+
+a.  time
+b.  volatility
+c.  stock **
+d.  market risk
+
+3.  A call option's rho is:
+
+a.  greater than or equal to 0.
+b.  less than or equal to 0.
+c.  always equal to 0
+
+** Intro Stock Options						       :done:
+
+1.  An option's intrinsic value is:
+
+a.  the value of the option's remaining time.
+b.  the value of the option if you would have to exercise it immediately.  **
+c.  the price of the option.
+
+2. One option contract is for ______ options.
+
+a.  1
+b.  100 **
+c.  1000
+
+3.  A European put option's value can be less than its intrinsic value.
+
+a.  true **
+b.  false
+
+** Option/Stock Strategy					       :done:
+
+1.  Options can be used to decrease the risk of a stock position.
+
+a.  true **
+b.  false
+
+2.  To buy a covered call you:
+
+a.  short the stock and buy a call
+b.  buy the stock and sell a call **
+c.  buy both a put and a call
+
+3.  To buy a protective put you:
+
+a.  buy the stock and a put. **
+b.  buy the stock and sell a put.
+c.  short the stock and sell a put.
+
+** Black-Scholes						       :done:
+
+1.  The Black-Scholes model requires the stock's expected return as an input.
+
+a.  true
+b.  false **
+
+2.  Dividend payment _____ the value of a call option, and ______ the value of a put.
+
+a.  increase; increase
+b.  increase; decrease
+c.  decrease; increase **
+d.  decrease; decrease
+
+3.  In the Black-Scholes option pricing model volatility is allowed to change over the life of the option.
+
+a.  true
+b.  false **
+
+** Varying Option Volatility					       :done:
+
+1.  The dependence of an option’s implied volatility on the option’s moneyness, is known as the option's _____.
+
+a.  frown
+b.  smile **
+c.  tenor
+
+2.  Option implied volatility is generally higher for:
+
+a.  in-the-money puts
+b.  out-of-the-money puts **
+
+3.  The option smile tends to be constant across tenor and time.
+
+a.  true
+b.  false **
+
+* Econometrics
+
+
+* Fixed Income/Other Debt
+
+* Fundamentals
+
+* Monetary Policy
+
+* Portfolio Finance
+
+* Risk
+
+* Trading and Market Structure
+
