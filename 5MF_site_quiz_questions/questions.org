@@ -5,7 +5,7 @@ Corporate finance
 Equity
 Foreign exchange
 
-* Derivatives
+* Derivatives                                                          :done:
 
 ** The Greeks							       :done:
 
@@ -105,8 +105,49 @@ b.  false **
 
 * Econometrics
 
+** Correlation							       :done:
+
+1.  The correlation coefficient ranges between -1 and 1.
+
+a.  true **
+b.  false
+
+2.  Linear transformations affect the correlation coefficient.
+
+a.  true
+b.  false **
+
+3.  No stocks have negative return correlations.
+
+a.  true
+b.  false **
+
+** Monte Carlo
 
 * Fixed Income/Other Debt
+  
+** Duration                                                            :done:
+   
+1.  Duration is a measure of:
+
+a.  the time until a bond matures.
+b.  the time until the next bond payment.
+c.  the bond's interest rate risk. **
+
+2.  Duration is an approximate, not exact, measure.
+   
+a.  true **
+b.  false
+
+3.  As a bond's yield-to-maturity increases, the bond's duration:
+
+a.  increases
+b.  decreases **
+c.  stays the same
+
+** Convexity
+   
+1.  
 
 * Fundamentals
 
@@ -116,5 +157,41 @@ b.  false **
 
 * Risk
 
-* Trading and Market Structure
+* Trading and Market Structure                                         :done:
+  
+** The Limit Order Book                                                :done:
+   
+1.  A market order provides liquidity to the market.
+
+a.  true
+b.  false **
+
+2. Limit orders are guaranteed to be filled.
+
+a.  true
+b.  false **
+
+3.  The ability to transact quickly without moving the asset's price is known as:
+
+a.  liquidity **
+b.  solidity
+c.  volatility
+d.  solvency
+
+** The Pairs Trade                                                     :done:
+
+1. In the pairs trade we are speculating on firm specific risk, and hedging out market risk. 
+   
+a.  true **
+b.  false
+
+2. The pairs trade is inherently risky.
+
+a.  true
+b.  false **
+
+3.  It is important to estimate the model parameters over a different interval than you trade the model.
+
+a.  true **
+b.  false 
 
