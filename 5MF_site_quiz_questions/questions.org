@@ -124,7 +124,7 @@ b.  false **
 
 ** Monte Carlo
 
-* Fixed Income/Other Debt
+* Fixed Income/Other Debt					       :done:
   
 ** Duration                                                            :done:
    
@@ -145,17 +145,63 @@ a.  increases
 b.  decreases **
 c.  stays the same
 
-** Convexity
+** Convexity							       :done:
    
-1.  
+1.  Convexity benefits bond owners:
+
+a.  true **
+b.  false
+
+2.  Using duration and convexity is more accurate than duration alone.
+
+a.  true **
+b.  false
+
+3. As the bond's yield-to-maturity rises, the bond's convexity:
+
+a.  increases **
+b.  decreases
+c.  stays the same
 
 * Fundamentals
 
-* Monetary Policy
-
 * Portfolio Finance
 
+** Intro: Portfolio Performance
+
+** Portfolio Optimization
+
+
+
+
 * Risk
+
+** Risk and Value-At-Risk
+
+1.  Using the standard deviation as a measure of risk, makes no assumptions on the stock process.
+
+a.  true
+b.  false **
+
+2.  If we assume a normal distribution we don't have to use historical data.
+
+a.  true
+b.  false **
+
+3.  Value-at-Risk is affected by the amount of historical data you use.
+
+a.  true **
+b.  false
+
+** Risk Over Time
+
+
+
+** The VIX Index
+
+** VVIX:  The Vol of Vol
+
+ 
 
 * Trading and Market Structure                                         :done:
   
