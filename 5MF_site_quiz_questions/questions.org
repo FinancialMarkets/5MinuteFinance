@@ -165,18 +165,47 @@ c.  stays the same
 
 * Fundamentals
 
-* Portfolio Finance
+* Portfolio Finance                                                    :done:
 
-** Intro: Portfolio Performance
+** Intro: Portfolio Performance                                        :done:
+   
+1.  We would prefer our portfolio's Sharpe Ratio to be:
 
-** Portfolio Optimization
+a.  higher **
+b.  lower
+c.  equal to zero
 
+2. The denominator in the Treynor Ratio is the asset's beta coefficient, which is more appropriate than the standard deviation for:
 
+a.  portfolios of many assets
+b.  single assets **
 
+3. The 'Information Ratio' divides alpha by:
+
+a.  the portfolio's market risk.
+b.  the portfolio's residual (non-market) risk **  
+
+** Portfolio Optimization                                              :done:
+
+1.  Which of the following characteristic of an asset's return distribution is used in Markowitz portfolio optimization?
+
+a.  Kurtis
+b.  mean **
+c.  skeins
+
+2.  Diversification can eliminate all risk from a portfolio of assets.
+
+a.  true
+b.  false **
+
+3.  Diversification benefits from negative correlations between assets.
+
+a.  true **
+b.  false
 
 * Risk
 
-** Risk and Value-At-Risk
+** Risk and Value-At-Risk                                              :done:
 
 1.  Using the standard deviation as a measure of risk, makes no assumptions on the stock process.
 
@@ -193,11 +222,39 @@ b.  false **
 a.  true **
 b.  false
 
-** Risk Over Time
+** Risk Over Time                                                      :done:
+   
+1.  An asset's risk is constant through time.
 
+a.  true
+b.  false **
 
+2.  In markets, we tend to see volatility cluster (high volatility follows high volatility).  
+
+a.  true **
+b.  false
+
+3.  We can observe market forecasts of an asset's volatility by looking at:
+
+a.  the asset's beta
+b.  implied volatility in options traded on the asset **
+c.  the asset's standard deviation
 
 ** The VIX Index
+   
+1.  The VIX provides an estimate of the market expectation of volatility in the S&P 500 over the next 30 days, using:
+
+a.  a GARCH(1,1) model
+b.  implied volatility from options on the S&P 500 **
+c.  a Markov-Switching model
+
+2.  If the VIX is 12, this means there is a 68% chance that the absolute value of the S&P 500's return will be less than:
+
+a.  2.55% over the next 30 days.
+b.  4.33% over the next 30 days. **
+c.  8.75% over the next 30 days.
+
+3.  
 
 ** VVIX:  The Vol of Vol
 
