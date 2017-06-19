@@ -124,6 +124,9 @@ b.  false **
 
 ** Monte Carlo
 
+
+
+
 * Fixed Income/Other Debt					       :done:
   
 ** Duration                                                            :done:
@@ -203,7 +206,7 @@ b.  false **
 a.  true **
 b.  false
 
-* Risk
+* Risk								       :done:
 
 ** Risk and Value-At-Risk                                              :done:
 
@@ -240,7 +243,7 @@ a.  the asset's beta
 b.  implied volatility in options traded on the asset **
 c.  the asset's standard deviation
 
-** The VIX Index
+** The VIX Index                                                       :done:
    
 1.  The VIX provides an estimate of the market expectation of volatility in the S&P 500 over the next 30 days, using:
 
@@ -254,11 +257,27 @@ a.  2.55% over the next 30 days.
 b.  4.33% over the next 30 days. **
 c.  8.75% over the next 30 days.
 
-3.  
+3. The higher the VIX, the more ______ there is among market participants.
 
-** VVIX:  The Vol of Vol
+a.  fear **
+b.  calm 
 
- 
+** VVIX:  The Vol of Vol					       :done:
+
+1.  The VVIX is measure of the volatility of an index that itself measures volatility.
+
+a.  true **
+b.  false
+
+2.  The VVIX behaves like a random walk process.
+
+a.  true
+b.  false **
+
+3.  The VVIX is ______ correlated with S&P 500 returns.
+
+a.  positively
+b.  negatively **
 
 * Trading and Market Structure                                         :done:
   
