@@ -1,0 +1,1031 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>questions</title>
+<!-- 2017-06-19 Mon 23:04 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">questions</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Don't have to do:</a></li>
+<li><a href="#sec-2">2. Derivatives&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a>
+<ul>
+<li><a href="#sec-2-1">2.1. The Greeks&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+<li><a href="#sec-2-2">2.2. Intro Stock Options&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+<li><a href="#sec-2-3">2.3. Option/Stock Strategy&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+<li><a href="#sec-2-4">2.4. Black-Scholes&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+<li><a href="#sec-2-5">2.5. Varying Option Volatility&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Econometrics</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Correlation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+<li><a href="#sec-3-2">3.2. Monte Carlo&#xa0;&#xa0;&#xa0;<span class="tag"><span class="todo">todo</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Fixed Income/Other Debt&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a>
+<ul>
+<li><a href="#sec-4-1">4.1. Duration&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+<li><a href="#sec-4-2">4.2. Convexity&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Fundamentals</a></li>
+<li><a href="#sec-6">6. Portfolio Finance&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a>
+<ul>
+<li><a href="#sec-6-1">6.1. Intro: Portfolio Performance&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+<li><a href="#sec-6-2">6.2. Portfolio Optimization&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7. Risk&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a>
+<ul>
+<li><a href="#sec-7-1">7.1. Risk and Value-At-Risk&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+<li><a href="#sec-7-2">7.2. Risk Over Time&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+<li><a href="#sec-7-3">7.3. The VIX Index&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+<li><a href="#sec-7-4">7.4. VVIX:  The Vol of Vol&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8. Trading and Market Structure&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a>
+<ul>
+<li><a href="#sec-8-1">8.1. The Limit Order Book&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+<li><a href="#sec-8-2">8.2. The Pairs Trade&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Don't have to do:</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+​Commodities
+Corporate finance
+Equity
+Foreign exchange
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Derivatives&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> The Greeks&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-2-1">
+<ol class="org-ol">
+<li>The Greeks measure the sensitivity of the <span class="underline"><span class="underline">__</span></span> price to changes in the underlying variables.
+</li>
+</ol>
+
+<p>
+a.  stock's
+</p>
+
+<p>
+b.  option's **
+</p>
+
+<p>
+c.  bond's
+</p>
+
+<ol class="org-ol">
+<li value="2">Delta can be used to hedge changes in:
+</li>
+</ol>
+
+<p>
+a.  time
+</p>
+
+<p>
+b.  volatility
+</p>
+
+<p>
+c.  stock **
+</p>
+
+<p>
+d.  market risk
+</p>
+
+<ol class="org-ol">
+<li value="3">A call option's rho is:
+</li>
+</ol>
+
+<p>
+a.  greater than or equal to 0.
+</p>
+
+<p>
+b.  less than or equal to 0.
+</p>
+
+<p>
+c.  always equal to 0
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Intro Stock Options&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-2-2">
+<ol class="org-ol">
+<li>An option's intrinsic value is:
+</li>
+</ol>
+
+<p>
+a.  the value of the option's remaining time.
+</p>
+
+<p>
+b.  the value of the option if you would have to exercise it immediately.  **
+</p>
+
+<p>
+c.  the price of the option.
+</p>
+
+<ol class="org-ol">
+<li value="2">One option contract is for <span class="underline"><span class="underline">__</span></span> options.
+</li>
+</ol>
+
+<p>
+a.  1
+</p>
+
+<p>
+b.  100 **
+</p>
+
+<p>
+c.  1000
+</p>
+
+<ol class="org-ol">
+<li value="3">A European put option's value can be less than its intrinsic value.
+</li>
+</ol>
+
+<p>
+a.  true **
+</p>
+
+<p>
+b.  false
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Option/Stock Strategy&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-2-3">
+<ol class="org-ol">
+<li>Options can be used to decrease the risk of a stock position.
+</li>
+</ol>
+
+<p>
+a.  true **
+</p>
+
+<p>
+b.  false
+</p>
+
+<ol class="org-ol">
+<li value="2">To buy a covered call you:
+</li>
+</ol>
+
+<p>
+a.  short the stock and buy a call
+</p>
+
+<p>
+b.  buy the stock and sell a call **
+</p>
+
+<p>
+c.  buy both a put and a call
+</p>
+
+<ol class="org-ol">
+<li value="3">To buy a protective put you:
+</li>
+</ol>
+
+<p>
+a.  buy the stock and a put. **
+</p>
+
+<p>
+b.  buy the stock and sell a put.
+</p>
+
+<p>
+c.  short the stock and sell a put.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Black-Scholes&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-2-4">
+<ol class="org-ol">
+<li>The Black-Scholes model requires the stock's expected return as an input.
+</li>
+</ol>
+
+<p>
+a.  true
+</p>
+
+<p>
+b.  false **
+</p>
+
+<ol class="org-ol">
+<li value="2">Dividend payment <span class="underline"><span class="underline">_</span></span> the value of a call option, and <span class="underline"><span class="underline">__</span></span> the value of a put.
+</li>
+</ol>
+
+<p>
+a.  increase; increase
+</p>
+
+<p>
+b.  increase; decrease
+</p>
+
+<p>
+c.  decrease; increase **
+</p>
+
+<p>
+d.  decrease; decrease
+</p>
+
+<ol class="org-ol">
+<li value="3">In the Black-Scholes option pricing model volatility is allowed to change over the life of the option.
+</li>
+</ol>
+
+<p>
+a.  true
+</p>
+
+<p>
+b.  false **
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Varying Option Volatility&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-2-5">
+<ol class="org-ol">
+<li>The dependence of an option’s implied volatility on the option’s moneyness, is known as the option's <span class="underline"><span class="underline">_</span></span>.
+</li>
+</ol>
+
+<p>
+a.  frown
+</p>
+
+<p>
+b.  smile **
+</p>
+
+<p>
+c.  tenor
+</p>
+
+<ol class="org-ol">
+<li value="2">Option implied volatility is generally higher for:
+</li>
+</ol>
+
+<p>
+a.  in-the-money puts
+</p>
+
+<p>
+b.  out-of-the-money puts **
+</p>
+
+<ol class="org-ol">
+<li value="3">The option smile tends to be constant across tenor and time.
+</li>
+</ol>
+
+<p>
+a.  true
+</p>
+
+<p>
+b.  false **
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Econometrics</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Correlation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-3-1">
+<ol class="org-ol">
+<li>The correlation coefficient ranges between -1 and 1.
+</li>
+</ol>
+
+<p>
+a.  true **
+</p>
+
+<p>
+b.  false
+</p>
+
+<ol class="org-ol">
+<li value="2">Linear transformations affect the correlation coefficient.
+</li>
+</ol>
+
+<p>
+a.  true
+</p>
+
+<p>
+b.  false **
+</p>
+
+<ol class="org-ol">
+<li value="3">No stocks have negative return correlations.
+</li>
+</ol>
+
+<p>
+a.  true
+</p>
+
+<p>
+b.  false **
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Monte Carlo&#xa0;&#xa0;&#xa0;<span class="tag"><span class="todo">todo</span></span></h3>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Fixed Income/Other Debt&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Duration&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-4-1">
+<ol class="org-ol">
+<li>Duration is a measure of:
+</li>
+</ol>
+
+<p>
+a.  the time until a bond matures.
+</p>
+
+<p>
+b.  the time until the next bond payment.
+</p>
+
+<p>
+c.  the bond's interest rate risk. **
+</p>
+
+<ol class="org-ol">
+<li value="2">Duration is an approximate, not exact, measure.
+</li>
+</ol>
+
+<p>
+a.  true **
+</p>
+
+<p>
+b.  false
+</p>
+
+<ol class="org-ol">
+<li value="3">As a bond's yield-to-maturity increases, the bond's duration:
+</li>
+</ol>
+
+<p>
+a.  increases
+</p>
+
+<p>
+b.  decreases **
+</p>
+
+<p>
+c.  stays the same
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Convexity&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-4-2">
+<ol class="org-ol">
+<li>Convexity benefits bond owners:
+</li>
+</ol>
+
+<p>
+a.  true **
+</p>
+
+<p>
+b.  false
+</p>
+
+<ol class="org-ol">
+<li value="2">Using duration and convexity is more accurate than duration alone.
+</li>
+</ol>
+
+<p>
+a.  true **
+</p>
+
+<p>
+b.  false
+</p>
+
+<ol class="org-ol">
+<li value="3">As the bond's yield-to-maturity rises, the bond's convexity:
+</li>
+</ol>
+
+<p>
+a.  increases **
+</p>
+
+<p>
+b.  decreases
+</p>
+
+<p>
+c.  stays the same
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Fundamentals</h2>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Portfolio Finance&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Intro: Portfolio Performance&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-6-1">
+<ol class="org-ol">
+<li>We would prefer our portfolio's Sharpe Ratio to be:
+</li>
+</ol>
+
+<p>
+a.  higher **
+</p>
+
+<p>
+b.  lower
+</p>
+
+<p>
+c.  equal to zero
+</p>
+
+<ol class="org-ol">
+<li value="2">The denominator in the Treynor Ratio is the asset's beta coefficient, which is more appropriate than the standard deviation for:
+</li>
+</ol>
+
+<p>
+a.  portfolios of many assets
+</p>
+
+<p>
+b.  single assets **
+</p>
+
+<ol class="org-ol">
+<li value="3">The 'Information Ratio' divides alpha by:
+</li>
+</ol>
+
+<p>
+a.  the portfolio's market risk.
+</p>
+
+<p>
+b.  the portfolio's residual (non-market) risk **  
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Portfolio Optimization&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-6-2">
+<ol class="org-ol">
+<li>Which of the following characteristic of an asset's return distribution is used in Markowitz portfolio optimization?
+</li>
+</ol>
+
+<p>
+a.  Kurtosis
+</p>
+
+<p>
+b.  mean **
+</p>
+
+<p>
+c.  skewness
+</p>
+
+<ol class="org-ol">
+<li value="2">Diversification can eliminate all risk from a portfolio of assets.
+</li>
+</ol>
+
+<p>
+a.  true
+</p>
+
+<p>
+b.  false **
+</p>
+
+<ol class="org-ol">
+<li value="3">Diversification benefits from negative correlations between assets.
+</li>
+</ol>
+
+<p>
+a.  true **
+</p>
+
+<p>
+b.  false
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Risk&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> Risk and Value-At-Risk&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-7-1">
+<ol class="org-ol">
+<li>Using the standard deviation as a measure of risk, makes no assumptions on the stock process.
+</li>
+</ol>
+
+<p>
+a.  true
+</p>
+
+<p>
+b.  false **
+</p>
+
+<ol class="org-ol">
+<li value="2">If we assume a normal distribution we don't have to use historical data.
+</li>
+</ol>
+
+<p>
+a.  true
+</p>
+
+<p>
+b.  false **
+</p>
+
+<ol class="org-ol">
+<li value="3">Value-at-Risk is affected by the amount of historical data you use.
+</li>
+</ol>
+
+<p>
+a.  true **
+</p>
+
+<p>
+b.  false
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> Risk Over Time&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-7-2">
+<ol class="org-ol">
+<li>An asset's risk is constant through time.
+</li>
+</ol>
+
+<p>
+a.  true
+</p>
+
+<p>
+b.  false **
+</p>
+
+<ol class="org-ol">
+<li value="2">In markets, we tend to see volatility cluster (high volatility follows high volatility).  
+</li>
+</ol>
+
+<p>
+a.  true **
+</p>
+
+<p>
+b.  false
+</p>
+
+<ol class="org-ol">
+<li value="3">We can observe market forecasts of an asset's volatility by looking at:
+</li>
+</ol>
+
+<p>
+a.  the asset's beta
+</p>
+
+<p>
+b.  implied volatility in options traded on the asset **
+</p>
+
+<p>
+c.  the asset's standard deviation
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3"><span class="section-number-3">7.3</span> The VIX Index&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-7-3">
+<ol class="org-ol">
+<li>The VIX provides an estimate of the market expectation of volatility in the S&amp;P 500 over the next 30 days, using:
+</li>
+</ol>
+
+<p>
+a.  a GARCH(1,1) model
+</p>
+
+<p>
+b.  implied volatility from options on the S&amp;P 500 **
+</p>
+
+<p>
+c.  a Markov-Switching model
+</p>
+
+<ol class="org-ol">
+<li value="2">If the VIX is 12, this means there is a 68% chance that the absolute value of the S&amp;P 500's return will be less than:
+</li>
+</ol>
+
+<p>
+a.  2.55% over the next 30 days.
+</p>
+
+<p>
+b.  4.33% over the next 30 days. **
+</p>
+
+<p>
+c.  8.75% over the next 30 days.
+</p>
+
+<ol class="org-ol">
+<li value="3">The higher the VIX, the more <span class="underline"><span class="underline">__</span></span> there is among market participants.
+</li>
+</ol>
+
+<p>
+a.  fear **
+</p>
+
+<p>
+b.  calm 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-4" class="outline-3">
+<h3 id="sec-7-4"><span class="section-number-3">7.4</span> VVIX:  The Vol of Vol&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-7-4">
+<ol class="org-ol">
+<li>The VVIX is measure of the volatility of an index that itself measures volatility.
+</li>
+</ol>
+
+<p>
+a.  true **
+</p>
+
+<p>
+b.  false
+</p>
+
+<ol class="org-ol">
+<li value="2">The VVIX behaves like a random walk process.
+</li>
+</ol>
+
+<p>
+a.  true
+</p>
+
+<p>
+b.  false **
+</p>
+
+<ol class="org-ol">
+<li value="3">The VVIX is <span class="underline"><span class="underline">__</span></span> correlated with S&amp;P 500 returns.
+</li>
+</ol>
+
+<p>
+a.  positively
+</p>
+
+<p>
+b.  negatively **
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Trading and Market Structure&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> The Limit Order Book&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-8-1">
+<ol class="org-ol">
+<li>A market order provides liquidity to the market.
+</li>
+</ol>
+
+<p>
+a.  true
+</p>
+
+<p>
+b.  false **
+</p>
+
+<ol class="org-ol">
+<li value="2">Limit orders are guaranteed to be filled.
+</li>
+</ol>
+
+<p>
+a.  true
+</p>
+
+<p>
+b.  false **
+</p>
+
+<ol class="org-ol">
+<li value="3">The ability to transact quickly without moving the asset's price is known as:
+</li>
+</ol>
+
+<p>
+a.  liquidity **
+</p>
+
+<p>
+b.  solidity
+</p>
+
+<p>
+c.  volatility
+</p>
+
+<p>
+d.  solvency
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> The Pairs Trade&#xa0;&#xa0;&#xa0;<span class="tag"><span class="done">done</span></span></h3>
+<div class="outline-text-3" id="text-8-2">
+<ol class="org-ol">
+<li>In the pairs trade we are speculating on firm specific risk, and hedging out market risk. 
+</li>
+</ol>
+
+<p>
+a.  true **
+</p>
+
+<p>
+b.  false
+</p>
+
+<ol class="org-ol">
+<li value="2">The pairs trade is inherently risky.
+</li>
+</ol>
+
+<p>
+a.  true
+</p>
+
+<p>
+b.  false **
+</p>
+
+<ol class="org-ol">
+<li value="3">It is important to estimate the model parameters over a different interval than you trade the model.
+</li>
+</ol>
+
+<p>
+a.  true **
+</p>
+
+<p>
+b.  false 
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2017-06-19 Mon 23:04</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

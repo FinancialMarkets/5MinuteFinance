@@ -12,20 +12,27 @@ Foreign exchange
 1.  The Greeks measure the sensitivity of the ______ price to changes in the underlying variables.
 
 a.  stock's
+
 b.  option's **
+
 c.  bond's
 
-2.  Delta can be used to hedge changes in:
+2.  [@2]  Delta can be used to hedge changes in:
 
 a.  time
+
 b.  volatility
+
 c.  stock **
+
 d.  market risk
 
-3.  A call option's rho is:
+3.  [@3]  A call option's rho is:
 
 a.  greater than or equal to 0.
+
 b.  less than or equal to 0.
+
 c.  always equal to 0
 
 ** Intro Stock Options						       :done:
@@ -33,18 +40,23 @@ c.  always equal to 0
 1.  An option's intrinsic value is:
 
 a.  the value of the option's remaining time.
+
 b.  the value of the option if you would have to exercise it immediately.  **
+
 c.  the price of the option.
 
-2. One option contract is for ______ options.
+2.  [@2] One option contract is for ______ options.
 
 a.  1
+
 b.  100 **
+
 c.  1000
 
-3.  A European put option's value can be less than its intrinsic value.
+3.  [@3]  A European put option's value can be less than its intrinsic value.
 
 a.  true **
+
 b.  false
 
 ** Option/Stock Strategy					       :done:
@@ -52,18 +64,23 @@ b.  false
 1.  Options can be used to decrease the risk of a stock position.
 
 a.  true **
+
 b.  false
 
-2.  To buy a covered call you:
+2.  [@2]  To buy a covered call you:
 
 a.  short the stock and buy a call
+
 b.  buy the stock and sell a call **
+
 c.  buy both a put and a call
 
-3.  To buy a protective put you:
+3.  [@3]  To buy a protective put you:
 
 a.  buy the stock and a put. **
+
 b.  buy the stock and sell a put.
+
 c.  short the stock and sell a put.
 
 ** Black-Scholes						       :done:
@@ -71,18 +88,23 @@ c.  short the stock and sell a put.
 1.  The Black-Scholes model requires the stock's expected return as an input.
 
 a.  true
+
 b.  false **
 
-2.  Dividend payment _____ the value of a call option, and ______ the value of a put.
+2.  [@2]  Dividend payment _____ the value of a call option, and ______ the value of a put.
 
 a.  increase; increase
+
 b.  increase; decrease
+
 c.  decrease; increase **
+
 d.  decrease; decrease
 
-3.  In the Black-Scholes option pricing model volatility is allowed to change over the life of the option.
+3.  [@3]  In the Black-Scholes option pricing model volatility is allowed to change over the life of the option.
 
 a.  true
+
 b.  false **
 
 ** Varying Option Volatility					       :done:
@@ -90,17 +112,21 @@ b.  false **
 1.  The dependence of an option’s implied volatility on the option’s moneyness, is known as the option's _____.
 
 a.  frown
+
 b.  smile **
+
 c.  tenor
 
-2.  Option implied volatility is generally higher for:
+2.  [@2]  Option implied volatility is generally higher for:
 
 a.  in-the-money puts
+
 b.  out-of-the-money puts **
 
-3.  The option smile tends to be constant across tenor and time.
+3.  [@3]  The option smile tends to be constant across tenor and time.
 
 a.  true
+
 b.  false **
 
 * Econometrics
@@ -110,19 +136,22 @@ b.  false **
 1.  The correlation coefficient ranges between -1 and 1.
 
 a.  true **
+
 b.  false
 
-2.  Linear transformations affect the correlation coefficient.
+2.  [@2]  Linear transformations affect the correlation coefficient.
 
 a.  true
+
 b.  false **
 
-3.  No stocks have negative return correlations.
+3.  [@3]  No stocks have negative return correlations.
 
 a.  true
+
 b.  false **
 
-** Monte Carlo
+** Monte Carlo							       :todo:
 
 
 
@@ -134,18 +163,23 @@ b.  false **
 1.  Duration is a measure of:
 
 a.  the time until a bond matures.
+
 b.  the time until the next bond payment.
+
 c.  the bond's interest rate risk. **
 
-2.  Duration is an approximate, not exact, measure.
+2.  [@2]  Duration is an approximate, not exact, measure.
    
 a.  true **
+
 b.  false
 
-3.  As a bond's yield-to-maturity increases, the bond's duration:
+3.  [@3]  As a bond's yield-to-maturity increases, the bond's duration:
 
 a.  increases
+
 b.  decreases **
+
 c.  stays the same
 
 ** Convexity							       :done:
@@ -153,17 +187,21 @@ c.  stays the same
 1.  Convexity benefits bond owners:
 
 a.  true **
+
 b.  false
 
-2.  Using duration and convexity is more accurate than duration alone.
+2.  [@2]  Using duration and convexity is more accurate than duration alone.
 
 a.  true **
+
 b.  false
 
-3. As the bond's yield-to-maturity rises, the bond's convexity:
+3.  [@3] As the bond's yield-to-maturity rises, the bond's convexity:
 
 a.  increases **
+
 b.  decreases
+
 c.  stays the same
 
 * Fundamentals
@@ -175,35 +213,43 @@ c.  stays the same
 1.  We would prefer our portfolio's Sharpe Ratio to be:
 
 a.  higher **
+
 b.  lower
+
 c.  equal to zero
 
-2. The denominator in the Treynor Ratio is the asset's beta coefficient, which is more appropriate than the standard deviation for:
+2.  [@2] The denominator in the Treynor Ratio is the asset's beta coefficient, which is more appropriate than the standard deviation for:
 
 a.  portfolios of many assets
+
 b.  single assets **
 
-3. The 'Information Ratio' divides alpha by:
+3.  [@3] The 'Information Ratio' divides alpha by:
 
 a.  the portfolio's market risk.
+
 b.  the portfolio's residual (non-market) risk **  
 
 ** Portfolio Optimization                                              :done:
 
 1.  Which of the following characteristic of an asset's return distribution is used in Markowitz portfolio optimization?
 
-a.  Kurtis
-b.  mean **
-c.  skeins
+a.  Kurtosis
 
-2.  Diversification can eliminate all risk from a portfolio of assets.
+b.  mean **
+
+c.  skewness
+
+2.  [@2]  Diversification can eliminate all risk from a portfolio of assets.
 
 a.  true
+
 b.  false **
 
-3.  Diversification benefits from negative correlations between assets.
+3.  [@3]  Diversification benefits from negative correlations between assets.
 
 a.  true **
+
 b.  false
 
 * Risk								       :done:
@@ -213,16 +259,19 @@ b.  false
 1.  Using the standard deviation as a measure of risk, makes no assumptions on the stock process.
 
 a.  true
+
 b.  false **
 
-2.  If we assume a normal distribution we don't have to use historical data.
+2.  [@2]  If we assume a normal distribution we don't have to use historical data.
 
 a.  true
+
 b.  false **
 
-3.  Value-at-Risk is affected by the amount of historical data you use.
+3.  [@3]  Value-at-Risk is affected by the amount of historical data you use.
 
 a.  true **
+
 b.  false
 
 ** Risk Over Time                                                      :done:
@@ -230,17 +279,21 @@ b.  false
 1.  An asset's risk is constant through time.
 
 a.  true
+
 b.  false **
 
-2.  In markets, we tend to see volatility cluster (high volatility follows high volatility).  
+2.  [@2]  In markets, we tend to see volatility cluster (high volatility follows high volatility).  
 
 a.  true **
+
 b.  false
 
-3.  We can observe market forecasts of an asset's volatility by looking at:
+3.  [@3]  We can observe market forecasts of an asset's volatility by looking at:
 
 a.  the asset's beta
+
 b.  implied volatility in options traded on the asset **
+
 c.  the asset's standard deviation
 
 ** The VIX Index                                                       :done:
@@ -248,18 +301,23 @@ c.  the asset's standard deviation
 1.  The VIX provides an estimate of the market expectation of volatility in the S&P 500 over the next 30 days, using:
 
 a.  a GARCH(1,1) model
+
 b.  implied volatility from options on the S&P 500 **
+
 c.  a Markov-Switching model
 
-2.  If the VIX is 12, this means there is a 68% chance that the absolute value of the S&P 500's return will be less than:
+2.  [@2]  If the VIX is 12, this means there is a 68% chance that the absolute value of the S&P 500's return will be less than:
 
 a.  2.55% over the next 30 days.
+
 b.  4.33% over the next 30 days. **
+
 c.  8.75% over the next 30 days.
 
-3. The higher the VIX, the more ______ there is among market participants.
+3.  [@3] The higher the VIX, the more ______ there is among market participants.
 
 a.  fear **
+
 b.  calm 
 
 ** VVIX:  The Vol of Vol					       :done:
@@ -267,16 +325,19 @@ b.  calm
 1.  The VVIX is measure of the volatility of an index that itself measures volatility.
 
 a.  true **
+
 b.  false
 
-2.  The VVIX behaves like a random walk process.
+2.  [@2]  The VVIX behaves like a random walk process.
 
 a.  true
+
 b.  false **
 
-3.  The VVIX is ______ correlated with S&P 500 returns.
+3.  [@3]  The VVIX is ______ correlated with S&P 500 returns.
 
 a.  positively
+
 b.  negatively **
 
 * Trading and Market Structure                                         :done:
@@ -286,18 +347,23 @@ b.  negatively **
 1.  A market order provides liquidity to the market.
 
 a.  true
+
 b.  false **
 
-2. Limit orders are guaranteed to be filled.
+2.  [@2] Limit orders are guaranteed to be filled.
 
 a.  true
+
 b.  false **
 
-3.  The ability to transact quickly without moving the asset's price is known as:
+3.  [@3]  The ability to transact quickly without moving the asset's price is known as:
 
 a.  liquidity **
+
 b.  solidity
+
 c.  volatility
+
 d.  solvency
 
 ** The Pairs Trade                                                     :done:
@@ -305,15 +371,17 @@ d.  solvency
 1. In the pairs trade we are speculating on firm specific risk, and hedging out market risk. 
    
 a.  true **
+
 b.  false
 
-2. The pairs trade is inherently risky.
+2.  [@2] The pairs trade is inherently risky.
 
 a.  true
+
 b.  false **
 
-3.  It is important to estimate the model parameters over a different interval than you trade the model.
+3.  [@3]  It is important to estimate the model parameters over a different interval than you trade the model.
 
 a.  true **
-b.  false 
 
+b.  false 
