@@ -153,6 +153,23 @@ b.  false **
 
 ** Monte Carlo							       :todo:
 
+1.  Monte Carlo provides an exact solution.
+
+a.  true
+
+b.  false **
+
+2.  [@2]  Monte Carlo methods can only be used for European options.
+
+a.  true
+
+b.  false **
+
+
+3.  [@3]  Even if we have a closed-form continuous time solution, Monte Carlo may provide a more accurate value if the option's payoff is calculated at discrete points.
+
+a.  true **
+b.  false
 
 
 
