@@ -129,7 +129,7 @@ a.  true
 
 b.  false **
 
-* Econometrics
+* Econometrics							       :done:
 
 ** Correlation							       :done:
 
@@ -151,7 +151,7 @@ a.  true
 
 b.  false **
 
-** Monte Carlo							       :todo:
+** Monte Carlo							       :done:
 
 1.  Monte Carlo provides an exact solution.
 
