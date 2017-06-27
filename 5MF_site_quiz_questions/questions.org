@@ -1,9 +1,6 @@
-* Don't have to do:
+#+TITLE: 5MinuteFinance Quiz Questions
+#+OPTIONS: toc:nil
 
-​Commodities
-Corporate finance
-Equity
-Foreign exchange
 
 * Derivatives                                                          :done:
 
