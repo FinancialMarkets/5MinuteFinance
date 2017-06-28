@@ -1,0 +1,14 @@
+---
+title: Interest Rate Parity
+runtime: shiny
+output: ioslides_presentation
+---
+
+## 
+
+
+## How CAT May View the World
+
+<!-- app of expected currency depreciation by country -->
+
+
