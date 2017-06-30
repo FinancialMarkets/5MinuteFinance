@@ -8,6 +8,25 @@ runtime: shiny
 
 ## 
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Payback
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Benefits/Drawbacks of Payback
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Discounted Payback
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Profitability Index 
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

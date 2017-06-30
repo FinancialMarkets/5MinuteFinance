@@ -126,7 +126,7 @@ a.  true
 
 b.  false **
 
-* Econometrics							       :done:
+* Econometrics                                                         :done:
 
 ** Correlation							       :done:
 
@@ -167,8 +167,6 @@ b.  false **
 
 a.  true **
 b.  false
-
-
 
 * Fixed Income/Other Debt					       :done:
   
@@ -399,3 +397,52 @@ b.  false **
 a.  true **
 
 b.  false 
+* Corporate Finance
+  
+** Intro Financial Statements
+
+1.  Which financial statement is a snapshot in time?
+
+a.  income statement
+
+b.  balance sheet **
+
+c.  statement of cash flows
+
+2.  [@2] A firm's balance sheet lists assets at their market values.
+
+a.  true
+
+b.  false **
+
+3.  [@3]  Which is a noncash item on the income statement?
+
+a.  cost of goods sold
+
+b.  taxes
+
+c.  depreciation **
+
+** Financial Ratios
+
+1.  
+
+2.  [@2] 
+
+3.  [@3]
+   
+** TVM Single CFs
+
+1.  
+
+2.  [@2] 
+
+3.  [@3]
+
+** TVM Multiple CFs
+
+1.  
+
+2.  [@2] 
+
+3.  [@3]
