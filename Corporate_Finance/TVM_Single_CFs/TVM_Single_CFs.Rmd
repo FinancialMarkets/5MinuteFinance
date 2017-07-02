@@ -115,7 +115,7 @@ We can now use this to solve for the *PV*, *r* and *n*.  Rearranging for the pre
 - $PV = \frac{FV}{(1+r)^n}$
 
 -  This shows that the present value decreases if the interest rate increases.  This relationship is very important in asset pricing.
--  Findng the present value is often termed *discounting*.
+-  Finding the present value is often termed *discounting*.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

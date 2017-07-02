@@ -34,6 +34,17 @@ $EFN = \frac{Assets}{Sales}\Delta Sales + \frac{Variable Debt}{Sales}\Delta Sale
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## 
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+
+
+
+```
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Internal Growth Rate (IGR)
 
 $IGR = \frac{ROA(b)}{1 - ROA(b)}$
