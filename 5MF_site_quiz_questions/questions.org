@@ -399,7 +399,7 @@ a.  true **
 b.  false 
 * Corporate Finance
   
-** Intro Financial Statements
+** Intro Financial Statements					       :done:
 
 1.  Which financial statement is a snapshot in time?
 
@@ -423,26 +423,98 @@ b.  taxes
 
 c.  depreciation **
 
-** Financial Ratios
+** Financial Ratios						       :done:
 
-1.  
+1. Financial Ratios are commonly used to compare firms in different industries.
 
-2.  [@2] 
+a.  true
 
-3.  [@3]
+b.  false **
+
+2.  [@2] These measure the firm's ability to meet its debt obligations over the short-term.
+
+a.  Profitability Ratios
+
+b.  Liquidity Ratios **
+
+c.  Market-Value Ratios
+
+3.  [@3] The Du-Pont Identity decomposes firm Return-on-Equity into Profit Margin times Total Asset Turnover times the:
+
+a.  Current Ratio
+
+b.  Times-Interest-Earned Ratio.
+
+c.  Market-to-Book Ratio.
+
+d.  Equity Multiplier **
    
-** TVM Single CFs
+** TVM Single CFs						       :done:
 
-1.  
+1.  The value of money is a function of time.
 
-2.  [@2] 
+a.  true **
 
-3.  [@3]
+b.  false
 
-** TVM Multiple CFs
+2.  [@2] The higher the discount rate, the _____ the present value.
 
-1.  
+a.  higher
 
-2.  [@2] 
+b.  lower **
 
-3.  [@3]
+3.  [@3]  The more periods, the _____ the future value.
+
+a.  higher **
+
+b.  lower
+
+** TVM Multiple CFs						       :done:
+
+1.  A financial contract which makes a fixed payment, every period, for a fixed number of periods is:
+
+a.  a perpetuity
+
+b.  a growing perpetuity
+
+c.  an annuity **
+
+d.  a growing annuity
+
+2.  [@2] Because a perpetuity has an infinite number of payments, it also has an infinite value.
+
+a.  true
+
+b.  false **
+
+3.  [@3]  Which of the following is an annuity?
+
+a.  fixed-rate mortgage **
+
+b.  common stock
+
+c.  preferred stock
+
+** OCF
+
+1.  The calculation of accounting profit included noncash deductions.
+
+a.  true **
+
+b.  false
+
+2. [@2]  
+
+3. [@3] 
+
+** NPV and IRR
+** Intro Stock Val
+** Intro Bond Val
+** CAPM
+** Compounding/EAR
+** Goal Fin Mgmt
+** Dividends
+** Balance Sheet Identity
+** MM Props
+** WACC
+** Capital Structure
