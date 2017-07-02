@@ -6,12 +6,39 @@ css: 5min_mod2.css
 runtime: shiny
 ---
 
-## 
+## Beyond NPV and IRR
+
+It is most common to use NPV and/or IRR to make investment decisions. Because of their wide use, they will be easily understood by any manager.  
+
+However, there are other decision rules you may be asked to use in particular situations or given certain managers. This presentation will cover these rules, which are:
+
+-  Payback 
+  
+-  Discounted Payback
+
+-  Profitability Index
+
+Note that we consider Modified IRR as a type of IRR, and cover it in its own presentation. 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Payback
 
+We choose some threshold value, which represents the maximum time we will allow for the project to 'pay us back'. We then calculate the point in time in which we expect to be paid back.
+
+<div class="decisionBox">*Decision Rule*: If expected payback time is less than the threshold we **accept**, otherwise we **reject**.</div>
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Calculating the Payback Point
+
+Say a project has the following expected cash flows:
+
+| Year | 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|---|
+|Cash Flow ($) | -100,000 | 40,000 | 40,000 | 30,000 | 10,000 |
+
+Then we expect the payback time to be
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

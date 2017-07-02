@@ -6,7 +6,7 @@ output: html_document
 
 # The Balance of Payments
 
-# International Financial MArkets
+# International Financial Markets
 
 # How Exchange Rates are Determined
 
