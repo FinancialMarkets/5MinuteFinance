@@ -20,6 +20,32 @@ In this tutorial we'll test some key knowledge from the corporate finance presen
 ## Financial Statements, Ratios, and Operating Cash Flow
 
 
+```{r snapshot, echo=FALSE}
+question("Which financial statement is a snapshot in time?", 
+    answer("income statement"),
+    answer("balance sheet", correct = TRUE),
+    answer("statement of cash flows")
+)
+```
+
+
+```{r market-values, echo=FALSE}
+question("A firm's balance sheet lists assets at their market values.",
+    answer("true"),
+    answer("false", correct = TRUE)
+)
+```
+
+```{r noncash, echo=FALSE}
+question("Which is a noncash item on the income statement?",
+    answer("cost of goods sold"),
+    answer("taxes"),
+    answer("depreciation", correct = TRUE)
+)
+```
+
+
+
 ## The Time Value of Money
 
 
