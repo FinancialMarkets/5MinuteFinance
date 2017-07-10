@@ -397,8 +397,7 @@ b.  false **
 a.  true **
 
 b.  false 
-* Corporate Finance
-  
+* Corporate Finance  
 ** Intro Financial Statements					       :done:
 
 1.  Which financial statement is a snapshot in time?
@@ -495,7 +494,7 @@ b.  common stock
 
 c.  preferred stock
 
-** OCF
+** OCF								       :done:
 
 1.  The calculation of accounting profit included noncash deductions.
 
@@ -503,18 +502,158 @@ a.  true **
 
 b.  false
 
+2. [@2]  If EBIT, Depreciation, and Taxes are $1000, $100, and $200 respectively, then Operating Cash Flow is:
+
+a.  $1000
+
+b.  $900 **
+
+c.  $800
+
+d.  $700
+
+3. [@3] We should not include interest, because it is a financing, and not operating, expense.
+
+a.  true **
+
+b.  false
+
+** NPV and IRR							       :done:
+
+1.  If a project's NPV is $100,000, this means that if we accept the project:
+
+a.  the market value of the firm's equity will increase by $1000. **
+
+b.  the market value of the firm's equity will decrease by $1000.
+
+c.  the market value of the firm's equity will be unchanged.
+
+2. [@2]  There is guaranteed to be one IRR.
+
+a.  true
+
+b.  false **
+
+3. [@3]  If a project's cash flows are conventional, and we are not ranking it against another project, then NPV and IRR will give the same accept/reject result.
+
+a.  true **
+
+b.  false
+
+5MF: note, in the choosing between projects section, the IRR is messed up.
+   
+** Intro Stock Val						       :done:
+
+1.  Say a stock pays a constant dividend of $20 per share, and the discount rate is 10%, then the stock's value is:
+
+a.  $100
+
+b.  $150
+
+c.  $200 **
+
+d.  $250
+
+2. [@2]  Say a stock's next dividend is $5, and it will grow at a constant 8%.  If the discount rate is 4%, the stock's price is:
+
+a.  $100
+
+b.  $125 **
+
+c.  $150
+
+d.  $200
+
+
+3. [@3]  If we assume a stock's dividend grows at a constant rate, this implies the stock's price also increases at a constant rate.
+
+a.  true **
+
+b.  false
+
+** Intro Bond Val
+
+1.  If a bond's YTM is above its coupon rate, then its price is:
+
+a.  greater than par.
+
+b.  equal to par.
+
+c.  less than par. **
+
+2. [@2]  Switching from annual to semiannual interest (all else constant), always lowers the value of a bond.
+
+a.  true
+
+b.  false **
+
+3. [@3] If we buy a coupon bond and hold it until maturity, we are guaranteed to earn the YTM.
+
+a.  true
+
+b.  false ** 
+
+** CAPM
+
+1.  
+
 2. [@2]  
 
-3. [@3] 
+3. [@3]  
 
-** NPV and IRR
-** Intro Stock Val
-** Intro Bond Val
-** CAPM
 ** Compounding/EAR
+
+1.  
+
+2. [@2]  
+
+3. [@3]  
+
 ** Goal Fin Mgmt
+
+1.  
+
+2. [@2]  
+
+3. [@3]  
+
 ** Dividends
+
+1.  
+
+2. [@2]  
+
+3. [@3]  
+
 ** Balance Sheet Identity
+
+1.  
+
+2. [@2]  
+
+3. [@3]  
+
 ** MM Props
+
+1.  
+
+2. [@2]  
+
+3. [@3]  
+
 ** WACC
+
+1.  
+
+2. [@2]  
+
+3. [@3]  
+
 ** Capital Structure
+
+1.  
+
+2. [@2]  
+
+3. [@3]  
+   
