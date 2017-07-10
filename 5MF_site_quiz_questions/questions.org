@@ -593,21 +593,63 @@ a.  true
 
 b.  false ** 
 
-** CAPM
+** CAPM								       :done:
 
-1.  
+1.  In the CAPM, if an asset if more correlated with the market (your portfolio), then you require a _____ expected return on the asset.
 
-2. [@2]  
+a.  higher **
 
-3. [@3]  
+b.  lower
 
-** Compounding/EAR
+2. [@2]  In the CAPM, the components of the asset's expected return are the pure time value of money, the amount of market risk in the asset, and:
 
-1.  
+a.  the amount of firm specific risk in the asset.
 
-2. [@2]  
+b.  the price of market risk. **
 
-3. [@3]  
+c.  the price of liquidity.
+
+d.  transaction costs.
+
+3. [@3]  An asset's beta measures the asset's:
+
+a.  firm specific (or idiosyncratic) risk.
+
+b.  market (or systematic) risk. ** 
+
+c.  volatility.
+
+** Compounding/EAR						       :done:
+
+5MF, note latex is incorrectly typeset in this presentation (\left( issue).
+
+1.  If the quoted rate is 8% compounded semiannually, then the actual rate is:
+
+a.  8% per year.
+
+b.  8% per 6 month period.
+
+c.  4% per 6 month period. **
+
+d.  4% per year.
+
+2. [@2]  If the quoted rate is 12% compounded monthly, then the EAR is:
+
+a.  11.54%
+
+b.  12%
+
+c.  12.68% **
+
+d.  15.77%
+
+3. [@3]  For positive interest rates, the EAR is always _______ the APR (quoted rate).
+
+a.  greater than **
+
+b.  equal to
+
+c.  less than
 
 ** Goal Fin Mgmt
 
