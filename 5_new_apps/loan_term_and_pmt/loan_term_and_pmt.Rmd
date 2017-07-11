@@ -1,0 +1,31 @@
+---
+title:
+runtime: shiny
+output: html_document
+---
+
+```{r echo = FALSE, message = FALSE}
+library(plotly)
+library(financial)
+inputPanel(
+    sliderInput(inputId = "term", label = "Loan Term", min = 1, max = 30, value = 4, step = 1, animate = TRUE)
+)
+renderPlotly({
+  
+  slope_steepness <- 20  # lower is more steep
+
+  teo_base_interest_rate <- .30
+  teo_interest_rate <- teo_base_interest_rate * ( (input$term / 4)^(1/slope_steepness) ) 
+  gabby_base_interest_rate <- .10
+  gabby_interest_rate <- gabby_base_interest_rate * ( (input$term / 4)^(1/slope_steepness) ) 
+ 
+  teo_cfs = tvm(pv = 800000, i = teo_interest_rate, n = input$term, pmt = NA)
+  teo_amort_table <-  summary(teo_cfs) 
+ 
+  gabby_cfs = tvm(pv = 800000, i = gabby_interest_rate, n = input$term, pmt = NA)
+  gabby_amort_table <-  summary(gabby_cfs) 
+  
+  # teo_payment <- (800000 * teo_interest_rate) / (1 - 1 / (1 + teo_interest_rate)^input$term )
+  # gabby_payment <- (800000 * teo_interest_rate) / (1 - 1 / (1 + teo_interest_rate)^input$term )
+})
+```
