@@ -8,24 +8,71 @@ output: html_document
 library(plotly)
 library(financial)
 inputPanel(
-    sliderInput(inputId = "term", label = "Loan Term", min = 1, max = 30, value = 4, step = 1, animate = TRUE)
+    sliderInput(inputId = "term", label = "Loan Term", min = 1, max = 30, value = 4, step = 1, animate = TRUE),
+    sliderInput(inputId = "steepness", label = "Steepness Factor", min = 1, max = 30, value = 20, step = 1, animate = TRUE)
 )
 renderPlotly({
   
-  slope_steepness <- 20  # lower is more steep
+  slope_steepness <- input$steepness  # lower is more steep
 
   teo_base_interest_rate <- .30
   teo_interest_rate <- teo_base_interest_rate * ( (input$term / 4)^(1/slope_steepness) ) 
+  
   gabby_base_interest_rate <- .10
   gabby_interest_rate <- gabby_base_interest_rate * ( (input$term / 4)^(1/slope_steepness) ) 
+  all_gabby_interest_rates <- gabby_base_interest_rate * ( (1:30 / 4)^(1/slope_steepness) )
  
-  teo_cfs = tvm(pv = 800000, i = teo_interest_rate, n = input$term, pmt = NA)
+  teo_cfs = tvm(pv = 800000, i = (100 * teo_interest_rate), n = input$term, days = 360, pyr = 1, pmt = NA)
   teo_amort_table <-  summary(teo_cfs) 
+  
+  teo_int_prin <- teo_amort_table[, c(2,3)]
  
-  gabby_cfs = tvm(pv = 800000, i = gabby_interest_rate, n = input$term, pmt = NA)
+  gabby_cfs = tvm(pv = 800000, i = (100 * gabby_interest_rate), n = input$term, days = 360, pyr = 1, pmt = NA)
   gabby_amort_table <-  summary(gabby_cfs) 
   
+  gabby_int_prin <- gabby_amort_table[, c(2,3)]
+  
+  ## plot
+  
+  type <- c("Interest", "Principal")
+  Year <- 1:input$term
+  
+  Teo_Interest <- teo_int_prin[c(1:input$term),1]
+  Teo_Principal <- -teo_int_prin[c(1:input$term),2]
+  
+  Gabby_Interest <- gabby_int_prin[c(1:input$term),1]
+  Gabby_Principal <- -gabby_int_prin[c(1:input$term),2]
+  
+  Gdata <- data.frame(Year, Gabby_Interest, Gabby_Principal)
+  Tdata <<- data.frame(Year, Teo_Interest, Teo_Principal)
+  
+  gabby_payment <- (800000 * gabby_interest_rate) / (1 - 1 / (1 + gabby_interest_rate)^input$term )
+  
+  g <- plot_ly(Gdata, x = ~Year, y = ~Gabby_Principal, type = 'bar', name = 'Principal') %>%
+  add_trace(y = ~Gabby_Interest, name = 'Interest') %>%
+  layout(yaxis = list(title = '$'), barmode = 'stack', title = paste0("Gabby's Payment: $", round(gabby_payment, 2)))
+  
+  all_years <- 1:30
+  present_year <- rep("Not Active Rate", 30)
+  present_year[input$term] <- "Active Rate"
+  
+  GdataRate <- data.frame(all_years, all_gabby_interest_rates, present_year)
+  
+  g2 <- plot_ly(GdataRate, x = ~all_years, y = ~all_gabby_interest_rates, color = ~present_year, marker = list(size = 10))
+  
+  gc <- subplot(g, g2, nrows = 2)
+  
   # teo_payment <- (800000 * teo_interest_rate) / (1 - 1 / (1 + teo_interest_rate)^input$term )
-  # gabby_payment <- (800000 * teo_interest_rate) / (1 - 1 / (1 + teo_interest_rate)^input$term )
 })
+```
+
+```{r echo = FALSE}
+
+  # t <- plot_ly(Tdata, x = ~Year, y = ~Teo_Principal, type = 'bar', name = 'Principal') %>%
+  # add_trace(y = ~Teo_Interest, name = 'Interest') %>%
+  # layout(yaxis = list(title = '$'), barmode = 'stack', title = "Teo")
+  # 
+  # t
+
+
 ```
