@@ -698,4 +698,262 @@ c.  less than
 2. [@2]  
 
 3. [@3]  
-   
+
+* Commodities
+
+** Cross Hedging 
+
+1. Lowering the standard deviation of the futures price changes causes the optimal hedge ratio to...?
+
+a. Increase
+
+b.  Decrease **
+
+c. No change
+
+d. Depends on historical performance of the commodity
+
+2. [@2]  What do we call the possibility that the price of a commodity guaranteed in a futures contract will change in relation to the spot price?
+
+a. Trimming the hedges 
+
+b.  The Optimal Hedge Ratio
+
+c. Counterparty risk
+
+d. Basis risk **
+
+3. [@3]  What is the purpose of discovering the optimal hedge ratio?
+
+a. To minimize the basis risk **
+
+b.  To eliminate the hedging contract risk
+
+c. To transfer risk to another party
+
+** Oil Markets 
+
+1. Which of the following is NOT a global oil price benchmark?
+
+a. West Texas Intermediate
+
+b.  Brent North Sea
+
+c. Abu Dhabi Crude **
+
+2. [@2]  Which is more expensive to refine?
+
+a. Hot and heavy
+
+b.  Heavy sour **
+
+c. Light sweet 
+
+d. Sweet and sour
+
+3. [@3]  Around how much oil does the United States consume every month?
+
+a. 8 million barrels
+
+b.  18 million barrels
+
+c. Around 100 million barrels
+
+d. Over 500 million barrels **
+
+* Equity
+
+** Intro: Stock Investments
+
+1. What rights do shareholders have as owners of a company that bondholders typically don’t have?
+
+a. They get paid first
+
+b.  They get paid a set amount
+
+c. They can sell their investment to someone else
+
+d. They can elect company leadership **
+
+2. [@2]  True or false? Companies must pay dividends to stockholders.
+
+a. True
+
+b.  False **
+
+3. [@3]  Which method of stock evaluation uses data from financial reporting to identify undervalued companies that are likely to grow?
+
+a. Technical analysis
+
+b.  Fundamental analysis **
+
+c. Data analysis
+
+d. Psychoanalysis 
+
+** Intro: Stock Markets
+
+1. What is an order-matching engine?
+
+a. An algorithm **
+
+b.  A high frequency trader
+
+c. An exchange network
+
+d. A dark pool
+
+2. [@2]  True or false? The Reg NMS system allows sub-penny stock quotations. 
+
+a. True
+
+b.  False **
+
+3. [@3]  Why would traders want to make orders via a dark pool?
+
+a. To avoid scrutiny from the SEC
+
+b.  To avoid causing sudden movements in price when large orders **
+
+c. To move to a purely electronic form of communication
+
+** Short Selling Stock
+
+1. What is the first step in shorting a stock?
+
+a. Selling the stock
+
+b.  Borrowing the stock **
+
+c. Buying the stock
+
+2. [@2]  When you short a stock, you should be hoping for what to happen?
+
+a. Prices to fall **
+
+b.  Prices to rise
+
+c. Prices to stabilize 
+
+3. [@3]  What might not exist without the ability to short sell?
+
+a. Derivatives
+
+b.  ETFs
+
+c. Put options **
+
+** Exchange Traded Funds
+
+1. What is NOT an advantage of ETFs compared to traditional mutual funds?
+
+a. Traded continuously
+
+b.  Selling does not involve a fund redemption fee
+
+c. Lower fees
+
+d. They are actively managed **
+
+2. [@2]  True or false. ETFs have become more popular in recent years?
+
+a. True **
+
+b.  False
+
+3. [@3]  Why are ETFs able to charge lower fees?
+
+a. They are passively managed **
+
+b.  They are actively managed
+
+c. They poorly track the prices of underlying assets
+
+d. They are new and exotic
+
+** Leveraged Exchange Traded Funds
+
+1. What do inverse leveraged ETFs offer?
+
+a. 2x returns compared to a typical ETF
+
+b.  A multiple of an index’s returns
+
+c. A negative multiple of an index’s returns **
+
+2. [@2]  True or false? After a few days, a leveraged ETF will probably diverge from its stated multiple of returns compared to the index it tracks
+
+a. True **
+
+b.  False
+
+3. [@3]  SLV tracks an index for silver. What rate of return does it seek relative to the index?
+
+a. 2X **
+
+b.  2.5X
+
+c. 3X
+
+* Foreign Exchange
+
+
+** Foreign Exchange Arbitrage
+
+1. Which of the following is a cross rate?
+
+a. USD/EUR
+
+b.  AUD/GBP **
+
+c. JPY/USD
+
+2. [@2]  East quotes USD 1.05/1.10 for GBP, and West quotes USD 1.25/1.27. Is there an arbitrage opportunity?
+
+a. Yes **
+
+b.  No
+
+3. [@3]  The above question is an example of what kind of arbitrage?
+
+a. Richard Gere Arbitrage
+
+b.  Locational Arbitrage **
+
+c. Triangular Arbitrage
+
+d. Covered Interest Arbitrage
+
+** Foreign Exchange Markets
+
+1. If I am a Swiss banker based in Zurich, the direct quote for the exchange rate of my local currency with the U.S. dollars will be expressed in...?
+
+a. USD
+
+b.  EUR
+
+c. GBP
+
+d. CHF **
+
+2. [@2]  If the exchange rate quote is USD 1.09/EUR, how many dollars will 100 euros be worth?
+
+a. $99
+
+b.  $101
+
+c. $109 **
+
+d. $111
+
+
+3. [@3]  About how much of global FX trading involves the U.S. dollar?
+
+a. 10%
+
+b.  25%
+
+c. 40% **
+
+d. 65%
+
