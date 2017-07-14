@@ -1,0 +1,39 @@
+---
+title:
+runtime: shiny
+output: html_document
+---
+
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+library(ggplot2)
+library(truncnorm)
+
+inputPanel(
+    sliderInput("collat", "Collateral Value", min = 0, max = 750000, step = 50000, value = 0, animate = TRUE)
+)
+
+renderPlotly({
+    nums <- rtruncnorm(100000, a = as.numeric(input$collat), b=800000, mean = 750000, sd = 100000)
+    nums <- data.frame(nums)
+    names(nums) <- "Collateral_Value"
+
+    library(scales)
+
+    p <- ggplot(nums, aes(x = Collateral_Value)) +
+        geom_density(aes(fill = "red")) +
+        scale_x_continuous(labels = comma) +
+        theme(legend.position="none") +
+        labs(x = "Value Recovered in Default", title = paste0("Default Premium = f(probability, severity, market conditions) = ", round(17-2.5*(input$collat/800000)^2 - 5*(input$collat/800000)^3, 2),"%"))
+        ## annotate("text", x = 750000, y = .000002, label = "Default Premium = italic(f(probability, severity, price))")
+
+})
+
+
+
+```
+
+
+
+
+

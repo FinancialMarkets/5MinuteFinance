@@ -40,7 +40,7 @@ renderPlotly({
 
     tt <- plot_ly(Tdata, x = ~Year, y = ~Teo_Principal, type = 'bar', name = 'Principal') %>%
         add_trace(y = ~Teo_Interest, name = 'Interest') %>%
-        layout(yaxis = list(title = '$', range = c(0, 430000)), barmode = 'stack', title = paste0("Teo's Yearly Payment: $", round(teo_payment, 2)), shapes=list(type='line', color = 'rgb(205, 12, 24)', x0 = 0, x1 = (input$term + .5), y0 = 2.2*300000, y1 = 2.2*300000, color = "red"))  # dont know why I have to multiply by 2.2, but works
+        layout(yaxis = list(title = '$', range = c(0, 430000)), barmode = 'stack', title = paste0("Teo's Yearly Payment: $", round(teo_payment, 2)), shapes = list(type='line', color = 'rgb(205, 12, 24)', x0 = 0, x1 = (input$term + .5), y0 = 2.2*300000, y1 = 2.2*300000, color = "red"))  # dont know why I have to multiply by 2.2, but works
 
     all_years <- 1:30
     present_year <- rep("Not Active Rate", 30)

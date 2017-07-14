@@ -1,0 +1,78 @@
+---
+title:
+runtime: shiny
+output: html_document
+---
+
+<!-- this app doesn't say what we want the slice being taken out of the pie chart is ok, but we really want to show collateral reduces the worst-case (severity) of default -->
+
+```{r echo = FALSE}
+library(plotly)
+library(financial)
+inputPanel(
+sliderInput("reduc", "Default Premium Reduction (%)", min = 0, max = 17, step = 1, animate = TRUE, value = 0)
+)
+
+renderPlotly({
+    rf <- .07
+    trans <- .04
+    df <- .17
+    df.adj <- df - (input$reduc / 100)
+    white <- (input$reduc / 100)
+
+    piedata <- data.frame(cbind(c("Risk Free", "Transaction", "Default", "Reduced from Default"), 100*c(rf, trans, df.adj, white)))
+    names(piedata) <- c("Cat", "Data")
+
+    totalRate <- rf + trans + df.adj
+    term <- 5
+
+    payment <- (800000 * totalRate) / (1 - 1 / (1 + totalRate)^term)
+
+    if(payment > 300000){
+        colors <- c('rgb(144,103,167)', 'rgb(171,104,87)', 'rgb(211,94,96)', 'rgb(255,255,255)') #'rgb(114,147,203)')
+    } else {
+        colors <- c('rgb(144,103,167)', 'rgb(171,104,87)', 'rgb(001,200,100)', 'rgb(255,255,255)')
+        }
+
+    ## p1 <- plot_ly(piedata, labels = ~Cat, values = ~Data, type = 'pie',
+    ##               text = ~paste0(Data, ' %'),
+    ##               textinfo = 'label+text',
+    ##               marker = list(colors = colors,
+    ##                             line = list(color = '#FFFFFF', width = 1))) %>%
+    ## layout(title = paste0("Teo's Payment: $", round(payment, 2)),
+    ##        xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+    ##        yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+
+    teo_cfs = tvm(pv = 800000, i = (100 * totalRate), n = 5, days = 360, pyr = 1, pmt = NA)
+    teo_amort_table <-  summary(teo_cfs) 
+    
+    teo_int_prin <- teo_amort_table[, c(2,3)]
+
+    type <- c("Interest", "Principal")
+    Year <- 1:5
+    
+    Teo_Interest <- teo_int_prin[c(1:5),1]
+    Teo_Principal <- -teo_int_prin[c(1:5),2]
+    
+    Tdata <- data.frame(Year, Teo_Interest, Teo_Principal)
+
+    teo_payment <- (800000 * totalRate) / (1 - 1 / (1 + totalRate)^5 )  
+
+### Teo Plot
+
+    tt <- plot_ly(Tdata, x = ~Year, y = ~Teo_Principal, type = 'bar', name = 'Principal', domain = list(x = c(0, 0.5), y = c(0, 0.6))) %>%
+        add_trace(y = ~Teo_Interest, name = 'Interest') %>%
+        layout(yaxis = list(title = '$', range = c(0, 600000)), barmode = 'stack', title = paste0("Teo's Yearly Payment: $", round(teo_payment, 2)), shapes = list(type='line', color = 'rgb(205, 12, 24)', x0 = 0, x1 = (5 + .5), y0 = 2.2*300000, y1 = 2.2*300000, color = "red")) %>%
+        add_pie(data = piedata, labels = ~Cat, values = ~Data, type = 'pie',
+                text = ~paste0(Data, ' %'),
+                textinfo = 'label+text',
+                marker = list(colors = colors,
+                              line = list(color = '#FFFFFF', width = 1)), domain = list(x = c(0.75, 1), y = c(0.5, 1)))    
+})
+
+
+```
+
+
+
+
