@@ -651,37 +651,99 @@ b.  equal to
 
 c.  less than
 
-** Goal Fin Mgmt
+** Goal Fin Mgmt						       :done:
 
-1.  
+***** Note: under alternative measures shoreholder			:FIX:
 
-2. [@2]  
+1.  Which of the following is a reason we don't use maximizing profit as the goal of financial management.
 
-3. [@3]  
+a.  profit is hard to calculate
 
-** Dividends
+b.  it doesn't consider risk **
 
-1.  
+c.  profit is always greater than cash flow
 
-2. [@2]  
+2. [@2]  Maximizing shareholder wealth forces management to focus only on short term goals.
 
-3. [@3]  
+a.  true
 
-** Balance Sheet Identity
+b.  false **
 
-1.  
+3. [@3]  The goal of maximizing shareholder wealth is the same in all countries.
 
-2. [@2]  
+a.  true
 
-3. [@3]  
+b.  false **
 
-** MM Props
+** Dividends							       :done:
 
-1.  
+1.  Dividends take the form of cash or:
 
-2. [@2]  
+a.  warrants
 
-3. [@3]  
+b.  stock **
+
+c.  options
+
+d.  bonds
+
+2. [@2]  Like bond interest, firms must pay dividends.
+
+a.  true
+
+b.  false **
+
+3. [@3]  You receive the dividend if you:
+
+a.  buy the stock on the ex-dividend date.
+
+b.  own the stock the day before, and sell no earlier than the ex-dividend date. **
+
+** Balance Sheet Identity					       :done:
+
+1.  The balance sheet shows how a firm's assets were financed.
+
+a.  true **
+
+b.  false 
+
+2. [@2]  An identity is the same thing as an equation.
+
+a.  true
+
+b.  false **
+
+3. [@3]  Despite limited liability, the equity value on the balance sheet can be negative.
+
+a.  true **
+
+b.  false
+
+** MM Props							       :done:
+
+1.  With no taxes, MM show that:
+
+a.  firm size increases in debt.
+
+b.  firm size decreases in debt.
+
+c.  capital structure doesn't affect firm size. **
+
+2. [@2]  MM proposition II (no taxes) says the WACC is constant, because as you use more cheap debt:
+
+a.  your cost of equity increases. **
+
+b.  your cost of equity decreases.
+
+c.  the WACC is not a function of the capital structure.
+
+3. [@3]  With no taxes, MM show that:
+
+a.  firm size increases in debt. **
+
+b.  firm size decreases in debt.
+
+c.  capital structure doesn't affect firm size.
 
 ** WACC
 
@@ -699,7 +761,7 @@ c.  less than
 
 3. [@3]  
 
-* Commodities
+* Commodities							       :done:
 
 ** Cross Hedging 
 
@@ -761,7 +823,7 @@ c. Around 100 million barrels
 
 d. Over 500 million barrels **
 
-* Equity
+* Equity							       :done:
 
 ** Intro: Stock Investments
 
@@ -895,7 +957,7 @@ b.  2.5X
 
 c. 3X
 
-* Foreign Exchange
+* Foreign Exchange						       :done:
 
 
 ** Foreign Exchange Arbitrage
