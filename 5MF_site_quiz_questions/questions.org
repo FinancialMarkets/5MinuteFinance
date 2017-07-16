@@ -216,8 +216,6 @@ b.  decreases
 
 c.  stays the same
 
-* Fundamentals
-
 * Portfolio Finance                                                    :done:
 
 ** Intro: Portfolio Performance                                        :done:
@@ -397,7 +395,7 @@ b.  false **
 a.  true **
 
 b.  false 
-* Corporate Finance  
+* Corporate Finance						       :done:
 ** Intro Financial Statements					       :done:
 
 1.  Which financial statement is a snapshot in time?
@@ -745,21 +743,53 @@ b.  firm size decreases in debt.
 
 c.  capital structure doesn't affect firm size.
 
-** WACC
+** WACC								       :done:
 
-1.  
+1.  The WACC is a function of the firm's capital structure, costs of debt and equity, and:
 
-2. [@2]  
+a.  tax rate. **
 
-3. [@3]  
+b.  total agency costs.
 
-** Capital Structure
+c.  profit margin
 
-1.  
+2. [@2]  The true cost of debt to the firm is:
 
-2. [@2]  
+a.  0%.
 
-3. [@3]  
+b.  before tax.
+
+c.  after tax **
+
+3. [@3]  Preferred stock is excluded from the WACC calculation.
+
+a.  true
+
+b.  false **
+
+** Capital Structure						       :done:
+
+1.  /Capital structure/ refers to:
+
+a.  the mix of debt and equity a firm uses to finance its assets. **
+
+b.  the amount of the firm's fixed assets.
+
+c.  The ratio of firm's real assets to total assets.
+
+2. [@2]  Firm's are unable to affect their capital structure.
+
+a.  true
+
+b.  false **
+
+3. [@3]  Adding leverage ______ a firm's probability of financial distress.
+
+a.  increases **
+
+b.  decreases
+
+c.  does not effect
 
 * Commodities							       :done:
 
