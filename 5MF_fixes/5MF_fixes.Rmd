@@ -1,0 +1,98 @@
+---
+title: "5MF Fixes"
+author: "Matt Brigida"
+date: "July 18, 2017"
+output: html_document
+---
+
+# Problem with Unknown Cause 
+
+Many apps which pull stock market data "ERROR: Could not establish session after 5 attempts."  I would need to track down the cause.  I don't know if this is the app, or 5MF causing the multiple attempts.
+
+If you click refresh, or input a new stock ticker, then the data are pulled correctly and the app runs.
+
+# Capital Structure
+
+### An Example of Leverage
+
+Headers shifted right with no heading above "Assets".
+
+### Current (No Debt)
+
+Same as previous
+
+### Restructured
+
+Same as previous
+
+# Financial Ratios
+
+"Motivation" at beginning should be the first heading.
+
+# Intro: Bond Valuation
+
+### Bond Value
+
+`\left(` being interpreted as <ft.  Looks like you can just remove the `\left`
+
+# An Introduction to Stock Valuation
+
+"Discounted Dividends" should be the first heading.
+
+# MM Propositions
+
+### MM Proposition I (With Taxes)
+
+"amount `I` every period" should be an italic I like those before/after.
+
+# Risk and value at risk
+
+Will the following link (and similar) be automatically changed when we rename from topics to courses?
+
+"In the following presentations (http://www.5minutefinance.org/topics/risk) on risk we’ll cover topics such as:"
+
+# WACC
+
+first section space needed: "in our NPVcalculation."
+
+# TVM: Multiple Cash Flows
+
+### A Growing Perpetuity
+
+Equation is not rendered: 
+
+"$PV = + + + … ="
+
+# Bullet Point Issue: some bullet lists have blank lines between entries, and some do not, in the same presentation.  Fix or do nothing at your discretion. 
+
+Financial Ratios
+
+Intro: Option/Stock Strategy
+
+Intro: Portfolio Performance
+
+Stock Markets
+
+Portfolio Optimization (Markowitz)
+
+The Capital Asset Pricing Model
+
+The Greeks (call and put equations should have a blank line in between)
+
+TVM: Single Cash Flows
+
+# General Observations
+
+-  Some presentations have the dual title, and some (maybe very few) do not.
+
+# Fixes for Matt
+
+-  Third Markowitz app broken
+
+-  Varying Option Volatility
+
+-  Minor: Update second correlation presentation app to javascript nicer version (like that in Markowitz).
+
+# Very minor, definitely ignore for now
+
+The italics don't have proper kearning.  Probably need the equivalent of the latex \/ inserted after word.  
