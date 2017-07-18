@@ -15,7 +15,7 @@ If you click refresh, or input a new stock ticker, then the data are pulled corr
 
 ### An Example of Leverage
 
-Headers shifted right with no heading above "Assets".
+Headers need to be shifted right with no heading above "Assets".
 
 ### Current (No Debt)
 
