@@ -29,6 +29,10 @@ Same as previous
 
 "Motivation" at beginning should be the first heading.
 
+# Black-Scholes
+
+Second app should be below the 'interactive app' heading.
+
 # Intro: Bond Valuation
 
 ### Bond Value
