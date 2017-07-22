@@ -1,5 +1,5 @@
 ---
-title: "5MinuteFinance Instructor Site"
+title: "5-Minute Finance Instructor Site"
 date: "May 5, 2017"
 output: html_document
 ---
