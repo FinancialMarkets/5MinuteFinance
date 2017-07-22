@@ -1,7 +1,7 @@
-name: "5MinuteFinance Educator/Student Site"
+name: "5-Minute Finance Educator/Student Site"
 output_dir: "."
 navbar:
-  title: "5MinuteFinance"
+  title: "5-Minute Finance"
   icon: fa-home
   left:
     - text: "Courses"
