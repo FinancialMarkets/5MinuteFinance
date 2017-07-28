@@ -1,0 +1,19 @@
+---
+title: Alternative Risk Measures
+output: ioslides_presentation
+runtime: shiny
+---
+
+## Beyond VaR
+
+
+
+
+## Expected Shortfall (ES)
+
+First, note ES is also known as Conditional Value at Risk (CVaR), Average Value at Risk (AVaR), or Expected Tail Loss (ETL).
+
+
+## Entropic Value at Risk (EVaR)
+
+

@@ -1,0 +1,74 @@
+---
+title:
+runtime: shiny
+---
+
+
+## 
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(quantmod)
+library(plotly)
+
+comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+names(comp) <- c("symbol", "name")
+
+inputPanel(
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name)
+    ## textInput("ticker", label = "Stock Ticker", value = "C")
+)
+renderPlotly({
+    ## valdate ticker ----
+    validate(
+        ## need(input$ticker != "", "Input a valid US stock ticker.")
+        need(input$name != "", "Select a US stock name.")
+    )
+ticker <- comp$symbol[comp$name == input$name]
+
+    stock <- getSymbols(ticker, src = "yahoo", auto.assign = F)
+    adjStock <- Ad(stock)
+    stockRet <- Delt(adjStock)[-1]
+    stock.mat <- matrix(stockRet)
+
+    n <- floor(dim(stock.mat)[1]/30)
+
+    densx <- matrix(0, nrow = n, ncol = 512)
+    densy <- matrix(0, nrow = n, ncol = 512)
+    count <- matrix(0, nrow = n, ncol = 512)
+    
+    a <- rep(0, n)
+    b <- rep(0, n)
+    for (i in 1:n) {
+        g <- 30 * (i - 1)
+        h <- 30 * i
+        densx[i, ] <- density(stock.mat[g:h, 1])$x
+        densy[i, ] <- density(stock.mat[g:h, 1])$y
+        count[i, ] <- rep(i, 512)
+    }
+
+
+    tcount <- t(count)
+    tcount.stacked <- stack(data.frame(tcount))[, -2]
+    tdensx <- t(densx)
+    tdensx.stacked <- stack(data.frame(tdensx))[, -2]
+    tdensy <- t(densy)
+    tdensy.stacked <- stack(data.frame(tdensy))[, -2]
+
+    dat.df <- data.frame(cbind(tcount.stacked, tdensx.stacked, tdensy.stacked))
+    names(dat.df) <- c("month", "return", "density")
+
+    ## Based off of example here: http://rpubs.com/julyanarbel/192923
+    
+  ## plot_ly(dat.df, x = return, y = month, z = density, group = month, type = "scatter3d", mode = "lines")
+
+    ## 3D density plots
+    dat.df %>% group_by(month) %>% plot_ly(x = ~return, y = ~month, z = ~density, type = "scatter3d", mode = "lines")
+
+    ## trying to get a surface to work
+## dat.df %>% group_by(month) %>% plot_ly(z = as.matrix(t(dat.df))) %>% add_surface()
+
+    ## p %>% plot_ly(dat.df, z = ~density) %>% add_surface() 
+})
+    ## })
+```

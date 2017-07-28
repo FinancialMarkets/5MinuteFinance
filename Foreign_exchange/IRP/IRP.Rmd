@@ -4,7 +4,16 @@ runtime: shiny
 output: ioslides_presentation
 ---
 
-## 
+## Interest Rate Parity (IRP)
+
+IRP is the equilibrium state of interest and exchange rates such that covered interest arbitrage is not possible.  Specifically, the forward exchange rate differs from the spot rate by an amount which exactly offsets the interest rate differential.
+
+-  If you are not familiar with covered interest arbitrage, you should [review this presentation](http://www.5minutefinance.org/concepts/foreign-exchange-arbitrage).
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+
 
 
 ## How CAT May View the World
@@ -12,3 +21,4 @@ output: ioslides_presentation
 <!-- app of expected currency depreciation by country -->
 
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
