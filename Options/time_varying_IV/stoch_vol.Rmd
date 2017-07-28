@@ -1,5 +1,5 @@
 ---
-title: "Varying Option Volatility"
+title: "Option Implied Volatility Characteristics"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod2.css
@@ -10,7 +10,11 @@ runtime: shiny
 
 Implied volatility is the market's expectation of a security's volatility extracted from option prices on that security.  It is the volatility expected over the life of that option.  We calculate Implied Volatility using the [Black-Scholes option pricing model](http://www.5minutefinance.org/concepts/black-scholes) -- solving the equation for volatility and plugging in the option price we observe in the market.  
 
-Here we take a look at two important observations involving implied volatility.
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## This Presentation
+
+In this presentation we take a look at two important observations involving implied volatility.
 
 1. Implied volatility is a function of the option's moneyness.  This is known as the *option smile* (or sometimes referred to as the *option smirk*).
 
@@ -30,36 +34,36 @@ In modern derivative pricing in complete markets, we have to hedge away any sour
 
 ## The Option Smile
 
-The option smile shows the dependence of an option's implied volatility on the option's moneyness, which is defined as the option's strike price divided by the underlying security's price.  
+The option smile shows the dependence of an option's implied volatility on the option's moneyness, which is defined as the option's strike price divided by the underlying security's price.
 
--  Generally the option smile for equity markets looks like the chart on the next slide. Note this looks more like a *skew* or *smirk*.  
+-  Generally the option smile for equity markets looks like the chart on the next slide. Note this looks more like a *skew* or *smirk*.
 
-- Implied volatility is highest when the underlying security is much higher than the strike (deep out-of-the-money put, and in-the-money call, options).  
+-  Implied volatility is highest when the underlying security is much higher than the strike (deep out-of-the-money put, and in-the-money call, options).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Typical Shape of Option Smile in Equity Markets
+<!-- ## Typical Shape of Option Smile in Equity Markets -->
 
-```{r echo = FALSE}
-  library(metricsgraphics)
-  renderMetricsgraphics({
-      gendata <- data.frame(IV_1_Month = c(0.33, 0.24, .18, 0.15, 0.09, .08),
-			    #                             IV_2_Month = c(0.3, 0.21, .15, 0.13, 0.09, .08),
-			    #                             IV_3_Month = c(0.25, 0.17, .15, 0.13, 0.10, .09),
-                            Moneyness = c(round(0.6, 1), 0.75, .85, 0.9, 1.05, 1.15)
-                            )
-      gendata %>%
-    mjs_plot(x = Moneyness, y = IV_1_Month) %>%
-        mjs_line() %>%
-    #         mjs_add_line(IV_2_Month) %>%
-    #         mjs_add_line(IV_3_Month) %>%
-        mjs_add_legend(legend = c("IV 1 Month", "IV 2 Month", "IV 3 Month")) %>%
-        mjs_labs(x = "Moneyness", y = "Implied Volatility")
-      })
+<!-- ```{r echo = FALSE} -->
+<!--   library(metricsgraphics) -->
+<!--   renderMetricsgraphics({ -->
+<!--       gendata <- data.frame(IV_1_Month = c(0.33, 0.24, .18, 0.15, 0.09, .08), -->
+<!-- 			    #                             IV_2_Month = c(0.3, 0.21, .15, 0.13, 0.09, .08), -->
+<!-- 			    #                             IV_3_Month = c(0.25, 0.17, .15, 0.13, 0.10, .09), -->
+<!--                             Moneyness = c(round(0.6, 1), 0.75, .85, 0.9, 1.05, 1.15) -->
+<!--                             ) -->
+<!--       gendata %>% -->
+<!--     mjs_plot(x = Moneyness, y = IV_1_Month) %>% -->
+<!--         mjs_line() %>% -->
+<!--     #         mjs_add_line(IV_2_Month) %>% -->
+<!--     #         mjs_add_line(IV_3_Month) %>% -->
+<!--         mjs_add_legend(legend = c("IV 1 Month", "IV 2 Month", "IV 3 Month")) %>% -->
+<!--         mjs_labs(x = "Moneyness", y = "Implied Volatility") -->
+<!--       }) -->
  
-```
+<!-- ``` -->
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
 
 ## The Smile for Differing Expirations
 
