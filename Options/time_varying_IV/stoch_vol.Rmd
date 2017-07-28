@@ -69,21 +69,21 @@ The option smile is known to take different shapes depending on the options expi
 
 -  The next slide shows how the smile is affected by option tenor.  The visualization is done with a 3D scatter plot instead of a surface so you see actual IV values, and nothing is interpolated.
 
--  The chart is done using [plotly](https://plot.ly/products/industries/finance-analytics/).
+<!-- -  The chart is done using [plotly](https://plot.ly/products/industries/finance-analytics/). -->
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Implied Volatility, Expiration, and Moneyness
+<!-- ## Implied Volatility, Expiration, and Moneyness -->
 
-```{r echo = FALSE, message = FALSE, warning = FALSE}
-library(plotly)
-renderPlotly({
-    for.plotly.first.half <- read.csv("vol_surface.csv", header = TRUE, stringsAsFactors = FALSE)
-    plot_ly(for.plotly.first.half, x = Years_Until_Expiration, y = Moneyness, z = Implied_Volatility, color = Implied_Volatility, type = "scatter3d", mode = "markers")
-    })
-```
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<!-- ```{r echo = FALSE, message = FALSE, warning = FALSE} -->
+<!-- library(plotly) -->
+<!-- renderPlotly({ -->
+<!--     for.plotly.first.half <- read.csv("vol_surface.csv", header = TRUE, stringsAsFactors = FALSE) -->
+<!--     plot_ly(for.plotly.first.half, x = Years_Until_Expiration, y = Moneyness, z = Implied_Volatility, color = Implied_Volatility, type = "scatter3d", mode = "markers") -->
+<!--     }) -->
+<!-- ``` -->
+<!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
 
 <!-- same viz just with threejs -->
 
@@ -98,45 +98,49 @@ renderScatterplotThree({
 ```
 
 
+<!-- ## -->
+
+<!-- ```{r, echo = FALSE} -->
+<!-- library(plotly) -->
+<!-- options("scipen" = 100, "digits" = 6) -->
+<!-- inputPanel({ -->
+<!--   sliderInput("theTime2", "Day/Second", value = c(0000000, 310000000), min = 0000000, max = 3100000, animate = animationOptions(interval = 300), sep = "", step = 60) -->
+<!-- }) -->
+<!-- renderPlotly({ -->
+<!--  ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1] -->
+<!--  ez1509es1509$Date <- ez1509es1509$Date - 2015080000000 -->
+<!-- tmp <- subset(ez1509es1509, Date > input$theTime2[1]) -->
+<!-- tmp <- subset(tmp, Date < input$theTime2[2]) -->
+<!-- ## maybe sort to reverse moneyness -- so switches view -->
+<!-- tmp <- tmp[ order(tmp[,2]),] -->
+<!-- ## tmp[,2] <- -tmp[,2] -->
+<!-- names(tmp)[1] <- "Time_in_Seconds" -->
+<!--     plot_ly(tmp, x = Moneyness, y = Time_in_Seconds, z = Implied_Volatility, color = Implied_Volatility, type = "scatter3d", mode = "markers") -->
+<!--     ## scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time", "-Moneyness", "Implied Volatility")) -->
+<!-- }) -->
+<!-- ``` -->
+
+<!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
+
+
+## The Option Smile Over Time
+
+For a given option, the smile often changes over time.  This is particularly true if there is a drop in the price of the underlying in the time interval.  
+
+-  The next application shows 
+
+
 ##
 
 ```{r, echo = FALSE}
-library(plotly)
-options("scipen" = 100, "digits" = 6)
-inputPanel({
-  sliderInput("theTime2", "Day/Second", value = c(0000000, 310000000), min = 0000000, max = 3100000, animate = animationOptions(interval = 300), sep = "", step = 60)
-})
-renderPlotly({
- ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1]
- ez1509es1509$Date <- ez1509es1509$Date - 2015080000000
-tmp <- subset(ez1509es1509, Date > input$theTime2[1])
-tmp <- subset(tmp, Date < input$theTime2[2])
-## maybe sort to reverse moneyness -- so switches view
-tmp <- tmp[ order(tmp[,2]),]
-## tmp[,2] <- -tmp[,2]
-names(tmp)[1] <- "Time_in_Seconds"
-    plot_ly(tmp, x = Moneyness, y = Time_in_Seconds, z = Implied_Volatility, color = Implied_Volatility, type = "scatter3d", mode = "markers")
-    ## scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time", "-Moneyness", "Implied Volatility"))
-})
-```
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-
-
-
-
-##
-
-```{r, echo = FALSE}
-
 library(threejs)
 options("scipen" = 100, "digits" = 6)
 inputPanel({
   sliderInput("theTime", "Day/Second", value = c(0000000, 310000000), min = 0000000, max = 3100000, animate = animationOptions(interval = 300), sep = "", step = 60)
 })
+
 renderScatterplotThree({
- ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1]
+   ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1]
  ez1509es1509$Date <- ez1509es1509$Date - 2015080000000
 tmp <- subset(ez1509es1509, Date > input$theTime[1])
 tmp <- subset(tmp, Date < input$theTime[2])
@@ -144,8 +148,11 @@ tmp <- subset(tmp, Date < input$theTime[2])
 tmp <- tmp[ order(tmp[,2]),]
 # tmp[,2] <- -tmp[,2]
 tmp <- cbind(tmp[,2], tmp[,1], tmp[,3])
-    scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time", "-Moneyness", "Implied Volatility"))
+tmp <- data.frame(tmp)
+names(tmp) <- c("Seconds", "-Moneyness", "Implied Volatility")
+    scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)))
 })
+
 ```
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
