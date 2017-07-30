@@ -7,10 +7,6 @@ output: html_document
 runtime: shiny
 smaller: true
 ---
-  
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
 
 <!-- Much of the text and code in this presentation is from here: https://mattbrigida.shinyapps.io/chapter7_pairs_trade/pairs_trade.Rmd  -->
 
@@ -102,7 +98,7 @@ The app on the slide 10 allows you to chart normalized prices for any pair and e
 
 -  Note, by the **LOP**, XOM and CVX make a good pair (both integrated oil and gas firms).  However, PFE (Pfizer) is a pharmaceutical company, which has very different assets than an oil and gas firm.  Thus, in addition to our statistics, it helps to ask if the pair makes economic (LOP) sense.  
 
-
+- Choose your pair, and estimation period, and click "Go".  The app will then calculate the estimation period parameters, and use these to trade the pair and calculate profit over the subsequent trading period.  
 
 ##
 
@@ -128,45 +124,47 @@ shinyUI(fluidPage(
 
         column(9,
                renderDygraph({
-        stockVals <<- eventReactive(input$go, {
-          from <- input$estim_period_start
-          to <- input$estim_period_end
-          
-          ## The code below to calculate an xts object of returns is from an SO or Quant.SE post.  I need to find it and cite.
-          env <- new.env()
-          Symbols <- c(input$ticker1, input$ticker2)
-          getSymbols(Symbols = Symbols, env = env, from = from, to = to)
-          args <- eapply(env = env, FUN = function(x){ClCl(x)})[Symbols]
-          returns <- na.omit(do.call(what = merge, args = args))
-          colnames(returns) <- Symbols
-          ## convert reutrns to  normalized prices
-          norm.prices <<- cumsum(returns)
-          
-          norm.prices.df <<- as.data.frame(norm.prices)
+                   stockVals <<- eventReactive(input$go, {
+                       from <- input$estim_period_start
+                       to <- input$estim_period_end
+                       
+                       ## The code below to calculate an xts object of returns is from an SO or Quant.SE post.  I need to find it and cite.
+                       env <- new.env()
+                       Symbols <- c(input$ticker1, input$ticker2)
+                       getSymbols(Symbols = Symbols, env = env, from = from, to = to)
+                       args <- eapply(env = env, FUN = function(x){ClCl(x)})[Symbols]
+                       returns <- na.omit(do.call(what = merge, args = args))
+                       colnames(returns) <- Symbols
+                       ## convert reutrns to  normalized prices
+                       norm.prices <<- cumsum(returns)
+                       
+                       norm.prices.df <<- as.data.frame(norm.prices)
 
-          from.t <- input$estim_period_end + 1
-          to.t <- Sys.Date()
+                       from.t <- input$estim_period_end + 1
+                       to.t <- Sys.Date()
 
-          ## The code below to calculate an xts object of returns is from an SO or Quant.SE post.  I need to find it and cite.
-          env.t <- new.env()
-          getSymbols(Symbols = Symbols, env = env.t, from = from.t, to = to.t)
-          args <- eapply(env = env.t, FUN = function(x){ClCl(x)})[Symbols]
-          returns.t <- na.omit(do.call(what = merge, args = args))
-          colnames(returns.t) <- Symbols
-          returns.t <<- returns.t
-          ## convert returns to  normalized prices
-          norm.prices.t <<- cumsum(returns.t)
-        })
+                       ## The code below to calculate an xts object of returns is from an SO or Quant.SE post.  I need to find it and cite.
+                       env.t <- new.env()
+                       getSymbols(Symbols = Symbols, env = env.t, from = from.t, to = to.t)
+                       args <- eapply(env = env.t, FUN = function(x){ ClCl(x) })[Symbols]
+                       returns.t <- na.omit(do.call(what = merge, args = args))
+                       colnames(returns.t) <- Symbols
+                       returns.t <<- returns.t
+                       ## convert returns to  normalized prices
+                       norm.prices.t <<- cumsum(returns.t)
+                   })
 
                    stockVals()
-                   dygraph(norm.prices) 
-                                        #}}} 
+                   dygraph(norm.prices)
+                                        #}}}
                }),
 
 
                renderPrint({    
-                  
-                 stockVals() 
+                   
+                   stockVals()
+                   from <- input$estim_period_start
+                   
                    ## Calculate the estimation period parameters (the average squared deviation and the standard deviation of the squared deviations):
                    asd.e <<- mean(( norm.prices.df[,1] - norm.prices.df[,2])^2 )
                    ssd.e <<- sd(( norm.prices.df[,1] - norm.prices.df[,2])^2 )
@@ -237,7 +235,10 @@ inputPanel(
 )
 
 renderDygraph({
+                   stockVals()
 
+          from <- input$estim_period_start
+          
 numSD <- ( (norm.prices.t[,1] - norm.prices.t[,2])^2 - asd.e ) / ssd.e
 
 trade <- rep(0, length(seq_along(numSD)))
@@ -313,7 +314,9 @@ Using the default pair, dates, and thresholds, you can see we open a pairs trade
 #{{{
 library(dygraphs)
 renderDygraph({
-    dygraph(norm.prices.t, main = "Normalized Prices Over the Trading Period") 
+  stockVals()
+  from <- input$estim_period_start
+  dygraph(norm.prices.t, main = "Normalized Prices Over the Trading Period") 
 #}}}    
 })
 ```
