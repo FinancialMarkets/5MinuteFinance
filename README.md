@@ -26,6 +26,18 @@ We'll continue to add tutorials here to help make contributing easy.  You can al
 
 If you are already familiar with Git/R/Shiny then feel free to jump in and add text and code!  
 
+### File Structure
+
+The file structure is organized first into subject folders (e.g. Corporate Finance), and then into presentation folders (e.g. capital_structure).  Within each presentation folder, the actual presentation is in the **.Rmd** file (e.g. capital_structure.Rmd).  This is the file you should change, and you can safely ignore all other files.  The other files/folder are for deploying the presentation and apps, as well as css styling, etc.   
+
+### Credit for Contributions
+
+The great thing about using Git/GitHub is that you always get credit for contributions you make.  Further, they are very easy to see, and link to in order to show others. You can provide a link to all your contributions to 5MinuteFinance, or to any contribution in particular (say you created a nice visualization you would like to show others).  You can:
+
+1.  Click "blame" on any file you can see the author of each line. For example, looking at the *blame* for the [financial ratios presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Corporate_Finance/Financial_Ratios/financial_ratios.Rmd), we can see the contributions of each of the presentations 6 contributors.
+
+2.  Click on any contributor and see each of their contributions. For example, user [tnederlof has made a total of two commits](https://github.com/FinancialMarkets/5MinuteFinance/commits?author=tnederlof).  You can then click any commit to see the authors contribution.
+
 # Links to Presentations
 
 Many of the presentations below are works-in-progress.  Feel free to contribute fixes and new content. 
