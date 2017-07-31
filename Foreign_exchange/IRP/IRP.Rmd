@@ -21,4 +21,69 @@ IRP is the equilibrium state of interest and exchange rates such that covered in
 <!-- app of expected currency depreciation by country -->
 
 
+<!-- this is the app from the USAID presentation -- adapt for CAT -->
+```{r echo = FALSE, warning = FALSE, error = FALSE, message = FALSE}
+
+library(highcharter)
+library("viridisLite")
+library(treemap)
+
+inputPanel(
+    sliderInput("yearMap", "Year", min = 1996, max = 2016, value = 2006, step = 1, animate = TRUE, sep = ""),
+    selectizeInput("market", "Market", choices = c("Domestic Market" = "1",
+                                                   "International Market" = "2",
+                                                   "All Markets" = "3"))
+)
+
+renderHighchart({
+    dataForMap <- readRDS('dataForTable.rds')
+
+    issuer.res <- gsub("^[a-zA-Z]+:","" , dataForMap[,1])
+    dataForMap <- cbind(issuer.res, dataForMap[, -1])
+    names(dataForMap)[1] <- "Issuer.Residence"
+    dataForMap <- dataForMap[dataForMap$"Borrower Sector" == "1:All issuers", ]
+
+    if(input$market == "1"){
+        dataForMap <- dataForMap[dataForMap$"Issue Market" == "A:Domestic market", ]
+    } else {
+        if(input$market == "2"){
+            dataForMap <- dataForMap[dataForMap$"Issue Market" == "C:International markets", ]
+        } else {
+            dataForMap <- dataForMap[dataForMap$"Issue Market" == "1:All markets", ]
+        }
+    }
+    
+    keeps <- c("Issuer.Residence", "Q2.1996", "Q2.1997", "Q2.1998", "Q2.1999", "Q2.2000", "Q2.2001", "Q2.2002", "Q2.2003", "Q2.2004", "Q2.2005",
+               "Q2.2006", "Q2.2007", "Q2.2008", "Q2.2009", "Q2.2010", "Q2.2011", "Q2.2012", "Q2.2013", "Q2.2014", "Q2.2015", "Q2.2016")
+
+    dataForMap <- dataForMap[ , names(dataForMap) %in% keeps]
+
+    columnToKeep <- input$yearMap - 1994
+    dataForMap <- dataForMap[, c(1, columnToKeep)]
+    names(dataForMap)[1] <- "country"
+
+
+    data(worldgeojson, package = "highcharter")
+    data("GNI2014", package = "treemap")
+    GNI2014 <- GNI2014[, c(-4, -5)]
+
+    dataMap <- merge(GNI2014, dataForMap, by = "country")
+    names(dataMap)[4] <- "Debt"
+    dataMap$Debt <- as.numeric(dataMap$Debt)
+
+    dshmstops <- data.frame(q = c(0, exp(1:5)/exp(5)),
+                            c = substring(viridis(5 + 1, option = "D"), 0, 7)) %>% 
+        list_parse2()
+
+    highchart() %>% 
+        hc_add_series_map(worldgeojson, dataMap, value = "Debt", joinBy = "iso3") %>% 
+        hc_colorAxis(stops = dshmstops) %>% 
+        hc_legend(enabled = TRUE) %>% 
+        hc_add_theme(hc_theme_db()) %>% 
+    hc_mapNavigation(enabled = TRUE)
+
+})
+```
+
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

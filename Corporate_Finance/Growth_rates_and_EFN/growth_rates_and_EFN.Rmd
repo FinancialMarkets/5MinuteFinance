@@ -37,7 +37,13 @@ $EFN = \frac{Assets}{Sales}\Delta Sales + \frac{Variable Debt}{Sales}\Delta Sale
 ## 
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
-
+inputPanel(
+  sliderInput("changeSales", "Change in Sales", min = 0, max = 1000, step = 10),
+  sliderInput("projSales", "Projected Sales", min = 20000, max = 30000, step = 1000),
+  sliderInput("varDebt", "Variable Debt", min = 20000, max = 30000, step = 1000),
+  sliderInput("pm", "Profit Margin", min = 0, max = 100, step = 1),
+  sliderInput("div", "Dividend Payout Ratio", min = 0, max = 100, step = 1)
+)
 
 
 ```
