@@ -1,0 +1,12 @@
+---
+title: "FAQ"
+output: html_document
+---
+
+# Contributing
+
+Q: Can I contribute without using Git/GitHub?
+A: 
+
+Q:  Do I have to install anything on my computer (Git/R/RStudio)?
+A:  No, but
