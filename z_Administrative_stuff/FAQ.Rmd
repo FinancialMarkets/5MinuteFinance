@@ -5,31 +5,31 @@ output: html_document
 
 # Contributing
 
-Q:  What is the preferred way of contributing?
+**Q:  What is the preferred way of contributing?**
 
 A:  Issuing a pull request on GitHub.
 
 
-Q:  How do I issue a pull request?
+**Q:  How do I issue a pull request?**
 
-A:  [This video](https://www.youtube.com/watch?v=4zDQSibnyzM) describes how to issue a pull request using RStudio.  RStudio is popular development environment for R.  If you are new to R we recommend using RStudio.  [This video](https://www.youtube.com/watch?v=pII-Jop07yM) describes how to issue a pull request using the command line in Linux/Mac.
-
-
-Q: Is there anything I can do other than adding content (text/code)?
-
-A: Absolutely!  You can proofread or suggest new content.  Feel free to communicate corrections/suggestions by opening an issue on GitHub, or sending an email to mbrigida [at] milkeninstitute.org
+A:  [This video](https://www.youtube.com/watch?v=4zDQSibnyzM) describes how to issue a pull request using RStudio.  RStudio is a popular development environment for R.  If you are new to R, we recommend using RStudio.  [This video](https://www.youtube.com/watch?v=pII-Jop07yM) describes how to issue a pull request using the command line in Linux/Mac.
 
 
-Q:  Do I have to be a university professor to contribute?
+**Q: Is there anything I can do other than adding content (text/code)?**
 
-A:  No!  We have received great contributions from students (ranging from undergrad to PhD), as well as practitioners.
-
-
-Q:  Do I have to install anything on my computer (Git/R/RStudio)?
-
-A:  No, you can edit files in the browser, [as explained here](https://www.youtube.com/watch?v=iVC9UKkaiko).  However, using the method you are not able to see how your changes will affect the presentation, so you will have a hard time editing the R code sections.  You are probably limited to editing the text, which is nonetheless very useful.
+A: Absolutely!  You can proofread or suggest new content.  Feel free to communicate corrections/suggestions by opening an issue on GitHub, or sending an email to mbrigida [at] milkeninstitute.org.
 
 
-Q: Can I contribute without using GitHub?
+**Q:  Do I have to be a university professor to contribute?**
+
+A:  No!  We have received great contributions from students (ranging from undergrads to PhDs), as well as practitioners.
+
+
+**Q:  Do I have to install anything on my computer (Git/R/RStudio)?**
+
+A:  No, you can edit files in the browser, [as explained here](https://www.youtube.com/watch?v=iVC9UKkaiko).  However, you are not able to see how your changes will affect the presentation, so you will have a hard time editing the R code sections.  You are probably limited to editing the text, which is nonetheless very useful!
+
+
+**Q: Can I contribute without using GitHub?**
 
 A: Yes, but you are limited to contributing via email.  Since changes to content are made in GitHub, someone else will have to implement your contribution.  This means you won't get credit for the commit (though we are happy to put your name in the commit message if you want).  You also won't be able to open issues.
