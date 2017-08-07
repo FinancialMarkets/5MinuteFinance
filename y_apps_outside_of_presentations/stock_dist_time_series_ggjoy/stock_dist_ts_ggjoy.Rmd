@@ -1,0 +1,66 @@
+---
+title:
+runtime: shiny
+output: html_document
+---
+
+```{r echo = FALSE, message = FALSE}
+
+library(ggjoy)
+library(ggplot2)
+library(quantmod)
+library(magrittr)
+library(dplyr)
+
+comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
+comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
+names(comp) <- c("symbol", "name")
+
+inputPanel(
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name)
+)
+
+renderPlot({
+    ## valdate ticker ----
+    validate(
+        ## need(input$ticker != "", "Input a valid US stock ticker.")
+        need(input$name != "", "Select a US stock name.")
+    )
+    ticker <- comp$symbol[comp$name == input$name]
+
+    stock <- getSymbols(ticker, src = "yahoo", auto.assign = F)
+    adjStock <- Ad(stock)
+    stockRet <- Delt(adjStock)[-1]
+    stock.mat <- matrix(stockRet)
+
+    n <- floor(dim(stock.mat)[1]/30)
+
+    count <- matrix(0, nrow = n, ncol = 31)
+    for (i in 1:n) {
+        g <- 30 * (i - 1)
+        h <- 30 * i
+        count[i,] <- rep(i, 31)
+    }
+
+
+    tcount <- t(count)
+    tcount.stacked <- stack(data.frame(tcount))[, -2]
+
+    dat.df <- data.frame(cbind(tcount.stacked, stock.mat[,1] * 252))
+    names(dat.df) <- c("months", "returns")
+
+    dat.df <- data.frame(factor(paste("M",dat.df$months)), dat.df[, 2])
+    names(dat.df) <- c("months", "returns")
+
+    ggplot(dat.df, aes(x = "returns", y = "months", group = "months")) + 
+        geom_joy()
+})
+
+
+
+
+
+
+
+
+```
