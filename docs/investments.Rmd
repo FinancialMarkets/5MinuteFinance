@@ -3,6 +3,35 @@ title: Investments
 output: html_document
 ---
 
-## 
 
-[The Goal of Financial Management](https://micfm.shinyapps.io/goal_fin_mgmt/) | [Mobile Friendly Version](https://micfm.shinyapps.io/goal_fin_mgmt_mobile/)
+### How Securities Trading Works 
+
+[The Limit Order Book](http://www.5minutefinance.org/concepts/the-limit-order-book)
+
+### Options
+
+[Black-Scholes](http://www.5minutefinance.org/concepts/black-scholes)
+
+[Intro to Stock Options](https://www.5minutefinance.org/concepts/an-introduction-to-stock-options)
+
+[Intro to Option and Stock Strategies](https://www.5minutefinance.org/concepts/an-introduction-to-option-and-stock-strategies)
+
+[The Greeks](https://www.5minutefinance.org/concepts/the-greeks)
+
+[Varying Option Volatility](https://www.5minutefinance.org/concepts/varying-option-volatility)
+
+### Portfolio Theory
+
+[Mean-Variance Portfolio Optimization](https://www.5minutefinance.org/concepts/mean-variance-portfolio-optimization)
+
+[Portfolio Performance Measures](http://www.5minutefinance.org/concepts/an-introduction-to-portfolio-performance-measures)
+
+[The Capital Asset Pricing Model](https://www.5minutefinance.org/concepts/the-capital-asset-pricing-model)
+
+[The Pairs Trade](https://www.5minutefinance.org/concepts/the-pairs-trade)
+
+### Commodity Markets
+
+[Cross Hedging](https://www.5minutefinance.org/concepts/cross-hedging)
+
+[Crude Oil Markets](https://www.5minutefinance.org/concepts/crude-oil-markets)

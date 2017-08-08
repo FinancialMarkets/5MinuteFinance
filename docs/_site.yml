@@ -23,12 +23,12 @@ navbar:
       # href: contributing.html
       icon: fa-pencil
       menu:
-         - text: "Why Write/Contribute?"
-         - href:
+         - text: "How to Contribute using GitHub"
+         - href: https://www.5minutefinance.org/how-to-contribute/
          - icon:
-         - text: "How to use GitHub"
-         - href:
-         - icon: 
+         - text: "FAQ on Contributing"
+         - href: https://github.com/FinancialMarkets/5MinuteFinance/blob/master/z_Administrative_stuff/FAQ.Rmd
+         - icon:
     - text: "Supporters"
       href: supporters.html
       icon: ion-android-contacts

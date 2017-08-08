@@ -6,7 +6,9 @@ output: html_document
 
 # The Balance of Payments
 
-# International Financial Markets
+# FX Markets
+
+[FX Markets](https://www.5minutefinance.org/concepts/foreign-exchange-markets)
 
 # How Exchange Rates are Determined
 
@@ -17,6 +19,8 @@ output: html_document
 ## Currency Options
 
 # Arbitrage in Foreign Exchange Markets
+
+[Locational, Triangular, and Covered Interest Arbitrage](https://www.5minutefinance.org/concepts/foreign-exchange-arbitrage)
 
 ## Interest Rate Parity
 
