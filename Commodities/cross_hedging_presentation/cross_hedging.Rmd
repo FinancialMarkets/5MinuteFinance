@@ -393,7 +393,7 @@ renderPlot({
 
 ## Credits and Collaboration
 
-Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Commodities/cross_hedging_presentation/cross_hedging.Rmd), [ine-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Commodities/cross_hedging_presentation/cross_hedging.Rmd), and [ll the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Commodities/cross_hedging_presentation/cross_hedging.Rmd), [line-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Commodities/cross_hedging_presentation/cross_hedging.Rmd), and [ll the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
 Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute). 
 
