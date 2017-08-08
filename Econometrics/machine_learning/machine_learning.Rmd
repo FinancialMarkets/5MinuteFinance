@@ -118,3 +118,16 @@ lines(predError, type = 'p', col = "green")
 ```
 
 ## More Slides
+
+
+
+## Credits and Collaboration
+
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Econometrics/machine_learning/machine_learning.Rmd), [ine-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Econometrics/machine_learning/machine_learning.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+
+Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute).
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+<!---end-->
