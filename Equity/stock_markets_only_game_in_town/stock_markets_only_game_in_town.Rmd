@@ -27,7 +27,7 @@ There are 3 types of market participants.
 ## Credits and Collaboration
 
 
-Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/stock_markets_only_game_in_town/stock_markets_only_game_in_town.Rmd), [ine-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Equity/stock_markets_only_game_in_town/stock_markets_only_game_in_town.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/stock_markets_only_game_in_town/stock_markets_only_game_in_town.Rmd), [line-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Equity/stock_markets_only_game_in_town/stock_markets_only_game_in_town.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
 Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute).
 
