@@ -4,7 +4,6 @@ title: "An Introduction to Duration"
 # author: "Milken Institute, Center for Financial Markets"
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
 affiliation: Milken Institute
-# date: "03/12/2015"
 output: ioslides_presentation
 logo: misq.png
 css: 5min_mod2.css
@@ -324,8 +323,9 @@ If we want to improve our estimate of the \% change in the bond's price, we can 
 
 ## Credits and Collaboration
 
-Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/duration_intro/duration.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Fixed_Income_and_Debt/duration_intro/duration.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/duration_intro/duration.Rmd), [line-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Fixed_Income_and_Debt/duration_intro/duration.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute).
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
