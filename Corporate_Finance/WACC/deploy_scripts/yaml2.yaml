@@ -1,6 +1,5 @@
 ---
 title: "The Weighted-Average Cost of Capital"
-author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Corporate_Finance/WACC/wacc.Rmd)"
 output: html_document
 logo: misq.png
 runtime: shiny
