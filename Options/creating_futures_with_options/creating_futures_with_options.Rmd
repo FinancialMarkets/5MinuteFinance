@@ -201,3 +201,12 @@ day         time                strike          type           EZ delivery  EZ p
 20150828  11:07:13              2000             P               1509        53.0000000               1509            1979.500  0.06428314
 20150828  11:07:16              2000             C               1509        32.5000000               1509            1979.066  0.06428323
 -->
+
+
+## Credits and Collaboration
+
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/creating_futures_with_options/creating_futures_with_options.Rmd), [line-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Options/creating_futures_with_options/creating_futures_with_options.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+
+Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute).
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
