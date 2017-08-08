@@ -28,7 +28,7 @@ smaller: true
 
 ## Credits and Collaboration
 
-Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Commodities/nat_gas_markets/nat_gas_markets.Rmd), [ine-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Commodities/nat_gas_markets/nat_gas_markets.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Commodities/nat_gas_markets/nat_gas_markets.Rmd), [line-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Commodities/nat_gas_markets/nat_gas_markets.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
 Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute).
 
