@@ -58,3 +58,12 @@ names(yields) <- c("Federal Funds", "1-Month", "3-Month", "6-Month", "1-Year", "
 })
 #}}}
 ```
+
+
+## Credits and Collaboration
+
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Fixed_Income_and_Debt/term_structure/term_structure.Rmd), [line-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Fixed_Income_and_Debt/term_structure/term_structure.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+
+Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute).
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
