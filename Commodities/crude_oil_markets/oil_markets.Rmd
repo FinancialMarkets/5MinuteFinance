@@ -210,7 +210,7 @@ You might also be intersted in taking a look at the [Baker Hughes rig count](htt
 
 ## Credits and Collaboration
 
-Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Commodities/crude_oil_markets/oil_markets.Rmd), [ine-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Commodities/crude_oil_markets/oil_markets.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Commodities/crude_oil_markets/oil_markets.Rmd), [line-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Commodities/crude_oil_markets/oil_markets.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
 Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute).
 
