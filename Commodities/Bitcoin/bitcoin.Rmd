@@ -1,8 +1,6 @@
 ---
 title: "Introduction to Bitcoin"
-## author: Jackson Dragon
 author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
-## date: "June 21, 2016"
 logo: misq.png
 css: 5min_mod.css
 output: ioslides_presentation
@@ -16,3 +14,16 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Bitcoin
 
+
+
+
+
+
+
+
+
+## Credits and Collaboration
+
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Commodities/Bitcoin/bitcoin.Rmd), [ine-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/master/Commodities/Bitcoin/bitcoin.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+
+Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute).
