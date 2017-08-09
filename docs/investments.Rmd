@@ -8,6 +8,28 @@ output: html_document
 
 [The Limit Order Book](http://www.5minutefinance.org/concepts/the-limit-order-book)
 
+[Short Selling Stock](https://www.5minutefinance.org/concepts/short-selling-stock)
+
+## Equity
+
+[Intro to Stock Investments](https://www.5minutefinance.org/concepts/an-introduction-to-stock-investments)
+
+[Intro Stock Markets](https://www.5minutefinance.org/concepts/an-introduction-stock-markets)
+
+[ETFs](https://www.5minutefinance.org/concepts/exchange-traded-funds)
+
+[Leveraged ETFs](https://www.5minutefinance.org/concepts/leveraged-exchange-traded-funds)
+
+## Debt
+
+[Duration](https://www.5minutefinance.org/concepts/duration)
+
+[Convexity](https://www.5minutefinance.org/concepts/convexity)
+
+[What is YTM?](https://www.5minutefinance.org/concepts/for-what-is-the-yield-to-maturity-used)
+
+[ETNs](https://www.5minutefinance.org/concepts/exchange-traded-notes)
+
 ### Options
 
 [Black-Scholes](http://www.5minutefinance.org/concepts/black-scholes)
@@ -20,7 +42,11 @@ output: html_document
 
 [Varying Option Volatility](https://www.5minutefinance.org/concepts/varying-option-volatility)
 
+[Pricing via Monte Carlo](https://www.5minutefinance.org/concepts/an-introduction-to-the-uses-of-monte-carlo-methods-in-finance)
+
 ### Portfolio Theory
+
+[Intro to the Correlation Coefficient](https://www.5minutefinance.org/concepts/an-introduction-to-correlation-coefficient)
 
 [Mean-Variance Portfolio Optimization](https://www.5minutefinance.org/concepts/mean-variance-portfolio-optimization)
 

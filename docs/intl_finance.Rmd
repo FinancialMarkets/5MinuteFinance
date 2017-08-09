@@ -4,25 +4,22 @@ output: html_document
 ---
 
 
-# The Balance of Payments
+## The Balance of Payments
 
-# FX Markets
+## FX Markets
 
 [FX Markets](https://www.5minutefinance.org/concepts/foreign-exchange-markets)
 
-# How Exchange Rates are Determined
+## How Exchange Rates are Determined
 
-# Currency Derivatives
+## FX Futures and Forwards
 
-## Futures and Forwards
+## FX Options
 
-## Currency Options
-
-# Arbitrage in Foreign Exchange Markets
+## Arbitrage in Foreign Exchange Markets
 
 [Locational, Triangular, and Covered Interest Arbitrage](https://www.5minutefinance.org/concepts/foreign-exchange-arbitrage)
 
 ## Interest Rate Parity
 
-
-# Exchange Rate Forecasting
+## Exchange Rate Forecasting

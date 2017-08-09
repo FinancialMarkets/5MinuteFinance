@@ -1,6 +1,6 @@
 ---
 title: "5-Minute Finance Instructor Site"
-date: "May 5, 2017"
+date: ""
 output: html_document
 ---
 

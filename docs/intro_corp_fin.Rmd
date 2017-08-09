@@ -5,41 +5,41 @@ output: html_document
 
 ## Introduction to Financial Management
 
-[The Goal of Financial Management](https://micfm.shinyapps.io/goal_fin_mgmt/) | [Mobile Friendly Version](https://micfm.shinyapps.io/goal_fin_mgmt_mobile/)
+[The Goal of Financial Management](https://www.5minutefinance.org/concepts/goal-of-financial-management)
 
 [*Need to Add:*  The Agency Problem]()
 
 ## Financial Statements and Cash Flows
 
-[An Introduction to Financial Statements](https://micfm.shinyapps.io/basic_financial_statements) | [Mobile Friendly Version](https://micfm.shinyapps.io/basic_financial_statements_mobile)
+[An Introduction to Financial Statements](https://www.5minutefinance.org/concepts/an-introduction-to-financial-statements)
 
-[The Balance Sheet Identity](https://micfm.shinyapps.io/balance_sheet_identity/) | [Mobile Friendly Version](https://micfm.shinyapps.io/balance_sheet_identity_mobile/)
+[The Balance Sheet Identity](https://www.5minutefinance.org/concepts/the-balance-sheet-identity)
 
-[Financial Ratios](https://micfm.shinyapps.io/Financial_Ratios) | [Mobile Friendly Version](https://micfm.shinyapps.io/Financial_Ratios_mobile)
+[Financial Ratios](https://www.5minutefinance.org/concepts/financial-ratios)
 
 [*Need to Add:*  Firm Growth Rates (SGR and IGR) and EFN]()
 
-[Operating Cash Flow](https://micfm.shinyapps.io/OCFs) | [Mobile Friendly Version](https://micfm.shinyapps.io/OCFs_mobile)
+[Operating Cash Flow](https://www.5minutefinance.org/concepts/operating-cash-flow)
 
 ## Valuation of Cash Flows
 
-[Time Value of Money: Single Cash Flows](https://micfm.shinyapps.io/TVM_Single_CFs) | [Mobile Friendly Version](https://micfm.shinyapps.io/TVM_Single_CFs_mobile)
+[Time Value of Money: Single Cash Flows](https://www.5minutefinance.org/concepts/time-value-of-money-single-cash-flows)
 
-[Time Value of Money: Multiple Cash Flows](https://micfm.shinyapps.io/TVM_Multiple_CFs/) | [Mobile Friendly Version](https://micfm.shinyapps.io/TVM_Multiple_CFs_mobile)
+[Time Value of Money: Multiple Cash Flows](https://www.5minutefinance.org/concepts/time-value-of-money-multiple-cash-flows)
 
-[Interest Compounding: EAR and APR](https://micfm.shinyapps.io/compounding) | [Mobile Friendly Version](https://micfm.shinyapps.io/compounding_mobile/)
+[Interest Compounding: EAR and APR](https://www.5minutefinance.org/concepts/interest-compounding)
 
 ### Stock and Bond Valuation
 
-[An Introduction to Stock Valuation](https://micfm.shinyapps.io/intro_stock_valuation/) | [Mobile Friendly Version](https://micfm.shinyapps.io/intro_stock_valuation_mobile)
+[An Introduction to Stock Valuation](https://www.5minutefinance.org/concepts/an-introduction-to-stock-valuation)
 
-[An Introduction to Bond Valuation](https://micfm.shinyapps.io/intro_bond_valuation) | [Mobile Friendly Version](https://micfm.shinyapps.io/intro_bond_valuation_mobile/)
+[An Introduction to Bond Valuation](https://www.5minutefinance.org/concepts/an-introduction-to-bond-valuation)
 
 ## Capital Budgeting
 
-[Net Present Value and Internal Rate of Return](https://micfm.shinyapps.io/NPV_and_IRR/) | [Mobile Friendly Version](https://micfm.shinyapps.io/NPV_and_IRR_mobile)
+[Net Present Value and Internal Rate of Return](https://www.5minutefinance.org/concepts/net-present-value-and-internal-rate-of-return)
 
-[Modified Internal Rate of Return](https://micfm.shinyapps.io/MIRR) | [Mobile Friendly Version](https://micfm.shinyapps.io/MIRR_mobile)
+[Modified Internal Rate of Return](https://micfm.shinyapps.io/MIRR) | [Mobile Friendly Version](https://micfm.shinyapps.io/MIRR_mobile) *not yet on 5MF*
 
 [*Need to Add:*  Other Investment Decision Rules]() 
 
@@ -51,18 +51,18 @@ output: html_document
 
 ### The CAPM
 
-[The Capital Asset Pricing Model](https://micfm.shinyapps.io/The_CAPM) | [Mobile Friendly Version](https://micfm.shinyapps.io/The_CAPM_mobile)
+[The Capital Asset Pricing Model](https://www.5minutefinance.org/concepts/the-capital-asset-pricing-model)
 
 ## Capital Market Financing
 
-[*Need to Add:*  Weighted-Average Cost of Capital]()
+[Weighted-Average Cost of Capital](https://www.5minutefinance.org/concepts/the-weighted-average-cost-of-capital)
 
-[Capital Structure](https://micfm.shinyapps.io/capital_structure/) | [Mobile Friendly Version](https://micfm.shinyapps.io/capital_structure_mobile/)
+[Capital Structure](https://www.5minutefinance.org/concepts/capital-structure)
 
-[The Modigliani and Miller Propositions](https://micfm.shinyapps.io/MM_propositions/) | [Mobile Friendly Version](https://micfm.shinyapps.io/MM_propositions_mobile/)
+[The Modigliani and Miller Propositions](https://www.5minutefinance.org/concepts/modigliani-and-miller-propositions)
 
 ### Dividends
 
-[Dividends](https://micfm.shinyapps.io/dividends/) | [Mobile Friendly Version](https://micfm.shinyapps.io/dividends_mobile/)
+[Dividends](https://www.5minutefinance.org/concepts/dividends)
 
 [*Need to Add:*  Stock Splits]() | [Mobile Friendly Version]()
