@@ -1,6 +1,7 @@
 ---
-title: "How to Contribute"
+title: ""
 output: html_document
+date: ""
 ---
 
-Contributing
+See [this 5MF page](https://www.5minutefinance.org/how-to-contribute/) on contributing.

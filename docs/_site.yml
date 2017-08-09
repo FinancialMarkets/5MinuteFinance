@@ -24,11 +24,11 @@ navbar:
       icon: fa-pencil
       menu:
          - text: "How to Contribute using GitHub"
-         - href: https://www.5minutefinance.org/how-to-contribute/
-         - icon:
+         - href: contributing.html
+         - icon: fa-github
          - text: "FAQ on Contributing"
-         - href: https://github.com/FinancialMarkets/5MinuteFinance/blob/master/z_Administrative_stuff/FAQ.Rmd
-         - icon:
+         - href: faq.html
+         - icon: fa-question-circle-o
     - text: "Supporters"
       href: supporters.html
       icon: ion-android-contacts

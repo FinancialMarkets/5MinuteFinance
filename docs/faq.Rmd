@@ -1,0 +1,7 @@
+---
+title: ''
+output: html_document
+date: ""
+---
+
+The FAQ is [here on GitHub](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/z_Administrative_stuff/FAQ.Rmd).
