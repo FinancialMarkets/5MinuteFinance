@@ -4,6 +4,6 @@ date: ""
 output: html_document
 ---
 
-This site organizes the interactive presentations on 5-Minute Finance to match up with common undergraduate finance courses. The idea is to make it very easy to incorporate these presentations into your course—simply place a link in Blackboard to the course outline. 
+This site organizes the interactive presentations on 5-Minute Finance to match up with common undergraduate finance courses. To incorporate these presentations into your course, simply place a link in Blackboard to the course outline. 
 
 To see a course outline with 5MF links, use the ‘Courses’ dropdown box above. ​5MF is still growing, so not all topics will be covered. In some cases, you will see links to concepts that are "under construction" in GitHub. If you would like to contribute to these presentations or build your own, 5MF is designed for collaboration. We would welcome and celebrate your contributions. ​Learn more [here](https://www.5minutefinance.org/how-to-contribute).
