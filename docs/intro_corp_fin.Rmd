@@ -59,4 +59,4 @@ output: html_document
 
 [Dividends](https://www.5minutefinance.org/concepts/dividends)
 
-[*Need to Add:*  Stock Splits]() | [Mobile Friendly Version]()
+[**Under Construction on GitHub**  Stock Splits](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/stock_splits/stock_splits.Rmd)
