@@ -4,7 +4,7 @@ output: html_document
 ---
 
 
-### How Securities Trading Works 
+## How Securities Trading Works 
 
 [The Limit Order Book](http://www.5minutefinance.org/concepts/the-limit-order-book)
 
@@ -30,7 +30,7 @@ output: html_document
 
 [ETNs](https://www.5minutefinance.org/concepts/exchange-traded-notes)
 
-### Options
+## Options
 
 [Black-Scholes](http://www.5minutefinance.org/concepts/black-scholes)
 
@@ -44,7 +44,7 @@ output: html_document
 
 [Pricing via Monte Carlo](https://www.5minutefinance.org/concepts/an-introduction-to-the-uses-of-monte-carlo-methods-in-finance)
 
-### Portfolio Theory
+## Portfolio Theory
 
 [Intro to the Correlation Coefficient](https://www.5minutefinance.org/concepts/an-introduction-to-correlation-coefficient)
 
@@ -56,7 +56,7 @@ output: html_document
 
 [The Pairs Trade](https://www.5minutefinance.org/concepts/the-pairs-trade)
 
-### Commodity Markets
+## Commodity Markets
 
 [Cross Hedging](https://www.5minutefinance.org/concepts/cross-hedging)
 

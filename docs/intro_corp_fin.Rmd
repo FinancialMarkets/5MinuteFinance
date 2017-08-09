@@ -29,7 +29,7 @@ output: html_document
 
 [Interest Compounding: EAR and APR](https://www.5minutefinance.org/concepts/interest-compounding)
 
-### Stock and Bond Valuation
+## Stock and Bond Valuation
 
 [An Introduction to Stock Valuation](https://www.5minutefinance.org/concepts/an-introduction-to-stock-valuation)
 
@@ -45,11 +45,7 @@ output: html_document
 
 ## Risk and Return
 
-### Historical Context
-
 [*Need to Add:*  Historical Risk and Return by Asset Class]()
-
-### The CAPM
 
 [The Capital Asset Pricing Model](https://www.5minutefinance.org/concepts/the-capital-asset-pricing-model)
 
@@ -60,8 +56,6 @@ output: html_document
 [Capital Structure](https://www.5minutefinance.org/concepts/capital-structure)
 
 [The Modigliani and Miller Propositions](https://www.5minutefinance.org/concepts/modigliani-and-miller-propositions)
-
-### Dividends
 
 [Dividends](https://www.5minutefinance.org/concepts/dividends)
 
