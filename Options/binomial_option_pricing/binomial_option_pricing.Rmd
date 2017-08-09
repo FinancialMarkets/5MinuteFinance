@@ -189,8 +189,8 @@ Note above we used zero-coupon bonds. Zeros are important for derivative valuati
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Econometrics/monte_carlo/monte_carlo.Rmd) to see the code and collaborators for this presentation
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/binomial_option_pricing/binomial_option_pricing.Rmd), [line-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Options/binomial_option_pricing/binomial_option_pricing.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
+Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
