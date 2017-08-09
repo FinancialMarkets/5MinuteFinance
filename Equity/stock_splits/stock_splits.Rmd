@@ -1,0 +1,17 @@
+---
+title: "stock_splits"
+output: html_document
+---
+
+# The Mechanics of a Stock Split
+
+
+# Why Split Stock?
+
+## Credits and Collaboration
+
+Click the following links to see the [code](), [line-by-line contributions to this presentation](), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+
+Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute).
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 

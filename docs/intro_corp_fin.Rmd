@@ -7,7 +7,7 @@ output: html_document
 
 [The Goal of Financial Management](https://www.5minutefinance.org/concepts/goal-of-financial-management)
 
-[*Need to Add:*  The Agency Problem]()
+[**Under Construction on GitHub** The Agency Problem](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/the_agency_problem/agency_problem.Rmd)
 
 ## Financial Statements and Cash Flows
 
@@ -17,7 +17,7 @@ output: html_document
 
 [Financial Ratios](https://www.5minutefinance.org/concepts/financial-ratios)
 
-[*Need to Add:*  Firm Growth Rates (SGR and IGR) and EFN]()
+[**Under Construction on GitHub** Firm Growth Rates (SGR and IGR) and EFN](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/Growth_rates_and_EFN/growth_rates_and_EFN.Rmd)
 
 [Operating Cash Flow](https://www.5minutefinance.org/concepts/operating-cash-flow)
 
@@ -41,11 +41,11 @@ output: html_document
 
 [Modified Internal Rate of Return](https://micfm.shinyapps.io/MIRR) | [Mobile Friendly Version](https://micfm.shinyapps.io/MIRR_mobile) *not yet on 5MF*
 
-[*Need to Add:*  Other Investment Decision Rules]() 
+[**Under Construction on GitHub** Other Investment Decision Rules](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/other_investment_decision_rules/other_investment_decision_rules.Rmd) 
 
 ## Risk and Return
 
-[*Need to Add:*  Historical Risk and Return by Asset Class]()
+[**Under Construction on GitHub**  Historical Risk and Return by Asset Class](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Risk/relative_performance_asset_classes/relative_performace.Rmd)
 
 [The Capital Asset Pricing Model](https://www.5minutefinance.org/concepts/the-capital-asset-pricing-model)
 

@@ -20,7 +20,6 @@ navbar:
            href: fin_mkts.html
            icon: fa-building
     - text: "Write Your Own or Contribute"
-      # href: contributing.html
       icon: fa-pencil
       menu:
          - text: "How to Contribute using GitHub"
@@ -29,9 +28,9 @@ navbar:
          - text: "FAQ on Contributing"
          - href: faq.html
          - icon: fa-question-circle-o
-    - text: "Supporters"
-      href: supporters.html
-      icon: ion-android-contacts
+#    - text: "Supporters"
+#      href: supporters.html
+#      icon: ion-android-contacts
 output:
   html_document:
     theme: cosmo
