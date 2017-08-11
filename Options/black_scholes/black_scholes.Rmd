@@ -12,7 +12,7 @@ smaller: true
 
 ## The Black-Scholes World
 
-If we assume that stock options exist in world where...
+If we assume that stock options exist in a world where...
 
 -  ...the market is complete, meaning given a stock and a bond we can replicate call and put options,
 -  the risk-free interest rate and stock price volatility are both constant,

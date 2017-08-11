@@ -42,18 +42,35 @@ renderPlot({
         count[i,] <- rep(i, 31)
     }
 
-
     tcount <- t(count)
     tcount.stacked <- stack(data.frame(tcount))[, -2]
 
     dat.df <- data.frame(cbind(tcount.stacked, stock.mat[,1] * 252))
     names(dat.df) <- c("months", "returns")
 
-    dat.df <- data.frame(factor(paste("M",dat.df$months)), dat.df[, 2])
+    dat.df <- data.frame(factor(dat.df$months), dat.df[, 2])
     names(dat.df) <- c("months", "returns")
+    
+    ## trying to set color based on positive or negative mean return
+    ## need to calculate mean return for each month
+    average_monthly_returns <- aggregate(data = dat.df, returns ~ months, mean)
+    indicator <- average_monthly_returns$returns > 0
+    indicator_df <- cbind(average_monthly_returns$months, indicator)
+    names(indicator_df) <- c("months", "ind")
 
-    ggplot(dat.df, aes(x = "returns", y = "months", group = "months")) + 
-        geom_joy()
+    # ggplot(dat.df, aes(x = returns, y = months, fill = indicator)) + 
+    #    geom_joy_gradient()
+    ggplot(dat.df, aes(x = returns, y = months, fill = )) + 
+       geom_joy(scale = 2) +
+      scale_fill_cyclical(values = c("#3030D0", "#9090F0"))
+   # scale_fill_cyclical(values = c("#3030D0", "#ff0000"))
+#       geom_ridgeline_gradient() +
+# +   scale_fill_viridis(discrete = TRUE, direction = -1) +
+# +   theme(legend.position = 'none')
+    ## the below works
+    # ggplot(dat.df, aes(x = returns, y = months, fill = months)) + 
+  #      
+   
 })
 
 
