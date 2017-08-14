@@ -58,19 +58,10 @@ renderPlot({
     indicator_df <- cbind(average_monthly_returns$months, indicator)
     names(indicator_df) <- c("months", "ind")
 
-    # ggplot(dat.df, aes(x = returns, y = months, fill = indicator)) + 
-    #    geom_joy_gradient()
-    ggplot(dat.df, aes(x = returns, y = months, fill = )) + 
-       geom_joy(scale = 2) +
+    ggplot(dat.df, aes(x = returns, y = months, fill = months)) + 
+       geom_joy(scale = 4) +
       scale_fill_cyclical(values = c("#3030D0", "#9090F0"))
-   # scale_fill_cyclical(values = c("#3030D0", "#ff0000"))
-#       geom_ridgeline_gradient() +
-# +   scale_fill_viridis(discrete = TRUE, direction = -1) +
-# +   theme(legend.position = 'none')
-    ## the below works
-    # ggplot(dat.df, aes(x = returns, y = months, fill = months)) + 
-  #      
-   
+   ## ideally, the distributions should be shaded by risk and/or return.  Given volatility tends to cluster, periods of high vol and low return should cluster together (in red), and periods of low vol/increasing prices should cluster (green).  
 })
 
 
