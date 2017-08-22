@@ -8,7 +8,9 @@ runtime: shiny
 
 ## Characteristics of Implied Volatility
 
-Implied volatility is the market's expectation of a security's volatility extracted from option prices on that security.  It is the volatility expected over the life of that option.  We calculate Implied Volatility using the [Black-Scholes option pricing model](http://www.5minutefinance.org/concepts/black-scholes) -- solving the equation for volatility and plugging in the option price we observe in the market.  
+Implied volatility is the market's expectation of a security's volatility extracted from option prices on that security.  It is the volatility expected over the life of that option.
+
+-  We calculate Implied Volatility using the [Black-Scholes option pricing model](http://www.5minutefinance.org/concepts/black-scholes) -- solving the equation for volatility and plugging in the option price we observe in the market.  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -71,95 +73,142 @@ The option smile is known to take different shapes depending on the options expi
 
 -  The option smile is often visualized across expirations, in what is known as the *volatility surface*.  
 
--  The next slide shows how the smile is affected by option tenor.  The visualization is done with a 3D scatter plot instead of a surface so you see actual IV values, and nothing is interpolated.
+-  The next slide shows how the smile is affected by option tenor.  The visualization is done with a 3D scatter plot instead of a surface so you see actual IV values, and nothing is interpolated.  You can move the chart around with the mouse, and zoom in, to get a better view.
+
+-  The smile was calculated using option prices on ES futures observed in August 2015.
 
 <!-- -  The chart is done using [plotly](https://plot.ly/products/industries/finance-analytics/). -->
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-<!-- ## Implied Volatility, Expiration, and Moneyness -->
-
-<!-- ```{r echo = FALSE, message = FALSE, warning = FALSE} -->
-<!-- library(plotly) -->
-<!-- renderPlotly({ -->
-<!--     for.plotly.first.half <- read.csv("vol_surface.csv", header = TRUE, stringsAsFactors = FALSE) -->
-<!--     plot_ly(for.plotly.first.half, x = Years_Until_Expiration, y = Moneyness, z = Implied_Volatility, color = Implied_Volatility, type = "scatter3d", mode = "markers") -->
-<!--     }) -->
-<!-- ``` -->
-<!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
-
-<!-- same viz just with threejs -->
-
 ## Implied Volatility, Expiration, and Moneyness
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
-library(threejs)
-renderScatterplotThree({
-    for.threejs.first.half <- read.csv("vol_surface.csv", header = TRUE, stringsAsFactors = FALSE)[,-1]
-    scatterplot3js(for.threejs.first.half, color = rainbow(length(for.threejs.first.half[,1])))
+library(plotly)
+renderPlotly({
+    for.plotly.first.half <- read.csv("vol_surface.csv", header = TRUE, stringsAsFactors = FALSE)
+    plot_ly(data = for.plotly.first.half, x = ~Years_Until_Expiration, y = ~Moneyness, z = ~Implied_Volatility, color = ~Implied_Volatility, type = "scatter3d", mode = "markers")
     })
 ```
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
-<!-- ## -->
+<!-- same viz just with threejs -->
 
-<!-- ```{r, echo = FALSE} -->
-<!-- library(plotly) -->
-<!-- options("scipen" = 100, "digits" = 6) -->
-<!-- inputPanel({ -->
-<!--   sliderInput("theTime2", "Day/Second", value = c(0000000, 310000000), min = 0000000, max = 3100000, animate = animationOptions(interval = 300), sep = "", step = 60) -->
-<!-- }) -->
-<!-- renderPlotly({ -->
-<!--  ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1] -->
-<!--  ez1509es1509$Date <- ez1509es1509$Date - 2015080000000 -->
-<!-- tmp <- subset(ez1509es1509, Date > input$theTime2[1]) -->
-<!-- tmp <- subset(tmp, Date < input$theTime2[2]) -->
-<!-- ## maybe sort to reverse moneyness -- so switches view -->
-<!-- tmp <- tmp[ order(tmp[,2]),] -->
-<!-- ## tmp[,2] <- -tmp[,2] -->
-<!-- names(tmp)[1] <- "Time_in_Seconds" -->
-<!--     plot_ly(tmp, x = Moneyness, y = Time_in_Seconds, z = Implied_Volatility, color = Implied_Volatility, type = "scatter3d", mode = "markers") -->
-<!--     ## scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time", "-Moneyness", "Implied Volatility")) -->
-<!-- }) -->
+<!-- ## Implied Volatility, Expiration, and Moneyness -->
+
+<!-- ```{r echo = FALSE, message = FALSE, warning = FALSE} -->
+<!-- library(threejs) -->
+<!-- renderScatterplotThree({ -->
+<!--     for.threejs.first.half <- read.csv("vol_surface.csv", header = TRUE, stringsAsFactors = FALSE)[,-1] -->
+<!--     scatterplot3js(for.threejs.first.half, color = rainbow(length(for.threejs.first.half[,1]))) -->
+<!--     }) -->
 <!-- ``` -->
-
-<!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
-
 
 ## The Option Smile Over Time
 
-For a given option, the smile often changes over time.  This is particularly true if there is a drop in the price of the underlying in the time interval.  
+For a given option, the smile often changes over time.  This is particularly true if there is a drop in the price of the underlying in the time interval.
 
--  The next application shows 
+-  On the next slide are prices for ES futures deliverable in September 2015.  The data are sampled at the second frequency. ES prices were fairly stable for the first half of the month, however they began to markedly decline around August 20.  The volatility in ES prices continued through August 28.
+
+-  You can zoom in on any subinterval with the selector bars at the bottom of the chart. 
+
+-  It may take a minute for the app to load---it is quite a bit of data.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+
+##
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+library(highcharter)
+ESxts <- readRDS("ESxts.rds")
+
+renderHighchart({
+hc <- highchart(type = "stock") %>% 
+   hc_title(text = "ES Prices August 2015") %>% 
+   hc_subtitle(text = "Second Sampling Frequency") %>% 
+   hc_add_series(ESxts, id = "ESxts")
+
+hc
+})
+```
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+##  The Smile's Reaction to The Market Decline
+
+The application following the next slide shows the option smile for put options on ES expiring September 2015 over August 2015.
+
+-  You can use the slider input at the top to zoom in on any interval, to the second.  If you press the play button the app will progressively move the window forward.
+
+-  You can also zoom in on the 3D chart, and move it around to view different angles, with the mouse.
+
+Notice that when ES began to decline:
+
+#.  deeper out-of-the-money puts began to trade.
+
+#.  implied volatility became more sensitive to moneyness.
+
+#.  implied volatility increased across for all levels of moneyness.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 
 ##
 
 ```{r, echo = FALSE}
-library(threejs)
+library(plotly)
 options("scipen" = 100, "digits" = 6)
 inputPanel({
-  sliderInput("theTime", "Day/Second", value = c(0000000, 310000000), min = 0000000, max = 3100000, animate = animationOptions(interval = 300), sep = "", step = 60)
+  sliderInput("theTime2", "Day/Second", value = c(0000000, 310000000), min = 0000000, max = 3100000, animate = animationOptions(interval = 300), sep = "", step = 60)
 })
-
-renderScatterplotThree({
-   ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1]
+renderPlotly({
+ ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1]
  ez1509es1509$Date <- ez1509es1509$Date - 2015080000000
-tmp <- subset(ez1509es1509, Date > input$theTime[1])
-tmp <- subset(tmp, Date < input$theTime[2])
+tmp <- subset(ez1509es1509, Date > input$theTime2[1])
+tmp <- subset(tmp, Date < input$theTime2[2])
 ## maybe sort to reverse moneyness -- so switches view
 tmp <- tmp[ order(tmp[,2]),]
-# tmp[,2] <- -tmp[,2]
-tmp <- cbind(tmp[,2], tmp[,1], tmp[,3])
-tmp <- data.frame(tmp)
-names(tmp) <- c("Seconds", "-Moneyness", "Implied Volatility")
-    scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)))
+## tmp[,2] <- -tmp[,2]
+names(tmp)[1] <- "Time_in_Seconds"
+names(tmp)[3] <- "Implied_Volatility"
+    plot_ly(tmp, x = ~Moneyness, y = ~Time_in_Seconds, z = ~Implied_Volatility, color = ~Implied_Volatility, type = "scatter3d", mode = "markers")
+    ## scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date)), labels = c("Time", "-Moneyness", "Implied Volatility"))
 })
-
 ```
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+
+
+<!-- ## -->
+
+<!-- ```{r, echo = FALSE} -->
+<!-- library(threejs) -->
+<!-- options("scipen" = 100, "digits" = 6) -->
+<!-- inputPanel({ -->
+<!--   sliderInput("theTime", "Day/Second", value = c(0000000, 310000000), min = 0000000, max = 3100000, animate = animationOptions(interval = 300), sep = "", step = 60) -->
+<!-- }) -->
+
+<!-- renderScatterplotThree({ -->
+<!--    ez1509es1509 <- read.csv("august1509ez1509esPuts_for_plot.csv", header = TRUE)[, -1] -->
+<!--  ez1509es1509$Date <- ez1509es1509$Date - 2015080000000 -->
+<!-- tmp <- subset(ez1509es1509, Date > input$theTime[1]) -->
+<!-- tmp <- subset(tmp, Date < input$theTime[2]) -->
+<!-- ## maybe sort to reverse moneyness -- so switches view -->
+<!-- tmp <- tmp[ order(tmp[,2]),] -->
+<!-- # tmp[,2] <- -tmp[,2] -->
+<!-- tmp <- cbind(tmp[,2], tmp[,1], tmp[,3]) -->
+<!-- tmp <- data.frame(tmp) -->
+<!-- names(tmp) <- c("Seconds", "-Moneyness", "Implied Volatility") -->
+<!--     scatterplot3js(tmp, color = rainbow(length(ez1509es1509$Date))) -->
+<!-- }) -->
+
+<!-- ``` -->
+
+<!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
 
 
 
