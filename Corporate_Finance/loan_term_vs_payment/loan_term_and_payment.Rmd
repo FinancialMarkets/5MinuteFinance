@@ -14,7 +14,6 @@ runtime: shiny
 
 -  Understanding the trade-offs inherent in the relationship will help your understanding of financing decision corporations make, as well as help making personal finance decisions.
 
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ##  The App
@@ -92,11 +91,12 @@ renderPlotly({
 
 ```
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## Credits and Collaboration
 
-Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/), [line-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Fundamentals/APR_EAR/apr.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/loan_term_vs_payment/loan_term_and_payment.Rmd), [line-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Corporate_Finance/loan_term_vs_payment/loan_term_and_payment.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
 Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute).
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>

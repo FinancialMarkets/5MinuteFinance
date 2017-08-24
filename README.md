@@ -96,6 +96,8 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Dividends](https://micfm.shinyapps.io/dividends/) | [Mobile Friendly Version](https://micfm.shinyapps.io/dividends_mobile/)
 
+[Loan Term, Rate, and Payment](https://micfm.shinyapps.io/loan_term_payment) | [Mobile Friendly Version](https://micfm.shinyapps.io/loan_term_payment_mobile/)
+
 ### Econometrics
 
 [An Introduction to Correlation Coefficient](https://micfm.shinyapps.io/what_is_correlation) | [Mobile Friendly Version](https://micfm.shinyapps.io/what_is_correlation_mobile)
