@@ -8,6 +8,8 @@ output: html_document
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(ggplot2)
 library(truncnorm)
+library(scales)
+library(plotly)
 
 inputPanel(
     sliderInput("collat", "Collateral Value", min = 0, max = 750000, step = 50000, value = 0, animate = TRUE)
@@ -18,7 +20,6 @@ renderPlotly({
     nums <- data.frame(nums)
     names(nums) <- "Collateral_Value"
 
-    library(scales)
 
     p <- ggplot(nums, aes(x = Collateral_Value)) +
         geom_density(aes(fill = "red")) +

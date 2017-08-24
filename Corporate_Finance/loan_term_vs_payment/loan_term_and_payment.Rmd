@@ -1,0 +1,102 @@
+---
+title: "Loan Term, Rate, and Payment"
+output: ioslides_presentation
+logo: misq.png
+css: 5min_mod2.css
+runtime: shiny
+---
+
+## Have you Ever Wondered...
+
+...about the trade-off between a 15 and 30 year mortgage?  Intuitively you may know that a 30 year mortgage will have a lower payment, but you will also pay more in interest.  This is magnified by the fact that the 30-year interest rate is higher than the 15-year rate.
+
+-  The app in this presentation will help you understand the relationship between the term and rate of an amortized loan, and the loan's payment. 
+
+-  Understanding the trade-offs inherent in the relationship will help your understanding of financing decision corporations make, as well as help making personal finance decisions.
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##  The App
+
+The following app allows you to change the loan term and see the effect on the total payment, as well as how much of the payment is interest and principal respectively.
+
+-  As you change the loan term, you are also changing the loan's interest rate.  You can see the loan's rate highlighted in green in the term structure.
+
+-  To increase the slope of the yield curve, increase the steepness factor.
+
+-  You can automatically increment each input by clicking the *play* button (arrow) under each input.
+
+-  The horizontal line at $300,000 is in bold so you can easily see the payment amount relative to this level.
+
+-  Interest is in orange and principal is in blue.  You can hover over any part of the chart and see its value.   
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
+```{r echo = FALSE, message = FALSE}
+library(plotly)
+library(financial)
+inputPanel(
+    sliderInput(inputId = "term", label = "Loan Term", min = 3, max = 30, value = 4, step = 1, animate = TRUE),
+    sliderInput(inputId = "steepness", label = "Steepness Factor", min = 3, max = 30, value = 20, step = 1, animate = TRUE)
+)
+renderPlotly({
+    
+    slope_steepness <- 33 - input$steepness  # higher is more steep
+
+    teo_base_interest_rate <- .30
+    teo_interest_rate <- teo_base_interest_rate * ( (input$term / 4)^(1/slope_steepness) ) 
+    all_teo_interest_rates <- teo_base_interest_rate * ( (1:30 / 4)^(1/slope_steepness) )
+    
+    teo_cfs = tvm(pv = 800000, i = (100 * teo_interest_rate), n = input$term, days = 360, pyr = 1, pmt = NA)
+    teo_amort_table <-  summary(teo_cfs) 
+    
+    teo_int_prin <- teo_amort_table[, c(2,3)]
+    
+    ## plot data
+    
+    type <- c("Interest", "Principal")
+    Year <- 1:input$term
+    
+    Teo_Interest <- teo_int_prin[c(1:input$term),1]
+    Teo_Principal <- -teo_int_prin[c(1:input$term),2]
+    
+    Tdata <- data.frame(Year, Teo_Interest, Teo_Principal)
+
+    teo_payment <- (800000 * teo_interest_rate) / (1 - 1 / (1 + teo_interest_rate)^input$term )  
+
+### Teo Plot
+
+    tt <- plot_ly(Tdata, x = ~Year, y = ~Teo_Principal, type = 'bar', name = 'Principal') %>%
+        add_trace(y = ~Teo_Interest, name = 'Interest') %>%
+        layout(yaxis = list(title = '$', range = c(0, 430000)), barmode = 'stack', title = paste0("Yearly Payment: $", round(teo_payment, 2)), shapes = list(type='line', color = 'rgb(205, 12, 24)', x0 = 0, x1 = (input$term + .5), y0 = 2.2*300000, y1 = 2.2*300000, color = "red"))  # dont know why I have to multiply by 2.2, but works
+
+    all_years <- 1:30
+    present_year <- rep("Not Active Rate", 30)
+    present_year[input$term] <- "Active Rate"
+    
+    TdataRate <- data.frame(all_years, all_teo_interest_rates, present_year)
+    
+    tt2 <- plot_ly(TdataRate, x = ~all_years, y = ~all_teo_interest_rates, color = ~present_year, marker = list(size = 10))
+    
+    ttc <- subplot(tt, tt2, nrows = 2, margin = 0.05)
+
+    ttc %>% layout(annotations = list(
+                       list(x = 0.5 , y = -.1, text = "Interest Rate Term Structure (for years 1 to 30)", showarrow = F, xref='paper', yref='paper')
+                   )
+                   )
+
+})
+
+```
+
+
+## Credits and Collaboration
+
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/), [line-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Fundamentals/APR_EAR/apr.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+
+Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute).
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
