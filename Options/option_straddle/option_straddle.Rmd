@@ -1,11 +1,9 @@
 ---
 title: "Long Straddle"
-## author: Nikhil Perincherry
-author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
-date: "June 28, 2016"
 logo: misq.png
 css: 5min_mod.css
-output: ioslides_presentation
+<!-- output: ioslides_presentation -->
+output: html_document
 runtime: shiny
 ---
 
@@ -51,11 +49,11 @@ Going back to the Brexit example, a call option would've turned a profit if the 
 
 The long straddle may seem like an infallible strategy for an event like the Brexit vote, but in reality, this is not quite the case.
 
-- To turn a profit on the straddle, the underlying stock must move more than the market expects it to
+- To turn a profit on the straddle, the underlying stock must move more than the market expects it to.
 
 Option Premiums factor in expected market volatility, so in the case of the Brexit vote, option premiums increased significantly before the vote because of an expected increase in volatility after the vote.
 
-- The higher the option premiums, the more the underlying stock price must move in order to make money
+- The higher the option premiums, the more the underlying stock price must move in order to make money.
 
 ## Interactive Slide
 
@@ -195,7 +193,15 @@ In the payoff diagrams you can see that while loss potential is limited, the pro
 
 What effect do you think stock volatility has on the long straddle?
 
->- Since the long straddle benefits from large price fluctuations, it makes sense that it is better for more volatile stocks
+>- Since the long straddle benefits from actual volatility being higher than what the market expected, you can potentially earn more (or lost more) if the stock's volatility is greater (volatility of volatility).
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
+
+## Short Straddle
+
+The person who takes the other side of the long straddle, own a short straddle.  Since derivatives are *zero-sum games*, the payoff/profit on the short straddle is exactly the opposite (-1 times) the payoff/profit on the long straddle.
+
+
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 

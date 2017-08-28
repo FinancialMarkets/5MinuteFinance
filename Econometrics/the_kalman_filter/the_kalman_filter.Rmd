@@ -84,11 +84,11 @@ renderDygraph({
 
 ## Model Form
 
-In addition to non-constant market risk, the beta coefficient may vary also because of ommitted variables---other factors are known to affect the return on stock.  
+In addition to non-constant market risk, the beta coefficient may vary also because of ommitted variables---other factors are known to affect the return on stock.
 
 -  Below we don't intend to provide a complete model of asset returns (which is an ongoing area of research).
 
--  That said, whatever factors you use may have a time-varying effect on asset return, and thus they can be modeled using the below approach.
+-  That said, whatever factors you use may have a time-varying effect on asset return, and thus they can be modeled using the method below.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
