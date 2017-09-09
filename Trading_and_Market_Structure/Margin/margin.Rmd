@@ -16,9 +16,40 @@ This presentation covers trading stock on margin, as well as how margin works in
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Margin Percent
+
+$Margin\ % = \frac{Equity}{Market\ Value}$
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Initial Margin
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Maintenance Margin
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Margin on a Long Stock Position
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Margin Call: Long Stock
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Margin on a Short Stock Position
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Margin Call: Short Stock
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Margin Rates
-
-
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
