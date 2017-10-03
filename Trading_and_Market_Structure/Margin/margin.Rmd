@@ -18,17 +18,25 @@ This presentation covers trading stock on margin, as well as how margin works in
 
 ## Margin Percent
 
-$Margin\ % = \frac{Equity}{Market\ Value}$
+Margin percent is defined as: $Margin\ % = \frac{Equity}{Market\ Value}$.  
+
+-  The calculation of margin percent is different for long and short positions.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Initial Margin
 
+*Initial Margin* is your margin percent when you open the position. For example, say you bought $10,000 worth of stock on 60% initial margin.  This means you used $6000 of your own money, and borrowed $4000 to purchase the stock.
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Maintenance Margin
 
+As the equity in your position declines relative to the position's market value, your Margin % declines.  As your margin % falls, it becomes increasing likely that you will have negative equity (the market value of the position is not sufficient to cover the loan).
 
+-  To ensure this doesn't happen, your broker sets a *maintenance margin* percent.
+
+-  If your margin % falls to the maintenance margin, you get what is termed a *margin call*, which means you have to put more margin (cash) against the position to increase your margin % back up to the initial margin.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 

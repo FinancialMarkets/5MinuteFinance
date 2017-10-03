@@ -25,6 +25,7 @@ This presentation will introduce you to a present problem in funding cancer rese
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 
 library(highcharter)
+library(plotly)
 ## read in simulation ----
 #{{{  --------
 
