@@ -49,6 +49,23 @@ There are many benefits to securitization such as:
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## An Example
+
+Mortgage and auto loans, and credit card receivables, are commonly securitized assets.  This has made more money available for these types of loans, and thereby eased the difficulties for consumers seeking financing.
+
+-  However, other types of assets can be securitized, and while the securities based on these assets are small relative to mortgage securities, the assets can benefit greatly from the securitization.
+
+-  For example, [MIT's Andrew Lo is attempting to use securitization to enable funding of potential cancer cures](https://www.youtube.com/watch?v=xu86bYKVmRE).
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## An Example
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
 ## Credits and Collaboration
 
 Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/TVM_Single_CFs/TVM_Single_CFs.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Corporate_Finance/TVM_Single_CFs/TVM_Single_CFs.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
