@@ -19,9 +19,13 @@ The transformation of a set of (generally) illiquid assets into a tradeable port
 
 ## What can we securitize? 
 
-We can securitize any asset which generates a stream of cash flows---David Bowie famously securitized royalty payment for his songs.
+We can securitize any asset which generates a stream of cash flows---David Bowie famously securitized royalty payment for his songs.  To securitize an asset it is necessary to be able to estimate parameters of the assets' cash flows, such as expected cash flows and the standard deviation.  The ownership of the assets must also be transferable.
 
--  To securitize an asset it is necessary to be able to estimate parameters of the assets' cash flows, such as expected cash flows and the standard deviation.
+Assets are more appropriate for securitization if:
+
+-  they provide diversification---geographic or economic.
+
+-  there is a large number of assets.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -33,7 +37,7 @@ There are many benefits to securitization such as:
 
 -  increased liquidity
 
--  it moves illiquid assets off of a firm's balance sheet (where the asset may have a higher price).
+-  it moves illiquid assets off of a firm's balance sheet (where they may be subject to a higher discount rate).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -61,10 +65,34 @@ Mortgage and auto loans, and credit card receivables, are commonly securitized a
 
 ## An Example
 
+Assume a start-up firm is attempting to provide distributed solar power generation to towns across Sub-Saharan Africa.  Some aspect of the project are:
 
+-  Each solar facility is 10MW.
+
+-  The cost of producing each facility is declining in the number of facilities produced (according to a schedule provided in a later slide ).
+
+-  Each facility has a 10 year life.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Project Costs
+
+| \# of Facilities | Cost per Facility |
+|-------|-----|
+| 0-10 | $1MM |
+| 11-20 | $0.8MM |
+| 21-30 | $0.6MM |
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Project Operating Cash Flow
+
+We expect each to earn $0.115 per MWh for the 5x16 interval (16 hours per day over the weekdays).
+
+
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
 
