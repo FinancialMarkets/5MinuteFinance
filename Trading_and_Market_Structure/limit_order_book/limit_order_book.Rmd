@@ -234,11 +234,9 @@ shinyUI(fluidPage(
 
 ## Credits and Collaboration
 
-Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Equity/limit_order_book/limit_order_book.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Equity/limit_order_book/limit_order_book.Rmd), and [all the collaborators who have contributed to 5MinuteFinance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Trading_and_Market_Structure/limit_order_book/limit_order_book.Rmd), [line-by-line contributions to this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Trading_and_Market_Structure/limit_order_book/limit_order_book.Rmd), and [all the collaborators who have contributed to 5-Minute Finance via GitHub](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
-
-- The interactive content in this presentation has used the [orderbook R package](https://cran.r-project.org/web/packages/orderbook/index.html).  Thanks to the package authors for this great tool.
+Learn more about how to contribute [here](http://www.5minutefinance.org/how-to-contribute).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
