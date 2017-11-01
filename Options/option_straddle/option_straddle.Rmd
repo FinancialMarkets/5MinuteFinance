@@ -1,7 +1,7 @@
 ---
 title: "Long Straddle"
 logo: misq.png
-css: 5min_mod.css
+<!-- css: 5min_mod.css -->
 <!-- output: ioslides_presentation -->
 output: html_document
 runtime: shiny
@@ -57,11 +57,12 @@ Option Premiums factor in expected market volatility, so in the case of the Brex
 
 ## Interactive Slide
 
-In the next slide, you'll be able to select a strike price and option premium then view the corresponding payoff diagrams for the long straddle.
+In the next slide, you'll be able to select a strike price and option premium then view the corresponding payoff diagrams for the long straddle.  For simplicity we'll assume the call and put option have the same premium---so you only have to enter one.
 
-Note that the breakeven points for the straddle occur when the underlying stock price 1) falls below strike price - total price of premiums and 2) rises above strike price + total price of preiums
+Note that the breakeven points for the straddle occur when the underlying stock price 1) falls below strike price - total price of premiums and 2) rises above strike price + total price of premiums
 
 - The shaded regions represent the areas in which the long straddle is profitable
+
 - Slide the Option Premium slider to the right to see how an increase in option prices affects the breakeven points and regions of profitability
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
@@ -201,17 +202,12 @@ What effect do you think stock volatility has on the long straddle?
 
 The person who takes the other side of the long straddle, own a short straddle.  Since derivatives are *zero-sum games*, the payoff/profit on the short straddle is exactly the opposite (-1 times) the payoff/profit on the long straddle.
 
-
-
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>
 
 ## Credits and Collaboration
 
-Click [here](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/option_straddle/option_straddle.Rmd) to see the code and collaborators for this presentation
+Click the following links to see the [code](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Options/option_straddle/option_straddle.Rmd), [authors of this presentation](https://github.com/FinancialMarkets/5MinuteFinance/blame/master/Options/option_straddle/option_straddle.Rmd), and [all the collaborators who have contributed to 5-Minute Finance](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors).
 
-If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute
-
-- And a big thanks to the [Milken Institute Center for Financial Markets](http://www.milkeninstitute.org/centers/markets) for making this all possible!
-
+If you would like to make any additions or corrections to this presentation, visit our [GitHub repository page](https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute) to learn more about how to contribute.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
