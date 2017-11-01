@@ -61,38 +61,59 @@ Mortgage and auto loans, and credit card receivables, are commonly securitized a
 
 -  For example, [MIT's Andrew Lo is attempting to use securitization to enable funding of potential cancer cures](https://www.youtube.com/watch?v=xu86bYKVmRE).
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## An Example
-
-Assume a start-up firm is attempting to provide distributed solar power generation to towns across Sub-Saharan Africa.  Some aspect of the project are:
-
--  Each solar facility is 10MW.
-
--  The cost of producing each facility is declining in the number of facilities produced (according to a schedule provided in a later slide ).
-
--  Each facility has a 10 year life.
+-  As an example, similar to Andrew Los' priject, we'll securitize a portfolio of cancer realted pharma patents.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Project Costs
-
-| \# of Facilities | Cost per Facility |
-|-------|-----|
-| 0-10 | $1MM |
-| 11-20 | $0.8MM |
-| 21-30 | $0.6MM |
-
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
-
-## Project Operating Cash Flow
-
-We expect each to earn $0.115 per MWh for the 5x16 interval (16 hours per day over the weekdays).
+## The Problem
 
 
 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Assumptions
+
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+
+
+<!-- Securitize pharma patent cash flows instead of power plant below -->
+
+<!-- ## An Example -->
+
+<!-- Assume a start-up firm is attempting to provide distributed solar power generation to towns across Sub-Saharan Africa.  Some aspect of the project are: -->
+
+<!-- -  Each solar facility is 10MW. -->
+
+<!-- -  The cost of producing each facility is declining in the number of facilities produced (according to a schedule provided in a later slide ). -->
+
+<!-- -  Each facility has a 10 year life. -->
+
+<!-- -  Cash flows are uncorrelated across facilities. -->
+
+<!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
+
+<!-- ## Project Costs -->
+
+<!-- | \# of Facilities | Cost per Facility | -->
+<!-- |-------|-----| -->
+<!-- | 0-10 | $1MM | -->
+<!-- | 11-20 | $0.8MM | -->
+<!-- | 21-30 | $0.6MM | -->
+
+<!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
+
+<!-- ## Project Operating Cash Flow -->
+
+<!-- We expect each to earn $0.215 per MWh for the 7x16 interval (16 hours per day).  We don't expect the facility to deliver power over the remaining 7x8 interval. -->
+
+<!-- -   -->
+
+<!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
+
+
 
 ## Credits and Collaboration
 
