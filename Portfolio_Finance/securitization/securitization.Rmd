@@ -35,6 +35,8 @@ There are many benefits to securitization such as:
 
 -  diversification
 
+-  financial engineering---structuring tranches to meet risk-reward profiles, and investment horizons, desired by present market participants. 
+
 -  increased liquidity
 
 -  it moves illiquid assets off of a firm's balance sheet (where they may be subject to a higher discount rate).
@@ -49,8 +51,7 @@ There are various types of *Credit Enhancement* which may be used to lessen the 
 
 - Overcollateralization: the security collateral exceeds the value of the security ensuring, that even with some default on underlying assets, the security can make timely payments.
 
-- Third-party guarantee:  
-
+- Third-party guarantee:  an entity assumes some of the bondholders' risk.  This may be through forms of bond insurance, and maybe purchased form private entities, or often the government (for example the guarantees provided by Fannie Mae and Freddie Mac in the U.S.).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -72,16 +73,21 @@ Mortgage and auto loans, and credit card receivables, are commonly securitized a
 
 -  However, other types of assets can be securitized, and while the securities based on these assets are small relative to mortgage securities, the assets can benefit greatly from the securitization.
 
--  For example, [MIT's Andrew Lo is attempting to use securitization to enable funding of potential cancer cures](https://www.youtube.com/watch?v=xu86bYKVmRE).
+-  For example, [MIT's Andrew Lo is attempting to use securitization to enable funding of potential cancer cures](https://www.youtube.com/watch?v=xu86bYKVmRE).  We'll discuss this securitization in the following section.
 
--  As an example, similar to Andrew Los' priject, we'll securitize a portfolio of cancer realted pharma patents.
+<!-- -  As an example, similar to Andrew Los' priject, we'll securitize a portfolio of cancer realted pharma patents. -->
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## The Problem
 
+The risks and costs of biomedical research have increased due to underlying factors in the research and approval process.  This has lessened the ability of traditional public and private equity to finance such research---particular given their investment horizon constraints and more stringent requirements on real-time pricing of investments.
 
+-  This has caused a funding gap in biomed research, often referred to as the "valley of death".
 
+-  Attempts are being made to use securitization structures to fund biomed research through selling "Research Backed Obligations", which importantly have bond-like tranches, and investment horizons which are acceptable to investors.
+
+-  The primary market for bonds is much larger than equity.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
