@@ -113,7 +113,7 @@ Taking the second derivative of the bond's price with respect to yield affords:
 
 And so the approximation of the change in the bond's price for a given change in yield ($\Delta y$), including both duration and convexity, is:
 
-- $\Delta P = D^*P\Delta y + \frac{1}{2}CP(\Delta y)^2$
+- $\Delta P \approx -D^*P\Delta y + \frac{1}{2}CP(\Delta y)^2$
 
 - where $D^*$ is the bond's *Modified Duration*.
 
