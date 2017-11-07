@@ -91,6 +91,24 @@ The risks and costs of biomedical research have increased due to underlying fact
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Example of the Effect of Diversification
+
+Assume the following cash flows for an investment in drug-development if the drug is a success.
+
+| Year     | 0       | 1 through 10 | 11 through 20 |
+|:------|:------:|:---------:|:------:|
+| Cash Flow| -$200MM | $0           | $2B/year  |
+
+and the following cash flows if the drug is unsuccessful.
+
+| Year     | 0       | 1 through 10 | 11 through 20 |
+|:------|:------:|:---------:|:------:|
+| Cash Flow| -$200MM | $0           | $0  |
+
+Further assume the probability of success is 5% (and so a 95% chance that a given drug will be unsuccessful).
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Assumptions
 
 
