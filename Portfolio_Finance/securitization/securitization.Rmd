@@ -59,7 +59,11 @@ There are many benefits to securitization such as:
 
 ## Background and History
 
-Securitization was an effectively non-existent industry in the 1970s, and has since grown to annual issuance in the trillions of dollars.  
+Securitization was an effectively non-existent industry in the 1970s, and has since grown to annual issuance in the trillions of dollars.
+
+- In the 1970s Ginnie Mae, Fannie Mae, and Freddie MAc started prividing a guarantee on mortgage pass-through securities.  This made obtaining mortgage financing much easier for consumers, because securitization allowed lenders to easily move mortgages off their balance sheet if they needed to, or were concerned about interes rate risk.
+
+- These MBS were successful, and in an attempt to widen the investor base Fannie Mae issued the first Collateralized Mortgage Obligation (CMO) in 1983.  CMOs sought to address pre-payment risk in MBS by separating the security into tranches which determine payment precedence.
 
 From Moody's, ["Securitization Finances 30% of US Capital Markets Funding Needs Annually and 40% Historically"](https://www.moodys.com/sites/products/ProductAttachments/Spotlight%20on%20structured%20finance.pdf)
 
@@ -132,7 +136,7 @@ Cons:
 
 -  Asset-Backed Security (ABS):  generic term for security backed by non-mortgage loans or other assets which generate expected cash flows.  
 
-
+- Collateralized Mortgage Obligation (CMO):  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
