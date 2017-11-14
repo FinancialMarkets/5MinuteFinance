@@ -1,13 +1,15 @@
----
+--- 
 title: "Securitization"
-author: "[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)"
-affiliation: "Milken Institute Center for Financial Markets"
-output: ioslides_presentation
-logo: misq.png
+author: '[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)'
 css: 5min_mod2.css
-runtime: shiny
-smaller: true
+output:
+  ioslides_presentation: default
+#  slidy_presentation: default
+logo: misq.png
+smaller: yes
+affiliation: Milken Institute Center for Financial Markets
 ---
+
 
 ## What should make sense by the end of this presentation:
 
@@ -51,7 +53,9 @@ There are many benefits to securitization such as:
 
 -  financial engineering---structuring tranches to meet risk-reward profiles, and investment horizons, desired by present market participants. This allows us to target risk/return profiles which are desirable to a **much** larger pool of investors.
 
--  increased liquidity
+-  increased liquidity.
+
+-  lower transaction costs to transfer assets in a secondary market.
 
 -  it moves illiquid assets off of a firm's balance sheet (where they may be subject to a higher discount rate).  The originator receives a lump sum in exchange for future payments.
 
@@ -65,13 +69,15 @@ Securitization was an effectively non-existent industry in the 1970s, and has si
 
 - These MBS were successful, and in an attempt to widen the investor base Fannie Mae issued the first Collateralized Mortgage Obligation (CMO) in 1983.  CMOs sought to address pre-payment risk in MBS by separating the security into tranches which determine payment precedence.
 
+-  In 1985 Sperry Lease Finance Corp. securitized computer equipment leases in one of the first Asset Backed Security (ABS) offerings.  Since it has become common to securitize auto loans, credit card receivables, student loans, entertainment royalties, and home equity loans among other assets.
+
 From Moody's, ["Securitization Finances 30% of US Capital Markets Funding Needs Annually and 40% Historically"](https://www.moodys.com/sites/products/ProductAttachments/Spotlight%20on%20structured%20finance.pdf)
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Steps in the Securitization Process
 
-#.  Assets are created.  For example this is the origination of a loan, or the creation of a patent.
+#.  Assets are created.  For example this is the origination of a loan.
 
 #.  A special purpose vehicle (SPV) is created and ownership of the assets is transferred to the SPV.  The original owners receive a sales price.
 
@@ -81,27 +87,39 @@ From Moody's, ["Securitization Finances 30% of US Capital Markets Funding Needs 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+## Isolation
+
+A key point of securitization is to isolate the assets (and the cash flows they generate) from the originator of the assets.
+
+-  The originator may thereafter act as a servicer of the assets, but ultimately is not liable for payments.
+
+-  The transfer of ownership from the originator to the SPV is a "true sale".
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
 ## Participants in the Securitization
 
-Investors
+Investors:  households, institutions, and governments.  Affected by whether NRSROs rate the security as "investment-grade".
 
-Issuers
+Originator:  entity who initially originated the loan or asset.
 
-Special Purpose Vehicle:  a legally separate entity which holds the assets. 
+Special Purpose Vehicle:  a legally separate entity which holds the assets bought from the originator.
 
-Trustees
+Trust:  the assets may be held by the SPV, or ultimately transferred to a trust.
 
-Underwriters
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-Dealers
+## Participants Continued ...
 
-Rating agencies (NRSROs)
+Underwriters:  guarantee sufficient payment for the securities, from investors, to the SPV or trust.  These are often investment banks who also assist in structuring the securitization.
 
-Insurers
+Dealers:  make a secondary market in the security.
 
-Servicers
+Rating agencies (NRSROs):  determine the likelihood of default (amount of credit risk) in the security. This is done on an ongoing basis.  Such ratings are not required if the security will be sold in a private placement, however most ABS and MBS are rated.  The ratings determine which sets of investors can buy the security.
 
-Professional advisors
+Insurers:  Private companies and government agencies ensure payment for a fee or through credit default swaps.
+
+Servicers:  collects payments from borrowers (or asset) and forwards them through to the SPV.  The servicer earns a fee for this work.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -121,12 +139,23 @@ There are various types of *Credit Enhancement* which may be used to lessen the 
 
 Pros:
 
--  Effective in funding assets and lowering borrower yields
+-  Effective in funding assets and lowering borrower costs for individuals and corporations, which enables financing for many those deemed subprime.
 
--  Originators can immediately realize the value of an asset which will produce cash flows over alter time periods. 
+-  Enables a secondary market.
+
+-  Originators can immediately realize the value of an asset which will produce cash flows over later time periods. This allows the originator to initiate new loans.
+
+-  Separates the credit rating of the originator from the security.  This means the security can have a higher credit rating (and therefore lower yield) that if it were help on the originators balance sheet.
+
+-  Facilitates geographic dispersion of funding to areas underserved by depository institutions.
+
+-  Issuers can tailor the maturity, yield, and seniority to suit investor preference. 
+
+-  Financial flexibility for the originator---makes it much for efficient to move assets off the balance sheet (possibly increasing ROA).
 
 Cons:
 
+-  This process relies on the investors ability to determine the underlying asset credit risk, and thereby relies on credit rating agencies.  If the risk is assessed incorrectly, this will cause misallocation of funds.  This can be exacerbated by complex capital structures, and the separation of ownership and origination.  Since securitizations is a power tool to funnel capital to borrowes, the misallocation of this capital may cause substantial distortions, such as in the housing market prior to 2008.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
