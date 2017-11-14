@@ -1,25 +1,21 @@
 --- 
 title: "Securitization"
-author: '[GitHub Contributors](https://github.com/FinancialMarkets/5MinuteFinance/graphs/contributors)'
 css: 5min_mod2.css
-output:
-  ioslides_presentation: default
-#  slidy_presentation: default
+output: ioslides_presentation
 logo: misq.png
 smaller: yes
-affiliation: Milken Institute Center for Financial Markets
 ---
 
 
-## What should make sense by the end of this presentation:
+<!-- ## What should make sense by the end of this presentation: -->
 
--  Why we may not be able to finance a single $100,000 asset alone, but we can finance a portfolio of 500 of these same assets.
+<!-- -  Why we may not be able to finance a single $100,000 asset alone, but we can finance a portfolio of 500 of these same assets. -->
 
--  The parameters of the assets in the securitization which greatly affect the security's performance.  **Correlation is key.**
+<!-- -  The parameters of the assets in the securitization which greatly affect the security's performance.  **Correlation is key.** -->
 
--  The participants and regulatory constraints.
+<!-- -  The participants and regulatory constraints. -->
 
-<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+<!-- <div class="MIfooter"><img src="mi.png" style="height:50px;"></div>  -->
 
 ## Securitization means ...
 
@@ -49,15 +45,21 @@ Assets are more appropriate for securitization if:
 
 There are many benefits to securitization such as:
 
--  diversification
+-  diversification --- **Correlation is Key**
 
 -  financial engineering---structuring tranches to meet risk-reward profiles, and investment horizons, desired by present market participants. This allows us to target risk/return profiles which are desirable to a **much** larger pool of investors.
 
 -  increased liquidity.
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+##
+
 -  lower transaction costs to transfer assets in a secondary market.
 
 -  it moves illiquid assets off of a firm's balance sheet (where they may be subject to a higher discount rate).  The originator receives a lump sum in exchange for future payments.
+
+-  Ultimately, securitization may allow the financing of assets that would not receive financing individually.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -68,6 +70,10 @@ Securitization was an effectively non-existent industry in the 1970s, and has si
 - In the 1970s Ginnie Mae, Fannie Mae, and Freddie MAc started prividing a guarantee on mortgage pass-through securities.  This made obtaining mortgage financing much easier for consumers, because securitization allowed lenders to easily move mortgages off their balance sheet if they needed to, or were concerned about interes rate risk.
 
 - These MBS were successful, and in an attempt to widen the investor base Fannie Mae issued the first Collateralized Mortgage Obligation (CMO) in 1983.  CMOs sought to address pre-payment risk in MBS by separating the security into tranches which determine payment precedence.
+
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Background and History Continued
 
 -  In 1985 Sperry Lease Finance Corp. securitized computer equipment leases in one of the first Asset Backed Security (ABS) offerings.  Since it has become common to securitize auto loans, credit card receivables, student loans, entertainment royalties, and home equity loans among other assets.
 
@@ -123,7 +129,7 @@ Servicers:  collects payments from borrowers (or asset) and forwards them throug
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Lessening Risk
+## Credit Enhancement
 
 There are various types of *Credit Enhancement* which may be used to lessen the risk borne by investors in a securitization.  A few common examples are below:
 
@@ -131,13 +137,15 @@ There are various types of *Credit Enhancement* which may be used to lessen the 
 
 - Overcollateralization: the security collateral exceeds the value of the security ensuring, that even with some default on underlying assets, the security can make timely payments.
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## Credit Enhancement Continued 
+
 - Third-party guarantee:  an entity assumes some of the bondholders' risk.  This may be through forms of bond insurance, and maybe purchased form private entities, or often the government (for example the guarantees provided by Fannie Mae and Freddie Mac in the U.S.).
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
-## Pros/Cons?
-
-Pros:
+## Securitization: Pros
 
 -  Effective in funding assets and lowering borrower costs for individuals and corporations, which enables financing for many those deemed subprime.
 
@@ -147,15 +155,23 @@ Pros:
 
 -  Separates the credit rating of the originator from the security.  This means the security can have a higher credit rating (and therefore lower yield) that if it were help on the originators balance sheet.
 
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
+
+## 
+
 -  Facilitates geographic dispersion of funding to areas underserved by depository institutions.
 
 -  Issuers can tailor the maturity, yield, and seniority to suit investor preference. 
 
 -  Financial flexibility for the originator---makes it much for efficient to move assets off the balance sheet (possibly increasing ROA).
 
-Cons:
+<div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
--  This process relies on the investors ability to determine the underlying asset credit risk, and thereby relies on credit rating agencies.  If the risk is assessed incorrectly, this will cause misallocation of funds.  This can be exacerbated by complex capital structures, and the separation of ownership and origination.  Since securitizations is a power tool to funnel capital to borrowes, the misallocation of this capital may cause substantial distortions, such as in the housing market prior to 2008.
+## Securitization: Cons
+
+-  This process relies on the investors ability to determine the underlying asset credit risk, and thereby relies on credit rating agencies.  If the risk is assessed incorrectly, this will cause misallocation of funds.  This can be exacerbated by complex capital structures, the separation of ownership and origination (originate-to-distribute), and the origination incentive system.  Since securitizations is a power tool to funnel capital to borrowes, the misallocation of this capital may cause substantial distortions, such as in the housing market prior to 2008.
+
+-  See [Securitization: Lessons Learned and the Road Ahead](https://www.imf.org/external/pubs/ft/wp/2013/wp13255.pdf) for a good summary of how components of the securitization process failed in the lead-up to the 2008 financial crisis.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
@@ -165,7 +181,7 @@ Cons:
 
 -  Asset-Backed Security (ABS):  generic term for security backed by non-mortgage loans or other assets which generate expected cash flows.  
 
-- Collateralized Mortgage Obligation (CMO):  
+-  Collateralized Mortgage Obligation (CMO):  
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
