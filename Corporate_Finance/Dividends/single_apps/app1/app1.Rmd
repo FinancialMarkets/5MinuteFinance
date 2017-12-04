@@ -24,7 +24,7 @@ renderDygraph({
     ticker <- input$name1
                     
     D1 <- getDividends(ticker, auto.assign = FALSE)
-    prices <- getSymbols(ticker, auto.assign = FALSE)
+    prices <- getSymbols(ticker, auto.assign = FALSE, src = 'google')
 
     dygraph(cbind(Op(prices), Cl(prices))) %>%
         dyEvent(index(D1), as.numeric(D1), labelLoc = "bottom")
