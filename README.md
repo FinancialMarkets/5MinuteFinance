@@ -122,6 +122,8 @@ Many of the presentations below are works-in-progress.  Feel free to contribute 
 
 [Varying Option Volatility](https://micfm.shinyapps.io/stochastic_vol) | [Mobile Friendly Version](https://micfm.shinyapps.io/stochastic_vol_mobile)
 
+[Long Option Straddle](https://micfm.shinyapps.io/long_straddle/) | [Mobile Friendly Version](https://micfm.shinyapps.io/long_straddle_mobile/)
+
 ### Fixed Income and Other Debt
 
 [Duration](https://micfm.shinyapps.io/intro_duration/) | [Mobile Friendly Version](https://micfm.shinyapps.io/intro_duration_mobile)
