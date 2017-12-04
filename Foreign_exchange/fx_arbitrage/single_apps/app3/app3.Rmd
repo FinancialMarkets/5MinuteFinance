@@ -8,7 +8,6 @@ runtime: shiny
 ##
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
-#{{{
 library(shiny)
 library(DiagrammeR)
 
@@ -70,24 +69,24 @@ graph LR
                 mermaid(paste("
 sequenceDiagram
 US Bank->>You: Borrow 1 USD
-You->>Spot Market: Convert 1 USD to ", round(1/fxS, 2), " EUR
+You->>Spot Market: Convert 1 USD to ", round(1/fxS, 4), " EUR
 You->>European Bank: Invest at ", irateE, " for 1 period
-You->>Forward Market: Sell ", round((1/fxS)*(1+irateE), 2), " EUR forward at ", fxF, "
-Forward Market->>You: Receive ", round((1/fxS)*(1+irateE) * fxF, 2), " from foward sale
-You->>US Bank: Repay USD ", 1 * (1+irateU), " owed
-You->>You: Profit USD ", round(profit1, 2), "
+You->>Forward Market: Sell ", round((1/fxS)*(1+irateE), 4), " EUR forward at ", fxF, "
+Forward Market->>You: Receive ", round((1/fxS)*(1+irateE) * fxF, 4), " from foward sale
+You->>US Bank: Repay USD ", round(1 * (1+irateU), 4), " owed
+You->>You: Profit USD ", round(profit1, 4), "
 "))
             } else {
                 if(profit1 < 0 & profit2 > 0){
                 mermaid(paste("
 sequenceDiagram
 European Bank->>You: Borrow 1 EUR
-You->>Spot Market: Convert 1 EUR to ", round(1 * fxS, 2), " USD
+You->>Spot Market: Convert 1 EUR to ", round(1 * fxS, 4), " USD
 You->>US Bank: Invest at ", irateU, " for 1 period
-You->>Forward Market: Sell ", round((1 * fxS)*(1+irateU), 2), " USD forward at ", fxF, "
-Forward Market->>You: Receive ", round((1 * fxS)*(1+irateU)/ fxF, 2), " from foward sale
-You->>European Bank: Repay EUR ", 1 * (1+irateE), " owed
-You->>You: Profit EUR ", round(profit2, 2), "
+You->>Forward Market: Sell ", round((1 * fxS)*(1+irateU), 4), " USD forward at ", fxF, "
+Forward Market->>You: Receive ", round((1 * fxS)*(1+irateU)/ fxF, 4), " from foward sale
+You->>European Bank: Repay EUR ", round(1 * (1+irateE), 4), " owed
+You->>You: Profit EUR ", round(profit2, 4), "
 "))
             } else {
                 mermaid("
@@ -102,5 +101,4 @@ graph LR
     }
 
 shinyApp(ui = ui, server = server)
-#}}}
 ```
