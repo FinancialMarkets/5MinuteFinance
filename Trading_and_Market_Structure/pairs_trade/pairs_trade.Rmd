@@ -225,7 +225,7 @@ Gatev et al (2008) do not make a market risk adjustment and so neither will the 
 
 ##
 
-```{r, messsage=FALSE, warning=FALSE, echo = FALSE}
+```{r messsage=FALSE, warning=FALSE, echo = FALSE}
 #{{{
 inputPanel(
 
@@ -310,7 +310,7 @@ Using the default pair, dates, and thresholds, you can see we open a pairs trade
 
 ##
 
-```{r, messsage=FALSE, warning=FALSE, echo = FALSE}
+```{r messsage=FALSE, warning=FALSE, echo = FALSE}
 #{{{
 library(dygraphs)
 renderDygraph({
