@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>The Term Structure of Interest Rates</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <!-- <link rel="stylesheet" href="css/theme/black.css"> -->
+    <link rel="stylesheet" href="css/theme/league.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+	<section>
+	  <section data-background-image="./city_skyline.jpg">
+	    <h2>The Term Structure of Interest Rates</h2>
+	    <br>
+	    <br>
+	    <br>
+	    <br>
+	    <br>
+	    <br>
+	  </section>
+	  <section>
+	    <h2>The Term Structure of Interest Rates</h2>
+	    <br>
+	    <p> MATT BRIGIDA </p>
+	    <p> Associate Professor of Finance (SUNY Polytechnic Institute) & Financial Education Advisor, Milken Institute </p>
+	  </section>
+	</section>
+
+	<section>
+	  <h3>Interest Rates and Time</h3>
+	  <p align="left">The <i>Term Structure of Interest Rates</i> is the base set of rates we use to discount cash flows.  For every time period there is a rate. </p>
+	  <ul>
+	    <li>This Term Structure is integral in <b class="fragment highlight-blue">asset pricing</b>.</li>
+	    <li>It also serves as an indicator of <b class="fragment highlight-blue">future economic conditions</b>.</li>
+	  </ul>
+	</section>	
+<!-- 	<section> -->
+
+<!-- <div class="stretch"> -->
+<!-- <iframe src="./market_depth.html" height="100%" width="100%"></iframe> -->
+<!-- 	    </div> -->
+
+<!-- 	</section> -->
+	
+
+  <section>
+    <h3>Matt Brigida</h3>
+    Contact: 
+  </section>
+
+</div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+  // More info about config & dependencies:
+  // - https://github.com/hakimel/reveal.js#configuration
+  // - https://github.com/hakimel/reveal.js#dependencies
+  Reveal.initialize({
+
+  transition: 'convex',
+  
+  <!-- menu: { -->
+  <!-- 	// Specifies which side of the presentation the menu will  -->
+  <!-- 	// be shown. Use 'left' or 'right'. -->
+  <!-- 	side: 'left', -->
+
+  <!-- 	// Add slide numbers to the titles in the slide list. -->
+  <!-- 	// Use 'true' or format string (same as reveal.js slide numbers) -->
+  <!-- 	numbers: false, -->
+
+  <!-- 	// Specifies which slide elements will be used for generating -->
+  <!-- 	// the slide titles in the menu. The default selects the first -->
+  <!-- 	// heading element found in the slide, but you can specify any -->
+  <!-- 	// valid css selector and the text from the first matching -->
+  <!-- 	// element will be used. -->
+  <!-- 	// Note: that a section data-menu-title attribute or an element -->
+  <!-- 	// with a menu-title class will take precedence over this option -->
+  <!-- 	titleSelector: 'h1, h2, h3, h4, h5, h6', -->
+
+  <!-- 	// If slides do not have a matching title, attempt to use the -->
+  <!-- 	// start of the text content as the title instead -->
+  <!-- 	useTextContentForMissingTitles: false, -->
+
+  <!-- 	// Hide slides from the menu that do not have a title. -->
+  <!-- 	// Set to 'true' to only list slides with titles. -->
+  <!-- 	hideMissingTitles: false, -->
+
+  <!-- 	// Add markers to the slide titles to indicate the  -->
+  <!-- 	// progress through the presentation -->
+  <!-- 	markers: false, -->
+
+  <!-- 	// Specify custom panels to be included in the menu, by -->
+  <!-- 	// providing an array of objects with 'title', 'icon' -->
+  <!-- 	// properties, and either a 'src' or 'content' property. -->
+  <!-- 	custom: false, -->
+
+  <!-- 	// Specifies the themes that will be available in the themes -->
+  <!-- 	// menu panel. Set to 'false' to hide themes panel. -->
+  <!-- 	themes: [ -->
+  <!-- 		{ name: 'Black', theme: 'css/theme/black.css' }, -->
+  <!-- 		{ name: 'White', theme: 'css/theme/white.css' }, -->
+  <!-- 		{ name: 'League', theme: 'css/theme/league.css' }, -->
+  <!-- 		{ name: 'Sky', theme: 'css/theme/sky.css' }, -->
+  <!-- 		{ name: 'Beige', theme: 'css/theme/beige.css' }, -->
+  <!-- 		{ name: 'Simple', theme: 'css/theme/simple.css' }, -->
+  <!-- 		{ name: 'Serif', theme: 'css/theme/serif.css' }, -->
+  <!-- 		{ name: 'Blood', theme: 'css/theme/blood.css' }, -->
+  <!-- 		{ name: 'Night', theme: 'css/theme/night.css' }, -->
+  <!-- 		{ name: 'Moon', theme: 'css/theme/moon.css' }, -->
+  <!-- 		{ name: 'Solarized', theme: 'css/theme/solarized.css' } -->
+  <!-- 	], -->
+
+  <!-- 	// Specifies if the transitions menu panel will be shown. -->
+  <!-- 	transitions: true, -->
+
+  <!-- 	// Adds a menu button to the slides to open the menu panel. -->
+  <!-- 	// Set to 'false' to hide the button. -->
+  <!-- 	openButton: true, -->
+
+  <!-- 	// If 'true' allows the slide number in the presentation to -->
+  <!-- 	// open the menu panel. The reveal.js slideNumber option must  -->
+  <!-- 	// be displayed for this to take effect -->
+  <!-- 	openSlideNumber: false, -->
+
+  <!-- 	// If true allows the user to open and navigate the menu using -->
+  <!-- 	// the keyboard. Standard keyboard interaction with reveal -->
+  <!-- 	// will be disabled while the menu is open. -->
+  <!-- 	keyboard: true, -->
+
+  <!-- 	// Normally the menu will close on user actions such as -->
+  <!-- 	// selecting a menu item, or clicking the presentation area. -->
+  <!-- 	// If 'true', the sticky option will leave the menu open -->
+  <!-- 	// until it is explicitly closed, that is, using the close -->
+  <!-- 	// button or pressing the ESC or m key (when the keyboard  -->
+  <!-- 	// interaction option is enabled). -->
+  <!-- 	sticky: false, -->
+
+  <!-- 	// If 'true' standard menu items will be automatically opened -->
+  <!-- 	// when navigating using the keyboard. Note: this only takes  -->
+  <!-- 	// effect when both the 'keyboard' and 'sticky' options are enabled. -->
+  <!-- 	autoOpen: true, -->
+
+  <!-- 	// If 'true' the menu will not be created until it is explicitly -->
+  <!-- 	// requested by calling RevealMenu.init(). Note this will delay -->
+  <!-- 	// the creation of all menu panels, including custom panels, and -->
+  <!-- 	// the menu button. -->
+  <!-- 	delayInit: false, -->
+
+  <!-- 	// By default the menu will load it's own font-awesome library -->
+  <!-- 	// icons. If your presentation needs to load a different -->
+  <!-- 	// font-awesome library the 'loadIcons' option can be set to false -->
+  <!-- 	// and the menu will not attempt to load the font-awesome library. -->
+  <!-- 	loadIcons: true -->
+  <!-- }, -->
+  
+  audio: {
+  prefix: 'audio/', 	// audio files are stored in the "audio" folder
+  suffix: '.wav',		// audio files have the ".ogg" ending --- changed to wav
+  textToSpeechURL: null,  // the URL to the text to speech converter
+  defaultNotes: false, 	// use slide notes as default for the text to speech converter
+  defaultText: false, 	// use slide text as default for the text to speech converter
+  advance: 0, 		// advance to next slide after given time in milliseconds after audio has played, use negative value to not advance 
+  autoplay: false,	// automatically start slideshow
+  defaultDuration: 5,	// default duration in seconds if no audio is available 
+  playerOpacity: 0.05,	// opacity value of audio player if unfocused
+  playerStyle: 'position: fixed; bottom: 4px; left: 25%; width: 50%; height:75px; z-index: 33;', // style used for container of audio controls 
+  startAtFragment: false, // when moving to a slide, start at the current fragment or at the start of the slide
+  },
+  chalkboard: { 
+  src: null,
+  readOnly: undefined, 
+  toggleChalkboardButton: { left: "90px", bottom: "30px", top: "auto", right: "auto" },
+  toggleNotesButton: { left: "150px", bottom: "30px", top: "auto", right: "auto" },
+  },
+    math: {
+		mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+		config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+	},
+  dependencies: [
+  { src: 'plugin/math/math.js', async: true },
+    { src: 'plugin/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },				
+  { src: 'plugin/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
+  { src: 'plugin/markdown/marked.js' },
+  { src: 'plugin/markdown/markdown.js' },
+  { src: 'plugin/menu/menu.js' },
+  { src: 'plugin/notes/notes.js', async: true },
+  <!-- { src: 'node_modules/reveal.js-menu/menu.js' }, -->
+  { src: 'plugin/chalkboard/chalkboard.js' },
+  { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+  ],
+  keyboard: {
+  67: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle notes canvas when 'c' is pressed
+  66: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+  46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+  8: function() { RevealChalkboard.reset() },	// reset chalkboard data on current slide when 'BACKSPACE' is pressed
+  68: function() { RevealChalkboard.download() },	// downlad recorded chalkboard drawing when 'd' is pressed
+  82: function() { Recorder.toggleRecording(); },	// press 'r' to start/stop recording
+  90: function() { Recorder.downloadZip(); }, 	// press 'z' to download zip containing audio files
+  84: function() { Recorder.fetchTTS(); }, 	// press 't' to fetch TTS audio files
+  },
+  });
+</script>
+</body>
+</html>
