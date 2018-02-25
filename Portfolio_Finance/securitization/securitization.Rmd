@@ -39,13 +39,15 @@ Assets are more appropriate for securitization if:
 
 -  there is a large number of assets.
 
+-  there correlation structure is known, and the assets preferably have low correlations.  Correlation is key...
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Why securitize assets? 
 
 There are many benefits to securitization such as:
 
--  diversification --- **Correlation is Key**
+-  diversification
 
 -  financial engineering---structuring tranches to meet risk-reward profiles, and investment horizons, desired by present market participants. This allows us to target risk/return profiles which are desirable to a **much** larger pool of investors.
 
@@ -145,6 +147,8 @@ There are various types of *Credit Enhancement* which may be used to lessen the 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
+<!-- add the pros below to the earlier benefits section -->
+
 ## Securitization: Pros
 
 -  Effective in funding assets and lowering borrower costs for individuals and corporations, which enables financing for many those deemed subprime.
@@ -203,7 +207,7 @@ The risks and costs of biomedical research have increased due to underlying fact
 
 -  This has caused a funding gap in biomed research, often referred to as the "valley of death".
 
--  In 2010 \$48 billion was spent on basic research in drug development, \$7 was spent on translating that into marketable componds, and \$52 billion was spent on clinical development (Fagnan et al 2013).
+-  In 2010 \$48 billion was spent on basic research in drug development, \$7 billion was spent on translating that into marketable componds, and \$52 billion was spent on clinical development (Fagnan et al 2013).
 
 -  Attempts are being made to use securitization structures to fund biomed research through selling "Research Backed Obligations", which importantly have bond-like tranches, and investment horizons which are acceptable to investors.
 
