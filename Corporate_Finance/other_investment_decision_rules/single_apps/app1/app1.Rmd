@@ -50,7 +50,7 @@ ui <- fluidPage(
 
       sliderInput("dr", "Discount Rate:",
                   min = 0, max = 0.5,
-                  pre = "%", step = 0.01,
+                  post = "%", step = 0.01,
                   value = 0.1),
 
       sliderInput("thresh", "Payback Threshold:",
@@ -63,7 +63,7 @@ ui <- fluidPage(
     mainPanel(
 
       # Output: Table summarizing the values entered ----
-      tableOutput("values")
+      formattableOutput("values")
 
     )
   )
@@ -83,50 +83,99 @@ server <- function(input, output) {
 
         dr <- input$dr
 
+        dcfs <- c(input$time0, input$time1, input$time2, input$time3, input$time4) / (1 + dr)^(0:4)
+
         threshold <- input$thresh
 
         ## Calculations -------
 
+        ## for normal payback
         csum <- cumsum(cfs)
         df <- data.frame(0:4, csum)
         names(df) <- c("year", "csum")
+
+        ## for discounted payback
+        dcsum <- cumsum(dcfs)
+        ddf <- data.frame(0:4, dcsum)
+        names(ddf) <- c("year", "dcsum")
         
 ### Calculate payback -----
 
-        ## below doesn't work if fractional part of a year
+        ## if paid back exactly at a year point 
         if(sum(df$csum == 0) == 1){
             pb.year <- min(df$year[df$csum >= 0])
             frac.remain <- df$csum[pb.year + 1] / cfs[pb.year + 1]
 
             payback <- pb.year + frac.remain
-            
+            ## if never paid back
         } else if(sum(df$csum > 0) == 0){
             payback <- "no payback"
         } else {
+            ## has fractional part
             pb.year <- min(df$year[df$csum > 0]) - 1
             frac.remain <- (cfs[pb.year + 2] - df$csum[pb.year + 2]) / cfs[pb.year + 2]
 
             payback <- pb.year + frac.remain
         }
-        
 
- 
-    data.frame(
-      Name = c("Payback",
-               "Discounted Payback",
-               "Profitability Index",),
-      Value = as.character(c(input$integer,
-                             input$decimal,
-                             paste(input$range, collapse = " "),
-                             input$format,
-                             input$animation)),
-      stringsAsFactors = FALSE)
+        result.payback <- ifelse(payback <= threshold, "ACCEPT", "REJECT")
+
+### Calculate Discounted Payback -----
+
+        ## if paid back exactly at a year point 
+        if(sum(ddf$dcsum == 0) == 1){
+            dpb.year <- min(ddf$year[ddf$dcsum >= 0])
+            dfrac.remain <- ddf$dcsum[pb.year + 1] / cfs[pb.year + 1]
+
+            discounted.payback <- dpb.year + dfrac.remain
+            ## if never paid back
+        } else if(sum(ddf$dcsum > 0) == 0){
+            discounted.payback <- "no payback"
+        } else {
+            ## has fractional part
+            dpb.year <- min(ddf$year[ddf$dcsum > 0]) - 1
+            dfrac.remain <- (cfs[pb.year + 2] - ddf$dcsum[pb.year + 2]) / cfs[pb.year + 2]
+
+            discounted.payback <- dpb.year + dfrac.remain
+        }
+
+        result.discounted.payback <- ifelse(discounted.payback <= threshold, "ACCEPT", "REJECT")
+
+### Profitability Index ------
+
+        PI <- sum(dcfs[-1]) / abs(dcfs[1])
+
+        result.PI <- ifelse(PI >= 1, "ACCEPT", "REJECT")
+
+
+### organizing results -----
+        assign("result.df", data.frame(
+                                Name = c("Payback",
+                                         "Discounted Payback",
+                                         "Profitability Index"),
+                                Value = as.character(c(round(payback, 2),
+                                                       round(discounted.payback, 2),
+                                                       round(PI, 2))),
+                                Thresholds = c(threshold, threshold, 1),
+                                Result = c(result.payback, result.discounted.payback, result.PI),
+                                stringsAsFactors = FALSE),  envir = .GlobalEnv)
+
+        result.df
 
   })
 
   # Show the values in an HTML table ----
-  output$values <- renderTable({
-    sliderValues()
+    output$values <- renderFormattable({
+        
+        result_formatter <- formatter("span",
+                                    style = x ~ style(color = ifelse(x == "ACCEPT", "green", 
+                                                              ifelse(x == "REJECT", "red", "black"))))
+     
+      formattable(sliderValues(), list(
+                                      Value = color_bar("lightblue"),
+                                      Result = result_formatter
+                                  ),
+                  align = c("l", "r", "c", "c"))
   })
 
 }
