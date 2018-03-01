@@ -56,7 +56,7 @@ ui <- fluidPage(
       sliderInput("thresh", "Payback Threshold:",
                   min = 0, max = 4,
                   step = 0.1,
-                  value = 1)
+                  value = 3)
     ),
 
     # Main panel for displaying outputs ----
@@ -106,19 +106,23 @@ server <- function(input, output) {
             pb.year <- min(df$year[df$csum >= 0])
             frac.remain <- df$csum[pb.year + 1] / cfs[pb.year + 1]
 
-            payback <- pb.year + frac.remain
+            payback <- round(pb.year + frac.remain, 2)
             ## if never paid back
         } else if(sum(df$csum > 0) == 0){
-            payback <- "no payback"
+            payback <- "NEVER"
         } else {
             ## has fractional part
             pb.year <- min(df$year[df$csum > 0]) - 1
             frac.remain <- (cfs[pb.year + 2] - df$csum[pb.year + 2]) / cfs[pb.year + 2]
 
-            payback <- pb.year + frac.remain
+            payback <- round(pb.year + frac.remain, 2)
         }
 
-        result.payback <- ifelse(payback <= threshold, "ACCEPT", "REJECT")
+        if(is.numeric(payback)){
+            result.payback <- ifelse(payback <= threshold, "ACCEPT", "REJECT")
+        } else {
+            result.payback <- "REJECT"
+            }
 
 ### Calculate Discounted Payback -----
 
@@ -127,19 +131,23 @@ server <- function(input, output) {
             dpb.year <- min(ddf$year[ddf$dcsum >= 0])
             dfrac.remain <- ddf$dcsum[pb.year + 1] / cfs[pb.year + 1]
 
-            discounted.payback <- dpb.year + dfrac.remain
+            discounted.payback <- round(dpb.year + dfrac.remain, 2)
             ## if never paid back
         } else if(sum(ddf$dcsum > 0) == 0){
-            discounted.payback <- "no payback"
+            discounted.payback <- "NEVER"
         } else {
             ## has fractional part
             dpb.year <- min(ddf$year[ddf$dcsum > 0]) - 1
             dfrac.remain <- (cfs[pb.year + 2] - ddf$dcsum[pb.year + 2]) / cfs[pb.year + 2]
 
-            discounted.payback <- dpb.year + dfrac.remain
+            discounted.payback <- round(dpb.year + dfrac.remain, 2)
         }
 
-        result.discounted.payback <- ifelse(discounted.payback <= threshold, "ACCEPT", "REJECT")
+        if(is.numeric(discounted.payback)){
+            result.discounted.payback <- ifelse(discounted.payback <= threshold, "ACCEPT", "REJECT")
+        } else {
+            result.discounted.payback <- "REJECT"
+            }
 
 ### Profitability Index ------
 
@@ -153,8 +161,8 @@ server <- function(input, output) {
                                 Name = c("Payback",
                                          "Discounted Payback",
                                          "Profitability Index"),
-                                Value = as.character(c(round(payback, 2),
-                                                       round(discounted.payback, 2),
+                                Value = as.character(c(payback,
+                                                       discounted.payback,
                                                        round(PI, 2))),
                                 Thresholds = c(threshold, threshold, 1),
                                 Result = c(result.payback, result.discounted.payback, result.PI),
