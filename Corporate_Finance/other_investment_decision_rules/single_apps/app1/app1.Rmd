@@ -6,5 +6,111 @@ output: html_document
 
 ```{r echo=FALSE}
 
+## Based off of app here: http://shiny.rstudio.com/gallery/sliders.html
+
+library(shiny)
+library(formattable)
+
+# Define UI for slider demo app ----
+ui <- fluidPage(
+
+  # App title ----
+  titlePanel("Cash Flows and Discount Rate"),
+
+  # Sidebar layout with input and output definitions ----
+  sidebarLayout(
+
+    # Sidebar to demonstrate various slider options ----
+    sidebarPanel(
+
+      sliderInput("time0", "Time 0 (Cash Outflow):",
+                  min = -1000000, max = 0,
+                  pre = "$", sep = ",", step = 1000,
+                  value = -100000),
+
+      sliderInput("time1", "Time 1 Cash Flow:",
+                  min = 0, max = 1000000,
+                  pre = "$", sep = ",", step = 1000,
+                  value = 100000),
+
+      sliderInput("time2", "Time 2 Cash Flow:",
+                  min = 0, max = 1000000,
+                  pre = "$", sep = ",", step = 1000,
+                  value = 100000),
+
+      sliderInput("time3", "Time 3 Cash Flow:",
+                  min = 0, max = 1000000,
+                  pre = "$", sep = ",", step = 1000,
+                  value = 100000),
+
+      sliderInput("time4", "Time 4 Cash Flow:",
+                  min = 0, max = 1000000,
+                  pre = "$", sep = ",", step = 1000,
+                  value = 100000),
+
+      sliderInput("dr", "Discount Rate:",
+                  min = 0, max = 0.5,
+                  pre = "%", step = 0.01,
+                  value = 0.1),
+
+      sliderInput("thresh", "Payback Threshold:",
+                  min = 0, max = 4,
+                  step = 0.1,
+                  value = 1)
+    ),
+
+    # Main panel for displaying outputs ----
+    mainPanel(
+
+      # Output: Table summarizing the values entered ----
+      tableOutput("values")
+
+    )
+  )
+)
+
+# Define server logic for slider examples ----
+server <- function(input, output) {
+
+  # Reactive expression to create data frame of all input values ----
+    sliderValues <- reactive({
+
+        ## Get data ------
+        outflow <- input$time0
+
+        cfs <- c(input$time1, input$time2, input$time3, input$time4)
+
+        dr <- input$dr
+
+        threshold <- input$thresh
+
+        ## Calculations -------
+
+        csum <- cumsum(c(outflow, cfs))
+        df <- data.frame(seq_along(csum), csum)
+        
+
+    data.frame(
+      Name = c("Payback",
+               "Discounted Payback",
+               "Profitability Index",),
+      Value = as.character(c(input$integer,
+                             input$decimal,
+                             paste(input$range, collapse = " "),
+                             input$format,
+                             input$animation)),
+      stringsAsFactors = FALSE)
+
+  })
+
+  # Show the values in an HTML table ----
+  output$values <- renderTable({
+    sliderValues()
+  })
+
+}
+
+# Create Shiny app ----
+shinyApp(ui, server)
 
 ```
