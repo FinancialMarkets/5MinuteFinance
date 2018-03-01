@@ -76,9 +76,10 @@ server <- function(input, output) {
     sliderValues <- reactive({
 
         ## Get data ------
+        ##dont use line below anymore
         outflow <- input$time0
 
-        cfs <- c(input$time1, input$time2, input$time3, input$time4)
+        cfs <- c(input$time0, input$time1, input$time2, input$time3, input$time4)
 
         dr <- input$dr
 
@@ -86,10 +87,30 @@ server <- function(input, output) {
 
         ## Calculations -------
 
-        csum <- cumsum(c(outflow, cfs))
-        df <- data.frame(seq_along(csum), csum)
+        csum <- cumsum(cfs)
+        df <- data.frame(0:4, csum)
+        names(df) <- c("year", "csum")
+        
+### Calculate payback -----
+
+        ## below doesn't work if fractional part of a year
+        if(sum(df$csum == 0) == 1){
+            pb.year <- min(df$year[df$csum >= 0])
+            frac.remain <- df$csum[pb.year + 1] / cfs[pb.year + 1]
+
+            payback <- pb.year + frac.remain
+            
+        } else if(sum(df$csum > 0) == 0){
+            payback <- "no payback"
+        } else {
+            pb.year <- min(df$year[df$csum > 0]) - 1
+            frac.remain <- (cfs[pb.year + 2] - df$csum[pb.year + 2]) / cfs[pb.year + 2]
+
+            payback <- pb.year + frac.remain
+        }
         
 
+ 
     data.frame(
       Name = c("Payback",
                "Discounted Payback",
