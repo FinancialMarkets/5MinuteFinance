@@ -24,7 +24,7 @@ The value of a bond is the present value of the discounted expected cash flows. 
 
 ## Cash Flow Structure
 
-Given the previous information, we know the cash flow structure and the rate at which to discount the cash flows.  For example, say a bond has a 5% coupon rate, a \$1000 par value, 10 years to maturity, makes payments annually, and lastly has a 8% $YTM$ (we'll define YTM in greater detail a little later on).
+For example, say a bond has a 5% coupon rate, a \$1000 par value, 10 years to maturity, makes payments annually, and lastly has a 8% $YTM$ (we'll define YTM in greater detail a little later on).
 
 - Then the bond will pay $0.05(\$1000) = \$50$ every year for 10 years, with an additional \$1000 in year 10.  In other words, the cash flows are \$50 in years 1 through 9, and \$1050 in year 10.
 
@@ -51,7 +51,7 @@ The sum of the present value of these cash flows is \$798.69.
 The value of the bond is often written as:
 $B_0 = \sum_{i=1}^{10}\frac{50}{1.08^i} + \frac{1000}{1.08^{10}} = \$798.69$
 
-Which can be rewritten to use the present value of an ordinary annuity formula: $B_0 = \$50\left(\frac{1-\frac{1}{1.08^{10}}}{.08}\right) + \frac{\$1000}{1.08^{10}} = \$798.69$
+Which can be rewritten to use the present value of an ordinary annuity formula: $B_0 = \$50(\frac{1-\frac{1}{1.08^{10}}}{.08}\right) + \frac{\$1000}{1.08^{10}} = \$798.69$
 
 - These calculations are equivalent, and the differences are only matters of notation.  When using in a spreadsheet, the calculations are usually laid out in a form similar to the table.  The annuity formula was mainly taught because prior to spreadsheets people were doing these calculations by calculator.
 
