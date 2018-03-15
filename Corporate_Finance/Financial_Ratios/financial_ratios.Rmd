@@ -137,11 +137,11 @@ Say a firm has \$100 million in net income.  Alone this data point is not too us
 
 These measures capture what value the market assigns to each dollar of a firm's earnings, sales, or book value.  Examples of *market value ratios* are:
 
-- Earnings Per Share: net income divided by shares outstanding.
+- Price Earnings Ratio: price per share divided by earnings per share (EPS). 
+
+- Price Sales Ratio: market capitalization (price per share x # of shares) divided by sales. 
 
 - Market-to-Book Ratio: market value per share divided by book value per share.
-
-- Price Earnings Ratio: price per share divided by earnings per share (EPS). 
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
