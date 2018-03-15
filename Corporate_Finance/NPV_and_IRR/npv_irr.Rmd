@@ -55,7 +55,7 @@ where:
 <br>
 <br>
 <br>
-<center>$NPV > \$0 \Rightarrow \text{Accept}$
+<center>$NPV \geq \$0 \Rightarrow \text{Accept}$
 <br>
 <br>
 <br>
