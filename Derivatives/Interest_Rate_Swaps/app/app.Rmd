@@ -8,12 +8,16 @@ runtime: shiny
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, cache = FALSE}
 inputPanel(
- sliderInput("quoted", "Quoted Rate", min = 0, max = 50, step = .1, value = 12),
- selectizeInput(inputId = "comp", label = "Number of Periods in a Year", choices = c("Yearly"= "y", "Semiannual" = "s", "Monthly" = "mo", "Daily" = "d", "Infinite" = "i"))
+    ## just have a "run" button that will generate random LIBOR rates for the swap------
+    actionButton("go", "Click to generate LIBOR rates.")
 )
 renderPlot({
 
+randomVals <- eventReactive(input$go, {
+    cusum(rnorm(5))
+})
 
+    
 
 
 })
