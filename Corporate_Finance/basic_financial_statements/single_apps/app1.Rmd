@@ -24,10 +24,11 @@ DT::renderDataTable({
         need(input$name != "", "Select a US stock name.")
         )
 ticker <- comp$symbol[comp$name == input$name]
-                    
-    f1 <- getFinancials(ticker, src = "google", auto.assign = FALSE)
-    is1 <- viewFin(f1, type = "IS")
-    bs1 <- viewFin(f1, type = "BS")
+
+    ### google removed access to financials, so I think we should rewrite this to access the financial data made available by the IEX API.  
+    ## f1 <- getFinancials(ticker, src = "google", auto.assign = FALSE)
+    ## is1 <- viewFin(f1, type = "IS")
+    ## bs1 <- viewFin(f1, type = "BS")
     if( input$statement == 1 ){
         DT::datatable(bs1, options = list(pageLength = 5))
     } else {
