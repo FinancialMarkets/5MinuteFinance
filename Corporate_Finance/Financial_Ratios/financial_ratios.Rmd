@@ -21,18 +21,21 @@ Financial ratios are generally used to:
 
 1.  Compare a single company's performance over time.
 2.  Compare performance across companies.
+3.  Compare performance across the whole market.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## A Few Pointers
 
-Financial ratios are most informative when used to compare companies in the *same* industry.
+Financial ratios are most informative when used to compare companies in the *same* industry and with the similar market cap.
 
 - You should never compare a bank's ratios with that of a biotech company.  
 
-- Know the good and bad values for a ratio.
+- You should not compare a small cap company with a large cap company.
 
-- Use the right ratio to answer your question.
+- Know the reasonable benchmark for a ratio and be careful that the benchmark could change in different industry or time horizon.
+
+- Use the right ratios to answer your question.
 
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
