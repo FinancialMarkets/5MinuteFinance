@@ -51,7 +51,7 @@ The sum of the present value of these cash flows is \$798.69.
 The value of the bond is often written as:
 $B_0 = \sum_{i=1}^{10}\frac{50}{1.08^i} + \frac{1000}{1.08^{10}} = \$798.69$
 
-Which can be rewritten to use the present value of an ordinary annuity formula: $B_0 = \$50(\frac{1-\frac{1}{1.08^{10}}}{.08}\right) + \frac{\$1000}{1.08^{10}} = \$798.69$
+Which can be rewritten to use the present value of an ordinary annuity formula: $B_0 = \$50\left(\frac{1-\frac{1}{1.08^{10}}}{.08}\right) + \frac{\$1000}{1.08^{10}} = \$798.69$
 
 - These calculations are equivalent, and the differences are only matters of notation.  When using in a spreadsheet, the calculations are usually laid out in a form similar to the table.  The annuity formula was mainly taught because prior to spreadsheets people were doing these calculations by calculator.
 
