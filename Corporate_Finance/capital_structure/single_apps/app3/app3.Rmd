@@ -7,47 +7,51 @@ runtime: shiny
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(highcharter)
 library(dplyr)
-library(finreportr)
+## use httr
+library(httr)
 
-options("scipen"=100)
+base_url <- "https://api.iextrading.com/"
+version <- "1.0/"
 
-source(url("https://raw.githubusercontent.com/Matt-Brigida/IEX_API_R_Wrapper/master/iex_api.R"))
+symbol_list <- function(){
+    tmp <- httr::GET(paste0(base_url, version, "/ref-data/symbols"))
+    tmp <- content(tmp, "parsed")
+    tmp <- do.call(rbind, tmp)
+    tmp <- data.frame(tmp)
+    return(tmp)
+}
 
 comp <- symbol_list()
 comp <- comp[, 1:2]
 
 inputPanel(
-    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name),
-    selectizeInput("year", label = "Choose a year:", multiple = FALSE, choices = list(2015, 2016, 2017, 2018))
-)
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name)
+    )
 
 renderHighchart({
 
     validate(
-        need(input$name != "", "Select a US stock name.  The app may take a minute as it pulls data from the SEC's EDGAR database.  If the company does not have a 'Total Equity' entry, then equity will show up as 100%, which is likely incorrect.  You can improve the app here: https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/capital_structure/single_apps/app3/app3.Rmd")
+        need(input$name != "", "Select a US stock name.  This app pull its data from the IEX: The Investors Exchange.  Thanks for the API IEX!  You can see the code for the app here: https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/capital_structure/single_apps/app3/app3.Rmd")
     )
     ticker <- comp$symbol[comp$name == input$name]
-    year <- input$year
-    # f2 <- getFinancials(ticker, src = "google", auto.assign = FALSE)
-    # bs2 <- viewFin(f2, type = "BS")
 
-    bs2 <- finreportr::GetBalanceSheet(ticker, year)
-        
+    ### get financials from IEX instead------
+    get_fin <- function(ticker){
+        tmp <- httr::GET(paste0(base_url, version, "stock/", ticker,"/financials"))
+        tmp <- content(tmp, "parsed")
+        return(tmp)
+    }
+
+    fin <- get_fin(ticker)
+    
     ## D/E ratio
 
-    debt2a <- as.numeric(bs2[bs2$Metric == "Liabilities",]$Amount[1])
-    debt2b <- as.numeric(bs2[bs2$Metric == "Total Liabilities",]$Amount[1])
-    debt2c <- as.numeric(bs2[bs2$Metric == "Total liabilities",]$Amount[1])
-    
-    debt2 <- sum(debt2a, debt2b, debt2c, na.rm = TRUE)
-    
-    equity2a <- as.numeric(bs2[bs2$Metric == "Liabilities and Equity",]$Amount[1]) - debt2
-    equity2b <- as.numeric(bs2[bs2$Metric == "Total Liabilities and Equity",]$Amount[1]) - debt2
-    equity2c <- as.numeric(bs2[bs2$Metric == "Total liabilities and equity",]$Amount[1]) - debt2
-
-    equity2 <- sum(equity2a, equity2b, equity2c, na.rm = TRUE)
-    
-    capStruct <- tbl_df(cbind(rbind("Weight_Equity", "Weight_Debt"), rbind(equity2, debt2)))
+    debt <- fin$financials[[1]]$totalDebt
+    debt2 <- ifelse(!is.numeric(debt), 0, debt)
+    equity <- fin$financials[[1]]$shareholderEquity
+    equity2 <- ifelse(!is.numeric(equity), 0, equity)
+            
+    capStruct <- tbl_df(cbind(rbind("Equity", "Debt"), rbind(equity2, debt2)))
     names(capStruct) <- c("bar", "percent")
     capStruct$percent <- as.numeric(capStruct$percent)
 
@@ -65,7 +69,7 @@ renderHighchart({
         ) %>%
         hc_subtitle(text = "Using Balance Sheet Numbers (not market values)") %>% 
         hc_credits(
-            enabled = TRUE, text = "",
+            enabled = TRUE, text = "Matt Brigida",
             href = "https://github.com/FinancialMarkets/5MinuteFinance",
             style = list(fontSize = "12px")
         )    
