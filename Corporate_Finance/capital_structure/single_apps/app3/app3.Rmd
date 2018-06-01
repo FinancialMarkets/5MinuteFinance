@@ -69,7 +69,7 @@ renderHighchart({
         ) %>%
         hc_subtitle(text = "Using Balance Sheet Numbers (not market values)") %>% 
         hc_credits(
-            enabled = TRUE, text = "Matt Brigida",
+            enabled = TRUE, text = "5MinuteFinance",
             href = "https://github.com/FinancialMarkets/5MinuteFinance",
             style = list(fontSize = "12px")
         )    
