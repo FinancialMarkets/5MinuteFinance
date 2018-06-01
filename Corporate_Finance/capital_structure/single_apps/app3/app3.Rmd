@@ -24,7 +24,7 @@ inputPanel(
 renderHighchart({
 
     validate(
-        need(input$name != "", "Select a US stock name.")
+        need(input$name != "", "Select a US stock name.  The app may take a minute as it pulls data from the SEC's EDGAR database.  If the company does not have a 'Total Equity' entry, then equity will show up as 100%, which is likely incorrect.  You can improve the app here: https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Corporate_Finance/capital_structure/single_apps/app3/app3.Rmd")
     )
     ticker <- comp$symbol[comp$name == input$name]
     year <- input$year
