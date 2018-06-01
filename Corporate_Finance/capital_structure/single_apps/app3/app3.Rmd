@@ -7,39 +7,49 @@ runtime: shiny
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(highcharter)
 library(dplyr)
-library(quantmod)
-comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
-comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
-names(comp) <- c("symbol", "name")
+library(finreportr)
+
+options("scipen"=100)
+
+source(url("https://raw.githubusercontent.com/Matt-Brigida/IEX_API_R_Wrapper/master/iex_api.R"))
+
+comp <- symbol_list()
+comp <- comp[, 1:2]
 
 inputPanel(
-    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name)
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name),
+    selectizeInput("year", label = "Choose a year:", multiple = FALSE, choices = list(2015, 2016, 2017, 2018))
 )
 
 renderHighchart({
-
 
     validate(
         need(input$name != "", "Select a US stock name.")
     )
     ticker <- comp$symbol[comp$name == input$name]
+    year <- input$year
+    # f2 <- getFinancials(ticker, src = "google", auto.assign = FALSE)
+    # bs2 <- viewFin(f2, type = "BS")
 
-
-    f2 <- getFinancials(ticker, src = "google", auto.assign = FALSE)
-    bs2 <- viewFin(f2, type = "BS")
-    
-
-
+    bs2 <- finreportr::GetBalanceSheet(ticker, year)
+        
     ## D/E ratio
 
-    debt2 <- bs2[rownames(bs2) == "Total Debt"][1]
-    equity2 <- bs2[rownames(bs2) == "Total Equity"][1]
+    debt2a <- as.numeric(bs2[bs2$Metric == "Liabilities",]$Amount[1])
+    debt2b <- as.numeric(bs2[bs2$Metric == "Total Liabilities",]$Amount[1])
+    debt2c <- as.numeric(bs2[bs2$Metric == "Total liabilities",]$Amount[1])
+    
+    debt2 <- sum(debt2a, debt2b, debt2c, na.rm = TRUE)
+    
+    equity2a <- as.numeric(bs2[bs2$Metric == "Liabilities and Equity",]$Amount[1]) - debt2
+    equity2b <- as.numeric(bs2[bs2$Metric == "Total Liabilities and Equity",]$Amount[1]) - debt2
+    equity2c <- as.numeric(bs2[bs2$Metric == "Total liabilities and equity",]$Amount[1]) - debt2
 
+    equity2 <- sum(equity2a, equity2b, equity2c, na.rm = TRUE)
+    
     capStruct <- tbl_df(cbind(rbind("Weight_Equity", "Weight_Debt"), rbind(equity2, debt2)))
     names(capStruct) <- c("bar", "percent")
     capStruct$percent <- as.numeric(capStruct$percent)
-
-
 
     highchart() %>%
         hc_add_series(capStruct, "pie", hcaes(name = bar, y = percent), name = "Capital Structure") %>%
@@ -56,7 +66,7 @@ renderHighchart({
         hc_subtitle(text = "Using Balance Sheet Numbers (not market values)") %>% 
         hc_credits(
             enabled = TRUE, text = "",
-            href = "http://complete-markets.com",
+            href = "https://github.com/FinancialMarkets/5MinuteFinance",
             style = list(fontSize = "12px")
         )    
 })
