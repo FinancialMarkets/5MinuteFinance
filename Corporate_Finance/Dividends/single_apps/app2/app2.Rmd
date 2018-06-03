@@ -9,13 +9,24 @@ runtime: shiny
 
 library(quantmod)
 library(highcharter)
-  ## comp <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
-  ## comp <- data.frame(comp$Symbol, comp$Security.Name, stringsAsFactors = FALSE)
-  ## names(comp) <- c("symbol", "name")
+library(httr)
+
+base_url <- "https://api.iextrading.com/"
+version <- "1.0/"
+
+symbol_list <- function(){
+    tmp <- httr::GET(paste0(base_url, version, "/ref-data/symbols"))
+    tmp <- content(tmp, "parsed")
+    tmp <- do.call(rbind, tmp)
+    tmp <- data.frame(tmp)
+    return(tmp)
+}
+
+comp <- symbol_list()
+comp <- comp[, 1:2]
 
 inputPanel(
-    ## selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name)
-    textInput("name", "Enter a Stock's Ticker", value = "SPY")
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name, selected = "Apple Inc.")
     )
 
 renderHighchart({
@@ -23,15 +34,17 @@ renderHighchart({
     validate(
         need(input$name != "", "Enter a stock's ticker symbol.")
         )
-## ticker <- comp$symbol[comp$name == input$name]
-    ticker2 <- input$name
+
+    ticker2 <- unlist(comp$symbol[comp$name == input$name])
     
     D <- getDividends(ticker2, auto.assign = FALSE)
     if( dim(D)[1] == 0 ){
         ## dygraph(as.ts(0))
-        hchart(as.ts(0))
+        hchart(as.ts(0)) %>%
+            hc_add_theme(hc_theme_flatdark())
     } else {
-        hchart(D)
+        hchart(D) %>%
+            hc_add_theme(hc_theme_flatdark())
         }
 })
 

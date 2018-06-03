@@ -8,25 +8,51 @@ runtime: shiny
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(quantmod)
 library(dygraphs)
-  ## comp1 <- read.csv("./tickers_wo_dollars.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
-  ## comp1 <- data.frame(comp1$Symbol, comp1$Security.Name, stringsAsFactors = FALSE)
-  ## names(comp1) <- c("symbol", "name")
+library(httr)
+
+base_url <- "https://api.iextrading.com/"
+version <- "1.0/"
+
+symbol_list <- function(){
+    tmp <- httr::GET(paste0(base_url, version, "/ref-data/symbols"))
+    tmp <- content(tmp, "parsed")
+    tmp <- do.call(rbind, tmp)
+    tmp <- data.frame(tmp)
+    return(tmp)
+}
+
+comp <- symbol_list()
+comp <- comp[, 1:2]
+
 inputPanel(
-    ## selectizeInput("name1", label = "Type a Stock's Name", multiple = FALSE, choices = comp1$name)
-    textInput("name1", "Enter a Stock's Ticker", value = "BP")
+    selectizeInput("name", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name, selected = "Apple Inc.")
 )
 renderDygraph({
     ## valdate name ----
     validate(
-        need(input$name1 != "", "Enter a stock's ticker.")
+        need(input$name != "", "Enter a stock's ticker.")
         )
-    ## ticker <- comp1$symbol[comp1$name == input$name1]
-    ticker <- input$name1
+
+    ticker <- unlist(comp$symbol[comp$name == input$name])
                     
     D1 <- getDividends(ticker, auto.assign = FALSE)
-    prices <- getSymbols(ticker, auto.assign = FALSE, src = 'google')
 
-    dygraph(cbind(Op(prices), Cl(prices))) %>%
+    Five_years <- function(ticker){
+    tmp <- httr::GET(paste0(base_url, version, "stock/", ticker,"/chart/5y"))
+    tmp <- content(tmp, "parsed")
+    tmp <- do.call(rbind, tmp)
+    tmp <- data.frame(tmp)
+    tmp$Ticker <- ticker
+    return(tmp)
+    }
+
+    prices <- Five_years(ticker)
+    open <- as.xts(unlist(prices$open), order.by = as.Date(unlist(prices$date)))
+    names(open) <- "Open"
+    close <- as.xts(unlist(prices$close), order.by = as.Date(unlist(prices$date)))
+    names(close) <- "Close"
+
+    dygraph(cbind(open, close)) %>%
         dyEvent(index(D1), as.numeric(D1), labelLoc = "bottom")
 })
 ```
