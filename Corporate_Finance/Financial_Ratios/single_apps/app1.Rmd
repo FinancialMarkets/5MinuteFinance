@@ -28,14 +28,15 @@ symbol_list <- function(){
 comp <- symbol_list()
 comp <- comp[, 1:2]
 
-sidebarLayout(
-    sidebarPanel(    
+# sidebarLayout(
+#    sidebarPanel(   
+inputPanel(
     selectizeInput("name1", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name, selected = "Tesla Inc."),
     selectizeInput("name2", label = "Type a Stock's Name", multiple = FALSE, choices = comp$name, selected = "Apple Inc."),
     selectizeInput("ratio", label = "Choose a Ratio", choices = list("Debt-to-Equity Ratio" = 1, "Current Ratio" = 2, "Total Asset Turnover" = 3, "Profit Margin" = 4), selected = 1)
-        ),
+        )#,
 
-    mainPanel(
+#    mainPanel(
         renderHighchart({
             ## valdate tickers ----
             validate(
@@ -144,8 +145,8 @@ sidebarLayout(
                 hc_legend(enabled = TRUE)
 
         })
-        )
-    )
+#        )
+#    )
 #}}}
 ```
 
