@@ -77,8 +77,8 @@ sidebarLayout(
             delta.p <- function(){pnorm(d1()) - 1}
 
             ## Theta
-            theta.c <- function(){-(stock * dnorm(d1()) * vol) / (2 * time) - rf * strike * exp(-rf * time) * pnorm(d2())}
-            theta.p <- function(){-(stock * dnorm(d1()) * vol) / (2 * time) + rf * strike * exp(-rf * time) * pnorm(-d2())}
+            theta.c <- function(){-(stock * dnorm(d1()) * vol) / (2 * sqrt(time)) - rf * strike * exp(-rf * time) * pnorm(d2())}
+            theta.p <- function(){-(stock * dnorm(d1()) * vol) / (2 * sqrt(time)) + rf * strike * exp(-rf * time) * pnorm(-d2())}
 
             ## Gamma
             gamma <- function(){dnorm(d1()) / (stock * vol * sqrt(time))}
