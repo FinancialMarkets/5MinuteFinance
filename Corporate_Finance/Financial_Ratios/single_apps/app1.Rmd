@@ -142,7 +142,8 @@ inputPanel(
                 hc_add_series(ratio1, name = input$name1) %>% 
                 hc_add_series(ratio2, name = input$name2) %>%
                 hc_add_theme(hc_theme_flatdark()) %>%
-                hc_legend(enabled = TRUE)
+                hc_legend(enabled = TRUE) %>%
+                hc_exporting(enabled = TRUE)
 
         })
 #        )
