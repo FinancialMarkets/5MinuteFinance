@@ -12,6 +12,8 @@ output: html_document
 
 [**Under Construction on GitHub** Trading on Margin](https://github.com/FinancialMarkets/5MinuteFinance/blob/master/Trading_and_Market_Structure/Margin/margin.Rmd)
 
+[Market Depth](https://matt-brigida.github.io/fin_532_market_depth/)
+
 ## Equity
 
 [Intro to Stock Investments](https://www.5minutefinance.org/concepts/an-introduction-to-stock-investments)

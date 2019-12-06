@@ -48,6 +48,13 @@ The *agency problem* is when management (the agent) puts their own interest befo
 <!-- ideas for interactive app -->
 <!-- can we query somthing from SEC? -->
 
+<!--- maybe pull SEC forms for a given company -->
+
+<!--- find company's which may have have an agency problem becuase of high levels of employee ownership -->
+<!--- 11-K 	Annual reports of employee stock purchase, savings and similar plans pursuant to Section 15(d) (PDF) -->
+<!--- Who owns the companys, find companies with blockholders -->
+<!--- 3 	Initial statement of beneficial ownership of securities (PDF) -->
+
 <div class="MIfooter"><img src="mi.png" style="height:50px;"></div> 
 
 ## Credits and Collaboration
