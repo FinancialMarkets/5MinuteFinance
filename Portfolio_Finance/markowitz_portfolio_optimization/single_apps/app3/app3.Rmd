@@ -15,7 +15,7 @@ inputPanel(
     
     textInput("ticker1a", "Stock Ticker", value = "XOM"),
     textInput("ticker2a", "Stock Ticker", value = "GE"),
-    textInput("ticker3a", "Stock Ticker", value = "RTN"),
+    textInput("ticker3a", "Stock Ticker", value = "RTX"),
     textInput("ticker4a", "Stock Ticker", value = "AAPL"),
     textInput("ticker5a", "Stock Ticker", value = "UNH")
 )
